@@ -18,6 +18,7 @@ import {
   ShieldCheck,
   Sparkles,
   Target,
+  Terminal,
   Zap,
 } from "lucide-react";
 import { Section } from "../components/Section";
@@ -84,6 +85,11 @@ const stances = [
 
 const authoring = [
   {
+    skill: "implement-task",
+    icon: Terminal,
+    use: "the full Swarm task-packet frame, long form",
+  },
+  {
     skill: "write-feature",
     icon: Rocket,
     use: "net-new behavior behind a defined surface",
@@ -137,7 +143,7 @@ export default function SkillsPage() {
         <div className="mx-auto max-w-4xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-swarm-yellow/30 bg-swarm-yellow/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-swarm-yellow">
             <SignalPulse className="h-4 w-4" />
-            <span>skills.catalog — 16 modules available</span>
+            <span>skills.catalog — 17 modules available</span>
           </div>
           <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
             Swarm <span className="text-swarm-yellow text-glow">skills</span>
@@ -163,12 +169,19 @@ export default function SkillsPage() {
           <p className="text-concrete-100">
             <span className="text-swarm-yellow">$</span> npx skills add jcosta33/swarm-skills --list
           </p>
-          <p className="mt-2 text-concrete-500"># install a single skill into the current repo</p>
+          <p className="mt-2 text-concrete-500"># install into the current repo</p>
           <p className="text-concrete-100">
             <span className="text-swarm-yellow">$</span> npx skills add jcosta33/swarm-skills --skill persona-skeptic
           </p>
+          <p className="mt-2 text-concrete-500"># or install globally / for one agent</p>
+          <p className="text-concrete-100">
+            <span className="text-swarm-yellow">$</span> npx skills add jcosta33/swarm-skills --skill persona-skeptic -g
+          </p>
+          <p className="text-concrete-100">
+            <span className="text-swarm-yellow">$</span> npx skills add jcosta33/swarm-skills --skill persona-skeptic -a claude-code
+          </p>
           <p className="mt-2 text-concrete-500">
-            # or copy the folder if you don&apos;t use the Vercel skills CLI
+            # no CLI? copy the folder into your agent&apos;s skills directory
           </p>
           <p className="text-concrete-100">
             <span className="text-swarm-yellow">$</span> cp -R skills/persona-skeptic{" "}
@@ -256,6 +269,30 @@ export default function SkillsPage() {
             );
           })}
         </ul>
+      </Section>
+
+      <Section>
+        <Card className="max-w-2xl border-factory-800 bg-factory-900/50 transition-all duration-300 hover:border-swarm-yellow/30">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
+            <Terminal className="h-4 w-4" />
+            <span>authoring.guide — write your own</span>
+          </div>
+          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
+            How to write a Swarm skill
+          </h2>
+          <p className="mt-4 text-concrete-400">
+            Skills are plain markdown, but their structure is evidence-backed: directive
+            descriptions, self-contained bodies, forced visible output, and the AGENTS.md contract.
+          </p>
+          <p className="mt-6">
+            <Link
+              href="/skills/writing/"
+              className="text-swarm-yellow hover:underline focus-ring rounded"
+            >
+              Read the skill-writing guide →
+            </Link>
+          </p>
+        </Card>
       </Section>
 
       <Section>

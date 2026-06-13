@@ -1,0 +1,494 @@
+/* eslint-disable react/no-unescaped-entities */
+import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  AlertTriangle,
+  BookOpen,
+  Box,
+  CheckCircle,
+  ExternalLink,
+  FileText,
+  GitBranch,
+  Layers,
+  ListOrdered,
+  Shield,
+  Terminal,
+  Zap,
+} from "lucide-react";
+import { Section } from "../../components/Section";
+import { Card } from "../../components/Card";
+import { TerminalWindow } from "../../components/TerminalWindow";
+import { DroneIcon } from "../../components/DroneIcon";
+import { HexBadge } from "../../components/HexBadge";
+import { SignalPulse } from "../../components/SignalPulse";
+import { TerminalCursor } from "../../components/TerminalCursor";
+
+export const metadata: Metadata = {
+  title: "Writing a skill — Swarm",
+  description:
+    "How to write a Swarm skill: the open Agent Skills format, directive descriptions, self-contained bodies, forced visible output, and when to ship a task template.",
+  openGraph: {
+    title: "Writing a skill — Swarm",
+    description:
+      "How to write a Swarm skill: the open Agent Skills format, directive descriptions, self-contained bodies, forced visible output, and when to ship a task template.",
+    type: "website",
+    images: ["/og-skills.png"],
+  },
+  alternates: {
+    canonical: "/skills/writing/",
+  },
+};
+
+const anatomyItems = [
+  {
+    icon: ListOrdered,
+    title: "Numbered rules with rationales",
+    text: "Each rule pairs an imperative with the failure mode it prevents. Rationales let the model extend the rule to cases the author didn't imagine.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Anti-patterns section",
+    text: "Negative examples are load-bearing. Document the temptations the agent should refuse, not just the happy path.",
+  },
+  {
+    icon: Layers,
+    title: "References one hop away",
+    text: "Anything deeper than a single `references/*.md` file risks partial reads and silent omissions.",
+  },
+];
+
+const scopeExclusions = [
+  { title: "Engineering-domain prescriptions", example: "auth-patterns, caching guides" },
+  { title: "Stack-specific skills", example: "react-19-best-practices, postgres-index-patterns" },
+  { title: "Internal product knowledge", example: "business-logic wikis, vendor runbooks" },
+  { title: "Automation or scripts", example: "CI workflows, eval harnesses, build generators" },
+  { title: "Core / loader skills", example: "personas-core, write-core" },
+  { title: "Always-on skills", example: "anything that tries to load for every request" },
+];
+
+export default function WritingSkillsPage() {
+  return (
+    <div className="flex flex-col gap-24 py-24">
+      <Section>
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-drone-green/30 bg-drone-green/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-drone-green">
+            <SignalPulse className="h-4 w-4" />
+            <span>SKILL.md — open Agent Skills format</span>
+          </div>
+          <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
+            Writing a <span className="text-swarm-yellow text-glow">skill</span>
+            <TerminalCursor className="ml-2 align-middle" />
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-100">
+            A skill is a markdown file your agent reads when the work matches. It is instructions,
+            not code — and like any prompt, its structure determines whether it actually fires.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
+            This page distills the evidence-backed authoring guide from the{" "}
+            <Link
+              href="https://github.com/jcosta33/swarm-skills/tree/main/docs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-swarm-yellow underline hover:no-underline focus-ring rounded"
+            >
+              swarm-skills docs
+            </Link>
+            .
+          </p>
+        </div>
+      </Section>
+
+      <Section className="flex flex-col gap-8">
+        <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
+          <DroneIcon className="h-4 w-4" />
+          <span>layout.txt — what a skill folder looks like</span>
+        </div>
+        <TerminalWindow title="terminal">
+          <p className="text-concrete-500"># A minimal skill</p>
+          <p className="text-concrete-100">
+            skills/write-feature/
+            <br />
+            &nbsp;&nbsp;SKILL.md
+            <br />
+            &nbsp;&nbsp;references/
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;task-template.md
+          </p>
+          <p className="mt-3 text-concrete-500"># A persona needs no references folder</p>
+          <p className="text-concrete-100">
+            skills/persona-skeptic/
+            <br />
+            &nbsp;&nbsp;SKILL.md
+          </p>
+        </TerminalWindow>
+        <p className="text-concrete-400">
+          The open Agent Skills spec defines the frontmatter and progressive-disclosure model: metadata
+          is always present, the body loads when the description matches, and references load on demand.
+        </p>
+      </Section>
+
+      <Section className="flex flex-col gap-12">
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
+            <Terminal className="h-4 w-4" />
+            <span>description.yaml — the load-bearing line</span>
+          </div>
+          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
+            Activation: the directive description
+          </h2>
+          <p className="mt-4 text-concrete-400">
+            Agents scan the <code>description</code> to decide whether to load the skill. A controlled
+            650-trial study found that passive descriptions activate only ~55 % of the time and
+            collapse to 37 % under hooks. Directive descriptions with an exclusion clause activated
+            100 % of trials.
+          </p>
+        </div>
+        <div className="grid gap-6 lg:grid-cols-2">
+          <Card className="border-factory-800 bg-factory-900/50">
+            <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-hazard-orange">
+              Passive (weak)
+            </h3>
+            <p className="mt-2 font-mono text-sm text-concrete-400">
+              Use when implementing a feature from a spec. Encodes the discipline — read the spec,
+              survey patterns, halt on ambiguity, validate after every batch, paste output.
+            </p>
+            <p className="mt-3 text-xs text-concrete-500">~55 % activation</p>
+          </Card>
+          <Card className="border-factory-800 bg-factory-900/50">
+            <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-drone-green">
+              Directive (strong)
+            </h3>
+            <p className="mt-2 font-mono text-sm text-concrete-400">
+              Implement a feature from a spec. ALWAYS apply when the user asks to implement, build,
+              or add a feature, when a spec doc is referenced, or when acceptance criteria are named
+              — even with no spec. Do not code before surveying patterns, invent a requirement, or
+              refactor in passing. Skip defect fixes, behavior-preserving refactors, deliberate
+              rewrites, migrations, performance tuning, and test-only work.
+            </p>
+            <p className="mt-3 text-xs text-concrete-500">100 % activation across tested conditions</p>
+          </Card>
+        </div>
+        <div className="max-w-3xl">
+          <h3 className="font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
+            Four required clauses
+          </h3>
+          <ul className="mt-4 space-y-3 text-concrete-400">
+            <li>
+              <strong className="text-concrete-100">WHAT.</strong> Open with an imperative verb:
+              "Implement a feature", "Back every claim", "Judge another agent's work".
+            </li>
+            <li>
+              <strong className="text-concrete-100">ALWAYS.</strong> Name concrete triggers, including
+              implicit signals the user might not say literally.
+            </li>
+            <li>
+              <strong className="text-concrete-100">Do not.</strong> Block the default bypass — the
+              thing the agent would do if it skipped the skill.
+            </li>
+            <li>
+              <strong className="text-concrete-100">Skip for.</strong> Name <em>task types</em>, not
+              sibling skill names. This prevents directive saturation without assuming another skill
+              is installed.
+            </li>
+          </ul>
+          <p className="mt-4 text-concrete-500">
+            Target 350–600 characters. Hard cap 800. The open spec allows 1024, but the tighter limit
+            is a forcing function for clarity.
+          </p>
+        </div>
+      </Section>
+
+      <Section className="flex flex-col gap-12">
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-drone-green">
+            <BookOpen className="h-4 w-4" />
+            <span>body.md — the rules that fire after activation</span>
+          </div>
+          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
+            Body anatomy
+          </h2>
+          <p className="mt-4 text-concrete-400">
+            Activation is necessary but not sufficient. The body must be shaped so the agent acts on
+            it. Long contexts suffer from U-shaped attention: the start and end are remembered; the
+            middle fades.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-3">
+          {anatomyItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Card key={item.title} className="h-full border-factory-800 bg-factory-900/50">
+                <HexBadge color="green" className="mb-4">
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </HexBadge>
+                <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-concrete-100">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-concrete-400">{item.text}</p>
+              </Card>
+            );
+          })}
+        </div>
+        <div className="max-w-3xl">
+          <h3 className="font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
+            Length budgets
+          </h3>
+          <ul className="mt-4 space-y-2 text-concrete-400">
+            <li>
+              <strong className="text-concrete-100">~200 lines</strong> is the practical target.
+            </li>
+            <li>
+              <strong className="text-concrete-100">500 lines</strong> is the hard cap, backed by
+              Anthropic's own guidance.
+            </li>
+            <li>
+              If a skill grows past 200 lines, the question is "what moves to references?", not
+              "should I raise the limit?".
+            </li>
+          </ul>
+        </div>
+        <TerminalWindow title="SKILL.md">
+          <p className="text-concrete-500">---</p>
+          <p className="text-concrete-100">name: write-feature</p>
+          <p className="text-concrete-100">description: Implement a feature from a spec...</p>
+          <p className="text-concrete-500">---</p>
+          <p className="mt-2 text-concrete-100"># Skill: write-feature</p>
+          <p className="mt-1 text-concrete-500">## Purpose</p>
+          <p className="text-concrete-100">&lt;2–3 sentences. The failure mode this skill prevents.&gt;</p>
+          <p className="mt-1 text-concrete-500">## Core rules</p>
+          <p className="text-concrete-100">### 1. Read the packet first</p>
+          <p className="text-concrete-100">### 2. Map every AC before coding</p>
+          <p className="text-concrete-100">...</p>
+          <p className="mt-1 text-concrete-500">## What does not belong</p>
+          <p className="mt-1 text-concrete-500">## Anti-patterns</p>
+          <p className="mt-1 text-concrete-500">## Bundled resources</p>
+        </TerminalWindow>
+      </Section>
+
+      <Section className="flex flex-col gap-12">
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-hazard-orange">
+            <Zap className="h-4 w-4" />
+            <span>execution.log — make the invisible visible</span>
+          </div>
+          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
+            Forced visible output
+          </h2>
+          <p className="mt-4 text-concrete-400">
+            Skills have two reliability problems: activation and execution. A loaded skill can still
+            skip late-stage verification steps because they produce no visible content. The fix is
+            structural: every verification must leave a marker the next reader can see.
+          </p>
+        </div>
+        <div className="grid gap-4 lg:grid-cols-2">
+          <Card className="border-factory-800 bg-factory-900/50">
+            <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-concrete-100">
+              empirical-proof
+            </h3>
+            <p className="mt-2 text-sm text-concrete-400">
+              Every claim in <code>## Self-review</code> gets its own verbatim pasted output. No
+              paraphrase, no "✅ all passing".
+            </p>
+          </Card>
+          <Card className="border-factory-800 bg-factory-900/50">
+            <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-concrete-100">
+              write-testing
+            </h3>
+            <p className="mt-2 text-sm text-concrete-400">
+              Flip each new test's assertion: it must fail; restore it: it must pass. Paste the
+              fail-then-pass transition.
+            </p>
+          </Card>
+        </div>
+        <p className="max-w-3xl text-concrete-400">
+          The same mechanism drives Reflexion's +11 pp gain on HumanEval: a written artefact converts
+          an implicit signal into a durable one. If the rule's compliance would otherwise be
+          invisible, force it to produce output.
+        </p>
+      </Section>
+
+      <Section className="flex flex-col gap-12">
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
+            <Shield className="h-4 w-4" />
+            <span>self-containment.md — no sibling dependencies</span>
+          </div>
+          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
+            Self-containment
+          </h2>
+          <p className="mt-4 text-concrete-400">
+            A user who installs only <code>write-feature</code> does not have{" "}
+            <code>empirical-proof</code> in context. Therefore <code>write-feature</code> must read
+            correctly on its own. If a related discipline is load-bearing, restate it inline — a
+            sibling may be mentioned only as an optional "if installed" note.
+          </p>
+        </div>
+        <div className="max-w-3xl">
+          <h3 className="font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
+            The AGENTS.md contract
+          </h3>
+          <p className="mt-4 text-concrete-400">
+            Skills name abstract command slots — <code>cmdTest</code>, <code>cmdLint</code>,{" "}
+            <code>cmdValidate</code> — never concrete commands. The consuming repo's{" "}
+            <code>AGENTS.md</code> Commands table supplies the implementations. An empty slot means
+            ask; a skill never invents a command.
+          </p>
+          <p className="mt-4 text-concrete-400">
+            This split is what makes a skill portable: the guide carries the discipline, your repo
+            carries the toolchain.
+          </p>
+        </div>
+      </Section>
+
+      <Section className="flex flex-col gap-12">
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
+            <FileText className="h-4 w-4" />
+            <span>task-template.md — externalised working memory</span>
+          </div>
+          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
+            Task templates
+          </h2>
+          <p className="mt-4 text-concrete-400">
+            Long-running tasks accumulate intermediate findings, abandoned hypotheses, and decisions.
+            The task file is the agent's working memory, written to disk. It is not the deliverable;
+            it is the scratchpad. Keep it gitignored, local, and personal.
+          </p>
+        </div>
+        <div className="max-w-3xl">
+          <h3 className="font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
+            The MIHPSG rubric
+          </h3>
+          <p className="mt-4 text-concrete-400">
+            Ship a <code>references/task-template.md</code> only when at least three of these six
+            criteria hold:
+          </p>
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+            <li className="flex items-start gap-2 text-concrete-400">
+              <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-drone-green" />
+              <span>
+                <strong>Multi-session</strong> — likely to span more than one agent session
+              </span>
+            </li>
+            <li className="flex items-start gap-2 text-concrete-400">
+              <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-drone-green" />
+              <span>
+                <strong>Iterative gates</strong> — validate → fix → re-validate cycles
+              </span>
+            </li>
+            <li className="flex items-start gap-2 text-concrete-400">
+              <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-drone-green" />
+              <span>
+                <strong>Hypothesis tracking</strong> — multiple competing explanations
+              </span>
+            </li>
+            <li className="flex items-start gap-2 text-concrete-400">
+              <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-drone-green" />
+              <span>
+                <strong>Multi-stage plan</strong> — four or more distinct phases
+              </span>
+            </li>
+            <li className="flex items-start gap-2 text-concrete-400">
+              <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-drone-green" />
+              <span>
+                <strong>State separate from deliverable</strong> — working state is not the final
+                artefact
+              </span>
+            </li>
+            <li className="flex items-start gap-2 text-concrete-400">
+              <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-drone-green" />
+              <span>
+                <strong>Verification gates</strong> — paste-output proof required
+              </span>
+            </li>
+          </ul>
+          <p className="mt-6 text-concrete-400">
+            Personas and cross-cutting quality gates like <code>empirical-proof</code> deliberately
+            ship no template — their discipline lives in the body and surfaces inside whichever
+            workflow's task file is in play.
+          </p>
+        </div>
+      </Section>
+
+      <Section className="flex flex-col gap-12">
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-hazard-orange">
+            <Box className="h-4 w-4" />
+            <span>scope.txt — what stays out</span>
+          </div>
+          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
+            Scope
+          </h2>
+          <p className="mt-4 text-concrete-400">
+            A skill must be useful in any consumer repo, by itself, with no implicit dependencies.
+            The catalogue is deliberately narrow so it stays portable.
+          </p>
+        </div>
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {scopeExclusions.map((item) => (
+            <li key={item.title}>
+              <Card className="h-full border-factory-800 bg-factory-900/50">
+                <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-hazard-orange">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm text-concrete-400">{item.example}</p>
+              </Card>
+            </li>
+          ))}
+        </ul>
+        <p className="max-w-3xl text-concrete-400">
+          The right home for stack-specific or internal knowledge is the consuming repo's{" "}
+          <code>AGENTS.md</code>, not a skill.
+        </p>
+      </Section>
+
+      <Section>
+        <Card className="max-w-3xl border-factory-800 bg-factory-900/50">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
+            <GitBranch className="h-4 w-4" />
+            <span>next steps</span>
+          </div>
+          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
+            Read the full reference
+          </h2>
+          <p className="mt-4 text-concrete-400">
+            This page is a summary. The full reasoning, controlled studies, and sample skills live in
+            the repositories.
+          </p>
+          <ul className="mt-6 space-y-3">
+            <li>
+              <Link
+                href="https://github.com/jcosta33/swarm-skills/tree/main/docs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-swarm-yellow hover:underline focus-ring rounded"
+              >
+                swarm-skills docs <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://github.com/jcosta33/swarm-skills/tree/main/skills"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-swarm-yellow hover:underline focus-ring rounded"
+              >
+                Sample skills <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://agentskills.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-swarm-yellow hover:underline focus-ring rounded"
+              >
+                Open Agent Skills spec <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </li>
+          </ul>
+        </Card>
+      </Section>
+    </div>
+  );
+}
