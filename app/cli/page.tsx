@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  ArrowRight,
   Blocks,
   Bug,
   GitBranch,
@@ -10,6 +11,7 @@ import {
   ShieldCheck,
   Terminal,
 } from "lucide-react";
+import { Button } from "../components/Button";
 import { Section } from "../components/Section";
 import { Card } from "../components/Card";
 import { Panel } from "../components/Panel";
@@ -211,7 +213,7 @@ export default function CliPage() {
                   <HexBadge color="orange" className="mb-4">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </HexBadge>
-                  <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-concrete-100">
+                  <h3 className="font-heading text-sm font-bold uppercase tracking-wide text-concrete-100">
                     {p.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-concrete-400">{p.text}</p>
@@ -220,6 +222,25 @@ export default function CliPage() {
             );
           })}
         </ul>
+      </Section>
+
+      <Section>
+        <Card hardware className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
+              Don&apos;t need the CLI yet?
+            </h2>
+            <p className="mt-2 text-concrete-400">
+              The whole workflow runs in plain markdown. Copy the starter kit and write a spec — add
+              the CLI later, if and when the typing starts to annoy you.
+            </p>
+          </div>
+          <Button asChild className="w-full md:w-auto">
+            <Link href="/get-started/">
+              Get started <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </Button>
+        </Card>
       </Section>
 
       <Section>

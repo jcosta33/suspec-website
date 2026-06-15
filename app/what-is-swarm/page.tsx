@@ -10,6 +10,7 @@ import { SignalPulse } from "../components/SignalPulse";
 import { TerminalCursor } from "../components/TerminalCursor";
 import { PilotLamp } from "../components/PilotLamp";
 import {
+  ArrowRight,
   Bot,
   CheckCircle,
   FileText,
@@ -20,6 +21,7 @@ import {
   Workflow,
   XCircle,
 } from "lucide-react";
+import { Button } from "../components/Button";
 
 export const metadata: Metadata = {
   title: "What is Swarm — Swarm",
@@ -255,15 +257,13 @@ export default function WhatIsSwarmPage() {
           {adjacent.map((row) => (
             <li key={row.product}>
               <Card
-                hardware
-                rivets
                 className="group h-full border-panel-border hover:border-brass/50"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <p className="font-mono text-xs text-brass">{row.product}</p>
                     {row.examples && (
-                      <p className="mt-1 text-xs text-concrete-500">{row.examples}</p>
+                      <p className="mt-1 text-xs text-concrete-400">{row.examples}</p>
                     )}
                   </div>
                   <PilotLamp color="amber" className="shrink-0" />
@@ -309,6 +309,25 @@ export default function WhatIsSwarmPage() {
             </li>
           ))}
         </ul>
+      </Section>
+
+      <Section>
+        <Card hardware className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
+              See how it actually runs
+            </h2>
+            <p className="mt-2 text-concrete-400">
+              Six steps, each producing a file the next one reads. That is the whole framework — no
+              runtime, no magic.
+            </p>
+          </div>
+          <Button asChild className="w-full md:w-auto">
+            <Link href="/the-loop/">
+              See the loop <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </Button>
+        </Card>
       </Section>
 
       <Section>

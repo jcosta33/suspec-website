@@ -23,7 +23,7 @@ const facts = [
 export default function ColophonPage() {
   return (
     <Section className="py-24">
-      <Panel brushed rivets screws className="mx-auto max-w-2xl p-2">
+      <Panel brushed className="mx-auto max-w-2xl p-2">
         <TerminalWindow title="build.manifest">
           <div className="space-y-6">
             <div>

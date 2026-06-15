@@ -202,17 +202,17 @@ export default function WritingSkillsPage() {
         </div>
         <div className="grid gap-6 lg:grid-cols-2">
           <Card hardware className="border-panel-border hover:border-hazard-orange/50">
-            <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-hazard-orange">
+            <h3 className="font-heading text-sm font-bold uppercase tracking-wide text-hazard-orange">
               Passive (weak)
             </h3>
             <p className="mt-2 font-mono text-sm text-concrete-400">
               Use when implementing a feature from a spec. Encodes the discipline — read the spec,
               survey patterns, halt on ambiguity, validate after every batch, paste output.
             </p>
-            <p className="mt-3 text-xs text-concrete-500">activates less reliably (self-reported)</p>
+            <p className="mt-3 text-xs text-concrete-400">activates less reliably (self-reported)</p>
           </Card>
           <Card hardware className="border-panel-border hover:border-drone-green/50">
-            <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-drone-green">
+            <h3 className="font-heading text-sm font-bold uppercase tracking-wide text-drone-green">
               Directive (strong)
             </h3>
             <p className="mt-2 font-mono text-sm text-concrete-400">
@@ -222,7 +222,7 @@ export default function WritingSkillsPage() {
               refactor in passing. Skip defect fixes, behavior-preserving refactors, deliberate
               rewrites, migrations, performance tuning, and test-only work.
             </p>
-            <p className="mt-3 text-xs text-concrete-500">activates far more reliably (self-reported)</p>
+            <p className="mt-3 text-xs text-concrete-400">activates far more reliably (self-reported)</p>
           </Card>
         </div>
         <div className="max-w-3xl">
@@ -279,7 +279,7 @@ export default function WritingSkillsPage() {
                 <HexBadge color="green" className="mb-4">
                   <Icon className="h-5 w-5" aria-hidden="true" />
                 </HexBadge>
-                <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-concrete-100">
+                <h3 className="font-heading text-sm font-bold uppercase tracking-wide text-concrete-100">
                   {item.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-concrete-400">{item.text}</p>
@@ -342,7 +342,7 @@ export default function WritingSkillsPage() {
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
           <Card hardware className="border-panel-border">
-            <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-concrete-100">
+            <h3 className="font-heading text-sm font-bold uppercase tracking-wide text-concrete-100">
               empirical-proof
             </h3>
             <p className="mt-2 text-sm text-concrete-400">
@@ -351,7 +351,7 @@ export default function WritingSkillsPage() {
             </p>
           </Card>
           <Card hardware className="border-panel-border">
-            <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-concrete-100">
+            <h3 className="font-heading text-sm font-bold uppercase tracking-wide text-concrete-100">
               write-testing
             </h3>
             <p className="mt-2 text-sm text-concrete-400">
@@ -360,7 +360,7 @@ export default function WritingSkillsPage() {
             </p>
           </Card>
         </div>
-        <p className="max-w-3xl text-concrete-400">
+        <p className="max-w-prose text-concrete-400">
           The same mechanism drives Reflexion&apos;s +11 pp gain on HumanEval: a written artefact
           converts an implicit signal into a durable one. If the rule&apos;s compliance would
           otherwise be invisible, force it to produce output.
@@ -489,7 +489,7 @@ export default function WritingSkillsPage() {
             <li key={item.title}>
               <Card hardware className="h-full border-panel-border">
                 <div className="flex items-start justify-between gap-2">
-                  <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-hazard-orange">
+                  <h3 className="font-heading text-sm font-bold uppercase tracking-wide text-hazard-orange">
                     {item.title}
                   </h3>
                   <PilotLamp color="red" className="shrink-0" />
@@ -499,7 +499,7 @@ export default function WritingSkillsPage() {
             </li>
           ))}
         </ul>
-        <p className="max-w-3xl text-concrete-400">
+        <p className="max-w-prose text-concrete-400">
           The right home for stack-specific or internal knowledge is the consuming repo&apos;s{" "}
           <code className="text-swarm-yellow">AGENTS.md</code>, not a skill.
         </p>

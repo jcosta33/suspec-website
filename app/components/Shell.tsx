@@ -8,7 +8,7 @@ import { Logo } from "./Logo";
 import { Section } from "./Section";
 
 const navLinks = [
-  { label: "Product", href: "/what-is-swarm" },
+  { label: "What is Swarm", href: "/what-is-swarm" },
   { label: "Loop", href: "/the-loop" },
   { label: "Skills", href: "/skills" },
   { label: "CLI", href: "/cli" },
@@ -187,7 +187,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             id="mobile-menu"
             className="border-t border-panel-border bg-panel-recessed lg:hidden"
           >
-            <Section as="nav" className="flex flex-col gap-4 py-6" aria-label="Mobile">
+            <Section as="nav" className="flex flex-col gap-1 py-6" aria-label="Mobile">
               {navLinks.map((link) => {
                 const active = isActiveLink(link.href, pathname);
                 return (
@@ -197,7 +197,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
                     isActive={active}
                     showIndicator
                     onClick={() => setMenuOpen(false)}
-                    className={`text-base font-medium transition-colors focus-ring rounded-sm ${
+                    className={`min-h-11 -mx-2 px-2 text-base font-medium transition-colors focus-ring rounded-sm ${
                       active
                         ? "text-swarm-yellow"
                         : "text-concrete-100 hover:text-swarm-yellow"
@@ -247,6 +247,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
                   key={link.label}
                   link={link}
                   isActive={active}
+                  showIndicator
                   className={`text-sm font-medium transition-colors focus-ring rounded-sm ${
                     active
                       ? "text-swarm-yellow"

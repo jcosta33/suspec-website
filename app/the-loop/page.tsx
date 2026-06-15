@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { Inbox, FileText, ListChecks, Terminal, ScanEye, GitMerge, ArrowRight } from "lucide-react";
 import { Section } from "../components/Section";
+import { Card } from "../components/Card";
+import { Button } from "../components/Button";
 import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { HazardStripe } from "../components/HazardStripe";
-import { DroneIcon } from "../components/DroneIcon";
 import { HexBadge } from "../components/HexBadge";
 import { SignalPulse } from "../components/SignalPulse";
 import { TerminalCursor } from "../components/TerminalCursor";
+
+const stepIcons = [Inbox, FileText, ListChecks, Terminal, ScanEye, GitMerge];
 
 export const metadata: Metadata = {
   title: "The loop — Swarm",
@@ -149,7 +154,9 @@ export default function TheLoopPage() {
       <HazardStripe height="sm" />
 
       <Section className="flex flex-col gap-16">
-        {steps.map((step, index) => (
+        {steps.map((step, index) => {
+          const Icon = stepIcons[index];
+          return (
           <article
             key={step.name}
             className="relative grid gap-8 lg:grid-cols-2 lg:items-start"
@@ -169,7 +176,7 @@ export default function TheLoopPage() {
                 </HexBadge>
                 <div>
                   <div className="flex items-center gap-2">
-                    <DroneIcon className="h-5 w-5 text-swarm-yellow" />
+                    <Icon className="h-5 w-5 text-swarm-yellow" aria-hidden="true" />
                     <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
                       {step.name}
                     </h2>
@@ -189,7 +196,27 @@ export default function TheLoopPage() {
               </TerminalWindow>
             </Panel>
           </article>
-        ))}
+          );
+        })}
+      </Section>
+
+      <Section>
+        <Card hardware className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
+              Ready to run it?
+            </h2>
+            <p className="mt-2 text-concrete-400">
+              Copy the starter kit and write your first spec. The loop is the same on day one as on
+              day one hundred — it just gets cheaper.
+            </p>
+          </div>
+          <Button asChild className="w-full md:w-auto">
+            <Link href="/get-started/">
+              Set up your workspace <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </Button>
+        </Card>
       </Section>
 
       <HazardStripe height="sm" />

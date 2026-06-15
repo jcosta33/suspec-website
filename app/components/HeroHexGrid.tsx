@@ -12,7 +12,7 @@ export function HeroHexGrid({ className = "" }: { className?: string }) {
       aria-hidden="true"
     >
       <svg
-        className="h-full w-full opacity-20 animate-pulse-slow"
+        className="h-full w-full opacity-20"
         width="100%"
         height="100%"
         xmlns="http://www.w3.org/2000/svg"

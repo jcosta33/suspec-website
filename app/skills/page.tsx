@@ -229,7 +229,7 @@ export default function SkillsPage() {
                   aria-label={`${s.skill} skill on GitHub (opens in new tab)`}
                   className="group block rounded-sm focus-ring"
                 >
-                  <Card hardware className="h-full border-panel-border hover:border-brass/50">
+                  <Card className="h-full border-panel-border hover:border-brass/50">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4">
                         <HexBadge color="yellow">
@@ -279,7 +279,7 @@ export default function SkillsPage() {
                   aria-label={`${s.skill} skill on GitHub (opens in new tab)`}
                   className="group block rounded-sm focus-ring"
                 >
-                  <Card hardware className="h-full border-panel-border hover:border-drone-green/50">
+                  <Card className="h-full border-panel-border hover:border-drone-green/50">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4">
                         <HexBadge color="green">

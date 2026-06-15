@@ -11,6 +11,11 @@ import { HazardStripe } from "../components/HazardStripe";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { AlertTriangle, CheckCircle, Wrench } from "lucide-react";
 
+export const metadata = {
+  title: "Kitchen sink — Swarm",
+  robots: "noindex, nofollow",
+};
+
 export default function KitchenSinkPage() {
   return (
     <div className="flex flex-col gap-16 py-16">

@@ -21,7 +21,7 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
   display: "swap",
-  weight: ["500", "600", "700"],
+  weight: ["700"],
 });
 
 export const metadata: Metadata = {
@@ -32,6 +32,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Swarm",
+    images: ["/og-home.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Swarm — A spec-and-review workflow for coding agents",
+    description:
+      "Specs agents can work from, tasks that bound them, and reviews that show the evidence. Plain markdown, any agent, no runtime.",
     images: ["/og-home.png"],
   },
   alternates: {

@@ -135,7 +135,7 @@ export default function HomePage() {
                   <span className="text-swarm-yellow">$</span> swarm status
                 </p>
                 <p className="mt-1 text-concrete-100">
-                  29% of developers trust the accuracy of AI output. 80% of them ship it anyway.
+                  Only 29% of developers trust the accuracy of AI output. 84% use it anyway.
                 </p>
                 <p className="mt-2 text-concrete-500">
                   <span className="text-swarm-yellow">$</span> swarm init
@@ -233,7 +233,7 @@ export default function HomePage() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-4">
                       <HexBadge color="orange">
-                        <Icon className="h-6 w-6" aria-hidden="true" />
+                        <Icon className="h-5 w-5" aria-hidden="true" />
                       </HexBadge>
                       <div>
                         <p className="font-mono text-xs text-hazard-orange">{wall.code}</p>
@@ -272,6 +272,15 @@ export default function HomePage() {
             </p>
           </div>
           <LoopDiagram />
+          <p className="text-sm text-concrete-400">
+            <Link
+              href="/the-loop/"
+              className="inline-flex items-center gap-1 text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+            >
+              Walk the full loop, step by step
+              <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </Link>
+          </p>
         </Section>
       </section>
 
@@ -325,15 +334,19 @@ export default function HomePage() {
                     <tr>
                       <td className="py-3 pr-4 font-mono text-concrete-100">AC-003</td>
                       <td className="py-3 pr-4">
-                        <span className="inline-flex items-center gap-1.5 text-drone-green">
-                          <CheckCircle className="h-4 w-4" aria-hidden="true" /> Pass
+                        <span className="inline-flex items-center gap-2 text-drone-green">
+                          <span className="pilot-lamp pilot-lamp-green" aria-hidden="true" /> Pass
                         </span>
                       </td>
                       <td className="py-3 text-concrete-400">grep found 1 nav and 1 footer</td>
                     </tr>
                     <tr>
                       <td className="py-3 pr-4 font-mono text-concrete-100">AC-009</td>
-                      <td className="py-3 pr-4 text-concrete-400">Unverified</td>
+                      <td className="py-3 pr-4">
+                        <span className="inline-flex items-center gap-2 text-concrete-400">
+                          <span className="pilot-lamp pilot-lamp-amber" aria-hidden="true" /> Unverified
+                        </span>
+                      </td>
                       <td className="py-3 text-concrete-400">manual resize pending</td>
                     </tr>
                   </tbody>
@@ -408,6 +421,23 @@ export default function HomePage() {
               </Link>
             </Button>
           </div>
+          <p className="mt-6 text-sm text-concrete-400">
+            New here? Start with{" "}
+            <Link
+              href="/what-is-swarm/"
+              className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+            >
+              what Swarm is
+            </Link>{" "}
+            or{" "}
+            <Link
+              href="/the-loop/"
+              className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+            >
+              the loop
+            </Link>
+            .
+          </p>
         </Section>
         <HazardStripe height="sm" />
       </section>

@@ -12,6 +12,7 @@ export function TerminalWindow({ children, className = "", title = "swarm" }: Te
     <div
       role="region"
       aria-label={title}
+      style={{ contentVisibility: "auto", containIntrinsicSize: "auto 18rem" }}
       className={`relative overflow-hidden rounded-sm border border-panel-border bg-panel-raised shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_0_rgba(0,0,0,0.55)] ${className}`}
     >
       <div className="absolute inset-0 brushed-metal pointer-events-none" />
@@ -25,7 +26,7 @@ export function TerminalWindow({ children, className = "", title = "swarm" }: Te
           {title}
         </span>
       </div>
-      <div className="crt-screen relative max-h-[24rem] overflow-y-auto p-5 text-concrete-100">
+      <div className="crt-screen relative max-h-[24rem] overflow-auto p-5 font-mono text-sm leading-relaxed text-concrete-100">
         <div className="pointer-events-none absolute inset-0 z-[3] animate-scanline bg-gradient-to-b from-transparent via-phosphor/5 to-transparent opacity-30" />
         {children}
       </div>
