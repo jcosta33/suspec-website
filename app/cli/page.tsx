@@ -6,8 +6,8 @@ import {
   Bug,
   GitBranch,
   LayoutDashboard,
-  List,
   Plus,
+  ScanEye,
   ShieldCheck,
   Terminal,
 } from "lucide-react";
@@ -40,12 +40,12 @@ export const metadata: Metadata = {
 };
 
 const commands = [
-  { cmd: "init", what: "Copy the starter-kit workspace into your repo — folders, templates, agent guides.", icon: Blocks },
-  { cmd: "check [file]", what: "Run the checks the docs define on one spec, or the whole workspace. Exit 0 clean / 1 warnings / 2 blocking — so it drops into pre-commit and CI.", icon: ShieldCheck },
+  { cmd: "check [file]", what: "Lint a spec, or render the whole-workspace verdict. Exit 0 clean / 1 warnings / 2 blocking — so it drops straight into pre-commit and CI.", icon: ShieldCheck },
+  { cmd: "review <task>", what: "Reconcile a finished run — the agent's self-report against the actual git diff against the spec. Surfaces omitted edits, out-of-scope changes, and unbacked claims. Never a verdict; that stays yours.", icon: ScanEye },
+  { cmd: "worktree", what: "Create / list / remove / prune isolated git worktrees — one per task on swarm/<slug>, so parallel agents never trample each other.", icon: GitBranch },
+  { cmd: "status", what: "Print the workspace board — specs, tasks, reviews, and the gaps between them. --json for scripts, -i for an interactive board.", icon: LayoutDashboard },
   { cmd: "new <task|spec>", what: "Cut a task packet from a spec, or scaffold a fresh spec from the template.", icon: Plus },
-  { cmd: "worktree", what: "Create / list / remove / prune isolated git worktrees — one per task, on swarm/<slug>.", icon: GitBranch },
-  { cmd: "status", what: "Print the workspace board — specs, tasks, reviews, and the gaps between them. --json or -i.", icon: LayoutDashboard },
-  { cmd: "help", what: "What dispatches today, plus usage for each. swarm --help / swarm --version.", icon: List },
+  { cmd: "init [dir]", what: "Scaffold the workspace into a new or existing repo, conflict-safe — walked through on Get started.", icon: Blocks },
 ];
 
 const principles = [
@@ -74,7 +74,7 @@ export default function CliPage() {
           <div className="mb-6 inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
             <SignalPulse className="h-4 w-4" />
             <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
-              swarm-cli v0.x — reference implementation
+              swarm-cli — reference implementation
             </span>
           </div>
           <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
@@ -83,8 +83,8 @@ export default function CliPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Optional command-line help for the Swarm workflow. The framework is just markdown and
-            conventions; the CLI does the chores — checks your specs, sets up one git worktree per
-            task, and prints the board.
+            conventions; the CLI does the chores — checks your specs, isolates each task in its own git
+            worktree, reconciles a finished run against the diff, and prints the board.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
             It does the typing-adjacent work, not the thinking. It never decides whether your code is
@@ -124,17 +124,22 @@ export default function CliPage() {
       <Section className="flex flex-col gap-8">
         <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
           <DroneIcon className="h-4 w-4" />
-          <span>first-run.sh</span>
+          <span>the-loop.sh — a task, end to end</span>
         </div>
         <Panel brushed className="p-2">
           <TerminalWindow title="terminal">
+            <p className="text-concrete-500"># scaffold a workspace first — see Get started</p>
             <p className="text-concrete-100">
-              <span className="text-swarm-yellow">$</span> swarm init{" "}
-              <span className="text-concrete-500"># copy the starter-kit workspace into this repo</span>
+              <span className="text-swarm-yellow">$</span> swarm check{" "}
+              <span className="text-concrete-500"># lint a spec or the whole workspace; exit 0/1/2</span>
             </p>
             <p className="mt-1 text-concrete-100">
-              <span className="text-swarm-yellow">$</span> swarm check{" "}
-              <span className="text-concrete-500"># run the docs&apos; checks over the workspace; exit 0/1/2</span>
+              <span className="text-swarm-yellow">$</span> swarm worktree create auth-refresh --task TASK-12{" "}
+              <span className="text-concrete-500"># isolate the task on its own branch</span>
+            </p>
+            <p className="mt-1 text-concrete-100">
+              <span className="text-swarm-yellow">$</span> swarm review TASK-12{" "}
+              <span className="text-concrete-500"># reconcile the finished run — diff vs report vs spec</span>
             </p>
             <p className="mt-1 text-concrete-100">
               <span className="text-swarm-yellow">$</span> swarm status -i{" "}
@@ -154,10 +159,11 @@ export default function CliPage() {
             Commands that already dispatch
           </h2>
           <p className="mt-4 text-concrete-400">
-            The small set that actually runs today — &ldquo;advertised equals dispatchable&rdquo; is checked by
-            its own test, so this list cannot quietly lie to you. The big one still on the bench is{" "}
-            <code className="text-swarm-yellow">swarm review</code>: reconcile what the agent claimed it
-            changed against the real diff. That is the next build, not a shipped promise.
+            The set that runs today — and &ldquo;advertised equals dispatchable&rdquo; is checked by its own
+            test, so this list cannot quietly lie to you. The one worth knowing first is{" "}
+            <code className="text-swarm-yellow">swarm review</code>: it reconciles a finished run — the
+            agent&apos;s self-report against the real diff against the spec — and routes the mismatches to
+            a human, without ever rendering the verdict.
           </p>
         </div>
         <ul className="grid gap-4 sm:grid-cols-2">

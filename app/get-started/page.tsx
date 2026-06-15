@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, FolderPlus, Rocket, Wrench } from "lucide-react";
+import { ArrowRight, FolderPlus, Rocket, Terminal, Wrench } from "lucide-react";
 import { Section } from "../components/Section";
 import { Card } from "../components/Card";
 import { Button } from "../components/Button";
+import { Panel } from "../components/Panel";
+import { TerminalWindow } from "../components/TerminalWindow";
 
 export const metadata: Metadata = {
   title: "Get started — Swarm",
@@ -106,6 +108,46 @@ export default function GetStartedPage() {
             </Link>
           </Button>
         </Card>
+      </Section>
+
+      <Section className="flex flex-col gap-6">
+        <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
+          <Terminal className="h-4 w-4" />
+          <span>or scaffold it with the cli</span>
+        </div>
+        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
+          Prefer the command line?
+        </h2>
+        <p className="max-w-2xl text-concrete-400">
+          <code className="text-swarm-yellow">swarm init</code> scaffolds the same workspace into a new
+          or existing repo — conflict-safe, so it never clobbers files you already have. The CLI is not
+          on npm under that name yet (the name is taken), so install it from source.
+        </p>
+        <Panel brushed className="p-2">
+          <TerminalWindow title="terminal">
+            <p className="text-concrete-500"># install the CLI from source — the binary it provides is called swarm</p>
+            <p className="text-concrete-100">
+              <span className="text-swarm-yellow">$</span> git clone https://github.com/jcosta33/swarm-cli.git{" "}
+              &amp;&amp; cd swarm-cli &amp;&amp; npm install &amp;&amp; npm link
+            </p>
+            <p className="mt-2 text-concrete-500"># then, in a new or existing repo</p>
+            <p className="text-concrete-100">
+              <span className="text-swarm-yellow">$</span> swarm init{" "}
+              <span className="text-concrete-500"># scaffold the workspace, conflict-safe</span>
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-swarm-yellow">$</span> swarm check{" "}
+              <span className="text-concrete-500"># confirm it is well-formed; exit 0/1/2</span>
+            </p>
+          </TerminalWindow>
+        </Panel>
+        <p className="text-concrete-400">
+          What the CLI does (and deliberately does not):{" "}
+          <Link href="/cli/" className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm">
+            the CLI page
+          </Link>
+          .
+        </p>
       </Section>
 
       <Section className="flex flex-col gap-8">
