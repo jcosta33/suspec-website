@@ -53,9 +53,31 @@ html {
 }
 
 body {
-  background: var(--color-background);
+  background: radial-gradient(125% 90% at 50% -8%, rgba(34, 30, 19, 0.55) 0%, transparent 55%) fixed,
+    var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Leathery grain — fine fractal-noise film over the chassis for warmth and depth */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Edge vignette — pulls focus to the centre column and deepens the blacks */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 90% 70% at 50% 32%, transparent 58%, rgba(0, 0, 0, 0.5) 100%);
 }
 
 /* Heading font utility */
