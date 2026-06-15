@@ -1,16 +1,15 @@
-import type { Metadata } from "next";
 import { Button } from "../components/Button";
 import { Card } from "../components/Card";
 import { Badge } from "../components/Badge";
+import { Panel } from "../components/Panel";
+import { PilotLamp } from "../components/PilotLamp";
+import { ToggleButton } from "../components/ToggleButton";
+import { RackRow } from "../components/RackRow";
 import { Section } from "../components/Section";
 import { CodeBlock } from "../components/CodeBlock";
 import { HazardStripe } from "../components/HazardStripe";
-import { AlertTriangle, CheckCircle } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Kitchen sink — Swarm",
-  robots: "noindex",
-};
+import { TerminalWindow } from "../components/TerminalWindow";
+import { AlertTriangle, CheckCircle, Wrench } from "lucide-react";
 
 export default function KitchenSinkPage() {
   return (
@@ -25,10 +24,33 @@ export default function KitchenSinkPage() {
       </Section>
 
       <Section className="flex flex-col gap-6">
+        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Panels</h2>
+        <div className="grid gap-6 md:grid-cols-2">
+          <Panel>
+            <h3 className="font-heading text-lg font-bold">Raised panel</h3>
+            <p className="mt-2 text-concrete-400">A heavy machined plate with a strong shadow.</p>
+          </Panel>
+          <Panel variant="inset">
+            <h3 className="font-heading text-lg font-bold">Inset panel</h3>
+            <p className="mt-2 text-concrete-400">A recessed well for screens and readouts.</p>
+          </Panel>
+          <Panel brushed rivets screws>
+            <h3 className="font-heading text-lg font-bold">Hardware panel</h3>
+            <p className="mt-2 text-concrete-400">Brushed metal, rivets, and screws.</p>
+          </Panel>
+          <Panel hazard>
+            <h3 className="font-heading text-lg font-bold">Hazard panel</h3>
+            <p className="mt-2 text-concrete-400">Bolted-on caution trim.</p>
+          </Panel>
+        </div>
+      </Section>
+
+      <Section className="flex flex-col gap-6">
         <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Buttons</h2>
         <div className="flex flex-wrap gap-4">
           <Button>Primary action</Button>
           <Button variant="secondary">Secondary action</Button>
+          <Button variant="secondary">Outline action</Button>
           <Button disabled>Disabled</Button>
         </div>
       </Section>
@@ -38,11 +60,11 @@ export default function KitchenSinkPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <h3 className="font-heading text-lg font-bold">Default card</h3>
-            <p className="mt-2 text-concrete-400">A bordered surface with a subtle hover lift.</p>
+            <p className="mt-2 text-concrete-400">A raised module with a machined lip.</p>
           </Card>
-          <Card>
-            <h3 className="font-heading text-lg font-bold">Another card</h3>
-            <p className="mt-2 text-concrete-400">Used for features, examples, and callouts.</p>
+          <Card hardware brushed rivets>
+            <h3 className="font-heading text-lg font-bold">Hardware card</h3>
+            <p className="mt-2 text-concrete-400">Visible screws and rivets.</p>
           </Card>
         </div>
       </Section>
@@ -57,9 +79,44 @@ export default function KitchenSinkPage() {
       </Section>
 
       <Section className="flex flex-col gap-6">
+        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Pilot lamps</h2>
+        <div className="flex flex-wrap items-center gap-6">
+          <PilotLamp color="amber" pulse label="active" />
+          <PilotLamp color="green" label="ok" />
+          <PilotLamp color="red" label="fault" />
+          <PilotLamp color="off" label="idle" />
+        </div>
+      </Section>
+
+      <Section className="flex flex-col gap-6">
+        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Toggle switch</h2>
+        <ToggleButton label="Enable override" />
+      </Section>
+
+      <Section className="flex flex-col gap-6">
+        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Rack row</h2>
+        <RackRow>
+          <Card hardware>Module A</Card>
+          <Card hardware>Module B</Card>
+          <Card hardware>Module C</Card>
+        </RackRow>
+      </Section>
+
+      <Section className="flex flex-col gap-6">
         <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Code block</h2>
         <CodeBlock>{`loop:
   spec -> task -> run -> review -> close`}</CodeBlock>
+      </Section>
+
+      <Section className="flex flex-col gap-6">
+        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Terminal window</h2>
+        <TerminalWindow title="terminal">
+          <p className="text-concrete-500"># CRT monitor panel</p>
+          <p className="text-concrete-100">
+            <span className="text-swarm-yellow">$</span> swarm status
+          </p>
+          <p className="mt-1 text-drone-green">✓ all systems nominal</p>
+        </TerminalWindow>
       </Section>
 
       <Section className="flex flex-col gap-6">
@@ -72,17 +129,21 @@ export default function KitchenSinkPage() {
         <div className="flex gap-4 text-swarm-yellow">
           <AlertTriangle aria-label="Warning" />
           <CheckCircle aria-label="Success" />
+          <Wrench aria-label="Tools" />
         </div>
       </Section>
 
       <Section className="flex flex-col gap-6">
         <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Typography</h2>
         <div className="space-y-4">
-          <p className="text-concrete-100">Primary text on factory background.</p>
+          <p className="text-concrete-100">Primary text on chassis background.</p>
           <p className="text-concrete-400">Secondary text for captions and metadata.</p>
           <p className="text-swarm-yellow">Accent text for links and highlights.</p>
           <p className="text-hazard-orange">Hazard text for warnings and notices.</p>
           <p className="text-drone-green">Drone green for success states.</p>
+          <p className="text-brass">Brass hardware accent.</p>
+          <p className="text-aluminium">Aluminium label accent.</p>
+          <p className="text-phosphor">Phosphor amber glow text.</p>
         </div>
       </Section>
     </div>

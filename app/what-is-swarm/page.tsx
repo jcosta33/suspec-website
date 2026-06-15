@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Section } from "../components/Section";
 import { Card } from "../components/Card";
+import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { DroneIcon } from "../components/DroneIcon";
 import { HexBadge } from "../components/HexBadge";
 import { SignalPulse } from "../components/SignalPulse";
 import { TerminalCursor } from "../components/TerminalCursor";
+import { PilotLamp } from "../components/PilotLamp";
 import {
   Bot,
   CheckCircle,
@@ -74,10 +76,10 @@ const adjacent = [
   },
   {
     product: "Spec-driven workflows",
-    examples: "",
+    examples: "GitHub Spec Kit, Kiro, Tessl",
     does: "turn a written spec into an implementation",
     relation:
-      "The same family. Swarm's bet is the review side — every requirement carries a verification method, and the review packet shows the evidence per requirement.",
+      "Same family, opposite end. They optimize authoring the spec and generating the code; Swarm bets on the review side — every requirement carries a verification method, and the packet shows the evidence per line. Honestly? Author with one, gate with the other.",
   },
   {
     product: "Issue trackers",
@@ -114,7 +116,7 @@ const failureModes = [
     mode: "Drift",
     code: "ERR-001",
     looksLike: "the agent solves a problem, not the problem",
-    answer: "the task packet: an explicit scope and a &apos;Do not change&apos; list",
+    answer: "the task packet: an explicit scope and a 'Do not change' list",
   },
   {
     mode: "Ambiguous input",
@@ -131,7 +133,7 @@ const failureModes = [
   {
     mode: "Hallucinated completion",
     code: "ERR-004",
-    looksLike: "&quot;done,&quot; but nothing was checked",
+    looksLike: "'done,' but nothing was checked",
     answer: "a Pass needs pasted output, a CI link, or a named human's recorded observation",
   },
   {
@@ -153,40 +155,44 @@ export default function WhatIsSwarmPage() {
     <div className="flex flex-col gap-24 py-24">
       <Section>
         <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-swarm-yellow/30 bg-swarm-yellow/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-swarm-yellow">
+          <div className="mb-6 inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
             <SignalPulse className="h-4 w-4" />
-            <span>system overview</span>
+            <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
+              system overview
+            </span>
           </div>
           <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
             What is <span className="text-swarm-yellow text-glow">Swarm</span>
             <TerminalCursor className="ml-2 align-middle" />
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            A lightweight spec-and-review discipline for teams using coding agents. We assume the
-            agent will drift, over-engineer, or skip the edge case — and give you the files to catch
+            A lightweight spec-and-review discipline for teams using coding agents. Swarm assumes the
+            agent will drift, over-engineer, or skip the edge case — and gives you the files to catch
             it before it ships.
           </p>
         </div>
       </Section>
 
       <Section>
-        <TerminalWindow title="diagnostics" className="mx-auto max-w-3xl">
-          <p className="text-concrete-400">
-            <span className="text-swarm-yellow">$</span> swarm doctor --summary
-          </p>
-          <p className="mt-2 text-concrete-100">
-            Swarm is a spec-and-review workflow for teams using coding agents. Turn tickets into
-            clear specs, specs into agent-ready tasks, and agent output into evidence a human can
-            review.
-          </p>
-          <p className="mt-2 text-drone-green">✓ agent does the typing</p>
-          <p className="text-drone-green">✓ human owns the gates</p>
-          <p className="text-drone-green">✓ every claim needs evidence</p>
-          <p className="text-drone-green">✓ plain markdown, any agent, no runtime</p>
-          <p className="mt-2 text-concrete-400">
-            <span className="text-swarm-yellow">$</span> _
-          </p>
-        </TerminalWindow>
+        <Panel brushed className="mx-auto max-w-3xl p-2">
+          <TerminalWindow title="diagnostics" className="mx-auto max-w-3xl">
+            <p className="text-concrete-400">
+              <span className="text-swarm-yellow">$</span> cat what-is-swarm.md
+            </p>
+            <p className="mt-2 text-concrete-100">
+              Swarm is a spec-and-review workflow for teams using coding agents. Turn tickets into
+              clear specs, specs into agent-ready tasks, and agent output into evidence a human can
+              review.
+            </p>
+            <p className="mt-2 text-drone-green">✓ agent does the typing</p>
+            <p className="text-drone-green">✓ human owns the gates</p>
+            <p className="text-drone-green">✓ every claim needs evidence</p>
+            <p className="text-drone-green">✓ plain markdown, any agent, no runtime</p>
+            <p className="mt-2 text-concrete-400">
+              <span className="text-swarm-yellow">$</span> _
+            </p>
+          </TerminalWindow>
+        </Panel>
       </Section>
 
       <Section className="grid gap-12 lg:grid-cols-2">
@@ -224,7 +230,10 @@ export default function WhatIsSwarmPage() {
           <ul className="mt-6 space-y-3">
             {isNotList.map((item) => (
               <li key={item} className="flex items-start gap-3 text-concrete-400">
-                <span className="mt-1.5 h-2 w-2 rounded-full bg-factory-700" aria-hidden="true" />
+                <span
+                  className="mt-1.5 h-2 w-2 shrink-0 rounded-sm bg-panel-edge"
+                  aria-hidden="true"
+                />
                 {item}
               </li>
             ))}
@@ -245,11 +254,20 @@ export default function WhatIsSwarmPage() {
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {adjacent.map((row) => (
             <li key={row.product}>
-              <Card className="group h-full border-factory-800 transition-all duration-300 hover:border-swarm-yellow/30">
-                <p className="font-mono text-xs text-swarm-yellow">{row.product}</p>
-                {row.examples && (
-                  <p className="mt-1 text-xs text-concrete-500">{row.examples}</p>
-                )}
+              <Card
+                hardware
+                rivets
+                className="group h-full border-panel-border hover:border-brass/50"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="font-mono text-xs text-brass">{row.product}</p>
+                    {row.examples && (
+                      <p className="mt-1 text-xs text-concrete-500">{row.examples}</p>
+                    )}
+                  </div>
+                  <PilotLamp color="amber" className="shrink-0" />
+                </div>
                 <p className="mt-3 text-sm font-semibold text-concrete-100">Does: {row.does}</p>
                 <p className="mt-2 text-sm leading-relaxed text-concrete-400">{row.relation}</p>
               </Card>
@@ -271,7 +289,7 @@ export default function WhatIsSwarmPage() {
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {failureModes.map((fm) => (
             <li key={fm.mode}>
-              <Card className="group h-full animate-glow">
+              <Card hardware className="group h-full border-panel-border hover:border-hazard-orange/50">
                 <div className="flex items-start gap-3">
                   <HexBadge color="orange">
                     <ShieldAlert className="h-5 w-5" aria-hidden="true" />
@@ -300,7 +318,7 @@ export default function WhatIsSwarmPage() {
             href="https://github.com/jcosta33/swarm/blob/main/docs/01-what-is-swarm.md"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-swarm-yellow hover:underline focus-ring rounded"
+            className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
           >
             docs/01-what-is-swarm.md
           </Link>

@@ -49,7 +49,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-factory-950 text-concrete-100">
+      <body className="min-h-full flex flex-col bg-chassis text-concrete-100">
         <Shell>{children}</Shell>
       </body>
     </html>

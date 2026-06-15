@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ExternalLink, Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
@@ -11,15 +12,17 @@ const navLinks = [
   { label: "Loop", href: "/the-loop" },
   { label: "Skills", href: "/skills" },
   { label: "CLI", href: "/cli" },
+  { label: "Get started", href: "/get-started" },
   { label: "Docs", href: "https://github.com/jcosta33/swarm/blob/main/docs" },
   { label: "GitHub", href: "https://github.com/jcosta33/swarm" },
 ];
 
 const footerLinks = [
-  { label: "GitHub", href: "https://github.com/jcosta33/swarm" },
-  { label: "Starter kit", href: "https://github.com/jcosta33/swarm-starter-kit" },
+  { label: "Get started", href: "/get-started" },
   { label: "Skills", href: "/skills" },
   { label: "CLI", href: "/cli" },
+  { label: "GitHub", href: "https://github.com/jcosta33/swarm" },
+  { label: "Starter kit", href: "https://github.com/jcosta33/swarm-starter-kit" },
   { label: "Docs", href: "https://github.com/jcosta33/swarm/blob/main/docs" },
   { label: "Colophon", href: "/colophon" },
 ];
@@ -28,14 +31,33 @@ function isExternal(href: string) {
   return href.startsWith("http");
 }
 
+function normalizeHref(href: string) {
+  if (isExternal(href)) return href;
+  return href.endsWith("/") ? href : `${href}/`;
+}
+
+function isActiveLink(href: string, pathname: string) {
+  if (isExternal(href)) return false;
+  const normalizedHref = normalizeHref(href);
+  const normalizedPath = normalizeHref(pathname);
+  return (
+    normalizedPath === normalizedHref ||
+    normalizedPath.startsWith(normalizedHref)
+  );
+}
+
 function NavLink({
   link,
   onClick,
   className,
+  isActive,
+  showIndicator = false,
 }: {
   link: { label: string; href: string };
   onClick?: () => void;
   className: string;
+  isActive?: boolean;
+  showIndicator?: boolean;
 }) {
   const external = isExternal(link.href);
   return (
@@ -44,22 +66,35 @@ function NavLink({
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       aria-label={external ? `${link.label} (opens in new tab)` : undefined}
-      className={className}
+      aria-current={isActive ? "page" : undefined}
+      className={`relative inline-flex items-center ${className}`}
       onClick={onClick}
     >
-      {link.label}
-      {external && <ExternalLink className="h-3 w-3" aria-hidden="true" />}
+      <span className="inline-flex items-center gap-1.5">
+        {link.label}
+        {external && <ExternalLink className="h-3 w-3" aria-hidden="true" />}
+      </span>
+      {isActive && showIndicator && (
+        <span
+          className="absolute -bottom-2 left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-swarm-yellow shadow-[0_0_8px_#FACC15]"
+          aria-hidden="true"
+        />
+      )}
     </Link>
   );
 }
 
 export function Shell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!menuOpen) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
     const menu = menuRef.current;
     const toggle = toggleRef.current;
@@ -92,33 +127,53 @@ export function Shell({ children }: { children: React.ReactNode }) {
     }
 
     document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, [menuOpen]);
 
   return (
     <div className="flex min-h-full flex-col">
-      <header className="sticky top-0 z-50 border-b border-factory-800 bg-factory-950/90 backdrop-blur">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-swarm-yellow focus:px-4 focus:py-2 focus:text-black"
+      >
+        Skip to main content
+      </a>
+
+      <header className="sticky top-0 z-40 border-b border-panel-border panel-raised">
         <Section as="div" className="flex h-16 items-center justify-between">
-          <Link href="/" className="focus-ring rounded" aria-label="Swarm home">
-            <Logo className="h-6 w-auto text-concrete-100" />
+          <Link href="/" className="focus-ring rounded-sm" aria-label="Swarm home">
+            <div className="panel-raised brushed-metal p-1.5">
+              <Logo className="h-6 w-auto text-concrete-100" />
+            </div>
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.label}
-                link={link}
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-concrete-400 transition-colors hover:text-swarm-yellow focus-ring rounded"
-              />
-            ))}
+            {navLinks.map((link) => {
+              const active = isActiveLink(link.href, pathname);
+              return (
+                <NavLink
+                  key={link.label}
+                  link={link}
+                  isActive={active}
+                  showIndicator
+                  className={`text-sm font-medium transition-colors focus-ring rounded-sm ${
+                    active
+                      ? "text-swarm-yellow"
+                      : "text-concrete-400 hover:text-swarm-yellow"
+                  }`}
+                />
+              );
+            })}
           </nav>
 
           <button
             ref={toggleRef}
             type="button"
-            className="inline-flex items-center justify-center rounded p-2 text-concrete-100 hover:text-swarm-yellow focus-ring lg:hidden"
+            className="toggle inline-flex items-center justify-center rounded-[3px] border border-panel-border bg-panel-raised p-2 text-concrete-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_4px_0_rgba(0,0,0,0.55)] hover:text-swarm-yellow focus-ring active:translate-y-1 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.35),0_2px_0_rgba(0,0,0,0.55)] lg:hidden"
             aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
             aria-label="Toggle navigation menu"
             onClick={() => setMenuOpen((open) => !open)}
           >
@@ -130,51 +185,83 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <div
             ref={menuRef}
             id="mobile-menu"
-            className="border-t border-factory-800 bg-factory-900 lg:hidden"
+            className="border-t border-panel-border bg-panel-recessed lg:hidden"
           >
             <Section as="nav" className="flex flex-col gap-4 py-6" aria-label="Mobile">
-              {navLinks.map((link) => (
-                <NavLink
-                  key={link.label}
-                  link={link}
-                  onClick={() => setMenuOpen(false)}
-                  className="inline-flex items-center gap-2 text-base font-medium text-concrete-100 transition-colors hover:text-swarm-yellow focus-ring rounded"
-                />
-              ))}
+              {navLinks.map((link) => {
+                const active = isActiveLink(link.href, pathname);
+                return (
+                  <NavLink
+                    key={link.label}
+                    link={link}
+                    isActive={active}
+                    showIndicator
+                    onClick={() => setMenuOpen(false)}
+                    className={`text-base font-medium transition-colors focus-ring rounded-sm ${
+                      active
+                        ? "text-swarm-yellow"
+                        : "text-concrete-100 hover:text-swarm-yellow"
+                    }`}
+                  />
+                );
+            })}
             </Section>
           </div>
         )}
       </header>
 
-      <main className="flex-1">{children}</main>
+      {menuOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm"
+          aria-hidden="true"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
 
-      <Section
-        as="footer"
-        className="flex flex-col gap-8 border-t border-factory-800 bg-factory-900 py-12 md:flex-row md:items-center md:justify-between"
-      >
-        <div className="flex flex-col gap-2">
-          <Link href="/" aria-label="Swarm home" className="focus-ring rounded w-fit">
-            <Logo className="h-5 w-auto text-concrete-100" />
-          </Link>
+      <main id="main-content" className="flex-1">
+        {children}
+      </main>
+
+      <div className="hazard-trim border-t border-panel-border bg-panel-raised">
+        <Section
+          as="footer"
+          className="flex flex-col gap-8 py-12 md:flex-row md:items-center md:justify-between"
+        >
+          <div className="flex flex-col gap-2">
+            <Link href="/" aria-label="Swarm home" className="focus-ring rounded-sm w-fit">
+              <div className="panel-raised brushed-metal p-1.5">
+                <Logo className="h-5 w-auto text-concrete-100" />
+              </div>
+            </Link>
+            <p className="text-sm text-concrete-400">
+              Built with Swarm. The agents don&apos;t get to grade their own homework — a different session
+              reviewed it, a human merged it.
+            </p>
+          </div>
+
+          <nav className="flex flex-wrap gap-6" aria-label="Footer">
+            {footerLinks.map((link) => {
+              const active = isActiveLink(link.href, pathname);
+              return (
+                <NavLink
+                  key={link.label}
+                  link={link}
+                  isActive={active}
+                  className={`text-sm font-medium transition-colors focus-ring rounded-sm ${
+                    active
+                      ? "text-swarm-yellow"
+                      : "text-concrete-400 hover:text-swarm-yellow"
+                  }`}
+                />
+              );
+            })}
+          </nav>
+
           <p className="text-sm text-concrete-400">
-            Built with Swarm by agents who attack their own work before a human judges it.
+            © {new Date().getFullYear()} Swarm contributors.
           </p>
-        </div>
-
-        <nav className="flex flex-wrap gap-6" aria-label="Footer">
-          {footerLinks.map((link) => (
-            <NavLink
-              key={link.label}
-              link={link}
-              className="text-sm font-medium text-concrete-400 transition-colors hover:text-swarm-yellow focus-ring rounded"
-            />
-          ))}
-        </nav>
-
-        <p className="text-sm text-concrete-400">
-          © {new Date().getFullYear()} Swarm contributors.
-        </p>
-      </Section>
+        </Section>
+      </div>
     </div>
   );
 }

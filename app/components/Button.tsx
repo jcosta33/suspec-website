@@ -29,13 +29,23 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition-colors focus-ring";
+    "toggle inline-flex items-center justify-center gap-2 rounded-[3px] px-6 py-3 text-base font-semibold focus-ring";
 
   const styles = {
-    primary:
-      "bg-swarm-yellow text-factory-950 hover:bg-yellow-300 active:bg-yellow-400 disabled:bg-concrete-400 disabled:text-factory-900",
-    secondary:
-      "border border-factory-700 bg-transparent text-concrete-100 hover:border-swarm-yellow hover:text-swarm-yellow active:border-yellow-400 active:text-yellow-400 disabled:border-factory-800 disabled:text-concrete-400",
+    primary: [
+      "border border-panel-border bg-swarm-yellow text-black",
+      "shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_5px_0_rgba(0,0,0,0.55)]",
+      "hover:bg-yellow-300",
+      "active:translate-y-1 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.35),0_2px_0_rgba(0,0,0,0.55)]",
+      "disabled:bg-concrete-500 disabled:text-black disabled:shadow-none",
+    ].join(" "),
+    secondary: [
+      "border border-panel-border bg-panel-raised text-concrete-100",
+      "shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_5px_0_rgba(0,0,0,0.55)]",
+      "hover:border-brass hover:text-brass",
+      "active:translate-y-1 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.35),0_2px_0_rgba(0,0,0,0.55)]",
+      "disabled:border-panel-border disabled:text-concrete-500 disabled:shadow-none",
+    ].join(" "),
   };
 
   const classes = `${base} ${styles[variant]} ${disabled ? "cursor-not-allowed" : "cursor-pointer"} ${className}`;

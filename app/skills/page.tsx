@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   Brain,
   Bug,
+  ExternalLink,
   FileCode,
   FileSearch,
   Files,
@@ -23,6 +24,7 @@ import {
 } from "lucide-react";
 import { Section } from "../components/Section";
 import { Card } from "../components/Card";
+import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { DroneIcon } from "../components/DroneIcon";
 import { HexBadge } from "../components/HexBadge";
@@ -141,15 +143,17 @@ export default function SkillsPage() {
     <div className="flex flex-col gap-24 py-24">
       <Section>
         <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-swarm-yellow/30 bg-swarm-yellow/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-swarm-yellow">
+          <div className="mb-6 inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
             <SignalPulse className="h-4 w-4" />
-            <span>skills.catalog — 17 modules available</span>
+            <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
+              skills.catalog — 17 modules available
+            </span>
           </div>
           <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
             Swarm <span className="text-swarm-yellow text-glow">skills</span>
             <TerminalCursor className="ml-2 align-middle" />
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-100">
+          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Optional agent guides — conditioning stances and code-authoring depth — in the open Agent
             Skills format. Install only what your work calls for.
           </p>
@@ -165,34 +169,37 @@ export default function SkillsPage() {
           <DroneIcon className="h-4 w-4" />
           <span>install.sh — add one skill</span>
         </div>
-        <TerminalWindow title="terminal">
-          <p className="text-concrete-500"># list what&apos;s available</p>
-          <p className="text-concrete-100">
-            <span className="text-swarm-yellow">$</span> npx skills add jcosta33/swarm-skills --list
-          </p>
-          <p className="mt-2 text-concrete-500"># install into the current repo</p>
-          <p className="text-concrete-100">
-            <span className="text-swarm-yellow">$</span> npx skills add jcosta33/swarm-skills --skill persona-skeptic
-          </p>
-          <p className="mt-2 text-concrete-500"># or install globally / for one agent</p>
-          <p className="text-concrete-100">
-            <span className="text-swarm-yellow">$</span> npx skills add jcosta33/swarm-skills --skill persona-skeptic -g
-          </p>
-          <p className="text-concrete-100">
-            <span className="text-swarm-yellow">$</span> npx skills add jcosta33/swarm-skills --skill persona-skeptic -a claude-code
-          </p>
-          <p className="mt-2 text-concrete-500">
-            # no CLI? copy the folder into your agent&apos;s skills directory
-          </p>
-          <p className="text-concrete-100">
-            <span className="text-swarm-yellow">$</span> cp -R skills/persona-skeptic{" "}
-            &lt;your-repo&gt;/.agents/skills/
-          </p>
-        </TerminalWindow>
+        <Panel brushed className="p-2">
+          <TerminalWindow title="terminal">
+            <p className="text-concrete-500"># list what&apos;s available</p>
+            <p className="text-concrete-100">
+              <span className="text-swarm-yellow">$</span> npx skills add jcosta33/swarm-skills --list
+            </p>
+            <p className="mt-2 text-concrete-500"># install into the current repo</p>
+            <p className="text-concrete-100">
+              <span className="text-swarm-yellow">$</span> npx skills add jcosta33/swarm-skills --skill persona-skeptic
+            </p>
+            <p className="mt-2 text-concrete-500"># or install globally / for one agent</p>
+            <p className="text-concrete-100">
+              <span className="text-swarm-yellow">$</span> npx skills add jcosta33/swarm-skills --skill persona-skeptic -g
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-swarm-yellow">$</span> npx skills add jcosta33/swarm-skills --skill persona-skeptic -a claude-code
+            </p>
+            <p className="mt-2 text-concrete-500">
+              # no CLI? copy the folder into your agent&apos;s skills directory
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-swarm-yellow">$</span> cp -R skills/persona-skeptic{" "}
+              &lt;your-repo&gt;/.agents/skills/
+            </p>
+          </TerminalWindow>
+        </Panel>
         <p className="text-concrete-400">
-          Skills name abstract command slots like <code>cmdTest</code> and <code>cmdLint</code>;
-          your repo&apos;s <code>AGENTS.md</code> supplies the real commands. That is what makes them
-          portable across stacks.
+          Skills name abstract command slots like <code className="text-swarm-yellow">cmdTest</code>{" "}
+          and <code className="text-swarm-yellow">cmdLint</code>; your repo&apos;s{" "}
+          <code className="text-swarm-yellow">AGENTS.md</code> supplies the real commands. That is what
+          makes them portable across stacks.
         </p>
       </Section>
 
@@ -215,19 +222,31 @@ export default function SkillsPage() {
             const Icon = s.icon;
             return (
               <li key={s.skill}>
-                <Card className="group h-full border-factory-800 transition-all duration-300 hover:border-swarm-yellow/30 hover:bg-factory-800">
-                  <div className="flex items-start gap-4">
-                    <HexBadge color="yellow">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </HexBadge>
-                    <div>
-                      <h3 className="font-mono text-sm font-semibold text-swarm-yellow">
-                        {s.skill}
-                      </h3>
-                      <p className="mt-1 text-sm leading-relaxed text-concrete-400">{s.use}</p>
+                <a
+                  href={`https://github.com/jcosta33/swarm-skills/tree/main/skills/${s.skill}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${s.skill} skill on GitHub (opens in new tab)`}
+                  className="group block rounded-sm focus-ring"
+                >
+                  <Card hardware className="h-full border-panel-border hover:border-brass/50">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-start gap-4">
+                        <HexBadge color="yellow">
+                          <Icon className="h-5 w-5" aria-hidden="true" />
+                        </HexBadge>
+                        <div>
+                          <h3 className="font-mono text-sm font-semibold text-brass">{s.skill}</h3>
+                          <p className="mt-1 text-sm leading-relaxed text-concrete-400">{s.use}</p>
+                        </div>
+                      </div>
+                      <ExternalLink
+                        className="mt-0.5 h-4 w-4 shrink-0 text-concrete-500 opacity-0 transition-opacity group-hover:opacity-100 group-focus:opacity-100"
+                        aria-hidden="true"
+                      />
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </a>
               </li>
             );
           })}
@@ -253,19 +272,33 @@ export default function SkillsPage() {
             const Icon = s.icon;
             return (
               <li key={s.skill}>
-                <Card className="group h-full border-factory-800 transition-all duration-300 hover:border-drone-green/30 hover:bg-factory-800">
-                  <div className="flex items-start gap-4">
-                    <HexBadge color="green">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </HexBadge>
-                    <div>
-                      <h3 className="font-mono text-sm font-semibold text-drone-green">
-                        {s.skill}
-                      </h3>
-                      <p className="mt-1 text-sm leading-relaxed text-concrete-400">{s.use}</p>
+                <a
+                  href={`https://github.com/jcosta33/swarm-skills/tree/main/skills/${s.skill}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${s.skill} skill on GitHub (opens in new tab)`}
+                  className="group block rounded-sm focus-ring"
+                >
+                  <Card hardware className="h-full border-panel-border hover:border-drone-green/50">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-start gap-4">
+                        <HexBadge color="green">
+                          <Icon className="h-5 w-5" aria-hidden="true" />
+                        </HexBadge>
+                        <div>
+                          <h3 className="font-mono text-sm font-semibold text-drone-green">
+                            {s.skill}
+                          </h3>
+                          <p className="mt-1 text-sm leading-relaxed text-concrete-400">{s.use}</p>
+                        </div>
+                      </div>
+                      <ExternalLink
+                        className="mt-0.5 h-4 w-4 shrink-0 text-concrete-500 opacity-0 transition-opacity group-hover:opacity-100 group-focus:opacity-100"
+                        aria-hidden="true"
+                      />
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </a>
               </li>
             );
           })}
@@ -273,8 +306,8 @@ export default function SkillsPage() {
       </Section>
 
       <Section>
-        <Card className="max-w-2xl border-factory-800 bg-factory-900/50 transition-all duration-300 hover:border-swarm-yellow/30">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
+        <Card hardware className="max-w-2xl border-panel-border hover:border-brass/50">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-brass">
             <Terminal className="h-4 w-4" />
             <span>authoring.guide — write your own</span>
           </div>
@@ -288,7 +321,7 @@ export default function SkillsPage() {
           <p className="mt-6">
             <Link
               href="/skills/writing/"
-              className="text-swarm-yellow hover:underline focus-ring rounded"
+              className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               Read the skill-writing guide →
             </Link>
@@ -297,7 +330,7 @@ export default function SkillsPage() {
       </Section>
 
       <Section>
-        <Card className="max-w-2xl border-factory-800 bg-factory-900/50">
+        <Card hardware className="max-w-2xl border-panel-border">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
             <ShieldCheck className="h-4 w-4" />
             <span>security.note — no runtime</span>
@@ -311,7 +344,7 @@ export default function SkillsPage() {
             scaffolding or automated checks, that is{" "}
             <Link
               href="/cli/"
-              className="text-swarm-yellow underline hover:no-underline focus-ring rounded"
+              className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               swarm-cli
             </Link>
@@ -322,7 +355,7 @@ export default function SkillsPage() {
               href="https://github.com/jcosta33/swarm-skills"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-swarm-yellow hover:underline focus-ring rounded"
+              className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               Browse the full catalog on GitHub →
             </Link>

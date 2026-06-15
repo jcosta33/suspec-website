@@ -6,31 +6,29 @@ import {
   GitBranch,
   LayoutDashboard,
   List,
-  Play,
   Plus,
-  RefreshCw,
-  Rocket,
-  Stethoscope,
-  TestTube,
+  ShieldCheck,
   Terminal,
 } from "lucide-react";
 import { Section } from "../components/Section";
 import { Card } from "../components/Card";
+import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { DroneIcon } from "../components/DroneIcon";
 import { HexBadge } from "../components/HexBadge";
 import { SignalPulse } from "../components/SignalPulse";
 import { TerminalCursor } from "../components/TerminalCursor";
 import { Badge } from "../components/Badge";
+import { PilotLamp } from "../components/PilotLamp";
 
 export const metadata: Metadata = {
   title: "CLI — Swarm",
   description:
-    "swarm-cli is optional command-line automation for the Swarm workflow: sandboxed worktrees, task-driven sessions, and check compression. Not an orchestrator.",
+    "swarm-cli is optional command-line help for the Swarm workflow: it checks your specs, sets up one git worktree per task, and prints the board. It never owns the review verdict — that is still you.",
   openGraph: {
     title: "CLI — Swarm",
     description:
-      "swarm-cli is the reference command-line companion for the Swarm framework: sandboxed worktrees, task-driven sessions, and quality-of-life automation.",
+      "swarm-cli is the optional reference companion for the Swarm framework: check specs, scaffold the workspace, isolate tasks in worktrees, print the board. A helper, not an orchestrator.",
     type: "website",
     images: ["/og-cli.png"],
   },
@@ -40,14 +38,12 @@ export const metadata: Metadata = {
 };
 
 const commands = [
-  { cmd: "init", what: "Scaffold .agents/, swarm.config.json, enable git rerere", icon: Blocks },
-  { cmd: "new <slug>", what: "Create a sandbox worktree and seeded task file", icon: Plus },
-  { cmd: "open <slug>", what: "Reopen an existing sandbox terminal", icon: Play },
-  { cmd: "list", what: "List active sandboxes with status and PID", icon: List },
-  { cmd: "validate", what: "Run configured lint/typecheck with LLM-truncated output", icon: RefreshCw },
-  { cmd: "test", what: "Run Vitest with smart log truncation", icon: TestTube },
-  { cmd: "pr <slug>", what: "Auto-commit and open a GitHub PR from the task file", icon: Rocket },
-  { cmd: "doctor", what: "Deep diagnostics of Node, git, worktrees, telemetry DB", icon: Stethoscope },
+  { cmd: "init", what: "Copy the starter-kit workspace into your repo — folders, templates, agent guides.", icon: Blocks },
+  { cmd: "check [file]", what: "Run the checks the docs define on one spec, or the whole workspace. Exit 0 clean / 1 warnings / 2 blocking — so it drops into pre-commit and CI.", icon: ShieldCheck },
+  { cmd: "new <task|spec>", what: "Cut a task packet from a spec, or scaffold a fresh spec from the template.", icon: Plus },
+  { cmd: "worktree", what: "Create / list / remove / prune isolated git worktrees — one per task, on swarm/<slug>.", icon: GitBranch },
+  { cmd: "status", what: "Print the workspace board — specs, tasks, reviews, and the gaps between them. --json or -i.", icon: LayoutDashboard },
+  { cmd: "help", what: "What dispatches today, plus usage for each. swarm --help / swarm --version.", icon: List },
 ];
 
 const principles = [
@@ -57,14 +53,14 @@ const principles = [
     text: "No more agents rewriting your main checkout while you are halfway through something else.",
   },
   {
-    title: "Task file as source of truth",
+    title: "Markdown is the source of truth",
     icon: Terminal,
-    text: "A markdown file carries the request, the AC, the evidence, and the review result.",
+    text: "The spec, the task, the evidence, the review — plain files you can read, diff, and grep. The CLI reads them; it does not replace them.",
   },
   {
-    title: "Context compression",
-    icon: LayoutDashboard,
-    text: "Check output is truncated for the LLM window, not dumped raw into the chat.",
+    title: "It never renders the verdict",
+    icon: ShieldCheck,
+    text: "swarm check tells you what is malformed or unverified. Whether the code is actually done is a call a human makes, every time.",
   },
 ];
 
@@ -73,27 +69,30 @@ export default function CliPage() {
     <div className="flex flex-col gap-24 py-24">
       <Section>
         <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-drone-green/30 bg-drone-green/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-drone-green">
+          <div className="mb-6 inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
             <SignalPulse className="h-4 w-4" />
-            <span>swarm-cli v0.x — reference implementation</span>
+            <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
+              swarm-cli v0.x — reference implementation
+            </span>
           </div>
           <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
             swarm<span className="text-swarm-yellow text-glow">-cli</span>
             <TerminalCursor className="ml-2 align-middle" />
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-100">
-            Optional command-line automation for the Swarm workflow. It does not replace your
-            judgment — it just sets up the worktree, runs the checks, and turns a finished task file
-            into a PR.
+          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
+            Optional command-line help for the Swarm workflow. The framework is just markdown and
+            conventions; the CLI does the chores — checks your specs, sets up one git worktree per
+            task, and prints the board.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
-            Sandboxed worktrees, Markdown task files as the source of truth, and commands that
-            compress check output so the agent can read it.
+            It does the typing-adjacent work, not the thinking. It never decides whether your code is
+            done — that is still a human reading evidence. Skip it entirely if you would rather drive by
+            hand.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Badge variant="hazard">In flux</Badge>
-            <Badge variant="default">Node &gt;= 22.6.0</Badge>
-            <Badge variant="default">Git &gt;= 2.5</Badge>
+            <Badge variant="hazard">Command surface still settling</Badge>
+            <Badge variant="default">Node &gt;= 18.18</Badge>
+            <Badge variant="default">Needs git</Badge>
           </div>
         </div>
       </Section>
@@ -103,17 +102,21 @@ export default function CliPage() {
           <DroneIcon className="h-4 w-4" />
           <span>install.sh</span>
         </div>
-        <TerminalWindow title="terminal">
-          <p className="text-concrete-500"># install from npm</p>
-          <p className="text-concrete-100">
-            <span className="text-swarm-yellow">$</span> npm install -g swarm-cli
-          </p>
-          <p className="mt-2 text-concrete-500"># or link from a local clone</p>
-          <p className="text-concrete-100">
-            <span className="text-swarm-yellow">$</span> git clone https://github.com/jcosta33/swarm-cli.git{" "}
-            &amp;&amp; cd swarm-cli &amp;&amp; npm link
-          </p>
-        </TerminalWindow>
+        <Panel brushed className="p-2">
+          <TerminalWindow title="terminal">
+            <p className="text-concrete-500">
+              # not on npm yet — clone and link from source; the binary it provides is called swarm
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-swarm-yellow">$</span> git clone https://github.com/jcosta33/swarm-cli.git{" "}
+              &amp;&amp; cd swarm-cli &amp;&amp; npm install &amp;&amp; npm link
+            </p>
+            <p className="mt-2 text-concrete-500"># then run commands as</p>
+            <p className="text-concrete-100">
+              <span className="text-swarm-yellow">$</span> swarm --help
+            </p>
+          </TerminalWindow>
+        </Panel>
       </Section>
 
       <Section className="flex flex-col gap-8">
@@ -121,20 +124,22 @@ export default function CliPage() {
           <DroneIcon className="h-4 w-4" />
           <span>first-run.sh</span>
         </div>
-        <TerminalWindow title="terminal">
-          <p className="text-concrete-100">
-            <span className="text-swarm-yellow">$</span> swarm init{" "}
-            <span className="text-concrete-500"># scaffold .agents/ and swarm.config.json</span>
-          </p>
-          <p className="mt-1 text-concrete-100">
-            <span className="text-swarm-yellow">$</span> swarm doctor{" "}
-            <span className="text-concrete-500"># verify Node, git, worktrees, telemetry DB</span>
-          </p>
-          <p className="mt-1 text-concrete-100">
-            <span className="text-swarm-yellow">$</span> swarm{" "}
-            <span className="text-concrete-500"># launch the interactive dashboard</span>
-          </p>
-        </TerminalWindow>
+        <Panel brushed className="p-2">
+          <TerminalWindow title="terminal">
+            <p className="text-concrete-100">
+              <span className="text-swarm-yellow">$</span> swarm init{" "}
+              <span className="text-concrete-500"># copy the starter-kit workspace into this repo</span>
+            </p>
+            <p className="mt-1 text-concrete-100">
+              <span className="text-swarm-yellow">$</span> swarm check{" "}
+              <span className="text-concrete-500"># run the docs&apos; checks over the workspace; exit 0/1/2</span>
+            </p>
+            <p className="mt-1 text-concrete-100">
+              <span className="text-swarm-yellow">$</span> swarm status -i{" "}
+              <span className="text-concrete-500"># the board — specs, tasks, reviews, gaps</span>
+            </p>
+          </TerminalWindow>
+        </Panel>
       </Section>
 
       <Section className="flex flex-col gap-12">
@@ -147,7 +152,10 @@ export default function CliPage() {
             Commands that already dispatch
           </h2>
           <p className="mt-4 text-concrete-400">
-            The small set you can rely on today. The rest is the planned shape.
+            The small set that actually runs today — &ldquo;advertised equals dispatchable&rdquo; is checked by
+            its own test, so this list cannot quietly lie to you. The big one still on the bench is{" "}
+            <code className="text-swarm-yellow">swarm review</code>: reconcile what the agent claimed it
+            changed against the real diff. That is the next build, not a shipped promise.
           </p>
         </div>
         <ul className="grid gap-4 sm:grid-cols-2">
@@ -155,17 +163,20 @@ export default function CliPage() {
             const Icon = c.icon;
             return (
               <li key={c.cmd}>
-                <Card className="group h-full border-factory-800 transition-all duration-300 hover:border-drone-green/30 hover:bg-factory-800">
-                  <div className="flex items-start gap-4">
-                    <HexBadge color="green">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </HexBadge>
-                    <div>
-                      <h3 className="font-mono text-sm font-semibold text-drone-green">
-                        swarm {c.cmd}
-                      </h3>
-                      <p className="mt-1 text-sm leading-relaxed text-concrete-400">{c.what}</p>
+                <Card hardware className="group h-full border-panel-border hover:border-drone-green/50">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-start gap-4">
+                      <HexBadge color="green">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </HexBadge>
+                      <div>
+                        <h3 className="font-mono text-sm font-semibold text-drone-green">
+                          swarm {c.cmd}
+                        </h3>
+                        <p className="mt-1 text-sm leading-relaxed text-concrete-400">{c.what}</p>
+                      </div>
                     </div>
+                    <PilotLamp color="green" className="shrink-0" />
                   </div>
                 </Card>
               </li>
@@ -184,10 +195,11 @@ export default function CliPage() {
             Why a CLI if Swarm is markdown-only?
           </h2>
           <p className="mt-4 text-concrete-400">
-            The workflow itself is just conventions and files. The CLI is optional automation: it
-            spins up worktrees, runs checks, compresses output, and turns a finished task file into
-            a PR. It is a helper, not an orchestrator. Use it if you want less typing; ignore it if
-            you prefer to orchestrate by hand.
+            The workflow itself is just conventions and files — you can run all of Swarm with a text
+            editor and a straight face. The CLI is optional: it scaffolds the workspace, runs the checks
+            at a gate, and keeps one worktree per task so parallel agents do not trample each other. It
+            is a helper, not an orchestrator, and it never renders the verdict. Use it for less typing;
+            ignore it if you would rather orchestrate by hand.
           </p>
         </div>
         <ul className="grid gap-4 sm:grid-cols-3">
@@ -195,7 +207,7 @@ export default function CliPage() {
             const Icon = p.icon;
             return (
               <li key={p.title}>
-                <Card className="group h-full border-factory-800 bg-factory-900/50 transition-all duration-300 hover:border-swarm-yellow/30">
+                <Card hardware className="group h-full border-panel-border hover:border-brass/50">
                   <HexBadge color="orange" className="mb-4">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </HexBadge>
@@ -211,7 +223,7 @@ export default function CliPage() {
       </Section>
 
       <Section>
-        <Card className="max-w-2xl border-factory-800 bg-factory-900/50">
+        <Card hardware className="max-w-2xl border-panel-border">
           <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
             Reference repository
           </h2>
@@ -224,7 +236,7 @@ export default function CliPage() {
               href="https://github.com/jcosta33/swarm-cli"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-swarm-yellow hover:underline focus-ring rounded"
+              className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               Read the full reference on GitHub →
             </Link>

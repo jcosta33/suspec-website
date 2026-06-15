@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle,
+  ExternalLink,
   FileText,
   GitBranch,
   Layers,
@@ -13,8 +14,8 @@ import {
 } from "lucide-react";
 import { Button } from "./components/Button";
 import { Card } from "./components/Card";
+import { Panel } from "./components/Panel";
 import { Section } from "./components/Section";
-
 import { HazardStripe } from "./components/HazardStripe";
 import { HeroHexGrid } from "./components/HeroHexGrid";
 import { LoopDiagram } from "./components/LoopDiagram";
@@ -23,6 +24,7 @@ import { TerminalWindow } from "./components/TerminalWindow";
 import { DroneIcon } from "./components/DroneIcon";
 import { HexBadge } from "./components/HexBadge";
 import { SignalPulse } from "./components/SignalPulse";
+import { PilotLamp } from "./components/PilotLamp";
 
 export const metadata: Metadata = {
   title: "Swarm — specs for humans, tasks for agents",
@@ -80,28 +82,28 @@ const walls = [
 
 const features = [
   {
-    title: "Spec-first",
+    title: "Spec-first, not vibes-first",
     command: "swarm new",
     description:
-      "Write the contract once. The task packet bounds scope and tells the agent what not to change.",
+      "Write the contract once. The task packet bounds scope and tells the agent, in writing, what not to touch.",
   },
   {
     title: "Review by exception",
-    command: "swarm validate",
+    command: "swarm check",
     description:
-      "Every requirement carries a verification method. Evidence shows the reviewer exactly where to look.",
+      "Every requirement names how it is verified. The review packet shows the evidence per line — so you read the exceptions, not the whole 40-file diff.",
   },
   {
-    title: "Humans in the loop",
-    command: "swarm pr",
+    title: "Humans decide",
+    command: "# this part is you",
     description:
-      "Agents draft, run, and paste evidence. Humans decide when the evidence is good enough. No autopilot.",
+      "Agents draft, run, and paste the output. You decide when the evidence is good enough. No autopilot, no merge-by-vibes.",
   },
   {
-    title: "Honesty framework",
-    command: "swarm doctor",
+    title: "No enforcement theater",
+    command: "# convention · checklist · enforced",
     description:
-      "Rules say whether they are convention, checklist, toolable, or enforced — no enforcement theater.",
+      "Every rule says what kind of guarantee it is — and cheerfully admits when the honest answer is “nothing checks this yet.”",
   },
 ];
 
@@ -109,21 +111,15 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative isolate overflow-hidden border-b border-factory-800 py-24 sm:py-32">
+      <section className="relative isolate overflow-hidden border-b border-panel-border py-24 sm:py-32">
         <HeroHexGrid />
-
-        {/* Floating drone decorations */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-          <DroneIcon className="absolute left-[8%] top-[20%] h-16 w-16 -rotate-12 text-swarm-yellow/20 animate-float" />
-          <DroneIcon className="absolute right-[10%] top-[30%] h-12 w-12 rotate-12 text-swarm-yellow/15 animate-float" style={{ animationDelay: "1.5s" }} />
-          <DroneIcon className="absolute bottom-[20%] left-[15%] h-10 w-10 text-swarm-yellow/10 animate-float" style={{ animationDelay: "3s" }} />
-        </div>
-
         <Section className="relative z-10">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-swarm-yellow/30 bg-swarm-yellow/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-swarm-yellow">
+            <div className="mb-6 inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
               <SignalPulse className="h-4 w-4" />
-              <span>v0.1.0 — hive online</span>
+              <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
+                v0.1.0 — spec-and-review workflow
+              </span>
             </div>
 
             <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-6xl lg:text-7xl">
@@ -133,31 +129,45 @@ export default function HomePage() {
               <TerminalCursor className="ml-2 align-middle" />
             </h1>
 
-            <TerminalWindow className="mx-auto mt-10 max-w-2xl text-left">
-              <p className="text-concrete-400">
-                <span className="text-swarm-yellow">$</span> swarm status
-              </p>
-              <p className="mt-1 text-concrete-100">
-                66% of devs say AI output is almost right, but not quite.
-              </p>
-              <p className="mt-2 text-concrete-400">
-                <span className="text-swarm-yellow">$</span> swarm init
-              </p>
-              <p className="mt-1 text-drone-green">✓ scaffolded .agents/ workspace</p>
-              <p className="mt-2 text-concrete-400">
-                <span className="text-swarm-yellow">$</span> swarm new spec --title &quot;every claim needs evidence&quot;
-              </p>
-              <p className="mt-1 text-concrete-100">
-                Turn tickets into clear specs, specs into agent-ready tasks, and agent output into
-                evidence you can review.
-              </p>
-              <p className="mt-2 text-concrete-400">
-                <span className="text-swarm-yellow">$</span> _
-              </p>
-            </TerminalWindow>
+            <Panel brushed className="mx-auto mt-10 max-w-2xl p-2 text-left">
+              <TerminalWindow>
+                <p className="text-concrete-500">
+                  <span className="text-swarm-yellow">$</span> swarm status
+                </p>
+                <p className="mt-1 text-concrete-100">
+                  29% of developers trust the accuracy of AI output. 80% of them ship it anyway.
+                </p>
+                <p className="mt-2 text-concrete-500">
+                  <span className="text-swarm-yellow">$</span> swarm init
+                </p>
+                <p className="mt-1 text-drone-green">✓ scaffolded .agents/ workspace</p>
+                <p className="mt-2 text-concrete-500">
+                  <span className="text-swarm-yellow">$</span> swarm new spec --title &quot;every claim needs evidence&quot;
+                </p>
+                <p className="mt-1 text-concrete-100">
+                  Turn tickets into clear specs, specs into agent-ready tasks, and agent output into
+                  evidence you can review.
+                </p>
+                <p className="mt-2 text-concrete-500">
+                  <span className="text-swarm-yellow">$</span> _
+                </p>
+              </TerminalWindow>
+            </Panel>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-xs text-concrete-400">
+              Source: Stack Overflow 2025 Developer Survey —{" "}
+              <Link
+                href="https://survey.stackoverflow.co/2025/ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+              >
+                survey.stackoverflow.co/2025/ai
+                <ExternalLink className="h-3 w-3" aria-hidden="true" />
+              </Link>
+            </p>
 
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button asChild>
+            <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+              <Button asChild className="w-full sm:w-auto">
                 <Link
                   href="https://github.com/jcosta33/swarm-starter-kit"
                   target="_blank"
@@ -166,7 +176,7 @@ export default function HomePage() {
                   Copy the starter kit <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
-              <Button variant="secondary" asChild>
+              <Button variant="secondary" asChild className="w-full sm:w-auto">
                 <Link
                   href="https://github.com/jcosta33/swarm/tree/main/docs"
                   target="_blank"
@@ -192,18 +202,35 @@ export default function HomePage() {
               Five ways agent code goes sideways.
             </h2>
             <p className="mt-4 text-concrete-400">
-              Coding agents are fast. They are also wrong in ways that look correct. Swarm catches
-              the &quot;almost right&quot; before it ships by turning every change into a spec, a task, and a
-              review packet with pasted evidence.
+              Coding agents are fast. They are also wrong in ways that look correct — and the one
+              randomized trial that actually measured it found experienced devs were{" "}
+              <span className="text-concrete-100">19% slower</span> with AI while{" "}
+              <span className="text-concrete-100">feeling ~20% faster</span> (
+              <Link
+                href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+              >
+                METR
+              </Link>
+              ). Swarm does not answer that with hustle. It turns every change into a spec, a task,
+              and a review packet with pasted evidence — so &quot;almost right&quot; has to prove it is right
+              before it ships.
             </p>
           </div>
 
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {walls.map((wall) => {
               const Icon = wall.icon;
               return (
-                <li key={wall.title}>
-                  <Card className="group h-full animate-glow">
+                <Card
+                  key={wall.title}
+                  hardware
+                  rivets
+                  className="group h-full border-panel-border hover:border-hazard-orange/50"
+                >
+                  <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-4">
                       <HexBadge color="orange">
                         <Icon className="h-6 w-6" aria-hidden="true" />
@@ -215,19 +242,20 @@ export default function HomePage() {
                         </h3>
                       </div>
                     </div>
-                    <p className="mt-4 text-sm leading-relaxed text-concrete-400">
-                      {wall.description}
-                    </p>
-                  </Card>
-                </li>
+                    <PilotLamp color="amber" className="shrink-0" />
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-concrete-400">
+                    {wall.description}
+                  </p>
+                </Card>
               );
             })}
-          </ul>
+          </div>
         </Section>
       </section>
 
       {/* Loop */}
-      <section className="relative border-y border-factory-800 bg-factory-900 py-24">
+      <section className="relative border-y border-panel-border bg-panel-raised py-24">
         <HazardStripe height="sm" />
         <Section className="mt-12 flex flex-col gap-12">
           <div className="max-w-2xl">
@@ -266,7 +294,7 @@ export default function HomePage() {
 
           <div className="grid gap-6 lg:grid-cols-2">
             <TerminalWindow title="specs/shell/spec.md">
-              <p className="text-concrete-400">
+              <p className="text-concrete-500">
                 <span className="text-swarm-yellow">##</span> AC-003 — Global shell includes nav and footer
               </p>
               <p className="mt-2 text-concrete-100">
@@ -277,7 +305,7 @@ export default function HomePage() {
                 <li>Nav: logo, links, mobile hamburger below lg.</li>
                 <li>Footer: copyright, links, colophon line.</li>
               </ul>
-              <p className="mt-3 text-concrete-400">
+              <p className="mt-3 text-concrete-500">
                 <span className="text-swarm-yellow">Verify with:</span> npm run build passes; every
                 generated page contains exactly one &lt;nav&gt; and one &lt;footer&gt;; nav links are valid.
               </p>
@@ -286,14 +314,14 @@ export default function HomePage() {
             <TerminalWindow title="reviews/REVIEW-spec-shell.md">
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[320px] text-left text-sm">
-                  <thead className="border-b border-factory-800 text-concrete-400">
+                  <thead className="border-b border-panel-border text-concrete-400">
                     <tr>
                       <th className="py-2 pr-4 font-heading font-bold uppercase tracking-wide">AC</th>
                       <th className="py-2 pr-4 font-heading font-bold uppercase tracking-wide">Result</th>
                       <th className="py-2 font-heading font-bold uppercase tracking-wide">Evidence</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-factory-800">
+                  <tbody className="divide-y divide-panel-border">
                     <tr>
                       <td className="py-3 pr-4 font-mono text-concrete-100">AC-003</td>
                       <td className="py-3 pr-4">
@@ -317,7 +345,7 @@ export default function HomePage() {
       </section>
 
       {/* Features */}
-      <section className="border-y border-factory-800 bg-factory-900 py-24">
+      <section className="border-y border-panel-border bg-panel-raised py-24">
         <Section className="flex flex-col gap-12">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
@@ -328,21 +356,26 @@ export default function HomePage() {
               Built for validation, not generation.
             </h2>
           </div>
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature) => (
-              <li key={feature.title}>
-                <Card className="group h-full border-swarm-yellow/10 transition-all duration-300 hover:border-swarm-yellow/40 hover:bg-factory-800">
-                  <p className="font-mono text-xs text-swarm-yellow">{feature.command}</p>
-                  <h3 className="mt-2 font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-concrete-400">
-                    {feature.description}
-                  </p>
-                </Card>
-              </li>
+              <Card
+                key={feature.title}
+                hardware
+                className="group h-full border-panel-border hover:border-swarm-yellow/50"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <p className="font-mono text-xs text-brass">{feature.command}</p>
+                  <PilotLamp color="green" className="shrink-0" />
+                </div>
+                <h3 className="mt-2 font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
+                  {feature.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-concrete-400">
+                  {feature.description}
+                </p>
+              </Card>
             ))}
-          </ul>
+          </div>
         </Section>
       </section>
 
@@ -350,16 +383,19 @@ export default function HomePage() {
       <section className="relative py-24">
         <HazardStripe height="sm" />
         <Section className="py-16 text-center">
-          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-drone-green/30 bg-drone-green/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-drone-green">
-            <Users className="h-4 w-4" />
-            <span>human approval required</span>
+          <div className="mx-auto inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
+            <Users className="h-4 w-4 text-drone-green" />
+            <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
+              human approval required
+            </span>
           </div>
           <h2 className="mt-6 font-heading text-3xl font-bold uppercase tracking-tight text-concrete-100 sm:text-4xl">
             Stop shipping &quot;almost right&quot; code.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-concrete-400">
-            Copy the starter kit, write your first spec, and give your agents a contract they can
-            read. You still make the calls; they just finally know what you meant.
+            Swarm will not make you 10x, and it is not trying to replace you — it is trying to put you
+            back in charge of the firehose. Copy the starter kit, write one spec, and give your agents a
+            contract they can read. You still make the calls; they just finally know what you meant.
           </p>
           <div className="mt-10 flex justify-center">
             <Button asChild>

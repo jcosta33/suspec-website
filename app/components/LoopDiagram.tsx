@@ -12,12 +12,15 @@ const steps = [
 
 export function LoopDiagram() {
   return (
-    <ol className="grid gap-6 md:grid-cols-6">
+    <ol className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
       {steps.map((step, index) => (
-        <li key={step.label} className="group relative flex flex-col gap-3 rounded-2xl border border-factory-800 bg-factory-950/50 p-4 transition-colors duration-300 hover:border-swarm-yellow/30 hover:bg-factory-950">
+        <li
+          key={step.label}
+          className="group relative flex flex-col gap-3 p-4 panel-raised rivet-row transition-all duration-150 hover:translate-y-px hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_3px_0_rgba(0,0,0,0.55)]"
+        >
           <div className="flex items-center justify-between">
-            <span className="font-mono text-xs font-medium text-swarm-yellow">{step.number}</span>
-            <SignalPulse className="h-5 w-5 opacity-60 group-hover:opacity-100" />
+            <span className="font-mono text-xs font-medium text-brass">{step.number}</span>
+            <SignalPulse className="opacity-60 group-hover:opacity-100" />
           </div>
           <div className="flex items-center gap-2">
             <DroneIcon className="h-5 w-5 text-swarm-yellow" />
@@ -28,7 +31,7 @@ export function LoopDiagram() {
           <p className="text-sm leading-relaxed text-concrete-400">{step.description}</p>
           {index < steps.length - 1 && (
             <div
-              className="absolute -right-4 top-1/2 hidden h-px w-8 -translate-y-1/2 bg-gradient-to-r from-swarm-yellow/60 to-transparent md:block"
+              className="absolute -right-4 top-1/2 hidden h-1 w-8 -translate-y-1/2 border-y border-panel-border bg-panel-edge xl:block"
               aria-hidden="true"
             />
           )}

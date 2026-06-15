@@ -21,26 +21,48 @@ export const metadata: Metadata = {
   },
 };
 
+function KitIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-sm border border-panel-border bg-panel-raised text-swarm-yellow shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_2px_0_rgba(0,0,0,0.45)]">
+      <div className="brushed-metal absolute inset-0 pointer-events-none z-0" aria-hidden="true" />
+      <div className="screw-corners screw-corners-bottom absolute inset-0 pointer-events-none z-10" aria-hidden="true" />
+      <span className="relative z-10">{children}</span>
+    </div>
+  );
+}
+
+function ListDot() {
+  return (
+    <span
+      className="mt-2.5 h-2 w-2 shrink-0 rounded-sm bg-swarm-yellow shadow-[0_0_8px_#FFB000]"
+      aria-hidden="true"
+    />
+  );
+}
+
 export default function GetStartedPage() {
   return (
     <div className="flex flex-col gap-24 py-24">
       <Section>
         <div className="max-w-3xl">
-          <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-brass">
+            <span>onboarding / boot sequence</span>
+          </div>
+          <h1 className="mt-3 font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl">
             Get started
           </h1>
           <p className="mt-6 text-xl leading-relaxed text-concrete-400">
-            Pick a path. Either way, you are writing specs and tasks in plain markdown five minutes
-            from now. The agent gets a contract; you keep the keys.
+            Pick a path. Either way, you are writing specs and tasks in plain markdown. The agent gets
+            a contract; you keep the keys.
           </p>
         </div>
       </Section>
 
       <Section className="grid gap-8 md:grid-cols-2">
-        <Card className="flex flex-col gap-6">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-factory-800 text-swarm-yellow">
+        <Card hardware className="flex flex-col gap-6">
+          <KitIcon>
             <Rocket className="h-6 w-6" aria-hidden="true" />
-          </div>
+          </KitIcon>
           <div>
             <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
               New repo
@@ -61,10 +83,10 @@ export default function GetStartedPage() {
           </Button>
         </Card>
 
-        <Card className="flex flex-col gap-6">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-factory-800 text-swarm-yellow">
+        <Card hardware className="flex flex-col gap-6">
+          <KitIcon>
             <FolderPlus className="h-6 w-6" aria-hidden="true" />
-          </div>
+          </KitIcon>
           <div>
             <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
               Existing project
@@ -92,42 +114,42 @@ export default function GetStartedPage() {
         </h2>
         <ul className="grid gap-4 sm:grid-cols-2">
           <li className="flex items-start gap-3 text-concrete-400">
-            <span className="mt-2 h-2 w-2 rounded-full bg-swarm-yellow" aria-hidden="true" />
+            <ListDot />
             <span>
               <strong className="text-concrete-100">AGENTS.md</strong> — the bootloader your agent
               reads on every task.
             </span>
           </li>
           <li className="flex items-start gap-3 text-concrete-400">
-            <span className="mt-2 h-2 w-2 rounded-full bg-swarm-yellow" aria-hidden="true" />
+            <ListDot />
             <span>
               <strong className="text-concrete-100">Core guides</strong> — write-spec,
               implement-task, review-output, save-findings, and more.
             </span>
           </li>
           <li className="flex items-start gap-3 text-concrete-400">
-            <span className="mt-2 h-2 w-2 rounded-full bg-swarm-yellow" aria-hidden="true" />
+            <ListDot />
             <span>
               <strong className="text-concrete-100">Eight templates</strong> — spec, task, review,
               finding, status, intake, inventory, change-plan.
             </span>
           </li>
           <li className="flex items-start gap-3 text-concrete-400">
-            <span className="mt-2 h-2 w-2 rounded-full bg-swarm-yellow" aria-hidden="true" />
+            <ListDot />
             <span>
               <strong className="text-concrete-100">Flow folders</strong> — specs/, tasks/,
               reviews/, findings/, and the rest, each with a one-line README.
             </span>
           </li>
           <li className="flex items-start gap-3 text-concrete-400">
-            <span className="mt-2 h-2 w-2 rounded-full bg-swarm-yellow" aria-hidden="true" />
+            <ListDot />
             <span>
               <strong className="text-concrete-100">status.md</strong> — a hand-edited workboard
               for tracking what is in flight.
             </span>
           </li>
           <li className="flex items-start gap-3 text-concrete-400">
-            <span className="mt-2 h-2 w-2 rounded-full bg-swarm-yellow" aria-hidden="true" />
+            <ListDot />
             <span>
               <strong className="text-concrete-100">decisions/</strong> — an ADR ledger, seeded
               with why you adopted Swarm.
@@ -137,11 +159,11 @@ export default function GetStartedPage() {
       </Section>
 
       <Section>
-        <Card className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <Card hardware className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-factory-800 text-swarm-yellow">
+            <KitIcon>
               <Wrench className="h-6 w-6" aria-hidden="true" />
-            </div>
+            </KitIcon>
             <div>
               <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
                 Need more depth?
@@ -152,7 +174,7 @@ export default function GetStartedPage() {
               </p>
             </div>
           </div>
-          <Button variant="secondary" asChild>
+          <Button variant="secondary" asChild className="w-full md:w-auto">
             <Link href="/skills/">
               Browse skills <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
@@ -167,7 +189,7 @@ export default function GetStartedPage() {
             href="https://github.com/jcosta33/swarm/blob/main/docs/ADOPTING.md"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-swarm-yellow hover:underline focus-ring rounded"
+            className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
           >
             docs/ADOPTING.md
           </Link>{" "}

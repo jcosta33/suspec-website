@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -17,11 +16,13 @@ import {
 } from "lucide-react";
 import { Section } from "../../components/Section";
 import { Card } from "../../components/Card";
+import { Panel } from "../../components/Panel";
 import { TerminalWindow } from "../../components/TerminalWindow";
 import { DroneIcon } from "../../components/DroneIcon";
 import { HexBadge } from "../../components/HexBadge";
 import { SignalPulse } from "../../components/SignalPulse";
 import { TerminalCursor } from "../../components/TerminalCursor";
+import { PilotLamp } from "../../components/PilotLamp";
 
 export const metadata: Metadata = {
   title: "Writing a skill — Swarm",
@@ -71,15 +72,17 @@ export default function WritingSkillsPage() {
     <div className="flex flex-col gap-24 py-24">
       <Section>
         <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-drone-green/30 bg-drone-green/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-drone-green">
+          <div className="mb-6 inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
             <SignalPulse className="h-4 w-4" />
-            <span>SKILL.md — open Agent Skills format</span>
+            <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
+              SKILL.md — open Agent Skills format
+            </span>
           </div>
           <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
             Writing a <span className="text-swarm-yellow text-glow">skill</span>
             <TerminalCursor className="ml-2 align-middle" />
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-100">
+          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             A skill is a markdown file your agent reads when the work matches. It is instructions,
             not magic — and like any prompt, its structure determines whether it actually fires.
           </p>
@@ -89,7 +92,7 @@ export default function WritingSkillsPage() {
               href="https://github.com/jcosta33/swarm-skills/tree/main/docs"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-swarm-yellow underline hover:no-underline focus-ring rounded"
+              className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               swarm-skills docs
             </Link>
@@ -99,38 +102,90 @@ export default function WritingSkillsPage() {
         </div>
       </Section>
 
-      <Section className="flex flex-col gap-8">
+      <Section>
+        <Card hardware className="mx-auto max-w-4xl border-panel-border">
+          <nav aria-label="On this page">
+            <p className="text-xs font-mono uppercase tracking-wide text-concrete-500">On this page</p>
+            <ol className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+              <li>
+                <a href="#layout" className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm">
+                  Layout
+                </a>
+              </li>
+              <li>
+                <a href="#directive-description" className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm">
+                  Directive description
+                </a>
+              </li>
+              <li>
+                <a href="#body-anatomy" className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm">
+                  Body anatomy
+                </a>
+              </li>
+              <li>
+                <a href="#forced-visible-output" className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm">
+                  Forced visible output
+                </a>
+              </li>
+              <li>
+                <a href="#self-containment" className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm">
+                  Self-containment
+                </a>
+              </li>
+              <li>
+                <a href="#task-templates" className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm">
+                  Task templates
+                </a>
+              </li>
+              <li>
+                <a href="#scope" className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm">
+                  Scope
+                </a>
+              </li>
+              <li>
+                <a href="#next-steps" className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm">
+                  Next steps
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </Card>
+      </Section>
+
+      <Section id="layout" className="flex flex-col gap-8">
         <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
           <DroneIcon className="h-4 w-4" />
           <span>layout.txt — what a skill folder looks like</span>
         </div>
-        <TerminalWindow title="terminal">
-          <p className="text-concrete-500"># A minimal skill</p>
-          <p className="text-concrete-100">
-            skills/write-feature/
-            <br />
-            &nbsp;&nbsp;SKILL.md
-            <br />
-            &nbsp;&nbsp;references/
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;task-template.md
-          </p>
-          <p className="mt-3 text-concrete-500"># A persona needs no references folder</p>
-          <p className="text-concrete-100">
-            skills/persona-skeptic/
-            <br />
-            &nbsp;&nbsp;SKILL.md
-          </p>
-        </TerminalWindow>
+        <Panel brushed className="p-2">
+          <TerminalWindow title="terminal">
+            <p className="text-concrete-500"># A minimal skill</p>
+            <p className="text-concrete-100">
+              skills/write-feature/
+              <br />
+              &nbsp;&nbsp;SKILL.md
+              <br />
+              &nbsp;&nbsp;references/
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;task-template.md
+            </p>
+            <p className="mt-3 text-concrete-500"># A persona needs no references folder</p>
+            <p className="text-concrete-100">
+              skills/persona-skeptic/
+              <br />
+              &nbsp;&nbsp;SKILL.md
+            </p>
+          </TerminalWindow>
+        </Panel>
         <p className="text-concrete-400">
           The open Agent Skills spec defines the frontmatter and progressive-disclosure model: metadata
           is always present, the body loads when the description matches, and references load on demand.
         </p>
       </Section>
 
-      <Section className="flex flex-col gap-12">
+      <Section id="directive-description" className="flex flex-col gap-12">
         <div className="max-w-3xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-brass">
             <Terminal className="h-4 w-4" />
             <span>description.yaml — the load-bearing line</span>
           </div>
@@ -138,14 +193,15 @@ export default function WritingSkillsPage() {
             Activation: the directive description
           </h2>
           <p className="mt-4 text-concrete-400">
-            Agents scan the <code>description</code> to decide whether to load the skill. A controlled
-            650-trial study found that passive descriptions activate only ~55 % of the time and
-            collapse to 37 % under hooks. Directive descriptions with an exclusion clause activated
-            100 % of trials.
+            Agents scan the <code className="text-swarm-yellow">description</code> to decide whether to load the skill. A
+            self-published 650-trial measurement (one author, not peer-reviewed) reported passive
+            descriptions activating far less reliably than directive ones with an explicit exclusion
+            clause. Treat the exact percentages as a hint, not a law — but the direction is consistent
+            and the fix costs nothing, so we took it.
           </p>
         </div>
         <div className="grid gap-6 lg:grid-cols-2">
-          <Card className="border-factory-800 bg-factory-900/50">
+          <Card hardware className="border-panel-border hover:border-hazard-orange/50">
             <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-hazard-orange">
               Passive (weak)
             </h3>
@@ -153,9 +209,9 @@ export default function WritingSkillsPage() {
               Use when implementing a feature from a spec. Encodes the discipline — read the spec,
               survey patterns, halt on ambiguity, validate after every batch, paste output.
             </p>
-            <p className="mt-3 text-xs text-concrete-500">~55 % activation</p>
+            <p className="mt-3 text-xs text-concrete-500">activates less reliably (self-reported)</p>
           </Card>
-          <Card className="border-factory-800 bg-factory-900/50">
+          <Card hardware className="border-panel-border hover:border-drone-green/50">
             <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-drone-green">
               Directive (strong)
             </h3>
@@ -166,7 +222,7 @@ export default function WritingSkillsPage() {
               refactor in passing. Skip defect fixes, behavior-preserving refactors, deliberate
               rewrites, migrations, performance tuning, and test-only work.
             </p>
-            <p className="mt-3 text-xs text-concrete-500">100 % activation across tested conditions</p>
+            <p className="mt-3 text-xs text-concrete-500">activates far more reliably (self-reported)</p>
           </Card>
         </div>
         <div className="max-w-3xl">
@@ -176,7 +232,8 @@ export default function WritingSkillsPage() {
           <ul className="mt-4 space-y-3 text-concrete-400">
             <li>
               <strong className="text-concrete-100">WHAT.</strong> Open with an imperative verb:
-              "Implement a feature", "Back every claim", "Judge another agent's work".
+              &ldquo;Implement a feature&rdquo;, &ldquo;Back every claim&rdquo;, &ldquo;Judge another
+              agent&apos;s work&rdquo;.
             </li>
             <li>
               <strong className="text-concrete-100">ALWAYS.</strong> Name concrete triggers, including
@@ -199,7 +256,7 @@ export default function WritingSkillsPage() {
         </div>
       </Section>
 
-      <Section className="flex flex-col gap-12">
+      <Section id="body-anatomy" className="flex flex-col gap-12">
         <div className="max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-drone-green">
             <BookOpen className="h-4 w-4" />
@@ -218,7 +275,7 @@ export default function WritingSkillsPage() {
           {anatomyItems.map((item) => {
             const Icon = item.icon;
             return (
-              <Card key={item.title} className="h-full border-factory-800 bg-factory-900/50">
+              <Card key={item.title} hardware className="h-full border-panel-border">
                 <HexBadge color="green" className="mb-4">
                   <Icon className="h-5 w-5" aria-hidden="true" />
                 </HexBadge>
@@ -240,33 +297,35 @@ export default function WritingSkillsPage() {
             </li>
             <li>
               <strong className="text-concrete-100">500 lines</strong> is the hard cap, backed by
-              Anthropic's own guidance.
+              Anthropic&apos;s own guidance.
             </li>
             <li>
-              If a skill grows past 200 lines, the question is "what moves to references?", not
-              "should I raise the limit?".
+              If a skill grows past 200 lines, the question is &ldquo;what moves to references?&rdquo;,
+              not &ldquo;should I raise the limit?&rdquo;.
             </li>
           </ul>
         </div>
-        <TerminalWindow title="SKILL.md">
-          <p className="text-concrete-500">---</p>
-          <p className="text-concrete-100">name: write-feature</p>
-          <p className="text-concrete-100">description: Implement a feature from a spec...</p>
-          <p className="text-concrete-500">---</p>
-          <p className="mt-2 text-concrete-100"># Skill: write-feature</p>
-          <p className="mt-1 text-concrete-500">## Purpose</p>
-          <p className="text-concrete-100">&lt;2–3 sentences. The failure mode this skill prevents.&gt;</p>
-          <p className="mt-1 text-concrete-500">## Core rules</p>
-          <p className="text-concrete-100">### 1. Read the packet first</p>
-          <p className="text-concrete-100">### 2. Map every AC before coding</p>
-          <p className="text-concrete-100">...</p>
-          <p className="mt-1 text-concrete-500">## What does not belong</p>
-          <p className="mt-1 text-concrete-500">## Anti-patterns</p>
-          <p className="mt-1 text-concrete-500">## Bundled resources</p>
-        </TerminalWindow>
+        <Panel brushed className="p-2">
+          <TerminalWindow title="SKILL.md">
+            <p className="text-concrete-500">---</p>
+            <p className="text-concrete-100">name: write-feature</p>
+            <p className="text-concrete-100">description: Implement a feature from a spec...</p>
+            <p className="text-concrete-500">---</p>
+            <p className="mt-2 text-concrete-100"># Skill: write-feature</p>
+            <p className="mt-1 text-concrete-500">## Purpose</p>
+            <p className="text-concrete-100">&lt;2–3 sentences. The failure mode this skill prevents.&gt;</p>
+            <p className="mt-1 text-concrete-500">## Core rules</p>
+            <p className="text-concrete-100">### 1. Read the packet first</p>
+            <p className="text-concrete-100">### 2. Map every AC before coding</p>
+            <p className="text-concrete-100">...</p>
+            <p className="mt-1 text-concrete-500">## What does not belong</p>
+            <p className="mt-1 text-concrete-500">## Anti-patterns</p>
+            <p className="mt-1 text-concrete-500">## Bundled resources</p>
+          </TerminalWindow>
+        </Panel>
       </Section>
 
-      <Section className="flex flex-col gap-12">
+      <Section id="forced-visible-output" className="flex flex-col gap-12">
         <div className="max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-hazard-orange">
             <Zap className="h-4 w-4" />
@@ -282,33 +341,33 @@ export default function WritingSkillsPage() {
           </p>
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
-          <Card className="border-factory-800 bg-factory-900/50">
+          <Card hardware className="border-panel-border">
             <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-concrete-100">
               empirical-proof
             </h3>
             <p className="mt-2 text-sm text-concrete-400">
-              Every claim in <code>## Self-review</code> gets its own verbatim pasted output. No
-              paraphrase, no "✅ all passing".
+              Every claim in <code className="text-swarm-yellow">## Self-review</code> gets its own verbatim pasted output. No
+              paraphrase, no &ldquo;✅ all passing&rdquo;.
             </p>
           </Card>
-          <Card className="border-factory-800 bg-factory-900/50">
+          <Card hardware className="border-panel-border">
             <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-concrete-100">
               write-testing
             </h3>
             <p className="mt-2 text-sm text-concrete-400">
-              Flip each new test's assertion: it must fail; restore it: it must pass. Paste the
+              Flip each new test&apos;s assertion: it must fail; restore it: it must pass. Paste the
               fail-then-pass transition.
             </p>
           </Card>
         </div>
         <p className="max-w-3xl text-concrete-400">
-          The same mechanism drives Reflexion's +11 pp gain on HumanEval: a written artefact converts
-          an implicit signal into a durable one. If the rule's compliance would otherwise be
-          invisible, force it to produce output.
+          The same mechanism drives Reflexion&apos;s +11 pp gain on HumanEval: a written artefact
+          converts an implicit signal into a durable one. If the rule&apos;s compliance would
+          otherwise be invisible, force it to produce output.
         </p>
       </Section>
 
-      <Section className="flex flex-col gap-12">
+      <Section id="self-containment" className="flex flex-col gap-12">
         <div className="max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
             <Shield className="h-4 w-4" />
@@ -318,10 +377,10 @@ export default function WritingSkillsPage() {
             Self-containment
           </h2>
           <p className="mt-4 text-concrete-400">
-            A user who installs only <code>write-feature</code> does not have{" "}
-            <code>empirical-proof</code> in context. Therefore <code>write-feature</code> must read
+            A user who installs only <code className="text-swarm-yellow">write-feature</code> does not have{" "}
+            <code className="text-swarm-yellow">empirical-proof</code> in context. Therefore <code className="text-swarm-yellow">write-feature</code> must read
             correctly on its own. If a related discipline is load-bearing, restate it inline — a
-            sibling may be mentioned only as an optional "if installed" note.
+            sibling may be mentioned only as an optional &ldquo;if installed&rdquo; note.
           </p>
         </div>
         <div className="max-w-3xl">
@@ -329,9 +388,9 @@ export default function WritingSkillsPage() {
             The AGENTS.md contract
           </h3>
           <p className="mt-4 text-concrete-400">
-            Skills name abstract command slots — <code>cmdTest</code>, <code>cmdLint</code>,{" "}
-            <code>cmdValidate</code> — never concrete commands. The consuming repo's{" "}
-            <code>AGENTS.md</code> Commands table supplies the implementations. An empty slot means
+            Skills name abstract command slots — <code className="text-swarm-yellow">cmdTest</code>, <code className="text-swarm-yellow">cmdLint</code>,{" "}
+            <code className="text-swarm-yellow">cmdValidate</code> — never concrete commands. The consuming repo&apos;s{" "}
+            <code className="text-swarm-yellow">AGENTS.md</code> Commands table supplies the implementations. An empty slot means
             ask; a skill never invents a command.
           </p>
           <p className="mt-4 text-concrete-400">
@@ -341,7 +400,7 @@ export default function WritingSkillsPage() {
         </div>
       </Section>
 
-      <Section className="flex flex-col gap-12">
+      <Section id="task-templates" className="flex flex-col gap-12">
         <div className="max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
             <FileText className="h-4 w-4" />
@@ -352,8 +411,8 @@ export default function WritingSkillsPage() {
           </h2>
           <p className="mt-4 text-concrete-400">
             Long-running tasks accumulate intermediate findings, abandoned hypotheses, and decisions.
-            The task file is the agent's working memory, written to disk. It is not the deliverable;
-            it is the scratchpad. Keep it gitignored, local, and personal.
+            The task file is the agent&apos;s working memory, written to disk. It is not the
+            deliverable; it is the scratchpad. Keep it gitignored, local, and personal.
           </p>
         </div>
         <div className="max-w-3xl">
@@ -361,7 +420,7 @@ export default function WritingSkillsPage() {
             The MIHPSG rubric
           </h3>
           <p className="mt-4 text-concrete-400">
-            Ship a <code>references/task-template.md</code> only when at least three of these six
+            Ship a <code className="text-swarm-yellow">references/task-template.md</code> only when at least three of these six
             criteria hold:
           </p>
           <ul className="mt-4 grid gap-2 sm:grid-cols-2">
@@ -404,14 +463,14 @@ export default function WritingSkillsPage() {
             </li>
           </ul>
           <p className="mt-6 text-concrete-400">
-            Personas and cross-cutting quality gates like <code>empirical-proof</code> deliberately
+            Personas and cross-cutting quality gates like <code className="text-swarm-yellow">empirical-proof</code> deliberately
             ship no template — their discipline lives in the body and surfaces inside whichever
-            workflow's task file is in play.
+            workflow&apos;s task file is in play.
           </p>
         </div>
       </Section>
 
-      <Section className="flex flex-col gap-12">
+      <Section id="scope" className="flex flex-col gap-12">
         <div className="max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-hazard-orange">
             <Box className="h-4 w-4" />
@@ -428,23 +487,26 @@ export default function WritingSkillsPage() {
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {scopeExclusions.map((item) => (
             <li key={item.title}>
-              <Card className="h-full border-factory-800 bg-factory-900/50">
-                <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-hazard-orange">
-                  {item.title}
-                </h3>
+              <Card hardware className="h-full border-panel-border">
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="font-heading text-sm font-bold uppercase tracking-tight text-hazard-orange">
+                    {item.title}
+                  </h3>
+                  <PilotLamp color="red" className="shrink-0" />
+                </div>
                 <p className="mt-2 text-sm text-concrete-400">{item.example}</p>
               </Card>
             </li>
           ))}
         </ul>
         <p className="max-w-3xl text-concrete-400">
-          The right home for stack-specific or internal knowledge is the consuming repo's{" "}
-          <code>AGENTS.md</code>, not a skill.
+          The right home for stack-specific or internal knowledge is the consuming repo&apos;s{" "}
+          <code className="text-swarm-yellow">AGENTS.md</code>, not a skill.
         </p>
       </Section>
 
-      <Section>
-        <Card className="max-w-3xl border-factory-800 bg-factory-900/50">
+      <Section id="next-steps">
+        <Card hardware className="max-w-3xl border-panel-border">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
             <GitBranch className="h-4 w-4" />
             <span>next steps</span>
@@ -462,7 +524,7 @@ export default function WritingSkillsPage() {
                 href="https://github.com/jcosta33/swarm-skills/tree/main/docs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-swarm-yellow hover:underline focus-ring rounded"
+                className="inline-flex items-center gap-2 text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
               >
                 swarm-skills docs <ExternalLink className="h-4 w-4" aria-hidden="true" />
               </Link>
@@ -472,7 +534,7 @@ export default function WritingSkillsPage() {
                 href="https://github.com/jcosta33/swarm-skills/tree/main/skills"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-swarm-yellow hover:underline focus-ring rounded"
+                className="inline-flex items-center gap-2 text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
               >
                 Sample skills <ExternalLink className="h-4 w-4" aria-hidden="true" />
               </Link>
@@ -482,7 +544,7 @@ export default function WritingSkillsPage() {
                 href="https://agentskills.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-swarm-yellow hover:underline focus-ring rounded"
+                className="inline-flex items-center gap-2 text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
               >
                 Open Agent Skills spec <ExternalLink className="h-4 w-4" aria-hidden="true" />
               </Link>

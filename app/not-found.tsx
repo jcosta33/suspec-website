@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Section } from "./components/Section";
+import { Button } from "./components/Button";
 
 export const metadata = {
   title: "Page not found — Swarm",
@@ -16,12 +17,13 @@ export default function NotFoundPage() {
       <p className="mt-2 max-w-md text-concrete-400">
         The page you are looking for is not in the hive. Check the URL or head back home.
       </p>
-      <Link
-        href="/"
-        className="mt-8 inline-flex items-center gap-2 rounded-full bg-swarm-yellow px-6 py-3 font-semibold text-factory-950 transition-colors hover:bg-yellow-300 focus-ring"
-      >
-        <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to hive
-      </Link>
+      <div className="mt-8">
+        <Button asChild>
+          <Link href="/">
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to hive
+          </Link>
+        </Button>
+      </div>
     </Section>
   );
 }

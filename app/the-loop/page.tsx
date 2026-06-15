@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Section } from "../components/Section";
+import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { HazardStripe } from "../components/HazardStripe";
 import { DroneIcon } from "../components/DroneIcon";
@@ -128,9 +129,11 @@ export default function TheLoopPage() {
     <div className="flex flex-col gap-24 py-24">
       <Section>
         <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-swarm-yellow/30 bg-swarm-yellow/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-swarm-yellow">
+          <div className="mb-6 inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
             <SignalPulse className="h-4 w-4" />
-            <span>flight plan — 6 waypoints</span>
+            <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
+              flight plan — 6 waypoints
+            </span>
           </div>
           <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
             The <span className="text-swarm-yellow text-glow">loop</span>
@@ -154,7 +157,7 @@ export default function TheLoopPage() {
             <div className="relative">
               {index < steps.length - 1 && (
                 <div
-                  className="absolute left-8 top-20 hidden h-[calc(100%+4rem)] w-px bg-gradient-to-b from-swarm-yellow/40 to-transparent lg:block"
+                  className="absolute left-[1.75rem] top-20 hidden h-[calc(100%+4rem)] w-px bg-gradient-to-b from-brass/60 to-transparent lg:block"
                   aria-hidden="true"
                 />
               )}
@@ -175,14 +178,16 @@ export default function TheLoopPage() {
                 </div>
               </div>
             </div>
-            <TerminalWindow title={step.example.title}>
-              {step.example.lines.map((line, i) => (
-                <p key={i} className={line.prompt ? "text-concrete-100" : "text-concrete-400"}>
-                  {line.prompt && <span className="text-swarm-yellow">$ </span>}
-                  {line.text}
-                </p>
-              ))}
-            </TerminalWindow>
+            <Panel brushed className="p-2">
+              <TerminalWindow title={step.example.title}>
+                {step.example.lines.map((line, i) => (
+                  <p key={i} className={line.prompt ? "text-concrete-100" : "text-concrete-400"}>
+                    {line.prompt && <span className="text-swarm-yellow">$ </span>}
+                    {line.text}
+                  </p>
+                ))}
+              </TerminalWindow>
+            </Panel>
           </article>
         ))}
       </Section>
