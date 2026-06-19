@@ -83,13 +83,13 @@ const walls = [
 const features = [
   {
     title: "Spec-first, not vibes-first",
-    command: "calma new",
+    command: "swarm new",
     description:
       "Write the contract once. The task packet bounds scope and tells the agent, in writing, what not to touch.",
   },
   {
     title: "Review by exception",
-    command: "calma check",
+    command: "swarm check",
     description:
       "Every requirement names how it is verified. The review packet shows the evidence per line — so you read the exceptions, not the whole 40-file diff.",
   },
@@ -132,17 +132,17 @@ export default function HomePage() {
             <Panel brushed className="mx-auto mt-10 max-w-2xl p-2 text-left">
               <TerminalWindow>
                 <p className="text-concrete-500">
-                  <span className="text-swarm-yellow">$</span> calma status
+                  <span className="text-swarm-yellow">$</span> swarm status
                 </p>
                 <p className="mt-1 text-concrete-100">
-                  Only 29% of developers trust the accuracy of AI output. 84% use it anyway.
+                  Only 33% of developers trust the accuracy of AI output. 84% use it anyway.
                 </p>
                 <p className="mt-2 text-concrete-500">
-                  <span className="text-swarm-yellow">$</span> calma init
+                  <span className="text-swarm-yellow">$</span> swarm init
                 </p>
                 <p className="mt-1 text-drone-green">✓ scaffolded .agents/ workspace</p>
                 <p className="mt-2 text-concrete-500">
-                  <span className="text-swarm-yellow">$</span> calma new spec --title &quot;every claim needs evidence&quot;
+                  <span className="text-swarm-yellow">$</span> swarm new spec --title &quot;every claim needs evidence&quot;
                 </p>
                 <p className="mt-1 text-concrete-100">
                   Turn tickets into clear specs, specs into agent-ready tasks, and agent output into

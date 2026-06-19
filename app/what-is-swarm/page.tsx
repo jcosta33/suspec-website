@@ -129,7 +129,7 @@ const failureModes = [
   {
     mode: "Lost handoff",
     code: "ERR-003",
-    looksLike: "the handoff from plan to implementation is the dominant failure surface",
+    looksLike: "the plan→implementation handoff is a leading failure surface (on preliminary evidence)",
     answer: "the handoff is a written, bounded task packet — not a chat message",
   },
   {
