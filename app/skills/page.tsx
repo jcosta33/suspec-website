@@ -18,6 +18,7 @@ import {
   ScrollText,
   ShieldCheck,
   Sparkles,
+  Swords,
   Target,
   Terminal,
   Zap,
@@ -66,7 +67,7 @@ const stances = [
   {
     skill: "persona-documentarian",
     icon: ScrollText,
-    use: "writing human-facing docs that actually get read",
+    use: "writing human-facing docs a reader can actually follow",
   },
   {
     skill: "persona-researcher",
@@ -77,6 +78,11 @@ const stances = [
     skill: "persona-surveyor",
     icon: FolderSearch,
     use: "breadth research across patterns or products",
+  },
+  {
+    skill: "persona-challenger",
+    icon: Swords,
+    use: "pressure-testing a live proposal before it's built — surface assumptions, steelman the alternative",
   },
   {
     skill: "empirical-proof",
@@ -143,7 +149,7 @@ export default function SkillsPage() {
     <div className="flex flex-col gap-24 py-24">
       <Section>
         <PageHero
-          eyebrow="skills.catalog — 17 modules available"
+          eyebrow="skills.catalog — 18 skills"
           title={<>Calma <span className="text-swarm-yellow text-glow">skills</span></>}
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
@@ -151,8 +157,8 @@ export default function SkillsPage() {
             Skills format. Install only what your work calls for.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
-            Skills are not shortcuts. They are discipline prompts that load when the task matches and
-            keep the agent from drifting.
+            Skills are not shortcuts. They are discipline prompts that load when the work matches and
+            pull the agent back toward the discipline before it drifts.
           </p>
         </PageHero>
       </Section>

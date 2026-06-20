@@ -91,7 +91,7 @@ const features = [
     title: "Review by exception",
     command: "swarm check",
     description:
-      "Every requirement names how it is verified. The review packet shows the evidence per line — so you read the exceptions, not the whole 40-file diff.",
+      "Every requirement names how it is verified. The review packet shows the evidence per requirement — so you read the exceptions, not the whole 40-file diff.",
   },
   {
     title: "Humans decide",
@@ -134,6 +134,7 @@ export default function HomePage() {
                 <p className="text-concrete-500">
                   <span className="text-swarm-yellow">$</span> swarm status
                 </p>
+                <p className="mt-1 text-concrete-500"># the gap Calma is built for:</p>
                 <p className="mt-1 text-concrete-100">
                   Only 33% of developers trust the accuracy of AI output. 84% use it anyway.
                 </p>
@@ -142,7 +143,7 @@ export default function HomePage() {
                 </p>
                 <p className="mt-1 text-drone-green">✓ scaffolded workspace (specs/, tasks/, reviews/, status.md)</p>
                 <p className="mt-2 text-concrete-500">
-                  <span className="text-swarm-yellow">$</span> swarm new spec evidence --title &quot;every claim needs evidence&quot;
+                  <span className="text-swarm-yellow">$</span> swarm new spec evidence --from intake/JIRA-412.md
                 </p>
                 <p className="mt-1 text-concrete-100">
                   Turn tickets into clear specs, specs into agent-ready tasks, and agent output into
@@ -202,8 +203,8 @@ export default function HomePage() {
               Five ways agent code goes sideways.
             </h2>
             <p className="mt-4 text-concrete-400">
-              Coding agents are fast. They are also wrong in ways that look correct — and the one
-              randomized trial that actually measured it found experienced devs were{" "}
+              Coding agents are fast. They are also wrong in ways that look correct — and in a
+              randomized trial, experienced devs on their own mature repos came out{" "}
               <span className="text-concrete-100">19% slower</span> with AI while{" "}
               <span className="text-concrete-100">feeling ~20% faster</span> (
               <Link
@@ -261,7 +262,7 @@ export default function HomePage() {
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
               <DroneIcon className="h-4 w-4" />
-              <span>flight.plan — 6 waypoints</span>
+              <span>flight.plan — 6 waypoints (+2 optional)</span>
             </div>
             <h2 className="mt-3 font-heading text-3xl font-bold uppercase tracking-tight text-concrete-100 sm:text-4xl">
               The loop
@@ -297,7 +298,7 @@ export default function HomePage() {
             </h2>
             <p className="mt-4 text-concrete-400">
               A requirement is only as good as its verification method. The review packet shows
-              evidence per line item.
+              evidence per requirement.
             </p>
           </div>
 
@@ -363,7 +364,7 @@ export default function HomePage() {
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
               <Shield className="h-4 w-4" />
-              <span>capabilities — 4 modules loaded</span>
+              <span>how it works — 4 moving parts</span>
             </div>
             <h2 className="mt-3 font-heading text-3xl font-bold uppercase tracking-tight text-concrete-100 sm:text-4xl">
               Built for validation, not generation.
@@ -406,7 +407,7 @@ export default function HomePage() {
             Stop shipping &quot;almost right&quot; code.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-concrete-400">
-            Calma will not make you 10x, and it is not trying to replace you — it is trying to put you
+            Calma will not make you 10x, and it is not trying to replace you — it just puts you
             back in charge of the firehose. Copy the starter kit, write one spec, and give your agents a
             contract they can read. You still make the calls; they just finally know what you meant.
           </p>

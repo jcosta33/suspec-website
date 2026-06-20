@@ -55,8 +55,8 @@ export default function GetStartedPage() {
             Get started
           </h1>
           <p className="mt-6 text-xl leading-relaxed text-concrete-400">
-            Pick a path. Either way, you are writing specs and tasks in plain markdown. The agent gets
-            a contract; you keep the keys.
+            Pick a path. Either way you write specs and tasks in plain markdown — the agent gets a clear
+            brief, and you keep the keys.
           </p>
         </div>
       </Section>
@@ -123,7 +123,7 @@ export default function GetStartedPage() {
             <p className="text-concrete-500"># install the CLI from source — the binary it provides is called swarm</p>
             <p className="text-concrete-100">
               <span className="text-swarm-yellow">$</span> git clone https://github.com/jcosta33/swarm-cli.git{" "}
-              &amp;&amp; cd swarm-cli &amp;&amp; npm install &amp;&amp; npm link
+              &amp;&amp; cd swarm-cli &amp;&amp; npm install &amp;&amp; npm run build &amp;&amp; npm link
             </p>
             <p className="mt-2 text-concrete-500"># then, in a new or existing repo</p>
             <p className="text-concrete-100">

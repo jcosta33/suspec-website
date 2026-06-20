@@ -11,7 +11,6 @@ import { Heading } from "../components/Heading";
 import { PilotLamp } from "../components/PilotLamp";
 import {
   ArrowRight,
-  Bot,
   CheckCircle,
   FileText,
   Layers,
@@ -46,10 +45,6 @@ const isList = [
   { text: "a findings convention so lessons survive the session", icon: CheckCircle },
   { text: "a starter kit of markdown templates", icon: Layers },
   { text: "a workspace convention", icon: Workflow },
-  {
-    text: "a way to keep humans in the loop without hovering over every keystroke",
-    icon: Bot,
-  },
 ];
 
 const isNotList = [
@@ -78,10 +73,10 @@ const adjacent = [
   },
   {
     product: "Spec-driven workflows",
-    examples: "GitHub Spec Kit, Kiro, Tessl",
+    examples: "",
     does: "turn a written spec into an implementation",
     relation:
-      "Same family, opposite end. They optimize authoring the spec and generating the code; Calma bets on the review side — every requirement carries a verification method, and the packet shows the evidence per line. Honestly? Author with one, gate with the other.",
+      "Same family, opposite end. They optimize authoring the spec and generating the code; Calma bets on the review side — every requirement carries a verification method, and the packet shows the evidence per requirement. Honestly? Author with one, gate with the other.",
   },
   {
     product: "Issue trackers",
@@ -116,37 +111,31 @@ const adjacent = [
 const failureModes = [
   {
     mode: "Drift",
-    code: "ERR-001",
     looksLike: "the agent solves a problem, not the problem",
     answer: "the task packet: an explicit scope and a 'Do not change' list",
   },
   {
     mode: "Ambiguous input",
-    code: "ERR-002",
-    looksLike: "ambiguity degrades generated code; models do not reliably flag it",
+    looksLike: "ambiguity degrades generated code, and models do not reliably flag it",
     answer: "requirements written one per ID, each with its own verification method",
   },
   {
     mode: "Lost handoff",
-    code: "ERR-003",
-    looksLike: "the plan→implementation handoff is a leading failure surface (on preliminary evidence)",
+    looksLike: "the plan-to-implementation handoff is a leading failure surface (on preliminary evidence)",
     answer: "the handoff is a written, bounded task packet — not a chat message",
   },
   {
     mode: "Hallucinated completion",
-    code: "ERR-004",
     looksLike: "'done,' but nothing was checked",
     answer: "a Pass needs pasted output, a CI link, or a named human's recorded observation",
   },
   {
     mode: "No resumable trail",
-    code: "ERR-005",
     looksLike: "the session ends mid-stride; the next one starts from zero",
     answer: "work externalized to files — intake, spec, task, review",
   },
   {
     mode: "Repeated mistakes",
-    code: "ERR-006",
     looksLike: "the same class of bug returns every few sessions",
     answer: "findings saved at Close, kept where the next task will look",
   },
@@ -194,7 +183,7 @@ export default function WhatIsCalmaPage() {
         <div>
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-drone-green">
             <CheckCircle className="h-4 w-4" />
-            <span>capabilities.conf — loaded</span>
+            <span>what it is</span>
           </div>
           <Heading className="mt-3">What Calma is</Heading>
           <ul className="mt-6 space-y-4">
@@ -215,7 +204,7 @@ export default function WhatIsCalmaPage() {
         <div>
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-hazard-orange">
             <XCircle className="h-4 w-4" />
-            <span>capabilities.conf — excluded</span>
+            <span>what it is not</span>
           </div>
           <Heading className="mt-3">What Calma is not</Heading>
           <ul className="mt-6 space-y-3">
@@ -267,7 +256,7 @@ export default function WhatIsCalmaPage() {
         <div className="max-w-2xl">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-hazard-orange">
             <ShieldAlert className="h-4 w-4" />
-            <span>error.log — 6 failure modes detected</span>
+            <span>error.log — failure modes detected</span>
           </div>
           <Heading className="mt-3">Failure modes you are already seeing</Heading>
         </div>
@@ -280,7 +269,6 @@ export default function WhatIsCalmaPage() {
                     <ShieldAlert className="h-5 w-5" aria-hidden="true" />
                   </HexBadge>
                   <div>
-                    <p className="font-mono text-xs text-hazard-orange">{fm.code}</p>
                     <Heading as="h3" size="lg" className="mt-0.5">{fm.mode}</Heading>
                   </div>
                 </div>

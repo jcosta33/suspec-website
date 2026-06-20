@@ -33,7 +33,7 @@ const steps = [
   {
     number: "01",
     name: "Pull",
-    body: "Capture the ticket and any context that matters — links, constraints, prior attempts — in an intake file. This becomes the source of truth for the spec, not the chat history.",
+    body: "Copy the ticket into an intake file verbatim — unedited, uninterpreted. The spec is where you interpret; the intake just preserves what was actually asked, so it still anchors you after the upstream ticket changes or disappears.",
     example: {
       title: "intake/INTAKE-42.md",
       lines: [
@@ -134,12 +134,13 @@ export default function TheLoopPage() {
     <div className="flex flex-col gap-24 py-24">
       <Section>
         <PageHero
-          eyebrow="flight plan — 6 waypoints"
+          eyebrow="flight plan — 6 waypoints (+2 for rough terrain)"
           title={<>The <span className="text-swarm-yellow text-glow">loop</span></>}
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Pull → Spec → Task → Run → Review → Close. Each step produces a file the next step can
-            read. The agent does the work between gates; a human decides at every gate.
+            Pull → Spec → Task → Run → Review → Close. Each step leaves a file the next one reads.
+            Agents do the work between the gates; you decide at each one. Two more steps — Inventory
+            and Change Plan — switch on only for brownfield or structural work.
           </p>
         </PageHero>
       </Section>
@@ -200,7 +201,7 @@ export default function TheLoopPage() {
             <Heading>Ready to run it?</Heading>
             <p className="mt-2 text-concrete-400">
               Copy the starter kit and write your first spec. The loop is the same on day one as on
-              day one hundred — it just gets cheaper.
+              day one hundred — and every finding you save makes the next pass through it lighter.
             </p>
           </div>
           <Button asChild className="w-full md:w-auto">

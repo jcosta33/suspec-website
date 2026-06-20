@@ -40,12 +40,17 @@ export const metadata: Metadata = {
 };
 
 const commands = [
+  { cmd: "init [dir]", what: "Scaffold the workspace into a new or existing repo, conflict-safe — walked through on Get started.", icon: Blocks },
+  { cmd: "update [--check]", what: "Tell you whether your workspace has drifted behind the latest starter kit, and what you would gain by updating. Read-only — it never rewrites your files.", icon: ShieldCheck },
   { cmd: "check [file]", what: "Lint a spec, or render the whole-workspace verdict. Exit 0 clean / 1 warnings / 2 blocking — so it drops straight into pre-commit and CI.", icon: ShieldCheck },
-  { cmd: "review <task>", what: "Reconcile a finished run — the agent's self-report against the actual git diff against the spec. Surfaces omitted edits, out-of-scope changes, and unbacked claims. Never a verdict; that stays yours.", icon: ScanEye },
   { cmd: "worktree", what: "Create / list / remove / prune isolated git worktrees — one per task on swarm/<slug>, so parallel agents never trample each other.", icon: GitBranch },
   { cmd: "status", what: "Print the workspace board — specs, tasks, reviews, and the gaps between them. --json for scripts, -i for an interactive board.", icon: LayoutDashboard },
-  { cmd: "new <task|spec>", what: "Cut a task packet from a spec, or scaffold a fresh spec from the template.", icon: Plus },
-  { cmd: "init [dir]", what: "Scaffold the workspace into a new or existing repo, conflict-safe — walked through on Get started.", icon: Blocks },
+  { cmd: "review <task>", what: "Reconcile a finished run — the agent's self-report against the actual git diff against the spec. Surfaces omitted edits, out-of-scope changes, and unbacked claims. Never a verdict; that stays yours.", icon: ScanEye },
+  { cmd: "new <task|spec>", what: "Cut a task packet from a spec (scope never invented), or scaffold a fresh spec from the template.", icon: Plus },
+  { cmd: "pull <ref>", what: "Snapshot an external ticket into intake/ — verbatim, never a spec or the board. Turning a ticket into requirements is your call, not transcription.", icon: ArrowRight },
+  { cmd: "promote <task>", what: "Scaffold a candidate finding from a finished task, source pre-filled. It asserts no lesson — you decide what was learned.", icon: Plus },
+  { cmd: "run <task> --agent <name>", what: "Launch a prepared task on your own coding agent in its worktree and record the launch. It runs the agent; it never becomes one — no model loop, no edits of its own.", icon: Terminal },
+  { cmd: "show <task|spec|review|checks>", what: "Project a parsed artifact as JSON — read-only, renders no verdict. It is how editors, CI, and the MCP server read your workspace.", icon: Blocks },
 ];
 
 const principles = [
@@ -86,7 +91,7 @@ export default function CliPage() {
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Badge variant="hazard">Command surface still settling</Badge>
-            <Badge variant="default">Node &gt;= 18.18</Badge>
+            <Badge variant="default">Node &gt;= 18.18 · &gt;= 22.6 from source</Badge>
             <Badge variant="default">Needs git</Badge>
           </div>
         </PageHero>
@@ -100,11 +105,11 @@ export default function CliPage() {
         <Panel brushed className="p-2">
           <TerminalWindow title="terminal">
             <p className="text-concrete-500">
-              # clone and link from source; the binary it provides is called swarm
+              # not on npm yet — clone, build, and link from source; the binary it provides is called swarm
             </p>
             <p className="text-concrete-100">
               <span className="text-swarm-yellow">$</span> git clone https://github.com/jcosta33/swarm-cli.git{" "}
-              &amp;&amp; cd swarm-cli &amp;&amp; npm install &amp;&amp; npm link
+              &amp;&amp; cd swarm-cli &amp;&amp; npm install &amp;&amp; npm run build &amp;&amp; npm link
             </p>
             <p className="mt-2 text-concrete-500"># then run commands as</p>
             <p className="text-concrete-100">
@@ -146,15 +151,16 @@ export default function CliPage() {
         <div className="max-w-2xl">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-drone-green">
             <Bug className="h-4 w-4" />
-            <span>commands.json — currently dispatching</span>
+            <span>commands.md — kept in sync, checked by test</span>
           </div>
           <Heading className="mt-3">Commands that already dispatch</Heading>
           <p className="mt-4 text-concrete-400">
-            The set that runs today — and &ldquo;advertised equals dispatchable&rdquo; is checked by its own
-            test, so this list cannot quietly lie to you. The one worth knowing first is{" "}
-            <code className="text-swarm-yellow">swarm review</code>: it reconciles a finished run — the
-            agent&apos;s self-report against the real diff against the spec — and routes the mismatches to
-            a human, without ever rendering the verdict.
+            Every command that ships, listed below. In the CLI, &ldquo;advertised equals
+            dispatchable&rdquo; is a tested invariant — what the help prints, the binary runs. The two
+            worth knowing first: <code className="text-swarm-yellow">swarm check</code> drops into
+            pre-commit and CI on its exit code, and <code className="text-swarm-yellow">swarm review</code>{" "}
+            reconciles a finished run — the agent&apos;s self-report against the real diff against the
+            spec — and routes the mismatches to a human, without ever rendering the verdict.
           </p>
         </div>
         <ul className="grid gap-4 sm:grid-cols-2">
