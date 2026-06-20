@@ -1,49 +1,296 @@
-/* Minimal docs styling (W2 — readable, not final). Scoped to /docs; does not touch the marketing shell. */
+/* Docs styling — on the site's 70s-industrial design system (globals.css tokens). */
+
 .docs-layout {
   display: flex;
-  gap: 2.5rem;
-  max-width: 80rem;
+  gap: 3rem;
+  max-width: 84rem;
   margin: 0 auto;
-  padding: 2rem 1.25rem 4rem;
+  padding: 2.5rem 1.5rem 5rem;
   align-items: flex-start;
 }
-.docs-nav {
+
+/* ---------- Sidebar ---------- */
+.docs-layout > aside {
   flex: 0 0 16rem;
   position: sticky;
-  top: 1.5rem;
-  font-size: 0.9rem;
-  max-height: calc(100vh - 3rem);
+  top: 5rem;
+  max-height: calc(100vh - 6rem);
   overflow-y: auto;
+  padding-right: 0.5rem;
 }
-.docs-nav-group { margin-bottom: 1rem; }
-.docs-nav-group h2,
-.docs-nav-group summary {
-  font-size: 0.72rem;
+.docs-nav-group {
+  margin-bottom: 1.5rem;
+}
+.docs-nav-group > h2,
+.docs-nav-group > summary {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  opacity: 0.6;
-  margin: 0 0 0.4rem;
-  cursor: default;
+  letter-spacing: 0.1em;
+  color: var(--color-concrete-500);
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-panel-border);
 }
-.docs-nav-group summary { cursor: pointer; }
-.docs-nav ul { list-style: none; margin: 0; padding: 0; }
-.docs-nav li { margin: 0.15rem 0; }
-.docs-nav a { text-decoration: none; opacity: 0.85; }
-.docs-nav a:hover { opacity: 1; text-decoration: underline; }
+.docs-nav-group > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.docs-nav-group > summary::after {
+  content: "+";
+  color: var(--color-panel-edge);
+  font-size: 0.9rem;
+}
+.docs-nav-group[open] > summary::after {
+  content: "−";
+}
+.docs-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.docs-nav li {
+  margin: 1px 0;
+}
+.docs-nav a {
+  display: block;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--color-concrete-400);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: 0 3px 3px 0;
+  transition: color 0.12s, background-color 0.12s, border-color 0.12s;
+}
+.docs-nav a:hover {
+  color: var(--color-concrete-100);
+  background-color: var(--color-panel-raised);
+}
+.docs-nav a.is-active {
+  color: var(--color-swarm-yellow);
+  background-color: rgba(250, 204, 21, 0.08);
+  border-left-color: var(--color-swarm-yellow);
+  font-weight: 500;
+}
 
-.docs-prose { flex: 1 1 auto; min-width: 0; line-height: 1.65; max-width: 48rem; }
-.docs-prose h1 { font-size: 1.9rem; margin: 0 0 1rem; line-height: 1.2; }
-.docs-prose h2 { font-size: 1.4rem; margin: 2rem 0 0.75rem; }
-.docs-prose h3 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; }
-.docs-prose p, .docs-prose li { margin: 0.6rem 0; }
-.docs-prose ul, .docs-prose ol { padding-left: 1.4rem; }
-.docs-prose code { font-family: var(--font-jetbrains-mono, monospace); font-size: 0.88em; padding: 0.1em 0.3em; border-radius: 4px; background: rgba(127,127,127,0.15); }
-.docs-prose pre { padding: 1rem; border-radius: 8px; overflow-x: auto; background: rgba(127,127,127,0.12); }
-.docs-prose pre code { background: none; padding: 0; }
-.docs-prose table { border-collapse: collapse; width: 100%; font-size: 0.9rem; margin: 1rem 0; display: block; overflow-x: auto; }
-.docs-prose th, .docs-prose td { border: 1px solid rgba(127,127,127,0.3); padding: 0.4rem 0.6rem; text-align: left; }
-.docs-prose blockquote { border-left: 3px solid rgba(127,127,127,0.4); margin: 1rem 0; padding-left: 1rem; opacity: 0.85; }
-@media (max-width: 48rem) {
-  .docs-layout { flex-direction: column; }
-  .docs-nav { position: static; flex-basis: auto; max-height: none; }
+/* ---------- Search (Pagefind UI, themed via its CSS variables) ---------- */
+.docs-search {
+  --pagefind-ui-scale: 0.8;
+  --pagefind-ui-primary: var(--color-swarm-yellow);
+  --pagefind-ui-text: var(--color-concrete-100);
+  --pagefind-ui-background: var(--color-panel-recessed);
+  --pagefind-ui-border: var(--color-panel-border);
+  --pagefind-ui-tag: var(--color-panel-raised);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 3px;
+  --pagefind-ui-font: var(--font-sans), sans-serif;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- Prose ---------- */
+.docs-prose {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 46rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-concrete-300);
+}
+.docs-prose > :first-child {
+  margin-top: 0;
+}
+
+.docs-prose h1,
+.docs-prose h2,
+.docs-prose h3,
+.docs-prose h4 {
+  font-family: var(--font-heading), sans-serif;
+  color: var(--color-concrete-100);
+  line-height: 1.25;
+  scroll-margin-top: 5rem;
+}
+.docs-prose h1 {
+  font-size: 2.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+.docs-prose h2 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin: 2.75rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-panel-border);
+}
+.docs-prose h3 {
+  font-size: 1.18rem;
+  font-weight: 600;
+  margin: 2rem 0 0.6rem;
+  color: var(--color-aluminium);
+}
+.docs-prose h4 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--color-concrete-400);
+}
+
+/* The "*Works today …*" subtitle each canon page opens with */
+.docs-prose h1 + p em {
+  font-style: normal;
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--color-brass);
+  letter-spacing: 0.02em;
+}
+
+.docs-prose p,
+.docs-prose li {
+  margin: 0.7rem 0;
+}
+.docs-prose strong {
+  color: var(--color-concrete-100);
+  font-weight: 600;
+}
+
+/* Links (#4) */
+.docs-prose a {
+  color: var(--color-brass);
+  text-decoration: underline;
+  text-decoration-color: rgba(200, 163, 95, 0.4);
+  text-underline-offset: 2px;
+  transition: color 0.12s, text-decoration-color 0.12s;
+}
+.docs-prose a:hover {
+  color: var(--color-swarm-yellow);
+  text-decoration-color: var(--color-swarm-yellow);
+}
+
+/* Lists */
+.docs-prose ul,
+.docs-prose ol {
+  padding-left: 1.4rem;
+  margin: 0.7rem 0;
+}
+.docs-prose li::marker {
+  color: var(--color-brass);
+}
+.docs-prose li > ul,
+.docs-prose li > ol {
+  margin: 0.3rem 0;
+}
+
+/* Inline code — phosphor on a recessed well (terminal feel) */
+.docs-prose code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85em;
+  color: var(--color-phosphor);
+  background: var(--color-panel-recessed);
+  border: 1px solid var(--color-panel-border);
+  padding: 0.08em 0.34em;
+  border-radius: 3px;
+}
+
+/* Code blocks — recessed screen */
+.docs-prose pre {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--color-concrete-200);
+  background: var(--color-panel-recessed);
+  border: 1px solid var(--color-panel-border);
+  border-radius: 3px;
+  padding: 1rem 1.1rem;
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.55);
+}
+.docs-prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* Blockquotes / callouts — swarm-yellow rail on a raised plate */
+.docs-prose blockquote {
+  margin: 1.25rem 0;
+  padding: 0.6rem 1.1rem;
+  border-left: 3px solid var(--color-swarm-yellow);
+  background: var(--color-panel-raised);
+  border-radius: 0 3px 3px 0;
+  color: var(--color-concrete-300);
+}
+.docs-prose blockquote p {
+  margin: 0.35rem 0;
+}
+
+/* Tables — bordered panel with an engraved header */
+.docs-prose table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+  margin: 1.5rem 0;
+  display: block;
+  overflow-x: auto;
+  border: 1px solid var(--color-panel-border);
+  border-radius: 3px;
+}
+.docs-prose thead {
+  background: var(--color-panel-raised);
+}
+.docs-prose th {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-aluminium);
+  text-align: left;
+}
+.docs-prose th,
+.docs-prose td {
+  border: 1px solid var(--color-panel-border);
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+}
+.docs-prose tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.docs-prose hr {
+  border: 0;
+  border-top: 1px solid var(--color-panel-border);
+  margin: 2.5rem 0;
+}
+.docs-prose img {
+  max-width: 100%;
+  border-radius: 3px;
+}
+
+/* Docs index landing */
+.docs-prose section {
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 60rem) {
+  .docs-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  .docs-layout > aside {
+    position: static;
+    flex-basis: auto;
+    max-height: none;
+    width: 100%;
+  }
+  .docs-prose {
+    max-width: none;
+  }
 }

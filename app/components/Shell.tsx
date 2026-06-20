@@ -13,7 +13,7 @@ const navLinks = [
   { label: "Skills", href: "/skills" },
   { label: "CLI", href: "/cli" },
   { label: "Get started", href: "/get-started" },
-  { label: "Docs", href: "https://github.com/jcosta33/swarm/blob/main/docs" },
+  { label: "Docs", href: "/docs" },
   { label: "GitHub", href: "https://github.com/jcosta33/swarm" },
 ];
 
@@ -23,7 +23,7 @@ const footerLinks = [
   { label: "CLI", href: "/cli" },
   { label: "GitHub", href: "https://github.com/jcosta33/swarm" },
   { label: "Starter kit", href: "https://github.com/jcosta33/swarm-starter-kit" },
-  { label: "Docs", href: "https://github.com/jcosta33/swarm/blob/main/docs" },
+  { label: "Docs", href: "/docs" },
   { label: "Colophon", href: "/colophon" },
 ];
 
