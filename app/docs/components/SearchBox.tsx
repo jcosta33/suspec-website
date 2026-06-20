@@ -17,9 +17,23 @@ export function SearchBox() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // The Pagefind UI input is labeled only by placeholder/title → axe `label-title-only`. Add a
+    // programmatic aria-label once the input mounts (it may render a tick after construction). [a11y gate]
+    const labelInput = (): boolean => {
+      const input = el.querySelector("input");
+      if (input && !input.getAttribute("aria-label")) {
+        input.setAttribute("aria-label", "Search documentation");
+      }
+      return Boolean(input);
+    };
     const init = () => {
-      if (window.PagefindUI) {
-        new window.PagefindUI({ element: el, showSubResults: true, resetStyles: false });
+      if (!window.PagefindUI) return;
+      new window.PagefindUI({ element: el, showSubResults: true, resetStyles: false });
+      if (!labelInput()) {
+        const mo = new MutationObserver(() => {
+          if (labelInput()) mo.disconnect();
+        });
+        mo.observe(el, { childList: true, subtree: true });
       }
     };
     if (window.PagefindUI) {
