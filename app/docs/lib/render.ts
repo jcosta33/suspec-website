@@ -87,3 +87,21 @@ export function titleOf(markdown: string): string {
   const m = markdown.match(/^#\s+(.+)$/m);
   return m ? m[1].replace(/`/g, "").trim() : "Swarm docs";
 }
+
+// First real prose paragraph as the meta description (brand-neutral — the doc's own content).
+// Skips the H1, the italic "*Works today…*" subtitle, headings, quotes, tables, lists, code, HTML.
+export function descriptionOf(markdown: string): string {
+  for (const raw of markdown.split(/\r?\n/)) {
+    const line = raw.trim();
+    if (!line) continue;
+    if (line.startsWith("#")) continue;
+    if (/^[>|\-*+`<]/.test(line)) continue; // quote/table/list/code/html/the italic subtitle
+    const text = line
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // links → text
+      .replace(/[`*_]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (text) return text.length > 155 ? `${text.slice(0, 152).trimEnd()}…` : text;
+  }
+  return "Swarm documentation";
+}

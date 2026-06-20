@@ -3,7 +3,7 @@
 .docs-layout {
   display: flex;
   gap: 3rem;
-  max-width: 84rem;
+  max-width: 80rem; /* match the Shell's max-w-7xl chrome */
   margin: 0 auto;
   padding: 2.5rem 1.5rem 5rem;
   align-items: flex-start;
@@ -278,7 +278,7 @@
   margin: 1.5rem 0;
 }
 
-@media (max-width: 60rem) {
+@media (max-width: 64rem) { /* lg — matches the global nav's mobile switch */
   .docs-layout {
     flex-direction: column;
     gap: 1.5rem;

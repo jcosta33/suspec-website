@@ -20,7 +20,7 @@ export function DocsNav({ nav }: { nav: NavSection[] }) {
           return (
             <li key={it.slug}>
               <Link
-                href={`/docs/${it.slug}`}
+                href={`/docs/${it.slug}/`}
                 className={active ? "is-active" : undefined}
                 aria-current={active ? "page" : undefined}
               >

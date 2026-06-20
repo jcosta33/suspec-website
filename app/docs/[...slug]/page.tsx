@@ -2,7 +2,7 @@ import path from "node:path";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { listDocs, readDoc } from "../lib/canon";
-import { renderDoc, titleOf } from "../lib/render";
+import { renderDoc, titleOf, descriptionOf } from "../lib/render";
 
 export const dynamicParams = false;
 
@@ -17,7 +17,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const md = readDoc(slug.join("/"));
-  return { title: md ? `${titleOf(md)} · Swarm` : "Swarm docs" };
+  const canonical = `/docs/${slug.join("/")}/`;
+  if (!md) return { title: "Swarm docs", alternates: { canonical } };
+  return {
+    title: `${titleOf(md)} · Swarm`,
+    description: descriptionOf(md),
+    alternates: { canonical }, // self-canonical (was inheriting the home page's "/")
+  };
 }
 
 export default async function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {

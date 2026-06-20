@@ -39,44 +39,44 @@ jobs:
       - name: Check internal links
         run: npx linkinator http://127.0.0.1:3000 --skip "^https://github.com" --skip "^https://swarmframework.dev"
 
-      - name: Accessibility audit
-        run: npx axe http://127.0.0.1:3000 --exit
+      - name: Accessibility audit (home + docs)
+        run: npx axe http://127.0.0.1:3000 http://127.0.0.1:3000/docs/ http://127.0.0.1:3000/docs/01-what-is-swarm/ --exit
 
-      - name: Lighthouse audit
-        run: npx lighthouse http://127.0.0.1:3000 --output=json --output-path=./lighthouse.json --chrome-flags="--headless --no-sandbox" --preset=desktop --only-categories=performance,accessibility,best-practices,seo
+      - name: Lighthouse audit (home + docs)
+        run: |
+          npx lighthouse http://127.0.0.1:3000 --output=json --output-path=./lighthouse-home.json --chrome-flags="--headless --no-sandbox" --preset=desktop --only-categories=performance,accessibility,best-practices,seo
+          npx lighthouse http://127.0.0.1:3000/docs/01-what-is-swarm/ --output=json --output-path=./lighthouse-docs.json --chrome-flags="--headless --no-sandbox" --preset=desktop --only-categories=performance,accessibility,best-practices,seo
 
-      - name: Check Lighthouse thresholds
+      - name: Check Lighthouse thresholds (home + docs)
         run: |
           node -e "
             const fs = require('fs');
-            if (!fs.existsSync('./lighthouse.json')) {
-              console.error('Lighthouse report not found; threshold check cannot run.');
-              process.exit(1);
-            }
-            const report = require('./lighthouse.json');
-            const scores = {
-              performance: report.categories.performance.score,
-              accessibility: report.categories.accessibility.score,
-              bestPractices: report.categories['best-practices'].score,
-              seo: report.categories.seo.score,
-            };
-            const thresholds = { performance: 0.90, accessibility: 0.95, bestPractices: 0.90, seo: 0.90 };
+            const reports = ['./lighthouse-home.json', './lighthouse-docs.json'];
+            const thresholds = { performance: 0.90, accessibility: 0.95, 'best-practices': 0.90, seo: 0.90 };
             let failed = false;
-            for (const [key, value] of Object.entries(scores)) {
-              const label = key === 'bestPractices' ? 'best-practices' : key;
-              console.log(\`\${label}: \${Math.round(value * 100)}\`);
-              if (value < thresholds[key]) {
-                console.error(\`FAIL: \${label} below threshold \${Math.round(thresholds[key] * 100)}\`);
-                failed = true;
+            for (const path of reports) {
+              if (!fs.existsSync(path)) {
+                console.error(path + ' not found; threshold check cannot run.');
+                process.exit(1);
+              }
+              const report = require(path);
+              console.log('== ' + path + ' ==');
+              for (const key of Object.keys(thresholds)) {
+                const value = report.categories[key].score;
+                console.log('  ' + key + ': ' + Math.round(value * 100));
+                if (value < thresholds[key]) {
+                  console.error('  FAIL: ' + key + ' below threshold ' + Math.round(thresholds[key] * 100));
+                  failed = true;
+                }
               }
             }
             if (failed) process.exit(1);
           "
 
-      - name: Upload Lighthouse report
+      - name: Upload Lighthouse reports
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: lighthouse-report
-          path: ./lighthouse.json
+          name: lighthouse-reports
+          path: ./lighthouse-*.json
           if-no-files-found: ignore
