@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 function KitIcon({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-sm border border-panel-border bg-panel-raised text-swarm-yellow shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.45)]">
+    <div className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-panel border border-panel-border bg-panel-raised text-swarm-yellow shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.45)]">
       <div className="brushed-metal absolute inset-0 pointer-events-none z-0" aria-hidden="true" />
       <div className="screw-corners screw-corners-bottom absolute inset-0 pointer-events-none z-10" aria-hidden="true" />
       <span className="relative z-10">{children}</span>

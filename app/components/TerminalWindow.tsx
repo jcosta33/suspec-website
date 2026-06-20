@@ -19,7 +19,7 @@ export function TerminalWindow({
       role="region"
       aria-label={ariaLabel ?? title}
       style={{ contentVisibility: "auto", containIntrinsicSize: "auto 18rem" }}
-      className={`relative overflow-hidden rounded-sm border border-panel-border bg-panel-raised shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-2px_0_rgba(0,0,0,0.5)] ${className}`}
+      className={`relative overflow-hidden rounded-panel border border-panel-border bg-panel-raised shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-2px_0_rgba(0,0,0,0.5)] ${className}`}
     >
       <div className="absolute inset-0 brushed-metal pointer-events-none" />
       <div className="relative flex items-center justify-between gap-3 border-b border-panel-border bg-panel-raised px-4 py-2">
