@@ -28,8 +28,8 @@ import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { DroneIcon } from "../components/DroneIcon";
 import { HexBadge } from "../components/HexBadge";
-import { SignalPulse } from "../components/SignalPulse";
-import { TerminalCursor } from "../components/TerminalCursor";
+import { PageHero } from "../components/PageHero";
+import { Heading } from "../components/Heading";
 
 export const metadata: Metadata = {
   title: "Skills — Calma",
@@ -142,17 +142,10 @@ export default function SkillsPage() {
   return (
     <div className="flex flex-col gap-24 py-24">
       <Section>
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
-            <SignalPulse className="h-4 w-4" />
-            <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
-              skills.catalog — 17 modules available
-            </span>
-          </div>
-          <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
-            Calma <span className="text-swarm-yellow text-glow">skills</span>
-            <TerminalCursor className="ml-2 align-middle" />
-          </h1>
+        <PageHero
+          eyebrow="skills.catalog — 17 modules available"
+          title={<>Calma <span className="text-swarm-yellow text-glow">skills</span></>}
+        >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Optional agent guides — conditioning stances and code-authoring depth — in the open Agent
             Skills format. Install only what your work calls for.
@@ -161,7 +154,7 @@ export default function SkillsPage() {
             Skills are not shortcuts. They are discipline prompts that load when the task matches and
             keep the agent from drifting.
           </p>
-        </div>
+        </PageHero>
       </Section>
 
       <Section className="flex flex-col gap-8">
@@ -209,9 +202,7 @@ export default function SkillsPage() {
             <Sparkles className="h-4 w-4" />
             <span>stances.conf — cognitive postures</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Conditioning stances
-          </h2>
+          <Heading className="mt-3">Conditioning stances</Heading>
           <p className="mt-4 text-concrete-400">
             Cognitive postures that tilt what the agent looks for and refuses. Load one alongside a
             task guide when the work needs a particular lens.
@@ -259,9 +250,7 @@ export default function SkillsPage() {
             <Hammer className="h-4 w-4" />
             <span>authoring.conf — change-shape guides</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Code-authoring depth
-          </h2>
+          <Heading className="mt-3">Code-authoring depth</Heading>
           <p className="mt-4 text-concrete-400">
             Guides for specific change shapes. Pick the one that matches the task so the agent does
             not treat every problem like a feature.
@@ -311,9 +300,7 @@ export default function SkillsPage() {
             <Terminal className="h-4 w-4" />
             <span>authoring.guide — write your own</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            How to write a Calma skill
-          </h2>
+          <Heading className="mt-3">How to write a Calma skill</Heading>
           <p className="mt-4 text-concrete-400">
             Skills are plain markdown, but their structure is evidence-backed: directive
             descriptions, self-contained bodies, forced visible output, and the AGENTS.md contract.
@@ -335,9 +322,7 @@ export default function SkillsPage() {
             <ShieldCheck className="h-4 w-4" />
             <span>security.note — no runtime</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Why there is no runtime
-          </h2>
+          <Heading className="mt-3">Why there is no runtime</Heading>
           <p className="mt-4 text-concrete-400">
             A skill is a markdown guide your agent reads when the work matches. You can read it
             first, pin to a commit, and audit what your agent was told to do. If you want command-line

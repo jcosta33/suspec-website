@@ -9,6 +9,7 @@ import { Section } from "../components/Section";
 import { CodeBlock } from "../components/CodeBlock";
 import { HazardStripe } from "../components/HazardStripe";
 import { TerminalWindow } from "../components/TerminalWindow";
+import { Heading } from "../components/Heading";
 import { AlertTriangle, CheckCircle, Wrench } from "lucide-react";
 
 export const metadata = {
@@ -29,7 +30,7 @@ export default function KitchenSinkPage() {
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Panels</h2>
+        <Heading>Panels</Heading>
         <div className="grid gap-6 md:grid-cols-2">
           <Panel>
             <h3 className="font-heading text-lg font-bold">Raised panel</h3>
@@ -51,7 +52,7 @@ export default function KitchenSinkPage() {
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Buttons</h2>
+        <Heading>Buttons</Heading>
         <div className="flex flex-wrap gap-4">
           <Button>Primary action</Button>
           <Button variant="secondary">Secondary action</Button>
@@ -61,7 +62,7 @@ export default function KitchenSinkPage() {
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Cards</h2>
+        <Heading>Cards</Heading>
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <h3 className="font-heading text-lg font-bold">Default card</h3>
@@ -75,7 +76,7 @@ export default function KitchenSinkPage() {
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Badges</h2>
+        <Heading>Badges</Heading>
         <div className="flex flex-wrap gap-3">
           <Badge>default</Badge>
           <Badge variant="hazard">hazard</Badge>
@@ -84,7 +85,7 @@ export default function KitchenSinkPage() {
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Pilot lamps</h2>
+        <Heading>Pilot lamps</Heading>
         <div className="flex flex-wrap items-center gap-6">
           <PilotLamp color="amber" pulse label="active" />
           <PilotLamp color="green" label="ok" />
@@ -94,12 +95,12 @@ export default function KitchenSinkPage() {
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Toggle switch</h2>
+        <Heading>Toggle switch</Heading>
         <ToggleButton label="Enable override" />
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Rack row</h2>
+        <Heading>Rack row</Heading>
         <RackRow>
           <Card hardware>Module A</Card>
           <Card hardware>Module B</Card>
@@ -108,13 +109,13 @@ export default function KitchenSinkPage() {
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Code block</h2>
+        <Heading>Code block</Heading>
         <CodeBlock>{`loop:
   spec -> task -> run -> review -> close`}</CodeBlock>
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Terminal window</h2>
+        <Heading>Terminal window</Heading>
         <TerminalWindow title="terminal">
           <p className="text-concrete-500"># CRT monitor panel</p>
           <p className="text-concrete-100">
@@ -125,12 +126,12 @@ export default function KitchenSinkPage() {
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Hazard stripe</h2>
+        <Heading>Hazard stripe</Heading>
         <HazardStripe height="md" />
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Icons</h2>
+        <Heading>Icons</Heading>
         <div className="flex gap-4 text-swarm-yellow">
           <AlertTriangle aria-label="Warning" />
           <CheckCircle aria-label="Success" />
@@ -139,7 +140,7 @@ export default function KitchenSinkPage() {
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight">Typography</h2>
+        <Heading>Typography</Heading>
         <div className="space-y-4">
           <p className="text-concrete-100">Primary text on chassis background.</p>
           <p className="text-concrete-400">Secondary text for captions and metadata.</p>

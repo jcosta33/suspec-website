@@ -170,7 +170,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <button
             ref={toggleRef}
             type="button"
-            className="toggle inline-flex items-center justify-center rounded-[3px] border border-panel-border bg-panel-raised p-2 text-concrete-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-2px_0_rgba(0,0,0,0.5)] hover:text-swarm-yellow focus-ring active:translate-y-px active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.45)] lg:hidden"
+            className="toggle inline-flex items-center justify-center rounded-panel border border-panel-border bg-panel-raised p-2 text-concrete-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-2px_0_rgba(0,0,0,0.5)] hover:text-swarm-yellow focus-ring active:translate-y-px active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.45)] lg:hidden"
             aria-expanded={menuOpen}
             aria-label="Toggle navigation menu"
             onClick={() => setMenuOpen((open) => !open)}

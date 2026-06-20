@@ -28,6 +28,9 @@
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
   --font-heading: var(--font-space-grotesk);
+
+  /* One radius for the industrial-panel family */
+  --radius-panel: 3px;
 }
 
 :root {
@@ -165,7 +168,7 @@ body::after {
 /* Raised chassis plate */
 .panel-raised {
   position: relative;
-  border-radius: 2px;
+  border-radius: var(--radius-panel);
   border: 1px solid var(--color-panel-border);
   background-color: var(--color-panel-raised);
   background-image: linear-gradient(
@@ -181,7 +184,7 @@ body::after {
 /* Recessed well / screen */
 .panel-inset {
   position: relative;
-  border-radius: 2px;
+  border-radius: var(--radius-panel);
   border: 1px solid var(--color-panel-border);
   background-color: var(--color-panel-recessed);
   box-shadow:

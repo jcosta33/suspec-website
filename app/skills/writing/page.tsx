@@ -20,8 +20,8 @@ import { Panel } from "../../components/Panel";
 import { TerminalWindow } from "../../components/TerminalWindow";
 import { DroneIcon } from "../../components/DroneIcon";
 import { HexBadge } from "../../components/HexBadge";
-import { SignalPulse } from "../../components/SignalPulse";
-import { TerminalCursor } from "../../components/TerminalCursor";
+import { PageHero } from "../../components/PageHero";
+import { Heading } from "../../components/Heading";
 import { PilotLamp } from "../../components/PilotLamp";
 
 export const metadata: Metadata = {
@@ -71,17 +71,10 @@ export default function WritingSkillsPage() {
   return (
     <div className="flex flex-col gap-24 py-24">
       <Section>
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
-            <SignalPulse className="h-4 w-4" />
-            <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
-              SKILL.md — open Agent Skills format
-            </span>
-          </div>
-          <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
-            Writing a <span className="text-swarm-yellow text-glow">skill</span>
-            <TerminalCursor className="ml-2 align-middle" />
-          </h1>
+        <PageHero
+          eyebrow="SKILL.md — open Agent Skills format"
+          title={<>Writing a <span className="text-swarm-yellow text-glow">skill</span></>}
+        >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             A skill is a markdown file your agent reads when the work matches. It is instructions,
             not magic — and like any prompt, its structure determines whether it actually fires.
@@ -99,7 +92,7 @@ export default function WritingSkillsPage() {
             . No shortcuts. No silver bullets. Just a format that makes the agent more likely to do
             the right thing.
           </p>
-        </div>
+        </PageHero>
       </Section>
 
       <Section>
@@ -189,9 +182,7 @@ export default function WritingSkillsPage() {
             <Terminal className="h-4 w-4" />
             <span>description.yaml — the load-bearing line</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Activation: the directive description
-          </h2>
+          <Heading className="mt-3">Activation: the directive description</Heading>
           <p className="mt-4 text-concrete-400">
             Agents scan the <code className="text-swarm-yellow">description</code> to decide whether to load the skill. A
             self-published 650-trial measurement (one author, not peer-reviewed) reported passive
@@ -226,9 +217,7 @@ export default function WritingSkillsPage() {
           </Card>
         </div>
         <div className="max-w-3xl">
-          <h3 className="font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
-            Four required clauses
-          </h3>
+          <Heading as="h3" size="lg">Four required clauses</Heading>
           <ul className="mt-4 space-y-3 text-concrete-400">
             <li>
               <strong className="text-concrete-100">WHAT.</strong> Open with an imperative verb:
@@ -262,9 +251,7 @@ export default function WritingSkillsPage() {
             <BookOpen className="h-4 w-4" />
             <span>body.md — the rules that fire after activation</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Body anatomy
-          </h2>
+          <Heading className="mt-3">Body anatomy</Heading>
           <p className="mt-4 text-concrete-400">
             Activation is necessary but not sufficient. The body must be shaped so the agent acts on
             it. Long contexts suffer from U-shaped attention: the start and end are remembered; the
@@ -288,9 +275,7 @@ export default function WritingSkillsPage() {
           })}
         </div>
         <div className="max-w-3xl">
-          <h3 className="font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
-            Length budgets
-          </h3>
+          <Heading as="h3" size="lg">Length budgets</Heading>
           <ul className="mt-4 space-y-2 text-concrete-400">
             <li>
               <strong className="text-concrete-100">~200 lines</strong> is the practical target.
@@ -331,9 +316,7 @@ export default function WritingSkillsPage() {
             <Zap className="h-4 w-4" />
             <span>execution.log — make the invisible visible</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Forced visible output
-          </h2>
+          <Heading className="mt-3">Forced visible output</Heading>
           <p className="mt-4 text-concrete-400">
             Skills have two reliability problems: activation and execution. A loaded skill can still
             skip late-stage verification steps because they produce no visible content. The fix is
@@ -373,9 +356,7 @@ export default function WritingSkillsPage() {
             <Shield className="h-4 w-4" />
             <span>self-containment.md — no sibling dependencies</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Self-containment
-          </h2>
+          <Heading className="mt-3">Self-containment</Heading>
           <p className="mt-4 text-concrete-400">
             A user who installs only <code className="text-swarm-yellow">write-feature</code> does not have{" "}
             <code className="text-swarm-yellow">empirical-proof</code> in context. Therefore <code className="text-swarm-yellow">write-feature</code> must read
@@ -384,9 +365,7 @@ export default function WritingSkillsPage() {
           </p>
         </div>
         <div className="max-w-3xl">
-          <h3 className="font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
-            The AGENTS.md contract
-          </h3>
+          <Heading as="h3" size="lg">The AGENTS.md contract</Heading>
           <p className="mt-4 text-concrete-400">
             Skills name abstract command slots — <code className="text-swarm-yellow">cmdTest</code>, <code className="text-swarm-yellow">cmdLint</code>,{" "}
             <code className="text-swarm-yellow">cmdValidate</code> — never concrete commands. The consuming repo&apos;s{" "}
@@ -406,9 +385,7 @@ export default function WritingSkillsPage() {
             <FileText className="h-4 w-4" />
             <span>task-template.md — externalised working memory</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Task templates
-          </h2>
+          <Heading className="mt-3">Task templates</Heading>
           <p className="mt-4 text-concrete-400">
             Long-running tasks accumulate intermediate findings, abandoned hypotheses, and decisions.
             The task file is the agent&apos;s working memory, written to disk. It is not the
@@ -416,9 +393,7 @@ export default function WritingSkillsPage() {
           </p>
         </div>
         <div className="max-w-3xl">
-          <h3 className="font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
-            The MIHPSG rubric
-          </h3>
+          <Heading as="h3" size="lg">The MIHPSG rubric</Heading>
           <p className="mt-4 text-concrete-400">
             Ship a <code className="text-swarm-yellow">references/task-template.md</code> only when at least three of these six
             criteria hold:
@@ -476,9 +451,7 @@ export default function WritingSkillsPage() {
             <Box className="h-4 w-4" />
             <span>scope.txt — what stays out</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Scope
-          </h2>
+          <Heading className="mt-3">Scope</Heading>
           <p className="mt-4 text-concrete-400">
             A skill must be useful in any consumer repo, by itself, with no implicit dependencies.
             The catalogue is deliberately narrow so it stays portable.
@@ -511,9 +484,7 @@ export default function WritingSkillsPage() {
             <GitBranch className="h-4 w-4" />
             <span>next steps</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Read the full reference
-          </h2>
+          <Heading className="mt-3">Read the full reference</Heading>
           <p className="mt-4 text-concrete-400">
             This page is a summary. The full reasoning, controlled studies, and sample skills live in
             the repositories.

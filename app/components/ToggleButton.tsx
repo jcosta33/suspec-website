@@ -35,12 +35,12 @@ export function ToggleButton({
       className={`group inline-flex items-center gap-3 focus-ring rounded-sm ${className}`}
     >
       <span
-        className={`relative inline-flex h-7 w-14 items-center rounded-sm border border-panel-border panel-inset transition-colors ${
+        className={`relative inline-flex h-7 w-14 items-center border border-panel-border panel-inset transition-colors ${
           isChecked ? "bg-panel-raised" : "bg-panel-recessed"
         }`}
       >
         <span
-          className={`absolute top-0.5 left-0.5 h-5 w-5 rounded-sm border border-panel-border panel-raised transition-transform duration-150 ${
+          className={`absolute top-0.5 left-0.5 h-5 w-5 border border-panel-border panel-raised transition-transform duration-150 ${
             isChecked ? "translate-x-7 bg-swarm-yellow" : "translate-x-0 bg-concrete-400"
           }`}
         />

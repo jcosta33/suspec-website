@@ -8,8 +8,8 @@ import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { HazardStripe } from "../components/HazardStripe";
 import { HexBadge } from "../components/HexBadge";
-import { SignalPulse } from "../components/SignalPulse";
-import { TerminalCursor } from "../components/TerminalCursor";
+import { PageHero } from "../components/PageHero";
+import { Heading } from "../components/Heading";
 
 const stepIcons = [Inbox, FileText, ListChecks, Terminal, ScanEye, GitMerge];
 
@@ -133,22 +133,15 @@ export default function TheLoopPage() {
   return (
     <div className="flex flex-col gap-24 py-24">
       <Section>
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
-            <SignalPulse className="h-4 w-4" />
-            <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
-              flight plan — 6 waypoints
-            </span>
-          </div>
-          <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
-            The <span className="text-swarm-yellow text-glow">loop</span>
-            <TerminalCursor className="ml-2 align-middle" />
-          </h1>
+        <PageHero
+          eyebrow="flight plan — 6 waypoints"
+          title={<>The <span className="text-swarm-yellow text-glow">loop</span></>}
+        >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Pull → Spec → Task → Run → Review → Close. Each step produces a file the next step can
             read. The agent does the work between gates; a human decides at every gate.
           </p>
-        </div>
+        </PageHero>
       </Section>
 
       <HazardStripe height="sm" />
@@ -177,16 +170,17 @@ export default function TheLoopPage() {
                 <div>
                   <div className="flex items-center gap-2">
                     <Icon className="h-5 w-5 text-swarm-yellow" aria-hidden="true" />
-                    <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-                      {step.name}
-                    </h2>
+                    <Heading>{step.name}</Heading>
                   </div>
                   <p className="mt-4 text-concrete-400">{step.body}</p>
                 </div>
               </div>
             </div>
             <Panel brushed className="p-2">
-              <TerminalWindow title={step.example.title}>
+              <TerminalWindow
+                title={step.example.title}
+                ariaLabel={`${step.name} — ${step.example.title}`}
+              >
                 {step.example.lines.map((line, i) => (
                   <p key={i} className={line.prompt ? "text-concrete-100" : "text-concrete-400"}>
                     {line.prompt && <span className="text-swarm-yellow">$ </span>}
@@ -203,9 +197,7 @@ export default function TheLoopPage() {
       <Section>
         <Card hardware className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-              Ready to run it?
-            </h2>
+            <Heading>Ready to run it?</Heading>
             <p className="mt-2 text-concrete-400">
               Copy the starter kit and write your first spec. The loop is the same on day one as on
               day one hundred — it just gets cheaper.

@@ -6,6 +6,7 @@ import { Card } from "../components/Card";
 import { Button } from "../components/Button";
 import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
+import { Heading } from "../components/Heading";
 
 export const metadata: Metadata = {
   title: "Get started — Calma",
@@ -66,9 +67,7 @@ export default function GetStartedPage() {
             <Rocket className="h-6 w-6" aria-hidden="true" />
           </KitIcon>
           <div>
-            <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-              New repo
-            </h2>
+            <Heading>New repo</Heading>
             <p className="mt-2 text-concrete-400">
               Use the GitHub template to create a fresh Calma workspace with the folder structure,
               templates, and agent guides already in place.
@@ -90,9 +89,7 @@ export default function GetStartedPage() {
             <FolderPlus className="h-6 w-6" aria-hidden="true" />
           </KitIcon>
           <div>
-            <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-              Existing project
-            </h2>
+            <Heading>Existing project</Heading>
             <p className="mt-2 text-concrete-400">
               Copy the starter kit into a workspace folder inside your existing repo. Add specs and
               tasks alongside your code without changing the project structure.
@@ -115,9 +112,7 @@ export default function GetStartedPage() {
           <Terminal className="h-4 w-4" />
           <span>or scaffold it with the cli</span>
         </div>
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-          Prefer the command line?
-        </h2>
+        <Heading>Prefer the command line?</Heading>
         <p className="max-w-2xl text-concrete-400">
           <code className="text-swarm-yellow">swarm init</code> scaffolds the same workspace into a new
           or existing repo — conflict-safe, so it never clobbers files you already have. The CLI is not
@@ -151,9 +146,7 @@ export default function GetStartedPage() {
       </Section>
 
       <Section className="flex flex-col gap-8">
-        <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-          What the starter kit gives you
-        </h2>
+        <Heading>What the starter kit gives you</Heading>
         <ul className="grid gap-4 sm:grid-cols-2">
           <li className="flex items-start gap-3 text-concrete-400">
             <ListDot />
@@ -207,9 +200,7 @@ export default function GetStartedPage() {
               <Wrench className="h-6 w-6" aria-hidden="true" />
             </KitIcon>
             <div>
-              <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-                Need more depth?
-              </h2>
+              <Heading>Need more depth?</Heading>
               <p className="mt-2 text-concrete-400">
                 Install optional skills for specific stances and change shapes — persona-skeptic,
                 write-feature, write-fix, and others.

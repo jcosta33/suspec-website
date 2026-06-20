@@ -64,7 +64,7 @@
   color: var(--color-concrete-400);
   text-decoration: none;
   border-left: 2px solid transparent;
-  border-radius: 0 3px 3px 0;
+  border-radius: 0 var(--radius-panel) var(--radius-panel) 0;
   transition: color 0.12s, background-color 0.12s, border-color 0.12s;
 }
 .docs-nav a:hover {
@@ -87,7 +87,7 @@
   --pagefind-ui-border: var(--color-panel-border);
   --pagefind-ui-tag: var(--color-panel-raised);
   --pagefind-ui-border-width: 1px;
-  --pagefind-ui-border-radius: 3px;
+  --pagefind-ui-border-radius: var(--radius-panel);
   --pagefind-ui-font: var(--font-sans), sans-serif;
   margin-bottom: 1.5rem;
 }
@@ -193,7 +193,7 @@
   background: var(--color-panel-recessed);
   border: 1px solid var(--color-panel-border);
   padding: 0.08em 0.34em;
-  border-radius: 3px;
+  border-radius: var(--radius-panel);
 }
 
 /* Code blocks — recessed screen */
@@ -204,7 +204,7 @@
   color: var(--color-concrete-200);
   background: var(--color-panel-recessed);
   border: 1px solid var(--color-panel-border);
-  border-radius: 3px;
+  border-radius: var(--radius-panel);
   padding: 1rem 1.1rem;
   margin: 1.25rem 0;
   overflow-x: auto;
@@ -224,7 +224,7 @@
   padding: 0.6rem 1.1rem;
   border-left: 3px solid var(--color-swarm-yellow);
   background: var(--color-panel-raised);
-  border-radius: 0 3px 3px 0;
+  border-radius: 0 var(--radius-panel) var(--radius-panel) 0;
   color: var(--color-concrete-300);
 }
 .docs-prose blockquote p {
@@ -240,7 +240,7 @@
   display: block;
   overflow-x: auto;
   border: 1px solid var(--color-panel-border);
-  border-radius: 3px;
+  border-radius: var(--radius-panel);
 }
 .docs-prose thead {
   background: var(--color-panel-raised);
@@ -270,7 +270,7 @@
 }
 .docs-prose img {
   max-width: 100%;
-  border-radius: 3px;
+  border-radius: var(--radius-panel);
 }
 
 /* Docs index landing */

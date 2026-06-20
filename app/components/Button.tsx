@@ -29,7 +29,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "toggle inline-flex items-center justify-center gap-2 rounded-[3px] px-6 py-3 text-base font-semibold focus-ring";
+    "toggle inline-flex items-center justify-center gap-2 rounded-panel px-6 py-3 text-base font-semibold focus-ring";
 
   const styles = {
     primary: [

@@ -6,8 +6,8 @@ import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { DroneIcon } from "../components/DroneIcon";
 import { HexBadge } from "../components/HexBadge";
-import { SignalPulse } from "../components/SignalPulse";
-import { TerminalCursor } from "../components/TerminalCursor";
+import { PageHero } from "../components/PageHero";
+import { Heading } from "../components/Heading";
 import { PilotLamp } from "../components/PilotLamp";
 import {
   ArrowRight,
@@ -156,23 +156,16 @@ export default function WhatIsCalmaPage() {
   return (
     <div className="flex flex-col gap-24 py-24">
       <Section>
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
-            <SignalPulse className="h-4 w-4" />
-            <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
-              system overview
-            </span>
-          </div>
-          <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
-            What is <span className="text-swarm-yellow text-glow">Calma</span>
-            <TerminalCursor className="ml-2 align-middle" />
-          </h1>
+        <PageHero
+          eyebrow="system overview"
+          title={<>What is <span className="text-swarm-yellow text-glow">Calma</span></>}
+        >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             A lightweight spec-and-review discipline for teams using coding agents. Calma assumes the
             agent will drift, over-engineer, or skip the edge case — and gives you the files to catch
             it before it ships.
           </p>
-        </div>
+        </PageHero>
       </Section>
 
       <Section>
@@ -203,9 +196,7 @@ export default function WhatIsCalmaPage() {
             <CheckCircle className="h-4 w-4" />
             <span>capabilities.conf — loaded</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            What Calma is
-          </h2>
+          <Heading className="mt-3">What Calma is</Heading>
           <ul className="mt-6 space-y-4">
             {isList.map((item) => {
               const Icon = item.icon;
@@ -226,9 +217,7 @@ export default function WhatIsCalmaPage() {
             <XCircle className="h-4 w-4" />
             <span>capabilities.conf — excluded</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            What Calma is not
-          </h2>
+          <Heading className="mt-3">What Calma is not</Heading>
           <ul className="mt-6 space-y-3">
             {isNotList.map((item) => (
               <li key={item} className="flex items-start gap-3 text-concrete-400">
@@ -249,9 +238,7 @@ export default function WhatIsCalmaPage() {
             <DroneIcon className="h-4 w-4" />
             <span>network.map — adjacent nodes</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Where Calma sits
-          </h2>
+          <Heading className="mt-3">Where Calma sits</Heading>
         </div>
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {adjacent.map((row) => (
@@ -282,9 +269,7 @@ export default function WhatIsCalmaPage() {
             <ShieldAlert className="h-4 w-4" />
             <span>error.log — 6 failure modes detected</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Failure modes you are already seeing
-          </h2>
+          <Heading className="mt-3">Failure modes you are already seeing</Heading>
         </div>
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {failureModes.map((fm) => (
@@ -296,9 +281,7 @@ export default function WhatIsCalmaPage() {
                   </HexBadge>
                   <div>
                     <p className="font-mono text-xs text-hazard-orange">{fm.code}</p>
-                    <h3 className="mt-0.5 font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
-                      {fm.mode}
-                    </h3>
+                    <Heading as="h3" size="lg" className="mt-0.5">{fm.mode}</Heading>
                   </div>
                 </div>
                 <p className="mt-4 text-sm text-concrete-400">{fm.looksLike}</p>
@@ -314,9 +297,7 @@ export default function WhatIsCalmaPage() {
       <Section>
         <Card hardware className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-              See how it actually runs
-            </h2>
+            <Heading>See how it actually runs</Heading>
             <p className="mt-2 text-concrete-400">
               Six steps, each producing a file the next one reads. That is the whole framework — no
               runtime, no magic.

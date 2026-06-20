@@ -5,13 +5,19 @@ export interface TerminalWindowProps {
   children: ReactNode;
   className?: string;
   title?: string;
+  ariaLabel?: string;
 }
 
-export function TerminalWindow({ children, className = "", title = "calma" }: TerminalWindowProps) {
+export function TerminalWindow({
+  children,
+  className = "",
+  title = "calma",
+  ariaLabel,
+}: TerminalWindowProps) {
   return (
     <div
       role="region"
-      aria-label={title}
+      aria-label={ariaLabel ?? title}
       style={{ contentVisibility: "auto", containIntrinsicSize: "auto 18rem" }}
       className={`relative overflow-hidden rounded-sm border border-panel-border bg-panel-raised shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-2px_0_rgba(0,0,0,0.5)] ${className}`}
     >

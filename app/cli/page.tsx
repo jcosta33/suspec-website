@@ -18,8 +18,8 @@ import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { DroneIcon } from "../components/DroneIcon";
 import { HexBadge } from "../components/HexBadge";
-import { SignalPulse } from "../components/SignalPulse";
-import { TerminalCursor } from "../components/TerminalCursor";
+import { PageHero } from "../components/PageHero";
+import { Heading } from "../components/Heading";
 import { Badge } from "../components/Badge";
 import { PilotLamp } from "../components/PilotLamp";
 
@@ -70,17 +70,10 @@ export default function CliPage() {
   return (
     <div className="flex flex-col gap-24 py-24">
       <Section>
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-3 panel-raised brushed-metal px-4 py-1.5">
-            <SignalPulse className="h-4 w-4" />
-            <span className="text-xs font-mono font-medium uppercase tracking-widest engraved">
-              calma-cli — reference implementation
-            </span>
-          </div>
-          <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 sm:text-5xl lg:text-6xl">
-            calma<span className="text-swarm-yellow text-glow">-cli</span>
-            <TerminalCursor className="ml-2 align-middle" />
-          </h1>
+        <PageHero
+          eyebrow="calma-cli — reference implementation"
+          title={<>calma<span className="text-swarm-yellow text-glow">-cli</span></>}
+        >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Optional command-line help for the Calma workflow. The framework is just markdown and
             conventions; the CLI does the chores — checks your specs, isolates each task in its own git
@@ -96,7 +89,7 @@ export default function CliPage() {
             <Badge variant="default">Node &gt;= 18.18</Badge>
             <Badge variant="default">Needs git</Badge>
           </div>
-        </div>
+        </PageHero>
       </Section>
 
       <Section className="flex flex-col gap-8">
@@ -155,9 +148,7 @@ export default function CliPage() {
             <Bug className="h-4 w-4" />
             <span>commands.json — currently dispatching</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Commands that already dispatch
-          </h2>
+          <Heading className="mt-3">Commands that already dispatch</Heading>
           <p className="mt-4 text-concrete-400">
             The set that runs today — and &ldquo;advertised equals dispatchable&rdquo; is checked by its own
             test, so this list cannot quietly lie to you. The one worth knowing first is{" "}
@@ -199,9 +190,7 @@ export default function CliPage() {
             <DroneIcon className="h-4 w-4" />
             <span>design.md — why a CLI?</span>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Why a CLI if Calma is markdown-only?
-          </h2>
+          <Heading className="mt-3">Why a CLI if Calma is markdown-only?</Heading>
           <p className="mt-4 text-concrete-400">
             The workflow itself is just conventions and files — you can run all of Calma with a text
             editor and a straight face. The CLI is optional: it scaffolds the workspace, runs the checks
@@ -233,9 +222,7 @@ export default function CliPage() {
       <Section>
         <Card hardware className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-              Don&apos;t need the CLI yet?
-            </h2>
+            <Heading>Don&apos;t need the CLI yet?</Heading>
             <p className="mt-2 text-concrete-400">
               The whole workflow runs in plain markdown. Copy the starter kit and write a spec — add
               the CLI later, if and when the typing starts to annoy you.
@@ -251,9 +238,7 @@ export default function CliPage() {
 
       <Section>
         <Card hardware className="max-w-2xl border-panel-border">
-          <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-concrete-100">
-            Reference repository
-          </h2>
+          <Heading>Reference repository</Heading>
           <p className="mt-4 text-concrete-400">
             The CLI is developed in the open. Issues, feature requests, and adversarial review are
             all welcome.
