@@ -41,7 +41,9 @@ export const metadata: Metadata = {
     description:
       "An optional catalog of agent guides for Calma workflows: conditioning stances and code-authoring depth, installable into any agent CLI.",
     type: "website",
+    url: "/skills/",
     siteName: "Calma",
+    locale: "en_US",
     images: [
       { url: "/og-skills.png", width: 1200, height: 630, alt: "Calma skills — conditioning stances and code-authoring depth guides" },
     ],

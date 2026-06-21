@@ -52,7 +52,9 @@ export const metadata: Metadata = {
     description:
       "AI writes code that looks right. Calma is a lightweight spec-and-review workflow that keeps humans in the driver seat. Plain markdown, any agent, no runtime.",
     type: "website",
+    url: "/",
     siteName: "Calma",
+    locale: "en_US",
     images: [
       { url: "/og-home.png", width: 1200, height: 630, alt: "Calma — specs for humans, tasks for agents" },
     ],

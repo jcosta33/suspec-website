@@ -214,7 +214,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
                     key={link.label}
                     link={link}
                     isActive={active}
-                    showIndicator
                     onClick={() => setMenuOpen(false)}
                     className={`min-h-11 -mx-2 px-2 text-base font-medium transition-[color] focus-ring rounded-sm ${
                       active
@@ -264,7 +263,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
                   key={link.label}
                   link={link}
                   isActive={active}
-                  showIndicator
                   className={`min-h-11 text-sm font-medium transition-[color] focus-ring rounded-sm ${
                     active
                       ? "text-swarm-yellow"

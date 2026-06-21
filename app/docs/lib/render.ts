@@ -143,15 +143,29 @@ export function titleOf(markdown: string): string {
 // Skips the H1, the italic "*Works today…*" subtitle, headings, quotes, tables, lists, code, HTML.
 // Canon prose is hard-wrapped at ~95 cols, so a single physical line cuts mid-sentence — accumulate
 // the whole first paragraph (until a blank line or a non-prose line), then trim to a word boundary.
+// ADRs open with "## Status" + a one-word value ("Accepted") — skip that section so the description
+// is the Context body, not the bare status word.
+const SKIP_SECTIONS = new Set(["status"]);
 export function descriptionOf(markdown: string): string {
+  // Strip a leading YAML frontmatter block (--- … ---) so its keys (type/id/status/…) aren't read
+  // as prose — the newer ADRs carry frontmatter; without this the description becomes "type: adr …".
+  const body = markdown.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, "");
+  const isHeading = (line: string): boolean => line.startsWith("#");
   const isProse = (line: string): boolean =>
-    line !== "" && !line.startsWith("#") && !/^[>|\-*+`<_]/.test(line);
+    line !== "" && !isHeading(line) && !/^[>|\-*+`<_]/.test(line);
   const parts: string[] = [];
   let started = false;
-  for (const raw of markdown.split(/\r?\n/)) {
+  let lastHeading = "";
+  for (const raw of body.split(/\r?\n/)) {
     const line = raw.trim();
+    if (isHeading(line)) {
+      if (started) break; // a new heading ends the paragraph we were collecting
+      lastHeading = line.replace(/^#+\s*/, "").replace(/[`*_]/g, "").trim().toLowerCase();
+      continue;
+    }
     if (!started) {
       if (!isProse(line)) continue; // skip the H1 / subtitle / front matter until prose begins
+      if (SKIP_SECTIONS.has(lastHeading)) continue; // skip a skipped-section's body, keep scanning
       started = true;
       parts.push(line);
     } else {

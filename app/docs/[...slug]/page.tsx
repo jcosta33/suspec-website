@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { listDocs, readDoc, humanizeSegment, docSequence } from "../lib/canon";
 import { renderDoc, titleOf, descriptionOf } from "../lib/render";
 import { JsonLd } from "../../components/JsonLd";
+import { DocsToc } from "../components/DocsToc";
 
 export const dynamicParams = false;
 
@@ -57,6 +58,7 @@ function articleFor(slug: string[], title: string, description: string) {
     inLanguage: "en",
     url,
     mainEntityOfPage: url,
+    image: `${SITE_URL}/og-home.png`,
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
   };
@@ -79,6 +81,15 @@ export async function generateMetadata({
     title: `${titleOf(md)} · Swarm`,
     description: descriptionOf(md),
     alternates: { canonical }, // self-canonical (was inheriting the home page's "/")
+    openGraph: {
+      // og:type=article (a doc is an article) + og:url=canonical so reshares consolidate; siteName +
+      // image come from the layout default but openGraph is replaced wholesale, so restate them.
+      type: "article",
+      url: canonical,
+      siteName: "Calma",
+      locale: "en_US",
+      images: [{ url: "/og-home.png", width: 1200, height: 630, alt: titleOf(md) }],
+    },
   };
 }
 
@@ -138,18 +149,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
         </div>
       </div>
 
-      {headings.length >= 4 && (
-        <nav className="docs-toc" aria-label="On this page">
-          <p className="docs-toc-title">On this page</p>
-          <ul>
-            {headings.map((h) => (
-              <li key={h.id} className={h.depth === 3 ? "docs-toc-sub" : undefined}>
-                <a href={`#${h.id}`}>{h.text}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+      {headings.length >= 4 && <DocsToc headings={headings} />}
     </>
   );
 }

@@ -76,6 +76,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Calma",
+    locale: "en_US",
     images: [
       { url: "/og-home.png", width: 1200, height: 630, alt: "Calma — a spec-and-review workflow for coding agents" },
     ],
