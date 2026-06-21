@@ -3,7 +3,7 @@
 .docs-layout {
   display: flex;
   gap: 3rem;
-  max-width: 80rem; /* match the Shell's max-w-7xl chrome */
+  max-width: 84rem; /* room for sidebar + prose + the on-this-page rail on wide screens */
   margin: 0 auto;
   padding: 2.5rem 1.5rem 5rem;
   align-items: flex-start;
@@ -177,6 +177,62 @@
 .docs-search input::placeholder {
   opacity: 1;
   color: var(--color-concrete-500);
+}
+
+/* ---------- On-this-page TOC rail (wide screens only — hidden where there isn't room) ---------- */
+.docs-toc {
+  display: none;
+}
+@media (min-width: 80rem) {
+  .docs-toc {
+    display: block;
+    flex: 0 0 13rem;
+    position: sticky;
+    top: 5rem;
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+  }
+  .docs-toc-title {
+    font-family: var(--font-heading), sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-concrete-500);
+    margin: 0 0 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--color-panel-border);
+  }
+  .docs-toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .docs-toc li {
+    margin: 0.1rem 0;
+  }
+  .docs-toc li.docs-toc-sub {
+    padding-left: 0.85rem;
+  }
+  .docs-toc a {
+    display: block;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.82rem;
+    line-height: 1.35;
+    color: var(--color-concrete-400);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.12s, border-color 0.12s;
+  }
+  .docs-toc a:hover {
+    color: var(--color-swarm-yellow);
+    border-left-color: var(--color-brass);
+  }
+  .docs-toc a:focus-visible {
+    outline: 2px solid var(--color-swarm-yellow);
+    outline-offset: 2px;
+    border-radius: var(--radius-panel);
+  }
 }
 
 /* ---------- Prose ---------- */

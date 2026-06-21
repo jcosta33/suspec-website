@@ -37,7 +37,7 @@ export default function DocsIndex() {
   const adrs = find("ADRs");
 
   return (
-    <>
+    <div className="docs-prose" data-pagefind-body>
       <h1>Swarm documentation</h1>
       <p>
         A spec and review workflow for teams using coding agents. New to it?{" "}
@@ -63,6 +63,6 @@ export default function DocsIndex() {
           </p>
         </section>
       ) : null}
-    </>
+    </div>
   );
 }

@@ -14,7 +14,9 @@ import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import { visit } from "unist-util-visit";
 import type { Root } from "mdast";
-import type { Root as HastRoot } from "hast";
+import type { Root as HastRoot, Element as HastElement, ElementContent } from "hast";
+
+export type DocHeading = { depth: 2 | 3; id: string; text: string };
 
 const REPO_ROOT = path.join(CANON, ".."); // the swarm repo root (docs/ lives under it)
 const GH_BLOB = "https://github.com/jcosta33/swarm/blob/main/";
@@ -90,7 +92,31 @@ const rehypeFocusableScrollables: Plugin<[], HastRoot> = () => (tree) => {
   });
 };
 
-export async function renderDoc(markdown: string, currentDir: string): Promise<string> {
+// Plain-text content of a hast element (heading labels for the on-this-page TOC).
+const hastText = (nodes: ElementContent[]): string =>
+  nodes
+    .map((n) => (n.type === "text" ? n.value : "children" in n ? hastText(n.children) : ""))
+    .join("");
+
+// Collect h2/h3 with their (rehype-slug-assigned) ids — must run AFTER rehypeSlug so ids exist.
+const rehypeCollectHeadings =
+  (out: DocHeading[]): Plugin<[], HastRoot> =>
+  () =>
+  (tree) => {
+    visit(tree, "element", (node: HastElement) => {
+      if (node.tagName !== "h2" && node.tagName !== "h3") return;
+      const id = typeof node.properties?.id === "string" ? node.properties.id : "";
+      if (!id) return;
+      const text = hastText(node.children).trim();
+      if (text) out.push({ depth: node.tagName === "h2" ? 2 : 3, id, text });
+    });
+  };
+
+export async function renderDoc(
+  markdown: string,
+  currentDir: string
+): Promise<{ html: string; headings: DocHeading[] }> {
+  const headings: DocHeading[] = [];
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -99,11 +125,12 @@ export async function renderDoc(markdown: string, currentDir: string): Promise<s
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeSlug)
+    .use(rehypeCollectHeadings(headings))
     .use(rehypeLabelTaskCheckboxes)
     .use(rehypeFocusableScrollables)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(markdown);
-  return String(file);
+  return { html: String(file), headings };
 }
 
 // First H1 as the page title (the canon's numbered/reference pages carry no frontmatter).

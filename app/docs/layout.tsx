@@ -12,12 +12,10 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
         <SearchBox />
         <DocsNav nav={nav} />
       </aside>
-      {/* A <div>, not <main>: the app Shell already provides the single <main id="main-content">
-          landmark; a nested second <main> fails axe (landmark-no-duplicate-main / -unique). [a11y gate]
-          data-pagefind-body scopes the search index to docs content only (not the marketing pages). */}
-      <div className="docs-prose" data-pagefind-body>
-        {children}
-      </div>
+      {/* The page renders its own `.docs-prose` (a <div>, not <main> — the Shell owns the single
+          <main id="main-content">; it carries data-pagefind-body to scope the search index to article
+          content) plus, for long docs, a `.docs-toc` rail — both as flex children of .docs-layout. */}
+      {children}
     </div>
   );
 }

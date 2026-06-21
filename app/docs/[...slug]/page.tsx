@@ -88,7 +88,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
   const md = readDoc(slugPath);
   if (md === null) notFound();
   const dir = path.posix.dirname(slugPath);
-  const html = await renderDoc(md, dir === "." ? "" : dir);
+  const { html, headings } = await renderDoc(md, dir === "." ? "" : dir);
 
   // Prev/next within the reading order, so a deep-doc / search landing isn't a dead end. Use each
   // doc's real title (not the short nav label) so a section-index page reads as e.g. "Worked
@@ -106,35 +106,50 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
     <>
       <JsonLd data={breadcrumbFor(slug, titleOf(md))} />
       <JsonLd data={articleFor(slug, titleOf(md), descriptionOf(md))} />
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <div className="docs-prose" data-pagefind-body>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
 
-      {(prev || next) && (
-        <nav className="docs-pager" aria-label="Documentation pages">
-          {prev ? (
-            <Link className="docs-pager-link docs-pager-prev" href={`/docs/${prev.slug}/`} rel="prev">
-              <span className="docs-pager-dir">← Previous</span>
-              <span className="docs-pager-title">{pagerLabel(prev.slug)}</span>
-            </Link>
-          ) : (
-            <span />
-          )}
-          {next ? (
-            <Link className="docs-pager-link docs-pager-next" href={`/docs/${next.slug}/`} rel="next">
-              <span className="docs-pager-dir">Next →</span>
-              <span className="docs-pager-title">{pagerLabel(next.slug)}</span>
-            </Link>
-          ) : (
-            <span />
-          )}
+        {(prev || next) && (
+          <nav className="docs-pager" aria-label="Documentation pages">
+            {prev ? (
+              <Link className="docs-pager-link docs-pager-prev" href={`/docs/${prev.slug}/`} rel="prev">
+                <span className="docs-pager-dir">← Previous</span>
+                <span className="docs-pager-title">{pagerLabel(prev.slug)}</span>
+              </Link>
+            ) : (
+              <span />
+            )}
+            {next ? (
+              <Link className="docs-pager-link docs-pager-next" href={`/docs/${next.slug}/`} rel="next">
+                <span className="docs-pager-dir">Next →</span>
+                <span className="docs-pager-title">{pagerLabel(next.slug)}</span>
+              </Link>
+            ) : (
+              <span />
+            )}
+          </nav>
+        )}
+
+        <div className="docs-bridge">
+          <p>
+            Ready to run the loop on your own repo?{" "}
+            <Link href="/get-started/">Get started</Link> — copy the kit and write your first spec.
+          </p>
+        </div>
+      </div>
+
+      {headings.length >= 4 && (
+        <nav className="docs-toc" aria-label="On this page">
+          <p className="docs-toc-title">On this page</p>
+          <ul>
+            {headings.map((h) => (
+              <li key={h.id} className={h.depth === 3 ? "docs-toc-sub" : undefined}>
+                <a href={`#${h.id}`}>{h.text}</a>
+              </li>
+            ))}
+          </ul>
         </nav>
       )}
-
-      <div className="docs-bridge">
-        <p>
-          Ready to run the loop on your own repo?{" "}
-          <Link href="/get-started/">Get started</Link> — copy the kit and write your first spec.
-        </p>
-      </div>
     </>
   );
 }
