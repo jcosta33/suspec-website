@@ -8,6 +8,7 @@ import {
   GitBranch,
   Layers,
   MessageSquareWarning,
+  Plus,
   Shield,
   Terminal,
   Users,
@@ -130,6 +131,45 @@ const features = [
   },
 ];
 
+// Honest, plain-text Q&A — answers a reader (and an AI answer-engine) the real questions, grounded
+// in what Calma actually is. Doubles as FAQPage structured data for generative-engine visibility.
+const faqs = [
+  {
+    q: "Is Calma just another spec-driven development tool?",
+    a: "No. Most spec-driven tools optimize generating code from a spec; Calma's emphasis is the review gate. Every change produces a review packet with pasted evidence per requirement, and a human decides when it is good enough. The spec sets scope; the review is where “almost right” has to prove it is right.",
+  },
+  {
+    q: "Do I need a particular AI agent?",
+    a: "No. Calma is plain markdown and conventions, so it works with Claude Code, Cursor, Copilot, or any agent that reads files in your repo. Nothing to integrate, no lock-in.",
+  },
+  {
+    q: "Does Calma replace code review, CI, or pull requests?",
+    a: "No — it rides alongside them. The review packet tells a reviewer where to look; your CI output is the evidence the packet cites. PRs and CI stay exactly where they are.",
+  },
+  {
+    q: "Is there a runtime or a service to install?",
+    a: "No. The whole workflow is markdown files you can read, diff, and grep. An optional reference CLI does chores — checking specs, isolating tasks in worktrees, printing the board — but it never runs your agent and never renders the verdict, and you can skip it entirely.",
+  },
+  {
+    q: "What is “review by exception”?",
+    a: "Instead of reading a 40-file diff line by line, you read the review packet — it shows the evidence for each requirement and flags only the exceptions: what is unverified, missing, or out of scope. Your attention goes where it is actually needed.",
+  },
+  {
+    q: "Who makes the final call on whether code ships?",
+    a: "A human, every time. Agents draft, run, and paste output; you decide when the evidence is good enough. Calma has no autopilot and no merge-by-vibes — which is where developers already are: in the 2025 Stack Overflow survey, the top reason to keep a person in the loop was “when I don't trust AI's answers.”",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function HomePage() {
   return (
     <>
@@ -218,8 +258,19 @@ export default function HomePage() {
               Five ways agent code goes sideways.
             </h2>
             <p className="mt-4 text-concrete-400">
-              Coding agents are fast. They are also wrong in ways that look correct — and in a
-              randomized trial, experienced devs on their own mature repos came out{" "}
+              Coding agents are fast. They are also wrong in ways that look correct: the{" "}
+              <span className="text-concrete-100">#1 frustration</span> developers report with AI is
+              code that is &quot;almost right, but not quite&quot; —{" "}
+              <span className="text-concrete-100">66%</span> of them (
+              <Link
+                href="https://survey.stackoverflow.co/2025/ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+              >
+                Stack Overflow 2025
+              </Link>
+              ). And in a randomized trial, experienced devs on their own mature repos came out{" "}
               <span className="text-concrete-100">19% slower</span> with AI while{" "}
               <span className="text-concrete-100">feeling ~20% faster</span> (
               <Link
@@ -403,6 +454,39 @@ export default function HomePage() {
                   {feature.description}
                 </p>
               </Card>
+            ))}
+          </div>
+        </Section>
+      </section>
+
+      {/* FAQ */}
+      <JsonLd data={faqJsonLd} />
+      <section className="py-24">
+        <Section className="flex flex-col gap-12">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
+              <DroneIcon className="h-4 w-4" aria-hidden="true" />
+              <span>faq.md — common questions</span>
+            </div>
+            <h2 className="mt-3 font-heading text-3xl font-bold uppercase tracking-tight text-concrete-100 sm:text-4xl">
+              Questions, answered straight
+            </h2>
+          </div>
+          <div className="reveal flex flex-col gap-3">
+            {faqs.map((faq) => (
+              <details
+                key={faq.q}
+                className="faq-item group panel-raised overflow-hidden rounded-panel border border-panel-border"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-heading text-base font-semibold text-concrete-100 focus-ring [&::-webkit-details-marker]:hidden">
+                  <span>{faq.q}</span>
+                  <Plus
+                    className="h-4 w-4 shrink-0 text-brass transition-transform duration-200 group-open:rotate-45"
+                    aria-hidden="true"
+                  />
+                </summary>
+                <p className="px-5 pb-5 leading-relaxed text-concrete-400">{faq.a}</p>
+              </details>
             ))}
           </div>
         </Section>
