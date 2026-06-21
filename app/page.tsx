@@ -25,6 +25,23 @@ import { DroneIcon } from "./components/DroneIcon";
 import { HexBadge } from "./components/HexBadge";
 import { SignalPulse } from "./components/SignalPulse";
 import { PilotLamp } from "./components/PilotLamp";
+import { JsonLd } from "./components/JsonLd";
+
+// The product itself, as a citable entity for answer engines and rich results. Version + the free
+// offer match the v0.1.0 badge and the markdown-only, no-runtime reality stated in the copy.
+const softwareApp = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Calma",
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: "Any",
+  softwareVersion: "0.1.0",
+  url: "https://swarmframework.dev",
+  description:
+    "Calma is a lightweight spec-and-review workflow that keeps humans in charge of code written by AI agents. Plain markdown, any agent, no runtime.",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  publisher: { "@id": "https://swarmframework.dev/#organization" },
+};
 
 export const metadata: Metadata = {
   title: "Calma — specs for humans, tasks for agents",
@@ -110,6 +127,7 @@ const features = [
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={softwareApp} />
       {/* Hero */}
       <section className="relative isolate overflow-hidden border-b border-panel-border py-24 sm:py-32">
         <HeroHexGrid />
@@ -178,13 +196,7 @@ export default function HomePage() {
                 </Link>
               </Button>
               <Button variant="secondary" asChild className="w-full sm:w-auto">
-                <Link
-                  href="https://github.com/jcosta33/swarm/tree/main/docs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Read the docs
-                </Link>
+                <Link href="/docs/">Read the docs</Link>
               </Button>
             </div>
           </div>
@@ -411,14 +423,19 @@ export default function HomePage() {
             back in charge of the firehose. Copy the starter kit, write one spec, and give your agents a
             contract they can read. You still make the calls; they just finally know what you meant.
           </p>
-          <div className="mt-10 flex justify-center">
-            <Button asChild>
+          <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <Button asChild className="w-full sm:w-auto">
+              <Link href="/get-started/">
+                Get started <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
+            <Button variant="secondary" asChild className="w-full sm:w-auto">
               <Link
                 href="https://github.com/jcosta33/swarm-starter-kit"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Copy the starter kit <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                Copy the starter kit
               </Link>
             </Button>
           </div>

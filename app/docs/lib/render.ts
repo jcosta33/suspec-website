@@ -79,6 +79,17 @@ const rehypeLabelTaskCheckboxes: Plugin<[], HastRoot> = () => (tree) => {
   });
 };
 
+// Wide code blocks and tables scroll horizontally inside their own overflow-x:auto boxes (docs.css).
+// A scrollable region that isn't keyboard-focusable can't be scrolled without a mouse (axe
+// `scrollable-region-focusable`). Make every <pre>/<table> a tab stop so keyboard users reach it.
+const rehypeFocusableScrollables: Plugin<[], HastRoot> = () => (tree) => {
+  visit(tree, "element", (node) => {
+    if (node.tagName !== "pre" && node.tagName !== "table") return;
+    node.properties = node.properties ?? {};
+    node.properties.tabIndex = 0;
+  });
+};
+
 export async function renderDoc(markdown: string, currentDir: string): Promise<string> {
   const file = await unified()
     .use(remarkParse)
@@ -89,6 +100,7 @@ export async function renderDoc(markdown: string, currentDir: string): Promise<s
     .use(rehypeRaw)
     .use(rehypeSlug)
     .use(rehypeLabelTaskCheckboxes)
+    .use(rehypeFocusableScrollables)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(markdown);
   return String(file);
@@ -102,18 +114,33 @@ export function titleOf(markdown: string): string {
 
 // First real prose paragraph as the meta description (brand-neutral — the doc's own content).
 // Skips the H1, the italic "*Works today…*" subtitle, headings, quotes, tables, lists, code, HTML.
+// Canon prose is hard-wrapped at ~95 cols, so a single physical line cuts mid-sentence — accumulate
+// the whole first paragraph (until a blank line or a non-prose line), then trim to a word boundary.
 export function descriptionOf(markdown: string): string {
+  const isProse = (line: string): boolean =>
+    line !== "" && !line.startsWith("#") && !/^[>|\-*+`<_]/.test(line);
+  const parts: string[] = [];
+  let started = false;
   for (const raw of markdown.split(/\r?\n/)) {
     const line = raw.trim();
-    if (!line) continue;
-    if (line.startsWith("#")) continue;
-    if (/^[>|\-*+`<]/.test(line)) continue; // quote/table/list/code/html/the italic subtitle
-    const text = line
-      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // links → text
-      .replace(/[`*_]/g, "")
-      .replace(/\s+/g, " ")
-      .trim();
-    if (text) return text.length > 155 ? `${text.slice(0, 152).trimEnd()}…` : text;
+    if (!started) {
+      if (!isProse(line)) continue; // skip the H1 / subtitle / front matter until prose begins
+      started = true;
+      parts.push(line);
+    } else {
+      if (!isProse(line)) break; // blank line or non-prose line ends the paragraph
+      parts.push(line);
+    }
   }
-  return "Swarm documentation";
+  const text = parts
+    .join(" ")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // links → text
+    .replace(/[`*_]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!text) return "Swarm documentation";
+  if (text.length <= 155) return text;
+  const slice = text.slice(0, 152);
+  const cut = slice.lastIndexOf(" ");
+  return `${(cut > 60 ? slice.slice(0, cut) : slice).trimEnd()}…`;
 }

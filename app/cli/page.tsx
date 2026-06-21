@@ -167,15 +167,15 @@ export default function CliPage() {
           {commands.map((c) => {
             const Icon = c.icon;
             return (
-              <li key={c.cmd}>
+              <li key={c.cmd} className="min-w-0">
                 <Card hardware className="group h-full border-panel-border hover:border-drone-green/50">
                   <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-start gap-4">
+                    <div className="flex min-w-0 items-start gap-4">
                       <HexBadge color="green">
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </HexBadge>
-                      <div>
-                        <h3 className="font-mono text-sm font-semibold text-drone-green">
+                      <div className="min-w-0">
+                        <h3 className="font-mono text-sm font-semibold text-drone-green break-words">
                           swarm {c.cmd}
                         </h3>
                         <p className="mt-1 text-sm leading-relaxed text-concrete-400">{c.what}</p>

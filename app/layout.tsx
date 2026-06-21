@@ -2,6 +2,41 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Shell } from "./components/Shell";
+import { JsonLd } from "./components/JsonLd";
+
+const SITE_URL = "https://swarmframework.dev";
+
+// Site-wide structured data (SEO/GEO). The Organization + WebSite entities give answer engines and
+// crawlers a stable, machine-readable statement of what this is; the SearchAction is wired to the
+// real docs search (SearchBox reads ?q= on load and triggers Pagefind), so it is not a dead claim.
+const siteGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "Calma",
+      url: SITE_URL,
+      description:
+        "Calma is a lightweight spec-and-review workflow for teams shipping code with coding agents.",
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: "Calma",
+      url: SITE_URL,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE_URL}/docs/?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
+};
 
 const inter = Inter({
   variable: "--font-inter",
@@ -57,6 +92,7 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-chassis text-concrete-100">
+        <JsonLd data={siteGraph} />
         <Shell>{children}</Shell>
       </body>
     </html>

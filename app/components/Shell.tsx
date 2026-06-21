@@ -87,8 +87,19 @@ function NavLink({
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  // The header is sticky and transparent at the top (so the hero reads full-bleed), but once the
+  // page scrolls, content would otherwise bleed through it. Opaque the chassis past a few px. The
+  // colour transition is neutralized automatically under prefers-reduced-motion (globals.css).
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -142,7 +153,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
         Skip to main content
       </a>
 
-      <header className="sticky top-0 z-40">
+      <header
+        className={`sticky top-0 z-40 border-b transition-colors duration-200 ${
+          scrolled || menuOpen
+            ? "border-panel-border bg-panel-raised/90 backdrop-blur-sm"
+            : "border-transparent"
+        }`}
+      >
         <Section as="div" className="flex h-16 items-center justify-between">
           <Link href="/" className="focus-ring rounded-sm" aria-label="Calma home">
             <Logo className="text-lg text-concrete-100" />

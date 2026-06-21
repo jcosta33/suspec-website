@@ -179,7 +179,7 @@ export default function WhatIsCalmaPage() {
         </Panel>
       </Section>
 
-      <Section className="grid gap-12 lg:grid-cols-2">
+      <Section className="reveal grid gap-12 lg:grid-cols-2">
         <div>
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-drone-green">
             <CheckCircle className="h-4 w-4" />
@@ -229,7 +229,7 @@ export default function WhatIsCalmaPage() {
           </div>
           <Heading className="mt-3">Where Calma sits</Heading>
         </div>
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="reveal grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {adjacent.map((row) => (
             <li key={row.product}>
               <Card
@@ -260,7 +260,7 @@ export default function WhatIsCalmaPage() {
           </div>
           <Heading className="mt-3">Failure modes you are already seeing</Heading>
         </div>
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="reveal grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {failureModes.map((fm) => (
             <li key={fm.mode}>
               <Card hardware className="group h-full border-panel-border hover:border-hazard-orange/50">

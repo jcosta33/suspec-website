@@ -61,7 +61,7 @@ export default function GetStartedPage() {
         </div>
       </Section>
 
-      <Section className="grid gap-8 md:grid-cols-2">
+      <Section className="reveal grid gap-8 md:grid-cols-2">
         <Card hardware className="flex flex-col gap-6">
           <KitIcon>
             <Rocket className="h-6 w-6" aria-hidden="true" />
@@ -147,7 +147,7 @@ export default function GetStartedPage() {
 
       <Section className="flex flex-col gap-8">
         <Heading>What the starter kit gives you</Heading>
-        <ul className="grid gap-4 sm:grid-cols-2">
+        <ul className="reveal grid gap-4 sm:grid-cols-2">
           <li className="flex items-start gap-3 text-concrete-400">
             <ListDot />
             <span>

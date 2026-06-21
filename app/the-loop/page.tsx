@@ -153,7 +153,7 @@ export default function TheLoopPage() {
           return (
           <article
             key={step.name}
-            className="relative grid gap-8 lg:grid-cols-2 lg:items-start"
+            className="reveal relative grid gap-8 lg:grid-cols-2 lg:items-start"
           >
             <div className="relative">
               {index < steps.length - 1 && (

@@ -41,10 +41,12 @@ export function readDoc(slug: string): string | null {
 // Nav model derived from the canon structure.
 export type NavSection = { title: string; items: { slug: string; label: string }[]; collapsed?: boolean };
 
-const labelFor = (slug: string): string => {
-  const base = slug.split("/").pop() ?? slug;
-  return base.replace(/^\d+[-_]?/, "").replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-};
+// Humanize a single slug segment for a label ('04-writing-specs' -> 'Writing Specs'). Shared so the
+// nav and the docs breadcrumb (docs/[...slug]/page.tsx) derive identical names from one rule.
+export const humanizeSegment = (seg: string): string =>
+  seg.replace(/^\d+[-_]?/, "").replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
+const labelFor = (slug: string): string => humanizeSegment(slug.split("/").pop() ?? slug);
 
 export function buildNav(): NavSection[] {
   const docs = listDocs();

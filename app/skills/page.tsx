@@ -214,7 +214,7 @@ export default function SkillsPage() {
             task guide when the work needs a particular lens.
           </p>
         </div>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="reveal grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {stances.map((s) => {
             const Icon = s.icon;
             return (
@@ -262,7 +262,7 @@ export default function SkillsPage() {
             not treat every problem like a feature.
           </p>
         </div>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="reveal grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {authoring.map((s) => {
             const Icon = s.icon;
             return (

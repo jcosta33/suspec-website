@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 // built/served site. Static, no API key, no third-party service.
 declare global {
   interface Window {
-    PagefindUI?: new (opts: Record<string, unknown>) => void;
+    PagefindUI?: new (opts: Record<string, unknown>) => { triggerSearch?: (term: string) => void };
   }
 }
 
@@ -28,7 +28,11 @@ export function SearchBox() {
     };
     const init = () => {
       if (!window.PagefindUI) return;
-      new window.PagefindUI({ element: el, showSubResults: true, resetStyles: false });
+      const ui = new window.PagefindUI({ element: el, showSubResults: true, resetStyles: false });
+      // Deep-link: /docs/?q=term runs the search on load — this is what the WebSite SearchAction in
+      // the JSON-LD points at, so that structured-data claim is real rather than decorative.
+      const q = new URLSearchParams(window.location.search).get("q");
+      if (q && ui.triggerSearch) ui.triggerSearch(q);
       if (!labelInput()) {
         const mo = new MutationObserver(() => {
           if (labelInput()) mo.disconnect();
