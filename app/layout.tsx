@@ -70,7 +70,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Calma",
-    images: ["/og-home.png"],
+    images: [
+      { url: "/og-home.png", width: 1200, height: 630, alt: "Calma — a spec-and-review workflow for coding agents" },
+    ],
   },
   twitter: {
     // Card type only — title/description/image cascade per page from each page's metadata + openGraph,

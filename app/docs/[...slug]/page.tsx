@@ -40,6 +40,28 @@ function breadcrumbFor(slug: string[], leafTitle: string) {
   };
 }
 
+// TechArticle for each doc — gives answer engines an article-level entity (headline + description)
+// tied back to the WebSite/Organization, so a doc page is citable as a documentation article.
+function articleFor(slug: string[], title: string, description: string) {
+  const url = `${SITE_URL}/docs/${slug.join("/")}/`;
+  // Google recommends headline <=110 chars; a few ADR titles run longer. Keep the full title in
+  // `name` and a word-boundary-trimmed form in `headline`.
+  const headline =
+    title.length <= 110 ? title : `${title.slice(0, 110).replace(/\s+\S*$/, "").trimEnd()}…`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    name: title,
+    headline,
+    description,
+    inLanguage: "en",
+    url,
+    mainEntityOfPage: url,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
 export function generateStaticParams(): { slug: string[] }[] {
   return listDocs().map((slug) => ({ slug: slug.split("/") }));
 }
@@ -77,6 +99,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
   return (
     <>
       <JsonLd data={breadcrumbFor(slug, titleOf(md))} />
+      <JsonLd data={articleFor(slug, titleOf(md), descriptionOf(md))} />
       <div dangerouslySetInnerHTML={{ __html: html }} />
 
       {(prev || next) && (

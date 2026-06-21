@@ -33,7 +33,9 @@ export const metadata: Metadata = {
       "calma-cli is the optional reference companion for the Calma framework: check specs, scaffold the workspace, isolate tasks in worktrees, print the board. A helper, not an orchestrator.",
     type: "website",
     siteName: "Calma",
-    images: ["/og-cli.png"],
+    images: [
+      { url: "/og-cli.png", width: 1200, height: 630, alt: "calma-cli — the optional reference companion for the Calma workflow" },
+    ],
   },
   alternates: {
     canonical: "/cli/",

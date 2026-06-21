@@ -18,7 +18,9 @@ export const metadata: Metadata = {
       "Adopt Calma in a new repo or an existing project. Start writing specs and keeping humans in the loop in plain markdown.",
     type: "website",
     siteName: "Calma",
-    images: ["/og-get-started.png"],
+    images: [
+      { url: "/og-get-started.png", width: 1200, height: 630, alt: "Get started with Calma — a new repo or an existing project" },
+    ],
   },
   alternates: {
     canonical: "/get-started/",

@@ -33,7 +33,10 @@ export const metadata: Metadata = {
     description:
       "How to write a Calma skill: the open Agent Skills format, directive descriptions, self-contained bodies, forced visible output, and when to ship a task template.",
     type: "website",
-    images: ["/og-skills.png"],
+    siteName: "Calma",
+    images: [
+      { url: "/og-skills.png", width: 1200, height: 630, alt: "Writing a Calma skill — the open Agent Skills format" },
+    ],
   },
   alternates: {
     canonical: "/skills/writing/",

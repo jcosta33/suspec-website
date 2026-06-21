@@ -23,7 +23,9 @@ export const metadata: Metadata = {
       "Pull → Spec → Task → Run → Review → Close. The six steps that keep humans in the driver seat while agents do the work.",
     type: "website",
     siteName: "Calma",
-    images: ["/og-the-loop.png"],
+    images: [
+      { url: "/og-the-loop.png", width: 1200, height: 630, alt: "The Calma loop — Pull, Spec, Task, Run, Review, Close" },
+    ],
   },
   alternates: {
     canonical: "/the-loop/",
