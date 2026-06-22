@@ -13,6 +13,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import { visit, SKIP } from "unist-util-visit";
+import { visitParents } from "unist-util-visit-parents";
 import type { Root } from "mdast";
 import type { Root as HastRoot, Element as HastElement, ElementContent } from "hast";
 
@@ -109,9 +110,10 @@ const linkifyCitation = (value: string): MdNode[] => {
       });
       last = re.lastIndex;
     } else {
-      // DOIs end at whitespace; \S+ over-captures trailing sentence punctuation — trim it and
-      // re-scan from the trimmed boundary so the punctuation re-emits as plain text.
-      const trimmed = m[2].replace(/[.,;:)\]]+$/, "");
+      // DOIs end at whitespace; \S+ over-captures trailing sentence + markdown punctuation —
+      // trim it and re-scan from the trimmed boundary so it re-emits as plain text. (Internal dots
+      // are kept; only a trailing run of these is stripped.)
+      const trimmed = m[2].replace(/[.,;:)\]*_>]+$/, "");
       const label = m[0].slice(0, m[0].length - (m[2].length - trimmed.length));
       out.push({
         type: "link",
@@ -127,12 +129,17 @@ const linkifyCitation = (value: string): MdNode[] => {
   return out;
 };
 const remarkLinkifyCitations: Plugin<[], Root> = () => (tree) => {
-  visit(tree, "text", (node, index, parent) => {
-    if (index === undefined || parent === undefined) return;
-    if (parent.type === "link") return; // already a link — don't nest
+  // visitParents (not visit) so the guard checks the WHOLE ancestor chain, not just the immediate
+  // parent — a citation inside emphasis/strong that itself sits in a link would otherwise nest <a>.
+  visitParents(tree, "text", (node, ancestors) => {
+    if (ancestors.some((a) => a.type === "link" || a.type === "linkReference")) return;
     if (!/arXiv:\d|DOI:?\s+10\./.test(node.value)) return;
     const parts = linkifyCitation(node.value);
     if (parts.length === 1) return; // no citation matched
+    const parent = ancestors[ancestors.length - 1];
+    if (!parent || !("children" in parent)) return;
+    const index = parent.children.indexOf(node as never);
+    if (index === -1) return;
     parent.children.splice(index, 1, ...(parts as unknown as typeof parent.children));
     return [SKIP, index + parts.length];
   });
