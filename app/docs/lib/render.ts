@@ -12,7 +12,7 @@ import remarkRehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
-import { visit } from "unist-util-visit";
+import { visit, SKIP } from "unist-util-visit";
 import type { Root } from "mdast";
 import type { Root as HastRoot, Element as HastElement, ElementContent } from "hast";
 
@@ -84,6 +84,73 @@ const selectiveRawHtml: Plugin<[], Root> = () => (tree) => {
   });
 };
 
+// Make bare academic references in prose clickable: `arXiv:<id>` -> arxiv.org/abs, `DOI <id>` ->
+// doi.org. The click target is *derived* from a canonical resolver, never stored — the canon stays
+// plain text (a reader of the raw markdown sees the id; a reader of the site gets a verifiable link).
+// Runs on mdast `text` nodes only, so it never enters code, existing links, or the raw `<a id>`
+// cross-ref anchors (those are `html` nodes). This is what lets a sources entry that names only an
+// arXiv id or a DOI still expose a one-click path to the primary source.
+type MdNode =
+  | { type: "text"; value: string }
+  | { type: "link"; url: string; title: null; children: { type: "text"; value: string }[] };
+const linkifyCitation = (value: string): MdNode[] => {
+  const re = /arXiv:(\d{4}\.\d{4,5}(?:v\d+)?)|\bDOI:?\s+(10\.\d{4,9}\/\S+)/g;
+  const out: MdNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(value)) !== null) {
+    if (m.index > last) out.push({ type: "text", value: value.slice(last, m.index) });
+    if (m[1] !== undefined) {
+      out.push({
+        type: "link",
+        url: `https://arxiv.org/abs/${m[1]}`,
+        title: null,
+        children: [{ type: "text", value: m[0] }],
+      });
+      last = re.lastIndex;
+    } else {
+      // DOIs end at whitespace; \S+ over-captures trailing sentence punctuation — trim it and
+      // re-scan from the trimmed boundary so the punctuation re-emits as plain text.
+      const trimmed = m[2].replace(/[.,;:)\]]+$/, "");
+      const label = m[0].slice(0, m[0].length - (m[2].length - trimmed.length));
+      out.push({
+        type: "link",
+        url: `https://doi.org/${trimmed}`,
+        title: null,
+        children: [{ type: "text", value: label }],
+      });
+      last = m.index + label.length;
+      re.lastIndex = last;
+    }
+  }
+  if (last < value.length) out.push({ type: "text", value: value.slice(last) });
+  return out;
+};
+const remarkLinkifyCitations: Plugin<[], Root> = () => (tree) => {
+  visit(tree, "text", (node, index, parent) => {
+    if (index === undefined || parent === undefined) return;
+    if (parent.type === "link") return; // already a link — don't nest
+    if (!/arXiv:\d|DOI:?\s+10\./.test(node.value)) return;
+    const parts = linkifyCitation(node.value);
+    if (parts.length === 1) return; // no citation matched
+    parent.children.splice(index, 1, ...(parts as unknown as typeof parent.children));
+    return [SKIP, index + parts.length];
+  });
+};
+
+// External links open in a new tab; rel="noopener noreferrer" blocks reverse-tabnabbing and
+// referrer leakage. Applies to every http(s) anchor — inline citations and the sources page alike.
+const rehypeExternalLinks: Plugin<[], HastRoot> = () => (tree) => {
+  visit(tree, "element", (node) => {
+    if (node.tagName !== "a") return;
+    const href = typeof node.properties?.href === "string" ? node.properties.href : "";
+    if (!/^https?:\/\//i.test(href)) return;
+    node.properties = node.properties ?? {};
+    node.properties.target = "_blank";
+    node.properties.rel = ["noopener", "noreferrer"];
+  });
+};
+
 // GFM task-list items (`- [ ]` / `- [x]`) render as disabled <input type=checkbox> with no label,
 // which axe flags. Give each an aria-label reflecting its state (a11y; the checkbox is decorative,
 // the list text carries the content).
@@ -134,9 +201,11 @@ export async function renderDoc(
     .use(remarkParse)
     .use(remarkGfm)
     .use(rewriteMdLinks, currentDir)
+    .use(remarkLinkifyCitations)
     .use(selectiveRawHtml)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
+    .use(rehypeExternalLinks)
     .use(rehypeSlug)
     .use(rehypeCollectHeadings(headings))
     .use(rehypeLabelTaskCheckboxes)
