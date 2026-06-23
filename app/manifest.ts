@@ -12,8 +12,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "A lightweight spec-and-review workflow that keeps humans in charge of code written by AI agents. Plain markdown, any agent, no runtime.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0A0A08",
-    theme_color: "#0A0A08",
+    background_color: "#06070e",
+    theme_color: "#06070e",
     // Build-generated icons (app/icon.tsx generateImageMetadata). 192 + 512 satisfy Chrome's
     // install criteria.
     icons: [

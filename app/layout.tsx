@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk, EB_Garamond } from "next/font/google";
 import "./globals.css";
 import { Shell } from "./components/Shell";
 import { JsonLd } from "./components/JsonLd";
@@ -68,6 +68,18 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["700"],
 });
 
+// Old-style serif for the title-page voice — the hero headings and the wordmark
+// carry the "Corpus Hermeticum" book character; the rest of the UI stays in the
+// geometric sans for the straight, scientific read. This is the hero's LCP font,
+// so it preloads (default).
+const ebGaramond = EB_Garamond({
+  variable: "--font-eb-garamond",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://swarmframework.dev"),
   title: "Corpus — A spec-and-review workflow for coding agents",
@@ -92,7 +104,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A08", // --color-chassis: paints the mobile browser UI to match the dark shell
+  themeColor: "#06070e", // --color-night: paints the mobile browser UI to match the dark shell
   colorScheme: "dark",
 };
 
@@ -104,7 +116,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} ${ebGaramond.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-chassis text-concrete-100">
         <JsonLd data={siteGraph} />

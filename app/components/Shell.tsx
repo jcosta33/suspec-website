@@ -78,7 +78,7 @@ function NavLink({
       </span>
       {isActive && showIndicator && (
         <span
-          className="absolute -bottom-2 left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-swarm-yellow shadow-[0_0_8px_#FACC15]"
+          className="absolute -bottom-2 left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-swarm-yellow shadow-[0_0_8px_rgba(201,162,74,0.7)]"
           aria-hidden="true"
         />
       )}

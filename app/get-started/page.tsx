@@ -42,7 +42,7 @@ function KitIcon({ children }: { children: React.ReactNode }) {
 function ListDot() {
   return (
     <span
-      className="mt-2.5 h-2 w-2 shrink-0 rounded-sm bg-swarm-yellow shadow-[0_0_8px_#FFB000]"
+      className="mt-2.5 h-2 w-2 shrink-0 rounded-sm bg-swarm-yellow shadow-[0_0_8px_rgba(201,162,74,0.7)]"
       aria-hidden="true"
     />
   );

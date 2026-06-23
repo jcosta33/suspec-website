@@ -26,7 +26,7 @@ export function PageHero({
     <div className="mx-auto max-w-4xl text-center">
       <Eyebrow className="mb-6">{eyebrow}</Eyebrow>
       <h1
-        className={`font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100 ${TITLE_SIZES[titleSize]}`}
+        className={`font-display text-4xl font-semibold uppercase tracking-[0.015em] text-concrete-100 ${TITLE_SIZES[titleSize]}`}
       >
         {title}
         {cursor && <TerminalCursor className="ml-2 align-middle" />}
