@@ -38,6 +38,15 @@ if (existsSync(sibling)) {
 // intermittent build failures. Deterministic + fast. Falls back to an empty map if git is absent.
 const datesOut = path.join(cwd, ".corpus-canon-dates.json");
 try {
+  const currentDocs = new Set(
+    execSync("git ls-files 'docs/**/*.md' 'docs/*.md'", {
+      cwd: repoRoot,
+      encoding: "utf8",
+    })
+      .split("\n")
+      .map((file) => file.trim())
+      .filter(Boolean),
+  );
   const log = execSync("git log --format=%x01%aI --name-only -- docs", {
     cwd: repoRoot,
     encoding: "utf8",
@@ -52,6 +61,7 @@ try {
     }
     const f = raw.trim();
     if (!cur || !f.startsWith("docs/") || !f.endsWith(".md")) continue;
+    if (!currentDocs.has(f)) continue;
     const slug = f.slice("docs/".length, -".md".length);
     if (!dates[slug]) dates[slug] = { created: cur, modified: cur }; // first seen = newest = modified
     dates[slug].created = cur; // last seen = oldest = created
