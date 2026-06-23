@@ -28,6 +28,14 @@ type: status
 | TASK-seo                     | task        | review-ready | `tasks/TASK-seo.md`                       |
 | TASK-deployment-ci           | task        | review-ready | `tasks/TASK-deployment-ci.md`             |
 | TASK-content-workflow        | task        | review-ready | `tasks/TASK-content-workflow.md`          |
+| SPEC-spacing-rhythm          | spec        | ready        | `specs/spacing-rhythm/spec.md`           |
+| SPEC-transparent-nav         | spec        | ready        | `specs/transparent-nav/spec.md`          |
+| SPEC-a11y-link-compliance    | spec        | ready        | `specs/a11y-link-compliance/spec.md`     |
+| SPEC-subtle-motion           | spec        | ready        | `specs/subtle-motion/spec.md`            |
+| TASK-spacing-rhythm          | task        | ready        | `tasks/TASK-spacing-rhythm.md`           |
+| TASK-transparent-nav         | task        | ready        | `tasks/TASK-transparent-nav.md`          |
+| TASK-a11y-link-compliance    | task        | ready        | `tasks/TASK-a11y-link-compliance.md`     |
+| TASK-subtle-motion           | task        | ready        | `tasks/TASK-subtle-motion.md`            |
 
 ## Human attention
 
