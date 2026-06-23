@@ -25,19 +25,19 @@ import { Heading } from "../../components/Heading";
 import { PilotLamp } from "../../components/PilotLamp";
 
 export const metadata: Metadata = {
-  title: "Writing a skill — Calma",
+  title: "Writing a skill — Corpus",
   description:
-    "How to write a Calma skill: the open Agent Skills format, directive descriptions, self-contained bodies, forced visible output, and when to ship a task template.",
+    "How to write a Corpus skill: the open Agent Skills format, directive descriptions, self-contained bodies, forced visible output, and when to ship a task template.",
   openGraph: {
-    title: "Writing a skill — Calma",
+    title: "Writing a skill — Corpus",
     description:
-      "How to write a Calma skill: the open Agent Skills format, directive descriptions, self-contained bodies, forced visible output, and when to ship a task template.",
+      "How to write a Corpus skill: the open Agent Skills format, directive descriptions, self-contained bodies, forced visible output, and when to ship a task template.",
     type: "website",
     url: "/skills/writing/",
-    siteName: "Calma",
+    siteName: "Corpus",
     locale: "en_US",
     images: [
-      { url: "/og-skills.png", width: 1200, height: 630, alt: "Writing a Calma skill — the open Agent Skills format" },
+      { url: "/og-skills.png", width: 1200, height: 630, alt: "Writing a Corpus skill — the open Agent Skills format" },
     ],
   },
   alternates: {

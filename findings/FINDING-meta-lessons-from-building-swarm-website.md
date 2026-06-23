@@ -5,11 +5,11 @@ status: accepted
 source: BUILD-swarm-website
 ---
 
-# FINDING-meta-lessons-from-building-swarm-website — What building the website taught us about Swarm
+# FINDING-meta-lessons-from-building-swarm-website — What building the website taught us about Corpus
 
 ## Observation
 
-The swarm-website was built using the Swarm framework itself: a change plan, specs per feature,
+The swarm-website was built using the Corpus framework itself: a change plan, specs per feature,
 task files, a content-source contract, findings, an adversarial review, and continuous deployment.
 This finding records the meta-lessons that surfaced during the work.
 
@@ -71,7 +71,7 @@ environment-specific detail belongs in the deployment spec, not just in CI.
 
 Examples from this build:
 - `CONTENT.md` was initially written to the wrong repo (`/Users/josecosta/dev/swarm/`).
-- The logo SVG paths spelled "Moo Vo" instead of "Swarm."
+- The logo SVG paths spelled "Moo Vo" instead of "Corpus."
 - An adversarial finding incorrectly claimed the footer nav lacked an accessible name.
 
 Each required human attention to catch and correct. Checklists reduce but do not eliminate the
@@ -86,4 +86,4 @@ finding file as the durable record.
 ## Recommended action
 
 Keep these lessons in the starter kit's examples/ folder as a worked case study
-(`examples/website-launch/`) so future adopters can see how Swarm eats its own cooking.
+(`examples/website-launch/`) so future adopters can see how Corpus eats its own cooking.

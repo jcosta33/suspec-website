@@ -61,7 +61,7 @@ Spot-checked: {{which green row's evidence you re-ran yourself}}
      silently failed to load, or a worker that left no task artifact at all) —
      investigate, don't rubber-stamp. A waived row records: who waived · which
      rows · why · expiry — the packet status becomes `waived` at merge
-     (expiry semantics: the advanced lifecycle, in the Swarm repo). -->
+     (expiry semantics: the advanced lifecycle, in the Corpus repo). -->
 
 1. {{exception — why it matters — suggested action}}
 

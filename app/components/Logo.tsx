@@ -12,7 +12,7 @@ export function Logo({ className = "" }: { className?: string }) {
       >
         <defs>
           <linearGradient
-            id="calma-hex-face"
+            id="corpus-hex-face"
             x1="16"
             y1="1.5"
             x2="16"
@@ -23,7 +23,7 @@ export function Logo({ className = "" }: { className?: string }) {
             <stop offset="0.55" stopColor="#191912" />
             <stop offset="1" stopColor="#0C0C09" />
           </linearGradient>
-          <radialGradient id="calma-core" cx="0.5" cy="0.4" r="0.62">
+          <radialGradient id="corpus-core" cx="0.5" cy="0.4" r="0.62">
             <stop stopColor="#FFEFB0" />
             <stop offset="0.45" stopColor="#FACC15" />
             <stop offset="1" stopColor="#9A7A12" />
@@ -32,7 +32,7 @@ export function Logo({ className = "" }: { className?: string }) {
         {/* hexagonal cell — beveled so it reads as extruded from the bar */}
         <path
           d="M16 1.5 L29.5 9.25 L29.5 22.75 L16 30.5 L2.5 22.75 L2.5 9.25 Z"
-          fill="url(#calma-hex-face)"
+          fill="url(#corpus-hex-face)"
           stroke="#54544A"
           strokeWidth="1.1"
           strokeLinejoin="round"
@@ -56,10 +56,10 @@ export function Logo({ className = "" }: { className?: string }) {
           opacity="0.45"
         />
         {/* glowing core — the drone in its cell */}
-        <circle cx="16" cy="16" r="4.8" fill="url(#calma-core)" />
+        <circle cx="16" cy="16" r="4.8" fill="url(#corpus-core)" />
         <circle cx="16" cy="16" r="4.8" fill="none" stroke="#FFEFB0" strokeWidth="0.7" opacity="0.55" />
       </svg>
-      <span className="tracking-[0.14em]">CALMA</span>
+      <span className="tracking-[0.14em]">CORPUS</span>
     </span>
   );
 }

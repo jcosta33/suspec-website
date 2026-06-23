@@ -29,19 +29,19 @@ import { PageHero } from "../components/PageHero";
 import { Heading } from "../components/Heading";
 
 export const metadata: Metadata = {
-  title: "Skills — Calma",
+  title: "Skills — Corpus",
   description:
-    "Optional agent guides for Calma workflows: conditioning stances and code-authoring depth. Not shortcuts — discipline prompts that load when the work matches.",
+    "Optional agent guides for Corpus workflows: conditioning stances and code-authoring depth. Not shortcuts — discipline prompts that load when the work matches.",
   openGraph: {
-    title: "Skills — Calma",
+    title: "Skills — Corpus",
     description:
-      "An optional catalog of agent guides for Calma workflows: conditioning stances and code-authoring depth, installable into any agent CLI.",
+      "An optional catalog of agent guides for Corpus workflows: conditioning stances and code-authoring depth, installable into any agent CLI.",
     type: "website",
     url: "/skills/",
-    siteName: "Calma",
+    siteName: "Corpus",
     locale: "en_US",
     images: [
-      { url: "/og-skills.png", width: 1200, height: 630, alt: "Calma skills — conditioning stances and code-authoring depth guides" },
+      { url: "/og-skills.png", width: 1200, height: 630, alt: "Corpus skills — conditioning stances and code-authoring depth guides" },
     ],
   },
   alternates: {
@@ -76,7 +76,7 @@ const authoring = [
   {
     skill: "implement-task",
     icon: Terminal,
-    use: "the full Calma task-packet frame, long form",
+    use: "the full Corpus task-packet frame, long form",
   },
   {
     skill: "write-feature",
@@ -131,7 +131,7 @@ export default function SkillsPage() {
       <Section>
         <PageHero
           eyebrow="skills.catalog — 14 skills"
-          title={<>Calma <span className="text-swarm-yellow text-glow">skills</span></>}
+          title={<>Corpus <span className="text-swarm-yellow text-glow">skills</span></>}
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Optional agent guides — conditioning stances and code-authoring depth — in the open Agent
@@ -290,7 +290,7 @@ export default function SkillsPage() {
             <Terminal className="h-4 w-4" aria-hidden="true" />
             <span>authoring.guide — write your own</span>
           </div>
-          <Heading className="mt-3">How to write a Calma skill</Heading>
+          <Heading className="mt-3">How to write a Corpus skill</Heading>
           <p className="mt-4 text-concrete-400">
             Skills are plain markdown, but their structure is evidence-backed: directive
             descriptions, self-contained bodies, forced visible output, and the AGENTS.md contract.
@@ -321,7 +321,7 @@ export default function SkillsPage() {
               href="/cli/"
               className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
             >
-              calma-cli
+              corpus-cli
             </Link>
             . It is real, but the command surface is still settling.
           </p>

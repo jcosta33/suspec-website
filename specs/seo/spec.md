@@ -13,7 +13,7 @@ sources:
 
 ## Intent
 
-Make the Swarm marketing site discoverable via search engines and attractive
+Make the Corpus marketing site discoverable via search engines and attractive
 when shared on social media.
 
 ## Non-goals
@@ -44,7 +44,7 @@ Static OG images live in `public/`:
 - `og-the-loop.png`
 - `og-get-started.png`
 
-Dimensions: 1200×630. Design matches the Swarm aesthetic.
+Dimensions: 1200×630. Design matches the Corpus aesthetic.
 
 Verify with: images exist in `public/`; Facebook/Twitter card validators render
 them.

@@ -41,4 +41,4 @@ documentation, flaky tests) live in the
 `.agents/skills/` with `npx skills add jcosta33/swarm-skills` (add `--list` to preview
 without installing), or copy the folders.
 
-Copy what you need; ignore the rest. Full instructions: `docs/ADOPTING.md` in the Swarm repo.
+Copy what you need; ignore the rest. Full instructions: `docs/ADOPTING.md` in the Corpus repo.

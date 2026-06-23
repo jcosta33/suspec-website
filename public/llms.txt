@@ -1,12 +1,12 @@
-# Calma
+# Corpus
 
-> Calma is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. It is plain markdown and conventions — any agent, no runtime. The framework turns each change into a spec, a bounded task, an agent run, and a review packet with pasted evidence, so "almost right" has to prove it is right before it ships.
+> Corpus is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. It is plain markdown and conventions — any agent, no runtime. The framework turns each change into a spec, a bounded task, an agent run, and a review packet with pasted evidence, so "almost right" has to prove it is right before it ships.
 
-Calma keeps a human in charge of the firehose. Agents draft, run, and paste the output; the human decides when the evidence is good enough. Every rule states what kind of guarantee it is — convention, checklist, toolable, or enforced — and admits when the honest answer is "nothing checks this yet." An optional reference CLI (`swarm`) does the chores — checking specs, isolating each task in its own git worktree, reconciling a finished run against the diff — but it never renders the review verdict; that stays with a person.
+Corpus keeps a human in charge of the firehose. Agents draft, run, and paste the output; the human decides when the evidence is good enough. Every rule states what kind of guarantee it is — convention, checklist, toolable, or enforced — and admits when the honest answer is "nothing checks this yet." An optional reference CLI (`swarm`) does the chores — checking specs, isolating each task in its own git worktree, reconciling a finished run against the diff — but it never renders the review verdict; that stays with a person.
 
 ## Start here
 
-- [What is Swarm?](https://swarmframework.dev/docs/01-what-is-swarm/): The problem with agent-written code and the spec-and-review answer.
+- [What is Corpus?](https://swarmframework.dev/docs/01-what-is-swarm/): The problem with agent-written code and the spec-and-review answer.
 - [The basic workflow](https://swarmframework.dev/docs/02-basic-workflow/): The loop end to end — Pull, Spec, Task, Run, Review, Close.
 - [Where files live](https://swarmframework.dev/docs/03-where-files-live/): The workspace layout — specs, tasks, reviews, findings, the board.
 - [Writing specs](https://swarmframework.dev/docs/04-writing-specs/): Requirements and acceptance criteria an agent can work from.
@@ -15,7 +15,7 @@ Calma keeps a human in charge of the firehose. Agents draft, run, and paste the 
 - [Running agents](https://swarmframework.dev/docs/07-running-agents/): Launching a prepared task, one worktree per task.
 - [Reviewing agent output](https://swarmframework.dev/docs/08-reviewing-output/): Review by exception — read the evidence per requirement, not the whole diff.
 - [Saving findings](https://swarmframework.dev/docs/09-saving-findings/): Capturing hard-won lessons so the next session does not re-learn them.
-- [Integrations](https://swarmframework.dev/docs/10-integrations/): Fitting Calma into existing tools and pipelines.
+- [Integrations](https://swarmframework.dev/docs/10-integrations/): Fitting Corpus into existing tools and pipelines.
 
 ## Tutorial
 

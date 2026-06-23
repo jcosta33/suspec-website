@@ -14,19 +14,19 @@ import { Heading } from "../components/Heading";
 const stepIcons = [Inbox, FileText, ListChecks, Terminal, ScanEye, GitMerge];
 
 export const metadata: Metadata = {
-  title: "The loop — Calma",
+  title: "The loop — Corpus",
   description:
     "Pull → Spec → Task → Run → Review → Close. The six steps that keep a human at every decision gate while agents do the typing.",
   openGraph: {
-    title: "The loop — Calma",
+    title: "The loop — Corpus",
     description:
       "Pull → Spec → Task → Run → Review → Close. The six steps that keep humans in the driver seat while agents do the work.",
     type: "website",
     url: "/the-loop/",
-    siteName: "Calma",
+    siteName: "Corpus",
     locale: "en_US",
     images: [
-      { url: "/og-the-loop.png", width: 1200, height: 630, alt: "The Calma loop — Pull, Spec, Task, Run, Review, Close" },
+      { url: "/og-the-loop.png", width: 1200, height: 630, alt: "The Corpus loop — Pull, Spec, Task, Run, Review, Close" },
     ],
   },
   alternates: {

@@ -11,7 +11,7 @@ export interface TerminalWindowProps {
 export function TerminalWindow({
   children,
   className = "",
-  title = "calma",
+  title = "corpus",
   ariaLabel,
 }: TerminalWindowProps) {
   return (

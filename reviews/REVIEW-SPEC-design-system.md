@@ -11,7 +11,7 @@ status: blocked
 
 ## Summary
 
-This spec establishes the visual language for the Swarm marketing site. It gets
+This spec establishes the visual language for the Corpus marketing site. It gets
 the vibe right but is under-specified on accessibility, Tailwind version
 reality, icon strategy, and responsive behavior. Several requirements are
 unverifiable as written.

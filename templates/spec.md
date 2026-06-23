@@ -25,7 +25,7 @@ sources:
      it is the highest-value line in this file; prefer a runnable test or
      command. Prefer stricter notation? Any spec can use SOL blocks instead:
      add "format: sol" to the frontmatter. See `advanced/sol-reference.md` in your workspace
-     (full reference: the Swarm repo's docs/reference/structured-requirements.md). -->
+     (full reference: the Corpus repo's docs/reference/structured-requirements.md). -->
 
 ### AC-001 — {{short name}}
 

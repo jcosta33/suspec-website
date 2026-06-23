@@ -17,7 +17,7 @@ status: ready
 
 ## Scope
 
-Implement the Swarm homepage: hero, problem section, loop diagram, spec/review
+Implement the Corpus homepage: hero, problem section, loop diagram, spec/review
 example, feature grid, final CTA, metadata, performance budget, and reduced-motion
 support.
 

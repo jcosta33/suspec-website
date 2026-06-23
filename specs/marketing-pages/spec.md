@@ -30,7 +30,7 @@ must meet. Implementation is staged in `change-plans/website-launch.md`.
 
 Every marketing page exports a `metadata` object with:
 
-- `title`: "<Page name> — Swarm"
+- `title`: "<Page name> — Corpus"
 - `description`: one-sentence summary.
 - `openGraph.images`: `/og-<page>.png` static asset.
 
@@ -53,8 +53,8 @@ external links point to `github.com/jcosta33/swarm*`.
 Content must match the `swarm` repo:
 
 - Definition from `docs/01-what-is-swarm.md` line 5.
-- "What Swarm is" list (lines 31–38).
-- "What Swarm is not" list (lines 40–51).
+- "What Corpus is" list (lines 31–38).
+- "What Corpus is not" list (lines 40–51).
 - Adjacent-tools table (lines 55–61).
 - Failure-modes table (lines 93–100).
 
@@ -95,7 +95,7 @@ valid.
 
 ### AC-007 — 404 page uses the global shell
 
-The default Next.js not-found page is replaced with a Swarm-branded 404 that
+The default Next.js not-found page is replaced with a Corpus-branded 404 that
 uses the global shell and links back to `/`.
 
 Verify with: visit a non-existent route; the 404 page renders with nav/footer
@@ -130,5 +130,5 @@ All marketing copy derives from the `swarm` framework repo
 ## Dropped from sources
 
 - `/docs` subsite — docs live in the `swarm` repo; website links there.
-- `/pricing` — Swarm is free/open source.
+- `/pricing` — Corpus is free/open source.
 - Full customer case studies — none exist.

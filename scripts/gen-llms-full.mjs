@@ -31,8 +31,8 @@ const numbered = fs
 const order = [...numbered, ...dirDocs("tutorial"), ...dirDocs("examples")];
 
 const header =
-  `# Calma — full documentation\n\n` +
-  `> Calma is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. ` +
+  `# Corpus — full documentation\n\n` +
+  `> Corpus is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. ` +
   `Plain markdown, any agent, no runtime. This file concatenates the user-facing documentation for ` +
   `full-context ingestion by AI assistants.\n\n` +
   `Site: https://swarmframework.dev/ · Canon: https://github.com/jcosta33/swarm\n\n---\n\n`;

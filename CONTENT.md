@@ -1,6 +1,6 @@
 # Content sources and review cadence
 
-This file tracks where the Swarm website's marketing copy comes from and when it
+This file tracks where the Corpus website's marketing copy comes from and when it
 was last checked against the canonical framework docs.
 
 ## Canonical sources
@@ -30,7 +30,7 @@ result in `findings/content-drift-YYYY-MM.md`.
 
 ## Content workflow
 
-For new copy or updates, follow the Swarm loop:
+For new copy or updates, follow the Corpus loop:
 
 1. Intake item in `intake/`.
 2. Spec in `specs/` referencing the framework ADR or doc.

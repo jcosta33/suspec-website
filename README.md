@@ -1,6 +1,6 @@
 # swarm-website
 
-The public marketing site for [Swarm](https://github.com/jcosta33/swarm), a lightweight spec and review workflow for teams using coding agents.
+The public marketing site for [Corpus](https://github.com/jcosta33/swarm), a lightweight spec and review workflow for teams using coding agents.
 
 ## Stack
 

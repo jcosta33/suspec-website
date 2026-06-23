@@ -13,7 +13,7 @@ sources:
 
 ## Intent
 
-Ensure the Swarm marketing site is usable by as many people as possible,
+Ensure the Corpus marketing site is usable by as many people as possible,
 including those using keyboard navigation, screen readers, or reduced-motion
 preferences. Target WCAG 2.2 Level AA.
 
@@ -55,7 +55,7 @@ Verify with: run `axe-core`; no heading-order violations.
 
 - Decorative SVGs have `aria-hidden="true"`.
 - Functional icons are accompanied by visible text or `aria-label`.
-- The logo links to `/` and has an accessible name (e.g., "Swarm home").
+- The logo links to `/` and has an accessible name (e.g., "Corpus home").
 
 Verify with: `axe-core` reports no "image-alt" or "button-name" violations.
 

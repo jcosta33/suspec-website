@@ -3,7 +3,7 @@
 <!-- Keep this file short — aim for ~100 lines. Agents read it on every task,
      so every line spends always-loaded budget. -->
 
-## Swarm startup
+## Corpus startup
 
 1. Read the task packet you were given first. Follow its scope.
 2. Read the linked spec (and change plan, if any) before touching code.
@@ -52,6 +52,6 @@ whose command cannot be resolved reads Unverified, not Pass.
 
 ## Agent role
 
-You are an implementation or review worker for the Swarm website. Swarm
+You are an implementation or review worker for the Corpus website. Corpus
 organizes the work; you perform the assigned task — and you never review your
 own implementation.

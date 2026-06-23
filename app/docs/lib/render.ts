@@ -227,7 +227,7 @@ export async function renderDoc(
 // decisions` must not leak "## Open decisions" into <title>/og/JSON-LD).
 export function titleOf(markdown: string): string {
   const m = markdown.match(/^#\s+(.+)$/m);
-  if (!m) return "Swarm docs";
+  if (!m) return "Corpus docs";
   return m[1]
     .replace(/`/g, "")
     .replace(/(^|\s)#{1,6}\s+/g, "$1")
@@ -290,7 +290,7 @@ export function descriptionOf(markdown: string): string {
   const chosen =
     candidates.find((p) => p.text.length >= 40 && !p.text.endsWith(":")) ?? candidates[0];
   const text = chosen?.text ?? "";
-  if (!text) return "Swarm documentation";
+  if (!text) return "Corpus documentation";
   if (text.length <= 155) return text;
   const slice = text.slice(0, 152);
   const cut = slice.lastIndexOf(" ");

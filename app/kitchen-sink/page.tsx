@@ -13,7 +13,7 @@ import { Heading } from "../components/Heading";
 import { AlertTriangle, CheckCircle, Wrench } from "lucide-react";
 
 export const metadata = {
-  title: "Kitchen sink — Calma",
+  title: "Kitchen sink — Corpus",
   robots: "noindex, nofollow",
 };
 

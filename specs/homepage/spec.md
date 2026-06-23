@@ -14,13 +14,13 @@ sources:
 
 ## Intent
 
-Create the landing page that explains Swarm in one scroll: what it is, why it
+Create the landing page that explains Corpus in one scroll: what it is, why it
 exists, how the loop works, and where to start. The page should feel like a
 friendly factory foreman handing you a clipboard — not a SaaS sales deck.
 
 ## Non-goals
 
-- No pricing page (Swarm is free/open source).
+- No pricing page (Corpus is free/open source).
 - No blog or changelog.
 - No interactive demo beyond code snippets.
 - No customer testimonials.
@@ -48,7 +48,7 @@ valid `href` attributes and open the correct URLs.
 
 ### AC-002 — Problem section names the five walls
 
-A section listing the problems Swarm answers:
+A section listing the problems Corpus answers:
 
 1. Vague tickets.
 2. Re-pasted context.
@@ -57,7 +57,7 @@ A section listing the problems Swarm answers:
 5. Lost findings.
 
 Each wall gets a Lucide icon glyph, a one-line title, and a one-sentence
-description matching the Swarm framework's stated problem set.
+description matching the Corpus framework's stated problem set.
 
 Verify with: the section renders; text matches `docs/01-what-is-swarm.md` in
 the `swarm` repo.
@@ -111,7 +111,7 @@ Verify with: `npm run build` passes; CTA links are valid.
 
 The page sets:
 
-- `<title>`: "Swarm — a hive for your coding agents"
+- `<title>`: "Corpus — a hive for your coding agents"
 - `<meta name="description">`: "A lightweight spec and review workflow for
   teams using coding agents. Plain markdown, any agent, no runtime."
 - Open Graph image: `/og-home.png` (static asset).

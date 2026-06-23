@@ -70,7 +70,7 @@ task become input to the next.
 
 A `findings/` folder plus grep carries a team surprisingly far. Teams with hundreds of
 findings, several repos, or recurring cross-feature patterns graduate to the advanced memory
-model in the Swarm documentation (`docs/reference/memory.md` in the Swarm repo) — a
+model in the Corpus documentation (`docs/reference/memory.md` in the Corpus repo) — a
 load-when index, a glossary, patterns built from corroborated findings, and the full promotion
 protocol that this close flow is the simple core of. Adopt it when grep stops being enough,
 not before.

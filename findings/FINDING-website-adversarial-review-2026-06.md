@@ -83,10 +83,10 @@ npx lighthouse     # performance:100 accessibility:100 bestPractices:100 seo:100
 - **Fix applied**: Removed `/cli/` from `sitemap.ts` and added `robots: "noindex"` to
   `app/cli/page.tsx`.
 
-### 9. Colophon copy contradicts Swarm review discipline — MINOR — fixed
+### 9. Colophon copy contradicts Corpus review discipline — MINOR — fixed
 
 - **File:line**: `app/components/Shell.tsx`
-- **Issue**: Footer said "agents who review their own diffs," which conflicts with Swarm's rule
+- **Issue**: Footer said "agents who review their own diffs," which conflicts with Corpus's rule
   that self-review never issues a result.
 - **Fix applied**: Reworded to "agents who attack their own work before a human judges it."
 

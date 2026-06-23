@@ -13,7 +13,7 @@ sources:
 
 ## Intent
 
-Establish a single, reusable visual language for the Swarm marketing site:
+Establish a single, reusable visual language for the Corpus marketing site:
 colors, typography, spacing, motion, and the global shell (navigation + footer)
 that every page shares. The vibe is **drone swarm meets bee hive meets factory
 floor** — functional, modular, slightly mechanical, but friendly.
@@ -68,9 +68,9 @@ A `Shell` component renders on every route via `app/layout.tsx`:
     (`https://github.com/jcosta33/swarm`).
   - Mobile: hamburger menu below the `lg` breakpoint (1024px).
 - **Footer:**
-  - Copyright: "© 2026 Swarm contributors.".
+  - Copyright: "© 2026 Corpus contributors.".
   - Links: GitHub, Starter kit, Docs, Colophon.
-  - Colophon line: "Built with Swarm by agents who review their own diffs."
+  - Colophon line: "Built with Corpus by agents who review their own diffs."
 
 Verify with: `npm run build` passes; every generated page contains exactly one
 `<nav>` and one `<footer>`; nav links are valid `href` attributes.

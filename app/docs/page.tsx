@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { buildNav, canonAvailable, type NavSection } from "./lib/canon";
 
 export const metadata: Metadata = {
-  title: "Documentation · Swarm",
-  description: "A spec and review workflow for teams using coding agents — the full Swarm documentation.",
+  title: "Documentation · Corpus",
+  description: "A spec and review workflow for teams using coding agents — the full Corpus documentation.",
   alternates: { canonical: "/docs/" },
 };
 
@@ -38,7 +38,7 @@ export default function DocsIndex() {
 
   return (
     <div className="docs-prose" data-pagefind-body>
-      <h1>Swarm documentation</h1>
+      <h1>Corpus documentation</h1>
       <p>
         A spec and review workflow for teams using coding agents. New to it?{" "}
         <Link href="/docs/tutorial/README/">Walk the loop once</Link> — a guided build. Then keep the

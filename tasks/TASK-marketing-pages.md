@@ -51,7 +51,7 @@ and `/cli`, and the custom 404 page.
   - `app/skills/page.tsx` — placeholder "Coming soon" page
   - `app/cli/page.tsx` — placeholder "Coming soon" page
   - `app/colophon/page.tsx` — colophon page (linked from footer)
-  - `app/not-found.tsx` — Swarm-branded 404 with nav/footer
+  - `app/not-found.tsx` — Corpus-branded 404 with nav/footer
   - `next.config.ts` — static export (`output: 'export'`, `distDir: 'dist'`, `trailingSlash: true`)
   - `eslint.config.mjs` — ignore `dist/**`
   - `public/og-*.png` — generated OG images for all pages
@@ -60,7 +60,7 @@ and `/cli`, and the custom 404 page.
   - `npm run lint` — passes
   - `npx tsc --noEmit` — passes
   - `linkinator` on `dist/` served locally — 19 links scanned, 0 broken (GitHub links skipped)
-  - All page titles match `<Page name> — Swarm` pattern
+  - All page titles match `<Page name> — Corpus` pattern
   - `/colophon/` route resolves (footer link no longer broken)
 - Out-of-scope edits: none
 - Blocked questions: none

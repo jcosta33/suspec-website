@@ -15,10 +15,10 @@ const siteGraph = {
     {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
-      name: "Calma",
+      name: "Corpus",
       url: SITE_URL,
       description:
-        "Calma is a lightweight spec-and-review workflow for teams shipping code with coding agents.",
+        "Corpus is a lightweight spec-and-review workflow for teams shipping code with coding agents.",
       sameAs: [
         "https://github.com/jcosta33/swarm",
         "https://github.com/jcosta33/swarm-starter-kit",
@@ -29,7 +29,7 @@ const siteGraph = {
     {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
-      name: "Calma",
+      name: "Corpus",
       url: SITE_URL,
       publisher: { "@id": `${SITE_URL}/#organization` },
       potentialAction: {
@@ -70,15 +70,15 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://swarmframework.dev"),
-  title: "Calma — A spec-and-review workflow for coding agents",
+  title: "Corpus — A spec-and-review workflow for coding agents",
   description:
-    "Calma is a lightweight framework that helps teams ship better code with agents: specs, tasks, reviews, findings, and change plans.",
+    "Corpus is a lightweight framework that helps teams ship better code with agents: specs, tasks, reviews, findings, and change plans.",
   openGraph: {
     type: "website",
-    siteName: "Calma",
+    siteName: "Corpus",
     locale: "en_US",
     images: [
-      { url: "/og-home.png", width: 1200, height: 630, alt: "Calma — a spec-and-review workflow for coding agents" },
+      { url: "/og-home.png", width: 1200, height: 630, alt: "Corpus — a spec-and-review workflow for coding agents" },
     ],
   },
   twitter: {

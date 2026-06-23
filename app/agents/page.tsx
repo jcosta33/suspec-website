@@ -25,23 +25,23 @@ import { PageHero } from "../components/PageHero";
 import { Heading } from "../components/Heading";
 
 export const metadata: Metadata = {
-  title: "Agents — Calma",
+  title: "Agents — Corpus",
   description:
-    "Claude-Code-first worker definitions for Calma roles: independent review, read-only exploration, evidence-checking, and bounded authoring. Copy one file. Records and tripwires, never an orchestrator.",
+    "Claude-Code-first worker definitions for Corpus roles: independent review, read-only exploration, evidence-checking, and bounded authoring. Copy one file. Records and tripwires, never an orchestrator.",
   openGraph: {
-    title: "Agents — Calma",
+    title: "Agents — Corpus",
     description:
-      "A copy-based catalog of Claude Code subagent definitions for Calma roles — each in a fresh isolated context, with a reviewable delegation trace. Records, never an executor.",
+      "A copy-based catalog of Claude Code subagent definitions for Corpus roles — each in a fresh isolated context, with a reviewable delegation trace. Records, never an executor.",
     type: "website",
     url: "/agents/",
-    siteName: "Calma",
+    siteName: "Corpus",
     locale: "en_US",
     images: [
       {
         url: "/og-home.png",
         width: 1200,
         height: 630,
-        alt: "Calma agents — Claude-Code-first worker definitions for the Calma roles",
+        alt: "Corpus agents — Claude-Code-first worker definitions for the Corpus roles",
       },
     ],
   },
@@ -106,10 +106,10 @@ export default function AgentsPage() {
       <Section>
         <PageHero
           eyebrow="agents.catalog — 8 agents · claude code · ports to codex"
-          title={<>Calma <span className="text-swarm-yellow text-glow">agents</span></>}
+          title={<>Corpus <span className="text-swarm-yellow text-glow">agents</span></>}
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Claude-Code-first worker definitions for the Calma roles. Each runs in a fresh, isolated
+            Claude-Code-first worker definitions for the Corpus roles. Each runs in a fresh, isolated
             context with its tools scoped to the work — you copy the one file you need.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">

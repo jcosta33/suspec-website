@@ -41,7 +41,7 @@ spec.
    does not say how the marketing pages link to each other or back to the
    homepage. *Action:* add an AC for internal cross-links and footer nav.
 
-3. **Content fidelity verification is weak.** "Text matches the Swarm repo" is
+3. **Content fidelity verification is weak.** "Text matches the Corpus repo" is
    not a verifiable command. *Action:* specify the exact source files in the
    `swarm` repo and a diff/check command.
 

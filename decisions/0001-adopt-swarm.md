@@ -1,12 +1,12 @@
 ---
 type: adr
 id: 0001
-title: Adopt Swarm for this workspace
+title: Adopt Corpus for this workspace
 status: accepted
 date: {{YYYY-MM-DD}}
 ---
 
-# 0001 — Adopt Swarm for this workspace
+# 0001 — Adopt Corpus for this workspace
 
 ## Context
 
@@ -17,7 +17,7 @@ without evidence.
 
 ## Decision
 
-This repository is our Swarm workspace:
+This repository is our Corpus workspace:
 
 - Durable intent lives in `specs/<feature>/spec.md`; supporting docs sit
   beside it.

@@ -4,8 +4,8 @@ import { Section } from "./components/Section";
 import { Button } from "./components/Button";
 
 export const metadata = {
-  title: "Page not found — Calma",
-  description: "The requested page could not be found on the Calma website.",
+  title: "Page not found — Corpus",
+  description: "The requested page could not be found on the Corpus website.",
   robots: "noindex",
 };
 

@@ -43,9 +43,9 @@ docs every three months. Findings are saved in `findings/`.
 Verify with: a `findings/content-drift-YYYY-MM.md` file exists for the first
 review.
 
-### AC-003 — New framework features follow the Swarm loop
+### AC-003 — New framework features follow the Corpus loop
 
-When a new Swarm feature warrants website copy, the workflow is:
+When a new Corpus feature warrants website copy, the workflow is:
 
 1. Intake item in `intake/`.
 2. Spec in `specs/` referencing the framework ADR.

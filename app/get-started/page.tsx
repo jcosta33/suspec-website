@@ -9,19 +9,19 @@ import { TerminalWindow } from "../components/TerminalWindow";
 import { Heading } from "../components/Heading";
 
 export const metadata: Metadata = {
-  title: "Get started — Calma",
+  title: "Get started — Corpus",
   description:
-    "Adopt Calma in a new repo or an existing project. Start writing specs and keeping humans in the loop in plain markdown.",
+    "Adopt Corpus in a new repo or an existing project. Start writing specs and keeping humans in the loop in plain markdown.",
   openGraph: {
-    title: "Get started — Calma",
+    title: "Get started — Corpus",
     description:
-      "Adopt Calma in a new repo or an existing project. Start writing specs and keeping humans in the loop in plain markdown.",
+      "Adopt Corpus in a new repo or an existing project. Start writing specs and keeping humans in the loop in plain markdown.",
     type: "website",
     url: "/get-started/",
-    siteName: "Calma",
+    siteName: "Corpus",
     locale: "en_US",
     images: [
-      { url: "/og-get-started.png", width: 1200, height: 630, alt: "Get started with Calma — a new repo or an existing project" },
+      { url: "/og-get-started.png", width: 1200, height: 630, alt: "Get started with Corpus — a new repo or an existing project" },
     ],
   },
   alternates: {
@@ -74,7 +74,7 @@ export default function GetStartedPage() {
           <div>
             <Heading>New repo</Heading>
             <p className="mt-2 text-concrete-400">
-              Use the GitHub template to create a fresh Calma workspace with the folder structure,
+              Use the GitHub template to create a fresh Corpus workspace with the folder structure,
               templates, and agent guides already in place.
             </p>
           </div>
@@ -192,7 +192,7 @@ export default function GetStartedPage() {
             <ListDot />
             <span>
               <strong className="text-concrete-100">decisions/</strong> — an ADR ledger, seeded
-              with why you adopted Calma.
+              with why you adopted Corpus.
             </span>
           </li>
         </ul>

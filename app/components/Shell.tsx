@@ -8,7 +8,7 @@ import { Logo } from "./Logo";
 import { Section } from "./Section";
 
 const navLinks = [
-  { label: "What is Calma", href: "/what-is-swarm" },
+  { label: "What is Corpus", href: "/what-is-swarm" },
   { label: "Loop", href: "/the-loop" },
   { label: "Skills", href: "/skills" },
   { label: "Agents", href: "/agents" },
@@ -163,7 +163,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
         }`}
       >
         <Section as="div" className="flex h-16 items-center justify-between">
-          <Link href="/" className="focus-ring rounded-sm" aria-label="Calma home">
+          <Link href="/" className="focus-ring rounded-sm" aria-label="Corpus home">
             <Logo className="text-lg text-concrete-100" />
           </Link>
 
@@ -248,11 +248,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
           className="flex flex-col gap-8 py-12 md:flex-row md:items-center md:justify-between"
         >
           <div className="flex flex-col gap-2">
-            <Link href="/" aria-label="Calma home" className="focus-ring rounded-sm w-fit">
+            <Link href="/" aria-label="Corpus home" className="focus-ring rounded-sm w-fit">
               <Logo className="text-base text-concrete-100" />
             </Link>
             <p className="text-sm text-concrete-400">
-              Built with Calma. The agents don&apos;t get to grade their own homework — a different session
+              Built with Corpus. The agents don&apos;t get to grade their own homework — a different session
               reviewed it, a human merged it.
             </p>
           </div>
@@ -276,7 +276,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </nav>
 
           <p className="text-sm text-concrete-400">
-            © {new Date().getFullYear()} Calma contributors.
+            © {new Date().getFullYear()} Corpus contributors.
           </p>
         </Section>
       </div>

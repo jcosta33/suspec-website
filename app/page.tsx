@@ -34,31 +34,31 @@ import { PageHero } from "./components/PageHero";
 const softwareApp = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "Calma",
+  name: "Corpus",
   applicationCategory: "DeveloperApplication",
   operatingSystem: "Any",
   softwareVersion: "0.1.0",
   url: "https://swarmframework.dev",
   description:
-    "Calma is a lightweight spec-and-review workflow that keeps humans in charge of code written by AI agents. Plain markdown, any agent, no runtime.",
+    "Corpus is a lightweight spec-and-review workflow that keeps humans in charge of code written by AI agents. Plain markdown, any agent, no runtime.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   publisher: { "@id": "https://swarmframework.dev/#organization" },
 };
 
 export const metadata: Metadata = {
-  title: "Calma — specs for humans, tasks for agents",
+  title: "Corpus — specs for humans, tasks for agents",
   description:
-    "AI writes code that looks right. Calma is a lightweight spec-and-review workflow that keeps humans in the driver seat. Plain markdown, any agent, no runtime.",
+    "AI writes code that looks right. Corpus is a lightweight spec-and-review workflow that keeps humans in the driver seat. Plain markdown, any agent, no runtime.",
   openGraph: {
-    title: "Calma — specs for humans, tasks for agents",
+    title: "Corpus — specs for humans, tasks for agents",
     description:
-      "AI writes code that looks right. Calma is a lightweight spec-and-review workflow that keeps humans in the driver seat. Plain markdown, any agent, no runtime.",
+      "AI writes code that looks right. Corpus is a lightweight spec-and-review workflow that keeps humans in the driver seat. Plain markdown, any agent, no runtime.",
     type: "website",
     url: "/",
-    siteName: "Calma",
+    siteName: "Corpus",
     locale: "en_US",
     images: [
-      { url: "/og-home.png", width: 1200, height: 630, alt: "Calma — specs for humans, tasks for agents" },
+      { url: "/og-home.png", width: 1200, height: 630, alt: "Corpus — specs for humans, tasks for agents" },
     ],
   },
   alternates: {
@@ -132,18 +132,18 @@ const features = [
 ];
 
 // Honest, plain-text Q&A — answers a reader (and an AI answer-engine) the real questions, grounded
-// in what Calma actually is. Doubles as FAQPage structured data for generative-engine visibility.
+// in what Corpus actually is. Doubles as FAQPage structured data for generative-engine visibility.
 const faqs = [
   {
-    q: "Is Calma just another spec-driven development tool?",
-    a: "No. Most spec-driven tools optimize generating code from a spec; Calma's emphasis is the review gate. Every change produces a review packet with pasted evidence per requirement, and a human decides when it is good enough. The spec sets scope; the review is where “almost right” has to prove it is right.",
+    q: "Is Corpus just another spec-driven development tool?",
+    a: "No. Most spec-driven tools optimize generating code from a spec; Corpus's emphasis is the review gate. Every change produces a review packet with pasted evidence per requirement, and a human decides when it is good enough. The spec sets scope; the review is where “almost right” has to prove it is right.",
   },
   {
     q: "Do I need a particular AI agent?",
-    a: "No. Calma is plain markdown and conventions, so it works with Claude Code, Cursor, Copilot, or any agent that reads files in your repo. Nothing to integrate, no lock-in.",
+    a: "No. Corpus is plain markdown and conventions, so it works with Claude Code, Cursor, Copilot, or any agent that reads files in your repo. Nothing to integrate, no lock-in.",
   },
   {
-    q: "Does Calma replace code review, CI, or pull requests?",
+    q: "Does Corpus replace code review, CI, or pull requests?",
     a: "No — it rides alongside them. The review packet tells a reviewer where to look; your CI output is the evidence the packet cites. PRs and CI stay exactly where they are.",
   },
   {
@@ -156,7 +156,7 @@ const faqs = [
   },
   {
     q: "Who makes the final call on whether code ships?",
-    a: "A human, every time. Agents draft, run, and paste output; you decide when the evidence is good enough. Calma has no autopilot and no merge-by-vibes — which is where developers already are: in the 2025 Stack Overflow survey, the top reason to keep a person in the loop was “when I don't trust AI's answers.”",
+    a: "A human, every time. Agents draft, run, and paste output; you decide when the evidence is good enough. Corpus has no autopilot and no merge-by-vibes — which is where developers already are: in the 2025 Stack Overflow survey, the top reason to keep a person in the loop was “when I don't trust AI's answers.”",
   },
 ];
 
@@ -194,7 +194,7 @@ export default function HomePage() {
                 <p className="text-concrete-500">
                   <span className="text-swarm-yellow">$</span> swarm status
                 </p>
-                <p className="mt-1 text-concrete-500"># the gap Calma is built for:</p>
+                <p className="mt-1 text-concrete-500"># the gap Corpus is built for:</p>
                 <p className="mt-1 text-concrete-100">
                   Only 33% of developers trust the accuracy of AI output. 84% use it anyway.
                 </p>
@@ -281,7 +281,7 @@ export default function HomePage() {
               >
                 METR
               </Link>
-              ). Calma does not answer that with hustle. It turns every change into a spec, a task,
+              ). Corpus does not answer that with hustle. It turns every change into a spec, a task,
               and a review packet with pasted evidence — so &quot;almost right&quot; has to prove it is right
               before it ships.
             </p>
@@ -506,7 +506,7 @@ export default function HomePage() {
             Stop shipping &quot;almost right&quot; code.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-concrete-400">
-            Calma will not make you 10x, and it is not trying to replace you — it just puts you
+            Corpus will not make you 10x, and it is not trying to replace you — it just puts you
             back in charge of the firehose. Copy the starter kit, write one spec, and give your agents a
             contract they can read. You still make the calls; they just finally know what you meant.
           </p>
@@ -532,7 +532,7 @@ export default function HomePage() {
               href="/what-is-swarm/"
               className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
             >
-              what Calma is
+              what Corpus is
             </Link>{" "}
             or{" "}
             <Link
