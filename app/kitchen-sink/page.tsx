@@ -20,8 +20,8 @@ export const metadata = {
 
 export default function KitchenSinkPage() {
   return (
-    <div className="flex flex-col gap-16 py-16">
-      <Section>
+    <div className="flex flex-col gap-14 py-14 sm:gap-16 sm:py-16">
+      <Section className="ambient-header">
         <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100">
           Kitchen sink
         </h1>
@@ -60,7 +60,7 @@ export default function KitchenSinkPage() {
 
       <Section className="flex flex-col gap-6">
         <Heading>Buttons</Heading>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 sm:gap-5">
           <Button>Primary action</Button>
           <Button variant="secondary">Secondary action</Button>
           <Button variant="secondary">Outline action</Button>

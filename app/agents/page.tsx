@@ -103,7 +103,7 @@ function repoHref(agent: string) {
 
 export default function AgentsPage() {
   return (
-    <div className="flex flex-col gap-24 py-24">
+    <div className="flex flex-col gap-20 py-20 sm:gap-24 sm:py-24">
       <Section>
         <PageHero
           eyebrow="worker files / agent roles"

@@ -79,8 +79,22 @@ Implement or preserve:
 
 ## Run summary
 
-- Changed files:
-- Verify results:
-- Out-of-scope edits:
-- Blocked questions:
-- Provenance:
+- Changed files: `app/components/Badge.tsx`, `app/components/PaperArtifact.tsx`,
+  `app/components/PilotLamp.tsx`, `app/components/ToggleButton.tsx`,
+  `app/docs/docs.css`, `app/get-started/page.tsx`, `app/mcp/page.tsx`,
+  `app/page.tsx`, `app/what-is-corpus/page.tsx`,
+  `tasks/TASK-a11y-link-compliance.md`, `status.md`.
+- Verify results: `npm run lint` passed; `npx tsc --noEmit` passed; axe-core
+  passed on `/`, `/docs/`, `/docs/reference/structured-requirements/`,
+  `/what-is-corpus/`, `/the-loop/`, `/get-started/`, `/agents/`, `/skills/`,
+  `/skills/writing/`, `/cli/`, `/mcp/`, and `/kitchen-sink/`; keyboard smoke
+  passed at desktop and 375px for `/`, `/docs/`, `/get-started/`, `/skills/`,
+  `/cli/`, and `/mcp/`; link crawl passed for local `/docs/...` document
+  references in marketing routes. Lead integration reran the final production
+  QA after fixing docs-sidebar contrast and the kitchen-sink switch tap target;
+  real output is in the lead handoff.
+- Out-of-scope edits: None by Worker 3. Concurrent unowned edits were present
+  in the shared worktree and were left intact.
+- Blocked questions: None.
+- Provenance: Worker 3 implementation for `TASK-a11y-link-compliance`; no
+  commit or push.

@@ -76,8 +76,22 @@ Implement or preserve:
 
 ## Run summary
 
-- Changed files:
-- Verify results:
-- Out-of-scope edits:
-- Blocked questions:
-- Provenance:
+- Changed files: `app/globals.css`, `app/components/TerminalWindow.tsx`,
+  `app/components/PilotLamp.tsx`, `app/components/LoopDiagram.tsx`,
+  `app/page.tsx`, `app/the-loop/page.tsx`,
+  `app/what-is-corpus/page.tsx`, `app/cli/page.tsx`,
+  `app/mcp/page.tsx`, `app/kitchen-sink/page.tsx`,
+  `tasks/TASK-subtle-motion.md`, `status.md`.
+- Verify results: `rtk npm run lint` exited 0; output pasted in final.
+- Verify results: `rtk npx tsc --noEmit` exited 0; output pasted in final.
+- Verify results: `rtk npm run build` exited 0; output pasted in final.
+- Verify results: Browser QA against `http://localhost:3001` exited 0 for
+  desktop, 375px mobile, reduced-motion, and hover probes; output pasted in
+  final.
+- Verify results: `rtk git diff -- package.json package-lock.json` exited 0
+  with no output; output pasted in final.
+- Out-of-scope edits: None made for this task. Concurrent route spacing,
+  color, and link edits were observed during diff review in files this task
+  also touched and were preserved per the collaboration rule.
+- Blocked questions: None.
+- Provenance: Worker 4 implementation for TASK-subtle-motion.

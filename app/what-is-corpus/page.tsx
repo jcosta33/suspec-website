@@ -165,8 +165,8 @@ const failureModes = [
 
 export default function WhatIsCorpusPage() {
   return (
-    <div className="flex flex-col gap-24 py-24">
-      <Section>
+    <div className="flex flex-col gap-20 py-20 sm:gap-24 sm:py-24">
+      <Section className="ambient-header">
         <PageHero
           eyebrow="system overview"
           title={
@@ -345,7 +345,7 @@ export default function WhatIsCorpusPage() {
       <Section>
         <Card
           screws
-          className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+          contentClassName="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
         >
           <div>
             <Heading>See how it actually runs</Heading>
@@ -366,7 +366,7 @@ export default function WhatIsCorpusPage() {
         <p className="text-concrete-400">
           Source:{" "}
           <Link
-            href="https://github.com/jcosta33/corpus/blob/main/docs/01-what-is-corpus.md"
+            href="/docs/01-what-is-corpus/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"

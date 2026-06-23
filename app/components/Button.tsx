@@ -33,7 +33,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "btn toggle inline-flex items-center justify-center gap-2 rounded-[var(--radius-control)] px-6 py-3 text-base font-semibold focus-ring";
+    "btn toggle inline-flex min-h-11 items-center justify-center gap-2 rounded-[var(--radius-control)] px-6 py-3 text-center text-base font-semibold leading-snug focus-ring";
 
   const styles = {
     primary: [

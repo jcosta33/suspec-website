@@ -186,8 +186,8 @@ const steps = [
 
 export default function TheLoopPage() {
   return (
-    <div className="flex flex-col gap-24 py-24">
-      <Section>
+    <div className="flex flex-col gap-20 py-20 sm:gap-24 sm:py-24">
+      <Section className="ambient-header">
         <PageHero
           eyebrow="workflow / 6 stages"
           title={
@@ -281,7 +281,7 @@ export default function TheLoopPage() {
       <Section>
         <Card
           screws
-          className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+          contentClassName="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
         >
           <div>
             <Heading>Ready to run it?</Heading>

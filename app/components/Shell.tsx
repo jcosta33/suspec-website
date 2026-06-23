@@ -83,7 +83,7 @@ function NavLink({
       </span>
       {isActive && showIndicator && (
         <span
-          className="absolute -bottom-2 left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-corpus-yellow shadow-[0_0_8px_rgba(216,138,36,0.72)]"
+          className="absolute -bottom-2 left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-corpus-yellow"
           aria-hidden="true"
         />
       )}
@@ -97,8 +97,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const [scrolled, setScrolled] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const headerIsOpaque = scrolled || menuOpen;
 
-  // The header is always opaque; scroll only adds a small shadow so content never bleeds through.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -159,8 +159,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </a>
 
       <header
-        className={`sticky top-0 z-40 border-b border-panel-border bg-chassis transition-shadow duration-200 ${
-          scrolled || menuOpen ? "shadow-[0_8px_24px_rgba(0,0,0,0.28)]" : ""
+        data-nav-state={headerIsOpaque ? "opaque" : "transparent"}
+        className={`sticky top-0 z-40 border-b transition-[background-color,border-color,box-shadow] duration-200 ${
+          headerIsOpaque
+            ? "border-panel-border bg-chassis shadow-[0_8px_24px_rgba(0,0,0,0.28)]"
+            : "border-transparent bg-transparent"
         }`}
       >
         <Section as="div" className="flex h-16 items-center justify-between">
@@ -197,8 +200,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <button
             ref={toggleRef}
             type="button"
-            className="toggle inline-flex items-center justify-center rounded-[var(--radius-control)] border border-panel-border bg-panel-raised p-2 text-concrete-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-2px_0_rgba(0,0,0,0.5)] hover:text-corpus-yellow focus-ring active:translate-y-px active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.45)] lg:hidden"
+            className={`toggle inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-control)] border p-2 text-concrete-100 hover:text-corpus-yellow focus-ring active:translate-y-px lg:hidden ${
+              headerIsOpaque
+                ? "border-panel-border bg-panel-raised shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-2px_0_rgba(0,0,0,0.5)] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.45)]"
+                : "border-transparent bg-transparent active:shadow-none"
+            }`}
             aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
             aria-label="Toggle navigation menu"
             onClick={() => setMenuOpen((open) => !open)}
           >

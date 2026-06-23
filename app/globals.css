@@ -175,6 +175,75 @@ body::after {
   outline-offset: 2px;
 }
 
+/* Route header ruling — faint manuscript marks behind the hero title. */
+.ambient-header {
+  position: relative;
+  isolation: isolate;
+}
+
+.ambient-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+.ambient-header::before,
+.ambient-header::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  pointer-events: none;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.ambient-header::before {
+  top: -1.5rem;
+  width: min(48rem, 86vw);
+  height: 8.5rem;
+  border-radius: 9999px;
+  opacity: 0.5;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 23px,
+      rgba(216, 138, 36, 0.12) 23px,
+      rgba(216, 138, 36, 0.12) 24px
+    ),
+    radial-gradient(
+      ellipse at center,
+      rgba(216, 138, 36, 0.12),
+      transparent 68%
+    );
+}
+
+.ambient-header::after {
+  top: 2.35rem;
+  width: min(28rem, 72vw);
+  height: 0.8rem;
+  opacity: 0.68;
+  background:
+    radial-gradient(
+        circle,
+        rgba(216, 138, 36, 0.72) 0 1.5px,
+        transparent 2px
+      )
+      left center / 0.8rem 0.8rem no-repeat,
+    radial-gradient(
+        circle,
+        rgba(216, 138, 36, 0.72) 0 1.5px,
+        transparent 2px
+      )
+      right center / 0.8rem 0.8rem no-repeat,
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(216, 138, 36, 0.42),
+        transparent
+      )
+      center / 100% 1px no-repeat;
+}
+
 /* Gilt band — a fine diagonal guilloche hatch in gold. */
 .gilt-hatch {
   background-image: repeating-linear-gradient(
@@ -214,6 +283,23 @@ body::after {
   animation: blink 1s step-end infinite;
 }
 
+@keyframes lamp-breathe {
+  0%,
+  100% {
+    filter: brightness(0.98);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.14);
+    transform: scale(1.06);
+  }
+}
+
+.pilot-lamp-pulse {
+  animation: lamp-breathe 3.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
 @keyframes scanline {
   0% {
     transform: translateY(-100%);
@@ -239,6 +325,11 @@ body::after {
 
 .animate-rotate-slow {
   animation: rotate-slow 120s linear infinite;
+}
+
+.seal-ticks {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
 }
 
 /* Scroll-reveal — content rises in as it enters the viewport (modern, no JS).
@@ -284,6 +375,11 @@ body::after {
     inset 0 1px 0 rgba(232, 222, 203, 0.06),
     inset 0 -1px 0 rgba(0, 0, 0, 0.55),
     0 1px 2px rgba(0, 0, 0, 0.5);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease;
 }
 
 /* Recessed well / screen — a deep inset terminal cavity. */
@@ -295,6 +391,29 @@ body::after {
   box-shadow:
     inset 0 3px 9px rgba(0, 0, 0, 0.72),
     inset 0 0 64px rgba(0, 0, 0, 0.45);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+.panel-raised:hover,
+.panel-raised:focus-within {
+  border-color: rgba(216, 138, 36, 0.52);
+  box-shadow:
+    inset 0 1px 0 rgba(232, 222, 203, 0.11),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(216, 138, 36, 0.08),
+    0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.panel-inset:hover,
+.panel-inset:focus-within {
+  border-color: rgba(216, 138, 36, 0.38);
+  box-shadow:
+    inset 0 3px 9px rgba(0, 0, 0, 0.72),
+    inset 0 0 64px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(216, 138, 36, 0.07);
 }
 
 /* Fine vertical engraving tooth — manuscript ruling meets machine plate. */
@@ -515,6 +634,33 @@ body::after {
     inset 0 0 64px rgba(0, 0, 0, 0.45);
 }
 
+.terminal-window {
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.terminal-window:hover,
+.terminal-window:focus-within {
+  border-color: rgba(216, 138, 36, 0.52);
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.11),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(216, 138, 36, 0.08),
+    0 14px 32px rgba(0, 0, 0, 0.34);
+}
+
+.terminal-title-caret {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.78rem;
+  border-radius: 1px;
+  background: var(--color-aurum);
+  box-shadow: 0 0 8px rgba(216, 138, 36, 0.54);
+  animation: blink 1.15s step-end infinite;
+}
+
 .crt-screen::before {
   content: "";
   position: absolute;
@@ -570,6 +716,10 @@ body::after {
     inset 0 1px 0 rgba(255, 255, 255, 0.55),
     inset 0 -1px 0 rgba(8, 9, 11, 0.08),
     0 12px 28px rgba(0, 0, 0, 0.28);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .paper-artifact::before {
@@ -584,6 +734,15 @@ body::after {
     radial-gradient(1px 1px at 148px 18px, rgba(184, 135, 58, 0.09), transparent);
   background-size: 180px 120px;
   opacity: 0.7;
+}
+
+.paper-artifact:hover,
+.paper-artifact:focus-within {
+  border-color: rgba(184, 135, 58, 0.76);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    inset 0 -1px 0 rgba(8, 9, 11, 0.08),
+    0 16px 34px rgba(0, 0, 0, 0.3);
 }
 
 .paper-stamp {
@@ -666,6 +825,15 @@ body::after {
    never slides the wrong way. Button-scoped via .btn (the bare .toggle hamburger is unaffected),
    and fully gated behind reduced-motion — transition AND end-state — so there's no movement at all. */
 @media (prefers-reduced-motion: no-preference) {
+  .btn:not(:disabled):hover,
+  .btn:focus-visible,
+  .terminal-window:hover,
+  .terminal-window:focus-within,
+  .paper-artifact:hover,
+  .paper-artifact:focus-within {
+    transform: translateY(-1px);
+  }
+
   .btn .lucide-arrow-right {
     transition: transform 150ms ease;
   }
@@ -680,8 +848,21 @@ body::after {
   .animate-pulse-slow,
   .animate-blink,
   .animate-scanline,
-  .animate-rotate-slow {
+  .animate-rotate-slow,
+  .pilot-lamp-pulse,
+  .terminal-title-caret {
     animation: none;
+  }
+
+  .btn:hover,
+  .btn:focus-visible,
+  .panel-raised.group:hover,
+  .panel-raised.group:focus-within,
+  .terminal-window:hover,
+  .terminal-window:focus-within,
+  .paper-artifact:hover,
+  .paper-artifact:focus-within {
+    transform: none !important;
   }
 }
 

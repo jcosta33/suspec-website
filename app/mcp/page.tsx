@@ -116,8 +116,8 @@ const prompts = [
 
 export default function McpPage() {
   return (
-    <div className="flex flex-col gap-24 py-24">
-      <Section>
+    <div className="flex flex-col gap-20 py-20 sm:gap-24 sm:py-24">
+      <Section className="ambient-header">
         <PageHero
           eyebrow="mcp server / read-only adapter"
           title={
@@ -234,7 +234,7 @@ export default function McpPage() {
                 key={group.group}
                 className="rounded-panel border border-panel-border bg-panel p-4"
               >
-                <p className="font-mono text-xs uppercase tracking-wide text-brass">
+                <p className="font-mono text-xs uppercase tracking-wide text-amber">
                   {group.group}
                 </p>
                 <ul className="mt-3 space-y-2">
@@ -264,7 +264,7 @@ export default function McpPage() {
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <div className="rounded-panel border border-panel-border bg-panel p-4">
-              <p className="font-mono text-xs uppercase tracking-wide text-brass">
+              <p className="font-mono text-xs uppercase tracking-wide text-amber">
                 resources
               </p>
               <ul className="mt-3 space-y-2">
@@ -279,7 +279,7 @@ export default function McpPage() {
               </ul>
             </div>
             <div className="rounded-panel border border-panel-border bg-panel p-4">
-              <p className="font-mono text-xs uppercase tracking-wide text-brass">
+              <p className="font-mono text-xs uppercase tracking-wide text-amber">
                 prompts
               </p>
               <ul className="mt-3 space-y-2">
@@ -339,7 +339,7 @@ export default function McpPage() {
       <Section>
         <Card
           screws
-          className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+          contentClassName="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
         >
           <div>
             <div className="flex items-center gap-2 text-xs font-mono uppercase text-brass">
@@ -352,7 +352,7 @@ export default function McpPage() {
               resources, prompts, and tests.
             </p>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="flex flex-col gap-4 sm:flex-row">
             <Button asChild className="w-full sm:w-auto">
               <Link
                 href="https://github.com/jcosta33/corpus-mcp"

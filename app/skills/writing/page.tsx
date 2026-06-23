@@ -94,7 +94,7 @@ const scopeExclusions = [
 
 export default function WritingSkillsPage() {
   return (
-    <div className="flex flex-col gap-24 py-24">
+    <div className="flex flex-col gap-20 py-20 sm:gap-24 sm:py-24">
       <Section>
         <PageHero
           eyebrow="SKILL.md — open Agent Skills format"

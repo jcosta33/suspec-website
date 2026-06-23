@@ -173,7 +173,7 @@ export default function HomePage() {
       <JsonLd data={softwareApp} />
       <section className="relative isolate overflow-hidden border-b border-panel-border py-20 sm:py-28">
         <HeroHexGrid />
-        <Section className="relative z-10">
+        <Section className="ambient-header relative z-10">
           <PageHero
             eyebrow="workflow / six steps"
             titleSize="hero"
@@ -185,7 +185,7 @@ export default function HomePage() {
             <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
               Define the work, run agents, verify outputs, preserve evidence.
             </p>
-            <div className="mt-9 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Button asChild className="w-full sm:w-auto">
                 <Link href="/get-started/">
                   Start the loop{" "}
@@ -203,7 +203,7 @@ export default function HomePage() {
               <div className="min-w-0 rounded-panel border border-panel-border bg-panel p-4">
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <p className="font-mono text-xs uppercase tracking-[0.12em] text-brass">
+                    <p className="font-mono text-xs uppercase tracking-[0.12em] text-amber">
                       loop preview
                     </p>
                     <h2 className="mt-1 font-heading text-xl font-bold text-concrete-100 sm:text-2xl">
@@ -257,7 +257,7 @@ export default function HomePage() {
         </Section>
       </section>
 
-      <section className="py-20">
+      <section className="py-16 sm:py-20">
         <Section className="flex flex-col gap-10">
           <div className="max-w-2xl">
             <Eyebrow icon={<Terminal className="h-4 w-4" aria-hidden="true" />}>
@@ -293,7 +293,7 @@ export default function HomePage() {
         </Section>
       </section>
 
-      <section className="border-y border-panel-border bg-panel-raised py-20">
+      <section className="border-y border-panel-border bg-panel-raised py-16 sm:py-20">
         <Section className="flex flex-col gap-10">
           <div className="max-w-2xl">
             <Eyebrow>workflow / six steps</Eyebrow>
@@ -309,7 +309,7 @@ export default function HomePage() {
         </Section>
       </section>
 
-      <section className="py-20">
+      <section className="py-16 sm:py-20">
         <Section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <Eyebrow icon={<CheckCircle className="h-4 w-4" aria-hidden="true" />}>
@@ -341,7 +341,7 @@ export default function HomePage() {
         </Section>
       </section>
 
-      <section className="border-y border-panel-border bg-panel-raised py-20">
+      <section className="border-y border-panel-border bg-panel-raised py-16 sm:py-20">
         <Section className="flex flex-col gap-10">
           <div className="max-w-2xl">
             <Eyebrow>what you get</Eyebrow>
@@ -374,7 +374,7 @@ export default function HomePage() {
       </section>
 
       <JsonLd data={faqJsonLd} />
-      <section className="py-20">
+      <section className="py-16 sm:py-20">
         <Section className="flex flex-col gap-10">
           <div className="max-w-2xl">
             <Eyebrow>plain answers</Eyebrow>
@@ -404,7 +404,7 @@ export default function HomePage() {
         </Section>
       </section>
 
-      <section className="relative py-20">
+      <section className="relative py-16 sm:py-20">
         <Section className="text-center">
           <Eyebrow className="mx-auto">start / first pass</Eyebrow>
           <h2 className="mt-6 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
@@ -415,7 +415,7 @@ export default function HomePage() {
             review the evidence. The loop scales because the first pass is
             small.
           </p>
-          <div className="mt-9 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Button asChild className="w-full sm:w-auto">
               <Link href="/get-started/">
                 Start the loop{" "}

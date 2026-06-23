@@ -33,7 +33,7 @@ export function ToggleButton({
       role="switch"
       aria-checked={isChecked}
       onClick={toggle}
-      className={`group inline-flex items-center gap-3 focus-ring rounded-sm ${className}`}
+      className={`group inline-flex min-h-11 items-center gap-3 focus-ring rounded-sm ${className}`}
     >
       <span
         className={`relative inline-flex h-7 w-14 items-center border border-panel-border panel-inset transition-colors ${

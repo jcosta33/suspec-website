@@ -24,7 +24,7 @@ export function Badge({ children, variant = "default" }: BadgeProps) {
     unverified: "border-amber/70 bg-panel-raised text-amber",
     blocked: "border-rubedo/70 bg-panel-raised text-rubedo",
     draft: "border-mercury/50 bg-panel-raised text-mercury",
-    archived: "border-ash/50 bg-panel-raised text-ash",
+    archived: "border-ash/70 bg-panel-raised text-concrete-400",
   };
 
   return (

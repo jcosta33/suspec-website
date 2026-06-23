@@ -14,11 +14,11 @@ export function PilotLamp({
   return (
     <span className={`inline-flex items-center gap-2 ${className}`} title={label}>
       <span
-        className={`pilot-lamp pilot-lamp-${color} ${pulse ? "animate-pulse" : ""}`}
+        className={`pilot-lamp pilot-lamp-${color} ${pulse ? "pilot-lamp-pulse" : ""}`}
         aria-hidden="true"
       />
       {label && (
-        <span className="text-xs font-mono uppercase tracking-wide text-concrete-500">
+        <span className="text-xs font-mono uppercase tracking-wide text-concrete-400">
           {label}
         </span>
       )}

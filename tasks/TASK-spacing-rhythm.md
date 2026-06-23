@@ -71,10 +71,23 @@ Implement or preserve:
 
 ## Findings
 
+- `Card` applies `className` to the outer chrome wrapper; internal card rhythm
+  needs `contentClassName` on the content wrapper.
+
 ## Run summary
 
-- Changed files:
-- Verify results:
-- Out-of-scope edits:
-- Blocked questions:
-- Provenance:
+- Changed files: `app/components/Button.tsx`, `app/components/Card.tsx`,
+  `app/components/PaperArtifact.tsx`, `app/page.tsx`,
+  `app/what-is-corpus/page.tsx`, `app/the-loop/page.tsx`,
+  `app/get-started/page.tsx`, `app/agents/page.tsx`, `app/skills/page.tsx`,
+  `app/skills/writing/page.tsx`, `app/cli/page.tsx`, `app/mcp/page.tsx`,
+  `app/kitchen-sink/page.tsx`, `tasks/TASK-spacing-rhythm.md`, `status.md`.
+- Verify results: `npm run lint`, `npx tsc --noEmit`, and desktop/375px
+  browser QA passed; real output is pasted in the final handoff.
+- Out-of-scope edits: none by Worker 1. Concurrent non-owned diffs were
+  observed in the worktree, including component/style/task files outside this
+  task and same-file route/link/color edits unrelated to spacing; they were
+  left untouched.
+- Blocked questions: none.
+- Provenance: Worker 1 spacing-rhythm pass; browser QA used headless Chrome
+  against the healthy existing dev server on `http://localhost:3000`.

@@ -60,8 +60,16 @@ Implement or preserve:
 
 ## Run summary
 
-- Changed files:
-- Verify results:
-- Out-of-scope edits:
-- Blocked questions:
-- Provenance:
+- Changed files: `app/components/Shell.tsx`, `tasks/TASK-transparent-nav.md`,
+  `status.md`.
+- Verify results: `npm run lint`, `npx tsc --noEmit`, and browser QA for `/`,
+  `/docs/`, `/what-is-corpus/`, `/the-loop/`, `/get-started/`, `/agents/`,
+  `/skills/`, `/cli/`, and `/mcp/` passed; real output is pasted in the final
+  handoff.
+- Out-of-scope edits: none by Worker 2. Concurrent non-owned diffs were
+  observed in the worktree, including route/component/style/task files outside
+  this task; they were left untouched.
+- Blocked questions: none.
+- Provenance: Worker 2 transparent-nav pass; browser QA used headless Chrome via
+  temporary `/tmp` `playwright-core` against `npm run build` output served from
+  `dist` at `http://localhost:3210` after the shared dev server became unhealthy.

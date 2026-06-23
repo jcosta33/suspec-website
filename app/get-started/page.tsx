@@ -62,7 +62,7 @@ function ListDot() {
 
 export default function GetStartedPage() {
   return (
-    <div className="flex flex-col gap-24 py-24">
+    <div className="flex flex-col gap-20 py-20 sm:gap-24 sm:py-24">
       <Section>
         <div className="max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-brass">
@@ -79,7 +79,7 @@ export default function GetStartedPage() {
       </Section>
 
       <Section className="reveal grid gap-8 md:grid-cols-2">
-        <Card screws className="flex flex-col gap-6">
+        <Card screws className="h-full" contentClassName="flex h-full flex-col gap-8">
           <KitIcon>
             <Rocket className="h-6 w-6" aria-hidden="true" />
           </KitIcon>
@@ -91,7 +91,7 @@ export default function GetStartedPage() {
               place.
             </p>
           </div>
-          <Button asChild>
+          <Button asChild className="mt-auto w-full sm:w-fit">
             <Link
               href="https://github.com/jcosta33/corpus-starter-kit"
               target="_blank"
@@ -103,7 +103,7 @@ export default function GetStartedPage() {
           </Button>
         </Card>
 
-        <Card screws className="flex flex-col gap-6">
+        <Card screws className="h-full" contentClassName="flex h-full flex-col gap-8">
           <KitIcon>
             <FolderPlus className="h-6 w-6" aria-hidden="true" />
           </KitIcon>
@@ -115,9 +115,9 @@ export default function GetStartedPage() {
               project structure.
             </p>
           </div>
-          <Button variant="secondary" asChild>
+          <Button variant="secondary" asChild className="mt-auto w-full sm:w-fit">
             <Link
-              href="https://github.com/jcosta33/corpus/blob/main/docs/ADOPTING.md"
+              href="/docs/ADOPTING/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -246,7 +246,7 @@ export default function GetStartedPage() {
       <Section>
         <Card
           screws
-          className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+          contentClassName="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
         >
           <div className="flex items-start gap-4">
             <KitIcon>
@@ -272,7 +272,7 @@ export default function GetStartedPage() {
       <Section>
         <Card
           screws
-          className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+          contentClassName="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
         >
           <div className="flex items-start gap-4">
             <KitIcon>
@@ -300,7 +300,7 @@ export default function GetStartedPage() {
         <p className="text-concrete-400">
           Not sure which path fits? Read{" "}
           <Link
-            href="https://github.com/jcosta33/corpus/blob/main/docs/ADOPTING.md"
+            href="/docs/ADOPTING/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"

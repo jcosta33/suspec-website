@@ -32,7 +32,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-concrete-500);
+  color: var(--color-concrete-400);
   margin: 0 0 0.5rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--color-panel-border);
@@ -200,7 +200,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--color-concrete-500);
+    color: var(--color-concrete-400);
     margin: 0 0 0.6rem;
     padding-bottom: 0.4rem;
     border-bottom: 1px solid var(--color-panel-border);
@@ -499,7 +499,7 @@
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-brass);
+  color: var(--color-corpus-yellow);
 }
 .docs-prose .docs-pager-title {
   color: var(--color-concrete-100);
@@ -520,6 +520,10 @@
 }
 .docs-prose .docs-bridge p {
   margin: 0;
+}
+.docs-prose .docs-bridge a {
+  color: var(--color-corpus-yellow);
+  text-decoration-color: rgba(216, 138, 36, 0.6);
 }
 @media (max-width: 40rem) {
   .docs-prose .docs-pager {

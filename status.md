@@ -32,10 +32,10 @@ type: status
 | SPEC-transparent-nav         | spec        | ready        | `specs/transparent-nav/spec.md`          |
 | SPEC-a11y-link-compliance    | spec        | ready        | `specs/a11y-link-compliance/spec.md`     |
 | SPEC-subtle-motion           | spec        | ready        | `specs/subtle-motion/spec.md`            |
-| TASK-spacing-rhythm          | task        | ready        | `tasks/TASK-spacing-rhythm.md`           |
-| TASK-transparent-nav         | task        | ready        | `tasks/TASK-transparent-nav.md`          |
-| TASK-a11y-link-compliance    | task        | ready        | `tasks/TASK-a11y-link-compliance.md`     |
-| TASK-subtle-motion           | task        | ready        | `tasks/TASK-subtle-motion.md`            |
+| TASK-spacing-rhythm          | task        | review-ready | `tasks/TASK-spacing-rhythm.md`           |
+| TASK-transparent-nav         | task        | review-ready | `tasks/TASK-transparent-nav.md`          |
+| TASK-a11y-link-compliance    | task        | review-ready | `tasks/TASK-a11y-link-compliance.md`     |
+| TASK-subtle-motion           | task        | review-ready | `tasks/TASK-subtle-motion.md`            |
 
 ## Human attention
 

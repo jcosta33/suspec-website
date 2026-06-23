@@ -61,6 +61,16 @@ export function LoopDiagram() {
     };
   });
   const sealPath = sealPoints.map((point) => `${point.x},${point.y}`).join(" ");
+  const tickPoints = Array.from({ length: 12 }, (_, index) => {
+    const angle = -90 + index * 30;
+    const rad = (angle * Math.PI) / 180;
+    return {
+      x1: 50 + Math.cos(rad) * 38,
+      y1: 50 + Math.sin(rad) * 38,
+      x2: 50 + Math.cos(rad) * 43,
+      y2: 50 + Math.sin(rad) * 43,
+    };
+  });
 
   return (
     <div className="reveal flex flex-col gap-8">
@@ -80,6 +90,20 @@ export function LoopDiagram() {
               stroke="var(--color-panel-border)"
               strokeWidth="0.8"
             />
+            <g className="seal-ticks animate-rotate-slow" aria-hidden="true">
+              {tickPoints.map((tick, index) => (
+                <line
+                  key={`tick-${index}`}
+                  x1={tick.x1}
+                  y1={tick.y1}
+                  x2={tick.x2}
+                  y2={tick.y2}
+                  stroke="rgba(216,138,36,0.44)"
+                  strokeWidth="0.7"
+                  strokeLinecap="round"
+                />
+              ))}
+            </g>
             <circle
               cx="50"
               cy="50"
