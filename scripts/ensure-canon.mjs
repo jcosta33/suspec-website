@@ -1,9 +1,9 @@
 // Ensure the corpus/docs canon is available to the build (prebuild step).
 // - local dev: use the sibling checkout ../corpus/docs (no-op).
 // - CI / Vercel (no sibling): shallow-clone the canon into .corpus-canon/ (gitignored, ephemeral —
-//   never committed, so single-sourcing holds). Pin a ref via SWARM_REF for reproducible builds.
+//   never committed, so single-sourcing holds). Pin a ref via CORPUS_REF for reproducible builds.
 // Chosen over a git submodule: lower contributor friction (no submodule init/update), works the same
-// locally and on Vercel, and SWARM_REF gives the same pinning a submodule would.
+// locally and on Vercel, and CORPUS_REF gives the same pinning a submodule would.
 import { existsSync, writeFileSync } from "node:fs";
 import { execSync } from "node:child_process";
 import path from "node:path";
@@ -12,8 +12,8 @@ const cwd = process.cwd();
 const sibling = path.join(cwd, "..", "corpus", "docs");
 const vendor = path.join(cwd, ".corpus-canon");
 const vendorDocs = path.join(vendor, "docs");
-const ref = process.env.SWARM_REF || "main";
-const repo = process.env.SWARM_REPO || "https://github.com/jcosta33/corpus";
+const ref = process.env.CORPUS_REF || "main";
+const repo = process.env.CORPUS_REPO || "https://github.com/jcosta33/corpus";
 
 let repoRoot; // the git repo that contains docs/
 if (existsSync(sibling)) {

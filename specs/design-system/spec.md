@@ -62,7 +62,7 @@ passes; the rendered HTML contains the font CSS variables.
 A `Shell` component renders on every route via `app/layout.tsx`:
 
 - **Nav:**
-  - Logo: "SWARM" wordmark linking to `/`.
+  - Logo: "CORPUS" wordmark linking to `/`.
   - Links: Product (`/what-is-corpus`), Loop (`/the-loop`), Docs
     (`https://github.com/jcosta33/corpus/blob/main/docs`), GitHub
     (`https://github.com/jcosta33/corpus`).
