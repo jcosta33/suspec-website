@@ -17,7 +17,7 @@ status: ready
 
 ## Scope
 
-Implement `/what-is-swarm`, `/the-loop`, `/get-started`, placeholder `/skills`
+Implement `/what-is-corpus`, `/the-loop`, `/get-started`, placeholder `/skills`
 and `/cli`, and the custom 404 page.
 
 ## Do not change
@@ -26,7 +26,7 @@ and `/cli`, and the custom 404 page.
 
 ## Affected areas
 
-- `app/what-is-swarm/page.tsx`
+- `app/what-is-corpus/page.tsx`
 - `app/the-loop/page.tsx`
 - `app/get-started/page.tsx`
 - `app/skills/page.tsx`
@@ -38,20 +38,20 @@ and `/cli`, and the custom 404 page.
 - [ ] `npm run build` exits 0
 - [ ] All routes render without errors
 - [ ] Internal links are valid (linkinator)
-- [ ] Content matches source docs in `swarm` repo
+- [ ] Content matches source docs in `corpus` repo
 
 ## Findings
 
 ## Run summary
 
 - Changed files:
-  - `app/what-is-swarm/page.tsx` — framework explainer with is/is-not lists, adjacent-tools table, failure-modes grid
+  - `app/what-is-corpus/page.tsx` — framework explainer with is/is-not lists, adjacent-tools table, failure-modes grid
   - `app/the-loop/page.tsx` — six-step loop with code examples
   - `app/get-started/page.tsx` — starter-kit and existing-project adoption paths
   - `app/skills/page.tsx` — placeholder "Coming soon" page
   - `app/cli/page.tsx` — placeholder "Coming soon" page
   - `app/colophon/page.tsx` — colophon page (linked from footer)
-  - `app/not-found.tsx` — Swarm-branded 404 with nav/footer
+  - `app/not-found.tsx` — Corpus-branded 404 with nav/footer
   - `next.config.ts` — static export (`output: 'export'`, `distDir: 'dist'`, `trailingSlash: true`)
   - `eslint.config.mjs` — ignore `dist/**`
   - `public/og-*.png` — generated OG images for all pages
@@ -60,7 +60,7 @@ and `/cli`, and the custom 404 page.
   - `npm run lint` — passes
   - `npx tsc --noEmit` — passes
   - `linkinator` on `dist/` served locally — 19 links scanned, 0 broken (GitHub links skipped)
-  - All page titles match `<Page name> — Swarm` pattern
+  - All page titles match `<Page name> — Corpus` pattern
   - `/colophon/` route resolves (footer link no longer broken)
 - Out-of-scope edits: none
 - Blocked questions: none

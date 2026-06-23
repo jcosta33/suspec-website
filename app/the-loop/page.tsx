@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Inbox, FileText, ListChecks, Terminal, ScanEye, GitMerge, ArrowRight } from "lucide-react";
+import {
+  Inbox,
+  FileText,
+  ListChecks,
+  Terminal,
+  ScanEye,
+  GitMerge,
+  ArrowRight,
+} from "lucide-react";
 import { Section } from "../components/Section";
 import { Card } from "../components/Card";
 import { Button } from "../components/Button";
@@ -26,7 +34,12 @@ export const metadata: Metadata = {
     siteName: "Calma",
     locale: "en_US",
     images: [
-      { url: "/og-the-loop.png", width: 1200, height: 630, alt: "The Calma loop — Pull, Spec, Task, Run, Review, Close" },
+      {
+        url: "/og-the-loop.png",
+        width: 1200,
+        height: 630,
+        alt: "The Calma loop — Pull, Spec, Task, Run, Review, Close",
+      },
     ],
   },
   alternates: {
@@ -42,12 +55,18 @@ const steps = [
     example: {
       title: "intake/INTAKE-42.md",
       lines: [
-        { prompt: false, text: "## INTAKE-42 — Add dark mode to marketing site" },
+        {
+          prompt: false,
+          text: "## INTAKE-42 — Add dark mode to marketing site",
+        },
         { prompt: false, text: "" },
         { prompt: false, text: "- Requested by: design" },
         { prompt: false, text: "- Scope: homepage and global shell only" },
         { prompt: false, text: "- Deadline: launch week" },
-        { prompt: false, text: "- Links: SPEC-design-system, CHANGE-website-launch" },
+        {
+          prompt: false,
+          text: "- Links: SPEC-design-system, CHANGE-website-launch",
+        },
       ],
     },
   },
@@ -58,14 +77,26 @@ const steps = [
     example: {
       title: "specs/shell/spec.md",
       lines: [
-        { prompt: false, text: "### AC-003 — Global shell includes nav and footer" },
+        {
+          prompt: false,
+          text: "### AC-003 — Global shell includes nav and footer",
+        },
         { prompt: false, text: "" },
-        { prompt: false, text: "A Shell component renders on every route via app/layout.tsx." },
+        {
+          prompt: false,
+          text: "A Shell component renders on every route via app/layout.tsx.",
+        },
         { prompt: false, text: "" },
-        { prompt: false, text: "- Nav: logo, links, mobile hamburger below lg." },
+        {
+          prompt: false,
+          text: "- Nav: logo, links, mobile hamburger below lg.",
+        },
         { prompt: false, text: "- Footer: copyright, links, colophon line." },
         { prompt: false, text: "" },
-        { prompt: false, text: "Verify with: npm run build passes; every generated page contains" },
+        {
+          prompt: false,
+          text: "Verify with: npm run build passes; every generated page contains",
+        },
         { prompt: false, text: "exactly one <nav> and one <footer>." },
       ],
     },
@@ -110,10 +141,22 @@ const steps = [
     example: {
       title: "reviews/REVIEW-shell.md",
       lines: [
-        { prompt: false, text: "| AC    | Result      | Evidence                  |" },
-        { prompt: false, text: "|-------|-------------|---------------------------|" },
-        { prompt: false, text: "| AC-003| Pass        | 1 nav, 1 footer found     |" },
-        { prompt: false, text: "| AC-009| Unverified  | manual resize pending     |" },
+        {
+          prompt: false,
+          text: "| AC    | Result      | Evidence                  |",
+        },
+        {
+          prompt: false,
+          text: "|-------|-------------|---------------------------|",
+        },
+        {
+          prompt: false,
+          text: "| AC-003| Pass        | 1 nav, 1 footer found     |",
+        },
+        {
+          prompt: false,
+          text: "| AC-009| Unverified  | manual resize pending     |",
+        },
       ],
     },
   },
@@ -126,8 +169,14 @@ const steps = [
       lines: [
         { prompt: false, text: "## FINDING-tailwind-v4-syntax" },
         { prompt: false, text: "" },
-        { prompt: false, text: "When adding custom keyframes in Tailwind v4, use plain CSS" },
-        { prompt: false, text: "classes rather than escaped utility prefixes to avoid PostCSS" },
+        {
+          prompt: false,
+          text: "When adding custom keyframes in Tailwind v4, use plain CSS",
+        },
+        {
+          prompt: false,
+          text: "classes rather than escaped utility prefixes to avoid PostCSS",
+        },
         { prompt: false, text: "parse errors." },
       ],
     },
@@ -140,12 +189,17 @@ export default function TheLoopPage() {
       <Section>
         <PageHero
           eyebrow="flight plan — 6 waypoints (+2 for rough terrain)"
-          title={<>The <span className="text-swarm-yellow text-glow">loop</span></>}
+          title={
+            <>
+              The <span className="text-corpus-yellow text-glow">loop</span>
+            </>
+          }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Pull → Spec → Task → Run → Review → Close. Each step leaves a file the next one reads.
-            Agents do the work between the gates; you decide at each one. Two more steps — Inventory
-            and Change Plan — switch on only for brownfield or structural work.
+            Pull → Spec → Task → Run → Review → Close. Each step leaves a file
+            the next one reads. Agents do the work between the gates; you decide
+            at each one. Two more steps — Inventory and Change Plan — switch on
+            only for brownfield or structural work.
           </p>
         </PageHero>
       </Section>
@@ -156,62 +210,77 @@ export default function TheLoopPage() {
         {steps.map((step, index) => {
           const Icon = stepIcons[index];
           return (
-          <article
-            key={step.name}
-            className="reveal relative grid gap-8 lg:grid-cols-2 lg:items-start"
-          >
-            <div className="relative">
-              {index < steps.length - 1 && (
-                <div
-                  className="absolute left-[1.75rem] top-20 hidden h-[calc(100%+4rem)] w-px bg-gradient-to-b from-brass/60 to-transparent lg:block"
-                  aria-hidden="true"
-                />
-              )}
-              <div className="flex items-start gap-4">
-                <HexBadge color="yellow">
-                  <span className="font-mono text-xs font-bold text-swarm-yellow">
-                    {step.number}
-                  </span>
-                </HexBadge>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <Icon className="h-5 w-5 text-swarm-yellow" aria-hidden="true" />
-                    <Heading>{step.name}</Heading>
+            <article
+              key={step.name}
+              className="reveal relative grid gap-8 lg:grid-cols-2 lg:items-start"
+            >
+              <div className="relative">
+                {index < steps.length - 1 && (
+                  <div
+                    className="absolute left-[1.75rem] top-20 hidden h-[calc(100%+4rem)] w-px bg-gradient-to-b from-brass/60 to-transparent lg:block"
+                    aria-hidden="true"
+                  />
+                )}
+                <div className="flex items-start gap-4">
+                  <HexBadge color="yellow">
+                    <span className="font-mono text-xs font-bold text-corpus-yellow">
+                      {step.number}
+                    </span>
+                  </HexBadge>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Icon
+                        className="h-5 w-5 text-corpus-yellow"
+                        aria-hidden="true"
+                      />
+                      <Heading>{step.name}</Heading>
+                    </div>
+                    <p className="mt-4 text-concrete-400">{step.body}</p>
                   </div>
-                  <p className="mt-4 text-concrete-400">{step.body}</p>
                 </div>
               </div>
-            </div>
-            <Panel brushed className="p-2">
-              <TerminalWindow
-                title={step.example.title}
-                ariaLabel={`${step.name} — ${step.example.title}`}
-              >
-                {step.example.lines.map((line, i) => (
-                  <p key={i} className={line.prompt ? "text-concrete-100" : "text-concrete-400"}>
-                    {line.prompt && <span className="text-swarm-yellow">$ </span>}
-                    {line.text}
-                  </p>
-                ))}
-              </TerminalWindow>
-            </Panel>
-          </article>
+              <Panel brushed className="p-2">
+                <TerminalWindow
+                  title={step.example.title}
+                  ariaLabel={`${step.name} — ${step.example.title}`}
+                >
+                  {step.example.lines.map((line, i) => (
+                    <p
+                      key={i}
+                      className={
+                        line.prompt ? "text-concrete-100" : "text-concrete-400"
+                      }
+                    >
+                      {line.prompt && (
+                        <span className="text-corpus-yellow">$ </span>
+                      )}
+                      {line.text}
+                    </p>
+                  ))}
+                </TerminalWindow>
+              </Panel>
+            </article>
           );
         })}
       </Section>
 
       <Section>
-        <Card screws className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <Card
+          screws
+          className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+        >
           <div>
             <Heading>Ready to run it?</Heading>
             <p className="mt-2 text-concrete-400">
-              Copy the starter kit and write your first spec. The loop is the same on day one as on
-              day one hundred — and every finding you save makes the next pass through it lighter.
+              Copy the starter kit and write your first spec. The loop is the
+              same on day one as on day one hundred — and every finding you save
+              makes the next pass through it lighter.
             </p>
           </div>
           <Button asChild className="w-full md:w-auto">
             <Link href="/get-started/">
-              Set up your workspace <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              Set up your workspace{" "}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </Button>
         </Card>

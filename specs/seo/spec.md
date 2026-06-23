@@ -3,7 +3,7 @@ type: spec
 id: SPEC-seo
 title: SEO and social sharing
 status: draft
-owner: swarm-website
+owner: corpus-website
 sources:
   - intake/website.md
   - findings/FINDING-website-launch-gaps.md
@@ -13,7 +13,7 @@ sources:
 
 ## Intent
 
-Make the Swarm marketing site discoverable via search engines and attractive
+Make the Corpus marketing site discoverable via search engines and attractive
 when shared on social media.
 
 ## Non-goals
@@ -40,11 +40,11 @@ present and within length limits.
 Static OG images live in `public/`:
 
 - `og-home.png`
-- `og-what-is-swarm.png`
+- `og-what-is-corpus.png`
 - `og-the-loop.png`
 - `og-get-started.png`
 
-Dimensions: 1200×630. Design matches the Swarm aesthetic.
+Dimensions: 1200×630. Design matches the Corpus aesthetic.
 
 Verify with: images exist in `public/`; Facebook/Twitter card validators render
 them.
@@ -66,7 +66,7 @@ Verify with: `curl https://<domain>/robots.txt` returns the file.
 `app/sitemap.ts` generates a sitemap including:
 
 - `/`
-- `/what-is-swarm`
+- `/what-is-corpus`
 - `/the-loop`
 - `/get-started`
 - `/skills`

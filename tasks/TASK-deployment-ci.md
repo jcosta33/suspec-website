@@ -63,7 +63,7 @@ gates.
   - `linkinator` on served `dist/` — 18 links scanned, 0 broken (GitHub/external skipped)
   - `axe` on served `dist/` — 0 violations
   - `lighthouse` (desktop) — Performance 100, Accessibility 100, Best Practices 100, SEO 100
-  - `dist/` contains no markdown from Swarm workspace folders
+  - `dist/` contains no markdown from Corpus workspace folders
   - Vercel production deployment not yet verified (requires push to `main` after merge)
 - Out-of-scope edits: none
 - Blocked questions: none

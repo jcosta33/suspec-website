@@ -31,23 +31,34 @@ export const metadata: Metadata = {
     description:
       "Calma is a lightweight spec and review workflow that keeps humans in the driver seat while coding agents do the work. Plain markdown; no runtime required.",
     type: "website",
-    url: "/what-is-swarm/",
+    url: "/what-is-corpus/",
     siteName: "Calma",
     locale: "en_US",
     images: [
-      { url: "/og-what-is-swarm.png", width: 1200, height: 630, alt: "What is Calma — a spec-and-review discipline for coding agents" },
+      {
+        url: "/og-what-is-corpus.png",
+        width: 1200,
+        height: 630,
+        alt: "What is Calma — a spec-and-review discipline for coding agents",
+      },
     ],
   },
   alternates: {
-    canonical: "/what-is-swarm/",
+    canonical: "/what-is-corpus/",
   },
 };
 
 const isList = [
   { text: "a spec format humans write and agents work from", icon: FileText },
   { text: "a task-packet format that bounds agent work", icon: LayoutList },
-  { text: "a review-packet format that shows where human attention goes", icon: NotebookPen },
-  { text: "a findings convention so lessons survive the session", icon: CheckCircle },
+  {
+    text: "a review-packet format that shows where human attention goes",
+    icon: NotebookPen,
+  },
+  {
+    text: "a findings convention so lessons survive the session",
+    icon: CheckCircle,
+  },
   { text: "a starter kit of markdown templates", icon: Layers },
   { text: "a workspace convention", icon: Workflow },
 ];
@@ -121,18 +132,23 @@ const failureModes = [
   },
   {
     mode: "Ambiguous input",
-    looksLike: "ambiguity degrades generated code, and models do not reliably flag it",
-    answer: "requirements written one per ID, each with its own verification method",
+    looksLike:
+      "ambiguity degrades generated code, and models do not reliably flag it",
+    answer:
+      "requirements written one per ID, each with its own verification method",
   },
   {
     mode: "Lost handoff",
-    looksLike: "the plan-to-implementation handoff is a leading failure surface (on preliminary evidence)",
-    answer: "the handoff is a written, bounded task packet — not a chat message",
+    looksLike:
+      "the plan-to-implementation handoff is a leading failure surface (on preliminary evidence)",
+    answer:
+      "the handoff is a written, bounded task packet — not a chat message",
   },
   {
     mode: "Hallucinated completion",
     looksLike: "'done,' but nothing was checked",
-    answer: "a Pass needs pasted output, a CI link, or a named human's recorded observation",
+    answer:
+      "a Pass needs pasted output, a CI link, or a named human's recorded observation",
   },
   {
     mode: "No resumable trail",
@@ -152,12 +168,17 @@ export default function WhatIsCalmaPage() {
       <Section>
         <PageHero
           eyebrow="system overview"
-          title={<>What is <span className="text-swarm-yellow text-glow">Calma</span></>}
+          title={
+            <>
+              What is{" "}
+              <span className="text-corpus-yellow text-glow">Calma</span>
+            </>
+          }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            A lightweight spec-and-review discipline for teams using coding agents. Calma assumes the
-            agent will drift, over-engineer, or skip the edge case — and gives you the files to catch
-            it before it ships.
+            A lightweight spec-and-review discipline for teams using coding
+            agents. Calma assumes the agent will drift, over-engineer, or skip
+            the edge case — and gives you the files to catch it before it ships.
           </p>
         </PageHero>
       </Section>
@@ -166,19 +187,21 @@ export default function WhatIsCalmaPage() {
         <Panel brushed className="mx-auto max-w-3xl p-2">
           <TerminalWindow title="diagnostics" className="mx-auto max-w-3xl">
             <p className="text-concrete-400">
-              <span className="text-swarm-yellow">$</span> cat what-is-calma.md
+              <span className="text-corpus-yellow">$</span> cat what-is-calma.md
             </p>
             <p className="mt-2 text-concrete-100">
-              Calma is a spec-and-review workflow for teams using coding agents. Turn tickets into
-              clear specs, specs into agent-ready tasks, and agent output into evidence a human can
-              review.
+              Calma is a spec-and-review workflow for teams using coding agents.
+              Turn tickets into clear specs, specs into agent-ready tasks, and
+              agent output into evidence a human can review.
             </p>
             <p className="mt-2 text-drone-green">✓ agent does the typing</p>
             <p className="text-drone-green">✓ human owns the gates</p>
             <p className="text-drone-green">✓ every claim needs evidence</p>
-            <p className="text-drone-green">✓ plain markdown, any agent, no runtime</p>
+            <p className="text-drone-green">
+              ✓ plain markdown, any agent, no runtime
+            </p>
             <p className="mt-2 text-concrete-400">
-              <span className="text-swarm-yellow">$</span> _
+              <span className="text-corpus-yellow">$</span> _
             </p>
           </TerminalWindow>
         </Panel>
@@ -195,7 +218,10 @@ export default function WhatIsCalmaPage() {
             {isList.map((item) => {
               const Icon = item.icon;
               return (
-                <li key={item.text} className="flex items-start gap-4 text-concrete-100">
+                <li
+                  key={item.text}
+                  className="flex items-start gap-4 text-concrete-100"
+                >
                   <HexBadge color="yellow">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </HexBadge>
@@ -214,7 +240,10 @@ export default function WhatIsCalmaPage() {
           <Heading className="mt-3">What Calma is not</Heading>
           <ul className="mt-6 space-y-3">
             {isNotList.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-concrete-400">
+              <li
+                key={item}
+                className="flex items-start gap-3 text-concrete-400"
+              >
                 <span
                   className="mt-1.5 h-2 w-2 shrink-0 rounded-sm bg-panel-edge"
                   aria-hidden="true"
@@ -228,7 +257,7 @@ export default function WhatIsCalmaPage() {
 
       <Section className="flex flex-col gap-12">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
             <DroneIcon className="h-4 w-4" />
             <span>network.map — adjacent nodes</span>
           </div>
@@ -237,20 +266,26 @@ export default function WhatIsCalmaPage() {
         <ul className="reveal grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {adjacent.map((row) => (
             <li key={row.product}>
-              <Card
-                className="group h-full border-panel-border hover:border-brass/50"
-              >
+              <Card className="group h-full border-panel-border hover:border-brass/50">
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <p className="font-mono text-xs text-brass">{row.product}</p>
+                    <p className="font-mono text-xs text-brass">
+                      {row.product}
+                    </p>
                     {row.examples && (
-                      <p className="mt-1 text-xs text-concrete-400">{row.examples}</p>
+                      <p className="mt-1 text-xs text-concrete-400">
+                        {row.examples}
+                      </p>
                     )}
                   </div>
                   <PilotLamp color="amber" className="shrink-0" />
                 </div>
-                <p className="mt-3 text-sm font-semibold text-concrete-100">Does: {row.does}</p>
-                <p className="mt-2 text-sm leading-relaxed text-concrete-400">{row.relation}</p>
+                <p className="mt-3 text-sm font-semibold text-concrete-100">
+                  Does: {row.does}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-concrete-400">
+                  {row.relation}
+                </p>
               </Card>
             </li>
           ))}
@@ -263,23 +298,30 @@ export default function WhatIsCalmaPage() {
             <ShieldAlert className="h-4 w-4" aria-hidden="true" />
             <span>error.log — failure modes detected</span>
           </div>
-          <Heading className="mt-3">Failure modes you are already seeing</Heading>
+          <Heading className="mt-3">
+            Failure modes you are already seeing
+          </Heading>
         </div>
         <ul className="reveal grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {failureModes.map((fm) => (
             <li key={fm.mode}>
-              <Card screws className="group h-full border-panel-border hover:border-hazard-orange/50">
+              <Card
+                screws
+                className="group h-full border-panel-border hover:border-hazard-orange/50"
+              >
                 <div className="flex items-start gap-3">
                   <HexBadge color="orange">
                     <ShieldAlert className="h-5 w-5" aria-hidden="true" />
                   </HexBadge>
                   <div>
-                    <Heading as="h3" size="lg" className="mt-0.5">{fm.mode}</Heading>
+                    <Heading as="h3" size="lg" className="mt-0.5">
+                      {fm.mode}
+                    </Heading>
                   </div>
                 </div>
                 <p className="mt-4 text-sm text-concrete-400">{fm.looksLike}</p>
                 <p className="mt-3 text-sm text-concrete-100">
-                  <span className="text-swarm-yellow">&gt;</span> {fm.answer}
+                  <span className="text-corpus-yellow">&gt;</span> {fm.answer}
                 </p>
               </Card>
             </li>
@@ -288,12 +330,15 @@ export default function WhatIsCalmaPage() {
       </Section>
 
       <Section>
-        <Card screws className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <Card
+          screws
+          className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+        >
           <div>
             <Heading>See how it actually runs</Heading>
             <p className="mt-2 text-concrete-400">
-              Six steps, each producing a file the next one reads. That is the whole framework — no
-              runtime, no magic.
+              Six steps, each producing a file the next one reads. That is the
+              whole framework — no runtime, no magic.
             </p>
           </div>
           <Button asChild className="w-full md:w-auto">
@@ -308,12 +353,12 @@ export default function WhatIsCalmaPage() {
         <p className="text-concrete-400">
           Source:{" "}
           <Link
-            href="https://github.com/jcosta33/swarm/blob/main/docs/01-what-is-swarm.md"
+            href="https://github.com/jcosta33/corpus/blob/main/docs/01-what-is-corpus.md"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+            className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
           >
-            docs/01-what-is-swarm.md
+            docs/01-what-is-corpus.md
           </Link>
         </p>
       </Section>

@@ -70,16 +70,19 @@
   text-decoration: none;
   border-left: 2px solid transparent;
   border-radius: 0 var(--radius-panel) var(--radius-panel) 0;
-  transition: color 0.12s, background-color 0.12s, border-color 0.12s;
+  transition:
+    color 0.12s,
+    background-color 0.12s,
+    border-color 0.12s;
 }
 .docs-nav a:hover {
   color: var(--color-concrete-100);
   background-color: var(--color-panel-raised);
 }
 .docs-nav a.is-active {
-  color: var(--color-swarm-yellow);
+  color: var(--color-corpus-yellow);
   background-color: rgba(250, 204, 21, 0.08);
-  border-left-color: var(--color-swarm-yellow);
+  border-left-color: var(--color-corpus-yellow);
   font-weight: 500;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45); /* engraved */
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
@@ -95,7 +98,7 @@
 .docs-prose a:focus-visible,
 .docs-prose .docs-pager-link:focus-visible,
 .docs-prose .docs-bridge a:focus-visible {
-  outline: 2px solid var(--color-swarm-yellow);
+  outline: 2px solid var(--color-corpus-yellow);
   outline-offset: 2px;
   border-radius: var(--radius-panel);
 }
@@ -160,7 +163,7 @@
 /* ---------- Search (Pagefind UI, themed via its CSS variables) ---------- */
 .docs-search {
   --pagefind-ui-scale: 0.8;
-  --pagefind-ui-primary: var(--color-swarm-yellow);
+  --pagefind-ui-primary: var(--color-corpus-yellow);
   --pagefind-ui-text: var(--color-concrete-100);
   --pagefind-ui-background: var(--color-panel-recessed);
   --pagefind-ui-border: var(--color-panel-border);
@@ -222,19 +225,21 @@
     color: var(--color-concrete-400);
     text-decoration: none;
     border-left: 2px solid transparent;
-    transition: color 0.12s, border-color 0.12s;
+    transition:
+      color 0.12s,
+      border-color 0.12s;
   }
   .docs-toc a:hover {
-    color: var(--color-swarm-yellow);
+    color: var(--color-corpus-yellow);
     border-left-color: var(--color-brass);
   }
   .docs-toc a.is-active {
-    color: var(--color-swarm-yellow);
-    border-left-color: var(--color-swarm-yellow);
+    color: var(--color-corpus-yellow);
+    border-left-color: var(--color-corpus-yellow);
     font-weight: 500;
   }
   .docs-toc a:focus-visible {
-    outline: 2px solid var(--color-swarm-yellow);
+    outline: 2px solid var(--color-corpus-yellow);
     outline-offset: 2px;
     border-radius: var(--radius-panel);
   }
@@ -312,11 +317,13 @@
   text-decoration: underline;
   text-decoration-color: rgba(200, 163, 95, 0.4);
   text-underline-offset: 2px;
-  transition: color 0.12s, text-decoration-color 0.12s;
+  transition:
+    color 0.12s,
+    text-decoration-color 0.12s;
 }
 .docs-prose a:hover {
-  color: var(--color-swarm-yellow);
-  text-decoration-color: var(--color-swarm-yellow);
+  color: var(--color-corpus-yellow);
+  text-decoration-color: var(--color-corpus-yellow);
 }
 
 /* Lists */
@@ -357,7 +364,9 @@
   margin: 1.25rem 0;
   overflow-x: auto;
   /* recessed CRT screen — top glint glass + inner shadow, same family as the marketing terminals */
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 2px 6px rgba(0, 0, 0, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 2px 6px rgba(0, 0, 0, 0.55);
 }
 .docs-prose pre code {
   background: none;
@@ -367,11 +376,11 @@
   font-size: inherit;
 }
 
-/* Blockquotes / callouts — swarm-yellow rail on a raised plate */
+/* Blockquotes / callouts — corpus-yellow rail on a raised plate */
 .docs-prose blockquote {
   margin: 1.25rem 0;
   padding: 0.6rem 1.1rem;
-  border-left: 3px solid var(--color-swarm-yellow);
+  border-left: 3px solid var(--color-corpus-yellow);
   background: var(--color-panel-raised);
   border-radius: 0 var(--radius-panel) var(--radius-panel) 0;
   color: var(--color-concrete-300);
@@ -445,7 +454,9 @@
   border-radius: var(--radius-panel);
   background: var(--color-panel-raised);
   text-decoration: none;
-  transition: border-color 0.12s, background-color 0.12s;
+  transition:
+    border-color 0.12s,
+    background-color 0.12s;
 }
 .docs-prose .docs-pager-link:hover {
   border-color: var(--color-brass);
@@ -466,13 +477,13 @@
   font-weight: 500;
 }
 .docs-prose .docs-pager-link:hover .docs-pager-title {
-  color: var(--color-swarm-yellow);
+  color: var(--color-corpus-yellow);
 }
 .docs-prose .docs-bridge {
   margin-top: 1.5rem;
   padding: 1rem 1.1rem;
   border: 1px solid var(--color-panel-border);
-  border-left: 3px solid var(--color-swarm-yellow);
+  border-left: 3px solid var(--color-corpus-yellow);
   border-radius: 0 var(--radius-panel) var(--radius-panel) 0;
   background: var(--color-panel-raised);
   font-size: 0.95rem;
@@ -490,7 +501,8 @@
   }
 }
 
-@media (max-width: 64rem) { /* lg — matches the global nav's mobile switch */
+@media (max-width: 64rem) {
+  /* lg — matches the global nav's mobile switch */
   .docs-layout {
     flex-direction: column;
     gap: 1.5rem;

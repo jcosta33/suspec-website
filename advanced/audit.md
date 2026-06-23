@@ -1,18 +1,18 @@
 ---
 type: audit
 id: AUDIT-{{slug}}
-title: {{title}}
+title: { { title } }
 status: draft
-owner: {{team-or-person}}
+owner: { { team-or-person } }
 sources:
-  - {{code-paths-or-areas-inspected}}
+  - { { code-paths-or-areas-inspected } }
 ---
 
 # Audit: {{title}}
 
 <!-- Lives in specs/<feature>/, beside the spec it informs. A pre-spec audit
      starts the feature folder. Recommended first taste for brownfield teams:
-     auditing one messy area is the fastest way to see what Swarm buys you.
+     auditing one messy area is the fastest way to see what Corpus buys you.
 
      Stance: observation only. An audit records what *is* — present-state risk,
      debt, drift, duplication, unsafe patterns. It never prescribes a fix and

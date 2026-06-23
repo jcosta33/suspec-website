@@ -1,10 +1,10 @@
 ---
 type: change-plan
 id: CHANGE-website-launch
-title: Launch the Swarm marketing website
+title: Launch the Corpus marketing website
 status: draft
 kind: architecture-cleanup
-owner: swarm-website
+owner: corpus-website
 sources:
   - intake/website.md
   - findings/FINDING-website-launch-gaps.md
@@ -20,11 +20,11 @@ preserves: []
 created: 2026-06-13
 ---
 
-# Change Plan: Launch the Swarm marketing website
+# Change Plan: Launch the Corpus marketing website
 
 ## Intent
 
-Take the swarm-website repo from a bare Next.js + Swarm workspace scaffold to a
+Take the corpus-website repo from a bare Next.js + Corpus workspace scaffold to a
 deployed marketing site with a homepage, three core marketing pages, and
 production-ready infrastructure.
 
@@ -38,7 +38,7 @@ workflow. This plan sequences the work so each wave leaves the site green.
 ## Baseline
 
 - Next.js 16 + Tailwind CSS scaffold builds successfully.
-- Swarm workspace files are in place.
+- Corpus workspace files are in place.
 - Four initial specs exist; reviews blocked them on missing concerns.
 - No pages beyond the default Next.js landing page exist.
 - No deployment target configured.
@@ -49,7 +49,7 @@ workflow. This plan sequences the work so each wave leaves the site green.
 - Design system implemented with yellow/factory/drone aesthetic.
 - Homepage live with hero, problem section, loop diagram, example, feature grid,
   and CTA.
-- Marketing pages live: `/what-is-swarm`, `/the-loop`, `/get-started`.
+- Marketing pages live: `/what-is-corpus`, `/the-loop`, `/get-started`.
 - Placeholder pages live: `/skills`, `/cli` (post-launch content).
 - Accessibility, SEO, and testing specs implemented.
 - CI runs build, lint, type check, link check, and accessibility audit on every
@@ -57,11 +57,11 @@ workflow. This plan sequences the work so each wave leaves the site green.
 
 ## Behavioral preservation guarantees
 
-| ID | Behavior | Verify with |
-|---|---|---|
-| PG-001 | The default Next.js landing page is replaced by the Swarm homepage | `npm run build` + visual inspection |
-| PG-002 | The Swarm workspace files remain untouched by the build | `dist/` contains no markdown from `specs/`, `tasks/`, etc. |
-| PG-003 | Build output is pure static HTML/JS/CSS | `next.config.ts` uses `output: 'export'` |
+| ID     | Behavior                                                            | Verify with                                                |
+| ------ | ------------------------------------------------------------------- | ---------------------------------------------------------- |
+| PG-001 | The default Next.js landing page is replaced by the Corpus homepage | `npm run build` + visual inspection                        |
+| PG-002 | The Corpus workspace files remain untouched by the build            | `dist/` contains no markdown from `specs/`, `tasks/`, etc. |
+| PG-003 | Build output is pure static HTML/JS/CSS                             | `next.config.ts` uses `output: 'export'`                   |
 
 ## Non-goals
 
@@ -73,20 +73,20 @@ workflow. This plan sequences the work so each wave leaves the site green.
 
 ## Affected surfaces
 
-| Surface | Intended change |
-|---|---|
-| `app/` | New pages, layout, components, global styles |
-| `public/` | Static assets, OG images, favicon, robots.txt |
-| `next.config.ts` | Static export config |
-| `package.json` | Add dev tools (axe, linkinator, Lighthouse CI) |
-| `.github/workflows/ci.yml` | CI quality gates |
-| `README.md` | Deployment and contribution docs |
+| Surface                    | Intended change                                |
+| -------------------------- | ---------------------------------------------- |
+| `app/`                     | New pages, layout, components, global styles   |
+| `public/`                  | Static assets, OG images, favicon, robots.txt  |
+| `next.config.ts`           | Static export config                           |
+| `package.json`             | Add dev tools (axe, linkinator, Lighthouse CI) |
+| `.github/workflows/ci.yml` | CI quality gates                               |
+| `README.md`                | Deployment and contribution docs               |
 
 ## Risk areas
 
 - Tailwind v4 syntax may differ from spec assumptions; verify early in wave 1.
 - Yellow-on-black palette can fail contrast; verify in wave 1.
-- Marketing copy may drift from `swarm` docs; source links must be explicit.
+- Marketing copy may drift from `corpus` docs; source links must be explicit.
 
 ## Transformation waves
 
@@ -95,7 +95,7 @@ workflow. This plan sequences the work so each wave leaves the site green.
 2. **Wave 2 — Homepage.** Implement hero, problem section, loop diagram,
    example, feature grid, CTA. Verify: Lighthouse Performance ≥ 90, no a11y
    violations.
-3. **Wave 3 — Marketing pages.** Implement `/what-is-swarm`, `/the-loop`,
+3. **Wave 3 — Marketing pages.** Implement `/what-is-corpus`, `/the-loop`,
    `/get-started`, placeholder `/skills` and `/cli`. Verify: all routes render,
    internal links valid.
 4. **Wave 4 — SEO + 404.** Add metadata, OG images, sitemap, robots.txt,
@@ -131,18 +131,18 @@ workflow. This plan sequences the work so each wave leaves the site green.
 ## Review focus
 
 - Contrast ratios and reduced motion.
-- Correctness of links to `swarm`, `swarm-starter-kit`, `swarm-skills`,
-  `swarm-cli` repos.
+- Correctness of links to `corpus`, `corpus-starter-kit`, `corpus-skills`,
+  `corpus-cli` repos.
 - Whether the homepage headline matches the brand position.
 - Whether `/skills` and `/cli` are honest about being future work.
 
 ## Task split
 
-| Task | Wave | Scope |
-|---|---|---|
-| TASK-design-system | 1 | SPEC-design-system AC-001–AC-009 |
-| TASK-homepage | 2 | SPEC-homepage AC-001–AC-010 |
-| TASK-marketing-pages | 3 | SPEC-marketing-pages AC-001–AC-007 |
-| TASK-seo | 4 | SPEC-seo AC-001–AC-005 |
-| TASK-deployment-ci | 5 | SPEC-deployment AC-001–AC-006 + SPEC-testing AC-001–AC-006 |
-| TASK-content-workflow | 6 | SPEC-content-workflow AC-001–AC-004 |
+| Task                  | Wave | Scope                                                      |
+| --------------------- | ---- | ---------------------------------------------------------- |
+| TASK-design-system    | 1    | SPEC-design-system AC-001–AC-009                           |
+| TASK-homepage         | 2    | SPEC-homepage AC-001–AC-010                                |
+| TASK-marketing-pages  | 3    | SPEC-marketing-pages AC-001–AC-007                         |
+| TASK-seo              | 4    | SPEC-seo AC-001–AC-005                                     |
+| TASK-deployment-ci    | 5    | SPEC-deployment AC-001–AC-006 + SPEC-testing AC-001–AC-006 |
+| TASK-content-workflow | 6    | SPEC-content-workflow AC-001–AC-004                        |

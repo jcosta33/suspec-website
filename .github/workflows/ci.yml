@@ -37,15 +37,15 @@ jobs:
           sleep 3
 
       - name: Check internal links
-        run: npx linkinator http://127.0.0.1:3000 --skip "^https://github.com" --skip "^https://swarmframework.dev"
+        run: npx linkinator http://127.0.0.1:3000 --skip "^https://github.com" --skip "^https://corpusframework.dev"
 
       - name: Accessibility audit (home + docs)
-        run: npx axe http://127.0.0.1:3000 http://127.0.0.1:3000/docs/ http://127.0.0.1:3000/docs/01-what-is-swarm/ --exit
+        run: npx axe http://127.0.0.1:3000 http://127.0.0.1:3000/docs/ http://127.0.0.1:3000/docs/01-what-is-corpus/ --exit
 
       - name: Lighthouse audit (home + docs)
         run: |
           npx lighthouse http://127.0.0.1:3000 --output=json --output-path=./lighthouse-home.json --chrome-flags="--headless --no-sandbox" --preset=desktop --only-categories=performance,accessibility,best-practices,seo
-          npx lighthouse http://127.0.0.1:3000/docs/01-what-is-swarm/ --output=json --output-path=./lighthouse-docs.json --chrome-flags="--headless --no-sandbox" --preset=desktop --only-categories=performance,accessibility,best-practices,seo
+          npx lighthouse http://127.0.0.1:3000/docs/01-what-is-corpus/ --output=json --output-path=./lighthouse-docs.json --chrome-flags="--headless --no-sandbox" --preset=desktop --only-categories=performance,accessibility,best-practices,seo
 
       - name: Check Lighthouse thresholds (home + docs)
         run: |

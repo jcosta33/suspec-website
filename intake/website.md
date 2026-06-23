@@ -5,18 +5,18 @@ source: product
 status: open
 ---
 
-# Marketing website for Swarm
+# Marketing website for Corpus
 
-Build a public marketing website for the Swarm framework. It should feel like an
+Build a public marketing website for the Corpus framework. It should feel like an
 open-source project: tongue-in-cheek, laid back, not corporate. Visual theme:
-drone swarm + bee hive + industrial factory. Yellow primary, concrete greys,
+drone corpus + bee hive + industrial factory. Yellow primary, concrete greys,
 hazard accents.
 
 ## Must cover
 
 - Homepage with clear value prop and CTA
-- Explanation of what Swarm is and isn't
-- The Swarm loop (Pull → Spec → Task → Run → Review → Close)
+- Explanation of what Corpus is and isn't
+- The Corpus loop (Pull → Spec → Task → Run → Review → Close)
 - Link to starter kit and docs
 - Link to GitHub
 - Responsive, fast, deployable to Vercel
@@ -33,4 +33,4 @@ hazard accents.
 
 - Next.js + TypeScript + Tailwind CSS
 - Deploy to Vercel from `main`
-- Co-located Swarm workspace for planning
+- Co-located Corpus workspace for planning

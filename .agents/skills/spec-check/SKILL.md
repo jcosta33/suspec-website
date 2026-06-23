@@ -14,7 +14,7 @@ description: >-
 
 A defect in a spec is cheapest to catch before any task is cut from it — after that, every
 agent run inherits it. This guide runs the check by hand and produces a short report. A future
-`swarm spec check` (swarm-cli) automates exactly this; until then, you are the checker, and the
+`corpus spec check` (corpus-cli) automates exactly this; until then, you are the checker, and the
 result is a review checklist, not a gate.
 
 ## The one rule: check, don't edit
@@ -29,17 +29,17 @@ the report to the author (or switch hats explicitly and edit _after_ the report 
 Run each against the spec (full catalogue with IDs and severities:
 `advanced/checks-reference.md`):
 
-| ID   | Check                                                                                  | Severity   |
-| ---- | -------------------------------------------------------------------------------------- | ---------- |
-| C001 | Every requirement ID (`AC-NNN`) appears exactly once in the file                       | hard error |
-| C002 | No other file claims the same frontmatter `id:`; no requirement ID reused across specs | hard error |
-| C003 | Every requirement carries a `Verify with:` line                                        | hard error |
-| C004 | Each requirement states exactly one strength word (must / must not / should / should not / may) | warning |
-| C005 | Non-goals section present and non-empty                                                | warning    |
-| C006 | Open questions section present (even if "none")                                        | warning    |
-| C007 | No `TBD`, `TODO`, `???`, or unresolved open question at `status: ready`                | hard error |
-| C008 | Frontmatter `sources:` names at least one origin                                       | warning    |
-| C009 | Every path or ID in `sources:` and cross-references resolves to something that exists  | hard error |
+| ID   | Check                                                                                           | Severity   |
+| ---- | ----------------------------------------------------------------------------------------------- | ---------- |
+| C001 | Every requirement ID (`AC-NNN`) appears exactly once in the file                                | hard error |
+| C002 | No other file claims the same frontmatter `id:`; no requirement ID reused across specs          | hard error |
+| C003 | Every requirement carries a `Verify with:` line                                                 | hard error |
+| C004 | Each requirement states exactly one strength word (must / must not / should / should not / may) | warning    |
+| C005 | Non-goals section present and non-empty                                                         | warning    |
+| C006 | Open questions section present (even if "none")                                                 | warning    |
+| C007 | No `TBD`, `TODO`, `???`, or unresolved open question at `status: ready`                         | hard error |
+| C008 | Frontmatter `sources:` names at least one origin                                                | warning    |
+| C009 | Every path or ID in `sources:` and cross-references resolves to something that exists           | hard error |
 
 Two notes. C003 asks that the `Verify with:` line _be there_ — a target that doesn't exist yet
 is not a spec defect; the requirement simply reviews as Unverified until it does. C004's usual
@@ -66,7 +66,7 @@ _should_ happen instead?), and uncertainty buried in requirement prose ("probabl
 think") that belongs in Open questions.
 
 If the spec opts into structured requirements (`format: sol` in the frontmatter), also walk
-the SOL check catalogue — same discipline, finer grain. It lives in the Swarm repo at
+the SOL check catalogue — same discipline, finer grain. It lives in the Corpus repo at
 `docs/reference/checks.md`; the kit does not carry it. The notation itself is in
 `advanced/sol-reference.md`.
 
@@ -97,7 +97,7 @@ Result: 2 hard errors, 2 warnings, 1 watchlist hit. Not ready.
 
 Every line points at a requirement ID or section, so the author's fix is unambiguous. "Not
 ready" here is your recommendation — whether it blocks anything is the team's policy, not
-Swarm's.
+Corpus's.
 
 ## Before you finish
 

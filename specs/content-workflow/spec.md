@@ -3,7 +3,7 @@ type: spec
 id: SPEC-content-workflow
 title: Content update workflow
 status: draft
-owner: swarm-website
+owner: corpus-website
 sources:
   - intake/website.md
   - findings/FINDING-website-launch-gaps.md
@@ -13,13 +13,13 @@ sources:
 
 ## Intent
 
-Define how marketing copy stays accurate as the `swarm` framework evolves. The
+Define how marketing copy stays accurate as the `corpus` framework evolves. The
 website must not silently drift out of sync with the canonical docs.
 
 ## Non-goals
 
 - No automated CMS.
-- No sync bot that opens PRs from `swarm` docs.
+- No sync bot that opens PRs from `corpus` docs.
 - No translation workflow.
 
 ## Requirements
@@ -27,25 +27,25 @@ website must not silently drift out of sync with the canonical docs.
 ### AC-001 — Copy sources are documented
 
 Every marketing page lists its canonical sources in a `## Sources` section of
-the spec or in a `CONTENT.md` file. For example, `/what-is-swarm` sources:
+the spec or in a `CONTENT.md` file. For example, `/what-is-corpus` sources:
 
-- `https://github.com/jcosta33/swarm/blob/main/docs/01-what-is-swarm.md`
-- `https://github.com/jcosta33/swarm/blob/main/README.md`
+- `https://github.com/jcosta33/corpus/blob/main/docs/01-what-is-corpus.md`
+- `https://github.com/jcosta33/corpus/blob/main/README.md`
 
 Verify with: each marketing-page spec names its source docs; `CONTENT.md`
 exists in the repo root or `docs/` folder.
 
 ### AC-002 — Content divergences are reviewed quarterly
 
-A recurring task (or calendar reminder) reviews the website against the `swarm`
+A recurring task (or calendar reminder) reviews the website against the `corpus`
 docs every three months. Findings are saved in `findings/`.
 
 Verify with: a `findings/content-drift-YYYY-MM.md` file exists for the first
 review.
 
-### AC-003 — New framework features follow the Swarm loop
+### AC-003 — New framework features follow the Corpus loop
 
-When a new Swarm feature warrants website copy, the workflow is:
+When a new Corpus feature warrants website copy, the workflow is:
 
 1. Intake item in `intake/`.
 2. Spec in `specs/` referencing the framework ADR.
@@ -74,5 +74,5 @@ Verify with: `/skills` and `/cli` pages include "coming soon" badges and links.
 
 ## Dropped from sources
 
-- Automated sync from `swarm` docs — too complex for launch.
+- Automated sync from `corpus` docs — too complex for launch.
 - Translation workflow — out of scope.

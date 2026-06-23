@@ -14,16 +14,25 @@ import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import { visit } from "unist-util-visit";
 import type { Root } from "mdast";
-import type { Root as HastRoot, Element as HastElement, ElementContent } from "hast";
+import type {
+  Root as HastRoot,
+  Element as HastElement,
+  ElementContent,
+} from "hast";
 
 export type DocHeading = { depth: 2 | 3; id: string; text: string };
 
-const REPO_ROOT = path.join(CANON, ".."); // the swarm repo root (docs/ lives under it)
-const GH_BLOB = "https://github.com/jcosta33/swarm/blob/main/";
-const repoHas = (repoRel: string): boolean => fs.existsSync(path.join(REPO_ROOT, repoRel));
+const REPO_ROOT = path.join(CANON, ".."); // the corpus repo root (docs/ lives under it)
+const GH_BLOB = "https://github.com/jcosta33/corpus/blob/main/";
+const repoHas = (repoRel: string): boolean =>
+  fs.existsSync(path.join(REPO_ROOT, repoRel));
 
 // Concatenated text of an mdast node (to unwrap a dead link to plain text).
-const mdastText = (n: { type?: string; value?: string; children?: unknown[] }): string =>
+const mdastText = (n: {
+  type?: string;
+  value?: string;
+  children?: unknown[];
+}): string =>
   n.type === "text"
     ? (n.value ?? "")
     : (n.children ?? []).map((c) => mdastText(c as typeof n)).join("");
@@ -47,11 +56,14 @@ const rewriteMdLinks: Plugin<[string], Root> = (currentDir) => (tree) => {
       }
     };
     // repo-relative target (docs/<currentDir>/<pathPart>, normalized)
-    const repoTarget = path.posix.normalize(path.posix.join("docs", currentDir, pathPart));
+    const repoTarget = path.posix.normalize(
+      path.posix.join("docs", currentDir, pathPart),
+    );
     if (repoTarget.startsWith("docs/")) {
       const docsRel = repoTarget.slice("docs/".length);
       if (pathPart.endsWith(".md")) {
-        if (repoHas(repoTarget)) node.url = "/docs/" + docsRel.replace(/\.md$/, "") + anchor;
+        if (repoHas(repoTarget))
+          node.url = "/docs/" + docsRel.replace(/\.md$/, "") + anchor;
         else unwrap(); // dangling canon link -> plain text (was a GitHub 404)
         return;
       }
@@ -89,7 +101,8 @@ const selectiveRawHtml: Plugin<[], Root> = () => (tree) => {
 // the list text carries the content).
 const rehypeLabelTaskCheckboxes: Plugin<[], HastRoot> = () => (tree) => {
   visit(tree, "element", (node) => {
-    if (node.tagName !== "input" || node.properties?.type !== "checkbox") return;
+    if (node.tagName !== "input" || node.properties?.type !== "checkbox")
+      return;
     node.properties.ariaLabel = node.properties.checked ? "completed" : "to do";
   });
 };
@@ -108,7 +121,9 @@ const rehypeFocusableScrollables: Plugin<[], HastRoot> = () => (tree) => {
 // Plain-text content of a hast element (heading labels for the on-this-page TOC).
 const hastText = (nodes: ElementContent[]): string =>
   nodes
-    .map((n) => (n.type === "text" ? n.value : "children" in n ? hastText(n.children) : ""))
+    .map((n) =>
+      n.type === "text" ? n.value : "children" in n ? hastText(n.children) : "",
+    )
     .join("");
 
 // Collect h2/h3 with their (rehype-slug-assigned) ids — must run AFTER rehypeSlug so ids exist.
@@ -118,7 +133,8 @@ const rehypeCollectHeadings =
   (tree) => {
     visit(tree, "element", (node: HastElement) => {
       if (node.tagName !== "h2" && node.tagName !== "h3") return;
-      const id = typeof node.properties?.id === "string" ? node.properties.id : "";
+      const id =
+        typeof node.properties?.id === "string" ? node.properties.id : "";
       if (!id) return;
       const text = hastText(node.children).trim();
       if (text) out.push({ depth: node.tagName === "h2" ? 2 : 3, id, text });
@@ -127,7 +143,7 @@ const rehypeCollectHeadings =
 
 export async function renderDoc(
   markdown: string,
-  currentDir: string
+  currentDir: string,
 ): Promise<{ html: string; headings: DocHeading[] }> {
   const headings: DocHeading[] = [];
   const file = await unified()
@@ -151,7 +167,7 @@ export async function renderDoc(
 // decisions` must not leak "## Open decisions" into <title>/og/JSON-LD).
 export function titleOf(markdown: string): string {
   const m = markdown.match(/^#\s+(.+)$/m);
-  if (!m) return "Swarm docs";
+  if (!m) return "Corpus docs";
   return m[1]
     .replace(/`/g, "")
     .replace(/(^|\s)#{1,6}\s+/g, "$1")
@@ -187,7 +203,8 @@ export function descriptionOf(markdown: string): string {
   let lastHeading = "";
   let inCode = false;
   const flush = () => {
-    if (current.length) paragraphs.push({ heading: lastHeading, text: clean(current.join(" ")) });
+    if (current.length)
+      paragraphs.push({ heading: lastHeading, text: clean(current.join(" ")) });
     current = [];
   };
   for (const raw of body.split(/\r?\n/)) {
@@ -199,7 +216,11 @@ export function descriptionOf(markdown: string): string {
       continue; // inside a fenced code block
     } else if (isHeading(line)) {
       flush();
-      lastHeading = line.replace(/^#+\s*/, "").replace(/[`*_]/g, "").trim().toLowerCase();
+      lastHeading = line
+        .replace(/^#+\s*/, "")
+        .replace(/[`*_]/g, "")
+        .trim()
+        .toLowerCase();
     } else if (isProse(line)) {
       current.push(line);
     } else {
@@ -210,11 +231,14 @@ export function descriptionOf(markdown: string): string {
 
   // Skip skipped-section bodies (ADR "Status"); prefer the first substantial paragraph — not a short
   // colon lead-in like "Three pieces, three homes:" that precedes a table.
-  const candidates = paragraphs.filter((p) => p.text && !SKIP_SECTIONS.has(p.heading));
+  const candidates = paragraphs.filter(
+    (p) => p.text && !SKIP_SECTIONS.has(p.heading),
+  );
   const chosen =
-    candidates.find((p) => p.text.length >= 40 && !p.text.endsWith(":")) ?? candidates[0];
+    candidates.find((p) => p.text.length >= 40 && !p.text.endsWith(":")) ??
+    candidates[0];
   const text = chosen?.text ?? "";
-  if (!text) return "Swarm documentation";
+  if (!text) return "Corpus documentation";
   if (text.length <= 155) return text;
   const slice = text.slice(0, 152);
   const cut = slice.lastIndexOf(" ");

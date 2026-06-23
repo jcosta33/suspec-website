@@ -10,7 +10,7 @@ export function Badge({ children, variant = "default" }: BadgeProps) {
     default:
       "border-panel-border bg-panel-raised text-concrete-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] engraved",
     hazard:
-      "border-swarm-yellow bg-panel-raised text-swarm-yellow font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]",
+      "border-corpus-yellow bg-panel-raised text-corpus-yellow font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]",
     success:
       "border-panel-border bg-panel-raised text-drone-green shadow-[inset_0_0_8px_rgba(34,197,94,0.25)]",
   };

@@ -2,20 +2,28 @@ import path from "node:path";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { listDocs, readDoc, humanizeSegment, docSequence, docDates } from "../lib/canon";
+import {
+  listDocs,
+  readDoc,
+  humanizeSegment,
+  docSequence,
+  docDates,
+} from "../lib/canon";
 import { renderDoc, titleOf, descriptionOf } from "../lib/render";
 import { JsonLd } from "../../components/JsonLd";
 import { DocsToc } from "../components/DocsToc";
 
 export const dynamicParams = false;
 
-const SITE_URL = "https://swarmframework.dev";
+const SITE_URL = "https://corpusframework.dev";
 
 // Build a BreadcrumbList. A section dir links to its README page when one exists; a section with no
 // README (e.g. reference/) emits a name-only, NON-navigable intermediate crumb (no `item`) rather
 // than duplicating the position-1 "Docs" URL — Google rejects breadcrumbs with duplicate item URLs.
 function breadcrumbFor(slug: string[], leafTitle: string) {
-  const crumbs: { name: string; url?: string }[] = [{ name: "Docs", url: `${SITE_URL}/docs/` }];
+  const crumbs: { name: string; url?: string }[] = [
+    { name: "Docs", url: `${SITE_URL}/docs/` },
+  ];
   let acc = "";
   slug.forEach((seg, i) => {
     acc += (acc ? "/" : "") + seg;
@@ -27,7 +35,7 @@ function breadcrumbFor(slug: string[], leafTitle: string) {
     crumbs.push(
       readme
         ? { name: titleOf(readme), url: `${SITE_URL}/docs/${acc}/README/` }
-        : { name: humanizeSegment(seg) } // no own page -> name-only crumb, no duplicate URL
+        : { name: humanizeSegment(seg) }, // no own page -> name-only crumb, no duplicate URL
     );
   });
   return {
@@ -48,13 +56,18 @@ function articleFor(
   slug: string[],
   title: string,
   description: string,
-  dates: { created: string; modified: string } | null
+  dates: { created: string; modified: string } | null,
 ) {
   const url = `${SITE_URL}/docs/${slug.join("/")}/`;
   // Google recommends headline <=110 chars; a few ADR titles run longer. Keep the full title in
   // `name` and a word-boundary-trimmed form in `headline`.
   const headline =
-    title.length <= 110 ? title : `${title.slice(0, 110).replace(/\s+\S*$/, "").trimEnd()}…`;
+    title.length <= 110
+      ? title
+      : `${title
+          .slice(0, 110)
+          .replace(/\s+\S*$/, "")
+          .trimEnd()}…`;
   return {
     "@context": "https://schema.org",
     "@type": "TechArticle",
@@ -62,12 +75,18 @@ function articleFor(
     headline,
     description,
     inLanguage: "en",
-    author: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "Calma" },
+    author: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "Calma",
+    },
     url,
     mainEntityOfPage: url,
     image: `${SITE_URL}/og-home.png`,
     // Real git dates when history is available (omitted otherwise, never a fake build-time date).
-    ...(dates ? { datePublished: dates.created, dateModified: dates.modified } : {}),
+    ...(dates
+      ? { datePublished: dates.created, dateModified: dates.modified }
+      : {}),
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
   };
@@ -85,9 +104,9 @@ export async function generateMetadata({
   const { slug } = await params;
   const md = readDoc(slug.join("/"));
   const canonical = `/docs/${slug.join("/")}/`;
-  if (!md) return { title: "Swarm docs", alternates: { canonical } };
+  if (!md) return { title: "Corpus docs", alternates: { canonical } };
   return {
-    title: `${titleOf(md)} · Swarm`,
+    title: `${titleOf(md)} · Corpus`,
     description: descriptionOf(md),
     alternates: { canonical }, // self-canonical (was inheriting the home page's "/")
     openGraph: {
@@ -97,12 +116,18 @@ export async function generateMetadata({
       url: canonical,
       siteName: "Calma",
       locale: "en_US",
-      images: [{ url: "/og-home.png", width: 1200, height: 630, alt: titleOf(md) }],
+      images: [
+        { url: "/og-home.png", width: 1200, height: 630, alt: titleOf(md) },
+      ],
     },
   };
 }
 
-export default async function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {
+export default async function DocPage({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
+}) {
   const { slug } = await params;
   const slugPath = slug.join("/");
   const md = readDoc(slugPath);
@@ -117,7 +142,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
   const i = seq.findIndex((d) => d.slug === slugPath);
   const pagerLabel = (s: string): string => {
     const m = readDoc(s);
-    return m ? titleOf(m) : seq.find((d) => d.slug === s)?.label ?? s;
+    return m ? titleOf(m) : (seq.find((d) => d.slug === s)?.label ?? s);
   };
   const prev = i > 0 ? seq[i - 1] : null;
   const next = i >= 0 && i < seq.length - 1 ? seq[i + 1] : null;
@@ -125,24 +150,43 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
   return (
     <>
       <JsonLd data={breadcrumbFor(slug, titleOf(md))} />
-      <JsonLd data={articleFor(slug, titleOf(md), descriptionOf(md), docDates(slugPath))} />
+      <JsonLd
+        data={articleFor(
+          slug,
+          titleOf(md),
+          descriptionOf(md),
+          docDates(slugPath),
+        )}
+      />
       <div className="docs-prose" data-pagefind-body>
         <div dangerouslySetInnerHTML={{ __html: html }} />
 
         {(prev || next) && (
           <nav className="docs-pager" aria-label="Documentation pages">
             {prev ? (
-              <Link className="docs-pager-link docs-pager-prev" href={`/docs/${prev.slug}/`} rel="prev">
+              <Link
+                className="docs-pager-link docs-pager-prev"
+                href={`/docs/${prev.slug}/`}
+                rel="prev"
+              >
                 <span className="docs-pager-dir">← Previous</span>
-                <span className="docs-pager-title">{pagerLabel(prev.slug)}</span>
+                <span className="docs-pager-title">
+                  {pagerLabel(prev.slug)}
+                </span>
               </Link>
             ) : (
               <span />
             )}
             {next ? (
-              <Link className="docs-pager-link docs-pager-next" href={`/docs/${next.slug}/`} rel="next">
+              <Link
+                className="docs-pager-link docs-pager-next"
+                href={`/docs/${next.slug}/`}
+                rel="next"
+              >
                 <span className="docs-pager-dir">Next →</span>
-                <span className="docs-pager-title">{pagerLabel(next.slug)}</span>
+                <span className="docs-pager-title">
+                  {pagerLabel(next.slug)}
+                </span>
               </Link>
             ) : (
               <span />
@@ -153,7 +197,8 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
         <div className="docs-bridge">
           <p>
             Ready to run the loop on your own repo?{" "}
-            <Link href="/get-started/">Get started</Link> — copy the kit and write your first spec.
+            <Link href="/get-started/">Get started</Link> — copy the kit and
+            write your first spec.
           </p>
         </div>
       </div>

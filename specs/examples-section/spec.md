@@ -3,7 +3,7 @@ type: spec
 id: SPEC-examples-section
 title: Examples and case-study section (post-launch)
 status: draft
-owner: swarm-website
+owner: corpus-website
 sources:
   - intake/website.md
   - specs/homepage/spec.md
@@ -15,7 +15,7 @@ sources:
 ## Intent
 
 Show, don't just tell: a dedicated examples page after launch, anchored by the
-41-file agent PR review walkthrough from the `swarm` repo.
+41-file agent PR review walkthrough from the `corpus` repo.
 
 ## Status
 
@@ -39,7 +39,7 @@ build passes.
 ### AC-002 — Large PR review example is highlighted
 
 A detail view summarizing the 41-file review example from
-`docs/examples/large-pr-review.md` in the `swarm` repo. Includes source link.
+`docs/examples/large-pr-review.md` in the `corpus` repo. Includes source link.
 
 Verify with: content accurately reflects the source doc; link to source is
 present; build passes.

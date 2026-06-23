@@ -3,7 +3,7 @@ type: spec
 id: SPEC-design-system
 title: Website design system and global shell
 status: draft
-owner: swarm-website
+owner: corpus-website
 sources:
   - intake/website.md
   - decisions/0001-website-aesthetic.md
@@ -13,9 +13,9 @@ sources:
 
 ## Intent
 
-Establish a single, reusable visual language for the Swarm marketing site:
+Establish a single, reusable visual language for the Corpus marketing site:
 colors, typography, spacing, motion, and the global shell (navigation + footer)
-that every page shares. The vibe is **drone swarm meets bee hive meets factory
+that every page shares. The vibe is **drone corpus meets bee hive meets factory
 floor** — functional, modular, slightly mechanical, but friendly.
 
 ## Non-goals
@@ -31,16 +31,16 @@ floor** — functional, modular, slightly mechanical, but friendly.
 The site uses a constrained palette defined via Tailwind CSS v4 `@theme` block
 in `app/globals.css`:
 
-| Token | Hex | Usage |
-|---|---|---|
-| `--color-swarm-yellow` | `#FACC15` | primary buttons, accents, highlights |
-| `--color-factory-950` | `#0A0A0A` | page background |
-| `--color-factory-900` | `#171717` | card/surface background |
-| `--color-factory-800` | `#262626` | borders, dividers |
-| `--color-concrete-100` | `#F5F5F5` | primary text |
-| `--color-concrete-400` | `#A3A3A3` | secondary text |
-| `--color-hazard-orange` | `#F97316` | warnings, badges, small highlights |
-| `--color-drone-green` | `#22C55E` | success states |
+| Token                   | Hex       | Usage                                |
+| ----------------------- | --------- | ------------------------------------ |
+| `--color-corpus-yellow` | `#FACC15` | primary buttons, accents, highlights |
+| `--color-factory-950`   | `#0A0A0A` | page background                      |
+| `--color-factory-900`   | `#171717` | card/surface background              |
+| `--color-factory-800`   | `#262626` | borders, dividers                    |
+| `--color-concrete-100`  | `#F5F5F5` | primary text                         |
+| `--color-concrete-400`  | `#A3A3A3` | secondary text                       |
+| `--color-hazard-orange` | `#F97316` | warnings, badges, small highlights   |
+| `--color-drone-green`   | `#22C55E` | success states                       |
 
 Verify with: `npm run build` passes; inspect `app/globals.css` and confirm the
 `@theme` block exports the tokens; `npx tailwindcss --help` exits 0.
@@ -63,14 +63,14 @@ A `Shell` component renders on every route via `app/layout.tsx`:
 
 - **Nav:**
   - Logo: "SWARM" wordmark linking to `/`.
-  - Links: Product (`/what-is-swarm`), Loop (`/the-loop`), Docs
-    (`https://github.com/jcosta33/swarm/blob/main/docs`), GitHub
-    (`https://github.com/jcosta33/swarm`).
+  - Links: Product (`/what-is-corpus`), Loop (`/the-loop`), Docs
+    (`https://github.com/jcosta33/corpus/blob/main/docs`), GitHub
+    (`https://github.com/jcosta33/corpus`).
   - Mobile: hamburger menu below the `lg` breakpoint (1024px).
 - **Footer:**
-  - Copyright: "© 2026 Swarm contributors.".
+  - Copyright: "© 2026 Corpus contributors.".
   - Links: GitHub, Starter kit, Docs, Colophon.
-  - Colophon line: "Built with Swarm by agents who review their own diffs."
+  - Colophon line: "Built with Corpus by agents who review their own diffs."
 
 Verify with: `npm run build` passes; every generated page contains exactly one
 `<nav>` and one `<footer>`; nav links are valid `href` attributes.

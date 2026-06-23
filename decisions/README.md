@@ -16,4 +16,4 @@ These rules are a convention — nothing in the workspace enforces them. The
 ledger is only useful if every entry can be trusted not to have been
 rewritten.
 
-`0001-adopt-swarm.md` is the seed entry. Copy its shape for the next decision.
+`0001-adopt-corpus.md` is the seed entry. Copy its shape for the next decision.

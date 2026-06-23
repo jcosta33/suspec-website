@@ -3,7 +3,7 @@ type: spec
 id: SPEC-testing
 title: Testing and quality gates
 status: draft
-owner: swarm-website
+owner: corpus-website
 sources:
   - intake/website.md
   - findings/FINDING-website-launch-gaps.md

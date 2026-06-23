@@ -4,7 +4,7 @@ import "./globals.css";
 import { Shell } from "./components/Shell";
 import { JsonLd } from "./components/JsonLd";
 
-const SITE_URL = "https://swarmframework.dev";
+const SITE_URL = "https://corpusframework.dev";
 
 // Site-wide structured data (SEO/GEO). The Organization + WebSite entities give answer engines and
 // crawlers a stable, machine-readable statement of what this is; the SearchAction is wired to the
@@ -20,10 +20,10 @@ const siteGraph = {
       description:
         "Calma is a lightweight spec-and-review workflow for teams shipping code with coding agents.",
       sameAs: [
-        "https://github.com/jcosta33/swarm",
-        "https://github.com/jcosta33/swarm-starter-kit",
-        "https://github.com/jcosta33/swarm-skills",
-        "https://github.com/jcosta33/swarm-cli",
+        "https://github.com/jcosta33/corpus",
+        "https://github.com/jcosta33/corpus-starter-kit",
+        "https://github.com/jcosta33/corpus-skills",
+        "https://github.com/jcosta33/corpus-cli",
       ],
     },
     {
@@ -69,7 +69,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://swarmframework.dev"),
+  metadataBase: new URL("https://corpusframework.dev"),
   title: "Calma — A spec-and-review workflow for coding agents",
   description:
     "Calma is a lightweight framework that helps teams ship better code with agents: specs, tasks, reviews, findings, and change plans.",
@@ -78,7 +78,12 @@ export const metadata: Metadata = {
     siteName: "Calma",
     locale: "en_US",
     images: [
-      { url: "/og-home.png", width: 1200, height: 630, alt: "Calma — a spec-and-review workflow for coding agents" },
+      {
+        url: "/og-home.png",
+        width: 1200,
+        height: 630,
+        alt: "Calma — a spec-and-review workflow for coding agents",
+      },
     ],
   },
   twitter: {

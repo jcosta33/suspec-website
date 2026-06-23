@@ -44,7 +44,7 @@ Add per-page metadata, OG images, sitemap, robots.txt, and canonical URLs.
 - Changed files:
   - `app/layout.tsx` — added `metadataBase`, default OG `type: website`, siteName, canonical
   - `app/page.tsx` — added OG title/description/type and canonical
-  - `app/what-is-swarm/page.tsx` — added OG title/description/type and canonical
+  - `app/what-is-corpus/page.tsx` — added OG title/description/type and canonical
   - `app/the-loop/page.tsx` — added OG title/description/type and canonical
   - `app/get-started/page.tsx` — added OG title/description/type and canonical
   - `app/skills/page.tsx` — added OG title/description/type and canonical
@@ -57,7 +57,7 @@ Add per-page metadata, OG images, sitemap, robots.txt, and canonical URLs.
   - `npm run lint` — passes
   - `npx tsc --noEmit` — passes
   - All pages have title, description, canonical, og:title, og:description, og:image
-  - `dist/sitemap.xml` lists `/`, `/what-is-swarm/`, `/the-loop/`, `/get-started/`, `/skills/`, `/cli/`; `/kitchen-sink` excluded
+  - `dist/sitemap.xml` lists `/`, `/what-is-corpus/`, `/the-loop/`, `/get-started/`, `/skills/`, `/cli/`; `/kitchen-sink` excluded
   - `dist/robots.txt` served with allow all and sitemap URL
   - All `public/og-*.png` images are 1200×630
 - Out-of-scope edits: none

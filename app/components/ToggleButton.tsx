@@ -18,7 +18,8 @@ export function ToggleButton({
   className = "",
 }: ToggleButtonProps) {
   const [internal, setInternal] = useState(defaultChecked);
-  const isChecked = controlledChecked !== undefined ? controlledChecked : internal;
+  const isChecked =
+    controlledChecked !== undefined ? controlledChecked : internal;
 
   function toggle() {
     const next = !isChecked;
@@ -41,12 +42,16 @@ export function ToggleButton({
       >
         <span
           className={`absolute top-0.5 left-0.5 h-5 w-5 border border-panel-border panel-raised transition-transform duration-150 ${
-            isChecked ? "translate-x-7 bg-swarm-yellow" : "translate-x-0 bg-concrete-400"
+            isChecked
+              ? "translate-x-7 bg-corpus-yellow"
+              : "translate-x-0 bg-concrete-400"
           }`}
         />
       </span>
       {label && (
-        <span className="text-sm font-mono uppercase tracking-wide text-concrete-400">{label}</span>
+        <span className="text-sm font-mono uppercase tracking-wide text-concrete-400">
+          {label}
+        </span>
       )}
     </button>
   );

@@ -2,36 +2,36 @@
 
 > Calma is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. It is plain markdown and conventions — any agent, no runtime. The framework turns each change into a spec, a bounded task, an agent run, and a review packet with pasted evidence, so "almost right" has to prove it is right before it ships.
 
-Calma keeps a human in charge of the firehose. Agents draft, run, and paste the output; the human decides when the evidence is good enough. Every rule states what kind of guarantee it is — convention, checklist, toolable, or enforced — and admits when the honest answer is "nothing checks this yet." An optional reference CLI (`swarm`) does the chores — checking specs, isolating each task in its own git worktree, reconciling a finished run against the diff — but it never renders the review verdict; that stays with a person.
+Calma keeps a human in charge of the firehose. Agents draft, run, and paste the output; the human decides when the evidence is good enough. Every rule states what kind of guarantee it is — convention, checklist, toolable, or enforced — and admits when the honest answer is "nothing checks this yet." An optional reference CLI (`corpus`) does the chores — checking specs, isolating each task in its own git worktree, reconciling a finished run against the diff — but it never renders the review verdict; that stays with a person.
 
 ## Start here
 
-- [What is Swarm?](https://swarmframework.dev/docs/01-what-is-swarm/): The problem with agent-written code and the spec-and-review answer.
-- [The basic workflow](https://swarmframework.dev/docs/02-basic-workflow/): The loop end to end — Pull, Spec, Task, Run, Review, Close.
-- [Where files live](https://swarmframework.dev/docs/03-where-files-live/): The workspace layout — specs, tasks, reviews, findings, the board.
-- [Writing specs](https://swarmframework.dev/docs/04-writing-specs/): Requirements and acceptance criteria an agent can work from.
-- [Brownfield work and change plans](https://swarmframework.dev/docs/05-brownfield-and-change-plans/): Structural changes to existing code, planned before they sprawl.
-- [Creating tasks](https://swarmframework.dev/docs/06-creating-tasks/): Cutting a task packet that bounds an agent's scope.
-- [Running agents](https://swarmframework.dev/docs/07-running-agents/): Launching a prepared task, one worktree per task.
-- [Reviewing agent output](https://swarmframework.dev/docs/08-reviewing-output/): Review by exception — read the evidence per requirement, not the whole diff.
-- [Saving findings](https://swarmframework.dev/docs/09-saving-findings/): Capturing hard-won lessons so the next session does not re-learn them.
-- [Integrations](https://swarmframework.dev/docs/10-integrations/): Fitting Calma into existing tools and pipelines.
+- [What is Corpus?](https://corpusframework.dev/docs/01-what-is-corpus/): The problem with agent-written code and the spec-and-review answer.
+- [The basic workflow](https://corpusframework.dev/docs/02-basic-workflow/): The loop end to end — Pull, Spec, Task, Run, Review, Close.
+- [Where files live](https://corpusframework.dev/docs/03-where-files-live/): The workspace layout — specs, tasks, reviews, findings, the board.
+- [Writing specs](https://corpusframework.dev/docs/04-writing-specs/): Requirements and acceptance criteria an agent can work from.
+- [Brownfield work and change plans](https://corpusframework.dev/docs/05-brownfield-and-change-plans/): Structural changes to existing code, planned before they sprawl.
+- [Creating tasks](https://corpusframework.dev/docs/06-creating-tasks/): Cutting a task packet that bounds an agent's scope.
+- [Running agents](https://corpusframework.dev/docs/07-running-agents/): Launching a prepared task, one worktree per task.
+- [Reviewing agent output](https://corpusframework.dev/docs/08-reviewing-output/): Review by exception — read the evidence per requirement, not the whole diff.
+- [Saving findings](https://corpusframework.dev/docs/09-saving-findings/): Capturing hard-won lessons so the next session does not re-learn them.
+- [Integrations](https://corpusframework.dev/docs/10-integrations/): Fitting Calma into existing tools and pipelines.
 
 ## Tutorial
 
-- [Your first loop: a hands-on walkthrough](https://swarmframework.dev/docs/tutorial/README/): Build one change end to end, the guided track.
+- [Your first loop: a hands-on walkthrough](https://corpusframework.dev/docs/tutorial/README/): Build one change end to end, the guided track.
 
 ## Worked examples
 
-- [A bug fix](https://swarmframework.dev/docs/examples/bug-fix/): The loop on a small defect.
-- [A feature from a Jira ticket](https://swarmframework.dev/docs/examples/feature-from-jira/): A vague ticket turned into a spec, task, and review.
-- [A 41-file refactor, reviewed by exception](https://swarmframework.dev/docs/examples/large-pr-review/): The flagship demo — a large change reviewed without reading every line.
+- [A bug fix](https://corpusframework.dev/docs/examples/bug-fix/): The loop on a small defect.
+- [A feature from a Jira ticket](https://corpusframework.dev/docs/examples/feature-from-jira/): A vague ticket turned into a spec, task, and review.
+- [A 41-file refactor, reviewed by exception](https://corpusframework.dev/docs/examples/large-pr-review/): The flagship demo — a large change reviewed without reading every line.
 
 ## Optional
 
-- [Full documentation, concatenated](https://swarmframework.dev/llms-full.txt): Every user-facing doc (the numbered path, the tutorial, and the worked examples) in one markdown file for full-context ingestion.
-- [Documentation home](https://swarmframework.dev/docs/): The full documentation, including the reference layer and the decision ledger.
-- [Get started](https://swarmframework.dev/get-started/): The two adoption paths — copy the starter kit, or run it by hand.
-- [The CLI](https://swarmframework.dev/cli/): The optional reference companion and its command surface.
-- [Canon on GitHub](https://github.com/jcosta33/swarm): The source repository for the docs, ADRs, and the checks contract.
-- [Starter kit](https://github.com/jcosta33/swarm-starter-kit): The copy-whole workspace template.
+- [Full documentation, concatenated](https://corpusframework.dev/llms-full.txt): Every user-facing doc (the numbered path, the tutorial, and the worked examples) in one markdown file for full-context ingestion.
+- [Documentation home](https://corpusframework.dev/docs/): The full documentation, including the reference layer and the decision ledger.
+- [Get started](https://corpusframework.dev/get-started/): The two adoption paths — copy the starter kit, or run it by hand.
+- [The CLI](https://corpusframework.dev/cli/): The optional reference companion and its command surface.
+- [Canon on GitHub](https://github.com/jcosta33/corpus): The source repository for the docs, ADRs, and the checks contract.
+- [Starter kit](https://github.com/jcosta33/corpus-starter-kit): The copy-whole workspace template.

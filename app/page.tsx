@@ -38,11 +38,11 @@ const softwareApp = {
   applicationCategory: "DeveloperApplication",
   operatingSystem: "Any",
   softwareVersion: "0.1.0",
-  url: "https://swarmframework.dev",
+  url: "https://corpusframework.dev",
   description:
     "Calma is a lightweight spec-and-review workflow that keeps humans in charge of code written by AI agents. Plain markdown, any agent, no runtime.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  publisher: { "@id": "https://swarmframework.dev/#organization" },
+  publisher: { "@id": "https://corpusframework.dev/#organization" },
 };
 
 export const metadata: Metadata = {
@@ -58,7 +58,12 @@ export const metadata: Metadata = {
     siteName: "Calma",
     locale: "en_US",
     images: [
-      { url: "/og-home.png", width: 1200, height: 630, alt: "Calma — specs for humans, tasks for agents" },
+      {
+        url: "/og-home.png",
+        width: 1200,
+        height: 630,
+        alt: "Calma — specs for humans, tasks for agents",
+      },
     ],
   },
   alternates: {
@@ -107,13 +112,13 @@ const walls = [
 const features = [
   {
     title: "Spec-first, not vibes-first",
-    command: "swarm new",
+    command: "corpus new",
     description:
       "Write the contract once. The task packet bounds scope and tells the agent, in writing, what not to touch.",
   },
   {
     title: "Review by exception",
-    command: "swarm check",
+    command: "corpus check",
     description:
       "Every requirement names how it is verified. The review packet shows the evidence per requirement — so you read the exceptions, not the whole 40-file diff.",
   },
@@ -185,32 +190,40 @@ export default function HomePage() {
               <>
                 AI writes code.
                 <br />
-                <span className="text-swarm-yellow text-glow">You keep the wheel.</span>
+                <span className="text-corpus-yellow text-glow">
+                  You keep the wheel.
+                </span>
               </>
             }
           >
             <Panel brushed className="mx-auto mt-10 max-w-2xl p-2 text-left">
               <TerminalWindow>
                 <p className="text-concrete-500">
-                  <span className="text-swarm-yellow">$</span> swarm status
+                  <span className="text-corpus-yellow">$</span> corpus status
                 </p>
-                <p className="mt-1 text-concrete-500"># the gap Calma is built for:</p>
-                <p className="mt-1 text-concrete-100">
-                  Only 33% of developers trust the accuracy of AI output. 84% use it anyway.
-                </p>
-                <p className="mt-2 text-concrete-500">
-                  <span className="text-swarm-yellow">$</span> swarm init
-                </p>
-                <p className="mt-1 text-drone-green">✓ scaffolded workspace (specs/, tasks/, reviews/, status.md)</p>
-                <p className="mt-2 text-concrete-500">
-                  <span className="text-swarm-yellow">$</span> swarm new spec evidence --from intake/JIRA-412.md
+                <p className="mt-1 text-concrete-500">
+                  # the gap Calma is built for:
                 </p>
                 <p className="mt-1 text-concrete-100">
-                  Turn tickets into clear specs, specs into agent-ready tasks, and agent output into
-                  evidence you can review.
+                  Only 33% of developers trust the accuracy of AI output. 84%
+                  use it anyway.
                 </p>
                 <p className="mt-2 text-concrete-500">
-                  <span className="text-swarm-yellow">$</span>{" "}
+                  <span className="text-corpus-yellow">$</span> corpus init
+                </p>
+                <p className="mt-1 text-drone-green">
+                  ✓ scaffolded workspace (specs/, tasks/, reviews/, status.md)
+                </p>
+                <p className="mt-2 text-concrete-500">
+                  <span className="text-corpus-yellow">$</span> corpus new spec
+                  evidence --from intake/JIRA-412.md
+                </p>
+                <p className="mt-1 text-concrete-100">
+                  Turn tickets into clear specs, specs into agent-ready tasks,
+                  and agent output into evidence you can review.
+                </p>
+                <p className="mt-2 text-concrete-500">
+                  <span className="text-corpus-yellow">$</span>{" "}
                   <TerminalCursor className="ml-0.5 align-middle" />
                 </p>
               </TerminalWindow>
@@ -221,7 +234,7 @@ export default function HomePage() {
                 href="https://survey.stackoverflow.co/2025/ai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+                className="inline-flex items-center gap-1 text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
               >
                 survey.stackoverflow.co/2025/ai
                 <ExternalLink className="h-3 w-3" aria-hidden="true" />
@@ -231,11 +244,12 @@ export default function HomePage() {
             <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Button asChild className="w-full sm:w-auto">
                 <Link
-                  href="https://github.com/jcosta33/swarm-starter-kit"
+                  href="https://github.com/jcosta33/corpus-starter-kit"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Copy the starter kit <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  Copy the starter kit{" "}
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
               <Button variant="secondary" asChild className="w-full sm:w-auto">
@@ -258,32 +272,36 @@ export default function HomePage() {
               Five ways agent code goes sideways.
             </h2>
             <p className="mt-4 text-concrete-400">
-              Coding agents are fast. They are also wrong in ways that look correct: the{" "}
-              <span className="text-concrete-100">#1 frustration</span> developers report with AI is
-              code that is &quot;almost right, but not quite&quot; —{" "}
-              <span className="text-concrete-100">66%</span> of them (
+              Coding agents are fast. They are also wrong in ways that look
+              correct: the{" "}
+              <span className="text-concrete-100">#1 frustration</span>{" "}
+              developers report with AI is code that is &quot;almost right, but
+              not quite&quot; — <span className="text-concrete-100">66%</span>{" "}
+              of them (
               <Link
                 href="https://survey.stackoverflow.co/2025/ai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+                className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
               >
                 Stack Overflow 2025
               </Link>
-              ). And in a randomized trial, experienced devs on their own mature repos came out{" "}
-              <span className="text-concrete-100">19% slower</span> with AI while{" "}
+              ). And in a randomized trial, experienced devs on their own mature
+              repos came out{" "}
+              <span className="text-concrete-100">19% slower</span> with AI
+              while{" "}
               <span className="text-concrete-100">feeling ~20% faster</span> (
               <Link
                 href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+                className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
               >
                 METR
               </Link>
-              ). Calma does not answer that with hustle. It turns every change into a spec, a task,
-              and a review packet with pasted evidence — so &quot;almost right&quot; has to prove it is right
-              before it ships.
+              ). Calma does not answer that with hustle. It turns every change
+              into a spec, a task, and a review packet with pasted evidence — so
+              &quot;almost right&quot; has to prove it is right before it ships.
             </p>
           </div>
 
@@ -303,7 +321,9 @@ export default function HomePage() {
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </HexBadge>
                       <div>
-                        <p className="font-mono text-xs text-hazard-orange">{wall.code}</p>
+                        <p className="font-mono text-xs text-hazard-orange">
+                          {wall.code}
+                        </p>
                         <h3 className="mt-1 font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
                           {wall.title}
                         </h3>
@@ -326,7 +346,7 @@ export default function HomePage() {
         <HazardStripe height="sm" />
         <Section className="mt-12 flex flex-col gap-12">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
               <DroneIcon className="h-4 w-4" />
               <span>flight.plan — 6 waypoints (+2 optional)</span>
             </div>
@@ -334,15 +354,16 @@ export default function HomePage() {
               The loop
             </h2>
             <p className="mt-4 text-concrete-400">
-              Pull → Spec → Task → Run → Review → Close. Each step produces a file the next step can
-              read. The agent does the work; the human owns the gates.
+              Pull → Spec → Task → Run → Review → Close. Each step produces a
+              file the next step can read. The agent does the work; the human
+              owns the gates.
             </p>
           </div>
           <LoopDiagram />
           <p className="text-sm text-concrete-400">
             <Link
               href="/the-loop/"
-              className="inline-flex items-center gap-1 text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+              className="inline-flex items-center gap-1 text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               Walk the full loop, step by step
               <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -363,27 +384,30 @@ export default function HomePage() {
               What a spec looks like
             </h2>
             <p className="mt-4 text-concrete-400">
-              A requirement is only as good as its verification method. The review packet shows
-              evidence per requirement.
+              A requirement is only as good as its verification method. The
+              review packet shows evidence per requirement.
             </p>
           </div>
 
           <div className="reveal grid gap-6 lg:grid-cols-2">
             <TerminalWindow title="specs/shell/spec.md">
               <p className="text-concrete-500">
-                <span className="text-swarm-yellow">##</span> AC-003 — Global shell includes nav and footer
+                <span className="text-corpus-yellow">##</span> AC-003 — Global
+                shell includes nav and footer
               </p>
               <p className="mt-2 text-concrete-100">
-                A <span className="text-swarm-yellow">Shell</span> component renders on every route via{" "}
-                <span className="text-swarm-yellow">app/layout.tsx</span>.
+                A <span className="text-corpus-yellow">Shell</span> component
+                renders on every route via{" "}
+                <span className="text-corpus-yellow">app/layout.tsx</span>.
               </p>
               <ul className="mt-2 list-disc pl-4 text-concrete-100">
                 <li>Nav: logo, links, mobile hamburger below lg.</li>
                 <li>Footer: copyright, links, colophon line.</li>
               </ul>
               <p className="mt-3 text-concrete-500">
-                <span className="text-swarm-yellow">Verify with:</span> npm run build passes; every
-                generated page contains exactly one &lt;nav&gt; and one &lt;footer&gt;; nav links are valid.
+                <span className="text-corpus-yellow">Verify with:</span> npm run
+                build passes; every generated page contains exactly one
+                &lt;nav&gt; and one &lt;footer&gt;; nav links are valid.
               </p>
             </TerminalWindow>
 
@@ -392,29 +416,51 @@ export default function HomePage() {
                 <table className="w-full min-w-[320px] text-left text-sm">
                   <thead className="border-b border-panel-border text-concrete-400">
                     <tr>
-                      <th className="py-2 pr-4 font-heading font-bold uppercase tracking-wide">AC</th>
-                      <th className="py-2 pr-4 font-heading font-bold uppercase tracking-wide">Result</th>
-                      <th className="py-2 font-heading font-bold uppercase tracking-wide">Evidence</th>
+                      <th className="py-2 pr-4 font-heading font-bold uppercase tracking-wide">
+                        AC
+                      </th>
+                      <th className="py-2 pr-4 font-heading font-bold uppercase tracking-wide">
+                        Result
+                      </th>
+                      <th className="py-2 font-heading font-bold uppercase tracking-wide">
+                        Evidence
+                      </th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-panel-border">
                     <tr>
-                      <td className="py-3 pr-4 font-mono text-concrete-100">AC-003</td>
+                      <td className="py-3 pr-4 font-mono text-concrete-100">
+                        AC-003
+                      </td>
                       <td className="py-3 pr-4">
                         <span className="inline-flex items-center gap-2 text-drone-green">
-                          <span className="pilot-lamp pilot-lamp-green" aria-hidden="true" /> Pass
+                          <span
+                            className="pilot-lamp pilot-lamp-green"
+                            aria-hidden="true"
+                          />{" "}
+                          Pass
                         </span>
                       </td>
-                      <td className="py-3 text-concrete-400">grep found 1 nav and 1 footer</td>
+                      <td className="py-3 text-concrete-400">
+                        grep found 1 nav and 1 footer
+                      </td>
                     </tr>
                     <tr>
-                      <td className="py-3 pr-4 font-mono text-concrete-100">AC-009</td>
+                      <td className="py-3 pr-4 font-mono text-concrete-100">
+                        AC-009
+                      </td>
                       <td className="py-3 pr-4">
                         <span className="inline-flex items-center gap-2 text-concrete-400">
-                          <span className="pilot-lamp pilot-lamp-amber" aria-hidden="true" /> Unverified
+                          <span
+                            className="pilot-lamp pilot-lamp-amber"
+                            aria-hidden="true"
+                          />{" "}
+                          Unverified
                         </span>
                       </td>
-                      <td className="py-3 text-concrete-400">manual resize pending</td>
+                      <td className="py-3 text-concrete-400">
+                        manual resize pending
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -428,7 +474,7 @@ export default function HomePage() {
       <section className="border-y border-panel-border bg-panel-raised py-24">
         <Section className="flex flex-col gap-12">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
               <Shield className="h-4 w-4" aria-hidden="true" />
               <span>how it works — 4 moving parts</span>
             </div>
@@ -441,10 +487,12 @@ export default function HomePage() {
               <Card
                 key={feature.title}
                 screws
-                className="group h-full border-panel-border hover:border-swarm-yellow/50"
+                className="group h-full border-panel-border hover:border-corpus-yellow/50"
               >
                 <div className="flex items-start justify-between gap-2">
-                  <p className="font-mono text-xs text-brass">{feature.command}</p>
+                  <p className="font-mono text-xs text-brass">
+                    {feature.command}
+                  </p>
                   <PilotLamp color="green" className="shrink-0" />
                 </div>
                 <h3 className="mt-2 font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
@@ -464,7 +512,7 @@ export default function HomePage() {
       <section className="py-24">
         <Section className="flex flex-col gap-12">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase text-swarm-yellow">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
               <DroneIcon className="h-4 w-4" aria-hidden="true" />
               <span>faq.md — common questions</span>
             </div>
@@ -485,7 +533,9 @@ export default function HomePage() {
                     aria-hidden="true"
                   />
                 </summary>
-                <p className="px-5 pb-5 leading-relaxed text-concrete-400">{faq.a}</p>
+                <p className="px-5 pb-5 leading-relaxed text-concrete-400">
+                  {faq.a}
+                </p>
               </details>
             ))}
           </div>
@@ -497,7 +547,9 @@ export default function HomePage() {
         <HazardStripe height="sm" />
         <Section className="py-16 text-center">
           <Eyebrow
-            icon={<Users className="h-4 w-4 text-drone-green" aria-hidden="true" />}
+            icon={
+              <Users className="h-4 w-4 text-drone-green" aria-hidden="true" />
+            }
             className="mx-auto"
           >
             human approval required
@@ -506,19 +558,21 @@ export default function HomePage() {
             Stop shipping &quot;almost right&quot; code.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-concrete-400">
-            Calma will not make you 10x, and it is not trying to replace you — it just puts you
-            back in charge of the firehose. Copy the starter kit, write one spec, and give your agents a
-            contract they can read. You still make the calls; they just finally know what you meant.
+            Calma will not make you 10x, and it is not trying to replace you —
+            it just puts you back in charge of the firehose. Copy the starter
+            kit, write one spec, and give your agents a contract they can read.
+            You still make the calls; they just finally know what you meant.
           </p>
           <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Button asChild className="w-full sm:w-auto">
               <Link href="/get-started/">
-                Get started <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                Get started{" "}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
             <Button variant="secondary" asChild className="w-full sm:w-auto">
               <Link
-                href="https://github.com/jcosta33/swarm-starter-kit"
+                href="https://github.com/jcosta33/corpus-starter-kit"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -529,15 +583,15 @@ export default function HomePage() {
           <p className="mt-6 text-sm text-concrete-400">
             New here? Start with{" "}
             <Link
-              href="/what-is-swarm/"
-              className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+              href="/what-is-corpus/"
+              className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               what Calma is
             </Link>{" "}
             or{" "}
             <Link
               href="/the-loop/"
-              className="text-swarm-yellow underline hover:no-underline focus-ring rounded-sm"
+              className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               the loop
             </Link>

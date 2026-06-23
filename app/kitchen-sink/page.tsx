@@ -34,15 +34,21 @@ export default function KitchenSinkPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <Panel>
             <h3 className="font-heading text-lg font-bold">Raised panel</h3>
-            <p className="mt-2 text-concrete-400">A heavy machined plate with a strong shadow.</p>
+            <p className="mt-2 text-concrete-400">
+              A heavy machined plate with a strong shadow.
+            </p>
           </Panel>
           <Panel variant="inset">
             <h3 className="font-heading text-lg font-bold">Inset panel</h3>
-            <p className="mt-2 text-concrete-400">A recessed well for screens and readouts.</p>
+            <p className="mt-2 text-concrete-400">
+              A recessed well for screens and readouts.
+            </p>
           </Panel>
           <Panel brushed rivets screws>
             <h3 className="font-heading text-lg font-bold">Hardware panel</h3>
-            <p className="mt-2 text-concrete-400">Brushed metal, rivets, and screws.</p>
+            <p className="mt-2 text-concrete-400">
+              Brushed metal, rivets, and screws.
+            </p>
           </Panel>
           <Panel hazard>
             <h3 className="font-heading text-lg font-bold">Hazard panel</h3>
@@ -66,7 +72,9 @@ export default function KitchenSinkPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <h3 className="font-heading text-lg font-bold">Default card</h3>
-            <p className="mt-2 text-concrete-400">A raised module with a machined lip.</p>
+            <p className="mt-2 text-concrete-400">
+              A raised module with a machined lip.
+            </p>
           </Card>
           <Card screws brushed rivets>
             <h3 className="font-heading text-lg font-bold">Hardware card</h3>
@@ -119,7 +127,7 @@ export default function KitchenSinkPage() {
         <TerminalWindow title="terminal">
           <p className="text-concrete-500"># CRT monitor panel</p>
           <p className="text-concrete-100">
-            <span className="text-swarm-yellow">$</span> swarm status
+            <span className="text-corpus-yellow">$</span> corpus status
           </p>
           <p className="mt-1 text-drone-green">✓ all systems nominal</p>
         </TerminalWindow>
@@ -132,7 +140,7 @@ export default function KitchenSinkPage() {
 
       <Section className="flex flex-col gap-6">
         <Heading>Icons</Heading>
-        <div className="flex gap-4 text-swarm-yellow">
+        <div className="flex gap-4 text-corpus-yellow">
           <AlertTriangle aria-label="Warning" />
           <CheckCircle aria-label="Success" />
           <Wrench aria-label="Tools" />
@@ -142,10 +150,18 @@ export default function KitchenSinkPage() {
       <Section className="flex flex-col gap-6">
         <Heading>Typography</Heading>
         <div className="space-y-4">
-          <p className="text-concrete-100">Primary text on chassis background.</p>
-          <p className="text-concrete-400">Secondary text for captions and metadata.</p>
-          <p className="text-swarm-yellow">Accent text for links and highlights.</p>
-          <p className="text-hazard-orange">Hazard text for warnings and notices.</p>
+          <p className="text-concrete-100">
+            Primary text on chassis background.
+          </p>
+          <p className="text-concrete-400">
+            Secondary text for captions and metadata.
+          </p>
+          <p className="text-corpus-yellow">
+            Accent text for links and highlights.
+          </p>
+          <p className="text-hazard-orange">
+            Hazard text for warnings and notices.
+          </p>
           <p className="text-drone-green">Drone green for success states.</p>
           <p className="text-brass">Brass hardware accent.</p>
           <p className="text-aluminium">Aluminium label accent.</p>

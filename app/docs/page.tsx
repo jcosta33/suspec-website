@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { buildNav, canonAvailable, type NavSection } from "./lib/canon";
 
 export const metadata: Metadata = {
-  title: "Documentation · Swarm",
-  description: "A spec and review workflow for teams using coding agents — the full Swarm documentation.",
+  title: "Documentation · Corpus",
+  description:
+    "A spec and review workflow for teams using coding agents — the full Corpus documentation.",
   alternates: { canonical: "/docs/" },
 };
 
@@ -26,7 +27,12 @@ function Section({ sec, intro }: { sec: NavSection; intro?: string }) {
 
 export default function DocsIndex() {
   if (!canonAvailable()) {
-    return <p>The canon was not available at build time (see canon.ts — W3 deploy wiring).</p>;
+    return (
+      <p>
+        The canon was not available at build time (see canon.ts — W3 deploy
+        wiring).
+      </p>
+    );
   }
   const nav = buildNav();
   const find = (title: string) => nav.find((s) => s.title === title);
@@ -38,11 +44,11 @@ export default function DocsIndex() {
 
   return (
     <div className="docs-prose" data-pagefind-body>
-      <h1>Swarm documentation</h1>
+      <h1>Corpus documentation</h1>
       <p>
         A spec and review workflow for teams using coding agents. New to it?{" "}
-        <Link href="/docs/tutorial/README/">Walk the loop once</Link> — a guided build. Then keep the
-        numbered path open as you go.
+        <Link href="/docs/tutorial/README/">Walk the loop once</Link> — a guided
+        build. Then keep the numbered path open as you go.
       </p>
       {startHere ? <Section sec={startHere} /> : null}
       {tutorial ? <Section sec={tutorial} /> : null}
@@ -57,9 +63,11 @@ export default function DocsIndex() {
         <section>
           <h2>Decision ledger</h2>
           <p>
-            The architecture decisions behind every format and vocabulary rule — an internal record
-            kept for traceability, not a starting point.{" "}
-            <Link href="/docs/adrs/README/">Browse the {adrs.items.length} ADRs →</Link>
+            The architecture decisions behind every format and vocabulary rule —
+            an internal record kept for traceability, not a starting point.{" "}
+            <Link href="/docs/adrs/README/">
+              Browse the {adrs.items.length} ADRs →
+            </Link>
           </p>
         </section>
       ) : null}

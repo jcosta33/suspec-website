@@ -2,9 +2,9 @@
 type: review
 id: REVIEW-{{slug}}
 task: TASK-{{slug}}
-pr: {{pr-url — or "none yet" for a pre-PR or trunk-based review}}
-reviewer: {{who reviews — never the implementing session}}
-status: {{draft | pass | waived | blocked | needs-human}}
+pr: { { pr-url — or "none yet" for a pre-PR or trunk-based review } }
+reviewer: { { who reviews — never the implementing session } }
+status: { { draft | pass | waived | blocked | needs-human } }
 ---
 
 # Review: {{title}}
@@ -19,10 +19,10 @@ status: {{draft | pass | waived | blocked | needs-human}}
 
 ## Requirement coverage
 
-| ID | Result | Evidence | Human attention |
-|---|---|---|---|
-| AC-001 | Pass | `{{test}}` output pasted/linked | no |
-| AC-002 | Unverified | no test output found | yes |
+| ID     | Result     | Evidence                        | Human attention |
+| ------ | ---------- | ------------------------------- | --------------- |
+| AC-001 | Pass       | `{{test}}` output pasted/linked | no              |
+| AC-002 | Unverified | no test output found            | yes             |
 
 <!-- Results: Pass · Fail · Unverified · Blocked.
      A Pass needs pasted output, a CI link, or, for a manual Verify method, a
@@ -34,7 +34,7 @@ status: {{draft | pass | waived | blocked | needs-human}}
 <!-- Optional — structured evidence (ADR-0083; checked by C013): a coverage row may carry,
      directly beneath the table, a fenced code block whose info-string is
      `verify id=AC-NNN cmd="<the requirement's named Verify-with command>" result=pass|fail`.
-     That info-string is the machine-checkable form `swarm check` / `swarm review` reconciles
+     That info-string is the machine-checkable form `corpus check` / `corpus review` reconciles
      against the spec's named command; the block's body is the verbatim paste — for you and the
      spot-check — and is never parsed for a review result. Opt-in: a row may use only the free-form
      Evidence cell and stays a human-attention warning. The check surfaces a consistency fact
@@ -47,9 +47,9 @@ Spot-checked: {{which green row's evidence you re-ran yourself}}
 <!-- Only when the task executes a change plan: one row per preservation
      guarantee / wave item, same columns as above. Delete otherwise. -->
 
-| ID | Result | Evidence | Human attention |
-|---|---|---|---|
-| {{SPEC-x#AC-001 (preserved)}} | {{result}} | {{evidence}} | {{yes/no}} |
+| ID                            | Result     | Evidence     | Human attention |
+| ----------------------------- | ---------- | ------------ | --------------- |
+| {{SPEC-x#AC-001 (preserved)}} | {{result}} | {{evidence}} | {{yes/no}}      |
 
 ## Human attention
 
@@ -61,7 +61,7 @@ Spot-checked: {{which green row's evidence you re-ran yourself}}
      silently failed to load, or a worker that left no task artifact at all) —
      investigate, don't rubber-stamp. A waived row records: who waived · which
      rows · why · expiry — the packet status becomes `waived` at merge
-     (expiry semantics: the advanced lifecycle, in the Swarm repo). -->
+     (expiry semantics: the advanced lifecycle, in the Corpus repo). -->
 
 1. {{exception — why it matters — suggested action}}
 

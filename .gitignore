@@ -27,7 +27,7 @@ next-env.d.ts
 /dist
 
 # ephemeral canon clone (CI/Vercel) — never committed (single-sourcing)
-.swarm-canon/
+.corpus-canon/
 
 # precomputed canon git dates (prebuild output, ephemeral)
-.swarm-canon-dates.json
+.corpus-canon-dates.json

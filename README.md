@@ -1,6 +1,6 @@
-# swarm-website
+# corpus-website
 
-The public marketing site for [Swarm](https://github.com/jcosta33/swarm), a lightweight spec and review workflow for teams using coding agents.
+The public marketing site for [Corpus](https://github.com/jcosta33/corpus), a lightweight spec and review workflow for teams using coding agents.
 
 ## Stack
 
@@ -41,4 +41,4 @@ Pushes to `main` deploy to Vercel automatically. Pull requests receive preview d
 
 ## Content sources
 
-Marketing copy is sourced from the `swarm` repo docs. See `CONTENT.md` for the source map and review cadence.
+Marketing copy is sourced from the `corpus` repo docs. See `CONTENT.md` for the source map and review cadence.

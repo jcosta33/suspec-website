@@ -4,7 +4,19 @@ id: TASK-homepage
 source:
   - SPEC-homepage
   - CHANGE-website-launch
-scope: [AC-001, AC-002, AC-003, AC-004, AC-005, AC-006, AC-007, AC-008, AC-009, AC-010]
+scope:
+  [
+    AC-001,
+    AC-002,
+    AC-003,
+    AC-004,
+    AC-005,
+    AC-006,
+    AC-007,
+    AC-008,
+    AC-009,
+    AC-010,
+  ]
 status: ready
 ---
 
@@ -17,7 +29,7 @@ status: ready
 
 ## Scope
 
-Implement the Swarm homepage: hero, problem section, loop diagram, spec/review
+Implement the Corpus homepage: hero, problem section, loop diagram, spec/review
 example, feature grid, final CTA, metadata, performance budget, and reduced-motion
 support.
 

@@ -27,7 +27,7 @@ launch-critical concerns that will block a production-ready site:
    Lighthouse budget.
 
 5. **Content update workflow.** No spec explains how marketing copy stays in
-   sync with the `swarm` repo as it evolves.
+   sync with the `corpus` repo as it evolves.
 
 6. **Analytics and privacy.** No spec decides whether to add analytics or how
    to handle visitor privacy.
@@ -50,7 +50,7 @@ Add the following specs before cutting implementation tasks:
 - `SPEC-accessibility` — WCAG AA, reduced motion, focus, alt text.
 - `SPEC-seo` — metadata, Open Graph, sitemap, robots.
 - `SPEC-testing` — link checker, a11y checker, Lighthouse budget, CI checks.
-- `SPEC-content-workflow` — how copy stays in sync with `swarm` docs.
+- `SPEC-content-workflow` — how copy stays in sync with `corpus` docs.
 
 Also convert `SPEC-marketing-pages` into a change plan or per-page specs, and
 merge `SPEC-examples-section` into `SPEC-homepage` or defer it.

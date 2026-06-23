@@ -17,7 +17,7 @@ The review packet (`templates/review.md`) turns a large diff into requirement
 coverage, evidence, and a short list of things a human must look at. Your
 stance is refute-by-default: "done" is a claim until evidence forces you to
 agree. The hard rules below are review-checklist conventions — nothing in the
-kit enforces them. (Future CLI: `swarm review` will draft this packet — today
+kit enforces them. (Future CLI: `corpus review` will draft this packet — today
 you or your agent fills the template.)
 
 ## Rules

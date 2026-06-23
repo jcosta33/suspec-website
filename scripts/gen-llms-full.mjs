@@ -1,16 +1,18 @@
 // Postbuild: write dist/llms-full.txt — the user-tier canon (numbered 01-10 + tutorial + examples)
 // concatenated into one markdown file for single-fetch ingestion by AI assistants. Single-sourced
-// from the same canon the site renders (sibling swarm/docs in dev, the vendored clone on CI/Vercel).
+// from the same canon the site renders (sibling corpus/docs in dev, the vendored clone on CI/Vercel).
 import fs from "node:fs";
 import path from "node:path";
 
-const SIBLING = path.join(process.cwd(), "..", "swarm", "docs");
-const VENDOR = path.join(process.cwd(), ".swarm-canon", "docs");
+const SIBLING = path.join(process.cwd(), "..", "corpus", "docs");
+const VENDOR = path.join(process.cwd(), ".corpus-canon", "docs");
 const CANON = fs.existsSync(SIBLING) ? SIBLING : VENDOR;
 const OUT = path.join(process.cwd(), "dist", "llms-full.txt");
 
 if (!fs.existsSync(CANON)) {
-  console.warn("[gen-llms-full] canon not found — skipping (docs tree was empty at build)");
+  console.warn(
+    "[gen-llms-full] canon not found — skipping (docs tree was empty at build)",
+  );
   process.exit(0);
 }
 
@@ -35,12 +37,17 @@ const header =
   `> Calma is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. ` +
   `Plain markdown, any agent, no runtime. This file concatenates the user-facing documentation for ` +
   `full-context ingestion by AI assistants.\n\n` +
-  `Site: https://swarmframework.dev/ · Canon: https://github.com/jcosta33/swarm\n\n---\n\n`;
+  `Site: https://corpusframework.dev/ · Canon: https://github.com/jcosta33/corpus\n\n---\n\n`;
 
 const body = order
-  .map((rel) => `<!-- ${rel} -->\n\n${fs.readFileSync(path.join(CANON, rel), "utf8").trim()}\n`)
+  .map(
+    (rel) =>
+      `<!-- ${rel} -->\n\n${fs.readFileSync(path.join(CANON, rel), "utf8").trim()}\n`,
+  )
   .join("\n\n---\n\n");
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, header + body + "\n");
-console.log(`[gen-llms-full] wrote ${OUT} — ${order.length} docs, ${header.length + body.length} bytes`);
+console.log(
+  `[gen-llms-full] wrote ${OUT} — ${order.length} docs, ${header.length + body.length} bytes`,
+);

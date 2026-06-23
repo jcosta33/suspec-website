@@ -1,11 +1,15 @@
 ---
 type: spec
 id: SPEC-{{slug}}
-title: {{title}}
+title: { { title } }
 status: draft
-owner: {{team-or-person}}
+owner: { { team-or-person } }
 sources:
-  - {{ticket-id-or-intake-file — or "self" when the work originates with you}}
+  - {
+      {
+        ticket-id-or-intake-file — or "self" when the work originates with you,
+      },
+    }
 ---
 
 # {{title}}
@@ -25,7 +29,7 @@ sources:
      it is the highest-value line in this file; prefer a runnable test or
      command. Prefer stricter notation? Any spec can use SOL blocks instead:
      add "format: sol" to the frontmatter. See `advanced/sol-reference.md` in your workspace
-     (full reference: the Swarm repo's docs/reference/structured-requirements.md). -->
+     (full reference: the Corpus repo's docs/reference/structured-requirements.md). -->
 
 ### AC-001 — {{short name}}
 

@@ -1,6 +1,6 @@
 # SOL — structured requirements reference card
 
-<!-- Optional. SOL is Swarm's stricter spec surface — select it per file with
+<!-- Optional. SOL is Corpus's stricter spec surface — select it per file with
      `format: sol` in the spec's frontmatter. Use it for high-risk work where the
      extra precision pays; the plain `### AC-NNN` form is the default. -->
 
@@ -64,4 +64,4 @@ AFFECTS AC-001
 - Both surfaces (plain and SOL) encode the same requirement record — same IDs, same
   strength words, same verification refs. Reviews and checks treat them identically.
 - This card is a convention reference — nothing here is enforced by a tool; the
-  `spec-check` guide (and a future `swarm spec check`) covers the checklist.
+  `spec-check` guide (and a future `corpus spec check`) covers the checklist.

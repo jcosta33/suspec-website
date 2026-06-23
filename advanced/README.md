@@ -30,15 +30,15 @@ The guides for the work these templates support — `write-audit`, `write-resear
 `write-rfc`, `write-prd`, `write-bug-report`, `write-change-plan`, `write-inventory`,
 `spec-check`, `split-work`, `save-findings`, `adversarial-review` — ship installed in the
 kit's `.agents/skills/`, beside the core loop guides. They are the **workspace authoring
-guides** (the name the kit README and the swarm-skills catalog both use). Nothing to install.
+guides** (the name the kit README and the corpus-skills catalog both use). Nothing to install.
 
-## More guides (the swarm-skills catalog)
+## More guides (the corpus-skills catalog)
 
 Conditioning stances (the personas) and long-form implementation guides per change
 shape (feature, fix, refactor, rewrite, migration, performance, testing,
 documentation, flaky tests) live in the
-[swarm-skills catalog](https://github.com/jcosta33/swarm-skills). Install into
-`.agents/skills/` with `npx skills add jcosta33/swarm-skills` (add `--list` to preview
+[corpus-skills catalog](https://github.com/jcosta33/corpus-skills). Install into
+`.agents/skills/` with `npx skills add jcosta33/corpus-skills` (add `--list` to preview
 without installing), or copy the folders.
 
-Copy what you need; ignore the rest. Full instructions: `docs/ADOPTING.md` in the Swarm repo.
+Copy what you need; ignore the rest. Full instructions: `docs/ADOPTING.md` in the Corpus repo.
