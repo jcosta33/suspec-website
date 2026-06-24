@@ -293,7 +293,7 @@ export default function HomePage() {
         </Section>
       </section>
 
-      <section className="border-y border-panel-border bg-panel py-16 sm:py-20">
+      <section className="border-y border-panel-border bg-chassis py-16 sm:py-20">
         <Section className="flex flex-col gap-10">
           <div className="max-w-2xl">
             <Eyebrow>workflow / six steps</Eyebrow>
@@ -341,7 +341,7 @@ export default function HomePage() {
         </Section>
       </section>
 
-      <section className="border-y border-panel-border bg-panel py-16 sm:py-20">
+      <section className="border-y border-panel-border bg-chassis py-16 sm:py-20">
         <Section className="flex flex-col gap-10">
           <div className="max-w-2xl">
             <Eyebrow>what you get</Eyebrow>
