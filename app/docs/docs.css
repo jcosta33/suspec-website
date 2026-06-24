@@ -279,6 +279,8 @@
   font-weight: 600;
   margin: 0 0 0.75rem;
   letter-spacing: 0;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
 }
 .docs-prose h2 {
   font-size: 1.45rem;
@@ -650,11 +652,30 @@
   text-decoration-color: rgba(216, 138, 36, 0.6);
 }
 @media (max-width: 40rem) {
+  .docs-prose h1 {
+    font-size: clamp(1.65rem, 8vw, 1.95rem);
+    line-height: 1.12;
+  }
+
   .docs-prose .docs-pager {
     grid-template-columns: 1fr;
+    gap: 0.65rem;
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+  }
+  .docs-prose .docs-pager-link {
+    gap: 0.15rem;
+    padding: 0.75rem 0.85rem;
   }
   .docs-prose .docs-pager-next {
     text-align: left;
+  }
+  .docs-prose .docs-pager-dir {
+    font-size: 0.64rem;
+  }
+  .docs-prose .docs-pager-title {
+    font-size: 0.94rem;
+    line-height: 1.32;
   }
 }
 
