@@ -140,6 +140,7 @@ export default async function DocPage({
   const { html, headings } = await renderDoc(
     articleMarkdown,
     dir === "." ? "" : dir,
+    title,
   );
   const dates = docDates(slugPath);
   const titleClassName = [

@@ -288,6 +288,27 @@ const rehypeNormalizeDisplayHeadings: Plugin<[], HastRoot> = () => (tree) => {
   });
 };
 
+// The route shell renders the document title as the only page H1. Some canonical docs include a
+// secondary body-level `#` after an update note; remove exact title repeats and demote any other
+// body-level H1 so the semantic outline stays valid.
+const rehypeHandleBodyH1: Plugin<[string], HastRoot> = (pageTitle) => (tree) => {
+  const normalizedPageTitle = normalizeDisplayTitle(pageTitle);
+  visit(tree, "element", (node: HastElement, index, parent) => {
+    if (node.tagName !== "h1") return;
+    const text = normalizeDisplayTitle(hastText(node.children).trim());
+    if (
+      text === normalizedPageTitle &&
+      typeof index === "number" &&
+      parent &&
+      "children" in parent
+    ) {
+      parent.children.splice(index, 1);
+      return [SKIP, index];
+    }
+    node.tagName = "h2";
+  });
+};
+
 function hasClass(node: HastElement, className: string): boolean {
   const value = node.properties?.className;
   const classes = Array.isArray(value)
@@ -383,6 +404,7 @@ const rehypeCollectHeadings =
 export async function renderDoc(
   markdown: string,
   currentDir: string,
+  pageTitle: string,
 ): Promise<{ html: string; headings: DocHeading[] }> {
   const headings: DocHeading[] = [];
   const file = await unified()
@@ -396,6 +418,7 @@ export async function renderDoc(
     .use(rehypeExternalLinks)
     .use(rehypeSlug)
     .use(rehypeNormalizeDisplayHeadings)
+    .use(rehypeHandleBodyH1, pageTitle)
     .use(rehypeCollectHeadings(headings))
     .use(rehypeLabelFlowCodeBlocks)
     .use(rehypeLabelWrappedTextCodeBlocks)
