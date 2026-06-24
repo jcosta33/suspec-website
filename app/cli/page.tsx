@@ -243,13 +243,13 @@ export default function CliPage() {
                   screws
                   className="group h-full border-panel-border hover:border-olive/60"
                 >
-                  <div className="flex items-start justify-between gap-4">
+                  <div className="relative pr-8">
                     <div className="flex min-w-0 items-start gap-4">
                       <HexBadge color="olive">
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </HexBadge>
                       <div className="min-w-0">
-                        <h3 className="font-mono text-sm font-semibold text-olive break-words">
+                        <h3 className="font-mono text-[13px] leading-snug font-semibold text-olive break-words sm:text-sm">
                           corpus {c.cmd}
                         </h3>
                         <p className="mt-1 text-sm leading-relaxed text-concrete-400">
@@ -257,7 +257,7 @@ export default function CliPage() {
                         </p>
                       </div>
                     </div>
-                    <PilotLamp color="green" className="shrink-0" />
+                    <PilotLamp color="green" className="absolute top-0 right-0" />
                   </div>
                 </Card>
               </li>
@@ -305,10 +305,11 @@ export default function CliPage() {
         </ul>
       </Section>
 
-      <Section>
+      <Section className="grid gap-6 lg:grid-cols-2">
         <Card
           screws
-          contentClassName="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
+          className="h-full"
+          contentClassName="flex h-full flex-col gap-6"
         >
           <div>
             <Heading>Don&apos;t need the CLI yet?</Heading>
@@ -316,19 +317,17 @@ export default function CliPage() {
               Use the starter kit and write a spec. Add the CLI later.
             </p>
           </div>
-          <Button asChild className="w-full md:w-auto" variant="secondary">
+          <Button asChild className="mt-auto w-full sm:w-fit" variant="secondary">
             <Link href="/get-started/">
               Get started <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </Button>
         </Card>
-      </Section>
 
-      <Section>
         <Card
           screws
-          className="border-panel-border"
-          contentClassName="grid gap-6 md:grid-cols-[1fr_0.9fr] md:items-center"
+          className="h-full border-panel-border"
+          contentClassName="flex h-full flex-col gap-6"
         >
           <div>
             <Heading>Reference repository</Heading>
@@ -336,7 +335,7 @@ export default function CliPage() {
               Source, issues, and release notes live on GitHub.
             </p>
           </div>
-          <div className="space-y-4 md:justify-self-end md:text-right">
+          <div className="mt-auto space-y-4">
             <p>
               <TextLink
                 href="https://github.com/jcosta33/corpus-cli"
@@ -350,7 +349,7 @@ export default function CliPage() {
               Using an MCP client?{" "}
               <TextLink href="/mcp/">
                 corpus-mcp exposes the same read-only facts
-              </TextLink>.
+              </TextLink>
             </p>
           </div>
         </Card>
