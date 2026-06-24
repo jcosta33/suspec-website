@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   Bug,
   ExternalLink,
@@ -28,6 +27,7 @@ import { PageHero } from "../components/PageHero";
 import { Heading } from "../components/Heading";
 import { Badge } from "../components/Badge";
 import { PaperArtifact } from "../components/PaperArtifact";
+import { TextLink } from "../components/TextLink";
 
 export const metadata: Metadata = {
   title: "Skills — Corpus",
@@ -368,12 +368,11 @@ export default function SkillsPage() {
             the AGENTS.md command contract.
           </p>
           <p className="mt-6">
-            <Link
+            <TextLink
               href="/skills/writing/"
-              className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               Read the skill-writing guide →
-            </Link>
+            </TextLink>
           </p>
         </Card>
       </Section>
@@ -389,23 +388,21 @@ export default function SkillsPage() {
             A skill is a markdown guide your agent reads when the work matches.
             Read it before installing and pin to a commit. For scaffolding and
             checks, use{" "}
-            <Link
+            <TextLink
               href="/cli/"
-              className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               corpus-cli
-            </Link>
+            </TextLink>
             .
           </p>
           <p className="mt-6">
-            <Link
+            <TextLink
               href="https://github.com/jcosta33/corpus-skills"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               Browse the full catalog on GitHub →
-            </Link>
+            </TextLink>
           </p>
         </Card>
       </Section>

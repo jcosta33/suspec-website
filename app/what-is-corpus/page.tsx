@@ -10,6 +10,7 @@ import { HexBadge } from "../components/HexBadge";
 import { PageHero } from "../components/PageHero";
 import { Heading } from "../components/Heading";
 import { PilotLamp } from "../components/PilotLamp";
+import { TextLink } from "../components/TextLink";
 import {
   ArrowRight,
   CheckCircle,
@@ -345,14 +346,13 @@ export default function WhatIsCorpusPage() {
       <Section>
         <p className="text-concrete-400">
           Source:{" "}
-          <Link
+          <TextLink
             href="/docs/01-what-is-corpus/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
           >
             docs/01-what-is-corpus.md
-          </Link>
+          </TextLink>
         </p>
       </Section>
     </div>

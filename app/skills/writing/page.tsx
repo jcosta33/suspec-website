@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   BookOpen,
   CheckCircle,
@@ -18,6 +17,7 @@ import { DroneIcon } from "../../components/DroneIcon";
 import { HexBadge } from "../../components/HexBadge";
 import { PageHero } from "../../components/PageHero";
 import { Heading } from "../../components/Heading";
+import { TextLink } from "../../components/TextLink";
 
 export const metadata: Metadata = {
   title: "Writing a skill — Corpus",
@@ -265,26 +265,26 @@ export default function WritingSkillsPage() {
           </p>
           <ul className="mt-6 space-y-3">
             <li>
-              <Link
+              <TextLink
                 href="https://github.com/jcosta33/corpus-skills/tree/main/docs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
+                className="gap-2"
               >
                 corpus-skills docs{" "}
                 <ExternalLink className="h-4 w-4" aria-hidden="true" />
-              </Link>
+              </TextLink>
             </li>
             <li>
-              <Link
+              <TextLink
                 href="https://github.com/jcosta33/corpus-skills/tree/main/skills"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
+                className="gap-2"
               >
                 sample skills{" "}
                 <ExternalLink className="h-4 w-4" aria-hidden="true" />
-              </Link>
+              </TextLink>
             </li>
           </ul>
         </Card>

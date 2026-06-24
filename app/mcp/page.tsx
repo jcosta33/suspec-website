@@ -24,6 +24,7 @@ import { Panel } from "../components/Panel";
 import { PaperArtifact } from "../components/PaperArtifact";
 import { Section } from "../components/Section";
 import { TerminalWindow } from "../components/TerminalWindow";
+import { TextLink } from "../components/TextLink";
 
 export const metadata: Metadata = {
   title: "corpus-mcp — Corpus",
@@ -300,12 +301,11 @@ export default function McpPage() {
           <Heading className="mt-3">Install from source for now</Heading>
           <p className="mt-4 text-concrete-400">
             The package exposes a <code>corpus-mcp</code> binary. It expects the{" "}
-            <Link
+            <TextLink
               href="/cli/"
-              className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               Corpus CLI
-            </Link>{" "}
+            </TextLink>{" "}
             on PATH. Use <code>CORPUS_BIN</code> or{" "}
             <code>--corpus-bin</code> at a specific binary.
           </p>
@@ -346,10 +346,10 @@ export default function McpPage() {
             </p>
           </div>
           <div className="flex flex-col gap-4 sm:flex-row">
-          <Button asChild className="w-full sm:w-auto" variant="secondary">
-            <Link
-              href="https://github.com/jcosta33/corpus-mcp"
-              target="_blank"
+            <Button asChild className="w-full sm:w-auto" variant="secondary">
+              <Link
+                href="https://github.com/jcosta33/corpus-mcp"
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 GitHub <ExternalLink className="h-4 w-4" aria-hidden="true" />

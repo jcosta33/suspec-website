@@ -22,6 +22,7 @@ import { PageHero } from "../components/PageHero";
 import { Heading } from "../components/Heading";
 import { Badge } from "../components/Badge";
 import { PilotLamp } from "../components/PilotLamp";
+import { TextLink } from "../components/TextLink";
 
 export const metadata: Metadata = {
   title: "CLI — Corpus",
@@ -330,23 +331,21 @@ export default function CliPage() {
             Source, issues, and release notes live on GitHub.
           </p>
           <p className="mt-6">
-            <Link
+            <TextLink
               href="https://github.com/jcosta33/corpus-cli"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               Open corpus-cli on GitHub →
-            </Link>
+            </TextLink>
           </p>
           <p className="mt-4 text-concrete-400">
             Using an MCP client?{" "}
-            <Link
+            <TextLink
               href="/mcp/"
-              className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               corpus-mcp exposes the same read-only facts
-            </Link>{" "}
+            </TextLink>{" "}
             .
           </p>
         </Card>

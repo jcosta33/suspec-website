@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight, FolderPlus, Rocket, Terminal, Wrench } from "lucide-react";
 import { Section } from "../components/Section";
 import { Card } from "../components/Card";
@@ -8,6 +7,7 @@ import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { Heading } from "../components/Heading";
 import { PaperArtifact } from "../components/PaperArtifact";
+import { TextLink } from "../components/TextLink";
 
 export const metadata: Metadata = {
   title: "Get started — Corpus",
@@ -164,12 +164,11 @@ export default function GetStartedPage() {
         </Panel>
         <p className="text-concrete-400">
           CLI details:{" "}
-          <Link
+          <TextLink
             href="/cli/"
-            className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
           >
             the CLI page
-          </Link>
+          </TextLink>
           .
         </p>
       </Section>
@@ -281,14 +280,13 @@ export default function GetStartedPage() {
       <Section>
         <p className="text-concrete-400">
           More setup notes:{" "}
-          <Link
+          <TextLink
             href="/docs/ADOPTING/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
           >
             docs/ADOPTING.md
-          </Link>{" "}
+          </TextLink>{" "}
           .
         </p>
       </Section>

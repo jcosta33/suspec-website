@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   Compass,
   ExternalLink,
@@ -24,6 +23,7 @@ import { PageHero } from "../components/PageHero";
 import { Heading } from "../components/Heading";
 import { Badge } from "../components/Badge";
 import { PaperArtifact } from "../components/PaperArtifact";
+import { TextLink } from "../components/TextLink";
 
 export const metadata: Metadata = {
   title: "Agents — Corpus",
@@ -198,12 +198,11 @@ export default function AgentsPage() {
           These are Claude Code agents in{" "}
           <code className="text-corpus-yellow">.claude/agents/</code>.{" "}
           <code className="text-corpus-yellow">npx skills</code> installs the{" "}
-          <Link
+          <TextLink
             href="/skills/"
-            className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
           >
             skills catalog
-          </Link>
+          </TextLink>
           , not these.
         </p>
       </Section>
@@ -332,14 +331,13 @@ export default function AgentsPage() {
             security boundary.
           </p>
           <p className="mt-6">
-            <Link
+            <TextLink
               href="https://github.com/jcosta33/corpus-agents/blob/main/docs/enforcement.md"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               Read the enforcement notes →
-            </Link>
+            </TextLink>
           </p>
         </Card>
 
@@ -356,14 +354,13 @@ export default function AgentsPage() {
             delegation trace helps.
           </p>
           <p className="mt-6">
-            <Link
+            <TextLink
               href="https://github.com/jcosta33/corpus-agents/blob/main/docs/provenance.md"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               How the delegation trace works →
-            </Link>
+            </TextLink>
           </p>
         </Card>
       </Section>
@@ -399,14 +396,13 @@ export default function AgentsPage() {
             Eight workers and two hooks. Read the file before you copy it.
           </p>
           <p className="mt-6">
-            <Link
+            <TextLink
               href="https://github.com/jcosta33/corpus-agents"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-corpus-yellow underline hover:no-underline focus-ring rounded-sm"
             >
               Browse corpus-agents on GitHub →
-            </Link>
+            </TextLink>
           </p>
         </Card>
       </Section>
