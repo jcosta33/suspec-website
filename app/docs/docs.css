@@ -373,6 +373,10 @@
   text-decoration-color: rgba(8, 9, 11, 0.35);
   overflow-wrap: anywhere;
 }
+.docs-source-note .paper-stamp {
+  justify-self: start;
+  width: fit-content;
+}
 @media (max-width: 48rem) {
   .docs-source-note {
     display: grid;
