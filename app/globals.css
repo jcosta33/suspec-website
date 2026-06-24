@@ -5,9 +5,9 @@
      Primary gold #D88A24 is HSL(34 71% 49%); its exact complement is #2472D8
      at HSL(214 71% 49%). The complement is reserved for tiny diagnostic use,
      while surfaces stay in warm graphite/umber. */
-  --color-night: #0c0a08;
-  --color-chassis: #0f0b08;
-  --color-section-band: #0a0806;
+  --color-night: #0e0c0a;
+  --color-chassis: #120d0a;
+  --color-section-band: #0c0a07;
   --color-panel: #1a1510;
   --color-panel-raised: #241d15;
   --color-panel-recessed: #0a0705;
@@ -71,9 +71,9 @@
 
 :root {
   color-scheme: dark;
-  --c-night: #0c0a08;
-  --c-chassis: #0f0b08;
-  --c-section-band: #0a0806;
+  --c-night: #0e0c0a;
+  --c-chassis: #120d0a;
+  --c-section-band: #0c0a07;
   --c-panel: #1a1510;
   --c-panel-raised: #241d15;
   --c-panel-border: #46392c;

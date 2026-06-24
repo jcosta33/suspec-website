@@ -585,9 +585,10 @@
   border: 1px solid rgba(216, 138, 36, 0.24);
   border-left: 3px solid var(--color-corpus-yellow);
   border-radius: 0 var(--radius-panel) var(--radius-panel) 0;
+  isolation: isolate;
   background:
     linear-gradient(90deg, rgba(216, 138, 36, 0.08) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(36, 29, 21, 0.94), rgba(26, 21, 16, 0.9));
+    linear-gradient(180deg, rgba(36, 29, 21, 0.96), rgba(26, 21, 16, 0.92));
   background-size:
     40px 100%,
     auto;
@@ -598,6 +599,12 @@
 }
 .docs-prose blockquote p {
   margin: 0.35rem 0;
+}
+.docs-prose blockquote p:first-child {
+  margin-top: 0;
+}
+.docs-prose blockquote p:last-child {
+  margin-bottom: 0;
 }
 .docs-prose blockquote strong {
   color: var(--color-concrete-100);

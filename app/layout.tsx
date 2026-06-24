@@ -124,7 +124,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#080604", // --color-night: paints the mobile browser UI to match the dark shell
+  themeColor: "#0e0c0a", // --color-night: paints the mobile browser UI to match the dark shell
   colorScheme: "dark",
 };
 
