@@ -46,7 +46,7 @@ export const metadata: Metadata = {
         url: "/og-skills.png",
         width: 1200,
         height: 630,
-        alt: "Corpus skills",
+        alt: "corpus-skills",
       },
     ],
   },
@@ -139,7 +139,7 @@ export default function SkillsPage() {
           eyebrow="tool index / agent guides"
           title={
             <>
-              Corpus <span className="text-corpus-yellow">skills</span>
+              corpus<span className="text-corpus-yellow">-skills</span>
             </>
           }
         >

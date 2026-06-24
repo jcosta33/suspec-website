@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         url: "/og-home.png",
         width: 1200,
         height: 630,
-        alt: "Corpus agents",
+        alt: "corpus-agents",
       },
     ],
   },
@@ -109,7 +109,7 @@ export default function AgentsPage() {
           eyebrow="worker files / agent roles"
           title={
             <>
-              Corpus <span className="text-corpus-yellow">agents</span>
+              corpus<span className="text-corpus-yellow">-agents</span>
             </>
           }
         >
