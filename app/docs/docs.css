@@ -540,6 +540,19 @@
     white-space: normal;
     overflow-wrap: break-word;
   }
+
+  .docs-prose pre.docs-wrap-pre {
+    overflow-x: visible;
+  }
+
+  .docs-prose pre.docs-wrap-pre::after {
+    display: none;
+  }
+
+  .docs-prose pre.docs-wrap-pre code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
 }
 
 /* Blockquotes / callouts — corpus-yellow rail on a raised plate */
