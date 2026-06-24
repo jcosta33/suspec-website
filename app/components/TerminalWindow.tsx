@@ -29,7 +29,7 @@ export function TerminalWindow({
           <PilotLamp color="amber" pulse label="check" />
           <PilotLamp color="green" label="evidence" />
         </div>
-        <span className="flex min-w-0 items-center gap-2 text-xs font-mono font-medium uppercase tracking-widest engraved">
+        <span className="hidden min-w-0 items-center gap-2 text-xs font-mono font-medium uppercase tracking-widest engraved sm:flex">
           <span className="min-w-0 break-words">{title}</span>
           <span className="terminal-title-caret shrink-0" aria-hidden="true" />
         </span>

@@ -157,7 +157,7 @@ export default function McpPage() {
             </p>
             <p className="pl-12">
               &quot;args&quot;: [&quot;--workspace&quot;,
-              &quot;/path/to/corpus-workspace&quot;]
+              &quot;/path/to/workspace&quot;]
             </p>
             <p className="pl-8">{"}"}</p>
             <p className="pl-4">{"}"}</p>
@@ -184,7 +184,7 @@ export default function McpPage() {
             <DroneIcon className="h-4 w-4" />
             <span>guardrails.ts</span>
           </div>
-          <Heading className="mt-3">What it refuses to be</Heading>
+          <Heading className="mt-3">What it does not do</Heading>
           <p className="mt-4 text-concrete-400">
             It does not run an agent loop, write reviews, or decide whether code
             is done.
