@@ -254,46 +254,48 @@ export default function WritingSkillsPage() {
       </Section>
 
       <Section>
-        <Card
-          screws
-          className="border-panel-border"
-          contentClassName="grid gap-6 md:grid-cols-[1fr_auto] md:items-start"
-        >
-          <div>
-            <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
-              <GitBranch className="h-4 w-4" />
-              <span>next</span>
+        <div className="mx-auto max-w-5xl">
+          <Card
+            screws
+            className="border-panel-border"
+            contentClassName="grid gap-6 md:grid-cols-[1fr_auto] md:items-start"
+          >
+            <div>
+              <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
+                <GitBranch className="h-4 w-4" />
+                <span>next</span>
+              </div>
+              <Heading className="mt-3">Read the source</Heading>
+              <p className="mt-4 max-w-2xl text-concrete-400">
+                The full catalog and current examples live in the skills repo.
+              </p>
             </div>
-            <Heading className="mt-3">Read the source</Heading>
-            <p className="mt-4 max-w-2xl text-concrete-400">
-              The full catalog and current examples live in the skills repo.
-            </p>
-          </div>
-          <ul className="space-y-3 md:min-w-56">
-            <li>
-              <TextLink
-                href="https://github.com/jcosta33/corpus-skills/tree/main/docs"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="gap-2"
-              >
-                corpus-skills docs{" "}
-                <ExternalLink className="h-4 w-4" aria-hidden="true" />
-              </TextLink>
-            </li>
-            <li>
-              <TextLink
-                href="https://github.com/jcosta33/corpus-skills/tree/main/skills"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="gap-2"
-              >
-                sample skills{" "}
-                <ExternalLink className="h-4 w-4" aria-hidden="true" />
-              </TextLink>
-            </li>
-          </ul>
-        </Card>
+            <ul className="space-y-3 md:min-w-56">
+              <li>
+                <TextLink
+                  href="https://github.com/jcosta33/corpus-skills/tree/main/docs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gap-2"
+                >
+                  corpus-skills docs{" "}
+                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                </TextLink>
+              </li>
+              <li>
+                <TextLink
+                  href="https://github.com/jcosta33/corpus-skills/tree/main/skills"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gap-2"
+                >
+                  sample skills{" "}
+                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                </TextLink>
+              </li>
+            </ul>
+          </Card>
+        </div>
       </Section>
     </div>
   );
