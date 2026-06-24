@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   ArrowRight,
   Boxes,
@@ -12,9 +11,7 @@ import {
   ShieldCheck,
   Terminal,
 } from "lucide-react";
-import { ActionLink } from "../components/ActionLink";
 import { Badge } from "../components/Badge";
-import { Button } from "../components/Button";
 import { Card } from "../components/Card";
 import { DroneIcon } from "../components/DroneIcon";
 import { Heading } from "../components/Heading";
@@ -345,19 +342,21 @@ export default function McpPage() {
               Source, issues, and tests live on GitHub.
             </p>
           </div>
-          <div className="flex flex-col gap-4 sm:flex-row">
-            <Button asChild className="w-full sm:w-auto" variant="secondary">
-              <Link
-                href="https://github.com/jcosta33/corpus-mcp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub <ExternalLink className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </Button>
-            <ActionLink href="/cli/" className="w-full sm:w-auto">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <TextLink
+              href="https://github.com/jcosta33/corpus-mcp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-fit gap-2 text-base font-semibold"
+            >
+              GitHub <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </TextLink>
+            <TextLink
+              href="/cli/"
+              className="w-fit gap-2 text-base font-semibold"
+            >
               See the CLI <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </ActionLink>
+            </TextLink>
           </div>
         </Card>
       </Section>

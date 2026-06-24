@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   ArrowRight,
   Blocks,
@@ -11,7 +10,6 @@ import {
   ShieldCheck,
   Terminal,
 } from "lucide-react";
-import { Button } from "../components/Button";
 import { Section } from "../components/Section";
 import { Card } from "../components/Card";
 import { Panel } from "../components/Panel";
@@ -317,11 +315,12 @@ export default function CliPage() {
               Use the starter kit and write a spec. Add the CLI later.
             </p>
           </div>
-          <Button asChild className="mt-auto w-full sm:w-fit" variant="secondary">
-            <Link href="/get-started/">
-              Get started <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </Button>
+          <TextLink
+            href="/get-started/"
+            className="mt-auto w-fit gap-2 text-base font-semibold"
+          >
+            Get started <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </TextLink>
         </Card>
 
         <Card
