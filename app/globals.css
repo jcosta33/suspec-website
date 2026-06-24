@@ -705,6 +705,15 @@ body::after {
   overflow-wrap: anywhere;
 }
 
+.terminal-content > :not(.pointer-events-none) {
+  position: relative;
+  z-index: 4;
+}
+
+.terminal-content .text-concrete-500 {
+  color: var(--color-concrete-400);
+}
+
 .terminal-title-caret {
   display: inline-block;
   width: 0.45rem;
