@@ -18,10 +18,11 @@ export function HeroHexGrid({ className = "" }: { className?: string }) {
       aria-hidden="true"
     >
       <svg
-        className="absolute left-1/2 top-1/2 h-[140%] w-auto min-w-[140%] -translate-x-1/2 -translate-y-1/2 opacity-[0.11]"
-        viewBox="0 0 600 600"
+        className="absolute inset-0 h-full w-full opacity-[0.11]"
+        viewBox="45 45 510 510"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid slice"
       >
         {/* concentric rings */}
         {[270, 210, 150, 96].map((r) => (
