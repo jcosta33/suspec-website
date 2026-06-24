@@ -361,17 +361,17 @@ body::after {
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     .reveal {
-      animation: reveal-in linear both;
+      animation: reveal-in ease-out both;
       animation-timeline: view();
-      animation-range: entry 0% cover 28%;
+      animation-range: entry 0% cover 12%;
     }
   }
 }
 
 @keyframes reveal-in {
   from {
-    opacity: 0;
-    transform: translateY(22px);
+    opacity: 1;
+    transform: translateY(8px);
   }
   to {
     opacity: 1;

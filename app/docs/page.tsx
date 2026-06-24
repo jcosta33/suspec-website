@@ -8,10 +8,21 @@ export const metadata: Metadata = {
   alternates: { canonical: "/docs/" },
 };
 
-function Section({ sec, intro }: { sec: NavSection; intro?: string }) {
+function Section({
+  sec,
+  intro,
+  className = "",
+}: {
+  sec: NavSection;
+  intro?: string;
+  className?: string;
+}) {
   return (
-    <section className="docs-index-section">
-      <h2>{sec.title}</h2>
+    <section className={`docs-index-section ${className}`}>
+      <div className="docs-index-section-heading">
+        <h2>{sec.title}</h2>
+        <span>{sec.items.length}</span>
+      </div>
       {intro ? <p>{intro}</p> : null}
       <ul className="docs-index-list">
         {sec.items.map((it) => (
@@ -43,24 +54,32 @@ export default function DocsIndex() {
         Start with the numbered pages. Use the tutorial when you want to walk
         the loop once.
       </p>
-      {startHere ? <Section sec={startHere} /> : null}
-      {tutorial ? <Section sec={tutorial} /> : null}
-      {examples ? <Section sec={examples} /> : null}
-      {reference ? (
-        <Section
-          sec={reference}
-          intro="Detailed rules, formats, checks, and glossary."
-        />
-      ) : null}
-      {adrs && adrs.items.length > 0 ? (
-        <section className="docs-index-section docs-index-section-compact">
-          <h2>ADRs</h2>
-          <p>
-            Decision records for the framework.{" "}
-            <Link href="/docs/adrs/README/">Browse {adrs.items.length} ADRs</Link>
-          </p>
-        </section>
-      ) : null}
+      <div className="docs-index-grid">
+        {startHere ? <Section sec={startHere} /> : null}
+        {tutorial ? <Section sec={tutorial} /> : null}
+        {examples ? <Section sec={examples} /> : null}
+        {reference ? (
+          <Section
+            sec={reference}
+            intro="Detailed rules, formats, checks, and glossary."
+            className="docs-index-section-wide"
+          />
+        ) : null}
+        {adrs && adrs.items.length > 0 ? (
+          <section className="docs-index-section docs-index-section-compact docs-index-section-wide">
+            <div className="docs-index-section-heading">
+              <h2>ADRs</h2>
+              <span>{adrs.items.length}</span>
+            </div>
+            <p>
+              Decision records for the framework.{" "}
+              <Link href="/docs/adrs/README/">
+                Browse {adrs.items.length} ADRs
+              </Link>
+            </p>
+          </section>
+        ) : null}
+      </div>
     </div>
   );
 }
