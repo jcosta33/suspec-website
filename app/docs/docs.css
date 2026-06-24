@@ -301,11 +301,11 @@
   text-wrap: pretty;
 }
 .docs-prose h1.docs-article-title-long {
-  font-size: clamp(1.75rem, 3.35vw, 2.35rem);
+  font-size: clamp(1.65rem, 2.8vw, 2.05rem);
 }
 .docs-prose h1.docs-article-title-xlong {
-  font-size: clamp(1.6rem, 3vw, 2.08rem);
-  line-height: 1.18;
+  font-size: clamp(1.35rem, 2.2vw, 1.72rem);
+  line-height: 1.14;
 }
 .docs-prose h2 {
   font-size: 1.45rem;
