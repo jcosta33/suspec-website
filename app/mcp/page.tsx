@@ -307,7 +307,7 @@ export default function McpPage() {
               Corpus CLI
             </TextLink>{" "}
             on PATH. Use <code>CORPUS_BIN</code> or{" "}
-            <code>--corpus-bin</code> at a specific binary.
+            <code>--corpus-bin</code> to set the binary explicitly.
           </p>
         </div>
         <Panel brushed className="p-2">
