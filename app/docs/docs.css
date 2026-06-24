@@ -467,6 +467,8 @@
   border: 1px solid var(--color-panel-border);
   padding: 0.08em 0.34em;
   border-radius: var(--radius-panel);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* Code blocks — recessed screen */

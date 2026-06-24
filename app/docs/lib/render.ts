@@ -331,8 +331,18 @@ const rehypeLabelWrappedTextCodeBlocks: Plugin<[], HastRoot> = () => (tree) => {
     if (node.tagName !== "pre") return;
     const code = elementChildren(node).find((child) => child.tagName === "code");
     if (!code) return;
-    if (!hasClass(code, "language-text") && !hasClass(code, "language-markdown"))
-      return;
+    const codeClass = code.properties?.className;
+    const hasLanguageClass = Array.isArray(codeClass)
+      ? codeClass.some(
+          (className) =>
+            typeof className === "string" && className.startsWith("language-"),
+        )
+      : typeof codeClass === "string" && /\blanguage-/.test(codeClass);
+    const isTextLike =
+      hasClass(code, "language-text") ||
+      hasClass(code, "language-markdown") ||
+      !hasLanguageClass;
+    if (!isTextLike) return;
 
     const lines = hastText(code.children).trim().split("\n");
     const hasLongProseLine = lines.some(
