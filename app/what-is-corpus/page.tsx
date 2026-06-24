@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Section } from "../components/Section";
 import { Card } from "../components/Card";
 import { Panel } from "../components/Panel";
@@ -22,7 +21,6 @@ import {
   Workflow,
   XCircle,
 } from "lucide-react";
-import { Button } from "../components/Button";
 
 export const metadata: Metadata = {
   title: "What is Corpus? — Corpus",
@@ -226,27 +224,27 @@ export default function WhatIsCorpusPage() {
           </ul>
         </div>
 
-        <div>
+        <Panel variant="inset" className="h-full p-5 sm:p-6">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-rubedo">
             <XCircle className="h-4 w-4" aria-hidden="true" />
             <span>what it is not</span>
           </div>
           <Heading className="mt-3">What Corpus is not</Heading>
-          <ul className="mt-6 space-y-3">
+          <ul className="mt-5 divide-y divide-panel-border/70">
             {isNotList.map((item) => (
               <li
                 key={item}
-                className="flex items-start gap-3 text-concrete-400"
+                className="flex items-start gap-3 py-3 text-concrete-400 first:pt-0 last:pb-0"
               >
-                <span
-                  className="mt-1.5 h-2 w-2 shrink-0 rounded-sm bg-panel-edge"
+                <XCircle
+                  className="mt-0.5 h-4 w-4 shrink-0 text-rubedo/80"
                   aria-hidden="true"
                 />
-                {item}
+                <span>{item}</span>
               </li>
             ))}
           </ul>
-        </div>
+        </Panel>
       </Section>
 
       <Section className="flex flex-col gap-12">
@@ -334,26 +332,21 @@ export default function WhatIsCorpusPage() {
               Six steps, each producing a file the next one reads. That is the
               framework: no runtime, no automatic decision.
             </p>
+            <p className="mt-4 text-sm text-concrete-400">
+              Source:{" "}
+              <TextLink
+                href="/docs/01-what-is-corpus/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                docs/01-what-is-corpus.md
+              </TextLink>
+            </p>
           </div>
-          <Button asChild className="w-full md:w-auto">
-            <Link href="/the-loop/">
-              See the loop <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </Button>
-        </Card>
-      </Section>
-
-      <Section>
-        <p className="text-concrete-400">
-          Source:{" "}
-          <TextLink
-            href="/docs/01-what-is-corpus/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            docs/01-what-is-corpus.md
+          <TextLink href="/the-loop/" className="shrink-0 gap-2 text-base font-semibold">
+            See the loop <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </TextLink>
-        </p>
+        </Card>
       </Section>
     </div>
   );
