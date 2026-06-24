@@ -360,8 +360,8 @@ export default function AgentsPage() {
         </Card>
       </Section>
 
-      <Section>
-        <Card screws className="max-w-2xl border-panel-border">
+      <Section className="grid gap-6 lg:grid-cols-2">
+        <Card screws className="h-full border-panel-border">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
             <Terminal className="h-4 w-4" aria-hidden="true" />
             <span>portability</span>
@@ -378,10 +378,8 @@ export default function AgentsPage() {
             need their own controls.
           </p>
         </Card>
-      </Section>
 
-      <Section>
-        <Card screws className="max-w-2xl border-panel-border">
+        <Card screws className="h-full border-panel-border">
           <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
             <Terminal className="h-4 w-4" aria-hidden="true" />
             <span>catalog — browse on github</span>
