@@ -414,6 +414,11 @@
   color: var(--color-corpus-yellow);
   text-decoration-color: var(--color-corpus-yellow);
 }
+.docs-prose p a {
+  display: inline-flex;
+  min-height: 2rem;
+  align-items: center;
+}
 
 /* Lists */
 .docs-prose ul,
