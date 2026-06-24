@@ -167,7 +167,7 @@ export function LoopDiagram() {
           </p>
         </div>
       </div>
-      <ol className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <ol className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
         {steps.map((step, index) => {
           const Icon = step.icon;
           return (
@@ -195,7 +195,7 @@ export function LoopDiagram() {
               </p>
               {index < steps.length - 1 && (
                 <div
-                  className="absolute -right-4 top-1/2 hidden h-1 w-8 -translate-y-1/2 border-y border-panel-border bg-panel-edge xl:block"
+                  className="absolute -right-4 top-1/2 hidden h-1 w-8 -translate-y-1/2 border-y border-panel-border bg-panel-edge 2xl:block"
                   aria-hidden="true"
                 />
               )}
