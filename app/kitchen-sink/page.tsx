@@ -11,6 +11,7 @@ import { GiltBand } from "../components/GiltBand";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { Heading } from "../components/Heading";
 import { PaperArtifact } from "../components/PaperArtifact";
+import { PageHero } from "../components/PageHero";
 import { AlertTriangle, CheckCircle, Wrench } from "lucide-react";
 
 export const metadata = {
@@ -22,36 +23,35 @@ export default function KitchenSinkPage() {
   return (
     <div className="flex flex-col gap-14 py-14 sm:gap-16 sm:py-16">
       <Section className="ambient-header">
-        <h1 className="font-heading text-4xl font-bold uppercase tracking-tight text-concrete-100">
-          Kitchen sink
-        </h1>
-        <p className="mt-4 text-concrete-400">
-          Internal component preview. Not linked from production navigation.
-        </p>
+        <PageHero eyebrow="component preview" title="Kitchen sink">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-concrete-400">
+            Internal component preview. Not linked from production navigation.
+          </p>
+        </PageHero>
       </Section>
 
       <Section className="flex flex-col gap-6">
         <Heading>Panels</Heading>
         <div className="grid gap-6 md:grid-cols-2">
-          <Panel>
+          <Panel className="p-5 sm:p-6">
             <h3 className="font-heading text-lg font-bold">Raised panel</h3>
             <p className="mt-2 text-concrete-400">
               A heavy machined plate with a strong shadow.
             </p>
           </Panel>
-          <Panel variant="inset">
+          <Panel variant="inset" className="p-5 sm:p-6">
             <h3 className="font-heading text-lg font-bold">Inset panel</h3>
             <p className="mt-2 text-concrete-400">
               A recessed well for screens and readouts.
             </p>
           </Panel>
-          <Panel brushed rivets screws>
+          <Panel brushed rivets screws className="p-5 sm:p-6">
             <h3 className="font-heading text-lg font-bold">Hardware panel</h3>
             <p className="mt-2 text-concrete-400">
               Brushed metal, rivets, and screws.
             </p>
           </Panel>
-          <Panel gilt>
+          <Panel gilt className="p-5 sm:p-6">
             <h3 className="font-heading text-lg font-bold">Gilt panel</h3>
             <p className="mt-2 text-concrete-400">Thin gold rule for state changes.</p>
           </Panel>
