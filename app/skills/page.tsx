@@ -261,7 +261,7 @@ export default function SkillsPage() {
             <Badge variant="ready">on demand</Badge>
           </div>
         </div>
-        <ul className="reveal grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="reveal grid gap-4 sm:grid-cols-2">
           {stances.map((s) => {
             const Icon = s.icon;
             return (
@@ -313,7 +313,7 @@ export default function SkillsPage() {
             rewrite, migration, performance, testing, or docs.
           </p>
         </div>
-        <ul className="reveal grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="reveal grid gap-4 sm:grid-cols-2">
           {authoring.map((s) => {
             const Icon = s.icon;
             return (
