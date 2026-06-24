@@ -483,7 +483,7 @@
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   position: relative;
-  scrollbar-color: rgba(216, 138, 36, 0.72) rgba(38, 29, 22, 0.85);
+  scrollbar-color: rgba(216, 138, 36, 0.34) transparent;
   scrollbar-width: thin;
   /* recessed CRT screen — top glint glass + inner shadow, same family as the marketing terminals */
   box-shadow:
@@ -492,17 +492,16 @@
 }
 .docs-prose pre::-webkit-scrollbar,
 .docs-table-scroll::-webkit-scrollbar {
-  height: 0.55rem;
+  height: 0.25rem;
 }
 .docs-prose pre::-webkit-scrollbar-track,
 .docs-table-scroll::-webkit-scrollbar-track {
-  background: rgba(38, 29, 22, 0.85);
+  background: transparent;
   border-radius: 999px;
 }
 .docs-prose pre::-webkit-scrollbar-thumb,
 .docs-table-scroll::-webkit-scrollbar-thumb {
-  background: rgba(216, 138, 36, 0.72);
-  border: 2px solid rgba(38, 29, 22, 0.85);
+  background: rgba(216, 138, 36, 0.34);
   border-radius: 999px;
 }
 .docs-prose pre::after,
