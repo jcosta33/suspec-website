@@ -35,7 +35,7 @@ export function TerminalWindow({
         </span>
       </div>
       <div
-        className={`crt-screen terminal-content relative max-h-[24rem] overflow-auto break-words p-4 font-mono text-sm leading-relaxed text-concrete-100 sm:p-5 ${contentClassName}`}
+        className={`crt-screen terminal-content relative max-h-[24rem] overflow-auto p-4 font-mono text-sm leading-relaxed text-concrete-100 sm:p-5 ${contentClassName}`}
       >
         <div className="pointer-events-none absolute inset-0 z-[3] animate-scanline bg-gradient-to-b from-transparent via-aurum/5 to-transparent opacity-20" />
         {children}
