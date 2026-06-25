@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Section } from "../components/Section";
+import { Card } from "../components/Card";
 import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { PaperArtifact } from "../components/PaperArtifact";
@@ -22,9 +23,27 @@ const facts = [
   { label: "Hosting", value: "Vercel" },
 ];
 
+const trace = [
+  {
+    label: "WORKFLOW",
+    title: "Same loop",
+    text: "Design decisions, specs, tasks, reviews, and findings live in this repo.",
+  },
+  {
+    label: "OUTPUT",
+    title: "Static export",
+    text: "The deployed site is generated at build time and served as static files.",
+  },
+  {
+    label: "CONTENT",
+    title: "Docs source",
+    text: "Canonical framework docs are pulled from the sibling Corpus repository.",
+  },
+];
+
 export default function ColophonPage() {
   return (
-    <Section className="colophon-section grid gap-5 py-16 sm:gap-6 sm:py-20 md:min-h-[calc(100svh-22rem)] md:items-start md:pt-28 lg:grid-cols-[1.1fr_0.9fr]">
+    <Section className="colophon-section grid content-start gap-5 py-16 sm:gap-6 sm:py-20 md:min-h-[calc(100svh-22rem)] md:items-start md:pt-28 lg:grid-cols-[1.1fr_0.9fr]">
       <Panel brushed className="colophon-terminal-shell p-1.5 sm:p-2">
         <TerminalWindow
           title="build.manifest"
@@ -79,6 +98,27 @@ export default function ColophonPage() {
           </Link>
         </p>
       </PaperArtifact>
+
+      <div className="grid gap-4 sm:grid-cols-3 lg:col-span-2">
+        {trace.map((item) => (
+          <Card
+            key={item.title}
+            screws
+            className="h-full border-panel-border"
+            contentClassName="space-y-3"
+          >
+            <p className="font-mono text-xs font-semibold uppercase tracking-wide text-brass">
+              {item.label}
+            </p>
+            <h2 className="font-heading text-xl font-bold text-concrete-100">
+              {item.title}
+            </h2>
+            <p className="text-sm leading-relaxed text-concrete-400">
+              {item.text}
+            </p>
+          </Card>
+        ))}
+      </div>
     </Section>
   );
 }
