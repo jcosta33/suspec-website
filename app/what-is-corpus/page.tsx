@@ -112,6 +112,24 @@ const adjacent = [
   },
 ];
 
+const boundarySteps = [
+  {
+    label: "01",
+    title: "Tickets stay put",
+    text: "Backlog and conversation remain in Jira, Linear, or GitHub Issues.",
+  },
+  {
+    label: "02",
+    title: "Corpus records the run",
+    text: "Spec, task, review, and finding files keep the work inspectable.",
+  },
+  {
+    label: "03",
+    title: "Tools keep their jobs",
+    text: "Agents write code. PRs, CI, and reviewers decide what ships.",
+  },
+];
+
 const failureModes = [
   {
     mode: "Drift",
@@ -145,6 +163,37 @@ const failureModes = [
   },
 ];
 
+function BoundaryMap() {
+  return (
+    <ol className="reveal grid gap-3 md:grid-cols-3">
+      {boundarySteps.map((step, index) => (
+        <li key={step.title} className="relative min-w-0">
+          <div className="panel-raised h-full p-4">
+            <div className="flex items-start justify-between gap-4">
+              <span className="font-mono text-xs font-medium text-brass">
+                {step.label}
+              </span>
+              <PilotLamp color={index === 1 ? "green" : "amber"} />
+            </div>
+            <h3 className="mt-4 font-heading text-lg font-bold text-concrete-100">
+              {step.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-concrete-400">
+              {step.text}
+            </p>
+          </div>
+          {index < boundarySteps.length - 1 ? (
+            <ArrowRight
+              className="absolute -right-5 top-1/2 z-20 hidden h-5 w-5 -translate-y-1/2 text-brass/70 md:block"
+              aria-hidden="true"
+            />
+          ) : null}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 export default function WhatIsCorpusPage() {
   return (
     <div className="flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
@@ -159,7 +208,8 @@ export default function WhatIsCorpusPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            A markdown workflow for coding-agent work.
+            A markdown workflow for turning requests into scoped agent work,
+            review evidence, and saved findings.
           </p>
         </PageHero>
       </Section>
@@ -168,7 +218,7 @@ export default function WhatIsCorpusPage() {
         <Panel brushed className="mx-auto h-full max-w-3xl p-2">
           <TerminalWindow title="diagnostics" className="mx-auto h-full max-w-3xl">
             <p className="text-concrete-400">
-                <span className="text-corpus-yellow">$</span>{" "}cat
+              <span className="text-corpus-yellow">$</span> cat
               what-is-corpus.md
             </p>
             <p className="mt-2 text-concrete-100">
@@ -182,7 +232,7 @@ export default function WhatIsCorpusPage() {
               ✓ plain markdown, any agent, no runtime
             </p>
             <p className="mt-2 text-concrete-400">
-                <span className="text-corpus-yellow">$</span>{" "}_
+              <span className="text-corpus-yellow">$</span> _
             </p>
           </TerminalWindow>
         </Panel>
@@ -255,6 +305,7 @@ export default function WhatIsCorpusPage() {
           </div>
           <Heading className="mt-3">Where Corpus sits</Heading>
         </div>
+        <BoundaryMap />
         <ul className="reveal grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {adjacent.map((row, index) => (
             <li key={row.product}>
