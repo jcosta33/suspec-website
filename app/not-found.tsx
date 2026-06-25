@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function NotFoundPage() {
   return (
-    <Section className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-8 overflow-hidden py-20 sm:py-24 md:min-h-[calc(100svh-16rem)] md:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] md:items-center md:py-16">
+    <Section className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-8 overflow-hidden py-20 sm:py-24 md:min-h-[calc(100svh-22rem)] md:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] md:items-start md:pt-28">
       <div className="min-w-0 text-center md:text-left">
         <h1 className="font-heading text-6xl font-bold text-corpus-yellow">
           404

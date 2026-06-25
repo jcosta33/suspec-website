@@ -1179,7 +1179,8 @@ body::after {
 }
 
 .colophon-paper {
-  align-self: center;
+  align-self: start;
+  width: 100%;
 }
 
 .colophon-paper > div:last-child {
