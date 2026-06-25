@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  ArrowRight,
   Bug,
   ExternalLink,
   FileCode,
@@ -136,18 +137,21 @@ const skillRoutes = [
     label: "Review",
     href: "#review-guides",
     count: "4",
+    icon: ShieldCheck,
     text: "Judgment, evidence, research, and challenge stances.",
   },
   {
     label: "Change",
     href: "#change-guides",
     count: "10",
+    icon: Hammer,
     text: "Feature, fix, refactor, rewrite, migration, performance, tests, docs.",
   },
   {
     label: "Write",
     href: "#write-skill",
     count: "1",
+    icon: FileCode,
     text: "The shape for adding a new guide without making it vague.",
   },
 ];
@@ -225,35 +229,38 @@ export default function SkillsPage() {
             className="grid gap-px bg-panel-border md:grid-cols-3"
             aria-label="Skill catalog sections"
           >
-            {skillRoutes.map((route) => (
-              <a
-                key={route.href}
-                href={route.href}
-                className="focus-ring group block bg-panel-raised/95 p-5 transition-colors duration-150 hover:bg-panel sm:p-6"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-brass">
-                    {route.label}
+            {skillRoutes.map((route, index) => {
+              const Icon = route.icon;
+              return (
+                <a
+                  key={route.href}
+                  href={route.href}
+                  className="focus-ring group block bg-panel-raised/95 p-5 transition-colors duration-150 hover:bg-panel sm:p-6"
+                  aria-label={`Jump to ${route.label.toLowerCase()} guides`}
+                >
+                  <div className="flex items-center gap-3">
+                    <HexBadge color="yellow" className="h-10 w-10 shrink-0">
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                    </HexBadge>
+                    <div className="min-w-0">
+                      <p className="font-mono text-xs font-semibold uppercase tracking-wide text-corpus-yellow">
+                        {String(index + 1).padStart(2, "0")} / {route.count}
+                      </p>
+                      <h2 className="font-heading text-lg font-bold text-concrete-100">
+                        {route.label} guides
+                      </h2>
+                    </div>
+                    <ArrowRight
+                      className="ml-auto h-4 w-4 shrink-0 text-brass/70 transition-transform duration-150 group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-concrete-400">
+                    {route.text}
                   </p>
-                  <span className="font-mono text-xs font-semibold text-corpus-yellow">
-                    {route.count}
-                  </span>
-                </div>
-                <h2 className="mt-3 font-heading text-xl font-bold text-concrete-100">
-                  {route.label} guides
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-concrete-400">
-                  {route.text}
-                </p>
-                <span className="mt-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-corpus-yellow">
-                  Open section
-                  <ExternalLink
-                    className="h-3.5 w-3.5 transition-transform duration-150 group-hover:translate-x-0.5"
-                    aria-hidden="true"
-                  />
-                </span>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </nav>
         </Panel>
       </Section>
