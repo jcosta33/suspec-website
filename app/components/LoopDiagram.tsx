@@ -204,7 +204,7 @@ export function LoopDiagram() {
           );
         })}
       </ol>
-      <p className="flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-widest text-brass">
+      <p className="flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-widest text-concrete-100">
         <RotateCcw className="h-4 w-4" aria-hidden="true" />
         Close feeds the next Pull — the loop closes
       </p>

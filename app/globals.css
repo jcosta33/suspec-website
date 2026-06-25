@@ -386,18 +386,19 @@ body::after {
    Degrades to "always visible" with no scroll-timeline support or reduced-motion. */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    .reveal {
+    .reveal,
+    .motion-surface {
       animation: reveal-in ease-out both;
       animation-timeline: view();
-      animation-range: entry 0% cover 12%;
+      animation-range: entry 0% cover 16%;
     }
   }
 }
 
 @keyframes reveal-in {
   from {
-    opacity: 1;
-    transform: translateY(8px);
+    opacity: 0.78;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -455,6 +456,35 @@ body::after {
     inset 0 -1px 0 rgba(0, 0, 0, 0.55),
     0 0 0 1px rgba(216, 138, 36, 0.05),
     0 8px 20px rgba(0, 0, 0, 0.24);
+}
+
+.surface-glint {
+  border-radius: inherit;
+  mix-blend-mode: screen;
+  opacity: 0.42;
+  background:
+    linear-gradient(
+      122deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(240, 184, 92, 0.055) 46%,
+      transparent 58%,
+      transparent 100%
+    ),
+    radial-gradient(
+      70% 60% at 18% 0%,
+      rgba(240, 226, 204, 0.065),
+      transparent 58%
+    );
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.panel-raised:hover > .surface-glint,
+.panel-raised:focus-within > .surface-glint {
+  opacity: 0.68;
+  transform: translateX(0.35rem);
 }
 
 .panel-inset:hover,
@@ -797,6 +827,23 @@ body::after {
     radial-gradient(1px 1px at 148px 18px, rgba(184, 135, 58, 0.09), transparent);
   background-size: 180px 120px;
   opacity: 0.7;
+}
+
+.paper-artifact::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-bottom: 1px solid rgba(16, 11, 7, 0.18);
+  border-left: 1px solid rgba(16, 11, 7, 0.12);
+  border-bottom-left-radius: 0.35rem;
+  background:
+    linear-gradient(135deg, rgba(255, 246, 222, 0.82), rgba(188, 155, 104, 0.26));
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  opacity: 0.72;
+  pointer-events: none;
 }
 
 .paper-artifact:hover,

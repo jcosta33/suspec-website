@@ -44,6 +44,7 @@ export function Panel({
           aria-hidden="true"
         />
       )}
+      <div className="surface-glint absolute inset-0 pointer-events-none z-[1]" aria-hidden="true" />
       <div className="relative z-10">{children}</div>
     </div>
   );
