@@ -512,6 +512,15 @@ body::after {
   border-radius: 9999px;
   opacity: 0.5;
   background:
+    linear-gradient(
+        90deg,
+        transparent 0%,
+        transparent 34%,
+        rgba(240, 184, 92, 0.065) 48%,
+        transparent 62%,
+        transparent 100%
+      )
+      center / 72% 100% no-repeat,
     repeating-linear-gradient(
       90deg,
       transparent,
@@ -524,6 +533,43 @@ body::after {
       rgba(216, 138, 36, 0.12),
       transparent 68%
     );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ambient-header::before {
+    animation: ambient-calibration-sweep 18s ease-in-out infinite alternate;
+  }
+
+  .ambient-header::after {
+    animation: ambient-rule-breathe 7s ease-in-out infinite;
+  }
+}
+
+@keyframes ambient-calibration-sweep {
+  from {
+    opacity: 0.46;
+    background-position:
+      44% 50%,
+      0 0,
+      center;
+  }
+  to {
+    opacity: 0.58;
+    background-position:
+      56% 50%,
+      12px 0,
+      center;
+  }
+}
+
+@keyframes ambient-rule-breathe {
+  0%,
+  100% {
+    opacity: 0.58;
+  }
+  50% {
+    opacity: 0.74;
+  }
 }
 
 .ambient-header::after {
