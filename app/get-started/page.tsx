@@ -59,7 +59,7 @@ function ListDot() {
 
 export default function GetStartedPage() {
   return (
-    <div className="flex flex-col gap-16 py-16 sm:gap-20 sm:py-20">
+    <div className="flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
       <Section className="ambient-header">
         <PageHero eyebrow="setup / first workspace" title="Get started">
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-concrete-400 sm:text-xl">

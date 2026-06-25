@@ -81,7 +81,7 @@ const outOfScope = [
 
 export default function WritingSkillsPage() {
   return (
-    <div className="flex flex-col gap-16 py-16 sm:gap-20 sm:py-20">
+    <div className="flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
       <Section>
         <PageHero
           eyebrow="SKILL.md"
