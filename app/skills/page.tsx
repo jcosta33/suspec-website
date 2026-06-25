@@ -137,7 +137,11 @@ export default function SkillsPage() {
       <Section>
         <PageHero
           eyebrow="tool index / agent guides"
-          title="corpus-skills"
+          title={
+            <>
+              corpus<span className="text-corpus-yellow">-skills</span>
+            </>
+          }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Optional agent guides for review, implementation, testing, and docs.

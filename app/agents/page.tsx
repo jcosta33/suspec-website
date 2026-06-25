@@ -107,7 +107,11 @@ export default function AgentsPage() {
       <Section>
         <PageHero
           eyebrow="worker files / agent roles"
-          title="corpus-agents"
+          title={
+            <>
+              corpus<span className="text-corpus-yellow">-agents</span>
+            </>
+          }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Claude Code worker files for Corpus roles.
