@@ -313,13 +313,19 @@ export default function McpPage() {
               # until a published build is available
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}REPO=https://github.com/jcosta33/corpus-mcp.git
+              <span className="text-corpus-yellow">$</span>{" "}HOST=github.com/jcosta33
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}git clone &quot;$REPO&quot;
+              <span className="text-corpus-yellow">$</span>{" "}PKG=corpus-mcp
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}cd corpus-mcp
+              <span className="text-corpus-yellow">$</span>{" "}SRC=$HOST/$PKG.git
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-corpus-yellow">$</span>{" "}git clone https://$SRC
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-corpus-yellow">$</span>{" "}cd &quot;$PKG&quot;
             </p>
             <p className="text-concrete-100">
               <span className="text-corpus-yellow">$</span>{" "}pnpm install

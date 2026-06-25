@@ -166,13 +166,19 @@ export default function CliPage() {
               # source install for now
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}git clone \
+              <span className="text-corpus-yellow">$</span>{" "}HOST=github.com/jcosta33
             </p>
             <p className="text-concrete-100">
-              https://github.com/jcosta33/corpus-cli.git
+              <span className="text-corpus-yellow">$</span>{" "}PKG=corpus-cli
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}cd corpus-cli
+              <span className="text-corpus-yellow">$</span>{" "}SRC=$HOST/$PKG.git
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-corpus-yellow">$</span>{" "}git clone https://$SRC
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-corpus-yellow">$</span>{" "}cd &quot;$PKG&quot;
             </p>
             <p className="text-concrete-100">
               <span className="text-corpus-yellow">$</span>{" "}npm install
