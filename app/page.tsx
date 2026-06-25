@@ -186,24 +186,24 @@ function StepRail() {
 
 function HeroProofStrip() {
   return (
-    <dl className="mx-auto mt-6 grid max-w-3xl gap-2 text-left sm:grid-cols-3">
+    <ul className="mx-auto mt-6 grid max-w-3xl gap-2 text-left sm:grid-cols-3">
       {heroProofs.map((proof) => (
-        <div
+        <li
           key={proof.label}
           className="group flex min-w-0 items-start gap-3 rounded-panel border border-panel-border bg-panel/80 px-3 py-3 shadow-[inset_0_1px_0_rgba(240,226,204,0.04)] transition-colors duration-150 hover:border-brass/45"
         >
           <PilotLamp color="amber" className="mt-0.5 scale-75" />
           <div className="min-w-0">
-            <dt className="font-mono text-[0.68rem] font-medium uppercase tracking-[0.12em] text-brass">
+            <p className="font-mono text-[0.68rem] font-medium uppercase tracking-[0.12em] text-brass">
               {proof.label}
-            </dt>
-            <dd className="mt-1 text-sm leading-snug text-concrete-400">
+            </p>
+            <p className="mt-1 text-sm leading-snug text-concrete-400">
               {proof.text}
-            </dd>
+            </p>
           </div>
-        </div>
+        </li>
       ))}
-    </dl>
+    </ul>
   );
 }
 
