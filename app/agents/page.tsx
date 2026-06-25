@@ -103,10 +103,26 @@ const rosterGroups = [
     note: "Review, inspect, verify, or challenge without writing artifacts.",
     tone: "read-only",
     items: [
-      { label: "Review", file: "corpus-reviewer" },
-      { label: "Explore", file: "corpus-explorer" },
-      { label: "Evidence", file: "corpus-evidence-checker" },
-      { label: "Challenge", file: "corpus-challenger" },
+      {
+        label: "Review",
+        file: "corpus-reviewer",
+        use: "Review a finished task or PR.",
+      },
+      {
+        label: "Explore",
+        file: "corpus-explorer",
+        use: "Read a codebase and report how something works.",
+      },
+      {
+        label: "Evidence",
+        file: "corpus-evidence-checker",
+        use: "Re-run Verify items and flag missing evidence.",
+      },
+      {
+        label: "Challenge",
+        file: "corpus-challenger",
+        use: "Pressure-test a proposal before build work starts.",
+      },
     ],
   },
   {
@@ -114,10 +130,26 @@ const rosterGroups = [
     note: "Draft one named artifact. Review still decides what it means.",
     tone: "write one artifact",
     items: [
-      { label: "Spec", file: "corpus-spec-author" },
-      { label: "Research", file: "corpus-researcher" },
-      { label: "Audit", file: "corpus-auditor" },
-      { label: "Docs", file: "corpus-documentarian" },
+      {
+        label: "Spec",
+        file: "corpus-spec-author",
+        use: "Draft a spec from an intake note.",
+      },
+      {
+        label: "Research",
+        file: "corpus-researcher",
+        use: "Research one question and write a note.",
+      },
+      {
+        label: "Audit",
+        file: "corpus-auditor",
+        use: "Audit a code area with file:line findings.",
+      },
+      {
+        label: "Docs",
+        file: "corpus-documentarian",
+        use: "Draft human-facing docs.",
+      },
     ],
   },
 ];
@@ -212,14 +244,14 @@ export default function AgentsPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${item.file} definition on GitHub (opens in new tab)`}
-                  className="group block bg-panel-raised/95 p-5 transition-[background-color] hover:bg-panel focus-ring sm:p-6"
+                  className="group block h-full bg-panel-raised/95 p-5 transition-[background-color] hover:bg-panel focus-ring sm:p-6"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <p className="font-mono text-xs font-semibold uppercase tracking-wide text-corpus-yellow">
                       {String(groupIndex * 4 + index + 1).padStart(2, "0")}
                     </p>
                     <ExternalLink
-                      className="h-4 w-4 shrink-0 text-brass/60 opacity-0 transition-opacity group-hover:opacity-100 group-focus:opacity-100"
+                      className="h-4 w-4 shrink-0 text-brass/70 transition-[opacity,transform] group-hover:translate-x-0.5 group-hover:opacity-100 group-focus:opacity-100"
                       aria-hidden="true"
                     />
                   </div>
@@ -228,6 +260,9 @@ export default function AgentsPage() {
                   </h3>
                   <p className="mt-2 font-mono text-xs leading-relaxed text-brass">
                     {item.file}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-concrete-400">
+                    {item.use}
                   </p>
                 </a>
               ))}
