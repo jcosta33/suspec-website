@@ -177,7 +177,7 @@ export default function McpPage() {
 
       <Section className="flex flex-col gap-12">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
+          <div className="section-kicker section-kicker-gold">
             <DroneIcon className="h-4 w-4" />
             <span>guardrails.ts</span>
           </div>
@@ -211,7 +211,7 @@ export default function McpPage() {
 
       <Section className="grid gap-6 lg:grid-cols-2">
         <Card screws className="border-panel-border">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-olive">
+          <div className="section-kicker section-kicker-olive">
             <Cable className="h-4 w-4" aria-hidden="true" />
             <span>tools / 10</span>
           </div>
@@ -245,7 +245,7 @@ export default function McpPage() {
         </Card>
 
         <Card screws className="border-panel-border">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
+          <div className="section-kicker section-kicker-gold">
             <FileJson className="h-4 w-4" aria-hidden="true" />
             <span>resources + prompts</span>
           </div>
@@ -291,7 +291,7 @@ export default function McpPage() {
 
       <Section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
+          <div className="section-kicker section-kicker-muted">
             <Terminal className="h-4 w-4" aria-hidden="true" />
             <span>install.sh</span>
           </div>
@@ -333,7 +333,7 @@ export default function McpPage() {
           contentClassName="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
         >
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono uppercase text-brass">
+            <div className="section-kicker section-kicker-brass">
               <Boxes className="h-4 w-4" aria-hidden="true" />
               <span>source</span>
             </div>

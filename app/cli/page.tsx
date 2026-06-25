@@ -156,7 +156,7 @@ export default function CliPage() {
       </Section>
 
       <Section className="flex flex-col gap-8">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
+        <div className="section-kicker section-kicker-gold">
           <DroneIcon className="h-4 w-4" />
           <span>install</span>
         </div>
@@ -180,7 +180,7 @@ export default function CliPage() {
       </Section>
 
       <Section className="flex flex-col gap-8">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
+        <div className="section-kicker section-kicker-gold">
           <DroneIcon className="h-4 w-4" />
           <span>the-loop.sh — a task, end to end</span>
         </div>
@@ -221,7 +221,7 @@ export default function CliPage() {
 
       <Section className="flex flex-col gap-12">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-olive">
+          <div className="section-kicker section-kicker-olive">
             <Bug className="h-4 w-4" aria-hidden="true" />
             <span>commands.md — public surface</span>
           </div>
@@ -266,7 +266,7 @@ export default function CliPage() {
 
       <Section className="flex flex-col gap-12">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
+          <div className="section-kicker section-kicker-muted">
             <DroneIcon className="h-4 w-4" />
             <span>design.md — why a CLI?</span>
           </div>

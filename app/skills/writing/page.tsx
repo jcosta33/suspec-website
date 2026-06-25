@@ -104,7 +104,7 @@ export default function WritingSkillsPage() {
 
       <Section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
+          <div className="section-kicker section-kicker-gold">
             <DroneIcon className="h-4 w-4" />
             <span>layout</span>
           </div>
@@ -138,7 +138,7 @@ export default function WritingSkillsPage() {
 
       <Section className="flex flex-col gap-8">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-brass">
+          <div className="section-kicker section-kicker-brass">
             <Terminal className="h-4 w-4" />
             <span>description</span>
           </div>
@@ -173,7 +173,7 @@ export default function WritingSkillsPage() {
 
       <Section className="flex flex-col gap-8">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-olive">
+          <div className="section-kicker section-kicker-olive">
             <BookOpen className="h-4 w-4" />
             <span>body</span>
           </div>
@@ -206,7 +206,7 @@ export default function WritingSkillsPage() {
 
       <Section className="grid gap-6 lg:grid-cols-2">
         <Card screws className="border-panel-border">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
+          <div className="section-kicker section-kicker-gold">
             <FileText className="h-4 w-4" />
             <span>references</span>
           </div>
@@ -218,7 +218,7 @@ export default function WritingSkillsPage() {
         </Card>
 
         <Card screws className="border-panel-border">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-brass">
+          <div className="section-kicker section-kicker-brass">
             <GitBranch className="h-4 w-4" />
             <span>templates</span>
           </div>
@@ -232,7 +232,7 @@ export default function WritingSkillsPage() {
 
       <Section className="flex flex-col gap-8">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-rubedo">
+          <div className="section-kicker section-kicker-rubedo">
             <Shield className="h-4 w-4" />
             <span>scope</span>
           </div>
@@ -261,7 +261,7 @@ export default function WritingSkillsPage() {
             contentClassName="grid gap-6 md:grid-cols-[1fr_auto] md:items-start"
           >
             <div>
-              <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
+              <div className="section-kicker section-kicker-muted">
                 <GitBranch className="h-4 w-4" />
                 <span>next</span>
               </div>

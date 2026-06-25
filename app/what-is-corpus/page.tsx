@@ -201,7 +201,7 @@ export default function WhatIsCorpusPage() {
 
       <Section className="reveal grid gap-12 lg:grid-cols-2">
         <Panel variant="inset" className="h-full p-5 sm:p-6">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-phosphor">
+          <div className="section-kicker section-kicker-phosphor">
             <CheckCircle className="h-4 w-4" aria-hidden="true" />
             <span>what it is</span>
           </div>
@@ -225,7 +225,7 @@ export default function WhatIsCorpusPage() {
         </Panel>
 
         <Panel variant="inset" className="h-full p-5 sm:p-6">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-rubedo">
+          <div className="section-kicker section-kicker-rubedo">
             <XCircle className="h-4 w-4" aria-hidden="true" />
             <span>what it is not</span>
           </div>
@@ -249,7 +249,7 @@ export default function WhatIsCorpusPage() {
 
       <Section className="flex flex-col gap-12">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
+          <div className="section-kicker section-kicker-gold">
             <DroneIcon className="h-4 w-4" />
             <span>nearby tools</span>
           </div>
@@ -286,7 +286,7 @@ export default function WhatIsCorpusPage() {
 
       <Section className="flex flex-col gap-12">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-rubedo">
+          <div className="section-kicker section-kicker-rubedo">
             <ShieldAlert className="h-4 w-4" aria-hidden="true" />
             <span>common failure modes</span>
           </div>

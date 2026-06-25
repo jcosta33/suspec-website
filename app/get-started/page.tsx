@@ -115,7 +115,7 @@ export default function GetStartedPage() {
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
+        <div className="section-kicker section-kicker-gold">
           <Terminal className="h-4 w-4" aria-hidden="true" />
           <span>or scaffold it with the cli</span>
         </div>

@@ -166,7 +166,7 @@ export default function AgentsPage() {
       </Section>
 
       <Section className="flex flex-col gap-8">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
+        <div className="section-kicker section-kicker-gold">
           <DroneIcon className="h-4 w-4" />
           <span>install.sh — copy one worker</span>
         </div>
@@ -204,7 +204,7 @@ export default function AgentsPage() {
 
       <Section className="flex flex-col gap-12">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
+          <div className="section-kicker section-kicker-gold">
             <ShieldCheck className="h-4 w-4" aria-hidden="true" />
             <span>tier-1.conf — read-only workers</span>
           </div>
@@ -260,7 +260,7 @@ export default function AgentsPage() {
 
       <Section className="flex flex-col gap-12">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-olive">
+          <div className="section-kicker section-kicker-olive">
             <Hammer className="h-4 w-4" aria-hidden="true" />
             <span>tier-2.conf — bounded authoring</span>
           </div>
@@ -316,7 +316,7 @@ export default function AgentsPage() {
 
       <Section className="grid gap-6 lg:grid-cols-2">
         <Card screws className="border-panel-border">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
+          <div className="section-kicker section-kicker-muted">
             <ShieldCheck className="h-4 w-4" />
             <span>scope.note — toolable, not a wall</span>
           </div>
@@ -337,7 +337,7 @@ export default function AgentsPage() {
         </Card>
 
         <Card screws className="border-panel-border">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-brass">
+          <div className="section-kicker section-kicker-brass">
             <Network className="h-4 w-4" />
             <span>delegation trace</span>
           </div>
@@ -362,7 +362,7 @@ export default function AgentsPage() {
 
       <Section className="grid gap-6 lg:grid-cols-2">
         <Card screws className="h-full border-panel-border">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
+          <div className="section-kicker section-kicker-muted">
             <Terminal className="h-4 w-4" aria-hidden="true" />
             <span>portability</span>
           </div>
@@ -380,7 +380,7 @@ export default function AgentsPage() {
         </Card>
 
         <Card screws className="h-full border-panel-border">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
+          <div className="section-kicker section-kicker-muted">
             <Terminal className="h-4 w-4" aria-hidden="true" />
             <span>catalog — browse on github</span>
           </div>

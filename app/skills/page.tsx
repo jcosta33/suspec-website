@@ -199,7 +199,7 @@ export default function SkillsPage() {
       </Section>
 
       <Section className="flex flex-col gap-8">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
+        <div className="section-kicker section-kicker-gold">
           <DroneIcon className="h-4 w-4" />
           <span>install.sh — add one skill</span>
         </div>
@@ -248,7 +248,7 @@ export default function SkillsPage() {
 
       <Section className="flex flex-col gap-12">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-corpus-yellow">
+          <div className="section-kicker section-kicker-gold">
             <ShieldCheck className="h-4 w-4" aria-hidden="true" />
             <span>review guides</span>
           </div>
@@ -303,7 +303,7 @@ export default function SkillsPage() {
 
       <Section className="flex flex-col gap-12">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-olive">
+          <div className="section-kicker section-kicker-olive">
             <Hammer className="h-4 w-4" aria-hidden="true" />
             <span>change guides</span>
           </div>
@@ -358,7 +358,7 @@ export default function SkillsPage() {
           screws
           className="h-full border-panel-border hover:border-brass/50"
         >
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-brass">
+          <div className="section-kicker section-kicker-brass">
             <Terminal className="h-4 w-4" aria-hidden="true" />
             <span>authoring.guide — write your own</span>
           </div>
@@ -377,7 +377,7 @@ export default function SkillsPage() {
         </Card>
 
         <Card screws className="h-full border-panel-border">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-concrete-400">
+          <div className="section-kicker section-kicker-muted">
             <ShieldCheck className="h-4 w-4" />
             <span>security.note — no runtime</span>
           </div>
