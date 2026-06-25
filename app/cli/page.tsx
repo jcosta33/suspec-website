@@ -51,61 +51,73 @@ export const metadata: Metadata = {
 const commands = [
   {
     cmd: "init [dir]",
+    family: "Setup",
     what: "Scaffold a Corpus workspace without overwriting existing files.",
     icon: Blocks,
   },
   {
     cmd: "update [--check|--write]",
+    family: "Setup",
     what: "Check or refresh kit-owned files. Project work stays untouched.",
     icon: ShieldCheck,
   },
   {
     cmd: "check [file]",
+    family: "Check",
     what: "Check one file or the workspace. Exit codes fit CI.",
     icon: ShieldCheck,
   },
   {
     cmd: "worktree",
+    family: "Run",
     what: "Create, list, remove, or prune task worktrees.",
     icon: GitBranch,
   },
   {
     cmd: "status",
+    family: "Check",
     what: "Print specs, tasks, reviews, and gaps. Use --json for scripts.",
     icon: LayoutDashboard,
   },
   {
     cmd: "review <task>",
+    family: "Review",
     what: "Compare the task, run report, and git diff.",
     icon: ScanEye,
   },
   {
     cmd: "new <task|spec>",
+    family: "Setup",
     what: "Create a spec or cut a task packet from a spec.",
     icon: Plus,
   },
   {
     cmd: "pull <ref>",
+    family: "Setup",
     what: "Snapshot an external ticket into intake/.",
     icon: ArrowRight,
   },
   {
     cmd: "promote <task>",
+    family: "Review",
     what: "Draft a finding from a finished task.",
     icon: Plus,
   },
   {
     cmd: "run <task> --agent <name>",
+    family: "Run",
     what: "Launch a prepared task with your configured agent.",
     icon: Terminal,
   },
   {
     cmd: "show <task|spec|review|checks>",
+    family: "JSON",
     what: "Print parsed artifacts as JSON.",
     icon: Blocks,
   },
   {
     cmd: "agents emit --codex",
+    family: "Setup",
     what: "Generate Codex agent files from Claude Code agent definitions.",
     icon: Terminal,
   },
@@ -132,30 +144,35 @@ const principles = [
 const commandFamilies = [
   {
     label: "Setup",
-    commands: "init · update",
+    id: "setup-commands",
+    commands: "init · update · new · pull · agents emit",
     detail: "Create or refresh kit-owned files.",
     icon: Blocks,
   },
   {
     label: "Check",
+    id: "check-commands",
     commands: "check · status",
     detail: "Report workspace facts and gaps.",
     icon: ShieldCheck,
   },
   {
     label: "Review",
+    id: "review-commands",
     commands: "review · promote",
     detail: "Compare evidence and draft findings.",
     icon: ScanEye,
   },
   {
     label: "Run",
+    id: "run-commands",
     commands: "worktree · run",
     detail: "Isolate task work and launch agents.",
     icon: GitBranch,
   },
   {
     label: "JSON",
+    id: "json-commands",
     commands: "show",
     detail: "Expose parsed artifacts for scripts.",
     icon: LayoutDashboard,
@@ -197,26 +214,36 @@ export default function CliPage() {
             {commandFamilies.map((family, index) => {
               const Icon = family.icon;
               return (
-                <li key={family.label} className="bg-panel-raised/95 p-5 sm:p-6">
-                  <div className="flex items-center gap-3">
-                    <HexBadge color="olive" className="h-10 w-10 shrink-0">
-                      <Icon className="h-4 w-4" aria-hidden="true" />
-                    </HexBadge>
-                    <div>
-                      <p className="font-mono text-xs font-semibold uppercase tracking-wide text-olive">
-                        {String(index + 1).padStart(2, "0")}
-                      </p>
-                      <h2 className="font-heading text-lg font-bold text-concrete-100">
-                        {family.label}
-                      </h2>
+                <li key={family.label} className="bg-panel-raised/95">
+                  <a
+                    href={`#${family.id}`}
+                    className="focus-ring group block h-full p-5 transition-colors duration-150 hover:bg-panel sm:p-6"
+                    aria-label={`Jump to ${family.label.toLowerCase()} commands`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <HexBadge color="olive" className="h-10 w-10 shrink-0">
+                        <Icon className="h-4 w-4" aria-hidden="true" />
+                      </HexBadge>
+                      <div className="min-w-0">
+                        <p className="font-mono text-xs font-semibold uppercase tracking-wide text-olive">
+                          {String(index + 1).padStart(2, "0")}
+                        </p>
+                        <h2 className="font-heading text-lg font-bold text-concrete-100">
+                          {family.label}
+                        </h2>
+                      </div>
+                      <ArrowRight
+                        className="ml-auto h-4 w-4 shrink-0 text-olive/70 transition-transform duration-150 group-hover:translate-x-0.5"
+                        aria-hidden="true"
+                      />
                     </div>
-                  </div>
-                  <p className="mt-3 font-mono text-xs leading-relaxed text-olive">
-                    {family.commands}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-concrete-400">
-                    {family.detail}
-                  </p>
+                    <p className="mt-3 font-mono text-xs leading-relaxed text-olive">
+                      {family.commands}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-concrete-400">
+                      {family.detail}
+                    </p>
+                  </a>
                 </li>
               );
             })}
@@ -319,36 +346,72 @@ export default function CliPage() {
             the rest when the workspace needs them.
           </p>
         </div>
-        <ul className="grid gap-4 sm:grid-cols-2">
-          {commands.map((c) => {
-            const Icon = c.icon;
+        <div className="grid gap-8">
+          {commandFamilies.map((family) => {
+            const familyCommands = commands.filter(
+              (command) => command.family === family.label,
+            );
             return (
-              <li key={c.cmd} className="min-w-0">
-                <Card
-                  screws
-                  className="group h-full border-panel-border hover:border-olive/60"
-                >
-                  <div className="catalog-row catalog-row-olive relative pr-8">
-                    <div className="flex min-w-0 items-start gap-4">
-                      <HexBadge color="olive" className="catalog-row-badge">
-                        <Icon className="h-5 w-5" aria-hidden="true" />
-                      </HexBadge>
-                      <div className="min-w-0">
-                        <h3 className="catalog-row-title font-mono text-[13px] leading-snug font-semibold text-olive break-words sm:text-sm">
-                          corpus {c.cmd}
-                        </h3>
-                        <p className="catalog-row-copy mt-1 text-sm leading-relaxed text-concrete-400">
-                          {c.what}
-                        </p>
-                      </div>
-                    </div>
-                    <PilotLamp color="green" className="absolute top-0 right-0" />
+              <section
+                key={family.label}
+                id={family.id}
+                className="scroll-mt-28"
+                aria-labelledby={`${family.id}-heading`}
+              >
+                <div className="mb-4 flex flex-wrap items-end justify-between gap-3 border-b border-panel-border pb-3">
+                  <div>
+                    <p className="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-olive">
+                      {family.commands}
+                    </p>
+                    <h3
+                      id={`${family.id}-heading`}
+                      className="mt-1 font-heading text-xl font-bold text-concrete-100"
+                    >
+                      {family.label} commands
+                    </h3>
                   </div>
-                </Card>
-              </li>
+                  <Badge variant="ready">
+                    {familyCommands.length} command
+                    {familyCommands.length === 1 ? "" : "s"}
+                  </Badge>
+                </div>
+                <ul className="grid gap-4 sm:grid-cols-2">
+                  {familyCommands.map((c) => {
+                    const Icon = c.icon;
+                    return (
+                      <li key={c.cmd} className="min-w-0">
+                        <Card
+                          screws
+                          className="group h-full border-panel-border hover:border-olive/60"
+                        >
+                          <div className="catalog-row catalog-row-olive relative pr-8">
+                            <div className="flex min-w-0 items-start gap-4">
+                              <HexBadge color="olive" className="catalog-row-badge">
+                                <Icon className="h-5 w-5" aria-hidden="true" />
+                              </HexBadge>
+                              <div className="min-w-0">
+                                <h4 className="catalog-row-title font-mono text-[13px] leading-snug font-semibold text-olive break-words sm:text-sm">
+                                  corpus {c.cmd}
+                                </h4>
+                                <p className="catalog-row-copy mt-1 text-sm leading-relaxed text-concrete-400">
+                                  {c.what}
+                                </p>
+                              </div>
+                            </div>
+                            <PilotLamp
+                              color="green"
+                              className="absolute top-0 right-0"
+                            />
+                          </div>
+                        </Card>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
             );
           })}
-        </ul>
+        </div>
       </Section>
 
       <Section className="flex flex-col gap-12">
