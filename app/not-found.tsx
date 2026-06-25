@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, BookOpen, GitBranch, Search } from "lucide-react
 import { Section } from "./components/Section";
 import { ActionLink } from "./components/ActionLink";
 import { PaperArtifact } from "./components/PaperArtifact";
+import { Badge } from "./components/Badge";
 
 export const metadata = {
   title: "Page not found — Corpus",
@@ -44,6 +45,10 @@ export default function NotFoundPage() {
         <p className="mx-auto mt-2 max-w-md text-concrete-400 md:mx-0">
           Check the URL, search the docs, or go back home.
         </p>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-2 md:justify-start">
+          <Badge variant="blocked">missing route</Badge>
+          <Badge variant="draft">no exported page</Badge>
+        </div>
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:items-start md:justify-start">
           <ActionLink href="/">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to Corpus
@@ -54,7 +59,7 @@ export default function NotFoundPage() {
         </div>
         <nav
           aria-label="Recovery routes"
-          className="mx-auto mt-8 max-w-md overflow-hidden rounded-panel border border-panel-border bg-panel-raised/70 text-left shadow-[inset_0_1px_0_rgba(240,226,204,0.05)] md:mx-0"
+          className="process-strip mx-auto mt-8 max-w-md overflow-hidden rounded-panel border border-panel-border bg-panel-raised/70 text-left shadow-[inset_0_1px_0_rgba(240,226,204,0.05)] md:mx-0"
         >
           {recoveryRoutes.map((route, index) => {
             const Icon = route.icon;
