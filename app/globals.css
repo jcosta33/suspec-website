@@ -1821,6 +1821,12 @@ body::after {
   }
 }
 
+@media (min-width: 64rem) {
+  .loop-step-grid-linked {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .loop-step-card {
   --loop-step-signal: var(--signal-core);
   --loop-step-rgb: var(--signal-core-rgb);
@@ -1896,6 +1902,14 @@ body::after {
 .loop-step-card:hover .loop-step-label,
 .loop-step-card:focus-visible .loop-step-label {
   color: var(--loop-step-signal);
+}
+
+.loop-step-card-linked {
+  min-height: 10.75rem;
+}
+
+.loop-step-card-linked .loop-step-label {
+  font-size: 1rem;
 }
 
 /* Scroll-reveal — content rises in as it enters the viewport (modern, no JS).

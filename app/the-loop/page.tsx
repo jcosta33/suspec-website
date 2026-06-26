@@ -205,9 +205,9 @@ export default function TheLoopPage() {
       <Section
         register="01 / seal map"
         registerTone="core"
-        className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start"
+        className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-start"
       >
-        <div className="grid gap-4 lg:content-start">
+        <div className="order-2 grid gap-4 lg:order-none lg:content-start">
           <PaperArtifact
             label="note"
             title="six points / six steps"
@@ -245,7 +245,9 @@ export default function TheLoopPage() {
             </ul>
           </Panel>
         </div>
-        <LoopDiagram linkSteps />
+        <div className="order-1 lg:order-none">
+          <LoopDiagram linkSteps />
+        </div>
       </Section>
 
       <GiltBand height="sm" />

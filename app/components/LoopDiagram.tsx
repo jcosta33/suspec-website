@@ -165,11 +165,11 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
             workflow / six steps
           </p>
           <h2 className="mt-2 font-heading text-2xl font-bold text-concrete-100">
-            Six steps, one loop.
+            The loop at a glance.
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-concrete-400">
-            The mark maps to the workflow: Pull, Spec, Task, Run, Review,
-            Close. Each pass leaves a file the next step can use.
+            The mark maps to Pull, Spec, Task, Run, Review, and Close. Each
+            pass leaves a file the next step can use.
           </p>
         </div>
       </div>
@@ -183,7 +183,9 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
           const showConnector =
             !linkSteps && index < steps.length - 1 && index % 3 !== 2;
           const cardClassName =
-            `loop-step-card loop-step-card-${step.signal} focus-ring group relative flex min-h-[13rem] flex-col gap-3 p-4 panel-raised rivet-row transition-all duration-150 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-2px_0_rgba(0,0,0,0.5)]`;
+            `loop-step-card loop-step-card-${step.signal} ${
+              linkSteps ? "loop-step-card-linked" : ""
+            } focus-ring group relative flex min-h-[13rem] flex-col gap-3 p-4 panel-raised rivet-row transition-all duration-150 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-2px_0_rgba(0,0,0,0.5)]`;
           const content = (
             <>
               <div className="flex items-center justify-between">
