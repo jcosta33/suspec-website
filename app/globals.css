@@ -4,9 +4,10 @@
   /* corpus — warm control surface + alchemical signal + manuscript archive.
      Palette math starts at primary gold #D88A24, HSL(34 71% 49%). Its exact
      complement is #2472D8, HSL(214 71% 49%), reserved for diagnostics only so
-     the public site stays warm. Public accents stay in a low-saturation earth
-     range with named jobs: proof green #8ABF6B, greenfield #62C79D, brownfield
-     #BC8055, red clay #CA7059, olive ledger #A6913D. Color is semantic signage:
+     the public site stays warm. The public counterpoint is verdigris #76B8A9,
+     HSL(166 32% 59%), used only for reference/manual surfaces. Other accents
+     keep named jobs: proof green #8ABF6B, greenfield #62C79D, brownfield
+     #BC8055, red clay #CA7059. Color is semantic signage:
      repeated surfaces should share the same role across text, lamp, border,
      card rail, and hover state. No orphan accent colors. */
   --color-night: #110e0c;
@@ -37,9 +38,9 @@
   --color-phosphor: #8abf6b;
   --color-greenfield: #62c79d;
   --color-brownfield: #bc8055;
-  --color-verdigris: #8a7a38;
+  --color-verdigris: #76b8a9;
   --color-rubedo: #ca7059;
-  --color-olive: #a6913d;
+  --color-olive: var(--color-verdigris);
   --color-black-text: #100b07;
 
   /* Semantic signal roles. Use these by meaning, not by list position. */
@@ -53,8 +54,8 @@
   --signal-brownfield-rgb: 188, 128, 85;
   --signal-change: var(--color-rubedo);
   --signal-change-rgb: 202, 112, 89;
-  --signal-reference: var(--color-olive);
-  --signal-reference-rgb: 166, 145, 61;
+  --signal-reference: var(--color-verdigris);
+  --signal-reference-rgb: 118, 184, 169;
   --signal-muted: var(--color-brass);
   --signal-muted-rgb: 191, 121, 39;
 
@@ -116,9 +117,9 @@
   --c-phosphor: #8abf6b;
   --c-greenfield: #62c79d;
   --c-brownfield: #bc8055;
-  --c-verdigris: #8a7a38;
+  --c-verdigris: #76b8a9;
   --c-rubedo: #ca7059;
-  --c-olive: #a6913d;
+  --c-olive: var(--c-verdigris);
   --signal-core: var(--color-aurum);
   --signal-core-rgb: 216, 138, 36;
   --signal-evidence: var(--color-phosphor);
@@ -129,8 +130,8 @@
   --signal-brownfield-rgb: 188, 128, 85;
   --signal-change: var(--color-rubedo);
   --signal-change-rgb: 202, 112, 89;
-  --signal-reference: var(--color-olive);
-  --signal-reference-rgb: 166, 145, 61;
+  --signal-reference: var(--color-verdigris);
+  --signal-reference-rgb: 118, 184, 169;
   --signal-muted: var(--color-brass);
   --signal-muted-rgb: 191, 121, 39;
   --c-paper: #f0e2cc;
@@ -1572,11 +1573,11 @@ body::after {
 
 /* CLI command rail — command families as a compact operating surface. */
 .cli-surface-panel {
-  border-color: rgba(168, 147, 58, 0.36);
+  border-color: rgba(var(--signal-reference-rgb), 0.36);
   background:
     radial-gradient(
       80% 80% at 50% 0%,
-      rgba(168, 147, 58, 0.075),
+      rgba(var(--signal-reference-rgb), 0.075),
       transparent 62%
     ),
     var(--color-panel-raised);
@@ -1590,7 +1591,7 @@ body::after {
   padding: 0.75rem 1.25rem;
   border-bottom: 1px solid var(--color-panel-border);
   background:
-    linear-gradient(90deg, rgba(168, 147, 58, 0.08), transparent 46%),
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.08), transparent 46%),
     rgba(10, 7, 5, 0.22);
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.68rem;
@@ -1600,7 +1601,7 @@ body::after {
 }
 
 .cli-surface-header p {
-  color: var(--color-olive);
+  color: var(--signal-reference);
 }
 
 .cli-surface-header span {
@@ -1609,7 +1610,7 @@ body::after {
 
 .cli-command-rail {
   background:
-    linear-gradient(90deg, rgba(168, 147, 58, 0.18), transparent 22%),
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.18), transparent 22%),
     var(--color-panel-border);
 }
 
@@ -1664,11 +1665,11 @@ body::after {
 
 /* Skill anatomy rail — small manual index for SKILL.md. */
 .skill-anatomy-panel {
-  border-color: rgba(216, 138, 36, 0.34);
+  border-color: rgba(var(--signal-reference-rgb), 0.34);
   background:
     radial-gradient(
       80% 80% at 50% 0%,
-      rgba(216, 138, 36, 0.075),
+      rgba(var(--signal-reference-rgb), 0.075),
       transparent 62%
     ),
     var(--color-panel-raised);
@@ -1682,7 +1683,7 @@ body::after {
   padding: 0.75rem 1.25rem;
   border-bottom: 1px solid var(--color-panel-border);
   background:
-    linear-gradient(90deg, rgba(216, 138, 36, 0.08), transparent 46%),
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.08), transparent 46%),
     rgba(10, 7, 5, 0.22);
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.68rem;
@@ -1692,7 +1693,7 @@ body::after {
 }
 
 .skill-anatomy-header p {
-  color: var(--color-corpus-yellow);
+  color: var(--signal-reference);
 }
 
 .skill-anatomy-header span {
@@ -1701,7 +1702,7 @@ body::after {
 
 .skill-anatomy-rail {
   background:
-    linear-gradient(90deg, rgba(216, 138, 36, 0.16), transparent 22%),
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.16), transparent 22%),
     var(--color-panel-border);
 }
 
@@ -1710,7 +1711,7 @@ body::after {
   background-image:
     radial-gradient(
       70% 64% at 18% 0%,
-      rgba(240, 184, 92, 0.075),
+      rgba(var(--signal-reference-rgb), 0.075),
       transparent 64%
     ),
     linear-gradient(

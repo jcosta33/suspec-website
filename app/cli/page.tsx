@@ -279,7 +279,7 @@ export default function CliPage() {
                         </h2>
                       </div>
                       <ArrowRight
-                        className="motion-nudge-x ml-auto h-4 w-4 shrink-0 text-olive/70"
+                        className="text-signal-reference motion-nudge-x ml-auto h-4 w-4 shrink-0 opacity-70"
                         aria-hidden="true"
                       />
                     </div>

@@ -190,7 +190,7 @@ function BoundaryMap() {
           </div>
           {index < boundarySteps.length - 1 ? (
             <ArrowRight
-              className="absolute -right-5 top-1/2 z-20 hidden h-5 w-5 -translate-y-1/2 text-signal-reference/70 md:block"
+              className="text-signal-reference absolute -right-5 top-1/2 z-20 hidden h-5 w-5 -translate-y-1/2 opacity-70 md:block"
               aria-hidden="true"
             />
           ) : null}
