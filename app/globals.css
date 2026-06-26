@@ -2884,6 +2884,69 @@ body::after {
   font-size: 1rem;
 }
 
+.loop-operating-step {
+  --loop-operating-signal: var(--signal-core);
+  --loop-operating-rgb: var(--signal-core-rgb);
+}
+
+.loop-operating-step-core {
+  --loop-operating-signal: var(--signal-core);
+  --loop-operating-rgb: var(--signal-core-rgb);
+}
+
+.loop-operating-step-evidence {
+  --loop-operating-signal: var(--signal-evidence);
+  --loop-operating-rgb: var(--signal-evidence-rgb);
+}
+
+.loop-operating-step-reference {
+  --loop-operating-signal: var(--signal-reference);
+  --loop-operating-rgb: var(--signal-reference-rgb);
+}
+
+.loop-operating-step-change {
+  --loop-operating-signal: var(--signal-change);
+  --loop-operating-rgb: var(--signal-change-rgb);
+}
+
+.loop-operating-rail {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--loop-operating-rgb), 0.62),
+    rgba(var(--loop-operating-rgb), 0.18) 48%,
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(var(--loop-operating-rgb), 0.08);
+}
+
+.panel-raised.loop-operating-terminal {
+  --plate-signal: var(--loop-operating-signal);
+  --plate-rgb: var(--loop-operating-rgb);
+  border-color: rgba(var(--loop-operating-rgb), 0.26);
+  background-image:
+    linear-gradient(90deg, rgba(var(--loop-operating-rgb), 0.045), transparent 24%),
+    radial-gradient(
+      70% 58% at 16% 0%,
+      rgba(var(--loop-operating-rgb), 0.055),
+      transparent 62%
+    ),
+    radial-gradient(
+      80% 80% at 100% 100%,
+      rgba(0, 0, 0, 0.2),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(232, 222, 203, 0.04) 0%,
+      transparent 38%
+    );
+}
+
+.panel-raised.loop-operating-terminal:hover,
+.panel-raised.loop-operating-terminal:focus-within {
+  border-color: rgba(var(--loop-operating-rgb), 0.42);
+}
+
 /* Scroll-reveal — content rises in as it enters the viewport (modern, no JS).
    Degrades to "always visible" with no scroll-timeline support or reduced-motion. */
 @media (prefers-reduced-motion: no-preference) {

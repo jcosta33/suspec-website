@@ -19,6 +19,7 @@ import { Heading } from "../components/Heading";
 import { PaperArtifact } from "../components/PaperArtifact";
 import { LoopDiagram } from "../components/LoopDiagram";
 import { TextLink } from "../components/TextLink";
+import { signalRoles, type SignalRole } from "../components/signalStyles";
 
 const stepIcons = [Inbox, FileText, ListChecks, Terminal, ScanEye, GitMerge];
 
@@ -52,6 +53,7 @@ const steps = [
   {
     number: "01",
     name: "Pull",
+    signal: "reference",
     body: "Copy the request into an intake file. Preserve what was asked before you interpret it.",
     example: {
       title: "intake/INTAKE-42.md",
@@ -74,6 +76,7 @@ const steps = [
   {
     number: "02",
     name: "Spec",
+    signal: "core",
     body: "Write requirements one per ID. Add the check for each one.",
     example: {
       title: "specs/shell/spec.md",
@@ -105,6 +108,7 @@ const steps = [
   {
     number: "03",
     name: "Task",
+    signal: "change",
     body: "Give the agent scope, limits, and Verify commands.",
     example: {
       title: "tasks/TASK-shell.md",
@@ -122,6 +126,7 @@ const steps = [
   {
     number: "04",
     name: "Run",
+    signal: "change",
     body: "Implement the task and paste real evidence next to the requirement.",
     example: {
       title: "tasks/TASK-shell.md",
@@ -138,6 +143,7 @@ const steps = [
   {
     number: "05",
     name: "Review",
+    signal: "evidence",
     body: "Check evidence per requirement. Escalate missing or unclear evidence.",
     example: {
       title: "reviews/REVIEW-shell.md",
@@ -164,6 +170,7 @@ const steps = [
   {
     number: "06",
     name: "Close",
+    signal: "reference",
     body: "Merge, save useful findings, and update the board.",
     example: {
       title: "findings/FINDING-tailwind-v4-syntax.md",
@@ -182,7 +189,16 @@ const steps = [
       ],
     },
   },
-];
+] satisfies Array<{
+  number: string;
+  name: string;
+  signal: SignalRole;
+  body: string;
+  example: {
+    title: string;
+    lines: Array<{ prompt: boolean; text: string }>;
+  };
+}>;
 
 export default function TheLoopPage() {
   return (
@@ -263,25 +279,27 @@ export default function TheLoopPage() {
             <article
               key={step.name}
               id={step.name.toLowerCase()}
-              className="reveal relative grid scroll-mt-28 gap-8 lg:grid-cols-2 lg:items-start"
+              className={`loop-operating-step loop-operating-step-${step.signal} reveal relative grid scroll-mt-28 gap-8 lg:grid-cols-2 lg:items-start`}
             >
               <div className="relative">
                 {index < steps.length - 1 && (
                   <div
-                    className="absolute left-[1.75rem] top-20 hidden h-[calc(100%+4rem)] w-px bg-gradient-to-b from-brass/60 to-transparent lg:block"
+                    className="loop-operating-rail absolute left-[1.75rem] top-20 hidden h-[calc(100%+4rem)] w-px lg:block"
                     aria-hidden="true"
                   />
                 )}
                 <div className="flex items-start gap-4">
-                  <HexBadge color="core">
-                    <span className="font-mono text-xs font-bold text-corpus-yellow">
+                  <HexBadge color={step.signal}>
+                    <span
+                      className={`font-mono text-xs font-bold ${signalRoles[step.signal].text}`}
+                    >
                       {step.number}
                     </span>
                   </HexBadge>
                   <div>
                     <div className="flex items-center gap-2">
                       <Icon
-                        className="h-5 w-5 text-corpus-yellow"
+                        className={`h-5 w-5 ${signalRoles[step.signal].text}`}
                         aria-hidden="true"
                       />
                       <Heading>{step.name}</Heading>
@@ -290,7 +308,10 @@ export default function TheLoopPage() {
                   </div>
                 </div>
               </div>
-              <Panel brushed className="p-2">
+              <Panel
+                brushed
+                className={`loop-operating-terminal loop-operating-terminal-${step.signal} p-2`}
+              >
                 <TerminalWindow
                   title={step.example.title}
                   ariaLabel={`${step.name} — ${step.example.title}`}
