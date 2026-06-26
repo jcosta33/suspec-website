@@ -1219,6 +1219,8 @@ body::after {
 
 /* Raised plate — a thin-lined engraved card, lifted just off the night */
 .panel-raised {
+  --plate-signal: var(--signal-core);
+  --plate-rgb: var(--signal-core-rgb);
   position: relative;
   border-radius: var(--radius-panel);
   border: 1px solid var(--color-panel-border);
@@ -1267,13 +1269,28 @@ body::after {
 
 .panel-raised:hover,
 .panel-raised:focus-within {
-  border-color: rgba(216, 138, 36, 0.38);
+  border-color: rgba(var(--plate-rgb), 0.38);
   background-color: #281f17;
   box-shadow:
     inset 0 1px 0 rgba(232, 222, 203, 0.09),
     inset 0 -1px 0 rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(216, 138, 36, 0.05),
+    0 0 0 1px rgba(var(--plate-rgb), 0.06),
     0 8px 20px rgba(0, 0, 0, 0.24);
+}
+
+.panel-raised:has(.catalog-row-evidence) {
+  --plate-signal: var(--signal-evidence);
+  --plate-rgb: var(--signal-evidence-rgb);
+}
+
+.panel-raised:has(.catalog-row-change) {
+  --plate-signal: var(--signal-change);
+  --plate-rgb: var(--signal-change-rgb);
+}
+
+.panel-raised:has(.catalog-row-reference, .catalog-row-olive) {
+  --plate-signal: var(--signal-reference);
+  --plate-rgb: var(--signal-reference-rgb);
 }
 
 .surface-glint {
@@ -1285,13 +1302,14 @@ body::after {
       122deg,
       transparent 0%,
       transparent 36%,
-      rgba(240, 184, 92, 0.055) 46%,
+      rgba(var(--plate-rgb), 0.085) 46%,
+      rgba(240, 226, 204, 0.035) 50%,
       transparent 58%,
       transparent 100%
     ),
     radial-gradient(
       70% 60% at 18% 0%,
-      rgba(240, 226, 204, 0.065),
+      rgba(var(--plate-rgb), 0.08),
       transparent 58%
     );
   transition:
@@ -1301,9 +1319,9 @@ body::after {
 
 .surface-engraving {
   border-radius: inherit;
-  opacity: 0.46;
+  opacity: 0.5;
   background:
-    linear-gradient(90deg, rgba(216, 138, 36, 0.12), transparent 22%) left
+    linear-gradient(90deg, rgba(var(--plate-rgb), 0.14), transparent 22%) left
       top / 1px 100% no-repeat,
     repeating-linear-gradient(
       90deg,
@@ -1338,8 +1356,8 @@ body::after {
   height: 1px;
   background: linear-gradient(
     90deg,
-    rgba(216, 138, 36, 0.32),
-    rgba(216, 138, 36, 0.08),
+    rgba(var(--plate-rgb), 0.34),
+    rgba(var(--plate-rgb), 0.09),
     transparent
   );
   opacity: 0.5;
@@ -1353,7 +1371,7 @@ body::after {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(216, 138, 36, 0.32)
+    rgba(var(--plate-rgb), 0.34)
   );
   opacity: 0.42;
 }
@@ -1470,6 +1488,8 @@ body::after {
 .accent-card {
   --accent-signal: var(--signal-core);
   --accent-rgb: var(--signal-core-rgb);
+  --plate-signal: var(--accent-signal);
+  --plate-rgb: var(--accent-rgb);
   background-image:
     linear-gradient(
       90deg,
@@ -1648,6 +1668,8 @@ body::after {
 .setup-choice-card {
   --choice-signal: var(--signal-core);
   --choice-rgb: var(--signal-core-rgb);
+  --plate-signal: var(--choice-signal);
+  --plate-rgb: var(--choice-rgb);
   background-image:
     linear-gradient(
       90deg,
