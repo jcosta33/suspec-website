@@ -30,9 +30,9 @@ export function TerminalWindow({
       <div className="absolute inset-0 brushed-metal pointer-events-none" />
       <div className="relative flex min-w-0 flex-wrap items-center justify-between gap-2 border-b border-panel-border bg-panel-raised px-4 py-2">
         <div className="flex min-w-0 flex-wrap items-center gap-2 sm:gap-3">
-          <PilotLamp color="red" label="pwr" />
-          <PilotLamp color="amber" pulse label="check" />
-          <PilotLamp color="green" label="evidence" />
+          <PilotLamp color="change" label="pwr" />
+          <PilotLamp color="core" pulse label="check" />
+          <PilotLamp color="evidence" label="evidence" />
         </div>
         <div className="flex min-w-0 items-center gap-2">
           <span className="hidden min-w-0 items-center gap-2 text-xs font-mono font-medium uppercase tracking-widest engraved sm:flex">

@@ -332,7 +332,7 @@ export default function WhatIsCorpusPage() {
                       </p>
                     )}
                   </div>
-                  <PilotLamp color="amber" className="shrink-0" />
+                      <PilotLamp color="core" className="shrink-0" />
                 </div>
                 <dl className="relation-card-body">
                   <div>

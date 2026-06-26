@@ -1,3 +1,7 @@
+// Palette grammar:
+// core = loop/action, evidence = review/proof, greenfield = new workspaces,
+// brownfield = existing codebases, change = edits/attention, reference = docs/catalogs.
+// Prefer these role names over raw color aliases in new component code.
 export const signalRoles = {
   core: {
     text: "text-signal-core",

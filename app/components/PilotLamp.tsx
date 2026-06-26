@@ -1,8 +1,34 @@
+import {
+  normalizeSignalRole,
+  type SignalInput,
+  type SignalRole,
+} from "./signalStyles";
+
+type LegacyLampColor = "amber" | "green" | "red" | "olive";
+
 export interface PilotLampProps {
-  color?: "amber" | "green" | "red" | "olive" | "off";
+  color?: SignalInput | LegacyLampColor | "off";
   pulse?: boolean;
   className?: string;
   label?: string;
+}
+
+function normalizeLampColor(
+  color: SignalInput | LegacyLampColor | "off",
+): SignalRole | "off" {
+  if (color === "off") {
+    return "off";
+  }
+
+  if (color === "amber") {
+    return "core";
+  }
+
+  if (color === "red") {
+    return "change";
+  }
+
+  return normalizeSignalRole(color);
 }
 
 export function PilotLamp({
@@ -11,10 +37,12 @@ export function PilotLamp({
   className = "",
   label,
 }: PilotLampProps) {
+  const lampColor = normalizeLampColor(color);
+
   return (
     <span className={`inline-flex items-center gap-2 ${className}`} title={label}>
       <span
-        className={`pilot-lamp pilot-lamp-${color} ${pulse ? "pilot-lamp-pulse" : ""}`}
+        className={`pilot-lamp pilot-lamp-${lampColor} ${pulse ? "pilot-lamp-pulse" : ""}`}
         aria-hidden="true"
       />
       {label && (

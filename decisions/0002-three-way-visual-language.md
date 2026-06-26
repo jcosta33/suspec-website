@@ -38,13 +38,16 @@ utility with a small ritual charge.
 
 ### Concrete choices
 
-- **Logo:** a compact six-node loop mark plus lowercase `corpus`.
+- **Logo:** a compact six-node loop mark plus capitalized `Corpus`.
 - **Wordmark:** semibold old-style serif or tuned display serif; no wide
   uppercase tracking and no thin elegant weight.
 - **Dark surfaces:** black/graphite chassis for navigation, panels, terminals,
   rosters, command references, and diagrams.
 - **Gold:** sparse signal only; use for focus, primary action, seal lines, and
   active states.
+- **Accent palette:** use color by role, not by decoration. Proof green is for
+  evidence/review; field green is for greenfield setup; umber is for brownfield
+  adoption; red clay is for change/attention; olive is for reference/catalog.
 - **Manuscript surfaces:** use paper only for specs, review packets, findings,
   docs notes, source metadata, and annotated examples.
 - **Copy:** ritual/manuscript words are labels, not extended metaphors.

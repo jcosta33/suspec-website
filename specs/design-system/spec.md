@@ -35,22 +35,37 @@ and CSS custom properties in `app/globals.css`:
 
 | Token | Hex | Usage |
 | --- | --- | --- |
-| `--c-night` | `#080604` | page background, terminal wells |
-| `--c-chassis` | `#0F0B08` | app shell |
+| `--c-night` | `#110E0C` | page background, terminal wells |
+| `--c-chassis` | `#16100C` | app shell |
+| `--c-section-band` | `#0E0C08` | darker section bands |
 | `--c-panel` | `#1A1510` | standard dark surfaces |
 | `--c-panel-raised` | `#241D15` | raised panels and cards |
 | `--c-panel-border` | `#46392C` | warm hairlines and dividers |
 | `--c-albedo` | `#F0E2CC` | primary dark-surface text |
 | `--c-mercury` | `#B8AA96` | secondary dark-surface text |
 | `--c-aurum` | `#D88A24` | primary orangy-gold signal |
-| `--c-brass` | `#A96A24` | secondary gold, borders |
+| `--c-brass` | `#BF7927` | secondary gold, borders |
 | `--c-complement` | `#2472D8` | exact HSL complement to aurum; diagnostic accent only |
-| `--c-phosphor` | `#72B35A` | success / verified |
-| `--c-rubedo` | `#C97952` | errors / blocked |
+| `--c-phosphor` | `#83B86D` | evidence / verified proof |
+| `--c-greenfield` | `#5FB989` | fresh workspace setup paths only |
+| `--c-brownfield` | `#B9784E` | existing-project adoption paths only |
+| `--c-rubedo` | `#CA7059` | change / attention / blocked |
+| `--c-olive` | `#A6913D` | reference, docs, catalog surfaces |
 | `--c-paper` | `#F0E2CC` | manuscript artifact surfaces |
 | `--c-paper-warm` | `#DCC9A9` | paper depth |
 | `--c-ink` | `#100B07` | text on paper |
 | `--c-pencil` | `#5F554A` | marginalia and ruled notes |
+
+Accent colors are semantic, not decorative:
+
+| Role | Use |
+| --- | --- |
+| `core` | loop, primary action, active navigation, current step |
+| `evidence` | proof, review, verified output, pass states |
+| `greenfield` | fresh workspace / new repo setup only |
+| `brownfield` | existing-project adoption only |
+| `change` | edits, fixes, blocked or attention states |
+| `reference` | docs, manuals, command catalogs, ledgers |
 
 Compatibility aliases such as `--color-corpus-yellow`, `--color-hazard-orange`,
 and `--color-drone-green` may remain during migration, but they must map onto

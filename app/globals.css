@@ -4,10 +4,10 @@
   /* corpus — warm control surface + alchemical signal + manuscript archive.
      Palette math starts at primary gold #D88A24, HSL(34 71% 49%). Its exact
      complement is #2472D8, HSL(214 71% 49%), reserved for diagnostics only so
-     the public site stays warm. Visible roles are patterned: gold = the loop,
-     evidence green = verified proof/review, greenfield = fresh starts,
-     brownfield = existing-project adoption, red clay = change/attention,
-     olive = reference/catalog/manual surfaces. */
+     the public site stays warm. Visible roles use controlled neighbors of gold:
+     proof green for review/evidence, field green for greenfield starts, umber
+     for brownfield adoption, red clay for change/attention, olive for reference.
+     Never add an accent because a section "needs color"; choose the role first. */
   --color-night: #110e0c;
   --color-chassis: #16100c;
   --color-section-band: #0e0c08;
@@ -33,27 +33,27 @@
   --color-brass: #bf7927;
   --color-amber: #f0a33a;
   --color-complement: #2472d8;
-  --color-phosphor: #70b275;
-  --color-greenfield: #61b892;
-  --color-brownfield: #be7c50;
+  --color-phosphor: #83b86d;
+  --color-greenfield: #5fb989;
+  --color-brownfield: #b9784e;
   --color-verdigris: #8a7a38;
-  --color-rubedo: #cf715a;
-  --color-olive: #a79339;
+  --color-rubedo: #ca7059;
+  --color-olive: #a6913d;
   --color-black-text: #100b07;
 
   /* Semantic signal roles. Use these by meaning, not by list position. */
   --signal-core: var(--color-aurum);
   --signal-core-rgb: 216, 138, 36;
   --signal-evidence: var(--color-phosphor);
-  --signal-evidence-rgb: 112, 178, 117;
+  --signal-evidence-rgb: 131, 184, 109;
   --signal-greenfield: var(--color-greenfield);
-  --signal-greenfield-rgb: 97, 184, 146;
+  --signal-greenfield-rgb: 95, 185, 137;
   --signal-brownfield: var(--color-brownfield);
-  --signal-brownfield-rgb: 190, 124, 80;
+  --signal-brownfield-rgb: 185, 120, 78;
   --signal-change: var(--color-rubedo);
-  --signal-change-rgb: 207, 113, 90;
+  --signal-change-rgb: 202, 112, 89;
   --signal-reference: var(--color-olive);
-  --signal-reference-rgb: 167, 147, 57;
+  --signal-reference-rgb: 166, 145, 61;
   --signal-muted: var(--color-brass);
   --signal-muted-rgb: 191, 121, 39;
 
@@ -112,24 +112,24 @@
   --c-brass: #bf7927;
   --c-amber: #f0a33a;
   --c-complement: #2472d8;
-  --c-phosphor: #70b275;
-  --c-greenfield: #61b892;
-  --c-brownfield: #be7c50;
+  --c-phosphor: #83b86d;
+  --c-greenfield: #5fb989;
+  --c-brownfield: #b9784e;
   --c-verdigris: #8a7a38;
-  --c-rubedo: #cf715a;
-  --c-olive: #a79339;
+  --c-rubedo: #ca7059;
+  --c-olive: #a6913d;
   --signal-core: var(--color-aurum);
   --signal-core-rgb: 216, 138, 36;
   --signal-evidence: var(--color-phosphor);
-  --signal-evidence-rgb: 112, 178, 117;
+  --signal-evidence-rgb: 131, 184, 109;
   --signal-greenfield: var(--color-greenfield);
-  --signal-greenfield-rgb: 97, 184, 146;
+  --signal-greenfield-rgb: 95, 185, 137;
   --signal-brownfield: var(--color-brownfield);
-  --signal-brownfield-rgb: 190, 124, 80;
+  --signal-brownfield-rgb: 185, 120, 78;
   --signal-change: var(--color-rubedo);
-  --signal-change-rgb: 207, 113, 90;
+  --signal-change-rgb: 202, 112, 89;
   --signal-reference: var(--color-olive);
-  --signal-reference-rgb: 167, 147, 57;
+  --signal-reference-rgb: 166, 145, 61;
   --signal-muted: var(--color-brass);
   --signal-muted-rgb: 191, 121, 39;
   --c-paper: #f0e2cc;
@@ -1415,6 +1415,93 @@ body::after {
   transform-origin: 50% 50%;
 }
 
+.loop-step-grid-linked {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 42rem) {
+  .loop-step-grid-linked {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.loop-step-card {
+  --loop-step-signal: var(--signal-core);
+  --loop-step-rgb: var(--signal-core-rgb);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(var(--loop-step-rgb), 0.22) 0,
+      rgba(var(--loop-step-rgb), 0.22) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      80% 70% at 10% 0%,
+      rgba(var(--loop-step-rgb), 0.09),
+      transparent 60%
+    );
+}
+
+.loop-step-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(var(--loop-step-rgb), 0.72),
+    transparent
+  );
+  opacity: 0.68;
+  transform: scaleY(0.62);
+  transform-origin: center;
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+}
+
+.loop-step-card:hover::before,
+.loop-step-card:focus-visible::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.loop-step-card-core {
+  --loop-step-signal: var(--signal-core);
+  --loop-step-rgb: var(--signal-core-rgb);
+}
+
+.loop-step-card-evidence {
+  --loop-step-signal: var(--signal-evidence);
+  --loop-step-rgb: var(--signal-evidence-rgb);
+}
+
+.loop-step-card-reference {
+  --loop-step-signal: var(--signal-reference);
+  --loop-step-rgb: var(--signal-reference-rgb);
+}
+
+.loop-step-card-change {
+  --loop-step-signal: var(--signal-change);
+  --loop-step-rgb: var(--signal-change-rgb);
+}
+
+.loop-step-index,
+.loop-step-icon {
+  color: var(--loop-step-signal);
+}
+
+.loop-step-label {
+  transition: color 150ms ease;
+}
+
+.loop-step-card:hover .loop-step-label,
+.loop-step-card:focus-visible .loop-step-label {
+  color: var(--loop-step-signal);
+}
+
 /* Scroll-reveal — content rises in as it enters the viewport (modern, no JS).
    Degrades to "always visible" with no scroll-timeline support or reduced-motion. */
 @media (prefers-reduced-motion: no-preference) {
@@ -1951,15 +2038,16 @@ body::after {
   background-image:
     linear-gradient(
       90deg,
-      rgba(var(--choice-rgb), 0.34) 0,
-      rgba(var(--choice-rgb), 0.34) 2px,
+      rgba(var(--choice-rgb), 0.42) 0,
+      rgba(var(--choice-rgb), 0.42) 2px,
       transparent 2px
     ),
     radial-gradient(
-      78% 68% at 12% 0%,
-      rgba(var(--choice-rgb), 0.11),
+      78% 68% at 10% 0%,
+      rgba(var(--choice-rgb), 0.13),
       transparent 62%
     ),
+    linear-gradient(180deg, rgba(var(--choice-rgb), 0.035), transparent 42%),
     radial-gradient(
       80% 80% at 100% 100%,
       rgba(0, 0, 0, 0.2),
@@ -2031,6 +2119,17 @@ body::after {
   --choice-rgb: var(--signal-greenfield-rgb);
 }
 
+.setup-choice-card-greenfield .setup-choice-command {
+  background:
+    linear-gradient(90deg, rgba(var(--choice-rgb), 0.16), transparent 42%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--choice-rgb), 0.12) 0 1px,
+      transparent 1px 18px
+    ),
+    rgba(10, 7, 5, 0.42);
+}
+
 .setup-choice-card-adopt {
   --choice-signal: var(--signal-brownfield);
   --choice-rgb: var(--signal-brownfield-rgb);
@@ -2039,6 +2138,17 @@ body::after {
 .setup-choice-card-brownfield {
   --choice-signal: var(--signal-brownfield);
   --choice-rgb: var(--signal-brownfield-rgb);
+}
+
+.setup-choice-card-brownfield .setup-choice-command {
+  background:
+    linear-gradient(90deg, rgba(var(--choice-rgb), 0.16), transparent 42%),
+    repeating-linear-gradient(
+      -24deg,
+      rgba(var(--choice-rgb), 0.1) 0 1px,
+      transparent 1px 13px
+    ),
+    rgba(10, 7, 5, 0.42);
 }
 
 .setup-choice-card :is(.text-corpus-yellow, .text-brass) {
@@ -2066,7 +2176,7 @@ body::after {
 .setup-choice-head {
   position: relative;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(70, 57, 44, 0.72);
+  border-bottom: 1px solid rgba(var(--choice-rgb), 0.28);
 }
 
 .setup-choice-command {
@@ -2092,7 +2202,7 @@ body::after {
   display: grid;
   gap: 0;
   margin-top: auto;
-  border-top: 1px solid rgba(70, 57, 44, 0.72);
+  border-top: 1px solid rgba(var(--choice-rgb), 0.24);
 }
 
 .setup-choice-facts div {
@@ -2100,7 +2210,7 @@ body::after {
   grid-template-columns: minmax(4.75rem, 0.34fr) minmax(0, 1fr);
   gap: 0.85rem;
   padding: 0.78rem 0;
-  border-bottom: 1px solid rgba(70, 57, 44, 0.54);
+  border-bottom: 1px solid rgba(var(--choice-rgb), 0.18);
 }
 
 .setup-choice-facts dt {
@@ -2447,8 +2557,11 @@ body::after {
   right: 8px;
 }
 
-/* Lamp utilities — small gilded/alchemical signal lights */
+/* Lamp utilities — small role-colored signal lights. */
 .pilot-lamp {
+  --lamp-signal: var(--color-line-bright);
+  --lamp-rgb: 91, 73, 55;
+  --lamp-highlight: rgba(240, 226, 204, 0.4);
   position: relative;
   display: inline-flex;
   width: 16px;
@@ -2458,72 +2571,60 @@ body::after {
   background:
     radial-gradient(
       circle at 35% 35%,
-      rgba(240, 226, 204, 0.4),
-      transparent 40%
+      var(--lamp-highlight),
+      transparent 42%
     ),
-    var(--color-line-bright);
+    var(--lamp-signal);
   box-shadow:
     inset 0 1px 1px rgba(0, 0, 0, 0.5),
-    0 1px 0 rgba(240, 226, 204, 0.08);
+    0 0 10px rgba(var(--lamp-rgb), 0.38),
+    0 0 3px var(--lamp-signal);
 }
 
+.pilot-lamp-core,
 .pilot-lamp-amber {
-  background:
-    radial-gradient(
-      circle at 35% 35%,
-      rgba(255, 248, 224, 0.7),
-      transparent 42%
-    ),
-    var(--color-amber);
-  box-shadow:
-    inset 0 1px 1px rgba(0, 0, 0, 0.4),
-    0 0 10px rgba(240, 168, 58, 0.48),
-    0 0 3px var(--color-amber);
+  --lamp-signal: var(--signal-core);
+  --lamp-rgb: var(--signal-core-rgb);
+  --lamp-highlight: rgba(255, 248, 224, 0.7);
 }
 
+.pilot-lamp-evidence,
 .pilot-lamp-green {
-  background:
-    radial-gradient(
-      circle at 35% 35%,
-      rgba(238, 250, 221, 0.68),
-      transparent 42%
-    ),
-    var(--color-phosphor);
-  box-shadow:
-    inset 0 1px 1px rgba(0, 0, 0, 0.4),
-    0 0 10px rgba(114, 179, 90, 0.42),
-    0 0 3px var(--color-phosphor);
+  --lamp-signal: var(--signal-evidence);
+  --lamp-rgb: var(--signal-evidence-rgb);
+  --lamp-highlight: rgba(239, 250, 221, 0.68);
 }
 
+.pilot-lamp-greenfield {
+  --lamp-signal: var(--signal-greenfield);
+  --lamp-rgb: var(--signal-greenfield-rgb);
+  --lamp-highlight: rgba(226, 252, 237, 0.66);
+}
+
+.pilot-lamp-brownfield {
+  --lamp-signal: var(--signal-brownfield);
+  --lamp-rgb: var(--signal-brownfield-rgb);
+  --lamp-highlight: rgba(251, 224, 204, 0.66);
+}
+
+.pilot-lamp-reference,
 .pilot-lamp-olive {
-  background:
-    radial-gradient(
-      circle at 35% 35%,
-      rgba(239, 229, 174, 0.66),
-      transparent 42%
-    ),
-    var(--color-verdigris);
-  box-shadow:
-    inset 0 1px 1px rgba(0, 0, 0, 0.4),
-    0 0 10px rgba(138, 122, 56, 0.44),
-    0 0 3px var(--color-verdigris);
+  --lamp-signal: var(--signal-reference);
+  --lamp-rgb: var(--signal-reference-rgb);
+  --lamp-highlight: rgba(239, 229, 174, 0.66);
 }
 
+.pilot-lamp-change,
 .pilot-lamp-red {
-  background:
-    radial-gradient(
-      circle at 35% 35%,
-      rgba(255, 236, 230, 0.7),
-      transparent 42%
-    ),
-    var(--color-rubedo);
-  box-shadow:
-    inset 0 1px 1px rgba(0, 0, 0, 0.4),
-    0 0 10px rgba(201, 106, 85, 0.42),
-    0 0 3px var(--color-rubedo);
+  --lamp-signal: var(--signal-change);
+  --lamp-rgb: var(--signal-change-rgb);
+  --lamp-highlight: rgba(255, 236, 230, 0.7);
 }
 
 .pilot-lamp-off {
+  --lamp-signal: var(--color-line);
+  --lamp-rgb: 70, 57, 44;
+  --lamp-highlight: rgba(240, 226, 204, 0.12);
   background:
     radial-gradient(
       circle at 35% 35%,

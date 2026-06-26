@@ -15,12 +15,14 @@ const steps = [
     label: "Pull",
     icon: Inbox,
     description: "Capture the ticket and intent in an intake file.",
+    signal: "core",
   },
   {
     number: "02",
     label: "Spec",
     icon: FileText,
     description: "Write requirements, each with a verification method.",
+    signal: "reference",
   },
   {
     number: "03",
@@ -28,12 +30,14 @@ const steps = [
     icon: ListChecks,
     description:
       "Hand the agent a bounded packet: scope, do-not-change, verify.",
+    signal: "change",
   },
   {
     number: "04",
     label: "Run",
     icon: Terminal,
     description: "The agent implements and pastes real evidence.",
+    signal: "core",
   },
   {
     number: "05",
@@ -41,12 +45,14 @@ const steps = [
     icon: ScanEye,
     description:
       "Check evidence per requirement; human attention where needed.",
+    signal: "evidence",
   },
   {
     number: "06",
     label: "Close",
     icon: GitMerge,
     description: "Merge, save findings, update the board.",
+    signal: "reference",
   },
 ];
 
@@ -167,26 +173,31 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
           </p>
         </div>
       </div>
-      <ol className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <ol
+        className={`loop-step-grid grid grid-cols-1 gap-5 md:grid-cols-2 ${
+          linkSteps ? "loop-step-grid-linked" : "xl:grid-cols-3"
+        }`}
+      >
         {steps.map((step, index) => {
           const Icon = step.icon;
-          const showConnector = index < steps.length - 1 && index % 3 !== 2;
+          const showConnector =
+            !linkSteps && index < steps.length - 1 && index % 3 !== 2;
           const cardClassName =
-            "focus-ring group relative flex min-h-[13rem] flex-col gap-3 p-4 panel-raised rivet-row transition-all duration-150 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-2px_0_rgba(0,0,0,0.5)]";
+            `loop-step-card loop-step-card-${step.signal} focus-ring group relative flex min-h-[13rem] flex-col gap-3 p-4 panel-raised rivet-row transition-all duration-150 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-2px_0_rgba(0,0,0,0.5)]`;
           const content = (
             <>
               <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-medium text-brass">
+                <span className="loop-step-index font-mono text-xs font-medium">
                   {step.number}
                 </span>
                 <SignalPulse className="opacity-60 group-hover:opacity-100" />
               </div>
               <div className="flex items-center gap-2">
                 <Icon
-                  className="h-5 w-5 text-corpus-yellow"
+                  className="loop-step-icon h-5 w-5"
                   aria-hidden="true"
                 />
-                <span className="font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
+                <span className="loop-step-label font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
                   {step.label}
                 </span>
               </div>

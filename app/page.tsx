@@ -204,7 +204,7 @@ function HeroProofStrip() {
           key={proof.label}
           className="group flex min-w-0 items-start gap-3 rounded-panel border border-panel-border bg-panel/80 px-3 py-3 shadow-[inset_0_1px_0_rgba(240,226,204,0.04)] transition-colors duration-150 hover:border-brass/45"
         >
-          <PilotLamp color="amber" className="mt-0.5 scale-75" />
+                          <PilotLamp color="core" className="mt-0.5 scale-75" />
           <div className="min-w-0">
             <p className="font-mono text-[0.68rem] font-medium uppercase tracking-[0.12em] text-brass">
               {proof.label}

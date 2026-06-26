@@ -224,9 +224,9 @@ export default function KitchenSinkPage() {
 
       <PreviewSection id="pilot-lamps" index="06" title="Pilot lamps">
         <div className="flex flex-wrap items-center gap-6">
-          <PilotLamp color="amber" pulse label="active" />
-          <PilotLamp color="green" label="ok" />
-          <PilotLamp color="red" label="fault" />
+          <PilotLamp color="core" pulse label="active" />
+          <PilotLamp color="evidence" label="ok" />
+          <PilotLamp color="change" label="fault" />
           <PilotLamp color="off" label="idle" />
         </div>
       </PreviewSection>

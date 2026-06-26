@@ -218,7 +218,7 @@ export default function GetStartedPage() {
           </div>
           <Heading className="mt-3">Pick a setup path</Heading>
           <p className="mt-3 max-w-2xl text-concrete-400">
-            Start clean for a fresh workspace. Adopt the kit when the code
+            Start clean for a greenfield workspace. Adopt the kit when the code
             already exists.
           </p>
         </div>
@@ -240,7 +240,7 @@ export default function GetStartedPage() {
                 <p
                   className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles.greenfield.text}`}
                 >
-                  starter kit
+                  greenfield / starter kit
                 </p>
                 <Heading className="mt-2">New repo</Heading>
               </div>
@@ -254,7 +254,7 @@ export default function GetStartedPage() {
           <dl className="setup-choice-facts">
             <div>
               <dt>Best for</dt>
-              <dd>Starting a Corpus-native workspace.</dd>
+              <dd>Starting a greenfield Corpus workspace.</dd>
             </div>
             <div>
               <dt>Creates</dt>
@@ -289,7 +289,7 @@ export default function GetStartedPage() {
                 <p
                   className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles.brownfield.text}`}
                 >
-                  adopting guide
+                  brownfield / adoption
                 </p>
                 <Heading className="mt-2">Existing project</Heading>
               </div>
@@ -302,7 +302,7 @@ export default function GetStartedPage() {
           <dl className="setup-choice-facts">
             <div>
               <dt>Best for</dt>
-              <dd>Adding the loop to an active codebase.</dd>
+              <dd>Adding the loop to a brownfield codebase.</dd>
             </div>
             <div>
               <dt>Adds</dt>

@@ -434,7 +434,7 @@ export default function CliPage() {
                               </div>
                             </div>
                             <PilotLamp
-                              color="green"
+                              color="reference"
                               className="absolute top-0 right-0"
                             />
                           </div>
@@ -473,10 +473,10 @@ export default function CliPage() {
                   className="group h-full border-panel-border hover:border-brass/50"
                 >
                   <div className="catalog-row catalog-row-orange">
-                    <HexBadge
-                      color="orange"
-                      className="catalog-row-badge mb-4"
-                    >
+                      <HexBadge
+                        color="change"
+                        className="catalog-row-badge mb-4"
+                      >
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </HexBadge>
                     <h3 className="catalog-row-title font-heading text-sm font-bold uppercase tracking-wide text-concrete-100">
