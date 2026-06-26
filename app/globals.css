@@ -1024,6 +1024,50 @@ body::after {
   }
 }
 
+/* Homepage mobile rhythm — keep the proof points visible without delaying the working preview. */
+@media (max-width: 48rem) {
+  .home-hero-section {
+    padding-top: 3.2rem;
+    padding-bottom: 3.25rem;
+  }
+
+  .home-hero-proof-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.55rem;
+    margin-top: 1.55rem;
+  }
+
+  .home-hero-proof {
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.62rem 0.72rem;
+    background:
+      linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.08), transparent 58%),
+      rgba(26, 21, 16, 0.78);
+  }
+
+  .home-hero-proof-lamp {
+    margin-top: 0;
+    transform: scale(0.68);
+  }
+
+  .home-hero-proof-label {
+    white-space: nowrap;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+
+  .home-hero-proof-body {
+    display: none;
+  }
+
+  .home-hero-preview {
+    margin-top: 1.65rem;
+  }
+}
+
 /* Gilt band — a fine diagonal guilloche hatch in gold. */
 .gilt-hatch {
   background-image: repeating-linear-gradient(

@@ -198,18 +198,19 @@ function StepRail() {
 
 function HeroProofStrip() {
   return (
-    <ul className="mx-auto mt-6 grid max-w-3xl gap-2 text-left sm:grid-cols-3">
+    <ul className="home-hero-proof-strip mx-auto mt-6 grid max-w-3xl gap-2 text-left sm:grid-cols-3">
       {heroProofs.map((proof) => (
         <li
           key={proof.label}
-          className="group flex min-w-0 items-start gap-3 rounded-panel border border-panel-border bg-panel/80 px-3 py-3 shadow-[inset_0_1px_0_rgba(240,226,204,0.04)] transition-colors duration-150 hover:border-brass/45"
+          aria-label={`${proof.label}: ${proof.text}`}
+          className="home-hero-proof group flex min-w-0 items-start gap-3 rounded-panel border border-panel-border bg-panel/80 px-3 py-3 shadow-[inset_0_1px_0_rgba(240,226,204,0.04)] transition-colors duration-150 hover:border-brass/45"
         >
-                          <PilotLamp color="core" className="mt-0.5 scale-75" />
+          <PilotLamp color="core" className="home-hero-proof-lamp mt-0.5 scale-75" />
           <div className="min-w-0">
-            <p className="font-mono text-[0.68rem] font-medium uppercase tracking-[0.12em] text-brass">
+            <p className="home-hero-proof-label font-mono text-[0.68rem] font-medium uppercase tracking-[0.12em] text-brass">
               {proof.label}
             </p>
-            <p className="mt-1 text-sm leading-snug text-concrete-400">
+            <p className="home-hero-proof-body mt-1 text-sm leading-snug text-concrete-400">
               {proof.text}
             </p>
           </div>
@@ -223,7 +224,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={softwareApp} />
-      <section className="relative isolate overflow-hidden border-b border-panel-border py-16 sm:py-20">
+      <section className="home-hero-section relative isolate overflow-hidden border-b border-panel-border py-16 sm:py-20">
         <HeroHexGrid />
         <Section className="ambient-header relative z-10">
           <PageHero
@@ -258,7 +259,7 @@ export default function HomePage() {
             <HeroProofStrip />
           </PageHero>
 
-          <Panel brushed screws className="mx-auto mt-10 max-w-6xl p-3">
+          <Panel brushed screws className="home-hero-preview mx-auto mt-10 max-w-6xl p-3">
             <div className="grid min-w-0 gap-3 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
               <div className="min-w-0 rounded-panel border border-panel-border bg-panel p-4">
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
