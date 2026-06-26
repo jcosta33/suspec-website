@@ -2097,6 +2097,73 @@ body::after {
   box-shadow: inset 0 1px 0 rgba(240, 226, 204, 0.045);
 }
 
+.cli-command-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11.5rem), 1fr));
+  gap: 0.5rem;
+  max-width: 54rem;
+}
+
+.cli-command-legend-item {
+  --cli-legend-signal: var(--signal-reference);
+  --cli-legend-rgb: var(--signal-reference-rgb);
+  display: grid;
+  min-height: 3.45rem;
+  align-content: center;
+  gap: 0.16rem;
+  border: 1px solid rgba(var(--cli-legend-rgb), 0.25);
+  border-left-color: rgba(var(--cli-legend-rgb), 0.68);
+  border-radius: calc(var(--radius-control) - 3px);
+  background:
+    linear-gradient(90deg, rgba(var(--cli-legend-rgb), 0.085), transparent 62%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--cli-legend-rgb), 0.022) 0 1px,
+      transparent 1px 0.78rem
+    ),
+    rgba(10, 7, 5, 0.22);
+  padding: 0.48rem 0.6rem;
+  box-shadow:
+    inset 2px 0 0 rgba(var(--cli-legend-rgb), 0.2),
+    inset 0 1px 0 rgba(240, 226, 204, 0.04);
+}
+
+.cli-command-legend-item span:first-child {
+  color: var(--cli-legend-signal);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.cli-command-legend-item span:last-child {
+  color: var(--color-concrete-400);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.cli-command-legend-core {
+  --cli-legend-signal: var(--signal-core);
+  --cli-legend-rgb: var(--signal-core-rgb);
+}
+
+.cli-command-legend-evidence {
+  --cli-legend-signal: var(--signal-evidence);
+  --cli-legend-rgb: var(--signal-evidence-rgb);
+}
+
+.cli-command-legend-change {
+  --cli-legend-signal: var(--signal-change);
+  --cli-legend-rgb: var(--signal-change-rgb);
+}
+
+.cli-command-legend-reference {
+  --cli-legend-signal: var(--signal-reference);
+  --cli-legend-rgb: var(--signal-reference-rgb);
+}
+
 /* Skill anatomy rail — small manual index for SKILL.md. */
 .skill-anatomy-panel {
   border-color: rgba(var(--signal-reference-rgb), 0.34);

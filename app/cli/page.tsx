@@ -400,17 +400,28 @@ export default function CliPage() {
         registerTone="reference"
         className="flex flex-col gap-12"
       >
-        <div className="max-w-2xl">
+        <div className="max-w-5xl">
           <div className="section-kicker section-kicker-reference">
             <Bug className="h-4 w-4" aria-hidden="true" />
             <span>commands.md — public surface</span>
           </div>
           <Heading className="mt-3">Commands</Heading>
-          <p className="mt-4 text-concrete-400">
+          <p className="mt-4 max-w-2xl text-concrete-400">
             Start with <code className="text-corpus-yellow">corpus check</code>
             and <code className="text-corpus-yellow">corpus review</code>. Use
             the rest when the workspace needs them.
           </p>
+          <ul className="cli-command-legend mt-6" aria-label="Command family color key">
+            {commandFamilies.map((family) => (
+              <li
+                key={family.label}
+                className={`cli-command-legend-item cli-command-legend-${family.signal}`}
+              >
+                <span>{family.label}</span>
+                <span>{family.detail}</span>
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="grid gap-8">
           {commandFamilies.map((family) => {
