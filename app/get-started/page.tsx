@@ -159,6 +159,26 @@ const setupPath = [
   signal: SignalRole;
 }>;
 
+const setupRoutes = [
+  {
+    role: "greenfield",
+    label: "Greenfield",
+    path: "New repo",
+    note: "Fresh workspace",
+  },
+  {
+    role: "brownfield",
+    label: "Brownfield",
+    path: "Existing project",
+    note: "Adopt current repo",
+  },
+] as const satisfies Array<{
+  role: Extract<SignalRole, "greenfield" | "brownfield">;
+  label: string;
+  path: string;
+  note: string;
+}>;
+
 export default function GetStartedPage() {
   return (
     <div className="flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
@@ -239,6 +259,22 @@ export default function GetStartedPage() {
             Start clean for a greenfield workspace. Adopt the kit when the code
             already exists.
           </p>
+          <ul className="setup-route-key mt-5" aria-label="Setup routes">
+            {setupRoutes.map((route) => (
+              <li
+                key={route.role}
+                className={`setup-route-key-item setup-route-key-${route.role}`}
+                aria-label={`${route.label}: ${route.path}. ${route.note}.`}
+              >
+                <PilotLamp color={route.role} className="scale-75" />
+                <span className="setup-route-key-copy">
+                  <span>{route.label}</span>
+                  <span>{route.path}</span>
+                </span>
+                <span className="setup-route-key-note">{route.note}</span>
+              </li>
+            ))}
+          </ul>
         </div>
         <Card
           href="https://github.com/jcosta33/corpus-starter-kit"

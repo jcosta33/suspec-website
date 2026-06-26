@@ -28,6 +28,10 @@ function normalizeLampColor(
     return "change";
   }
 
+  if (color === "green") {
+    return "evidence";
+  }
+
   return normalizeSignalRole(color);
 }
 

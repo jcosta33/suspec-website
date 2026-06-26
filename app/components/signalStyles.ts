@@ -159,14 +159,13 @@ export const signalRoles = {
 
 export type SignalRole = keyof typeof signalRoles;
 
-export type SignalAlias = "yellow" | "gold" | "green" | "orange" | "olive" | "brass";
+export type SignalAlias = "yellow" | "gold" | "orange" | "olive" | "brass";
 
 export type SignalInput = SignalRole | SignalAlias;
 
 const aliases = {
   yellow: "core",
   gold: "core",
-  green: "evidence",
   orange: "change",
   olive: "reference",
   brass: "muted",
