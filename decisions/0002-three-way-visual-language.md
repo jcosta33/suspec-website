@@ -52,6 +52,29 @@ utility with a small ritual charge.
   docs notes, source metadata, and annotated examples.
 - **Copy:** ritual/manuscript words are labels, not extended metaphors.
 
+### Color grammar
+
+Color is semantic signage, not decoration. Pick the role at the group level
+first, then let that role drive the label, rail, lamp, border, hover state, and
+small icon treatment. Item-level color variance is reserved for places where
+the reader is actually comparing categories.
+
+| Role | Color job | Use for |
+|---|---|---|
+| Core gold | Corpus identity and primary action | logo, primary CTA, active nav, current loop state |
+| Reference verdigris | Reading, manuals, catalogs, ledgers | docs, command references, read-only file lists, source notes |
+| Evidence green | Proof and review confidence | Pass states, verified output, review/evidence sections |
+| Greenfield green | Fresh starts | new repo, starter kit, first-run setup only |
+| Brownfield copper | Existing-code adoption | existing project, adoption path, repo-with-history setup only |
+| Red clay | Change or attention | edits, fixes, run work, blocked/unverified states, failure modes |
+| Brass | Hardware chrome and neutral detail | screws, rails, counters, low-emphasis labels |
+
+Do not use evidence green for a problem merely because the word "evidence"
+appears in the copy. Missing evidence is an attention/change state. Do not use
+greenfield green for any "good" or "fresh-looking" surface unless the user is
+starting a new workspace. Brownfield means existing code; it should not be
+represented by green.
+
 ## Consequences
 
 - Positive: the six-step loop, evidence packets, and docs canon now have a

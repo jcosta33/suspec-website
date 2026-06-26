@@ -75,7 +75,7 @@ const guardrails = [
     title: "Read-only",
     text: "It reads workspace facts. It does not write artifacts.",
     icon: ShieldCheck,
-    signal: "evidence",
+    signal: "reference",
   },
   {
     title: "No verdict",

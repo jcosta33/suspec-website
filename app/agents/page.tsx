@@ -116,7 +116,7 @@ const rosterGroups = [
     title: "Read-only lane",
     note: "Review, inspect, verify, or challenge without writing artifacts.",
     tone: "read-only",
-    signal: "evidence",
+    signal: "reference",
     items: [
       {
         label: "Review",

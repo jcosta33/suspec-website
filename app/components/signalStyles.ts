@@ -25,7 +25,7 @@ export const signalRoleMeta = {
     tone: "proof green",
     use: "Review proof, verified output, pass states, and evidence-oriented sections.",
     surface: "checkpoint ticks, pass lamps, and review rails",
-    avoid: "Do not use for setup paths, existing projects, or generic 'nice' accents.",
+    avoid: "Do not use for setup paths, missing evidence, existing projects, or generic 'nice' accents.",
     example: "PASS, verified output, human-reviewed evidence.",
   },
   greenfield: {
@@ -35,7 +35,7 @@ export const signalRoleMeta = {
     tone: "fresh field green",
     use: "Fresh workspace setup paths and first-run starts.",
     surface: "upright seed rows and clean-start setup paths",
-    avoid: "Do not use for existing-project adoption or review success.",
+    avoid: "Do not use for existing-project adoption, review success, or generic positive emphasis.",
     example: "New repo, starter kit, first pass through the docs.",
   },
   brownfield: {
@@ -45,7 +45,7 @@ export const signalRoleMeta = {
     tone: "brownfield copper",
     use: "Existing-project adoption paths only.",
     surface: "diagonal survey hatching and adoption plates",
-    avoid: "Do not use for new work, success, or warnings.",
+    avoid: "Do not use for new work, success, warnings, or generic warmth.",
     example: "Existing project, adopt kit, repo with history.",
   },
   change: {
