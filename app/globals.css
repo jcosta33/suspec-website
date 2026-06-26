@@ -893,6 +893,77 @@ body::after {
   }
 }
 
+/* Skill anatomy rail — small manual index for SKILL.md. */
+.skill-anatomy-panel {
+  border-color: rgba(216, 138, 36, 0.34);
+  background:
+    radial-gradient(
+      80% 80% at 50% 0%,
+      rgba(216, 138, 36, 0.075),
+      transparent 62%
+    ),
+    var(--color-panel-raised);
+}
+
+.skill-anatomy-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--color-panel-border);
+  background:
+    linear-gradient(90deg, rgba(216, 138, 36, 0.08), transparent 46%),
+    rgba(10, 7, 5, 0.22);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skill-anatomy-header p {
+  color: var(--color-corpus-yellow);
+}
+
+.skill-anatomy-header span {
+  color: var(--color-concrete-400);
+}
+
+.skill-anatomy-rail {
+  background:
+    linear-gradient(90deg, rgba(216, 138, 36, 0.16), transparent 22%),
+    var(--color-panel-border);
+}
+
+.skill-anatomy-step {
+  min-height: 9.4rem;
+  background-image:
+    radial-gradient(
+      70% 64% at 18% 0%,
+      rgba(240, 184, 92, 0.075),
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(240, 226, 204, 0.025),
+      transparent 44%
+    );
+}
+
+@media (max-width: 40rem) {
+  .skill-anatomy-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .skill-anatomy-step {
+    min-height: 8.8rem;
+  }
+}
+
 @keyframes pulse-slow {
   0%,
   100% {

@@ -1031,7 +1031,7 @@
 .docs-index-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 1rem;
+  gap: 0.875rem;
   margin-top: 1.5rem;
 }
 
@@ -1039,7 +1039,7 @@
 .docs-index-stack {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 1rem;
+  gap: 0.875rem;
 }
 
 .docs-index-section {
@@ -1099,6 +1099,11 @@
   .docs-index-top {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
+  }
+
+  .docs-index-top > .docs-index-section,
+  .docs-index-stack {
+    height: 100%;
   }
 
   .docs-index-stack {

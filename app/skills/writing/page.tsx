@@ -122,10 +122,27 @@ export default function WritingSkillsPage() {
       </Section>
 
       <Section>
-        <Panel brushed screws className="p-0">
-          <ol className="process-strip grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-4">
+        <Panel
+          brushed
+          className="mcp-adapter-panel skill-anatomy-panel p-0"
+        >
+          <div className="mcp-adapter-header skill-anatomy-header">
+            <p className="m-0 font-mono text-[0.68rem] font-bold tracking-[0.1em] text-corpus-yellow uppercase">
+              Skill anatomy
+            </p>
+            <span className="font-mono text-[0.68rem] font-bold tracking-[0.1em] text-concrete-400 uppercase">
+              one markdown instruction file
+            </span>
+          </div>
+          <ol
+            className="mcp-adapter-rail skill-anatomy-rail process-strip grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-4"
+            aria-label="Skill file anatomy"
+          >
             {skillAnatomy.map((item, index) => (
-              <li key={item.label} className="bg-panel-raised/95 p-5 sm:p-6">
+              <li
+                key={item.label}
+                className="mcp-adapter-step skill-anatomy-step min-h-[9.4rem] bg-panel-raised/95 p-5 sm:p-6"
+              >
                 <p className="font-mono text-xs font-semibold uppercase tracking-wide text-corpus-yellow">
                   {String(index + 1).padStart(2, "0")}
                 </p>
