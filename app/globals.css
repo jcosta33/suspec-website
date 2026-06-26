@@ -801,6 +801,98 @@ body::after {
   }
 }
 
+/* CLI command rail — command families as a compact operating surface. */
+.cli-surface-panel {
+  border-color: rgba(168, 147, 58, 0.36);
+  background:
+    radial-gradient(
+      80% 80% at 50% 0%,
+      rgba(168, 147, 58, 0.075),
+      transparent 62%
+    ),
+    var(--color-panel-raised);
+}
+
+.cli-surface-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--color-panel-border);
+  background:
+    linear-gradient(90deg, rgba(168, 147, 58, 0.08), transparent 46%),
+    rgba(10, 7, 5, 0.22);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cli-surface-header p {
+  color: var(--color-olive);
+}
+
+.cli-surface-header span {
+  color: var(--color-concrete-400);
+}
+
+.cli-command-rail {
+  background:
+    linear-gradient(90deg, rgba(168, 147, 58, 0.18), transparent 22%),
+    var(--color-panel-border);
+}
+
+.cli-command-step {
+  background-image:
+    radial-gradient(
+      70% 64% at 18% 0%,
+      rgba(168, 147, 58, 0.08),
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(240, 226, 204, 0.025),
+      transparent 44%
+    );
+}
+
+.cli-command-link {
+  min-height: 12.3rem;
+}
+
+@media (min-width: 64rem) {
+  .cli-command-step:not(:last-child) .cli-command-link::after {
+    content: "";
+    position: absolute;
+    right: -0.55rem;
+    top: 50%;
+    width: 1.1rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      rgba(168, 147, 58, 0.54),
+      rgba(168, 147, 58, 0.1)
+    );
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 40rem) {
+  .cli-surface-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .cli-command-link {
+    min-height: 10.2rem;
+  }
+}
+
 @keyframes pulse-slow {
   0%,
   100% {

@@ -206,18 +206,25 @@ export default function CliPage() {
       </Section>
 
       <Section>
-        <Panel brushed screws className="p-0">
+        <Panel brushed screws className="cli-surface-panel p-0">
+          <div className="cli-surface-header">
+            <p>Command families</p>
+            <span>optional helper surface</span>
+          </div>
           <ol
-            className="process-strip grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
+            className="cli-command-rail process-strip grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
             aria-label="corpus-cli command families"
           >
             {commandFamilies.map((family, index) => {
               const Icon = family.icon;
               return (
-                <li key={family.label} className="bg-panel-raised/95">
+                <li
+                  key={family.label}
+                  className="cli-command-step bg-panel-raised/95"
+                >
                   <a
                     href={`#${family.id}`}
-                    className="focus-ring group block h-full p-5 transition-colors duration-150 hover:bg-panel sm:p-6"
+                    className="cli-command-link focus-ring group block h-full p-5 transition-colors duration-150 hover:bg-panel sm:p-6"
                     aria-label={`Jump to ${family.label.toLowerCase()} commands`}
                   >
                     <div className="flex items-center gap-3">
