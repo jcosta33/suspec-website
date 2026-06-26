@@ -210,8 +210,13 @@ export default function SkillsPage() {
             matches.
           </p>
         </PaperArtifact>
-        <Card screws className="h-full">
-          <div className="grid gap-4 sm:grid-cols-3">
+        <Card
+          screws
+          className="repo-manifest-card h-full"
+          contentClassName="repo-manifest-content"
+        >
+          <p className="repo-manifest-label">guide files</p>
+          <div className="repo-manifest-grid">
             <SignalStat label="review" value="4" signal="evidence" />
             <SignalStat label="change" value="10" signal="change" />
             <SignalStat
@@ -221,7 +226,7 @@ export default function SkillsPage() {
               valueClassName="font-mono text-sm text-concrete-300"
             />
           </div>
-          <p className="mt-5 text-sm leading-relaxed text-concrete-400">
+          <p className="repo-manifest-note">
             Install one guide at a time. The description is the trigger; the
             body is the checklist.
           </p>

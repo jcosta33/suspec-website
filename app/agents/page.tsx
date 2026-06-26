@@ -228,8 +228,13 @@ export default function AgentsPage() {
         >
           <p>A worker can return evidence. It cannot certify its own result.</p>
         </PaperArtifact>
-        <Card screws className="h-full">
-          <div className="grid gap-4 sm:grid-cols-3">
+        <Card
+          screws
+          className="repo-manifest-card h-full"
+          contentClassName="repo-manifest-content"
+        >
+          <p className="repo-manifest-label">role files</p>
+          <div className="repo-manifest-grid">
             <SignalStat label="workers" value="8" signal="core" />
             <SignalStat label="hooks" value="2" signal="muted" />
             <SignalStat
@@ -239,7 +244,7 @@ export default function AgentsPage() {
               valueClassName="font-mono text-sm text-concrete-300"
             />
           </div>
-          <p className="mt-5 text-sm leading-relaxed text-concrete-400">
+          <p className="repo-manifest-note">
             This page is a roster. The repo holds the files; the docs explain
             when to delegate.
           </p>
