@@ -49,8 +49,8 @@ role's usage, example, and "do not use for" guardrail:
 | `--c-brass` | `#BF7927` | secondary gold, borders |
 | `--c-complement` | `#2472D8` | exact HSL complement to aurum; diagnostic accent only |
 | `--c-phosphor` | `#8ABF6B` | evidence / verified proof |
-| `--c-greenfield` | `#62C79D` | fresh workspace setup paths only |
-| `--c-brownfield` | `#BC8055` | existing-project adoption paths only |
+| `--c-greenfield` | `#65C37F` | fresh workspace setup paths only |
+| `--c-brownfield` | `#B2815C` | existing-project adoption paths only |
 | `--c-rubedo` | `#CA7059` | change / attention / blocked |
 | `--c-verdigris` | `#76B8A9` | reference, docs, catalog surfaces |
 | `--c-paper` | `#F0E2CC` | manuscript artifact surfaces |

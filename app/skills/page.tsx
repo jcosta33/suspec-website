@@ -353,48 +353,55 @@ export default function SkillsPage() {
             <Badge variant="ready">on demand</Badge>
           </div>
         </div>
-        <ul className="reveal grid gap-4 sm:grid-cols-2">
-          {stances.map((s) => {
-            const Icon = s.icon;
-            return (
-              <li key={s.skill}>
-                <a
-                  href={`https://github.com/jcosta33/corpus-skills/tree/main/skills/${s.skill}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${s.skill} skill on GitHub (opens in new tab)`}
-                  className="group block rounded-sm focus-ring"
-                >
-                  <Card
-                    className={`h-full border-panel-border ${signalRoles.evidence.hoverBorder}`}
+        <Panel
+          brushed
+          screws
+          className="skill-guide-catalog skill-guide-catalog-evidence p-0"
+        >
+          <div className="skill-guide-catalog-header">
+            <span>review catalog</span>
+            <span>{stances.length} guides</span>
+          </div>
+          <ul className="skill-guide-list">
+            {stances.map((s) => {
+              const Icon = s.icon;
+              return (
+                <li key={s.skill}>
+                  <a
+                    href={`https://github.com/jcosta33/corpus-skills/tree/main/skills/${s.skill}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${s.skill} skill on GitHub (opens in new tab)`}
+                    className="skill-guide-row catalog-row catalog-row-evidence group focus-ring"
                   >
-                    <div className="catalog-row catalog-row-evidence flex items-start justify-between gap-4">
-                      <div className="flex items-start gap-4">
-                        <HexBadge color="evidence" className="catalog-row-badge">
-                          <Icon className="h-5 w-5" aria-hidden="true" />
-                        </HexBadge>
-                        <div>
-                          <h3
-                            className={`catalog-row-title font-mono text-sm font-semibold ${signalRoles.evidence.text}`}
-                          >
-                            {s.skill}
-                          </h3>
-                          <p className="catalog-row-copy mt-1 text-sm leading-relaxed text-concrete-400">
-                            {s.use}
-                          </p>
-                        </div>
+                    <div className="flex min-w-0 items-start gap-4">
+                      <HexBadge
+                        color="evidence"
+                        className="catalog-row-badge skill-guide-row-badge"
+                      >
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </HexBadge>
+                      <div className="min-w-0">
+                        <h3
+                          className={`catalog-row-title font-mono text-sm font-semibold ${signalRoles.evidence.text}`}
+                        >
+                          {s.skill}
+                        </h3>
+                        <p className="catalog-row-copy mt-1 text-sm leading-relaxed text-concrete-400">
+                          {s.use}
+                        </p>
                       </div>
-                      <ExternalLink
-                        className="mt-0.5 h-4 w-4 shrink-0 text-concrete-500 opacity-0 transition-opacity group-hover:opacity-100 group-focus:opacity-100"
-                        aria-hidden="true"
-                      />
                     </div>
-                  </Card>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+                    <ExternalLink
+                      className="skill-guide-row-arrow"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </Panel>
       </Section>
 
       <Section
@@ -414,48 +421,55 @@ export default function SkillsPage() {
             rewrite, migration, performance, testing, or docs.
           </p>
         </div>
-        <ul className="reveal grid gap-4 sm:grid-cols-2">
-          {authoring.map((s) => {
-            const Icon = s.icon;
-            return (
-              <li key={s.skill}>
-                <a
-                  href={`https://github.com/jcosta33/corpus-skills/tree/main/skills/${s.skill}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${s.skill} skill on GitHub (opens in new tab)`}
-                  className="group block rounded-sm focus-ring"
-                >
-                  <Card
-                    className={`h-full border-panel-border ${signalRoles.change.hoverBorder}`}
+        <Panel
+          brushed
+          screws
+          className="skill-guide-catalog skill-guide-catalog-change p-0"
+        >
+          <div className="skill-guide-catalog-header">
+            <span>change catalog</span>
+            <span>{authoring.length} guides</span>
+          </div>
+          <ul className="skill-guide-list">
+            {authoring.map((s) => {
+              const Icon = s.icon;
+              return (
+                <li key={s.skill}>
+                  <a
+                    href={`https://github.com/jcosta33/corpus-skills/tree/main/skills/${s.skill}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${s.skill} skill on GitHub (opens in new tab)`}
+                    className="skill-guide-row catalog-row catalog-row-change group focus-ring"
                   >
-                    <div className="catalog-row catalog-row-change flex items-start justify-between gap-4">
-                      <div className="flex items-start gap-4">
-                        <HexBadge color="change" className="catalog-row-badge">
-                          <Icon className="h-5 w-5" aria-hidden="true" />
-                        </HexBadge>
-                        <div>
-                          <h3
-                            className={`catalog-row-title font-mono text-sm font-semibold ${signalRoles.change.text}`}
-                          >
-                            {s.skill}
-                          </h3>
-                          <p className="catalog-row-copy mt-1 text-sm leading-relaxed text-concrete-400">
-                            {s.use}
-                          </p>
-                        </div>
+                    <div className="flex min-w-0 items-start gap-4">
+                      <HexBadge
+                        color="change"
+                        className="catalog-row-badge skill-guide-row-badge"
+                      >
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </HexBadge>
+                      <div className="min-w-0">
+                        <h3
+                          className={`catalog-row-title font-mono text-sm font-semibold ${signalRoles.change.text}`}
+                        >
+                          {s.skill}
+                        </h3>
+                        <p className="catalog-row-copy mt-1 text-sm leading-relaxed text-concrete-400">
+                          {s.use}
+                        </p>
                       </div>
-                      <ExternalLink
-                        className="mt-0.5 h-4 w-4 shrink-0 text-concrete-500 opacity-0 transition-opacity group-hover:opacity-100 group-focus:opacity-100"
-                        aria-hidden="true"
-                      />
                     </div>
-                  </Card>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+                    <ExternalLink
+                      className="skill-guide-row-arrow"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </Panel>
       </Section>
 
       <Section
