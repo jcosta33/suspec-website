@@ -262,7 +262,7 @@ export default function GetStartedPage() {
             </div>
           </dl>
           <code className="setup-choice-command">GitHub template</code>
-          <span className="inline-flex min-h-11 w-fit items-center gap-2 text-sm font-semibold text-concrete-100 underline decoration-brass/60 underline-offset-4 transition-colors group-hover:text-corpus-yellow group-hover:decoration-corpus-yellow">
+          <span className="setup-choice-action inline-flex min-h-11 w-fit items-center gap-2 text-sm font-semibold underline underline-offset-4 transition-colors">
             Use the starter kit{" "}
             <ArrowRight
               className="motion-nudge-x h-4 w-4"
@@ -310,7 +310,7 @@ export default function GetStartedPage() {
             </div>
           </dl>
           <code className="setup-choice-command">cp -R corpus-starter-kit/* .</code>
-          <span className="inline-flex min-h-11 w-fit items-center gap-2 text-sm font-semibold text-concrete-100 underline decoration-brass/60 underline-offset-4 transition-colors group-hover:text-corpus-yellow group-hover:decoration-corpus-yellow">
+          <span className="setup-choice-action inline-flex min-h-11 w-fit items-center gap-2 text-sm font-semibold underline underline-offset-4 transition-colors">
             Read the adopting guide{" "}
             <ArrowRight
               className="motion-nudge-x h-4 w-4"

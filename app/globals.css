@@ -4,9 +4,10 @@
   /* corpus — warm control surface + alchemical signal + manuscript archive.
      Palette math starts at primary gold #D88A24, HSL(34 71% 49%). Its exact
      complement is #2472D8, HSL(214 71% 49%), reserved for diagnostics only so
-     the public site stays warm. Visible roles use controlled neighbors of gold:
-     proof green for review/evidence, field green for greenfield starts, umber
-     for brownfield adoption, red clay for change/attention, olive for reference.
+     the public site stays warm. Public color is semantic, not decorative:
+     core gold = corpus identity and primary flow, proof green = review/evidence,
+     field green = new/greenfield setup, umber = existing/brownfield adoption,
+     red clay = change/attention, olive = docs/reference/catalogs.
      Never add an accent because a section "needs color"; choose the role first. */
   --color-night: #110e0c;
   --color-chassis: #16100c;
@@ -1618,9 +1619,14 @@ body::after {
   border: 1px solid var(--color-panel-border);
   background-color: var(--color-panel-raised);
   background-image:
+    linear-gradient(
+      90deg,
+      rgba(var(--plate-rgb), 0.045),
+      transparent 24%
+    ),
     radial-gradient(
       70% 58% at 16% 0%,
-      rgba(240, 184, 92, 0.07),
+      rgba(var(--plate-rgb), 0.07),
       transparent 62%
     ),
     radial-gradient(
@@ -1683,6 +1689,16 @@ body::after {
 .panel-raised:has(.catalog-row-reference, .catalog-row-olive) {
   --plate-signal: var(--signal-reference);
   --plate-rgb: var(--signal-reference-rgb);
+}
+
+.panel-raised:has(.catalog-row-greenfield) {
+  --plate-signal: var(--signal-greenfield);
+  --plate-rgb: var(--signal-greenfield-rgb);
+}
+
+.panel-raised:has(.catalog-row-brownfield) {
+  --plate-signal: var(--signal-brownfield);
+  --plate-rgb: var(--signal-brownfield-rgb);
 }
 
 .surface-glint {
@@ -1825,6 +1841,11 @@ body::after {
   --catalog-signal-soft: rgba(var(--signal-reference-rgb), 0.62);
 }
 
+.catalog-row-core {
+  --catalog-signal: var(--signal-core);
+  --catalog-signal-soft: rgba(var(--signal-core-rgb), 0.62);
+}
+
 .catalog-row-change {
   --catalog-signal: var(--signal-change);
   --catalog-signal-soft: rgba(var(--signal-change-rgb), 0.62);
@@ -1833,6 +1854,16 @@ body::after {
 .catalog-row-evidence {
   --catalog-signal: var(--signal-evidence);
   --catalog-signal-soft: rgba(var(--signal-evidence-rgb), 0.62);
+}
+
+.catalog-row-greenfield {
+  --catalog-signal: var(--signal-greenfield);
+  --catalog-signal-soft: rgba(var(--signal-greenfield-rgb), 0.62);
+}
+
+.catalog-row-brownfield {
+  --catalog-signal: var(--signal-brownfield);
+  --catalog-signal-soft: rgba(var(--signal-brownfield-rgb), 0.62);
 }
 
 .catalog-row-title {
@@ -1881,6 +1912,7 @@ body::after {
   --accent-rgb: var(--signal-core-rgb);
   --plate-signal: var(--accent-signal);
   --plate-rgb: var(--accent-rgb);
+  border-color: rgba(var(--accent-rgb), 0.28);
   background-image:
     linear-gradient(
       90deg,
@@ -2093,12 +2125,13 @@ body::after {
   --choice-rgb: var(--signal-core-rgb);
   --plate-signal: var(--choice-signal);
   --plate-rgb: var(--choice-rgb);
+  border-color: rgba(var(--choice-rgb), 0.44);
   background-image:
     linear-gradient(
       90deg,
-      rgba(var(--choice-rgb), 0.42) 0,
-      rgba(var(--choice-rgb), 0.42) 2px,
-      transparent 2px
+      rgba(var(--choice-rgb), 0.5) 0,
+      rgba(var(--choice-rgb), 0.5) 3px,
+      transparent 3px
     ),
     radial-gradient(
       78% 68% at 10% 0%,
@@ -2116,6 +2149,11 @@ body::after {
       rgba(232, 222, 203, 0.045) 0%,
       transparent 38%
     );
+  box-shadow:
+    inset 3px 0 0 rgba(var(--choice-rgb), 0.34),
+    inset 0 1px 0 rgba(232, 222, 203, 0.07),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .kit-icon {
@@ -2177,6 +2215,17 @@ body::after {
   --choice-rgb: var(--signal-greenfield-rgb);
 }
 
+.setup-choice-card-greenfield .kit-icon {
+  background:
+    linear-gradient(180deg, rgba(var(--choice-rgb), 0.12), transparent 62%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--choice-rgb), 0.1) 0 1px,
+      transparent 1px 14px
+    ),
+    var(--color-panel-raised);
+}
+
 .setup-choice-card-greenfield .setup-choice-command {
   background:
     linear-gradient(90deg, rgba(var(--choice-rgb), 0.16), transparent 42%),
@@ -2198,6 +2247,17 @@ body::after {
   --choice-rgb: var(--signal-brownfield-rgb);
 }
 
+.setup-choice-card-brownfield .kit-icon {
+  background:
+    linear-gradient(180deg, rgba(var(--choice-rgb), 0.13), transparent 62%),
+    repeating-linear-gradient(
+      -24deg,
+      rgba(var(--choice-rgb), 0.11) 0 1px,
+      transparent 1px 12px
+    ),
+    var(--color-panel-raised);
+}
+
 .setup-choice-card-brownfield .setup-choice-command {
   background:
     linear-gradient(90deg, rgba(var(--choice-rgb), 0.16), transparent 42%),
@@ -2211,6 +2271,28 @@ body::after {
 
 .setup-choice-card :is(.text-corpus-yellow, .text-brass) {
   color: var(--choice-signal);
+}
+
+.setup-choice-card:hover,
+.setup-choice-card:focus-within {
+  border-color: rgba(var(--choice-rgb), 0.66);
+  box-shadow:
+    inset 3px 0 0 rgba(var(--choice-rgb), 0.54),
+    inset 0 1px 0 rgba(232, 222, 203, 0.09),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(var(--choice-rgb), 0.07),
+    0 10px 24px rgba(0, 0, 0, 0.26);
+}
+
+.setup-choice-action {
+  color: var(--color-concrete-100);
+  text-decoration-color: rgba(var(--choice-rgb), 0.5);
+}
+
+.setup-choice-card:hover .setup-choice-action,
+.setup-choice-card:focus-within .setup-choice-action {
+  color: var(--choice-signal);
+  text-decoration-color: var(--choice-signal);
 }
 
 .setup-choice-index {
@@ -2388,7 +2470,7 @@ body::after {
 }
 
 .relation-card {
-  --relation-signal: var(--color-brass);
+  --relation-signal: var(--signal-reference);
 }
 
 .relation-card::before {
@@ -2421,7 +2503,7 @@ body::after {
 .relation-card-index {
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.68rem;
-  color: var(--color-brass);
+  color: var(--relation-signal);
   opacity: 0.78;
 }
 
@@ -2459,7 +2541,7 @@ body::after {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--color-brass);
+  color: var(--relation-signal);
 }
 
 .relation-card-body dd {
