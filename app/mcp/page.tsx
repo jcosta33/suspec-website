@@ -174,18 +174,25 @@ export default function McpPage() {
       </Section>
 
       <Section>
-        <Panel brushed screws className="p-0">
+        <Panel brushed screws className="mcp-adapter-panel p-0">
+          <div className="mcp-adapter-header">
+            <p>Request path</p>
+            <span>local stdio bridge</span>
+          </div>
           <ol
-            className="process-strip grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
+            className="mcp-adapter-rail process-strip grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
             aria-label="corpus-mcp request path"
           >
             {bridgeFlow.map((item, index) => {
               const Icon = item.icon;
               return (
-                <li key={item.label} className="relative bg-panel-raised/95">
+                <li
+                  key={item.label}
+                  className="mcp-adapter-step relative bg-panel-raised/95"
+                >
                   <a
                     href={item.href}
-                    className="focus-ring group block h-full p-5 transition-colors duration-150 hover:bg-panel sm:p-6"
+                    className="mcp-adapter-step-link focus-ring group block h-full p-5 transition-colors duration-150 hover:bg-panel sm:p-6"
                     aria-label={`Jump to ${item.label} details`}
                   >
                     <div className="flex items-center gap-3">
