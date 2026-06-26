@@ -34,7 +34,7 @@ const recoveryRoutes = [
 
 export default function NotFoundPage() {
   return (
-    <Section className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-8 overflow-hidden py-20 sm:py-24 md:min-h-[calc(100svh-22rem)] md:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] md:items-start md:pt-28">
+    <Section className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-8 overflow-hidden py-20 sm:py-24 md:min-h-[calc(100svh-22rem)] md:grid-cols-[minmax(18rem,0.85fr)_minmax(20rem,0.95fr)] md:items-start md:gap-12 md:pt-28 lg:gap-16">
       <div className="min-w-0 text-center md:text-left">
         <h1 className="font-heading text-6xl font-bold text-corpus-yellow">
           404
@@ -57,9 +57,22 @@ export default function NotFoundPage() {
             <Search className="h-4 w-4" aria-hidden="true" /> Search docs
           </ActionLink>
         </div>
+      </div>
+      <div className="grid w-full max-w-xl gap-5 md:justify-self-end">
+        <PaperArtifact
+          label="trace"
+          title="missing route"
+          meta="no matching exported page"
+          className="w-full"
+        >
+          <p>The requested path was not found in the site map.</p>
+          <p className="mt-4 text-pencil">
+            The docs index is usually the fastest way back.
+          </p>
+        </PaperArtifact>
         <nav
           aria-label="Recovery routes"
-          className="process-strip mx-auto mt-8 max-w-md overflow-hidden rounded-panel border border-panel-border bg-panel-raised/70 text-left shadow-[inset_0_1px_0_rgba(240,226,204,0.05)] md:mx-0"
+          className="process-strip overflow-hidden rounded-panel border border-panel-border bg-panel-raised/70 text-left shadow-[inset_0_1px_0_rgba(240,226,204,0.05)]"
         >
           {recoveryRoutes.map((route, index) => {
             const Icon = route.icon;
@@ -85,7 +98,7 @@ export default function NotFoundPage() {
                   </span>
                 </span>
                 <ArrowRight
-                  className="h-4 w-4 shrink-0 text-brass/70 transition-transform duration-150 group-hover:translate-x-0.5"
+                  className="h-4 w-4 shrink-0 text-brass/70 transition-transform duration-150 group-hover:translate-x-0.5 motion-reduce:transform-none"
                   aria-hidden="true"
                 />
               </Link>
@@ -93,17 +106,6 @@ export default function NotFoundPage() {
           })}
         </nav>
       </div>
-      <PaperArtifact
-        label="trace"
-        title="missing route"
-        meta="no matching exported page"
-        className="w-full max-w-full"
-      >
-        <p>The requested path was not found in the site map.</p>
-        <p className="mt-4 text-pencil">
-          The docs index is usually the fastest way back.
-        </p>
-      </PaperArtifact>
     </Section>
   );
 }
