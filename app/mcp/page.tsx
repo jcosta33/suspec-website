@@ -155,14 +155,14 @@ const bridgeFlow = [
     detail: "Claude Desktop, Cursor, or another MCP host.",
     icon: MessagesSquare,
     href: "#mcp-config",
-    signal: "reference",
+    signal: "muted",
   },
   {
     label: "stdio",
     detail: "A local process pipe, not a hosted service.",
     icon: Cable,
     href: "#install",
-    signal: "muted",
+    signal: "reference",
   },
   {
     label: "corpus-mcp",
@@ -218,8 +218,8 @@ export default function McpPage() {
       <Section register="01 / bridge" registerTone="reference">
         <Panel brushed screws className="mcp-adapter-panel p-0">
           <div className="mcp-adapter-header">
-            <p>Request path</p>
-            <span>local stdio bridge</span>
+            <p>client request</p>
+            <span>local stdio</span>
           </div>
           <ol
             className="mcp-adapter-rail process-strip process-strip-signal-reference grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
