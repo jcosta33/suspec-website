@@ -86,7 +86,7 @@ export default function KitchenSinkPage() {
   return (
     <div className="flex flex-col gap-14 py-14 sm:gap-16 sm:py-16">
       <Section className="ambient-header">
-        <PageHero eyebrow="component preview" title="Kitchen sink">
+        <PageHero eyebrow="component preview" title="Kitchen sink" tone="muted">
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-concrete-400">
             Internal preview for checking surfaces, state, and artifact
             treatments before they move into public pages.

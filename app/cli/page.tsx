@@ -204,6 +204,7 @@ export default function CliPage() {
       <Section className="ambient-header">
         <PageHero
           eyebrow="corpus-cli — reference implementation"
+          tone="reference"
           title={
             <>
               corpus<span className="text-corpus-yellow">-cli</span>

@@ -104,6 +104,7 @@ export default function WritingSkillsPage() {
       <Section className="ambient-header">
         <PageHero
           eyebrow="SKILL.md"
+          tone="reference"
           title={
             <>
               Writing a{" "}

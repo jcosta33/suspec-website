@@ -172,6 +172,7 @@ export default function McpPage() {
       <Section className="ambient-header">
         <PageHero
           eyebrow="mcp server / read-only adapter"
+          tone="evidence"
           title={
             <>
               corpus<span className="text-corpus-yellow">-mcp</span>

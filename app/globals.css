@@ -728,6 +728,133 @@ body::after {
       center / 100% 1px no-repeat;
 }
 
+.page-hero {
+  --hero-signal: var(--signal-core);
+  --hero-rgb: var(--signal-core-rgb);
+  position: relative;
+  isolation: isolate;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: -1.4rem 7% auto;
+  height: 8rem;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.38;
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(var(--hero-rgb), 0.12),
+      transparent 34%
+    ),
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--hero-rgb), 0.12) 48%,
+      transparent
+    );
+  filter: blur(0.2px);
+}
+
+.page-hero-tone-evidence {
+  --hero-signal: var(--signal-evidence);
+  --hero-rgb: var(--signal-evidence-rgb);
+}
+
+.page-hero-tone-greenfield {
+  --hero-signal: var(--signal-greenfield);
+  --hero-rgb: var(--signal-greenfield-rgb);
+}
+
+.page-hero-tone-brownfield {
+  --hero-signal: var(--signal-brownfield);
+  --hero-rgb: var(--signal-brownfield-rgb);
+}
+
+.page-hero-tone-change {
+  --hero-signal: var(--signal-change);
+  --hero-rgb: var(--signal-change-rgb);
+}
+
+.page-hero-tone-reference {
+  --hero-signal: var(--signal-reference);
+  --hero-rgb: var(--signal-reference-rgb);
+}
+
+.page-hero-tone-muted {
+  --hero-signal: var(--signal-muted);
+  --hero-rgb: var(--signal-muted-rgb);
+}
+
+.page-hero-title {
+  position: relative;
+}
+
+.page-hero-datum {
+  display: grid;
+  grid-template-columns: minmax(1.8rem, 1fr) auto minmax(1.8rem, 1fr);
+  align-items: center;
+  gap: 0.55rem;
+  width: min(21rem, 60vw);
+  height: 0.6rem;
+  margin: 0.85rem auto 0;
+  color: var(--hero-signal);
+  opacity: 0.82;
+}
+
+.page-hero-datum::before,
+.page-hero-datum::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--hero-rgb), 0.76)
+  );
+}
+
+.page-hero-datum::after {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--hero-rgb), 0.76),
+    transparent
+  );
+}
+
+.page-hero-datum span {
+  width: 0.28rem;
+  height: 0.28rem;
+  border-radius: 9999px;
+  background: currentColor;
+  box-shadow: 0 0 10px rgba(var(--hero-rgb), 0.5);
+}
+
+.page-hero-datum span:nth-child(2) {
+  width: 0.38rem;
+  height: 0.38rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-hero-datum span:nth-child(2) {
+    animation: hero-datum-pulse 4.8s ease-in-out infinite;
+  }
+}
+
+@keyframes hero-datum-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
 /* Gilt band — a fine diagonal guilloche hatch in gold. */
 .gilt-hatch {
   background-image: repeating-linear-gradient(

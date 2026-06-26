@@ -12,6 +12,14 @@ export interface PageHeroProps {
   title: ReactNode;
   cursor?: boolean;
   titleSize?: keyof typeof TITLE_SIZES;
+  tone?:
+    | "core"
+    | "evidence"
+    | "greenfield"
+    | "brownfield"
+    | "change"
+    | "reference"
+    | "muted";
   children?: ReactNode;
 }
 
@@ -20,17 +28,25 @@ export function PageHero({
   title,
   cursor = false,
   titleSize = "default",
+  tone = "core",
   children,
 }: PageHeroProps) {
   return (
-    <div className="motion-surface mx-auto w-full min-w-0 max-w-4xl text-center">
+    <div
+      className={`page-hero page-hero-tone-${tone} motion-surface mx-auto w-full min-w-0 max-w-4xl text-center`}
+    >
       <Eyebrow className="mb-6">{eyebrow}</Eyebrow>
       <h1
-        className={`max-w-full break-words font-heading text-4xl font-bold tracking-[0] text-concrete-100 ${TITLE_SIZES[titleSize]}`}
+        className={`page-hero-title max-w-full break-words font-heading text-4xl font-bold tracking-[0] text-concrete-100 ${TITLE_SIZES[titleSize]}`}
       >
         {title}
         {cursor && <TerminalCursor className="ml-2 align-middle" />}
       </h1>
+      <div className="page-hero-datum" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
       {children}
     </div>
   );

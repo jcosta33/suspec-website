@@ -176,6 +176,7 @@ export default function SkillsPage() {
       <Section className="ambient-header">
         <PageHero
           eyebrow="tool index / agent guides"
+          tone="evidence"
           title={
             <>
               corpus<span className="text-corpus-yellow">-skills</span>

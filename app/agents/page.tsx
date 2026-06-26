@@ -183,6 +183,7 @@ export default function AgentsPage() {
       <Section className="ambient-header">
         <PageHero
           eyebrow="worker files / agent roles"
+          tone="reference"
           title={
             <>
               corpus<span className="text-corpus-yellow">-agents</span>
