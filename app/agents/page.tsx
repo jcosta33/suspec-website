@@ -116,7 +116,7 @@ const rosterGroups = [
     title: "Read-only lane",
     note: "Review, inspect, verify, or challenge without writing artifacts.",
     tone: "read-only",
-    signal: "reference",
+    signal: "evidence",
     items: [
       {
         label: "Review",
@@ -386,11 +386,11 @@ export default function AgentsPage() {
 
       <Section
         register="04 / read-only"
-        registerTone="reference"
+        registerTone="evidence"
         className="flex flex-col gap-12"
       >
         <div className="max-w-2xl">
-          <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
+          <div className={`section-kicker ${signalRoles.evidence.sectionKicker}`}>
             <ShieldCheck className="h-4 w-4" aria-hidden="true" />
             <span>tier-1.conf — read-only workers</span>
           </div>
@@ -417,16 +417,16 @@ export default function AgentsPage() {
                   className="group block rounded-sm focus-ring"
                 >
                   <Card
-                    className={`h-full border-panel-border ${signalRoles.reference.hoverBorder}`}
+                    className={`h-full border-panel-border ${signalRoles.evidence.hoverBorder}`}
                   >
-                    <div className="catalog-row catalog-row-reference flex items-start justify-between gap-4">
+                    <div className="catalog-row catalog-row-evidence flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4">
-                        <HexBadge color="reference" className="catalog-row-badge">
+                        <HexBadge color="evidence" className="catalog-row-badge">
                           <Icon className="h-5 w-5" aria-hidden="true" />
                         </HexBadge>
                         <div>
                           <h3
-                            className={`catalog-row-title font-mono text-sm font-semibold ${signalRoles.reference.text}`}
+                            className={`catalog-row-title font-mono text-sm font-semibold ${signalRoles.evidence.text}`}
                           >
                             {a.agent}
                           </h3>
