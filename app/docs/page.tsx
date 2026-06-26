@@ -55,7 +55,8 @@ export default function DocsIndex() {
   const examples = find("Examples");
   const reference = find("Reference");
   const adrs = find("ADRs");
-  const balancedGrid = Boolean(tutorial && examples);
+  const balancedGrid =
+    startHere && tutorial && examples ? { startHere, tutorial, examples } : null;
 
   return (
     <div className="docs-prose" data-pagefind-body>
@@ -67,15 +68,36 @@ export default function DocsIndex() {
       <div
         className={`docs-index-grid ${balancedGrid ? "docs-index-grid-balanced" : ""}`}
       >
-        {startHere ? (
-          <Section sec={startHere} className="docs-index-section-primary" />
-        ) : null}
-        {tutorial ? (
-          <Section sec={tutorial} className="docs-index-section-tutorial" />
-        ) : null}
-        {examples ? (
-          <Section sec={examples} className="docs-index-section-examples" />
-        ) : null}
+        {balancedGrid ? (
+          <div className="docs-index-top">
+            <Section
+              sec={balancedGrid.startHere}
+              className="docs-index-section-primary"
+            />
+            <div className="docs-index-stack">
+              <Section
+                sec={balancedGrid.tutorial}
+                className="docs-index-section-tutorial"
+              />
+              <Section
+                sec={balancedGrid.examples}
+                className="docs-index-section-examples"
+              />
+            </div>
+          </div>
+        ) : (
+          <>
+            {startHere ? (
+              <Section sec={startHere} className="docs-index-section-primary" />
+            ) : null}
+            {tutorial ? (
+              <Section sec={tutorial} className="docs-index-section-tutorial" />
+            ) : null}
+            {examples ? (
+              <Section sec={examples} className="docs-index-section-examples" />
+            ) : null}
+          </>
+        )}
         {reference ? (
           <Section
             sec={reference}

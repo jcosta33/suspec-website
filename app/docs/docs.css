@@ -1035,6 +1035,13 @@
   margin-top: 1.5rem;
 }
 
+.docs-index-top,
+.docs-index-stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
 .docs-index-section {
   position: relative;
   overflow: hidden;
@@ -1085,27 +1092,23 @@
 }
 
 @media (min-width: 46rem) {
-  .docs-index-grid {
+  .docs-index-grid:not(.docs-index-grid-balanced) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .docs-index-top {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
   }
 
-  .docs-index-grid-balanced {
-    grid-template-areas:
-      "start tutorial"
-      "start examples"
-      "reference reference"
-      "adrs adrs";
-    row-gap: 1rem;
+  .docs-index-stack {
+    align-content: stretch;
   }
 
   .docs-index-section-primary {
-    grid-area: start;
     display: flex;
     flex-direction: column;
     align-self: stretch;
-    height: 100%;
-    min-height: 100%;
   }
 
   .docs-index-section-primary .docs-index-list {
@@ -1115,22 +1118,6 @@
 
   .docs-index-section-wide {
     grid-column: 1 / -1;
-  }
-
-  .docs-index-grid-balanced .docs-index-section-tutorial {
-    grid-area: tutorial;
-  }
-
-  .docs-index-grid-balanced .docs-index-section-examples {
-    grid-area: examples;
-  }
-
-  .docs-index-grid-balanced .docs-index-section-reference {
-    grid-area: reference;
-  }
-
-  .docs-index-grid-balanced .docs-index-section-adrs {
-    grid-area: adrs;
   }
 }
 
