@@ -229,10 +229,14 @@ export default function WhatIsCorpusPage() {
       <Section
         register="01 / summary"
         registerTone="evidence"
-        className="grid gap-6 lg:grid-cols-[1fr_0.9fr]"
+        className="overview-summary-grid grid gap-4 lg:grid-cols-[1fr_0.9fr]"
       >
-        <Panel brushed className="mx-auto h-full max-w-3xl p-2">
-          <TerminalWindow title="diagnostics" className="mx-auto h-full max-w-3xl">
+        <Panel brushed className="overview-terminal-shell mx-auto h-full max-w-3xl p-2">
+          <TerminalWindow
+            title="diagnostics"
+            className="overview-terminal mx-auto h-full max-w-3xl"
+            contentClassName="overview-terminal-content"
+          >
             <p className="text-concrete-400">
               <span className="text-corpus-yellow">$</span> cat
               what-is-corpus.md
@@ -241,16 +245,12 @@ export default function WhatIsCorpusPage() {
               Corpus turns requests into specs, specs into tasks, and task
               output into review evidence.
             </p>
-            <p className={`mt-2 ${signalRoles.evidence.text}`}>
-              ✓ agent does the typing
-            </p>
-            <p className={signalRoles.evidence.text}>✓ human makes the call</p>
-            <p className={signalRoles.evidence.text}>
-              ✓ every claim needs evidence
-            </p>
-            <p className={signalRoles.evidence.text}>
-              ✓ plain markdown, any agent, no runtime
-            </p>
+            <div className={`overview-check-grid mt-3 ${signalRoles.evidence.text}`}>
+              <p>agent does the typing</p>
+              <p>human makes the call</p>
+              <p>claims need evidence</p>
+              <p>plain markdown</p>
+            </div>
             <p className="mt-2 text-concrete-400">
               <span className="text-corpus-yellow">$</span> _
             </p>
@@ -260,6 +260,7 @@ export default function WhatIsCorpusPage() {
           label="example"
           title="artifact chain"
           meta="intake -> spec -> task -> review -> finding"
+          className="overview-paper-artifact"
         >
           <p>Intent becomes a requirement.</p>
           <p className="text-pencil">The task bounds what may change.</p>

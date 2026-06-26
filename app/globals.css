@@ -3666,6 +3666,62 @@ body::after {
   color: var(--color-concrete-300);
 }
 
+/* Overview summary — keep the artifact pair present, but let boundaries arrive sooner. */
+.overview-summary-grid {
+  align-items: stretch;
+}
+
+.overview-terminal-shell {
+  border-color: rgba(var(--signal-evidence-rgb), 0.24);
+}
+
+.overview-terminal-content {
+  max-height: 16rem;
+  padding: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.overview-check-grid {
+  display: grid;
+  gap: 0.35rem 1rem;
+}
+
+.overview-check-grid p {
+  position: relative;
+  padding-left: 0.9rem;
+}
+
+.overview-check-grid p::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 0.36rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.86;
+}
+
+.overview-paper-artifact {
+  min-height: 0;
+}
+
+.overview-paper-artifact > div:first-child {
+  padding-bottom: 0.85rem;
+}
+
+.overview-paper-artifact > div:last-child {
+  margin-top: 0.9rem;
+  line-height: 1.55;
+}
+
+@media (min-width: 40rem) {
+  .overview-check-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .boundary-map {
   counter-reset: boundary-step;
 }
