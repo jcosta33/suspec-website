@@ -28,10 +28,12 @@ manuscript artifacts. It must read as serious software first.
 
 ## Requirements
 
-### AC-001 — Three-layer color palette is codified in `app/globals.css`
+### AC-001 — Three-layer color palette is codified in global tokens and role metadata
 
 The site uses a constrained palette defined via Tailwind CSS v4 `@theme` block
-and CSS custom properties in `app/globals.css`:
+and CSS custom properties in `app/globals.css`. Reusable component code uses
+`app/components/signalStyles.ts` for the same role grammar, including each
+role's usage, example, and "do not use for" guardrail:
 
 | Token | Hex | Usage |
 | --- | --- | --- |
@@ -79,8 +81,9 @@ Compatibility aliases such as `--color-corpus-yellow`, `--color-hazard-orange`,
 and `--color-drone-green` may remain during migration, but they must map onto
 the new palette.
 
-Verify with: `npm run build` passes; inspect `app/globals.css` and confirm the
-tokens and compatibility aliases are present.
+Verify with: `npm run build` passes; inspect `app/globals.css` and
+`app/components/signalStyles.ts`, then confirm the tokens, compatibility
+aliases, and role guardrails are present.
 
 ### AC-002 — Typography uses three font families via `next/font`
 

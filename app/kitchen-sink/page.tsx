@@ -290,21 +290,59 @@ export default function KitchenSinkPage() {
       </PreviewSection>
 
       <PreviewSection id="typography" index="13" title="Typography">
-        <div className="space-y-4">
+        <div className="space-y-5">
           <p className="text-concrete-100">
             Primary text on chassis background.
           </p>
           <p className="text-concrete-400">
             Secondary text for captions and metadata.
           </p>
-          {paletteRoles.map((role) => (
-            <p key={role} className={signalRoles[role].text}>
-              <span className="font-mono text-xs font-semibold uppercase tracking-wide">
-                {signalRoleMeta[role].label}
-              </span>{" "}
-              — {signalRoleMeta[role].use}
-            </p>
-          ))}
+          <div className="palette-specimen-grid">
+            {paletteRoles.map((role) => (
+              <article
+                key={role}
+                className={`palette-specimen ${signalRoles[role].accentCard}`}
+              >
+                <div className="flex min-w-0 items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <p
+                      className={`font-mono text-xs font-semibold uppercase tracking-[0.12em] ${signalRoles[role].text}`}
+                    >
+                      {signalRoleMeta[role].label}
+                    </p>
+                    <h3 className="mt-2 font-heading text-lg font-bold text-concrete-100">
+                      {signalRoleMeta[role].tone}
+                    </h3>
+                  </div>
+                  <span className="palette-specimen-swatch" aria-hidden="true" />
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-concrete-300">
+                  {signalRoleMeta[role].use}
+                </p>
+                <dl className="mt-4 grid gap-3 border-t border-panel-border pt-4 text-sm">
+                  <div>
+                    <dt className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-concrete-500">
+                      Example
+                    </dt>
+                    <dd className="mt-1 text-concrete-300">
+                      {signalRoleMeta[role].example}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-concrete-500">
+                      Do not use for
+                    </dt>
+                    <dd className="mt-1 text-concrete-400">
+                      {signalRoleMeta[role].avoid}
+                    </dd>
+                  </div>
+                </dl>
+                <code className="palette-specimen-hex">
+                  {signalRoleMeta[role].hex}
+                </code>
+              </article>
+            ))}
+          </div>
         </div>
       </PreviewSection>
     </div>

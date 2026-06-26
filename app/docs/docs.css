@@ -519,8 +519,8 @@
 }
 
 .docs-source-note {
-  --docs-source-signal: var(--signal-evidence);
-  --docs-source-rgb: var(--signal-evidence-rgb);
+  --docs-source-signal: var(--signal-reference);
+  --docs-source-rgb: var(--signal-reference-rgb);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -653,7 +653,7 @@
   margin: 0.3rem 0;
 }
 
-/* Inline code — phosphor on a recessed well (terminal feel) */
+/* Inline code — amber command text on a recessed well (terminal feel) */
 .docs-prose code {
   font-family: var(--font-mono), monospace;
   font-size: 0.85em;

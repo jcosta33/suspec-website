@@ -4,10 +4,11 @@
   /* corpus — warm control surface + alchemical signal + manuscript archive.
      Palette math starts at primary gold #D88A24, HSL(34 71% 49%). Its exact
      complement is #2472D8, HSL(214 71% 49%), reserved for diagnostics only so
-     the public site stays warm. Public accents use a low-saturation earth range:
-     proof green #8ABF6B, greenfield #5FBD8B, brownfield #B9784E, red clay
-     #CA7059, olive ledger #A6913D. Color is semantic signage, not decoration:
-     choose the role first, then apply the matching token, lamp, card, and rail. */
+     the public site stays warm. Public accents stay in a low-saturation earth
+     range with named jobs: proof green #8ABF6B, greenfield #5FBD8B, brownfield
+     #B9784E, red clay #CA7059, olive ledger #A6913D. Color is semantic signage,
+     not decoration: choose the role first, then apply the matching token, lamp,
+     card, rail, and copy label. */
   --color-night: #110e0c;
   --color-chassis: #16100c;
   --color-section-band: #0e0c08;
@@ -1986,6 +1987,73 @@ body::after {
 .feature-accent-icon,
 .feature-accent-label {
   color: var(--accent-signal);
+}
+
+/* Palette specimens — one visible rulebook for semantic color use. */
+.palette-specimen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1rem;
+}
+
+.palette-specimen {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(var(--accent-rgb), 0.28);
+  border-radius: var(--radius-panel);
+  background:
+    linear-gradient(90deg, rgba(var(--accent-rgb), 0.14), transparent 46%),
+    linear-gradient(180deg, rgba(240, 226, 204, 0.035), transparent 42%),
+    var(--color-panel);
+  padding: 1rem;
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.055),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.38);
+}
+
+.palette-specimen::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(var(--accent-rgb), 0.92),
+    transparent
+  );
+  opacity: 0.82;
+}
+
+.palette-specimen-swatch {
+  flex: 0 0 auto;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.62);
+  border-radius: calc(var(--radius-control) - 3px);
+  background:
+    radial-gradient(circle at 35% 28%, rgba(240, 226, 204, 0.42), transparent 18%),
+    linear-gradient(135deg, rgba(var(--accent-rgb), 1), rgba(var(--accent-rgb), 0.5));
+  box-shadow:
+    0 0 0 3px rgba(var(--accent-rgb), 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.palette-specimen-hex {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 1.9rem;
+  align-items: center;
+  margin-top: 1rem;
+  color: var(--accent-signal);
+  background: rgba(10, 7, 5, 0.42);
+  border: 1px solid rgba(var(--accent-rgb), 0.34);
+  border-radius: calc(var(--radius-control) - 3px);
+  padding: 0.16rem 0.48rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
 }
 
 /* Signal stats — compact role-coloured readouts for summary panels. */
