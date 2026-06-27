@@ -1211,17 +1211,15 @@
 
 @media (max-width: 48rem) {
   .docs-prose pre.docs-flow-pre {
-    overflow-x: visible;
-    white-space: normal;
-  }
-
-  .docs-prose pre.docs-flow-pre::after {
-    display: none;
+    overflow-x: auto;
   }
 
   .docs-prose pre.docs-flow-pre code {
-    white-space: normal;
-    overflow-wrap: break-word;
+    display: block;
+    width: max-content;
+    min-width: 100%;
+    white-space: pre;
+    overflow-wrap: normal;
   }
 
   .docs-prose pre.docs-wrap-pre {

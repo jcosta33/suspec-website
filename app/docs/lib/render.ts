@@ -370,7 +370,12 @@ const rehypeLabelFlowCodeBlocks: Plugin<[], HastRoot> = () => (tree) => {
     const code = elementChildren(node).find((child) => child.tagName === "code");
     if (!code) return;
     const text = hastText(code.children).trim();
-    if (!text || text.includes("\n") || !/\s->\s/.test(text)) return;
+    const firstLine = text
+      .split("\n")
+      .find((line) => line.trim().length > 0)
+      ?.trimEnd();
+    const arrowCount = firstLine?.match(/\s->\s/g)?.length ?? 0;
+    if (arrowCount < 2) return;
 
     node.properties = node.properties ?? {};
     const value = node.properties.className;
@@ -387,6 +392,7 @@ const rehypeLabelFlowCodeBlocks: Plugin<[], HastRoot> = () => (tree) => {
 const rehypeLabelWrappedTextCodeBlocks: Plugin<[], HastRoot> = () => (tree) => {
   visit(tree, "element", (node: HastElement) => {
     if (node.tagName !== "pre") return;
+    if (hasClass(node, "docs-flow-pre")) return;
     const code = elementChildren(node).find((child) => child.tagName === "code");
     if (!code) return;
     const codeClass = code.properties?.className;

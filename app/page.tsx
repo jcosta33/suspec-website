@@ -24,6 +24,7 @@ import { Panel } from "./components/Panel";
 import { PaperArtifact } from "./components/PaperArtifact";
 import { PilotLamp } from "./components/PilotLamp";
 import { Section } from "./components/Section";
+import { SignalKey } from "./components/SignalKey";
 import { TerminalWindow } from "./components/TerminalWindow";
 import { signalRoles, type SignalRole } from "./components/signalStyles";
 
@@ -107,8 +108,8 @@ const failureModes = [
     code: "INTAKE",
     title: "Vague tickets",
     text: "Keep the request. Turn it into checkable requirements.",
-    accent: "change",
-    lamp: "change",
+    accent: "reference",
+    lamp: "reference",
   },
   {
     code: "SCOPE",
@@ -121,15 +122,54 @@ const failureModes = [
     code: "EVIDENCE",
     title: "Unbacked completion",
     text: "A Pass needs output, a CI link, or a named observation.",
-    accent: "change",
-    lamp: "change",
+    accent: "evidence",
+    lamp: "evidence",
   },
   {
     code: "LEDGER",
     title: "Lost findings",
     text: "Save useful lessons so later tasks can reuse them.",
-    accent: "change",
-    lamp: "change",
+    accent: "reference",
+    lamp: "reference",
+  },
+] as const satisfies Array<{
+  code: string;
+  title: string;
+  text: string;
+  accent: SignalRole;
+  lamp: SignalRole;
+}>;
+
+const homeSignalKey = [
+  {
+    label: "Core",
+    role: "core",
+    detail: "identity, primary actions, current step",
+  },
+  {
+    label: "Change",
+    role: "change",
+    detail: "edits, drift, blocked or unverified work",
+  },
+  {
+    label: "Evidence",
+    role: "evidence",
+    detail: "review proof, pass states, checked output",
+  },
+  {
+    label: "Reference",
+    role: "reference",
+    detail: "docs, ledgers, catalogs, read-only records",
+  },
+  {
+    label: "Greenfield",
+    role: "greenfield",
+    detail: "new repo setup paths only",
+  },
+  {
+    label: "Brownfield",
+    role: "brownfield",
+    detail: "existing project adoption paths only",
   },
 ] as const;
 
@@ -368,6 +408,22 @@ export default function HomePage() {
               A useful run leaves a trail: request, scope, checks, evidence,
               and findings.
             </p>
+          </div>
+          <div className="home-signal-key-wrap">
+            <div>
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-signal-muted">
+                signal key
+              </p>
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-concrete-400">
+                Colors are roles, not decoration. The same hue carries the
+                lamp, rail, hatch, and hover state wherever it appears.
+              </p>
+            </div>
+            <SignalKey
+              ariaLabel="Corpus site color role key"
+              items={homeSignalKey}
+              className="home-signal-key"
+            />
           </div>
           <ol className="review-signal-rail" aria-label="Review signal path">
             {failureModes.map((mode) => (
