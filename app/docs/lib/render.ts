@@ -426,7 +426,7 @@ const rehypeLabelFlowCodeBlocks: Plugin<[], HastRoot> = () => (tree) => {
       .split("\n")
       .find((line) => line.trim().length > 0)
       ?.trimEnd();
-    const arrowCount = firstLine?.match(/\s->\s/g)?.length ?? 0;
+    const arrowCount = firstLine?.match(/\s(?:->|→)\s/g)?.length ?? 0;
     if (arrowCount < 2) return;
 
     node.properties = node.properties ?? {};
