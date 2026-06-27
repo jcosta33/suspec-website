@@ -10,11 +10,12 @@
 // The hue family is intentional: core starts at gold HSL(34 71% 49%).
 // The exact complement is reserved for diagnostics; public complements use
 // softer field, sage, umber, clay, and verdigris roles. A role is more than a
-// color: use it for the text, lamp, rail, border, hatch, icon, command plate,
-// and hover state. If a role appears on only one of those surfaces, the color
-// will read as random decoration instead of product meaning.
-// In CSS, reach for --signal-pattern-* with the matching --signal-* token before
-// adding a local gradient. Local treatments can adjust strength, not meaning.
+// color: use it for the text, lamp, rail, border, hatch, mark, icon, command
+// plate, and hover state. If a role appears on only one of those surfaces, the
+// color will read as random decoration instead of product meaning.
+// In CSS, reach for --signal-pattern-* and --signal-mark-* with the matching
+// --signal-* token before adding a local gradient. Local treatments can adjust
+// strength, not meaning.
 export const signalRoleMeta = {
   core: {
     label: "core",

@@ -94,18 +94,82 @@
     rgba(var(--signal-muted-rgb), 0.034) 0 1px,
     transparent 1px 18px
   );
+  --signal-mark-core: radial-gradient(
+      circle at calc(100% - 1.15rem) 1.15rem,
+      rgba(var(--signal-core-rgb), 0.34) 0 1.45px,
+      transparent 2.25px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(var(--signal-core-rgb), 0.16) 0 2px,
+      transparent 2px
+    );
+  --signal-mark-evidence: radial-gradient(
+      circle at calc(100% - 1.2rem) 1.2rem,
+      rgba(var(--signal-evidence-rgb), 0.3) 0 1.35px,
+      transparent 2.15px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 0.9rem,
+      rgba(var(--signal-evidence-rgb), 0.052) 0.9rem calc(0.9rem + 1px)
+    );
   --signal-mark-greenfield: radial-gradient(
-    circle at 1.25rem 1.25rem,
-    rgba(var(--signal-greenfield-rgb), 0.28) 0 1.6px,
-    transparent 2.4px
-  );
+      circle at 1.2rem 1.2rem,
+      rgba(var(--signal-greenfield-rgb), 0.32) 0 1.55px,
+      transparent 2.35px
+    ),
+    radial-gradient(
+      circle at calc(100% - 1.45rem) calc(100% - 1.45rem),
+      rgba(var(--signal-greenfield-rgb), 0.2) 0 1.2px,
+      transparent 2px
+    );
   --signal-mark-brownfield: linear-gradient(
-    135deg,
-    transparent 0 calc(100% - 2.1rem),
-    rgba(var(--signal-brownfield-rgb), 0.12) calc(100% - 2.1rem)
-      calc(100% - 2rem),
-    transparent calc(100% - 2rem)
-  );
+      135deg,
+      transparent 0 calc(100% - 2.1rem),
+      rgba(var(--signal-brownfield-rgb), 0.14) calc(100% - 2.1rem)
+        calc(100% - 2rem),
+      transparent calc(100% - 2rem)
+    ),
+    radial-gradient(
+      circle at 1.2rem calc(100% - 1.2rem),
+      rgba(var(--signal-brownfield-rgb), 0.22) 0 1.35px,
+      transparent 2.15px
+    );
+  --signal-mark-change: linear-gradient(
+      135deg,
+      transparent 0 calc(100% - 1.9rem),
+      rgba(var(--signal-change-rgb), 0.15) calc(100% - 1.9rem)
+        calc(100% - 1.75rem),
+      transparent calc(100% - 1.75rem)
+    ),
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 1.2rem,
+      rgba(var(--signal-change-rgb), 0.045) 1.2rem calc(1.2rem + 1px)
+    );
+  --signal-mark-reference: linear-gradient(
+      180deg,
+      transparent 0 calc(100% - 1.6rem),
+      rgba(var(--signal-reference-rgb), 0.12) calc(100% - 1.6rem)
+        calc(100% - 1.55rem),
+      transparent calc(100% - 1.55rem)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 1.05rem,
+      rgba(var(--signal-reference-rgb), 0.045) 1.05rem calc(1.05rem + 1px)
+    );
+  --signal-mark-muted: linear-gradient(
+      90deg,
+      rgba(var(--signal-muted-rgb), 0.12) 0 1px,
+      transparent 1px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.55rem,
+      rgba(var(--signal-muted-rgb), 0.035) 1.55rem calc(1.55rem + 1px)
+    );
 
   --color-paper: #f0e2cc;
   --color-paper-warm: #dcc9a9;
@@ -501,9 +565,11 @@ body::after {
   --badge-signal: var(--signal-core);
   --badge-rgb: var(--signal-core-rgb);
   --badge-pattern: var(--signal-pattern-core);
+  --badge-mark: var(--signal-mark-core);
   border-color: rgba(var(--badge-rgb), 0.62);
   background:
     linear-gradient(180deg, rgba(var(--badge-rgb), 0.1), transparent 70%),
+    var(--badge-mark),
     var(--badge-pattern),
     var(--color-panel-raised);
   color: var(--badge-signal);
@@ -514,42 +580,49 @@ body::after {
   --badge-signal: var(--signal-core);
   --badge-rgb: var(--signal-core-rgb);
   --badge-pattern: var(--signal-pattern-core);
+  --badge-mark: var(--signal-mark-core);
 }
 
 .badge-signal-evidence {
   --badge-signal: var(--signal-evidence);
   --badge-rgb: var(--signal-evidence-rgb);
   --badge-pattern: var(--signal-pattern-evidence);
+  --badge-mark: var(--signal-mark-evidence);
 }
 
 .badge-signal-greenfield {
   --badge-signal: var(--signal-greenfield);
   --badge-rgb: var(--signal-greenfield-rgb);
   --badge-pattern: var(--signal-pattern-greenfield);
+  --badge-mark: var(--signal-mark-greenfield);
 }
 
 .badge-signal-brownfield {
   --badge-signal: var(--signal-brownfield);
   --badge-rgb: var(--signal-brownfield-rgb);
   --badge-pattern: var(--signal-pattern-brownfield);
+  --badge-mark: var(--signal-mark-brownfield);
 }
 
 .badge-signal-change {
   --badge-signal: var(--signal-change);
   --badge-rgb: var(--signal-change-rgb);
   --badge-pattern: var(--signal-pattern-change);
+  --badge-mark: var(--signal-mark-change);
 }
 
 .badge-signal-reference {
   --badge-signal: var(--signal-reference);
   --badge-rgb: var(--signal-reference-rgb);
   --badge-pattern: var(--signal-pattern-reference);
+  --badge-mark: var(--signal-mark-reference);
 }
 
 .badge-signal-muted {
   --badge-signal: var(--color-concrete-400);
   --badge-rgb: var(--signal-muted-rgb);
   --badge-pattern: var(--signal-pattern-muted);
+  --badge-mark: var(--signal-mark-muted);
 }
 
 .hover-border-signal-core:hover,
@@ -2182,97 +2255,112 @@ body::after {
   --process-signal: var(--signal-core);
   --process-rgb: var(--signal-core-rgb);
   --process-pattern: var(--signal-pattern-core);
+  --process-mark: var(--signal-mark-core);
 }
 
 .process-strip-signal-core {
   --process-signal: var(--signal-core);
   --process-rgb: var(--signal-core-rgb);
   --process-pattern: var(--signal-pattern-core);
+  --process-mark: var(--signal-mark-core);
 }
 
 .process-strip-signal-evidence {
   --process-signal: var(--signal-evidence);
   --process-rgb: var(--signal-evidence-rgb);
   --process-pattern: var(--signal-pattern-evidence);
+  --process-mark: var(--signal-mark-evidence);
 }
 
 .process-strip-signal-greenfield {
   --process-signal: var(--signal-greenfield);
   --process-rgb: var(--signal-greenfield-rgb);
   --process-pattern: var(--signal-pattern-greenfield);
+  --process-mark: var(--signal-mark-greenfield);
 }
 
 .process-strip-signal-brownfield {
   --process-signal: var(--signal-brownfield);
   --process-rgb: var(--signal-brownfield-rgb);
   --process-pattern: var(--signal-pattern-brownfield);
+  --process-mark: var(--signal-mark-brownfield);
 }
 
 .process-strip-signal-change {
   --process-signal: var(--signal-change);
   --process-rgb: var(--signal-change-rgb);
   --process-pattern: var(--signal-pattern-change);
+  --process-mark: var(--signal-mark-change);
 }
 
 .process-strip-signal-reference {
   --process-signal: var(--signal-reference);
   --process-rgb: var(--signal-reference-rgb);
   --process-pattern: var(--signal-pattern-reference);
+  --process-mark: var(--signal-mark-reference);
 }
 
 .process-strip-signal-muted {
   --process-signal: var(--signal-muted);
   --process-rgb: var(--signal-muted-rgb);
   --process-pattern: var(--signal-pattern-muted);
+  --process-mark: var(--signal-mark-muted);
 }
 
 .process-strip > .process-item-signal-core {
   --process-signal: var(--signal-core);
   --process-rgb: var(--signal-core-rgb);
   --process-pattern: var(--signal-pattern-core);
+  --process-mark: var(--signal-mark-core);
 }
 
 .process-strip > .process-item-signal-evidence {
   --process-signal: var(--signal-evidence);
   --process-rgb: var(--signal-evidence-rgb);
   --process-pattern: var(--signal-pattern-evidence);
+  --process-mark: var(--signal-mark-evidence);
 }
 
 .process-strip > .process-item-signal-greenfield {
   --process-signal: var(--signal-greenfield);
   --process-rgb: var(--signal-greenfield-rgb);
   --process-pattern: var(--signal-pattern-greenfield);
+  --process-mark: var(--signal-mark-greenfield);
 }
 
 .process-strip > .process-item-signal-brownfield {
   --process-signal: var(--signal-brownfield);
   --process-rgb: var(--signal-brownfield-rgb);
   --process-pattern: var(--signal-pattern-brownfield);
+  --process-mark: var(--signal-mark-brownfield);
 }
 
 .process-strip > .process-item-signal-change {
   --process-signal: var(--signal-change);
   --process-rgb: var(--signal-change-rgb);
   --process-pattern: var(--signal-pattern-change);
+  --process-mark: var(--signal-mark-change);
 }
 
 .process-strip > .process-item-signal-reference {
   --process-signal: var(--signal-reference);
   --process-rgb: var(--signal-reference-rgb);
   --process-pattern: var(--signal-pattern-reference);
+  --process-mark: var(--signal-mark-reference);
 }
 
 .process-strip > .process-item-signal-muted {
   --process-signal: var(--signal-muted);
   --process-rgb: var(--signal-muted-rgb);
   --process-pattern: var(--signal-pattern-muted);
+  --process-mark: var(--signal-mark-muted);
 }
 
 .process-strip > :is(li, a, div) {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-image: var(--process-pattern);
+  background-image: var(--process-mark), var(--process-pattern);
   transition:
     border-color 160ms ease,
     box-shadow 160ms ease,
@@ -2967,10 +3055,12 @@ body::after {
   --skill-guide-signal: var(--signal-reference);
   --skill-guide-rgb: var(--signal-reference-rgb);
   --skill-guide-pattern: var(--signal-pattern-reference);
+  --skill-guide-mark: var(--signal-mark-reference);
   overflow: hidden;
   border-color: rgba(var(--skill-guide-rgb), 0.34);
   background:
     linear-gradient(90deg, rgba(var(--skill-guide-rgb), 0.065), transparent 44%),
+    var(--skill-guide-mark),
     var(--skill-guide-pattern),
     var(--color-panel-raised);
 }
@@ -2979,12 +3069,14 @@ body::after {
   --skill-guide-signal: var(--signal-evidence);
   --skill-guide-rgb: var(--signal-evidence-rgb);
   --skill-guide-pattern: var(--signal-pattern-evidence);
+  --skill-guide-mark: var(--signal-mark-evidence);
 }
 
 .skill-guide-catalog-change {
   --skill-guide-signal: var(--signal-change);
   --skill-guide-rgb: var(--signal-change-rgb);
   --skill-guide-pattern: var(--signal-pattern-change);
+  --skill-guide-mark: var(--signal-mark-change);
 }
 
 .skill-guide-catalog-header {
@@ -3566,9 +3658,11 @@ body::after {
   --hex-signal: var(--signal-core);
   --hex-rgb: var(--signal-core-rgb);
   --hex-pattern: var(--signal-pattern-core);
+  --hex-mark: var(--signal-mark-core);
   color: var(--hex-signal);
   background:
     linear-gradient(180deg, rgba(240, 226, 204, 0.08), transparent 46%),
+    var(--hex-mark),
     var(--hex-pattern),
     radial-gradient(
       86% 76% at 50% 0%,
@@ -3582,42 +3676,49 @@ body::after {
   --hex-signal: var(--signal-core);
   --hex-rgb: var(--signal-core-rgb);
   --hex-pattern: var(--signal-pattern-core);
+  --hex-mark: var(--signal-mark-core);
 }
 
 .hex-badge-evidence {
   --hex-signal: var(--signal-evidence);
   --hex-rgb: var(--signal-evidence-rgb);
   --hex-pattern: var(--signal-pattern-evidence);
+  --hex-mark: var(--signal-mark-evidence);
 }
 
 .hex-badge-greenfield {
   --hex-signal: var(--signal-greenfield);
   --hex-rgb: var(--signal-greenfield-rgb);
   --hex-pattern: var(--signal-pattern-greenfield);
+  --hex-mark: var(--signal-mark-greenfield);
 }
 
 .hex-badge-brownfield {
   --hex-signal: var(--signal-brownfield);
   --hex-rgb: var(--signal-brownfield-rgb);
   --hex-pattern: var(--signal-pattern-brownfield);
+  --hex-mark: var(--signal-mark-brownfield);
 }
 
 .hex-badge-change {
   --hex-signal: var(--signal-change);
   --hex-rgb: var(--signal-change-rgb);
   --hex-pattern: var(--signal-pattern-change);
+  --hex-mark: var(--signal-mark-change);
 }
 
 .hex-badge-reference {
   --hex-signal: var(--signal-reference);
   --hex-rgb: var(--signal-reference-rgb);
   --hex-pattern: var(--signal-pattern-reference);
+  --hex-mark: var(--signal-mark-reference);
 }
 
 .hex-badge-muted {
   --hex-signal: var(--signal-muted);
   --hex-rgb: var(--signal-muted-rgb);
   --hex-pattern: var(--signal-pattern-muted);
+  --hex-mark: var(--signal-mark-muted);
 }
 
 .hex-badge-rail {
@@ -3734,6 +3835,7 @@ body::after {
   --surface-signal: var(--signal-core);
   --surface-rgb: var(--signal-core-rgb);
   --surface-pattern: var(--signal-pattern-core);
+  --surface-mark: var(--signal-mark-core);
   --plate-signal: var(--surface-signal);
   --plate-rgb: var(--surface-rgb);
   border-color: rgba(var(--surface-rgb), 0.3);
@@ -3746,6 +3848,7 @@ body::after {
       transparent 2px
     ),
     linear-gradient(90deg, rgba(var(--surface-rgb), 0.055), transparent 38%),
+    var(--surface-mark),
     var(--surface-pattern),
     radial-gradient(
       70% 58% at 16% 0%,
@@ -3779,42 +3882,49 @@ body::after {
   --surface-signal: var(--signal-core);
   --surface-rgb: var(--signal-core-rgb);
   --surface-pattern: var(--signal-pattern-core);
+  --surface-mark: var(--signal-mark-core);
 }
 
 .signal-surface-evidence {
   --surface-signal: var(--signal-evidence);
   --surface-rgb: var(--signal-evidence-rgb);
   --surface-pattern: var(--signal-pattern-evidence);
+  --surface-mark: var(--signal-mark-evidence);
 }
 
 .signal-surface-greenfield {
   --surface-signal: var(--signal-greenfield);
   --surface-rgb: var(--signal-greenfield-rgb);
   --surface-pattern: var(--signal-pattern-greenfield);
+  --surface-mark: var(--signal-mark-greenfield);
 }
 
 .signal-surface-brownfield {
   --surface-signal: var(--signal-brownfield);
   --surface-rgb: var(--signal-brownfield-rgb);
   --surface-pattern: var(--signal-pattern-brownfield);
+  --surface-mark: var(--signal-mark-brownfield);
 }
 
 .signal-surface-change {
   --surface-signal: var(--signal-change);
   --surface-rgb: var(--signal-change-rgb);
   --surface-pattern: var(--signal-pattern-change);
+  --surface-mark: var(--signal-mark-change);
 }
 
 .signal-surface-reference {
   --surface-signal: var(--signal-reference);
   --surface-rgb: var(--signal-reference-rgb);
   --surface-pattern: var(--signal-pattern-reference);
+  --surface-mark: var(--signal-mark-reference);
 }
 
 .signal-surface-muted {
   --surface-signal: var(--signal-muted);
   --surface-rgb: var(--signal-muted-rgb);
   --surface-pattern: var(--signal-pattern-muted);
+  --surface-mark: var(--signal-mark-muted);
 }
 
 .panel-raised.skill-guide-catalog {
@@ -3955,8 +4065,10 @@ body::after {
   --catalog-signal: var(--signal-core);
   --catalog-rgb: var(--signal-core-rgb);
   --catalog-signal-soft: rgba(var(--catalog-rgb), 0.62);
+  --catalog-mark: var(--signal-mark-core);
   --catalog-pattern:
     linear-gradient(90deg, rgba(var(--catalog-rgb), 0.05), transparent 56%),
+    var(--catalog-mark),
     var(--signal-pattern-core);
   position: relative;
   min-height: 3.5rem;
@@ -3991,48 +4103,60 @@ body::after {
 .catalog-row-olive {
   --catalog-signal: var(--signal-reference);
   --catalog-rgb: var(--signal-reference-rgb);
+  --catalog-mark: var(--signal-mark-reference);
   --catalog-pattern:
     linear-gradient(90deg, rgba(var(--catalog-rgb), 0.055), transparent 56%),
+    var(--catalog-mark),
     var(--signal-pattern-reference);
 }
 
 .catalog-row-core {
   --catalog-signal: var(--signal-core);
   --catalog-rgb: var(--signal-core-rgb);
+  --catalog-mark: var(--signal-mark-core);
   --catalog-pattern:
     linear-gradient(90deg, rgba(var(--catalog-rgb), 0.07), transparent 58%),
+    var(--catalog-mark),
     var(--signal-pattern-core);
 }
 
 .catalog-row-change {
   --catalog-signal: var(--signal-change);
   --catalog-rgb: var(--signal-change-rgb);
+  --catalog-mark: var(--signal-mark-change);
   --catalog-pattern:
     linear-gradient(90deg, rgba(var(--catalog-rgb), 0.055), transparent 56%),
+    var(--catalog-mark),
     var(--signal-pattern-change);
 }
 
 .catalog-row-evidence {
   --catalog-signal: var(--signal-evidence);
   --catalog-rgb: var(--signal-evidence-rgb);
+  --catalog-mark: var(--signal-mark-evidence);
   --catalog-pattern:
     linear-gradient(90deg, rgba(var(--catalog-rgb), 0.055), transparent 56%),
+    var(--catalog-mark),
     var(--signal-pattern-evidence);
 }
 
 .catalog-row-greenfield {
   --catalog-signal: var(--signal-greenfield);
   --catalog-rgb: var(--signal-greenfield-rgb);
+  --catalog-mark: var(--signal-mark-greenfield);
   --catalog-pattern:
     linear-gradient(90deg, rgba(var(--catalog-rgb), 0.055), transparent 56%),
+    var(--catalog-mark),
     var(--signal-pattern-greenfield);
 }
 
 .catalog-row-brownfield {
   --catalog-signal: var(--signal-brownfield);
   --catalog-rgb: var(--signal-brownfield-rgb);
+  --catalog-mark: var(--signal-mark-brownfield);
   --catalog-pattern:
     linear-gradient(90deg, rgba(var(--catalog-rgb), 0.055), transparent 56%),
+    var(--catalog-mark),
     var(--signal-pattern-brownfield);
 }
 
@@ -4081,6 +4205,7 @@ body::after {
   --accent-signal: var(--signal-core);
   --accent-rgb: var(--signal-core-rgb);
   --accent-pattern: var(--signal-pattern-core);
+  --accent-mark: var(--signal-mark-core);
   --plate-signal: var(--accent-signal);
   --plate-rgb: var(--accent-rgb);
   border-color: rgba(var(--accent-rgb), 0.28);
@@ -4091,6 +4216,7 @@ body::after {
       rgba(var(--accent-rgb), 0.22) 2px,
       transparent 2px
     ),
+    var(--accent-mark),
     var(--accent-pattern),
     radial-gradient(
       72% 70% at 12% 0%,
@@ -4104,6 +4230,7 @@ body::after {
   --accent-signal: var(--signal-core);
   --accent-rgb: var(--signal-core-rgb);
   --accent-pattern: var(--signal-pattern-core);
+  --accent-mark: var(--signal-mark-core);
 }
 
 .accent-card-evidence,
@@ -4111,18 +4238,21 @@ body::after {
   --accent-signal: var(--signal-evidence);
   --accent-rgb: var(--signal-evidence-rgb);
   --accent-pattern: var(--signal-pattern-evidence);
+  --accent-mark: var(--signal-mark-evidence);
 }
 
 .accent-card-greenfield {
   --accent-signal: var(--signal-greenfield);
   --accent-rgb: var(--signal-greenfield-rgb);
   --accent-pattern: var(--signal-pattern-greenfield);
+  --accent-mark: var(--signal-mark-greenfield);
 }
 
 .accent-card-brownfield {
   --accent-signal: var(--signal-brownfield);
   --accent-rgb: var(--signal-brownfield-rgb);
   --accent-pattern: var(--signal-pattern-brownfield);
+  --accent-mark: var(--signal-mark-brownfield);
 }
 
 .accent-card-change,
@@ -4130,6 +4260,7 @@ body::after {
   --accent-signal: var(--signal-change);
   --accent-rgb: var(--signal-change-rgb);
   --accent-pattern: var(--signal-pattern-change);
+  --accent-mark: var(--signal-mark-change);
 }
 
 .accent-card-reference,
@@ -4137,12 +4268,14 @@ body::after {
   --accent-signal: var(--signal-reference);
   --accent-rgb: var(--signal-reference-rgb);
   --accent-pattern: var(--signal-pattern-reference);
+  --accent-mark: var(--signal-mark-reference);
 }
 
 .accent-card-muted {
   --accent-signal: var(--signal-muted);
   --accent-rgb: var(--signal-muted-rgb);
   --accent-pattern: var(--signal-pattern-muted);
+  --accent-mark: var(--signal-mark-muted);
 }
 
 .accent-card:hover,
@@ -4297,9 +4430,11 @@ body::after {
   --tool-signal: var(--signal-reference);
   --tool-rgb: var(--signal-reference-rgb);
   --tool-pattern: var(--signal-pattern-reference);
+  --tool-mark: var(--signal-mark-reference);
   border-color: rgba(var(--tool-rgb), 0.28);
   background-image:
     linear-gradient(90deg, rgba(var(--tool-rgb), 0.065), transparent 50%),
+    var(--tool-mark),
     var(--tool-pattern),
     linear-gradient(180deg, rgba(240, 226, 204, 0.025), transparent 44%);
 }
@@ -4308,42 +4443,49 @@ body::after {
   --tool-signal: var(--signal-core);
   --tool-rgb: var(--signal-core-rgb);
   --tool-pattern: var(--signal-pattern-core);
+  --tool-mark: var(--signal-mark-core);
 }
 
 .tool-list-card-evidence {
   --tool-signal: var(--signal-evidence);
   --tool-rgb: var(--signal-evidence-rgb);
   --tool-pattern: var(--signal-pattern-evidence);
+  --tool-mark: var(--signal-mark-evidence);
 }
 
 .tool-list-card-reference {
   --tool-signal: var(--signal-reference);
   --tool-rgb: var(--signal-reference-rgb);
   --tool-pattern: var(--signal-pattern-reference);
+  --tool-mark: var(--signal-mark-reference);
 }
 
 .tool-list-card-change {
   --tool-signal: var(--signal-change);
   --tool-rgb: var(--signal-change-rgb);
   --tool-pattern: var(--signal-pattern-change);
+  --tool-mark: var(--signal-mark-change);
 }
 
 .tool-list-card-greenfield {
   --tool-signal: var(--signal-greenfield);
   --tool-rgb: var(--signal-greenfield-rgb);
   --tool-pattern: var(--signal-pattern-greenfield);
+  --tool-mark: var(--signal-mark-greenfield);
 }
 
 .tool-list-card-brownfield {
   --tool-signal: var(--signal-brownfield);
   --tool-rgb: var(--signal-brownfield-rgb);
   --tool-pattern: var(--signal-pattern-brownfield);
+  --tool-mark: var(--signal-mark-brownfield);
 }
 
 .tool-list-card-muted {
   --tool-signal: var(--signal-muted);
   --tool-rgb: var(--signal-muted-rgb);
   --tool-pattern: var(--signal-pattern-muted);
+  --tool-mark: var(--signal-mark-muted);
 }
 
 /* Signal stats — compact role-coloured readouts for summary panels. */
@@ -4351,6 +4493,7 @@ body::after {
   --stat-signal: var(--signal-core);
   --stat-rgb: var(--signal-core-rgb);
   --stat-pattern: var(--signal-pattern-core);
+  --stat-mark: var(--signal-mark-core);
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -4358,6 +4501,7 @@ body::after {
   border-radius: calc(var(--radius-control) - 2px);
   background:
     linear-gradient(90deg, rgba(var(--stat-rgb), 0.11), transparent 58%),
+    var(--stat-mark),
     var(--stat-pattern),
     rgba(10, 7, 5, 0.16);
   padding: 0.85rem 0.9rem;
@@ -4382,42 +4526,49 @@ body::after {
   --stat-signal: var(--signal-core);
   --stat-rgb: var(--signal-core-rgb);
   --stat-pattern: var(--signal-pattern-core);
+  --stat-mark: var(--signal-mark-core);
 }
 
 .signal-stat-evidence {
   --stat-signal: var(--signal-evidence);
   --stat-rgb: var(--signal-evidence-rgb);
   --stat-pattern: var(--signal-pattern-evidence);
+  --stat-mark: var(--signal-mark-evidence);
 }
 
 .signal-stat-greenfield {
   --stat-signal: var(--signal-greenfield);
   --stat-rgb: var(--signal-greenfield-rgb);
   --stat-pattern: var(--signal-pattern-greenfield);
+  --stat-mark: var(--signal-mark-greenfield);
 }
 
 .signal-stat-brownfield {
   --stat-signal: var(--signal-brownfield);
   --stat-rgb: var(--signal-brownfield-rgb);
   --stat-pattern: var(--signal-pattern-brownfield);
+  --stat-mark: var(--signal-mark-brownfield);
 }
 
 .signal-stat-change {
   --stat-signal: var(--signal-change);
   --stat-rgb: var(--signal-change-rgb);
   --stat-pattern: var(--signal-pattern-change);
+  --stat-mark: var(--signal-mark-change);
 }
 
 .signal-stat-reference {
   --stat-signal: var(--signal-reference);
   --stat-rgb: var(--signal-reference-rgb);
   --stat-pattern: var(--signal-pattern-reference);
+  --stat-mark: var(--signal-mark-reference);
 }
 
 .signal-stat-muted {
   --stat-signal: var(--signal-muted);
   --stat-rgb: var(--signal-muted-rgb);
   --stat-pattern: var(--signal-pattern-muted);
+  --stat-mark: var(--signal-mark-muted);
 }
 
 /* Repo manifest — opening readout for corpus-agents and corpus-skills. */
@@ -4547,9 +4698,11 @@ body::after {
   --roster-signal: var(--signal-core);
   --roster-rgb: var(--signal-core-rgb);
   --roster-pattern: var(--signal-pattern-core);
+  --roster-mark: var(--signal-mark-core);
   border-color: rgba(var(--roster-rgb), 0.3);
   background:
     linear-gradient(90deg, rgba(var(--roster-rgb), 0.08), transparent 35%),
+    var(--roster-mark),
     var(--roster-pattern),
     var(--color-panel-raised);
 }
@@ -4558,18 +4711,21 @@ body::after {
   --roster-signal: var(--signal-evidence);
   --roster-rgb: var(--signal-evidence-rgb);
   --roster-pattern: var(--signal-pattern-evidence);
+  --roster-mark: var(--signal-mark-evidence);
 }
 
 .agent-roster-panel-change {
   --roster-signal: var(--signal-change);
   --roster-rgb: var(--signal-change-rgb);
   --roster-pattern: var(--signal-pattern-change);
+  --roster-mark: var(--signal-mark-change);
 }
 
 .agent-roster-panel-reference {
   --roster-signal: var(--signal-reference);
   --roster-rgb: var(--signal-reference-rgb);
   --roster-pattern: var(--signal-pattern-reference);
+  --roster-mark: var(--signal-mark-reference);
 }
 
 .agent-roster-header {
@@ -4624,6 +4780,7 @@ body::after {
   --cell-signal: var(--roster-signal);
   --cell-rgb: var(--roster-rgb);
   --cell-pattern: var(--roster-pattern);
+  --cell-mark: var(--roster-mark, var(--signal-mark-reference));
   position: relative;
   isolation: isolate;
   min-height: 13.25rem;
@@ -4639,6 +4796,7 @@ body::after {
       rgba(var(--cell-rgb), 0.06),
       transparent 64%
     ),
+    var(--cell-mark),
     var(--cell-pattern);
 }
 
@@ -4646,42 +4804,49 @@ body::after {
   --cell-signal: var(--signal-core);
   --cell-rgb: var(--signal-core-rgb);
   --cell-pattern: var(--signal-pattern-core);
+  --cell-mark: var(--signal-mark-core);
 }
 
 .agent-roster-cell-evidence {
   --cell-signal: var(--signal-evidence);
   --cell-rgb: var(--signal-evidence-rgb);
   --cell-pattern: var(--signal-pattern-evidence);
+  --cell-mark: var(--signal-mark-evidence);
 }
 
 .agent-roster-cell-greenfield {
   --cell-signal: var(--signal-greenfield);
   --cell-rgb: var(--signal-greenfield-rgb);
   --cell-pattern: var(--signal-pattern-greenfield);
+  --cell-mark: var(--signal-mark-greenfield);
 }
 
 .agent-roster-cell-brownfield {
   --cell-signal: var(--signal-brownfield);
   --cell-rgb: var(--signal-brownfield-rgb);
   --cell-pattern: var(--signal-pattern-brownfield);
+  --cell-mark: var(--signal-mark-brownfield);
 }
 
 .agent-roster-cell-change {
   --cell-signal: var(--signal-change);
   --cell-rgb: var(--signal-change-rgb);
   --cell-pattern: var(--signal-pattern-change);
+  --cell-mark: var(--signal-mark-change);
 }
 
 .agent-roster-cell-reference {
   --cell-signal: var(--signal-reference);
   --cell-rgb: var(--signal-reference-rgb);
   --cell-pattern: var(--signal-pattern-reference);
+  --cell-mark: var(--signal-mark-reference);
 }
 
 .agent-roster-cell-muted {
   --cell-signal: var(--signal-muted);
   --cell-rgb: var(--signal-muted-rgb);
   --cell-pattern: var(--signal-pattern-muted);
+  --cell-mark: var(--signal-mark-muted);
 }
 
 .agent-roster-cell::before {
@@ -4745,6 +4910,7 @@ body::after {
   --route-signal: var(--signal-muted);
   --route-rgb: var(--signal-muted-rgb);
   --route-pattern: var(--signal-pattern-muted);
+  --route-mark: var(--signal-mark-muted);
   display: inline-flex;
   min-width: min(100%, 15rem);
   min-height: 2.5rem;
@@ -4755,6 +4921,7 @@ body::after {
   border-radius: var(--radius-panel);
   background:
     linear-gradient(90deg, rgba(var(--route-rgb), 0.12), transparent 62%),
+    var(--route-mark),
     var(--route-pattern),
     rgba(10, 7, 5, 0.34);
   box-shadow:
@@ -4767,12 +4934,14 @@ body::after {
   --route-signal: var(--signal-greenfield);
   --route-rgb: var(--signal-greenfield-rgb);
   --route-pattern: var(--signal-pattern-greenfield);
+  --route-mark: var(--signal-mark-greenfield);
 }
 
 .setup-route-key-brownfield {
   --route-signal: var(--signal-brownfield);
   --route-rgb: var(--signal-brownfield-rgb);
   --route-pattern: var(--signal-pattern-brownfield);
+  --route-mark: var(--signal-mark-brownfield);
 }
 
 .setup-route-key-copy {
@@ -4820,6 +4989,7 @@ body::after {
   --choice-signal: var(--signal-core);
   --choice-rgb: var(--signal-core-rgb);
   --choice-pattern: var(--signal-pattern-core);
+  --choice-mark: var(--signal-mark-core);
   --plate-signal: var(--choice-signal);
   --plate-rgb: var(--choice-rgb);
   border-color: rgba(var(--choice-rgb), 0.36);
@@ -4830,6 +5000,7 @@ body::after {
       rgba(var(--choice-rgb), 0.42) 3px,
       transparent 3px
     ),
+    var(--choice-mark),
     var(--choice-pattern),
     radial-gradient(
       78% 68% at 10% 0%,
@@ -4858,6 +5029,7 @@ body::after {
   background:
     linear-gradient(90deg, rgba(var(--choice-rgb), 0.14), transparent 24%) left
       top / 1px 100% no-repeat,
+    var(--choice-mark),
     var(--choice-pattern),
     repeating-linear-gradient(
       0deg,
@@ -4872,6 +5044,7 @@ body::after {
   --kit-signal: var(--signal-core);
   --kit-rgb: var(--signal-core-rgb);
   --kit-pattern: var(--signal-pattern-core);
+  --kit-mark: var(--signal-mark-core);
   color: var(--kit-signal);
   border-color: rgba(var(--kit-rgb), 0.34);
   background:
@@ -4880,6 +5053,7 @@ body::after {
       rgba(var(--kit-rgb), 0.18),
       transparent 58%
     ),
+    var(--kit-mark),
     var(--kit-pattern),
     var(--color-panel-raised);
 }
@@ -4888,48 +5062,56 @@ body::after {
   --kit-signal: var(--signal-core);
   --kit-rgb: var(--signal-core-rgb);
   --kit-pattern: var(--signal-pattern-core);
+  --kit-mark: var(--signal-mark-core);
 }
 
 .kit-icon-evidence {
   --kit-signal: var(--signal-evidence);
   --kit-rgb: var(--signal-evidence-rgb);
   --kit-pattern: var(--signal-pattern-evidence);
+  --kit-mark: var(--signal-mark-evidence);
 }
 
 .kit-icon-greenfield {
   --kit-signal: var(--signal-greenfield);
   --kit-rgb: var(--signal-greenfield-rgb);
   --kit-pattern: var(--signal-pattern-greenfield);
+  --kit-mark: var(--signal-mark-greenfield);
 }
 
 .kit-icon-brownfield {
   --kit-signal: var(--signal-brownfield);
   --kit-rgb: var(--signal-brownfield-rgb);
   --kit-pattern: var(--signal-pattern-brownfield);
+  --kit-mark: var(--signal-mark-brownfield);
 }
 
 .kit-icon-change {
   --kit-signal: var(--signal-change);
   --kit-rgb: var(--signal-change-rgb);
   --kit-pattern: var(--signal-pattern-change);
+  --kit-mark: var(--signal-mark-change);
 }
 
 .kit-icon-reference {
   --kit-signal: var(--signal-reference);
   --kit-rgb: var(--signal-reference-rgb);
   --kit-pattern: var(--signal-pattern-reference);
+  --kit-mark: var(--signal-mark-reference);
 }
 
 .kit-icon-muted {
   --kit-signal: var(--signal-muted);
   --kit-rgb: var(--signal-muted-rgb);
   --kit-pattern: var(--signal-pattern-muted);
+  --kit-mark: var(--signal-mark-muted);
 }
 
 .setup-choice-card-greenfield {
   --choice-signal: var(--signal-greenfield);
   --choice-rgb: var(--signal-greenfield-rgb);
   --choice-pattern: var(--signal-pattern-greenfield);
+  --choice-mark: var(--signal-mark-greenfield);
   background-image:
     linear-gradient(
      90deg,
@@ -4986,6 +5168,7 @@ body::after {
   --choice-signal: var(--signal-brownfield);
   --choice-rgb: var(--signal-brownfield-rgb);
   --choice-pattern: var(--signal-pattern-brownfield);
+  --choice-mark: var(--signal-mark-brownfield);
   background-image:
     linear-gradient(
      90deg,

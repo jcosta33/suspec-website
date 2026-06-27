@@ -47,10 +47,15 @@ Color is assigned from the object or action, not from mood:
 - Gold is reserved for Corpus identity and primary action.
 
 Implementation follows the same rule. A role should use the shared CSS signal
-variables for hue and pattern (`--signal-*`, `--signal-*-rgb`, and
-`--signal-pattern-*`) before adding any local treatment. A local treatment may
-change layout, density, or strength, but it should not invent a new meaning for
-green, brown, sage, clay, verdigris, or gold.
+variables for hue, pattern, and mark (`--signal-*`, `--signal-*-rgb`,
+`--signal-pattern-*`, and `--signal-mark-*`) before adding any local treatment.
+A local treatment may change layout, density, or strength, but it should not
+invent a new meaning for green, brown, sage, clay, verdigris, or gold.
+
+Visible semantic color should usually travel through at least three surfaces:
+label text, icon/lamp, rail/border, hatch/mark, or hover state. If color appears
+on only one isolated word or card, it reads as decoration and should be removed
+or promoted into the full role treatment.
 
 ## Consequences
 
