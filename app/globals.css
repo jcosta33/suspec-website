@@ -6924,13 +6924,55 @@ body::after {
 }
 
 @media (max-width: 40rem) {
+  .boundary-map {
+    gap: 0.55rem;
+  }
+
+  .boundary-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: calc(100% - 0.05rem);
+    left: 2.05rem;
+    width: 1px;
+    height: 0.65rem;
+    background: linear-gradient(
+      180deg,
+      rgba(var(--boundary-rgb), 0.48),
+      rgba(var(--boundary-rgb), 0)
+    );
+    pointer-events: none;
+  }
+
   .boundary-step-card {
-    padding: 1rem;
+    padding: 0.82rem 0.9rem;
+  }
+
+  .boundary-step-head {
+    align-items: center;
+    gap: 0.72rem;
   }
 
   .boundary-step-icon {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+
+  .boundary-step-title {
+    margin-top: 0.08rem;
+    font-size: 0.98rem;
+  }
+
+  .boundary-step-lamp {
+    display: none;
+  }
+
+  .boundary-step-copy {
+    margin-top: 0.42rem;
+    margin-left: 3.02rem;
+    border-top: 0;
+    padding-top: 0;
+    font-size: 0.84rem;
+    line-height: 1.46;
   }
 }
 
