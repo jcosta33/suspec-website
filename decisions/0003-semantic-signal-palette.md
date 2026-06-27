@@ -30,12 +30,12 @@ the public marketing palette. Public accents stay warm or tempered:
 | Role | Hue | Job | Pattern |
 |---|---:|---|---|
 | Core | `#D88A24` / `HSL(34 71% 49%)` | Corpus identity, primary action, active state, current loop step | gilt rail / seal line |
-| Evidence | `#B8C56F` / `HSL(69 43% 60%)` | review proof, verified output, pass states | checkpoint ticks |
-| Greenfield | `#75C985` / `HSL(131 44% 62%)` | new repo, starter kit, first-run setup only | upright field rows |
-| Brownfield | `#C08452` / `HSL(27 47% 54%)` | existing-project adoption, migration, repo history | diagonal survey hatching |
-| Change | `#D07960` / `HSL(13 54% 60%)` | edits, fixes, run work, blocked or attention states | angled change hatching |
-| Reference | `#82C8BD` / `HSL(171 39% 65%)` | docs, manuals, ledgers, catalogs, read-only rosters | horizontal ledger rules |
-| Muted | `#BF7927` / `HSL(32 66% 45%)` | hardware chrome, counters, low-emphasis labels | brass ruler marks |
+| Evidence | `#B7C96C` / `HSL(72 46% 61%)` | review proof, verified output, pass states | checkpoint ticks |
+| Greenfield | `#78C487` / `HSL(132 39% 62%)` | new repo, starter kit, first-run setup only | upright field rows |
+| Brownfield | `#B87545` / `HSL(25 45% 50%)` | existing-project adoption, migration, repo history | diagonal survey hatching |
+| Change | `#D2795C` / `HSL(15 57% 59%)` | edits, fixes, run work, blocked or attention states | angled change hatching |
+| Reference | `#7FC7BE` / `HSL(173 39% 64%)` | docs, manuals, ledgers, catalogs, read-only rosters | horizontal ledger rules |
+| Muted | `#B8844A` / `HSL(32 44% 51%)` | hardware chrome, counters, low-emphasis labels | brass ruler marks |
 
 Color is assigned from the object or action, not from mood:
 

@@ -235,9 +235,9 @@ export default function KitchenSinkPage() {
             <p>
               Assign the role from the object or action, then let that role
               drive the color, rail, pattern, lamp, and hover state. Greenfield
-              is only new workspace setup; brownfield is existing-project
-              adoption. Mixed setup surfaces are core or muted. Evidence is
-              proof, not generic success.
+              and brownfield are setup-path nouns, not moods: fresh repo gets
+              greenfield, existing repo gets brownfield. Evidence is proof, not
+              generic success.
             </p>
           </div>
           <div className="palette-specimen-grid">

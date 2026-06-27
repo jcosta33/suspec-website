@@ -62,40 +62,76 @@
 
   /* Role patterns: hue + mark travel together, so color does not become decoration. */
   --signal-pattern-core: linear-gradient(
-    180deg,
-    rgba(var(--signal-core-rgb), 0.045),
-    transparent 58%
-  );
-  --signal-pattern-evidence: repeating-linear-gradient(
-    0deg,
-    rgba(var(--signal-evidence-rgb), 0.055) 0 1px,
-    transparent 1px 11px
-  );
+      90deg,
+      rgba(var(--signal-core-rgb), 0.12) 0 2px,
+      transparent 2px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--signal-core-rgb), 0.045),
+      transparent 58%
+    );
+  --signal-pattern-evidence: radial-gradient(
+      circle at 0.7rem 0.7rem,
+      rgba(var(--signal-evidence-rgb), 0.32) 0 1px,
+      transparent 1.8px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.28rem,
+      rgba(var(--signal-evidence-rgb), 0.05) 1.28rem calc(1.28rem + 1px)
+    );
   --signal-pattern-greenfield: repeating-linear-gradient(
-    90deg,
-    rgba(var(--signal-greenfield-rgb), 0.06) 0 1px,
-    transparent 1px 14px
-  );
+      90deg,
+      rgba(var(--signal-greenfield-rgb), 0.07) 0 1px,
+      transparent 1px 13px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 2.2rem,
+      rgba(var(--signal-greenfield-rgb), 0.035) 2.2rem calc(2.2rem + 1px)
+    );
   --signal-pattern-brownfield: repeating-linear-gradient(
-    -24deg,
-    rgba(var(--signal-brownfield-rgb), 0.06) 0 1px,
-    transparent 1px 13px
-  );
+      -24deg,
+      rgba(var(--signal-brownfield-rgb), 0.075) 0 1px,
+      transparent 1px 13px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.65rem,
+      rgba(var(--signal-brownfield-rgb), 0.028) 1.65rem calc(1.65rem + 1px)
+    );
   --signal-pattern-change: repeating-linear-gradient(
-    135deg,
-    rgba(var(--signal-change-rgb), 0.055) 0 1px,
-    transparent 1px 12px
-  );
+      135deg,
+      rgba(var(--signal-change-rgb), 0.068) 0 1px,
+      transparent 1px 12px
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0 64%,
+      rgba(var(--signal-change-rgb), 0.055) 64% 66%,
+      transparent 66%
+    );
   --signal-pattern-reference: repeating-linear-gradient(
-    0deg,
-    rgba(var(--signal-reference-rgb), 0.052) 0 1px,
-    transparent 1px 15px
-  );
+      0deg,
+      rgba(var(--signal-reference-rgb), 0.058) 0 1px,
+      transparent 1px 15px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--signal-reference-rgb), 0.04),
+      transparent 42%
+    );
   --signal-pattern-muted: repeating-linear-gradient(
-    90deg,
-    rgba(var(--signal-muted-rgb), 0.034) 0 1px,
-    transparent 1px 18px
-  );
+      90deg,
+      transparent 0 0.72rem,
+      rgba(var(--signal-muted-rgb), 0.044) 0.72rem calc(0.72rem + 1px)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 3.6rem,
+      rgba(var(--signal-muted-rgb), 0.085) 3.6rem calc(3.6rem + 1px)
+    );
   --signal-mark-core: radial-gradient(
       circle at calc(100% - 1.15rem) 1.15rem,
       rgba(var(--signal-core-rgb), 0.34) 0 1.45px,
@@ -125,6 +161,11 @@
       circle at calc(100% - 1.45rem) calc(100% - 1.45rem),
       rgba(var(--signal-greenfield-rgb), 0.26) 0 1.2px,
       transparent 2px
+    ),
+    radial-gradient(
+      circle at 1.45rem calc(100% - 1.45rem),
+      rgba(var(--signal-greenfield-rgb), 0.2) 0 1px,
+      transparent 1.8px
     );
   --signal-mark-brownfield: linear-gradient(
       135deg,
@@ -132,6 +173,13 @@
       rgba(var(--signal-brownfield-rgb), 0.2) calc(100% - 2.1rem)
         calc(100% - 2rem),
       transparent calc(100% - 2rem)
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0 calc(100% - 3.2rem),
+      rgba(var(--signal-brownfield-rgb), 0.14) calc(100% - 3.2rem)
+        calc(100% - 3.1rem),
+      transparent calc(100% - 3.1rem)
     ),
     radial-gradient(
       circle at 1.2rem calc(100% - 1.2rem),
@@ -5097,6 +5145,7 @@ body::after {
   --surface-rgb: var(--signal-core-rgb);
   --surface-pattern: var(--signal-pattern-core);
   --surface-mark: var(--signal-mark-core);
+  border-top-color: rgba(var(--signal-core-rgb), 0.5);
 }
 
 .signal-surface-evidence {
@@ -5104,6 +5153,8 @@ body::after {
   --surface-rgb: var(--signal-evidence-rgb);
   --surface-pattern: var(--signal-pattern-evidence);
   --surface-mark: var(--signal-mark-evidence);
+  border-left-color: rgba(var(--signal-evidence-rgb), 0.62);
+  border-top-color: rgba(var(--signal-evidence-rgb), 0.4);
 }
 
 .signal-surface-greenfield {
@@ -5111,6 +5162,8 @@ body::after {
   --surface-rgb: var(--signal-greenfield-rgb);
   --surface-pattern: var(--signal-pattern-greenfield);
   --surface-mark: var(--signal-mark-greenfield);
+  border-left-color: rgba(var(--signal-greenfield-rgb), 0.82);
+  border-right-color: rgba(var(--signal-greenfield-rgb), 0.28);
 }
 
 .signal-surface-brownfield {
@@ -5118,6 +5171,8 @@ body::after {
   --surface-rgb: var(--signal-brownfield-rgb);
   --surface-pattern: var(--signal-pattern-brownfield);
   --surface-mark: var(--signal-mark-brownfield);
+  border-left-color: rgba(var(--signal-brownfield-rgb), 0.82);
+  border-bottom-color: rgba(var(--signal-brownfield-rgb), 0.38);
 }
 
 .signal-surface-change {
@@ -5125,6 +5180,8 @@ body::after {
   --surface-rgb: var(--signal-change-rgb);
   --surface-pattern: var(--signal-pattern-change);
   --surface-mark: var(--signal-mark-change);
+  border-left-color: rgba(var(--signal-change-rgb), 0.78);
+  border-bottom-color: rgba(var(--signal-change-rgb), 0.42);
 }
 
 .signal-surface-reference {
@@ -5132,6 +5189,8 @@ body::after {
   --surface-rgb: var(--signal-reference-rgb);
   --surface-pattern: var(--signal-pattern-reference);
   --surface-mark: var(--signal-mark-reference);
+  border-left-color: rgba(var(--signal-reference-rgb), 0.64);
+  border-top-color: rgba(var(--signal-reference-rgb), 0.32);
 }
 
 .signal-surface-muted {
@@ -5139,6 +5198,7 @@ body::after {
   --surface-rgb: var(--signal-muted-rgb);
   --surface-pattern: var(--signal-pattern-muted);
   --surface-mark: var(--signal-mark-muted);
+  border-left-color: rgba(var(--signal-muted-rgb), 0.46);
 }
 
 .panel-raised.skill-guide-catalog {
@@ -5742,6 +5802,7 @@ body::after {
   --stat-rgb: var(--signal-core-rgb);
   --stat-pattern: var(--signal-pattern-core);
   --stat-mark: var(--signal-mark-core);
+  border-top-color: rgba(var(--signal-core-rgb), 0.36);
 }
 
 .signal-stat-evidence {
@@ -5749,6 +5810,7 @@ body::after {
   --stat-rgb: var(--signal-evidence-rgb);
   --stat-pattern: var(--signal-pattern-evidence);
   --stat-mark: var(--signal-mark-evidence);
+  border-top-color: rgba(var(--signal-evidence-rgb), 0.34);
 }
 
 .signal-stat-greenfield {
@@ -5756,6 +5818,7 @@ body::after {
   --stat-rgb: var(--signal-greenfield-rgb);
   --stat-pattern: var(--signal-pattern-greenfield);
   --stat-mark: var(--signal-mark-greenfield);
+  border-left-color: rgba(var(--signal-greenfield-rgb), 0.52);
 }
 
 .signal-stat-brownfield {
@@ -5763,6 +5826,7 @@ body::after {
   --stat-rgb: var(--signal-brownfield-rgb);
   --stat-pattern: var(--signal-pattern-brownfield);
   --stat-mark: var(--signal-mark-brownfield);
+  border-left-color: rgba(var(--signal-brownfield-rgb), 0.52);
 }
 
 .signal-stat-change {
@@ -5770,6 +5834,7 @@ body::after {
   --stat-rgb: var(--signal-change-rgb);
   --stat-pattern: var(--signal-pattern-change);
   --stat-mark: var(--signal-mark-change);
+  border-bottom-color: rgba(var(--signal-change-rgb), 0.34);
 }
 
 .signal-stat-reference {
@@ -5777,6 +5842,7 @@ body::after {
   --stat-rgb: var(--signal-reference-rgb);
   --stat-pattern: var(--signal-pattern-reference);
   --stat-mark: var(--signal-mark-reference);
+  border-top-color: rgba(var(--signal-reference-rgb), 0.3);
 }
 
 .signal-stat-muted {

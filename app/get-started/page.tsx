@@ -259,7 +259,8 @@ export default function GetStartedPage() {
           </div>
           <Heading className="mt-3">Pick a setup path</Heading>
           <p className="mt-3 max-w-2xl text-concrete-400">
-            New repo is greenfield. Existing code is brownfield.
+            Use greenfield for a fresh repo. Use brownfield when the repo
+            already has history.
           </p>
           <SignalKey
             ariaLabel="Setup path color roles"
