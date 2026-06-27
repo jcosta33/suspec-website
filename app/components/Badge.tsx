@@ -1,7 +1,12 @@
 import type { ReactNode } from "react";
+import {
+  normalizeSignalRole,
+  type SignalInput,
+} from "./signalStyles";
 
 export interface BadgeProps {
   children: ReactNode;
+  signal?: SignalInput;
   variant?:
     | "default"
     | "success"
@@ -13,7 +18,7 @@ export interface BadgeProps {
     | "archived";
 }
 
-export function Badge({ children, variant = "default" }: BadgeProps) {
+export function Badge({ children, signal, variant = "default" }: BadgeProps) {
   // Status colors follow the site roles: ready/action = core, pass = evidence,
   // blocked = change, draft = reference, archived = muted.
   const styles = {
@@ -28,9 +33,13 @@ export function Badge({ children, variant = "default" }: BadgeProps) {
     archived: "badge-signal badge-signal-muted",
   };
 
+  const signalClass = signal
+    ? `badge-signal badge-signal-${normalizeSignalRole(signal)}`
+    : styles[variant];
+
   return (
     <span
-      className={`inline-flex max-w-full min-w-0 items-center justify-center gap-1.5 rounded-sm border px-2.5 py-0.5 text-center font-mono text-xs font-semibold uppercase leading-snug tracking-wide ${styles[variant]}`}
+      className={`inline-flex max-w-full min-w-0 items-center justify-center gap-1.5 rounded-sm border px-2.5 py-0.5 text-center font-mono text-xs font-semibold uppercase leading-snug tracking-wide ${signalClass}`}
     >
       <span
         className="h-1.5 w-1.5 rounded-full bg-current"

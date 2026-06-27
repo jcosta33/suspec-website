@@ -267,6 +267,41 @@ body {
     auto;
   color: var(--color-foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings:
+    "liga" 1,
+    "calt" 1;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(var(--signal-core-rgb), 0.34);
+  color: var(--color-albedo);
+}
+
+@supports (text-wrap: balance) {
+  :where(h1, h2, h3, .font-heading, .page-hero-title) {
+    text-wrap: balance;
+  }
+}
+
+@supports (text-wrap: pretty) {
+  :where(p, li, dd) {
+    text-wrap: pretty;
+  }
+
+  :where(
+      .terminal-window,
+      .terminal-content,
+      .site-header,
+      .mobile-menu-panel,
+      .site-footer-proof,
+      .docs-sidebar,
+      .docs-index-list
+    )
+    :where(p, li, dd) {
+    text-wrap: wrap;
+  }
 }
 
 /* Archival tooth — barely visible paper grain over the dark instrument shell. */
@@ -465,9 +500,11 @@ body::after {
 .badge-signal {
   --badge-signal: var(--signal-core);
   --badge-rgb: var(--signal-core-rgb);
+  --badge-pattern: var(--signal-pattern-core);
   border-color: rgba(var(--badge-rgb), 0.62);
   background:
     linear-gradient(180deg, rgba(var(--badge-rgb), 0.1), transparent 70%),
+    var(--badge-pattern),
     var(--color-panel-raised);
   color: var(--badge-signal);
   box-shadow: inset 0 0 8px rgba(var(--badge-rgb), 0.15);
@@ -476,26 +513,43 @@ body::after {
 .badge-signal-core {
   --badge-signal: var(--signal-core);
   --badge-rgb: var(--signal-core-rgb);
+  --badge-pattern: var(--signal-pattern-core);
 }
 
 .badge-signal-evidence {
   --badge-signal: var(--signal-evidence);
   --badge-rgb: var(--signal-evidence-rgb);
+  --badge-pattern: var(--signal-pattern-evidence);
+}
+
+.badge-signal-greenfield {
+  --badge-signal: var(--signal-greenfield);
+  --badge-rgb: var(--signal-greenfield-rgb);
+  --badge-pattern: var(--signal-pattern-greenfield);
+}
+
+.badge-signal-brownfield {
+  --badge-signal: var(--signal-brownfield);
+  --badge-rgb: var(--signal-brownfield-rgb);
+  --badge-pattern: var(--signal-pattern-brownfield);
 }
 
 .badge-signal-change {
   --badge-signal: var(--signal-change);
   --badge-rgb: var(--signal-change-rgb);
+  --badge-pattern: var(--signal-pattern-change);
 }
 
 .badge-signal-reference {
   --badge-signal: var(--signal-reference);
   --badge-rgb: var(--signal-reference-rgb);
+  --badge-pattern: var(--signal-pattern-reference);
 }
 
 .badge-signal-muted {
   --badge-signal: var(--color-concrete-400);
   --badge-rgb: var(--signal-muted-rgb);
+  --badge-pattern: var(--signal-pattern-muted);
 }
 
 .hover-border-signal-core:hover,
@@ -647,6 +701,27 @@ body::after {
       center / 100% 0.44rem no-repeat;
   mask-image: linear-gradient(90deg, #000 0 18%, rgba(0, 0, 0, 0.72) 52%, transparent 94%);
   opacity: 0.78;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .section-register::after {
+    animation: section-register-scan 10s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes section-register-scan {
+  from {
+    opacity: 0.62;
+    background-position:
+      0 50%,
+      0 50%;
+  }
+  to {
+    opacity: 0.86;
+    background-position:
+      0 50%,
+      1.35rem 50%;
+  }
 }
 
 .section-register-core {
@@ -4114,6 +4189,18 @@ body::after {
   --tool-pattern: var(--signal-pattern-change);
 }
 
+.tool-list-card-greenfield {
+  --tool-signal: var(--signal-greenfield);
+  --tool-rgb: var(--signal-greenfield-rgb);
+  --tool-pattern: var(--signal-pattern-greenfield);
+}
+
+.tool-list-card-brownfield {
+  --tool-signal: var(--signal-brownfield);
+  --tool-rgb: var(--signal-brownfield-rgb);
+  --tool-pattern: var(--signal-pattern-brownfield);
+}
+
 .tool-list-card-muted {
   --tool-signal: var(--signal-muted);
   --tool-rgb: var(--signal-muted-rgb);
@@ -4395,6 +4482,9 @@ body::after {
 }
 
 .agent-roster-cell {
+  --cell-signal: var(--roster-signal);
+  --cell-rgb: var(--roster-rgb);
+  --cell-pattern: var(--roster-pattern);
   position: relative;
   isolation: isolate;
   min-height: 13.25rem;
@@ -4407,9 +4497,52 @@ body::after {
     ),
     radial-gradient(
       70% 64% at 20% 0%,
-      rgba(var(--roster-rgb), 0.06),
+      rgba(var(--cell-rgb), 0.06),
       transparent 64%
-    );
+    ),
+    var(--cell-pattern);
+}
+
+.agent-roster-cell-core {
+  --cell-signal: var(--signal-core);
+  --cell-rgb: var(--signal-core-rgb);
+  --cell-pattern: var(--signal-pattern-core);
+}
+
+.agent-roster-cell-evidence {
+  --cell-signal: var(--signal-evidence);
+  --cell-rgb: var(--signal-evidence-rgb);
+  --cell-pattern: var(--signal-pattern-evidence);
+}
+
+.agent-roster-cell-greenfield {
+  --cell-signal: var(--signal-greenfield);
+  --cell-rgb: var(--signal-greenfield-rgb);
+  --cell-pattern: var(--signal-pattern-greenfield);
+}
+
+.agent-roster-cell-brownfield {
+  --cell-signal: var(--signal-brownfield);
+  --cell-rgb: var(--signal-brownfield-rgb);
+  --cell-pattern: var(--signal-pattern-brownfield);
+}
+
+.agent-roster-cell-change {
+  --cell-signal: var(--signal-change);
+  --cell-rgb: var(--signal-change-rgb);
+  --cell-pattern: var(--signal-pattern-change);
+}
+
+.agent-roster-cell-reference {
+  --cell-signal: var(--signal-reference);
+  --cell-rgb: var(--signal-reference-rgb);
+  --cell-pattern: var(--signal-pattern-reference);
+}
+
+.agent-roster-cell-muted {
+  --cell-signal: var(--signal-muted);
+  --cell-rgb: var(--signal-muted-rgb);
+  --cell-pattern: var(--signal-pattern-muted);
 }
 
 .agent-roster-cell::before {
@@ -4420,7 +4553,7 @@ body::after {
   background: linear-gradient(
     180deg,
     transparent,
-    rgba(var(--roster-rgb), 0.76),
+    rgba(var(--cell-rgb), 0.76),
     transparent
   );
   opacity: 0;

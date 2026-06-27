@@ -122,24 +122,28 @@ const rosterGroups = [
         label: "Review",
         file: "corpus-reviewer",
         icon: Scale,
+        signal: "evidence",
         use: "Review a finished task or PR.",
       },
       {
         label: "Explore",
         file: "corpus-explorer",
         icon: Compass,
+        signal: "reference",
         use: "Read a codebase and report how something works.",
       },
       {
         label: "Evidence",
         file: "corpus-evidence-checker",
         icon: ShieldCheck,
+        signal: "evidence",
         use: "Re-run Verify items and flag missing evidence.",
       },
       {
         label: "Challenge",
         file: "corpus-challenger",
         icon: Swords,
+        signal: "change",
         use: "Pressure-test a proposal before build work starts.",
       },
     ],
@@ -154,24 +158,28 @@ const rosterGroups = [
         label: "Spec",
         file: "corpus-spec-author",
         icon: PenTool,
+        signal: "core",
         use: "Draft a spec from an intake note.",
       },
       {
         label: "Research",
         file: "corpus-researcher",
         icon: Microscope,
+        signal: "reference",
         use: "Research one question and write a note.",
       },
       {
         label: "Audit",
         file: "corpus-auditor",
         icon: FileSearch,
+        signal: "evidence",
         use: "Audit a code area with file:line findings.",
       },
       {
         label: "Docs",
         file: "corpus-documentarian",
         icon: ScrollText,
+        signal: "reference",
         use: "Draft human-facing docs.",
       },
     ],
@@ -185,6 +193,7 @@ const rosterGroups = [
     label: string;
     file: string;
     icon: ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
+    signal: SignalRole;
     use: string;
   }>;
 }>;
@@ -292,32 +301,32 @@ export default function AgentsPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${item.file} definition on GitHub (opens in new tab)`}
-                  className="agent-roster-cell group block h-full min-h-[13.25rem] bg-panel-raised/95 p-5 transition-[background-color] hover:bg-panel focus-ring sm:p-6"
+                  className={`agent-roster-cell agent-roster-cell-${item.signal} group block h-full min-h-[13.25rem] bg-panel-raised/95 p-5 transition-[background-color] hover:bg-panel focus-ring sm:p-6`}
                 >
                   <div className="flex items-start gap-4">
                     <HexBadge
-                      color={group.signal}
+                      color={item.signal}
                       className="agent-roster-icon h-10 w-10"
                     >
                       <item.icon className="h-4 w-4" aria-hidden="true" />
                     </HexBadge>
                     <div className="min-w-0 flex-1">
-                  <div className="flex items-start justify-between gap-4">
-                    <p
-                      className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles[group.signal].text}`}
-                    >
-                      {String(groupIndex * 4 + index + 1).padStart(2, "0")}
-                    </p>
-                    <ExternalLink
-                      className="motion-nudge-x h-4 w-4 shrink-0 text-brass/70 transition-[opacity,transform] group-hover:opacity-100 group-focus:opacity-100"
-                      aria-hidden="true"
-                    />
-                  </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <p
+                          className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles[item.signal].text}`}
+                        >
+                          {String(groupIndex * 4 + index + 1).padStart(2, "0")}
+                        </p>
+                        <ExternalLink
+                          className="motion-nudge-x h-4 w-4 shrink-0 text-brass/70 transition-[opacity,transform] group-hover:opacity-100 group-focus:opacity-100"
+                          aria-hidden="true"
+                        />
+                      </div>
                       <h3 className="mt-3 font-heading text-xl font-bold text-concrete-100">
                         {item.label}
                       </h3>
                       <p
-                        className={`mt-2 break-words font-mono text-xs leading-relaxed ${signalRoles[group.signal].text}`}
+                        className={`mt-2 break-words font-mono text-xs leading-relaxed ${signalRoles[item.signal].text}`}
                       >
                         {item.file}
                       </p>

@@ -277,6 +277,7 @@ export default function GetStartedPage() {
           </ul>
         </div>
         <Card
+          signal="greenfield"
           href="https://github.com/jcosta33/corpus-starter-kit"
           target="_blank"
           rel="noopener noreferrer"
@@ -329,6 +330,7 @@ export default function GetStartedPage() {
         </Card>
 
         <Card
+          signal="brownfield"
           href="/docs/ADOPTING/"
           target="_blank"
           rel="noopener noreferrer"
