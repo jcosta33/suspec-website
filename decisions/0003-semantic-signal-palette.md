@@ -30,11 +30,11 @@ the public marketing palette. Public accents stay warm or tempered:
 | Role | Hue | Job | Pattern |
 |---|---:|---|---|
 | Core | `#D88A24` | Corpus identity, primary action, active state, current loop step | gilt rail / seal line |
-| Evidence | `#9FBA72` | review proof, verified output, pass states | checkpoint ticks |
-| Greenfield | `#63B875` | new repo, starter kit, first-run setup only | upright field rows |
-| Brownfield | `#B57E59` | existing-project adoption, migration, repo history | diagonal survey hatching |
-| Change | `#CA7058` | edits, fixes, run work, blocked or attention states | angled change hatching |
-| Reference | `#78B8AA` | docs, manuals, ledgers, catalogs, read-only rosters | horizontal ledger rules |
+| Evidence | `#AAB96A` | review proof, verified output, pass states | checkpoint ticks |
+| Greenfield | `#5FBE73` | new repo, starter kit, first-run setup only | upright field rows |
+| Brownfield | `#B47A50` | existing-project adoption, migration, repo history | diagonal survey hatching |
+| Change | `#CC735A` | edits, fixes, run work, blocked or attention states | angled change hatching |
+| Reference | `#70BDB2` | docs, manuals, ledgers, catalogs, read-only rosters | horizontal ledger rules |
 | Muted | `#BF7927` | hardware chrome, counters, low-emphasis labels | brass ruler marks |
 
 Color is assigned from the object or action, not from mood:
@@ -56,6 +56,13 @@ Visible semantic color should usually travel through at least three surfaces:
 label text, icon/lamp, rail/border, hatch/mark, or hover state. If color appears
 on only one isolated word or card, it reads as decoration and should be removed
 or promoted into the full role treatment.
+
+Role selectors must be able to override base component defaults. Generic
+signaled surfaces should keep their default selector specificity low, then let
+classes such as `signal-surface-greenfield`, `signal-surface-brownfield`, and
+`signal-surface-reference` set the actual role variables. If the base selector
+wins the cascade, every card falls back to core gold and the palette stops
+meaning anything.
 
 ## Consequences
 

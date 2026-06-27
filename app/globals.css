@@ -4234,7 +4234,7 @@ body::after {
   --plate-rgb: var(--signal-brownfield-rgb);
 }
 
-.panel-raised.signal-surface {
+.panel-raised:where(.signal-surface) {
   --surface-signal: var(--signal-core);
   --surface-rgb: var(--signal-core-rgb);
   --surface-pattern: var(--signal-pattern-core);
@@ -4270,8 +4270,8 @@ body::after {
     );
 }
 
-.panel-raised.signal-surface:hover,
-.panel-raised.signal-surface:focus-within {
+.panel-raised:where(.signal-surface):hover,
+.panel-raised:where(.signal-surface):focus-within {
   border-color: rgba(var(--surface-rgb), 0.48);
   box-shadow:
     inset 0 1px 0 rgba(232, 222, 203, 0.09),
