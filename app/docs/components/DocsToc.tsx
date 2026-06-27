@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import type { DocHeading } from "../lib/render";
 
 // On-this-page rail with scroll-spy. An IntersectionObserver over the heading ids (the same ones the
@@ -8,7 +8,22 @@ import type { DocHeading } from "../lib/render";
 // sidebar's "you are here" vocabulary. The page renders it only once there are enough sections to
 // justify the extra rail.
 export function DocsToc({ headings }: { headings: DocHeading[] }) {
-  const [activeId, setActiveId] = useState<string>("");
+  const [activeId, setActiveId] = useState<string>(headings[0]?.id ?? "");
+  const activeIndex = Math.max(
+    0,
+    headings.findIndex((h) => h.id === activeId),
+  );
+  const activePosition = Math.min(activeIndex + 1, headings.length);
+  const progress =
+    headings.length > 1
+      ? (activeIndex / (headings.length - 1)) * 100
+      : headings.length > 0
+        ? 100
+        : 0;
+
+  const progressStyle = {
+    "--docs-toc-progress": `${progress}%`,
+  } as CSSProperties;
 
   useEffect(() => {
     const els = headings
@@ -31,8 +46,24 @@ export function DocsToc({ headings }: { headings: DocHeading[] }) {
   }, [headings]);
 
   return (
-    <nav className="docs-toc" aria-label="On this page">
-      <p className="docs-toc-title">On this page</p>
+    <nav
+      className="docs-toc"
+      aria-label="On this page"
+      style={progressStyle}
+    >
+      <div className="docs-toc-head">
+        <p className="docs-toc-title">On this page</p>
+        <span className="docs-toc-count" aria-hidden="true">
+          {String(activePosition).padStart(2, "0")} /{" "}
+          {String(headings.length).padStart(2, "0")}
+        </span>
+        <span className="sr-only">
+          Section {activePosition} of {headings.length}.
+        </span>
+      </div>
+      <div className="docs-toc-progress" aria-hidden="true">
+        <span />
+      </div>
       <ul>
         {headings.map((h) => {
           const active = activeId === h.id;
