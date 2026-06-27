@@ -232,7 +232,7 @@ export default function TheLoopPage() {
         registerTone="core"
         className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-start"
       >
-        <div className="order-2 grid gap-4 lg:order-none lg:content-start">
+        <div className="order-1 grid gap-4 lg:order-none lg:content-start">
           <PaperArtifact
             label="note"
             title="six points / six steps"
@@ -270,7 +270,7 @@ export default function TheLoopPage() {
             </ul>
           </Panel>
         </div>
-        <div className="order-1 lg:order-none">
+        <div className="order-2 lg:order-none">
           <LoopDiagram linkSteps />
         </div>
       </Section>

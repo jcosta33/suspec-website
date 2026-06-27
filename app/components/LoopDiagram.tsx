@@ -180,8 +180,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
       >
         {steps.map((step, index) => {
           const Icon = step.icon;
-          const showConnector =
-            !linkSteps && index < steps.length - 1 && index % 3 !== 2;
+          const showConnector = index < steps.length - 1 && index % 3 !== 2;
           const cardClassName =
             `loop-step-card loop-step-card-${step.signal} ${
               linkSteps ? "loop-step-card-linked" : ""
@@ -211,7 +210,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
               </p>
               {showConnector && (
                 <div
-                  className="absolute -right-3 top-1/2 hidden h-1 w-6 -translate-y-1/2 border-y border-panel-border bg-panel-edge xl:block"
+                  className="loop-step-connector absolute -right-3 top-1/2 hidden h-1 w-6 -translate-y-1/2 xl:block"
                   aria-hidden="true"
                 />
               )}

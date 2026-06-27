@@ -4612,6 +4612,19 @@ body::after {
   transform: scaleY(1);
 }
 
+.loop-step-connector {
+  border-block: 1px solid rgba(var(--loop-step-rgb), 0.22);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(var(--loop-step-rgb), 0.12),
+      rgba(var(--loop-step-rgb), 0.44),
+      rgba(var(--loop-step-rgb), 0.12)
+    ),
+    var(--color-panel-edge);
+  box-shadow: 0 0 14px rgba(var(--loop-step-rgb), 0.12);
+}
+
 .loop-step-card-core {
   --loop-step-signal: var(--signal-core);
   --loop-step-rgb: var(--signal-core-rgb);
