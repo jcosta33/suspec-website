@@ -1250,8 +1250,61 @@ body::after {
 
 /* Route header ruling — faint manuscript marks behind the hero title. */
 .ambient-header {
+  --ambient-signal: var(--signal-reference);
+  --ambient-rgb: var(--signal-reference-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-reference);
   position: relative;
   isolation: isolate;
+}
+
+.ambient-header:has(.page-hero-tone-core) {
+  --ambient-signal: var(--signal-core);
+  --ambient-rgb: var(--signal-core-rgb);
+  --ambient-secondary-rgb: var(--signal-reference-rgb);
+  --ambient-pattern: var(--signal-pattern-core);
+}
+
+.ambient-header:has(.page-hero-tone-evidence) {
+  --ambient-signal: var(--signal-evidence);
+  --ambient-rgb: var(--signal-evidence-rgb);
+  --ambient-secondary-rgb: var(--signal-reference-rgb);
+  --ambient-pattern: var(--signal-pattern-evidence);
+}
+
+.ambient-header:has(.page-hero-tone-greenfield) {
+  --ambient-signal: var(--signal-greenfield);
+  --ambient-rgb: var(--signal-greenfield-rgb);
+  --ambient-secondary-rgb: var(--signal-brownfield-rgb);
+  --ambient-pattern: var(--signal-pattern-greenfield);
+}
+
+.ambient-header:has(.page-hero-tone-brownfield) {
+  --ambient-signal: var(--signal-brownfield);
+  --ambient-rgb: var(--signal-brownfield-rgb);
+  --ambient-secondary-rgb: var(--signal-greenfield-rgb);
+  --ambient-pattern: var(--signal-pattern-brownfield);
+}
+
+.ambient-header:has(.page-hero-tone-change) {
+  --ambient-signal: var(--signal-change);
+  --ambient-rgb: var(--signal-change-rgb);
+  --ambient-secondary-rgb: var(--signal-evidence-rgb);
+  --ambient-pattern: var(--signal-pattern-change);
+}
+
+.ambient-header:has(.page-hero-tone-reference) {
+  --ambient-signal: var(--signal-reference);
+  --ambient-rgb: var(--signal-reference-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-reference);
+}
+
+.ambient-header:has(.page-hero-tone-muted) {
+  --ambient-signal: var(--signal-muted);
+  --ambient-rgb: var(--signal-muted-rgb);
+  --ambient-secondary-rgb: var(--signal-reference-rgb);
+  --ambient-pattern: var(--signal-pattern-muted);
 }
 
 .ambient-header > * {
@@ -1280,7 +1333,7 @@ body::after {
         90deg,
         transparent 0%,
         transparent 34%,
-        rgba(var(--signal-muted-rgb), 0.05) 48%,
+        rgba(var(--ambient-secondary-rgb), 0.05) 48%,
         transparent 62%,
         transparent 100%
       )
@@ -1289,12 +1342,13 @@ body::after {
       90deg,
       transparent,
       transparent 23px,
-      rgba(var(--signal-reference-rgb), 0.08) 23px,
-      rgba(var(--signal-reference-rgb), 0.08) 24px
+      rgba(var(--ambient-rgb), 0.08) 23px,
+      rgba(var(--ambient-rgb), 0.08) 24px
     ),
+    var(--ambient-pattern),
     radial-gradient(
       ellipse at center,
-      rgba(var(--signal-muted-rgb), 0.08),
+      rgba(var(--ambient-rgb), 0.08),
       transparent 68%
     );
 }
@@ -1344,23 +1398,23 @@ body::after {
   background:
     radial-gradient(
         circle,
-        rgba(var(--signal-reference-rgb), 0.68) 0 1.5px,
+        rgba(var(--ambient-rgb), 0.68) 0 1.5px,
         transparent 2px
       )
       left center / 0.8rem 0.8rem no-repeat,
     radial-gradient(
         circle,
-        rgba(var(--signal-core-rgb), 0.68) 0 1.5px,
+        rgba(var(--ambient-secondary-rgb), 0.68) 0 1.5px,
         transparent 2px
       )
       right center / 0.8rem 0.8rem no-repeat,
     linear-gradient(
-        90deg,
-        transparent,
-        rgba(var(--signal-reference-rgb), 0.34),
-        rgba(var(--signal-core-rgb), 0.38),
-        transparent
-      )
+         90deg,
+         transparent,
+        rgba(var(--ambient-rgb), 0.34),
+        rgba(var(--ambient-secondary-rgb), 0.38),
+         transparent
+       )
       center / 100% 1px no-repeat;
 }
 
@@ -1383,11 +1437,11 @@ body::after {
 .page-hero::before {
   inset: -1.4rem 7% auto;
   height: 8rem;
-  opacity: 0.44;
+  opacity: 0.52;
   background:
     radial-gradient(
       circle at 50% 42%,
-      rgba(var(--hero-rgb), 0.15),
+      rgba(var(--hero-rgb), 0.16),
       transparent 34%
     ),
     linear-gradient(
@@ -1395,14 +1449,15 @@ body::after {
       transparent,
       rgba(var(--hero-rgb), 0.14) 48%,
       transparent
-    );
+    ),
+    var(--hero-pattern);
   filter: blur(0.2px);
 }
 
 .page-hero::after {
   inset: -0.35rem max(0.75rem, 9%) auto;
   height: 7.4rem;
-  opacity: 0.58;
+  opacity: 0.66;
   background:
     linear-gradient(rgba(var(--hero-rgb), 0.3), rgba(var(--hero-rgb), 0.3))
       top left / 2.8rem 1px no-repeat,
@@ -1464,8 +1519,33 @@ body::after {
   --hero-pattern: var(--signal-pattern-muted);
 }
 
+.page-hero > .panel-raised {
+  --plate-signal: var(--hero-signal);
+  --plate-rgb: var(--hero-rgb);
+  border-color: rgba(var(--hero-rgb), 0.34);
+  background-image:
+    linear-gradient(90deg, rgba(var(--hero-rgb), 0.09), transparent 52%),
+    var(--hero-pattern),
+    radial-gradient(
+      80% 90% at 50% 0%,
+      rgba(var(--hero-rgb), 0.08),
+      transparent 60%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.07),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(var(--hero-rgb), 0.04),
+    0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.page-hero > .panel-raised .engraved {
+  color: var(--hero-signal);
+  text-shadow: 0 0 12px rgba(var(--hero-rgb), 0.16);
+}
+
 .page-hero-title {
   position: relative;
+  text-shadow: 0 0 28px rgba(var(--hero-rgb), 0.08);
 }
 
 .page-hero-title::before,
