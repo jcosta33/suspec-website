@@ -10,26 +10,34 @@ export const metadata: Metadata = {
 };
 
 const docsLegend = [
-  { label: "Start", role: "core", detail: "entry" },
-  { label: "Tutorial", role: "core", detail: "first pass" },
-  { label: "Examples", role: "change", detail: "worked changes" },
-  { label: "Reference", role: "reference", detail: "manual" },
-  { label: "ADRs", role: "muted", detail: "decisions" },
-] as const satisfies Array<{ label: string; role: SignalRole; detail: string }>;
+  { label: "Start", role: "core", detail: "entry", href: "#start-here" },
+  { label: "Tutorial", role: "core", detail: "first pass", href: "#tutorial" },
+  { label: "Examples", role: "change", detail: "worked changes", href: "#examples" },
+  { label: "Reference", role: "reference", detail: "manual", href: "#reference" },
+  { label: "ADRs", role: "muted", detail: "decisions", href: "#adrs" },
+] as const satisfies Array<{
+  label: string;
+  role: SignalRole;
+  detail: string;
+  href: string;
+}>;
 
 function Section({
   sec,
   intro,
   role = "core",
   className = "",
+  id,
 }: {
   sec: NavSection;
   intro?: string;
   role?: SignalRole;
   className?: string;
+  id?: string;
 }) {
   return (
     <section
+      id={id}
       className={`docs-index-section docs-index-section-${role} ${className}`}
       data-color-role={role}
     >
@@ -97,8 +105,10 @@ export default function DocsIndex() {
                 key={item.label}
                 className={`docs-index-legend-item docs-index-legend-${item.role}`}
               >
-                <span>{item.label}</span>
-                <span>{item.detail}</span>
+                <a href={item.href}>
+                  <span>{item.label}</span>
+                  <span>{item.detail}</span>
+                </a>
               </li>
             ))}
           </ul>
@@ -110,17 +120,20 @@ export default function DocsIndex() {
         {balancedGrid ? (
           <div className="docs-index-top">
             <Section
+              id="start-here"
               sec={balancedGrid.startHere}
               role="core"
               className="docs-index-section-primary"
             />
             <div className="docs-index-stack">
               <Section
+                id="tutorial"
                 sec={balancedGrid.tutorial}
                 role="core"
                 className="docs-index-section-tutorial"
               />
               <Section
+                id="examples"
                 sec={balancedGrid.examples}
                 role="change"
                 className="docs-index-section-examples"
@@ -131,6 +144,7 @@ export default function DocsIndex() {
           <>
             {startHere ? (
               <Section
+                id="start-here"
                 sec={startHere}
                 role="core"
                 className="docs-index-section-primary"
@@ -138,6 +152,7 @@ export default function DocsIndex() {
             ) : null}
             {tutorial ? (
               <Section
+                id="tutorial"
                 sec={tutorial}
                 role="core"
                 className="docs-index-section-tutorial"
@@ -145,6 +160,7 @@ export default function DocsIndex() {
             ) : null}
             {examples ? (
               <Section
+                id="examples"
                 sec={examples}
                 role="change"
                 className="docs-index-section-examples"
@@ -154,6 +170,7 @@ export default function DocsIndex() {
         )}
         {reference ? (
           <Section
+            id="reference"
             sec={reference}
             intro="Detailed rules, formats, checks, and glossary."
             role="reference"
@@ -162,6 +179,7 @@ export default function DocsIndex() {
         ) : null}
         {adrs && adrs.items.length > 0 ? (
           <section
+            id="adrs"
             className="docs-index-section docs-index-section-muted docs-index-section-compact docs-index-section-wide docs-index-section-adrs"
             data-color-role="muted"
           >
