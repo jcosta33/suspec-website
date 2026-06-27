@@ -21,6 +21,7 @@ import { Heading } from "../components/Heading";
 import { Badge } from "../components/Badge";
 import { PilotLamp } from "../components/PilotLamp";
 import { TextLink } from "../components/TextLink";
+import { SignalKey } from "../components/SignalKey";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 
 export const metadata: Metadata = {
@@ -212,6 +213,29 @@ const commandFamilies = [
   },
 ] as const;
 
+const commandSignalKey = [
+  {
+    label: "Setup",
+    role: "core",
+    detail: "create or refresh kit files",
+  },
+  {
+    label: "Check / review",
+    role: "evidence",
+    detail: "report facts and compare evidence",
+  },
+  {
+    label: "Run",
+    role: "change",
+    detail: "isolate task work",
+  },
+  {
+    label: "JSON",
+    role: "reference",
+    detail: "machine-readable records",
+  },
+] as const;
+
 export default function CliPage() {
   return (
     <div className="flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
@@ -240,7 +264,15 @@ export default function CliPage() {
         </PageHero>
       </Section>
 
-      <Section register="01 / command families" registerTone="reference">
+      <Section
+        register="01 / command families"
+        registerTone="reference"
+        className="space-y-4"
+      >
+        <SignalKey
+          ariaLabel="corpus-cli command family color roles"
+          items={commandSignalKey}
+        />
         <Panel brushed screws className="cli-surface-panel p-0">
           <div className="cli-surface-header">
             <p>Command families</p>

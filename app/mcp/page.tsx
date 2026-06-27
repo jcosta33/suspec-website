@@ -20,6 +20,7 @@ import { PageHero } from "../components/PageHero";
 import { Panel } from "../components/Panel";
 import { PaperArtifact } from "../components/PaperArtifact";
 import { Section } from "../components/Section";
+import { SignalKey } from "../components/SignalKey";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { TextLink } from "../components/TextLink";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
@@ -197,6 +198,24 @@ const bridgeFlow = [
   },
 ] as const;
 
+const bridgeSignalKey = [
+  {
+    label: "Host",
+    role: "muted",
+    detail: "client outside the workspace",
+  },
+  {
+    label: "Adapter",
+    role: "core",
+    detail: "corpus-mcp process",
+  },
+  {
+    label: "Records",
+    role: "reference",
+    detail: "CLI JSON and markdown facts",
+  },
+] as const;
+
 export default function McpPage() {
   return (
     <div className="flex flex-col gap-10 py-14 sm:gap-12 sm:py-16">
@@ -226,7 +245,15 @@ export default function McpPage() {
         </PageHero>
       </Section>
 
-      <Section register="01 / bridge" registerTone="reference">
+      <Section
+        register="01 / bridge"
+        registerTone="reference"
+        className="space-y-4"
+      >
+        <SignalKey
+          ariaLabel="corpus-mcp bridge color roles"
+          items={bridgeSignalKey}
+        />
         <Panel brushed screws className="mcp-adapter-panel p-0">
           <div className="mcp-adapter-header">
             <p>client request</p>
