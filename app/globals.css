@@ -1150,13 +1150,13 @@ body::after {
   width: min(48rem, 86vw);
   height: 8.5rem;
   border-radius: 9999px;
-  opacity: 0.5;
+  opacity: 0.48;
   background:
     linear-gradient(
         90deg,
         transparent 0%,
         transparent 34%,
-        rgba(240, 184, 92, 0.065) 48%,
+        rgba(var(--signal-muted-rgb), 0.05) 48%,
         transparent 62%,
         transparent 100%
       )
@@ -1165,12 +1165,12 @@ body::after {
       90deg,
       transparent,
       transparent 23px,
-      rgba(216, 138, 36, 0.12) 23px,
-      rgba(216, 138, 36, 0.12) 24px
+      rgba(var(--signal-reference-rgb), 0.08) 23px,
+      rgba(var(--signal-reference-rgb), 0.08) 24px
     ),
     radial-gradient(
       ellipse at center,
-      rgba(216, 138, 36, 0.12),
+      rgba(var(--signal-muted-rgb), 0.08),
       transparent 68%
     );
 }
@@ -1205,10 +1205,10 @@ body::after {
 @keyframes ambient-rule-breathe {
   0%,
   100% {
-    opacity: 0.58;
+    opacity: 0.56;
   }
   50% {
-    opacity: 0.74;
+    opacity: 0.7;
   }
 }
 
@@ -1220,20 +1220,21 @@ body::after {
   background:
     radial-gradient(
         circle,
-        rgba(216, 138, 36, 0.72) 0 1.5px,
+        rgba(var(--signal-reference-rgb), 0.68) 0 1.5px,
         transparent 2px
       )
       left center / 0.8rem 0.8rem no-repeat,
     radial-gradient(
         circle,
-        rgba(216, 138, 36, 0.72) 0 1.5px,
+        rgba(var(--signal-core-rgb), 0.68) 0 1.5px,
         transparent 2px
       )
       right center / 0.8rem 0.8rem no-repeat,
     linear-gradient(
         90deg,
         transparent,
-        rgba(216, 138, 36, 0.42),
+        rgba(var(--signal-reference-rgb), 0.34),
+        rgba(var(--signal-core-rgb), 0.38),
         transparent
       )
       center / 100% 1px no-repeat;
@@ -1258,17 +1259,17 @@ body::after {
 .page-hero::before {
   inset: -1.4rem 7% auto;
   height: 8rem;
-  opacity: 0.38;
+  opacity: 0.44;
   background:
     radial-gradient(
       circle at 50% 42%,
-      rgba(var(--hero-rgb), 0.12),
+      rgba(var(--hero-rgb), 0.15),
       transparent 34%
     ),
     linear-gradient(
       90deg,
       transparent,
-      rgba(var(--hero-rgb), 0.12) 48%,
+      rgba(var(--hero-rgb), 0.14) 48%,
       transparent
     );
   filter: blur(0.2px);
@@ -1277,23 +1278,23 @@ body::after {
 .page-hero::after {
   inset: -0.35rem max(0.75rem, 9%) auto;
   height: 7.4rem;
-  opacity: 0.52;
+  opacity: 0.58;
   background:
-    linear-gradient(rgba(var(--hero-rgb), 0.22), rgba(var(--hero-rgb), 0.22))
+    linear-gradient(rgba(var(--hero-rgb), 0.3), rgba(var(--hero-rgb), 0.3))
       top left / 2.8rem 1px no-repeat,
-    linear-gradient(rgba(var(--hero-rgb), 0.22), rgba(var(--hero-rgb), 0.22))
+    linear-gradient(rgba(var(--hero-rgb), 0.3), rgba(var(--hero-rgb), 0.3))
       top right / 2.8rem 1px no-repeat,
-    linear-gradient(rgba(var(--hero-rgb), 0.2), rgba(var(--hero-rgb), 0.2))
+    linear-gradient(rgba(var(--hero-rgb), 0.25), rgba(var(--hero-rgb), 0.25))
       bottom left / 2.8rem 1px no-repeat,
-    linear-gradient(rgba(var(--hero-rgb), 0.2), rgba(var(--hero-rgb), 0.2))
+    linear-gradient(rgba(var(--hero-rgb), 0.25), rgba(var(--hero-rgb), 0.25))
       bottom right / 2.8rem 1px no-repeat,
-    linear-gradient(rgba(var(--hero-rgb), 0.2), rgba(var(--hero-rgb), 0.2))
+    linear-gradient(rgba(var(--hero-rgb), 0.24), rgba(var(--hero-rgb), 0.24))
       top left / 1px 1.45rem no-repeat,
-    linear-gradient(rgba(var(--hero-rgb), 0.2), rgba(var(--hero-rgb), 0.2))
+    linear-gradient(rgba(var(--hero-rgb), 0.24), rgba(var(--hero-rgb), 0.24))
       top right / 1px 1.45rem no-repeat,
-    linear-gradient(rgba(var(--hero-rgb), 0.16), rgba(var(--hero-rgb), 0.16))
+    linear-gradient(rgba(var(--hero-rgb), 0.2), rgba(var(--hero-rgb), 0.2))
       bottom left / 1px 1.45rem no-repeat,
-    linear-gradient(rgba(var(--hero-rgb), 0.16), rgba(var(--hero-rgb), 0.16))
+    linear-gradient(rgba(var(--hero-rgb), 0.2), rgba(var(--hero-rgb), 0.2))
       bottom right / 1px 1.45rem no-repeat,
     var(--hero-pattern),
     repeating-linear-gradient(
