@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  ArrowRight,
   BookOpen,
   CheckCircle,
   ExternalLink,
@@ -103,18 +104,22 @@ const skillAnatomy = [
   {
     label: "Trigger",
     text: "The description says when the skill loads.",
+    href: "#trigger",
   },
   {
     label: "Rules",
     text: "The body gives the agent a short checklist.",
+    href: "#rules",
   },
   {
     label: "References",
     text: "Extra examples stay one hop away.",
+    href: "#references",
   },
   {
     label: "Scope",
     text: "Repo-specific knowledge stays in AGENTS.md.",
+    href: "#scope",
   },
 ];
 
@@ -172,17 +177,28 @@ export default function WritingSkillsPage() {
             {skillAnatomy.map((item, index) => (
               <li
                 key={item.label}
-                className="mcp-adapter-step skill-anatomy-step min-h-[9.4rem] bg-panel-raised/95 p-5 sm:p-6"
+                className="mcp-adapter-step skill-anatomy-step bg-panel-raised/95"
               >
-                <p className="font-mono text-xs font-semibold uppercase tracking-wide text-corpus-yellow">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h2 className="mt-3 font-heading text-xl font-bold text-concrete-100">
-                  {item.label}
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-concrete-400">
-                  {item.text}
-                </p>
+                <a
+                  href={item.href}
+                  className="focus-ring group flex min-h-[9.4rem] h-full flex-col p-5 no-underline sm:p-6"
+                >
+                  <span className="flex items-start justify-between gap-3">
+                    <span className="font-mono text-xs font-semibold uppercase tracking-wide text-corpus-yellow">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <ArrowRight
+                      className="motion-nudge-x h-4 w-4 shrink-0 text-brass/70"
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <span className="mt-3 font-heading text-xl font-bold text-concrete-100">
+                    {item.label}
+                  </span>
+                  <span className="mt-2 text-sm leading-relaxed text-concrete-400">
+                    {item.text}
+                  </span>
+                </a>
               </li>
             ))}
           </ol>
@@ -232,6 +248,7 @@ export default function WritingSkillsPage() {
       </Section>
 
       <Section
+        id="trigger"
         register="03 / load rule"
         registerTone="core"
         className="flex flex-col gap-8"
@@ -275,6 +292,7 @@ export default function WritingSkillsPage() {
       </Section>
 
       <Section
+        id="rules"
         register="04 / checklist"
         registerTone="reference"
         className="flex flex-col gap-8"
@@ -312,6 +330,7 @@ export default function WritingSkillsPage() {
       </Section>
 
       <Section
+        id="references"
         register="05 / extra material"
         registerTone="reference"
         className="grid gap-6 lg:grid-cols-2"
@@ -342,6 +361,7 @@ export default function WritingSkillsPage() {
       </Section>
 
       <Section
+        id="scope"
         register="06 / local knowledge"
         registerTone="change"
         className="flex flex-col gap-8"
