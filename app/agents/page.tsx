@@ -235,7 +235,7 @@ export default function AgentsPage() {
             Claude Code worker files for Corpus roles.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
-            Copy one into a repo when you want a role with its own context.
+            Add one when a role needs its own operating context.
           </p>
           <HeroTrace
             ariaLabel="Agent role trace"

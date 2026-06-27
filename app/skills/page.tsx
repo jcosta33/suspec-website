@@ -181,10 +181,10 @@ export default function SkillsPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Optional agent guides for review, implementation, testing, and docs.
+            Task-scoped guides for review, implementation, testing, and docs.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
-            Install only the guide that matches the task.
+            Install once. Load only the guide in scope.
           </p>
           <HeroTrace
             ariaLabel="Skill guide trace"
@@ -209,7 +209,7 @@ export default function SkillsPage() {
           meta="source -> local install"
           className="h-full"
         >
-          <p>Install the guide set once. Load only what the task needs.</p>
+          <p>Use the catalog to select context. Keep repo policy local.</p>
         </PaperArtifact>
         <Card
           screws
@@ -228,8 +228,7 @@ export default function SkillsPage() {
             />
           </div>
           <p className="repo-manifest-note">
-            The catalog is guidance, not runtime. Read the file before relying
-            on it.
+            Guidance only. Read the file before it shapes a team workflow.
           </p>
         </Card>
       </Section>

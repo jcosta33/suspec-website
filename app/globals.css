@@ -2163,9 +2163,9 @@ body::after {
 }
 
 .hero-trace-item {
-  --trace-signal: var(--signal-core);
-  --trace-rgb: var(--signal-core-rgb);
-  --trace-pattern: var(--signal-pattern-core);
+  --trace-signal: var(--signal-reference);
+  --trace-rgb: var(--signal-reference-rgb);
+  --trace-pattern: var(--signal-pattern-reference);
   position: relative;
   display: grid;
   min-width: 5.9rem;
@@ -2173,16 +2173,16 @@ body::after {
   align-content: center;
   gap: 0.12rem;
   overflow: hidden;
-  border: 1px solid rgba(var(--trace-rgb), 0.32);
+  border: 1px solid rgba(var(--trace-rgb), 0.24);
   border-radius: calc(var(--radius-control) - 2px);
   background:
-    linear-gradient(90deg, rgba(var(--trace-rgb), 0.105), transparent 58%),
+    linear-gradient(90deg, rgba(var(--trace-rgb), 0.045), transparent 58%),
     var(--trace-pattern),
     rgba(18, 13, 9, 0.58);
   padding: 0.5rem 0.64rem 0.52rem;
   text-align: left;
   box-shadow:
-    inset 2px 0 0 rgba(var(--trace-rgb), 0.26),
+    inset 2px 0 0 rgba(var(--trace-rgb), 0.18),
     inset 0 1px 0 rgba(240, 226, 204, 0.04);
 }
 
@@ -2195,8 +2195,8 @@ body::after {
   height: 0.24rem;
   border-radius: 999px;
   background: var(--trace-signal);
-  box-shadow: 0 0 9px rgba(var(--trace-rgb), 0.42);
-  opacity: 0.82;
+  box-shadow: 0 0 7px rgba(var(--trace-rgb), 0.28);
+  opacity: 0.66;
 }
 
 .hero-trace-index {
@@ -2229,27 +2229,27 @@ body::after {
 }
 
 .hero-trace-item-evidence {
-  --trace-signal: var(--signal-evidence);
-  --trace-rgb: var(--signal-evidence-rgb);
-  --trace-pattern: var(--signal-pattern-evidence);
+  --trace-signal: var(--signal-reference);
+  --trace-rgb: var(--signal-reference-rgb);
+  --trace-pattern: var(--signal-pattern-reference);
 }
 
 .hero-trace-item-greenfield {
-  --trace-signal: var(--signal-greenfield);
-  --trace-rgb: var(--signal-greenfield-rgb);
-  --trace-pattern: var(--signal-pattern-greenfield);
+  --trace-signal: var(--signal-reference);
+  --trace-rgb: var(--signal-reference-rgb);
+  --trace-pattern: var(--signal-pattern-reference);
 }
 
 .hero-trace-item-brownfield {
-  --trace-signal: var(--signal-brownfield);
-  --trace-rgb: var(--signal-brownfield-rgb);
-  --trace-pattern: var(--signal-pattern-brownfield);
+  --trace-signal: var(--signal-muted);
+  --trace-rgb: var(--signal-muted-rgb);
+  --trace-pattern: var(--signal-pattern-muted);
 }
 
 .hero-trace-item-change {
-  --trace-signal: var(--signal-change);
-  --trace-rgb: var(--signal-change-rgb);
-  --trace-pattern: var(--signal-pattern-change);
+  --trace-signal: var(--signal-muted);
+  --trace-rgb: var(--signal-muted-rgb);
+  --trace-pattern: var(--signal-pattern-muted);
 }
 
 .hero-trace-item-reference {
@@ -3444,9 +3444,9 @@ body::after {
   isolation: isolate;
   overflow: hidden;
   background-image:
-    linear-gradient(90deg, rgba(var(--process-rgb), 0.06), transparent 40%),
-    var(--process-mark),
-    var(--process-pattern);
+    linear-gradient(90deg, rgba(var(--process-rgb), 0.04), transparent 38%),
+    linear-gradient(90deg, rgba(var(--process-rgb), 0.28) 0 2px, transparent 2px),
+    var(--signal-pattern-muted);
   transition:
     border-color 160ms ease,
     box-shadow 160ms ease;
@@ -3468,9 +3468,9 @@ body::after {
     linear-gradient(
       112deg,
       transparent 0%,
-      rgba(var(--process-rgb), 0.045) 42%,
-      rgba(var(--process-rgb), 0.16) 50%,
-      rgba(var(--process-rgb), 0.045) 58%,
+      rgba(var(--process-rgb), 0.028) 42%,
+      rgba(var(--process-rgb), 0.105) 50%,
+      rgba(var(--process-rgb), 0.028) 58%,
       transparent 100%
     ),
     radial-gradient(
@@ -3491,7 +3491,7 @@ body::after {
   opacity: 0.56;
   background: linear-gradient(
     90deg,
-    rgba(var(--process-rgb), 0.8),
+    rgba(var(--process-rgb), 0.52),
     rgba(var(--process-rgb), 0.14),
     transparent
   );
@@ -5912,18 +5912,18 @@ body::after {
   align-items: center;
   gap: 0.62rem;
   overflow: hidden;
-  border: 1px solid rgba(var(--agent-nav-rgb), 0.36);
+  border: 1px solid rgba(var(--agent-nav-rgb), 0.24);
   border-radius: var(--radius-control);
   background:
-    linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.12), transparent 46%),
-    var(--agent-nav-mark),
-    var(--agent-nav-pattern),
+    linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.045), transparent 46%),
+    linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.3) 0 2px, transparent 2px),
+    var(--signal-pattern-muted),
     rgba(26, 21, 16, 0.66);
   padding: 0.58rem 0.75rem;
   color: var(--color-concrete-100);
   text-decoration: none;
   box-shadow:
-    inset 2px 0 0 rgba(var(--agent-nav-rgb), 0.46),
+    inset 2px 0 0 rgba(var(--agent-nav-rgb), 0.24),
     inset 0 1px 0 rgba(240, 226, 204, 0.04);
   transition:
     border-color 150ms ease,
@@ -5934,11 +5934,11 @@ body::after {
 .agent-page-nav-link:focus-visible,
 .section-jump-nav-link:hover,
 .section-jump-nav-link:focus-visible {
-  border-color: rgba(var(--agent-nav-rgb), 0.56);
+  border-color: rgba(var(--agent-nav-rgb), 0.42);
   box-shadow:
-    inset 2px 0 0 rgba(var(--agent-nav-rgb), 0.62),
+    inset 2px 0 0 rgba(var(--agent-nav-rgb), 0.42),
     inset 0 1px 0 rgba(240, 226, 204, 0.06),
-    0 0 0 1px rgba(var(--agent-nav-rgb), 0.07);
+    0 0 0 1px rgba(var(--agent-nav-rgb), 0.045);
 }
 
 .agent-page-nav-index,

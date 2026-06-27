@@ -212,7 +212,7 @@ export default function WritingSkillsPage() {
               Skill anatomy
             </p>
             <span className="font-mono text-[0.68rem] font-bold tracking-[0.1em] text-concrete-400 uppercase">
-              one markdown instruction file
+              portable context packet
             </span>
           </div>
           <ol
