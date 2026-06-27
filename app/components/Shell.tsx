@@ -49,6 +49,12 @@ const mobileNavGroups = [
   },
 ];
 
+const mobileProofs = [
+  { label: "Plain markdown", tone: "reference" },
+  { label: "Human review", tone: "evidence" },
+  { label: "No runtime", tone: "muted" },
+] as const;
+
 const footerGroups = [
   {
     title: "Work",
@@ -323,6 +329,9 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <div
             ref={menuRef}
             id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
             className="mobile-menu-panel border-t border-panel-border bg-panel-recessed lg:hidden"
           >
             <Section
@@ -356,6 +365,16 @@ export function Shell({ children }: { children: React.ReactNode }) {
                   </div>
                 </div>
               ))}
+              <ul className="mobile-menu-proof" aria-label="Corpus notes">
+                {mobileProofs.map((item) => (
+                  <li
+                    key={item.label}
+                    className={`mobile-menu-proof-item mobile-menu-proof-${item.tone}`}
+                  >
+                    {item.label}
+                  </li>
+                ))}
+              </ul>
             </Section>
           </div>
         )}

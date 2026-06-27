@@ -259,7 +259,9 @@ export default function SkillsPage() {
                       >
                         {String(index + 1).padStart(2, "0")} / {route.count}
                       </p>
-                      <h2 className="font-heading text-lg font-bold text-concrete-100">
+                      <h2
+                        className={`font-heading text-lg font-bold ${signalRoles[route.signal].text}`}
+                      >
                         {route.label} guides
                       </h2>
                     </div>

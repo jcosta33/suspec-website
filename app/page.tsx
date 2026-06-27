@@ -475,7 +475,7 @@ export default function HomePage() {
                       {feature.label}
                     </span>
                   </div>
-                  <h3 className="mt-4 font-heading text-lg font-bold text-concrete-100">
+                  <h3 className="feature-accent-title mt-4 font-heading text-lg font-bold">
                     {feature.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-concrete-400">

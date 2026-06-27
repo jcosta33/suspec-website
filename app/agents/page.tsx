@@ -323,7 +323,7 @@ export default function AgentsPage() {
                           aria-hidden="true"
                         />
                       </div>
-                      <h3 className="mt-3 font-heading text-xl font-bold text-concrete-100">
+                      <h3 className="agent-roster-cell-title mt-3 font-heading text-xl font-bold">
                         {item.label}
                       </h3>
                       <p
