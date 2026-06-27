@@ -359,7 +359,7 @@ export default function AgentsPage() {
                     >
                       <item.icon className="h-4 w-4" aria-hidden="true" />
                     </HexBadge>
-                    <div className="min-w-0 flex-1">
+                      <div className="agent-roster-cell-body min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-4">
                         <p
                           className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles[item.signal].text}`}
@@ -375,11 +375,11 @@ export default function AgentsPage() {
                         {item.label}
                       </h3>
                       <p
-                        className={`mt-2 break-words font-mono text-xs leading-relaxed ${signalRoles[item.signal].text}`}
+                        className={`agent-roster-file mt-2 break-words font-mono text-xs leading-relaxed ${signalRoles[item.signal].text}`}
                       >
                         {item.file}
                       </p>
-                      <p className="mt-3 text-sm leading-relaxed text-concrete-400">
+                      <p className="agent-roster-use mt-3 text-sm leading-relaxed text-concrete-400">
                         {item.use}
                       </p>
                     </div>

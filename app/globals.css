@@ -6369,8 +6369,38 @@ body::after {
     font-size: 1.6rem;
   }
 
+  .agent-roster-cells {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .agent-roster-cell {
-    min-height: 12.25rem;
+    min-height: auto;
+    padding: 0.85rem 0.75rem;
+  }
+
+  .agent-roster-cell > div {
+    gap: 0.55rem;
+  }
+
+  .agent-roster-icon {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .agent-roster-cell-title {
+    margin-top: 0.45rem;
+    font-size: 1rem;
+    line-height: 1.15;
+  }
+
+  .agent-roster-file {
+    margin-top: 0.55rem;
+    font-size: 0.66rem;
+    line-height: 1.45;
+  }
+
+  .agent-roster-use {
+    display: none;
   }
 }
 
