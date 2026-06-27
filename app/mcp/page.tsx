@@ -329,17 +329,17 @@ export default function McpPage() {
                     className="mcp-adapter-step-link focus-ring group block h-full p-5 transition-colors duration-150 hover:bg-panel sm:p-6"
                     aria-label={`Jump to ${item.label} details`}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="mcp-adapter-heading flex items-center gap-3">
                       <HexBadge color={item.signal} className="h-10 w-10 shrink-0">
                         <Icon className="h-4 w-4" aria-hidden="true" />
                       </HexBadge>
                       <div className="min-w-0">
                         <p
-                          className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles[item.signal].text}`}
+                          className={`mcp-adapter-meta font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles[item.signal].text}`}
                         >
                           {String(index + 1).padStart(2, "0")} / {item.channel}
                         </p>
-                        <h2 className="font-heading text-lg font-bold text-concrete-100">
+                        <h2 className="mcp-adapter-title font-heading text-lg font-bold text-concrete-100">
                           {item.label}
                         </h2>
                       </div>
@@ -348,7 +348,7 @@ export default function McpPage() {
                         aria-hidden="true"
                       />
                     </div>
-                    <p className="mt-3 text-sm leading-relaxed text-concrete-400">
+                    <p className="mcp-adapter-detail mt-3 text-sm leading-relaxed text-concrete-400">
                       {item.detail}
                     </p>
                     {index < bridgeFlow.length - 1 ? (

@@ -3792,8 +3792,45 @@ body::after {
     display: none;
   }
 
+  .mcp-adapter-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mcp-adapter-step:last-child {
+    grid-column: 1 / -1;
+  }
+
   .mcp-adapter-step-link {
-    min-height: 7.8rem;
+    min-height: auto;
+    padding: 0.85rem 0.75rem;
+  }
+
+  .mcp-adapter-step-link::before {
+    inset: 0.85rem auto 0.85rem 0;
+  }
+
+  .mcp-adapter-heading {
+    gap: 0.55rem;
+  }
+
+  .mcp-adapter-heading .hex-badge {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .mcp-adapter-step-link .mcp-adapter-meta {
+    margin-top: 0;
+    font-size: 0.66rem;
+    line-height: 1.35;
+  }
+
+  .mcp-adapter-title {
+    font-size: 1rem;
+    line-height: 1.15;
+  }
+
+  .mcp-adapter-detail {
+    display: none;
   }
 }
 
