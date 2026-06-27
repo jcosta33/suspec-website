@@ -276,7 +276,7 @@ export default function WhatIsCorpusPage() {
         registerTone="evidence"
         className="overview-summary-grid grid gap-4 lg:grid-cols-[1fr_0.9fr]"
       >
-        <Panel brushed className="overview-terminal-shell mx-auto h-full max-w-3xl p-2">
+        <Panel brushed className="overview-terminal-shell order-2 mx-auto h-full max-w-3xl p-2 lg:order-1">
           <TerminalWindow
             title="diagnostics"
             copyText={overviewDiagnosticCommand}
@@ -307,7 +307,7 @@ export default function WhatIsCorpusPage() {
           label="example"
           title="artifact chain"
           meta="intake -> spec -> task -> review -> finding"
-          className="overview-paper-artifact"
+          className="overview-paper-artifact order-1 lg:order-2"
         >
           <p>Intent becomes a requirement.</p>
           <p className="text-pencil">The task bounds what may change.</p>
