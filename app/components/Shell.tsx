@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { ExternalLink, Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { Section } from "./Section";
@@ -166,6 +166,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const folioLabel = getFolioLabel(pathname);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [trace, setTrace] = useState({ active: false, progress: 0 });
   const toggleRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const headerIsOpaque = scrolled || menuOpen;
@@ -175,6 +176,42 @@ export function Shell({ children }: { children: React.ReactNode }) {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const updateTrace = () => {
+      frame = 0;
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const active = scrollable > 160;
+      const progress = active
+        ? Math.min(100, Math.max(0, Math.round((window.scrollY / scrollable) * 100)))
+        : 0;
+
+      setTrace((current) =>
+        current.active === active && current.progress === progress
+          ? current
+          : { active, progress },
+      );
+    };
+
+    const requestTraceUpdate = () => {
+      if (frame === 0) {
+        frame = window.requestAnimationFrame(updateTrace);
+      }
+    };
+
+    requestTraceUpdate();
+    window.addEventListener("scroll", requestTraceUpdate, { passive: true });
+    window.addEventListener("resize", requestTraceUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestTraceUpdate);
+      window.removeEventListener("resize", requestTraceUpdate);
+      if (frame !== 0) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   useEffect(() => {
@@ -387,6 +424,24 @@ export function Shell({ children }: { children: React.ReactNode }) {
           onClick={() => setMenuOpen(false)}
         />
       )}
+
+      <div
+        className="trace-rail"
+        data-active={trace.active ? "true" : "false"}
+        style={
+          {
+            "--trace-progress": `${trace.progress}%`,
+          } as CSSProperties
+        }
+        aria-hidden="true"
+      >
+        <span className="trace-rail-track">
+          <span className="trace-rail-fill" />
+        </span>
+        <span className="trace-rail-readout">
+          {String(trace.progress).padStart(3, "0")}
+        </span>
+      </div>
 
       <main id="main-content" className="site-main-frame flex-1">
         <div className="folio-rail folio-rail-left" aria-hidden="true">
