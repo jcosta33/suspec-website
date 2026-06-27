@@ -218,7 +218,7 @@ export default function AgentsPage() {
       <Section
         register="01 / roster brief"
         registerTone="reference"
-        className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-stretch"
+        className="manifest-pair grid gap-5 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-stretch"
       >
         <PaperArtifact
           label="note"

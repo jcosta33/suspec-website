@@ -4108,6 +4108,44 @@ body::after {
 }
 
 /* Repo manifest — opening readout for corpus-agents and corpus-skills. */
+.manifest-pair {
+  align-items: stretch;
+}
+
+@media (min-width: 64rem) {
+  .manifest-pair {
+    grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
+    gap: 1.25rem;
+  }
+}
+
+.manifest-pair .paper-artifact {
+  min-height: 100%;
+  filter: saturate(0.92) brightness(0.94);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.18),
+    inset 0 0 0 1px rgba(16, 11, 7, 0.12);
+}
+
+.manifest-pair .paper-artifact > div:first-child {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  padding-bottom: 0.85rem;
+}
+
+.manifest-pair .paper-artifact > div:first-child > div {
+  min-width: 0;
+}
+
+.manifest-pair .paper-artifact .paper-stamp {
+  justify-self: end;
+}
+
+.manifest-pair .paper-artifact > div:last-child {
+  margin-top: 1rem;
+}
+
 .repo-manifest-card {
   border-color: rgba(var(--signal-reference-rgb), 0.3);
   background-image:
