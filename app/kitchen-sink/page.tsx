@@ -260,6 +260,14 @@ export default function KitchenSinkPage() {
                 <dl className="mt-4 grid gap-3 border-t border-panel-border pt-4 text-sm">
                   <div>
                     <dt className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-concrete-500">
+                      Wheel
+                    </dt>
+                    <dd className="mt-1 text-concrete-300">
+                      {signalRoleMeta[role].wheel}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-concrete-500">
                       Example
                     </dt>
                     <dd className="mt-1 text-concrete-300">

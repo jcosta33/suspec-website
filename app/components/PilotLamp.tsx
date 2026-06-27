@@ -32,6 +32,10 @@ function normalizeLampColor(
     return "evidence";
   }
 
+  if (color === "olive") {
+    return "evidence";
+  }
+
   return normalizeSignalRole(color);
 }
 
