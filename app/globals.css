@@ -5032,16 +5032,16 @@ body::after {
   background-image:
     linear-gradient(
       90deg,
-      rgba(var(--surface-rgb), 0.26) 0,
-      rgba(var(--surface-rgb), 0.26) 2px,
+      rgba(var(--surface-rgb), 0.34) 0,
+      rgba(var(--surface-rgb), 0.34) 2px,
       transparent 2px
     ),
-    linear-gradient(90deg, rgba(var(--surface-rgb), 0.075), transparent 38%),
+    linear-gradient(90deg, rgba(var(--surface-rgb), 0.038), transparent 34%),
     var(--surface-mark),
     var(--surface-pattern),
     radial-gradient(
       70% 58% at 16% 0%,
-      rgba(var(--surface-rgb), 0.095),
+      rgba(var(--surface-rgb), 0.045),
       transparent 62%
     ),
     radial-gradient(
@@ -5268,7 +5268,7 @@ body::after {
   --catalog-signal-soft: rgba(var(--catalog-rgb), 0.44);
   --catalog-mark: var(--signal-mark-core);
   --catalog-pattern:
-    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.05), transparent 56%),
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.03), transparent 52%),
     var(--catalog-mark),
     var(--signal-pattern-core);
   position: relative;
@@ -5302,7 +5302,7 @@ body::after {
   --catalog-rgb: var(--signal-reference-rgb);
   --catalog-mark: var(--signal-mark-reference);
   --catalog-pattern:
-    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.055), transparent 56%),
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.03), transparent 52%),
     var(--catalog-mark),
     var(--signal-pattern-reference);
 }
@@ -5312,7 +5312,7 @@ body::after {
   --catalog-rgb: var(--signal-core-rgb);
   --catalog-mark: var(--signal-mark-core);
   --catalog-pattern:
-    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.07), transparent 58%),
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.042), transparent 54%),
     var(--catalog-mark),
     var(--signal-pattern-core);
 }
@@ -5322,7 +5322,7 @@ body::after {
   --catalog-rgb: var(--signal-change-rgb);
   --catalog-mark: var(--signal-mark-change);
   --catalog-pattern:
-    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.055), transparent 56%),
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.03), transparent 52%),
     var(--catalog-mark),
     var(--signal-pattern-change);
 }
@@ -5332,7 +5332,7 @@ body::after {
   --catalog-rgb: var(--signal-evidence-rgb);
   --catalog-mark: var(--signal-mark-evidence);
   --catalog-pattern:
-    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.055), transparent 56%),
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.03), transparent 52%),
     var(--catalog-mark),
     var(--signal-pattern-evidence);
 }
@@ -5342,7 +5342,7 @@ body::after {
   --catalog-rgb: var(--signal-greenfield-rgb);
   --catalog-mark: var(--signal-mark-greenfield);
   --catalog-pattern:
-    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.055), transparent 56%),
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.03), transparent 52%),
     var(--catalog-mark),
     var(--signal-pattern-greenfield);
 }
@@ -5352,7 +5352,7 @@ body::after {
   --catalog-rgb: var(--signal-brownfield-rgb);
   --catalog-mark: var(--signal-mark-brownfield);
   --catalog-pattern:
-    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.055), transparent 56%),
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.03), transparent 52%),
     var(--catalog-mark),
     var(--signal-pattern-brownfield);
 }
@@ -5408,15 +5408,15 @@ body::after {
   background-image:
     linear-gradient(
       90deg,
-      rgba(var(--accent-rgb), 0.22) 0,
-      rgba(var(--accent-rgb), 0.22) 2px,
+      rgba(var(--accent-rgb), 0.34) 0,
+      rgba(var(--accent-rgb), 0.34) 2px,
       transparent 2px
     ),
     var(--accent-mark),
     var(--accent-pattern),
     radial-gradient(
       72% 70% at 12% 0%,
-      rgba(var(--accent-rgb), 0.105),
+      rgba(var(--accent-rgb), 0.044),
       transparent 62%
     );
 }
@@ -5537,9 +5537,13 @@ body::after {
   border: 1px solid rgba(var(--accent-rgb), 0.34);
   border-radius: var(--radius-panel);
   background:
-    linear-gradient(90deg, rgba(var(--accent-rgb), 0.18), transparent 46%),
-    var(--palette-pattern),
-    linear-gradient(180deg, rgba(240, 226, 204, 0.035), transparent 42%),
+    linear-gradient(90deg, rgba(var(--accent-rgb), 0.055), transparent 40%),
+    linear-gradient(180deg, rgba(240, 226, 204, 0.03), transparent 42%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--accent-rgb), 0.018) 0 1px,
+      transparent 1px 18px
+    ),
     var(--color-panel);
   padding: 1rem;
   box-shadow:
@@ -5592,10 +5596,10 @@ body::after {
   min-height: 1.55rem;
   align-items: center;
   margin-top: 0.45rem;
-  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
   border-radius: calc(var(--radius-control) - 3px);
   background:
-    linear-gradient(90deg, rgba(var(--accent-rgb), 0.09), transparent 64%),
+    linear-gradient(90deg, rgba(var(--accent-rgb), 0.045), transparent 64%),
     rgba(10, 7, 5, 0.3);
   color: var(--accent-signal);
   font-family: var(--font-mono), ui-monospace, monospace;
@@ -5615,7 +5619,7 @@ body::after {
   margin-top: 1rem;
   color: var(--accent-signal);
   background: rgba(10, 7, 5, 0.42);
-  border: 1px solid rgba(var(--accent-rgb), 0.34);
+  border: 1px solid rgba(var(--accent-rgb), 0.26);
   border-radius: calc(var(--radius-control) - 3px);
   padding: 0.16rem 0.48rem;
   font-family: var(--font-mono), ui-monospace, monospace;
