@@ -1018,28 +1018,31 @@
 @media (max-width: 48rem) {
   .docs-source-note {
     align-items: flex-start;
-    gap: 0.34rem 0.52rem;
+    gap: 0.48rem 0.56rem;
     margin-top: 0.32rem;
-    padding: 0.46rem 0.52rem;
+    padding: 0.58rem 0.62rem;
     line-height: 1.28;
   }
 
   .docs-source-path {
+    display: grid;
     flex-basis: 100%;
     order: 3;
+    gap: 0.32rem;
     overflow: visible;
     text-overflow: clip;
     white-space: normal;
   }
 
   .docs-prose .docs-source-note .docs-source-path a {
-    display: inline-flex;
-    min-height: 2.5rem;
+    display: flex;
+    min-height: 2.75rem;
+    width: 100%;
     align-items: center;
     margin-top: 0;
     border: 1px solid rgba(var(--signal-core-rgb), 0.22);
     border-radius: calc(var(--radius-control) - 4px);
-    padding: 0.22rem 0.58rem;
+    padding: 0.34rem 0.68rem;
     background: rgba(var(--signal-core-rgb), 0.055);
   }
 
