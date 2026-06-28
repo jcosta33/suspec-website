@@ -1988,6 +1988,27 @@ body::after {
   --ambient-pattern: var(--signal-pattern-reference);
 }
 
+.ambient-header:has(.page-hero-package-skills) {
+  --ambient-signal: var(--signal-evidence);
+  --ambient-rgb: var(--signal-evidence-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-evidence);
+}
+
+.ambient-header:has(.page-hero-package-agents) {
+  --ambient-signal: var(--signal-reference);
+  --ambient-rgb: var(--signal-reference-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-reference);
+}
+
+.ambient-header:has(.page-hero-package-cli) {
+  --ambient-signal: var(--signal-change);
+  --ambient-rgb: var(--signal-change-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-change);
+}
+
 .ambient-header:has(.page-hero-package-mcp) {
   --ambient-signal: #7fcad0;
   --ambient-rgb: 127, 202, 208;
@@ -2483,6 +2504,27 @@ body::after {
   );
   opacity: 0.72;
   pointer-events: none;
+}
+
+.page-hero.page-hero-package-skills {
+  --hero-signal: var(--signal-evidence);
+  --hero-rgb: var(--signal-evidence-rgb);
+  --hero-pattern: var(--signal-pattern-evidence);
+  --hero-mark: var(--signal-mark-evidence);
+}
+
+.page-hero.page-hero-package-agents {
+  --hero-signal: var(--signal-reference);
+  --hero-rgb: var(--signal-reference-rgb);
+  --hero-pattern: var(--signal-pattern-reference);
+  --hero-mark: var(--signal-mark-reference);
+}
+
+.page-hero.page-hero-package-cli {
+  --hero-signal: var(--signal-change);
+  --hero-rgb: var(--signal-change-rgb);
+  --hero-pattern: var(--signal-pattern-change);
+  --hero-mark: var(--signal-mark-change);
 }
 
 .page-hero.page-hero-package-mcp {
@@ -3136,7 +3178,9 @@ body::after {
 
 .home-hero-section {
   padding-top: clamp(2.5rem, 4vw, 3.35rem);
-  padding-bottom: clamp(1.7rem, 3vw, 2.35rem);
+  padding-bottom: clamp(2.75rem, 4vw, 4rem);
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .home-hero-section::before,
@@ -3195,8 +3239,9 @@ body::after {
 .home-hero-preview {
   position: relative;
   margin-top: 1.25rem;
+  margin-bottom: clamp(1rem, 2.5vw, 2rem);
   max-height: none;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .panel-raised.home-hero-preview {
@@ -3208,7 +3253,7 @@ body::after {
 }
 
 .home-review-section {
-  padding-top: clamp(2rem, 4vw, 4rem);
+  padding-top: clamp(2.5rem, 4vw, 4.5rem);
 }
 
 .home-hero-preview > div:first-child::before,
@@ -3302,7 +3347,6 @@ body::after {
 
   .home-hero-preview {
     max-height: none;
-    overflow: hidden;
   }
 
   .home-hero-preview::after {
@@ -3320,7 +3364,7 @@ body::after {
 @media (max-width: 48rem) {
   .home-hero-section {
     padding-top: 1.35rem;
-    padding-bottom: 0.9rem;
+    padding-bottom: 1.5rem;
   }
 
   .home-hero-section .page-hero > p:first-of-type {
@@ -3374,8 +3418,8 @@ body::after {
   .home-hero-preview {
     max-height: none;
     margin-top: 0.75rem;
+    margin-bottom: 0.85rem;
     padding: 0.45rem;
-    overflow: hidden;
   }
 
   .home-hero-preview::after {

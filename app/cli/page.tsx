@@ -255,6 +255,7 @@ export default function CliPage() {
       <Section className="ambient-header">
         <PageHero
           eyebrow="corpus-cli — reference implementation"
+          className="page-hero-package-cli"
           motif="catalog"
           tone="change"
           title={

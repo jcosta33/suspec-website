@@ -223,6 +223,7 @@ export default function AgentsPage() {
       <Section className="ambient-header">
         <PageHero
           eyebrow="worker files / agent roles"
+          className="page-hero-package-agents"
           motif="catalog"
           tone="reference"
           title={
