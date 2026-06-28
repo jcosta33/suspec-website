@@ -15,7 +15,7 @@ export function TextLink({
   href,
   children,
   className = "",
-  touchTarget = false,
+  touchTarget = true,
   ...props
 }: TextLinkProps) {
   return (
