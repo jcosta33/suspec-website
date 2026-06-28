@@ -240,7 +240,7 @@ export default function SkillsPage() {
       >
         <Panel brushed screws className="p-0">
           <nav
-            className="process-strip process-strip-signal-reference grid gap-px bg-panel-border md:grid-cols-3"
+            className="skill-category-rail process-strip process-strip-signal-reference grid gap-px bg-panel-border md:grid-cols-3"
             aria-label="Skill catalog sections"
           >
             {skillRoutes.map((route, index) => {
@@ -249,10 +249,10 @@ export default function SkillsPage() {
                 <a
                   key={route.href}
                   href={route.href}
-                  className={`${signalRoles[route.signal].processItem} focus-ring group block bg-panel-raised/95 p-5 transition-colors duration-150 hover:bg-panel sm:p-6`}
+                  className={`skill-category-link ${signalRoles[route.signal].processItem} focus-ring group block bg-panel-raised/95 p-5 transition-colors duration-150 hover:bg-panel sm:p-6`}
                   aria-label={`Jump to ${route.label.toLowerCase()}`}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="skill-category-heading flex items-center gap-3">
                     <HexBadge color={route.signal} className="h-10 w-10 shrink-0">
                       <Icon className="h-4 w-4" aria-hidden="true" />
                     </HexBadge>
@@ -263,7 +263,7 @@ export default function SkillsPage() {
                         {String(index + 1).padStart(2, "0")} / {route.count}
                       </p>
                       <h2
-                        className={`font-heading text-lg font-bold ${signalRoles[route.signal].text}`}
+                        className={`skill-category-title font-heading text-lg font-bold ${signalRoles[route.signal].text}`}
                       >
                         {route.label}
                       </h2>
@@ -273,7 +273,7 @@ export default function SkillsPage() {
                       aria-hidden="true"
                     />
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-concrete-400">
+                  <p className="skill-category-detail mt-3 text-sm leading-relaxed text-concrete-400">
                     {route.text}
                   </p>
                 </a>

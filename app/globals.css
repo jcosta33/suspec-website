@@ -4253,6 +4253,39 @@ body::after {
   }
 }
 
+/* Skill category rail — quick guide-family index on small screens. */
+@media (max-width: 40rem) {
+  .skill-category-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skill-category-link {
+    padding: 0.85rem 0.75rem;
+  }
+
+  .skill-category-link:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .skill-category-heading {
+    gap: 0.55rem;
+  }
+
+  .skill-category-heading .hex-badge {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .skill-category-title {
+    font-size: 1rem;
+    line-height: 1.15;
+  }
+
+  .skill-category-detail {
+    display: none;
+  }
+}
+
 /* Skill guide catalogs — compact rosters instead of another card grid. */
 .skill-guide-catalog {
   --skill-guide-signal: var(--signal-reference);
