@@ -9354,20 +9354,26 @@ body::after {
   }
 
   .site-footer-identity {
-    grid-template-columns: auto minmax(0, 1fr);
-    align-items: center;
-    gap: 0.75rem;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 0.62rem;
     min-height: 0;
     max-width: none;
-    padding: 0.72rem 0.82rem;
+    padding: 0.82rem 0.9rem 0.9rem;
   }
 
   .site-footer-identity::after {
-    display: none;
+    display: block;
+    right: 0.9rem;
+    bottom: auto;
+    left: 0.9rem;
+    top: 3.42rem;
+    opacity: 0.46;
   }
 
   .site-footer-identity p {
     max-width: none;
+    padding-top: 0.62rem;
     line-height: 1.45;
   }
 
