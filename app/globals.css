@@ -4127,9 +4127,9 @@ body::after {
   }
 
   .mcp-fact-card > .relative > .mt-6 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     margin-top: 0.8rem;
-    gap: 0.42rem;
+    gap: 0.58rem;
   }
 
   .mcp-fact-list {
@@ -4143,10 +4143,10 @@ body::after {
   }
 
   .mcp-fact-list li {
-    overflow-wrap: anywhere;
-    white-space: normal;
-    font-size: 0.62rem;
-    line-height: 1.35;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    font-size: clamp(0.66rem, 2.85vw, 0.72rem);
+    line-height: 1.48;
   }
 }
 
