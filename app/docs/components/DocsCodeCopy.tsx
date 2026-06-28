@@ -31,7 +31,7 @@ export function DocsCodeCopy() {
 
     const reset = (button: HTMLButtonElement) => {
       button.dataset.copied = "false";
-      button.textContent = "copy";
+      button.textContent = "COPY";
       const timeout = timeouts.get(button);
       if (timeout) {
         window.clearTimeout(timeout);
@@ -60,7 +60,7 @@ export function DocsCodeCopy() {
 
       await copyText(text);
       button.dataset.copied = "true";
-      button.textContent = "copied";
+      button.textContent = "COPIED";
 
       const timeout = window.setTimeout(() => reset(button), 1600);
       timeouts.set(button, timeout);
