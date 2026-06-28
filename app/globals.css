@@ -3501,17 +3501,18 @@ body::after {
   }
 
   .home-hero-proof-strip {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.55rem;
-    margin-top: 1.55rem;
+    display: grid;
+    width: min(100%, 17.75rem);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.42rem;
+    margin-top: 1.45rem;
   }
 
   .home-hero-proof {
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.62rem 0.72rem;
+    gap: 0.48rem;
+    min-height: 2.18rem;
+    padding: 0.48rem 0.68rem;
     background:
       linear-gradient(90deg, rgba(var(--proof-rgb), 0.08), transparent 58%),
       rgba(26, 21, 16, 0.78);
