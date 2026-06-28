@@ -290,7 +290,7 @@ export default function SkillsPage() {
       >
         <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
           <DroneIcon className="h-4 w-4" />
-          <span>install.sh</span>
+          <span>skills add</span>
         </div>
         <Panel brushed className="p-2">
           <TerminalWindow title="terminal" copyText={skillInstallCommands}>

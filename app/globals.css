@@ -3177,7 +3177,7 @@ body::after {
 }
 
 .home-review-section {
-  padding-top: 0.5rem;
+  padding-top: clamp(2rem, 4vw, 4rem);
 }
 
 .home-hero-preview > div:first-child::before,
