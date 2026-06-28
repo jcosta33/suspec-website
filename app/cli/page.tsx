@@ -487,14 +487,20 @@ export default function CliPage() {
             and <code className="text-corpus-yellow">corpus review</code>. Use the
             rest when the workspace needs them.
           </p>
-          <ul className="cli-command-legend mt-6" aria-label="Command family color key">
+          <ul className="cli-command-legend mt-6" aria-label="Command family shortcuts">
             {commandFamilies.map((family) => (
               <li
                 key={family.label}
                 className={`cli-command-legend-item cli-command-legend-${family.signal}`}
               >
-                <span>{family.label}</span>
-                <span>{family.detail}</span>
+                <a
+                  className="cli-command-legend-link focus-ring"
+                  href={`#${family.id}`}
+                  aria-label={`${family.label} commands: ${family.detail}`}
+                >
+                  <span>{family.label}</span>
+                  <span>{family.detail}</span>
+                </a>
               </li>
             ))}
           </ul>
