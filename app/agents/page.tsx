@@ -464,7 +464,7 @@ export default function AgentsPage() {
             <Badge variant="unverified">toolable limits</Badge>
           </div>
         </div>
-        <ul className="reveal grid gap-4 sm:grid-cols-2">
+        <ul className="agent-worker-list reveal grid gap-4 sm:grid-cols-2">
           {readOnly.map((a) => {
             const Icon = a.icon;
             return (
@@ -478,7 +478,7 @@ export default function AgentsPage() {
                 >
                   <Card
                     signal="reference"
-                    className={`h-full border-panel-border ${signalRoles.reference.hoverBorder}`}
+                    className={`agent-worker-card h-full border-panel-border ${signalRoles.reference.hoverBorder}`}
                   >
                     <div className="catalog-row catalog-row-reference flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4">
@@ -530,7 +530,7 @@ export default function AgentsPage() {
             <Badge variant="draft">review required</Badge>
           </div>
         </div>
-        <ul className="reveal grid gap-4 sm:grid-cols-2">
+        <ul className="agent-worker-list reveal grid gap-4 sm:grid-cols-2">
           {authoring.map((a) => {
             const Icon = a.icon;
             return (
@@ -544,7 +544,7 @@ export default function AgentsPage() {
                 >
                   <Card
                     signal="change"
-                    className={`h-full border-panel-border ${signalRoles.change.hoverBorder}`}
+                    className={`agent-worker-card h-full border-panel-border ${signalRoles.change.hoverBorder}`}
                   >
                     <div className="catalog-row catalog-row-change flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4">
