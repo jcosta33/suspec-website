@@ -256,7 +256,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={softwareApp} />
-      <section className="home-hero-section relative isolate overflow-hidden border-b border-panel-border py-16 sm:py-20">
+      <section className="home-hero-section relative isolate overflow-hidden border-b border-panel-border">
         <HeroHexGrid />
         <Section className="ambient-header relative z-10">
           <PageHero
