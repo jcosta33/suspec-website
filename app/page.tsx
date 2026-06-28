@@ -502,7 +502,7 @@ export default function HomePage() {
       </section>
 
       <JsonLd data={faqJsonLd} />
-      <section className="py-16 sm:py-20">
+      <section className="pb-8 pt-16 sm:py-20">
         <Section
           register="05 / answers"
           registerTone="reference"
@@ -536,7 +536,7 @@ export default function HomePage() {
         </Section>
       </section>
 
-      <section className="relative py-16 sm:py-20">
+      <section className="relative pb-16 pt-6 sm:py-20">
         <Section register="06 / start" registerTone="core" className="text-center">
           <Eyebrow className="mx-auto">start / first pass</Eyebrow>
           <h2 className="mt-6 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
