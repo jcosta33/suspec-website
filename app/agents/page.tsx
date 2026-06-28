@@ -202,7 +202,7 @@ const rosterGroups = [
 
 const agentPageNav = [
   { label: "Roster", href: "#worker-lanes", signal: "reference" },
-  { label: "Install", href: "#install", signal: "reference" },
+  { label: "Install", href: "#install", signal: "core" },
   { label: "Read-only", href: "#read-only-workers", signal: "reference" },
   { label: "Authoring", href: "#bounded-authoring", signal: "change" },
   { label: "Limits", href: "#limits", signal: "muted" },

@@ -41,7 +41,8 @@
   --color-greenfield: #7fbd82;
   --color-brownfield: #a96b40;
   --color-verdigris: #78bdb2;
-  --color-rubedo: #d2795c;
+  --color-neon-bridge: #b79be8;
+  --color-rubedo: #d85a90;
   --color-olive: var(--color-phosphor);
   --color-black-text: #100b07;
 
@@ -55,11 +56,22 @@
   --signal-brownfield: var(--color-brownfield);
   --signal-brownfield-rgb: 169, 107, 64;
   --signal-change: var(--color-rubedo);
-  --signal-change-rgb: 210, 121, 92;
+  --signal-change-rgb: 216, 90, 144;
   --signal-reference: var(--color-verdigris);
   --signal-reference-rgb: 120, 189, 178;
   --signal-muted: var(--color-brass);
   --signal-muted-rgb: 184, 132, 74;
+
+  /* Package identity accents. These are only for repo page heroes; page content
+     continues to use the semantic signal roles below. */
+  --package-skills: var(--signal-evidence);
+  --package-skills-rgb: var(--signal-evidence-rgb);
+  --package-agents: var(--signal-reference);
+  --package-agents-rgb: var(--signal-reference-rgb);
+  --package-cli: var(--signal-change);
+  --package-cli-rgb: var(--signal-change-rgb);
+  --package-mcp: var(--color-neon-bridge);
+  --package-mcp-rgb: 183, 155, 232;
 
   /* Role patterns: hue + mark travel together, so color does not become decoration. */
   --signal-pattern-core: linear-gradient(
@@ -285,7 +297,7 @@
   --c-greenfield: #7fbd82;
   --c-brownfield: #a96b40;
   --c-verdigris: #78bdb2;
-  --c-rubedo: #d2795c;
+  --c-rubedo: #d85a90;
   --c-olive: var(--c-phosphor);
   --signal-core: var(--color-aurum);
   --signal-core-rgb: 216, 138, 36;
@@ -296,7 +308,7 @@
   --signal-brownfield: var(--color-brownfield);
   --signal-brownfield-rgb: 169, 107, 64;
   --signal-change: var(--color-rubedo);
-  --signal-change-rgb: 210, 121, 92;
+  --signal-change-rgb: 216, 90, 144;
   --signal-reference: var(--color-verdigris);
   --signal-reference-rgb: 120, 189, 178;
   --signal-muted: var(--color-brass);
@@ -1989,29 +2001,29 @@ body::after {
 }
 
 .ambient-header:has(.page-hero-package-skills) {
-  --ambient-signal: var(--signal-evidence);
-  --ambient-rgb: var(--signal-evidence-rgb);
+  --ambient-signal: var(--package-skills);
+  --ambient-rgb: var(--package-skills-rgb);
   --ambient-secondary-rgb: var(--signal-core-rgb);
   --ambient-pattern: var(--signal-pattern-evidence);
 }
 
 .ambient-header:has(.page-hero-package-agents) {
-  --ambient-signal: var(--signal-reference);
-  --ambient-rgb: var(--signal-reference-rgb);
+  --ambient-signal: var(--package-agents);
+  --ambient-rgb: var(--package-agents-rgb);
   --ambient-secondary-rgb: var(--signal-core-rgb);
   --ambient-pattern: var(--signal-pattern-reference);
 }
 
 .ambient-header:has(.page-hero-package-cli) {
-  --ambient-signal: var(--signal-change);
-  --ambient-rgb: var(--signal-change-rgb);
+  --ambient-signal: var(--package-cli);
+  --ambient-rgb: var(--package-cli-rgb);
   --ambient-secondary-rgb: var(--signal-core-rgb);
   --ambient-pattern: var(--signal-pattern-change);
 }
 
 .ambient-header:has(.page-hero-package-mcp) {
-  --ambient-signal: #7fcad0;
-  --ambient-rgb: 127, 202, 208;
+  --ambient-signal: var(--package-mcp);
+  --ambient-rgb: var(--package-mcp-rgb);
   --ambient-secondary-rgb: var(--signal-core-rgb);
   --ambient-pattern: repeating-linear-gradient(
       0deg,
@@ -2507,29 +2519,29 @@ body::after {
 }
 
 .page-hero.page-hero-package-skills {
-  --hero-signal: var(--signal-evidence);
-  --hero-rgb: var(--signal-evidence-rgb);
+  --hero-signal: var(--package-skills);
+  --hero-rgb: var(--package-skills-rgb);
   --hero-pattern: var(--signal-pattern-evidence);
   --hero-mark: var(--signal-mark-evidence);
 }
 
 .page-hero.page-hero-package-agents {
-  --hero-signal: var(--signal-reference);
-  --hero-rgb: var(--signal-reference-rgb);
+  --hero-signal: var(--package-agents);
+  --hero-rgb: var(--package-agents-rgb);
   --hero-pattern: var(--signal-pattern-reference);
   --hero-mark: var(--signal-mark-reference);
 }
 
 .page-hero.page-hero-package-cli {
-  --hero-signal: var(--signal-change);
-  --hero-rgb: var(--signal-change-rgb);
+  --hero-signal: var(--package-cli);
+  --hero-rgb: var(--package-cli-rgb);
   --hero-pattern: var(--signal-pattern-change);
   --hero-mark: var(--signal-mark-change);
 }
 
 .page-hero.page-hero-package-mcp {
-  --hero-signal: #7fcad0;
-  --hero-rgb: 127, 202, 208;
+  --hero-signal: var(--package-mcp);
+  --hero-rgb: var(--package-mcp-rgb);
   --hero-pattern: repeating-linear-gradient(
       0deg,
       rgba(var(--hero-rgb), 0.052) 0 1px,
@@ -2552,6 +2564,11 @@ body::after {
       rgba(var(--hero-rgb), 0.18),
       transparent 84%
     );
+}
+
+.page-hero.page-hero-package-mcp .pilot-lamp-reference {
+  --lamp-signal: var(--package-mcp);
+  --lamp-rgb: var(--package-mcp-rgb);
 }
 
 .page-hero > .page-hero-calibration span {
@@ -3178,9 +3195,8 @@ body::after {
 
 .home-hero-section {
   padding-top: clamp(2.5rem, 4vw, 3.35rem);
-  padding-bottom: clamp(2.75rem, 4vw, 4rem);
-  overflow-x: clip;
-  overflow-y: visible;
+  padding-bottom: clamp(4.5rem, 7vw, 6.75rem);
+  overflow: visible;
 }
 
 .home-hero-section::before,
@@ -3239,7 +3255,7 @@ body::after {
 .home-hero-preview {
   position: relative;
   margin-top: 1.25rem;
-  margin-bottom: clamp(1rem, 2.5vw, 2rem);
+  margin-bottom: clamp(2.5rem, 4vw, 4rem);
   max-height: none;
   overflow: visible;
 }
@@ -3253,7 +3269,7 @@ body::after {
 }
 
 .home-review-section {
-  padding-top: clamp(2.5rem, 4vw, 4.5rem);
+  padding-top: clamp(3rem, 5vw, 5.5rem);
 }
 
 .home-hero-preview > div:first-child::before,
@@ -3364,7 +3380,7 @@ body::after {
 @media (max-width: 48rem) {
   .home-hero-section {
     padding-top: 1.35rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 2.75rem;
   }
 
   .home-hero-section .page-hero > p:first-of-type {
@@ -3418,7 +3434,7 @@ body::after {
   .home-hero-preview {
     max-height: none;
     margin-top: 0.75rem;
-    margin-bottom: 0.85rem;
+    margin-bottom: 1.45rem;
     padding: 0.45rem;
   }
 
@@ -4256,18 +4272,18 @@ body::after {
 
 .mcp-install-ledger {
   overflow: hidden;
-  border: 1px solid rgba(127, 202, 208, 0.25);
+  border: 1px solid rgba(var(--package-mcp-rgb), 0.25);
   border-radius: var(--radius-panel);
   background:
-    linear-gradient(90deg, rgba(127, 202, 208, 0.058), transparent 58%),
+    linear-gradient(90deg, rgba(var(--package-mcp-rgb), 0.058), transparent 58%),
     repeating-linear-gradient(
       0deg,
-      rgba(127, 202, 208, 0.05) 0 1px,
+      rgba(var(--package-mcp-rgb), 0.05) 0 1px,
       transparent 1px 14px
     ),
     rgba(15, 11, 8, 0.52);
   box-shadow:
-    inset 2px 0 0 rgba(127, 202, 208, 0.22),
+    inset 2px 0 0 rgba(var(--package-mcp-rgb), 0.22),
     inset 0 1px 0 rgba(240, 226, 204, 0.04);
 }
 
@@ -4279,11 +4295,11 @@ body::after {
 }
 
 .mcp-install-ledger > div + div {
-  border-top: 1px solid rgba(127, 202, 208, 0.16);
+  border-top: 1px solid rgba(var(--package-mcp-rgb), 0.16);
 }
 
 .mcp-install-ledger dt {
-  color: #7fcad0;
+  color: var(--package-mcp);
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.68rem;
   font-weight: 800;
@@ -8721,6 +8737,38 @@ body::after {
   background: var(--color-aurum);
   box-shadow: 0 0 8px rgba(216, 138, 36, 0.54);
   animation: blink 1.15s step-end infinite;
+}
+
+@media (max-width: 40rem) {
+  .terminal-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.55rem;
+    align-items: center;
+    padding: 0.48rem 0.58rem;
+  }
+
+  .terminal-lamp-row {
+    flex-wrap: nowrap;
+    gap: 0.45rem;
+  }
+
+  .terminal-toolbar > div:last-child {
+    justify-self: end;
+  }
+
+  .terminal-toolbar .copy-button {
+    min-height: 2.75rem;
+    gap: 0.38rem;
+    padding: 0.42rem 0.56rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+  }
+
+  .terminal-toolbar .copy-button svg {
+    width: 0.78rem;
+    height: 0.78rem;
+  }
 }
 
 .crt-screen::before {

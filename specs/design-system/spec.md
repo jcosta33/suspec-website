@@ -51,7 +51,7 @@ role's usage, example, and "do not use for" guardrail:
 | `--c-phosphor` | `#B7C96C` | evidence / verified proof |
 | `--c-greenfield` | `#78C487` | fresh workspace setup paths only |
 | `--c-brownfield` | `#B87545` | existing-project adoption paths only |
-| `--c-rubedo` | `#D2795C` | change / attention / blocked |
+| `--c-rubedo` | `#D85A90` | change / attention / blocked |
 | `--c-verdigris` | `#7FC7BE` | reference, docs, catalog surfaces |
 | `--c-paper` | `#F0E2CC` | manuscript artifact surfaces |
 | `--c-paper-warm` | `#DCC9A9` | paper depth |

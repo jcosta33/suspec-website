@@ -146,7 +146,7 @@ const skillRoutes = [
     count: "4",
     icon: ShieldCheck,
     text: "Judgment, evidence, research, and challenge stances.",
-    signal: "reference",
+    signal: "evidence",
   },
   {
     label: "Change guides",
@@ -154,7 +154,7 @@ const skillRoutes = [
     count: "10",
     icon: Hammer,
     text: "Feature, fix, refactor, rewrite, migration, performance, tests, docs.",
-    signal: "reference",
+    signal: "change",
   },
   {
     label: "Guide format",

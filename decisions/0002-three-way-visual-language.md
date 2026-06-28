@@ -47,7 +47,7 @@ utility with a small ritual charge.
   active states.
 - **Accent palette:** use color by role, not by decoration. Proof green is for
   evidence/review; field green is for greenfield setup; brownfield copper is
-  for existing-project adoption; red clay is for change/attention; verdigris is
+  for existing-project adoption; rubedo rose is for change/attention; verdigris is
   for reference/catalog.
 - **Manuscript surfaces:** use paper only for specs, review packets, findings,
   docs notes, source metadata, and annotated examples.
@@ -67,7 +67,7 @@ the reader is actually comparing categories.
 | Evidence green | Proof and review confidence | Pass states, verified output, review/evidence sections |
 | Greenfield green | Fresh starts | new repo, starter kit, first-run setup only |
 | Brownfield copper | Existing-code adoption | existing project, adoption path, repo-with-history setup only |
-| Red clay | Change or attention | edits, fixes, run work, blocked/unverified states, failure modes |
+| Rubedo rose | Change or attention | edits, fixes, run work, blocked/unverified states, failure modes |
 | Brass | Hardware chrome and neutral detail | screws, rails, counters, low-emphasis labels |
 
 Each role also has a surface pattern so the color is not doing the whole job:
@@ -79,7 +79,7 @@ Each role also has a surface pattern so the color is not doing the whole job:
 | Evidence green | small checkpoint ticks and proof marks |
 | Greenfield green | upright field rows and clean-start marks |
 | Brownfield copper | diagonal survey hatching and adoption plates |
-| Red clay | angled change hatching |
+| Rubedo rose | angled change hatching |
 | Brass | quiet ruler marks and hardware bosses |
 
 Do not use evidence green for a problem merely because the word "evidence"

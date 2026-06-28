@@ -177,7 +177,7 @@ const commandFamilies = [
     commands: "init · update · new · pull · agents emit",
     detail: "Create or refresh kit-owned files.",
     icon: Blocks,
-    signal: "reference",
+    signal: "core",
   },
   {
     label: "Check",
@@ -239,7 +239,7 @@ const commandSignalKey = [
 const cliPageNav = [
   { label: "Families", href: "#command-families", signal: "reference" },
   { label: "Install", href: "#install", signal: "core" },
-  { label: "Run loop", href: "#run-the-loop", signal: "core" },
+  { label: "Run loop", href: "#run-the-loop", signal: "change" },
   { label: "Commands", href: "#commands", signal: "reference" },
   { label: "Notes", href: "#design-notes", signal: "muted" },
   { label: "Source", href: "#source", signal: "reference" },

@@ -227,10 +227,10 @@ const bridgeSignalKey = [
 ] as const;
 
 const mcpPageNav = [
-  { label: "Bridge", href: "#bridge", signal: "reference" },
+  { label: "Bridge", href: "#bridge", signal: "muted" },
   { label: "Config", href: "#mcp-config", signal: "reference" },
   { label: "Limits", href: "#guardrails", signal: "change" },
-  { label: "Tools", href: "#mcp-tools", signal: "reference" },
+  { label: "Tools", href: "#mcp-tools", signal: "evidence" },
   { label: "Install", href: "#install", signal: "core" },
   { label: "Source", href: "#source", signal: "reference" },
 ] as const satisfies Array<{
