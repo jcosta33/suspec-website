@@ -2237,6 +2237,8 @@ body::after {
 }
 
 .hero-trace {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -2247,11 +2249,36 @@ body::after {
   list-style: none;
 }
 
+.hero-trace::before {
+  content: "";
+  position: absolute;
+  inset: calc(50% - 1px) 2.2rem auto;
+  z-index: -1;
+  height: 1px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.15rem,
+      rgba(var(--signal-core-rgb), 0.18) 1.15rem 1.2rem
+    ),
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--signal-reference-rgb), 0.32) 18%,
+      rgba(var(--signal-core-rgb), 0.26) 50%,
+      rgba(var(--signal-reference-rgb), 0.32) 82%,
+      transparent
+    );
+  box-shadow: 0 0 14px rgba(var(--signal-reference-rgb), 0.08);
+  opacity: 0.78;
+}
+
 .hero-trace-item {
   --trace-signal: var(--signal-reference);
   --trace-rgb: var(--signal-reference-rgb);
   --trace-pattern: var(--signal-pattern-reference);
   position: relative;
+  z-index: 1;
   display: grid;
   min-width: 5.9rem;
   min-height: 3rem;
@@ -2358,6 +2385,10 @@ body::after {
     width: min(100%, 22rem);
     overflow: visible;
     margin-top: 1rem;
+  }
+
+  .hero-trace::before {
+    display: none;
   }
 
   .hero-trace-item {
