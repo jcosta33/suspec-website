@@ -3635,32 +3635,38 @@ body::after {
 
 @media (max-width: 40rem) {
   .setup-path-strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .setup-path-strip > li:last-child {
-    grid-column: 1 / -1;
+    grid-column: auto;
   }
 
   .setup-path-strip > li > a {
-    min-height: 9.25rem;
-    padding: 0.95rem;
+    min-height: 0;
+    padding: 0.72rem 0.78rem;
+  }
+
+  .setup-path-strip > li > a > div {
+    align-items: center;
+    gap: 0.7rem;
   }
 
   .setup-path-strip .kit-icon {
-    width: 2.35rem;
-    height: 2.35rem;
+    width: 2.1rem;
+    height: 2.1rem;
   }
 
   .setup-path-strip h2 {
-    font-size: 1rem;
-    line-height: 1.15;
+    font-size: 0.96rem;
+    line-height: 1.2;
   }
 
   .setup-path-strip p.mt-3 {
-    margin-top: 0.7rem;
-    font-size: 0.82rem;
-    line-height: 1.45;
+    margin-top: 0.32rem;
+    margin-left: 2.8rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
   }
 }
 
