@@ -258,7 +258,7 @@ export default function WritingSkillsPage() {
         registerTone="reference"
         className="grid scroll-mt-28 gap-6 lg:grid-cols-[0.9fr_1.1fr]"
       >
-        <div>
+        <div className="skill-folder-brief">
           <div className="section-kicker section-kicker-reference">
             <DroneIcon className="h-4 w-4" />
             <span>layout</span>
@@ -268,6 +268,20 @@ export default function WritingSkillsPage() {
             A simple skill has one `SKILL.md`. Add references only when the body
             would become too long.
           </p>
+          <dl className="skill-folder-ledger mt-6">
+            <div>
+              <dt>Entry</dt>
+              <dd>SKILL.md</dd>
+            </div>
+            <div>
+              <dt>Optional</dt>
+              <dd>references/</dd>
+            </div>
+            <div>
+              <dt>Keep out</dt>
+              <dd>repo policy</dd>
+            </div>
+          </dl>
         </div>
         <Panel brushed className="p-2">
           <TerminalWindow
