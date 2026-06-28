@@ -548,7 +548,7 @@ export default function McpPage() {
         registerTone="core"
         className="grid scroll-mt-28 gap-6 lg:grid-cols-[0.9fr_1.1fr]"
       >
-        <div>
+        <div className="mcp-install-brief">
           <div className={`section-kicker ${signalRoles.core.sectionKicker}`}>
             <Terminal className="h-4 w-4" aria-hidden="true" />
             <span>install.sh</span>
@@ -564,6 +564,20 @@ export default function McpPage() {
             on PATH. Use <code>CORPUS_BIN</code> or{" "}
             <code>--corpus-bin</code> to set the binary explicitly.
           </p>
+          <dl className="mcp-install-ledger mt-6">
+            <div>
+              <dt>Binary</dt>
+              <dd>corpus-mcp</dd>
+            </div>
+            <div>
+              <dt>Requires</dt>
+              <dd>corpus CLI</dd>
+            </div>
+            <div>
+              <dt>Override</dt>
+              <dd>CORPUS_BIN</dd>
+            </div>
+          </dl>
         </div>
         <Panel brushed className="p-2">
           <TerminalWindow
