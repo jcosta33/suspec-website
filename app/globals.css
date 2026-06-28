@@ -4564,13 +4564,45 @@ body::after {
   }
 
   .skill-guide-list {
-    gap: 0.45rem;
-    padding: 0.85rem;
+    gap: 0.3rem;
+    padding: 0.65rem;
   }
 
   .skill-guide-row.catalog-row {
-    min-height: 6rem;
-    padding: 0.78rem;
+    min-height: auto;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 0.62rem;
+  }
+
+  .skill-guide-row.catalog-row > div:first-child {
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .skill-guide-row-badge {
+    height: 1.85rem;
+    width: 1.85rem;
+  }
+
+  .skill-guide-row-badge svg {
+    height: 0.88rem;
+    width: 0.88rem;
+  }
+
+  .skill-guide-row .catalog-row-title {
+    font-size: 0.74rem;
+    line-height: 1.2;
+  }
+
+  .skill-guide-row .catalog-row-copy {
+    margin-top: 0.06rem;
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
+
+  .skill-guide-row-arrow {
+    display: none;
   }
 }
 
