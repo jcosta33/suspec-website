@@ -8,9 +8,11 @@ const points = [
   [6, 21],
   [6, 11],
 ];
+// The durable spine (Spec · Run · Close) — the triangle the alternate vertices form.
+const spine = [points[0], points[2], points[4]];
 
-// The six-node loop mark. Echoes the wordmark Logo; used inline as a section glyph.
-// Strokes inherit currentColor.
+// The loop mark: the six-step hexagon with its spine triangle inscribed. Echoes the
+// wordmark Logo; used inline as a section glyph. Strokes inherit currentColor.
 export function DroneIcon({ className = "", style }: { className?: string; style?: CSSProperties }) {
   return (
     <svg
@@ -24,6 +26,15 @@ export function DroneIcon({ className = "", style }: { className?: string; style
       <circle cx="16" cy="16" r="13" stroke="currentColor" strokeWidth="1.1" />
       <polygon
         points={points.map(([x, y]) => `${x},${y}`).join(" ")}
+        stroke="currentColor"
+        strokeWidth="1.3"
+        strokeLinejoin="round"
+        opacity="0.6"
+      />
+      <polygon
+        points={spine.map(([x, y]) => `${x},${y}`).join(" ")}
+        fill="currentColor"
+        fillOpacity="0.12"
         stroke="currentColor"
         strokeWidth="1.3"
         strokeLinejoin="round"

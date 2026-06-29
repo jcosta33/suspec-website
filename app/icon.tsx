@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
-// Generated at build (works under output:export) — no logo asset needed. The six-node loop mark
-// sits on a transparent canvas with minimal padding.
+// Generated at build (works under output:export) — no logo asset needed. The loop mark
+// (spine triangle inscribed in the six-step hexagon) sits on a transparent canvas.
 export const dynamic = "force-static";
 
 const MARK =

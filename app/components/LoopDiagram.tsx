@@ -68,6 +68,10 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
     };
   });
   const sealPath = sealPoints.map((point) => `${point.x},${point.y}`).join(" ");
+  // The durable spine — Spec (02), Run (04), Close (06) — the inscribed triangle.
+  const spineSeal = [sealPoints[1], sealPoints[3], sealPoints[5]]
+    .map((point) => `${point.x},${point.y}`)
+    .join(" ");
   const tickPoints = Array.from({ length: 12 }, (_, index) => {
     const angle = -90 + index * 30;
     const rad = (angle * Math.PI) / 180;
@@ -86,7 +90,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
           <svg
             viewBox="0 0 100 100"
             className="h-full w-full"
-            aria-label="Six-point Corpus loop seal"
+            aria-label="Corpus loop seal: the Spec-Run-Close spine inscribed in the six-step hexagon"
             role="img"
           >
             <circle
@@ -138,6 +142,14 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
                 opacity="0.72"
               />
             ))}
+            <polygon
+              points={spineSeal}
+              fill="var(--color-aurum)"
+              fillOpacity="0.09"
+              stroke="var(--color-aurum)"
+              strokeWidth="1.2"
+              strokeLinejoin="round"
+            />
             <circle cx="50" cy="50" r="2.2" fill="var(--color-aurum)" />
             {sealPoints.map((point) => (
               <g key={point.label}>
@@ -169,8 +181,8 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
             The loop at a glance.
           </h2>
           <p className="mt-3 max-w-full text-sm leading-relaxed text-concrete-400 sm:max-w-2xl">
-            The mark maps to Pull, Spec, Task, Run, Review, and Close. Each
-            pass leaves a file the next step can use.
+            Six steps around the hexagon; the inscribed triangle is the spine —
+            Spec, Run, Close. Each pass leaves a file the next step can use.
           </p>
         </div>
       </div>
