@@ -2499,10 +2499,10 @@ body::after {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: center;
-    gap: 0.38rem;
+    gap: 0.5rem;
     width: min(100%, 22rem);
     overflow: visible;
-    margin-top: 1rem;
+    margin-top: 1.08rem;
   }
 
   .hero-trace::before {
@@ -2511,12 +2511,12 @@ body::after {
 
   .hero-trace-item {
     min-width: 0;
-    min-height: 2.58rem;
-    padding-block: 0.42rem;
+    min-height: 2.8rem;
+    padding: 0.48rem 0.68rem;
   }
 
   .hero-trace-label {
-    font-size: 0.78rem;
+    font-size: 0.8rem;
   }
 }
 
