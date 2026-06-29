@@ -211,6 +211,22 @@
   }
   .docs-nav-toggle:checked ~ .docs-nav {
     display: block;
+    max-height: min(24rem, calc(100svh - 14rem));
+    overflow-y: auto;
+    padding: 0.72rem 0.68rem 0.8rem;
+    border: 1px solid rgba(var(--signal-reference-rgb), 0.24);
+    border-left-color: rgba(var(--signal-reference-rgb), 0.44);
+    border-radius: var(--radius-panel);
+    background:
+      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.045) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(18, 14, 10, 0.86), rgba(10, 7, 5, 0.8));
+    background-size:
+      32px 100%,
+      auto;
+    box-shadow:
+      inset 2px 0 0 rgba(var(--signal-reference-rgb), 0.14),
+      inset 0 1px 0 rgba(240, 226, 204, 0.035);
+    scrollbar-gutter: stable;
   }
 }
 
