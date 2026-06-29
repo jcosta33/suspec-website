@@ -1,13 +1,20 @@
 import { useId } from "react";
 
-const points = [
-  [16, 4.5],
-  [25.96, 10.25],
-  [25.96, 21.75],
-  [16, 27.5],
-  [6.04, 21.75],
-  [6.04, 10.25],
+// The mark synthesizes the two shapes of the method: the six-step loop is the
+// hexagon; the durable spine (Spec · Run · Close) is the equilateral triangle
+// its three alternate vertices already form. The triangle is not added to the
+// hexagon — it is read out of it. Spine vertices are filled; the three optional
+// steps (Pull · Task · Review) sit between as quiet nodes.
+const HEX: ReadonlyArray<readonly [number, number]> = [
+  [16, 4.2],
+  [26.22, 10.1],
+  [26.22, 21.9],
+  [16, 27.8],
+  [5.78, 21.9],
+  [5.78, 10.1],
 ];
+const SPINE = [HEX[0], HEX[2], HEX[4]] as const;
+const OPTIONAL = [HEX[1], HEX[3], HEX[5]] as const;
 
 export function Logo({ className = "" }: { className?: string }) {
   const gradientId = `${useId().replaceAll(":", "")}-corpus-gilt`;
@@ -37,48 +44,55 @@ export function Logo({ className = "" }: { className?: string }) {
             <stop offset="1" stopColor="#bf7927" />
           </linearGradient>
         </defs>
-        <circle
-          cx="16"
-          cy="16"
-          r="13.6"
-          stroke={`url(#${gradientId})`}
-          strokeWidth="1.35"
-          opacity="0.95"
-        />
+
+        {/* the loop — hexagon frame */}
         <polygon
-          points={points.map(([x, y]) => `${x},${y}`).join(" ")}
+          points={HEX.map(([x, y]) => `${x},${y}`).join(" ")}
           stroke={`url(#${gradientId})`}
-          strokeWidth="1.4"
+          strokeWidth="1.15"
+          strokeLinejoin="round"
+          opacity="0.62"
+        />
+
+        {/* the spine — inscribed triangle, a filled core within the loop */}
+        <polygon
+          points={SPINE.map(([x, y]) => `${x},${y}`).join(" ")}
+          fill={`url(#${gradientId})`}
+          fillOpacity="0.1"
+          stroke={`url(#${gradientId})`}
+          strokeWidth="1.65"
           strokeLinejoin="round"
         />
-        {points.map(([x, y]) => (
-          <line
-            key={`spoke-${x}-${y}`}
-            x1="16"
-            y1="16"
-            x2={x}
-            y2={y}
-            stroke={`url(#${gradientId})`}
-            strokeWidth="0.9"
-            opacity="0.75"
-          />
-        ))}
-        {points.map(([x, y]) => (
+
+        {/* the three optional steps — quiet nodes between the spine */}
+        {OPTIONAL.map(([x, y]) => (
           <circle
-            key={`${x}-${y}`}
+            key={`opt-${x}-${y}`}
             cx={x}
             cy={y}
-            r="1.45"
+            r="0.9"
             fill="#080604"
             stroke={`url(#${gradientId})`}
-            strokeWidth="1.1"
+            strokeWidth="0.85"
+            opacity="0.7"
           />
         ))}
-        <circle cx="16" cy="16" r="1.75" fill="#d88a24" />
+
+        {/* the spine vertices — filled */}
+        {SPINE.map(([x, y]) => (
+          <circle
+            key={`spine-${x}-${y}`}
+            cx={x}
+            cy={y}
+            r="1.85"
+            fill={`url(#${gradientId})`}
+          />
+        ))}
+
+        {/* center hub */}
+        <circle cx="16" cy="16" r="1.4" fill="#d88a24" />
       </svg>
-      <span className="text-[1.1em] font-bold leading-[0.92]">
-        Corpus
-      </span>
+      <span className="text-[1.1em] font-bold leading-[0.92]">Corpus</span>
     </span>
   );
 }

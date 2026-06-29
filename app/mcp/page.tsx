@@ -450,7 +450,9 @@ export default function McpPage() {
             {tools.map((group) => (
               <div
                 key={group.group}
-                className={`mcp-fact-list tool-list-card tool-list-card-${group.signal} rounded-panel border bg-panel p-4`}
+                className={`mcp-fact-list tool-list-card tool-list-card-${group.signal} rounded-panel border bg-panel p-4 ${
+                  group.group === "read" ? "sm:row-span-2" : ""
+                }`}
               >
                 <p
                   className={`font-mono text-xs uppercase tracking-wide ${signalRoles[group.signal].text}`}

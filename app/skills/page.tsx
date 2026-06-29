@@ -429,7 +429,13 @@ export default function SkillsPage() {
             <span>corpus-skills catalog</span>
             <span>{stances.length} guides</span>
           </div>
-          <ul className="skill-guide-list">
+          <ul
+            className="skill-guide-list"
+            style={{
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 20rem), 1fr))",
+            }}
+          >
             {stances.map((s) => {
               const Icon = s.icon;
               return (
@@ -498,7 +504,13 @@ export default function SkillsPage() {
             <span>corpus-skills catalog</span>
             <span>{disciplines.length} guides</span>
           </div>
-          <ul className="skill-guide-list">
+          <ul
+            className="skill-guide-list"
+            style={{
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 20rem), 1fr))",
+            }}
+          >
             {disciplines.map((s) => {
               const Icon = s.icon;
               return (
@@ -577,7 +589,13 @@ export default function SkillsPage() {
             <span>corpus-starter-kit/.agents/skills</span>
             <span>{kitSkills.length} guides</span>
           </div>
-          <ul className="skill-guide-list">
+          <ul
+            className="skill-guide-list"
+            style={{
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 20rem), 1fr))",
+            }}
+          >
             {kitSkills.map((s) => {
               const Icon = s.icon;
               return (

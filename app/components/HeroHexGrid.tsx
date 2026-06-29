@@ -1,5 +1,7 @@
-// Six-step seal field — concentric instrument rings plus a six-node loop dial.
-// Kept as HeroHexGrid for the existing import surface.
+// Six-step seal field — concentric instrument rings, a turning degree ring, and
+// the six-node loop dial with its durable spine (the inscribed triangle the
+// three alternate nodes form) drawn through it. Kept as HeroHexGrid for the
+// existing import surface.
 const TICKS = Array.from({ length: 72 }, (_, i) => i);
 const GOLD = "#d88a24";
 const LOOP_POINTS = Array.from({ length: 6 }, (_, i) => {
@@ -8,8 +10,10 @@ const LOOP_POINTS = Array.from({ length: 6 }, (_, i) => {
   return {
     x: 300 + Math.cos(rad) * 210,
     y: 300 + Math.sin(rad) * 210,
+    spine: i % 2 === 0,
   };
 });
+const SPINE_POINTS = LOOP_POINTS.filter((p) => p.spine);
 
 export function HeroHexGrid({ className = "" }: { className?: string }) {
   return (
@@ -18,7 +22,7 @@ export function HeroHexGrid({ className = "" }: { className?: string }) {
       aria-hidden="true"
     >
       <svg
-        className="absolute inset-0 h-full w-full opacity-[0.11]"
+        className="absolute inset-0 h-full w-full opacity-[0.16]"
         viewBox="45 45 510 510"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -56,38 +60,56 @@ export function HeroHexGrid({ className = "" }: { className?: string }) {
           })}
         </g>
 
-        {/* inscribed six-step loop dial */}
+        {/* the six-step loop dial */}
         <polygon
           points={LOOP_POINTS.map((p) => `${p.x},${p.y}`).join(" ")}
           stroke={GOLD}
           strokeWidth="1"
           strokeLinejoin="round"
-          opacity="0.7"
+          opacity="0.55"
         />
-        {LOOP_POINTS.map((p) => (
+
+        {/* the durable spine — inscribed triangle through the alternate nodes */}
+        <polygon
+          points={SPINE_POINTS.map((p) => `${p.x},${p.y}`).join(" ")}
+          fill={GOLD}
+          fillOpacity="0.06"
+          stroke={GOLD}
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+          opacity="0.95"
+        />
+
+        {/* hub spokes to the spine */}
+        {SPINE_POINTS.map((p) => (
           <line
-            key={`${p.x}-${p.y}`}
+            key={`spoke-${p.x}-${p.y}`}
             x1="300"
             y1="300"
             x2={p.x}
             y2={p.y}
             stroke={GOLD}
             strokeWidth="0.8"
-            opacity="0.62"
+            opacity="0.5"
           />
         ))}
+
+        {/* nodes — spine filled, optional hollow */}
         {LOOP_POINTS.map((p) => (
           <circle
             key={`node-${p.x}-${p.y}`}
             cx={p.x}
             cy={p.y}
-            r="6"
-            fill="none"
+            r={p.spine ? 7 : 5}
+            fill={p.spine ? GOLD : "none"}
             stroke={GOLD}
             strokeWidth="1"
-            opacity="0.85"
+            opacity={p.spine ? 0.95 : 0.62}
           />
         ))}
+
+        {/* center hub */}
+        <circle cx="300" cy="300" r="4" fill={GOLD} opacity="0.9" />
       </svg>
     </div>
   );

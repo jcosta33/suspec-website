@@ -266,7 +266,7 @@ export default function AgentsPage() {
         id="worker-lanes"
         register="02 / worker lanes"
         registerTone="muted"
-        className="agent-roster-grid grid gap-4 lg:grid-cols-2"
+        className="agent-roster-grid grid gap-4 lg:grid-cols-2 lg:items-start"
       >
         <nav
           className="agent-page-nav lg:col-span-2"
