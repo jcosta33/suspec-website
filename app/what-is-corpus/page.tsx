@@ -194,7 +194,7 @@ const failureModes = [
   {
     mode: "No resumable trail",
     looksLike: "the session ends mid-stride; the next one starts from zero",
-    answer: "write intake, spec, task, and review files",
+    answer: "write a spec, record the run in its Execution, and a review packet",
   },
   {
     mode: "Repeated mistakes",

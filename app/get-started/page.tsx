@@ -103,9 +103,9 @@ const kitContents = [
     icon: BookOpen,
   },
   {
-    name: "Eight templates",
+    name: "Nine templates",
     role: "record shapes",
-    text: "Intake, spec, task, review, finding, status, inventory, change plan.",
+    text: "Intake, spec, task, review, finding, status, inventory, change plan, ADR.",
     icon: LayoutTemplate,
   },
   {
@@ -159,7 +159,7 @@ const setupPath = [
   },
   {
     label: "Work",
-    text: "Write a spec, cut a task, keep evidence.",
+    text: "Write a spec, run it, keep evidence — split into tasks only for parallel work.",
     icon: ClipboardList,
     href: "#work",
     signal: "core",

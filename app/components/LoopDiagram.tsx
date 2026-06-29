@@ -14,7 +14,9 @@ const steps = [
     number: "01",
     label: "Pull",
     icon: Inbox,
-    description: "Capture the ticket and intent in an intake file.",
+    optional: true,
+    description:
+      "Point the spec's sources at the origin; capture an intake file only to keep the raw request. Intake is optional; the spec is the unit.",
   },
   {
     number: "02",
@@ -26,14 +28,16 @@ const steps = [
     number: "03",
     label: "Task",
     icon: ListChecks,
+    optional: true,
     description:
-      "Hand the agent a bounded packet: scope, do-not-change, verify.",
+      "Only when one spec splits into parallel slices — most work is one spec → one implementer, no task file.",
   },
   {
     number: "04",
     label: "Run",
     icon: Terminal,
-    description: "The agent implements and pastes real evidence.",
+    description:
+      "The worker implements the spec (or the task, when split) and pastes real evidence.",
   },
   {
     number: "05",
@@ -198,6 +202,11 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
                 <span className="loop-step-label font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
                   {step.label}
                 </span>
+                {"optional" in step && step.optional && (
+                  <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-brass">
+                    optional
+                  </span>
+                )}
               </div>
               <p className="text-sm leading-relaxed text-concrete-400">
                 {step.description}

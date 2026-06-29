@@ -654,7 +654,7 @@ export default function CliPage() {
             <p className="text-concrete-400">
               Using an MCP client?{" "}
               <TextLink href="/mcp/">
-                corpus-mcp exposes the same read-only facts
+                corpus-mcp exposes the same facts (read + reconcile, no verdict)
               </TextLink>
             </p>
           </div>

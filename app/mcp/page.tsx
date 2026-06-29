@@ -72,9 +72,9 @@ const mcpInstallCommands = [
 
 const guardrails = [
   {
-    title: "Read-only",
-    text: "It reads workspace facts. It does not write artifacts.",
-    stamp: "read",
+    title: "No board, no result",
+    text: "It writes no board and no review result. Safe-write tools only scaffold fresh artifacts.",
+    stamp: "scope",
     icon: ShieldCheck,
     signal: "reference",
   },
@@ -109,25 +109,31 @@ const guardrails = [
 
 const tools = [
   {
-    group: "reconcile",
-    signal: "evidence",
-    items: [
-      "corpus_get_status",
-      "corpus_check_workspace",
-      "corpus_check_file",
-      "corpus_scan_task",
-      "corpus_reconcile_review",
-      "corpus_validate_review_packet",
-    ],
-  },
-  {
-    group: "loaders",
+    group: "read",
     signal: "reference",
     items: [
+      "corpus_get_status",
+      "corpus_list",
+      "corpus_check_workspace",
+      "corpus_check_file",
       "corpus_get_task",
       "corpus_get_spec",
       "corpus_get_review",
       "corpus_get_checks",
+    ],
+  },
+  {
+    group: "reconcile",
+    signal: "evidence",
+    items: ["corpus_reconcile"],
+  },
+  {
+    group: "safe-write",
+    signal: "evidence",
+    items: [
+      "corpus_scaffold_spec",
+      "corpus_split_task",
+      "corpus_scaffold_finding",
     ],
   },
 ] as const satisfies Array<{
@@ -174,7 +180,7 @@ const bridgeFlow = [
   {
     label: "corpus-mcp",
     channel: "adapter",
-    detail: "Read-only adapter around the workspace.",
+    detail: "Verdict-free adapter around the workspace.",
     icon: Boxes,
     href: "#guardrails",
     signal: "reference",
@@ -233,8 +239,8 @@ export default function McpPage() {
             Status, checks, artifacts, and review data over stdio.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-            <Badge variant="ready">v0 surface</Badge>
-            <Badge variant="draft">read-only</Badge>
+            <Badge variant="ready">v0.2 surface</Badge>
+            <Badge variant="draft">no board</Badge>
             <Badge signal="muted">no verdict</Badge>
           </div>
         </PageHero>
@@ -391,8 +397,9 @@ export default function McpPage() {
           </div>
           <Heading className="mt-3">What it does not do</Heading>
           <p className="mt-4 text-concrete-400">
-            It does not run an agent loop, write reviews, or decide whether code
-            is done.
+            It does not run an agent loop, write a board or a review result, or
+            decide whether code is done. Safe-write tools only scaffold fresh
+            artifacts; they issue no verdict.
           </p>
         </div>
         <ul className="mcp-guardrail-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -432,12 +439,12 @@ export default function McpPage() {
         <Card signal="reference" screws className="mcp-fact-card border-panel-border">
           <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
             <Cable className="h-4 w-4" aria-hidden="true" />
-            <span>tools / 10</span>
+            <span>tools / 12</span>
           </div>
           <Heading className="mt-3">MCP tools</Heading>
           <p className="mt-4 text-concrete-400">
-            Check and reconcile calls, plus artifact loaders. Each maps to a
-            CLI JSON command.
+            Read and reconcile calls, plus a verdict-free safe-write tier that
+            scaffolds fresh artifacts. Each maps to a CLI JSON command.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {tools.map((group) => (

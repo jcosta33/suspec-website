@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import type { ComponentType } from "react";
 import {
   ArrowRight,
-  Compass,
   ExternalLink,
   FileSearch,
   Hammer,
@@ -33,7 +32,7 @@ import { signalRoles, type SignalRole } from "../components/signalStyles";
 export const metadata: Metadata = {
   title: "corpus-agents — Corpus",
   description:
-    "Claude Code worker files for Corpus review, exploration, evidence checks, and authoring.",
+    "Claude Code worker files for Corpus review, challenge, and authoring.",
   openGraph: {
     title: "corpus-agents — Corpus",
     description:
@@ -71,17 +70,7 @@ const readOnly = [
   {
     agent: "corpus-reviewer",
     icon: Scale,
-    use: "review a finished task or PR",
-  },
-  {
-    agent: "corpus-explorer",
-    icon: Compass,
-    use: "read a codebase and report how something works",
-  },
-  {
-    agent: "corpus-evidence-checker",
-    icon: ShieldCheck,
-    use: "re-run Verify items and flag missing evidence",
+    use: "review a finished task or PR, or re-run Verify items in proof-first mode",
   },
   {
     agent: "corpus-challenger",
@@ -125,21 +114,7 @@ const rosterGroups = [
         file: "corpus-reviewer",
         icon: Scale,
         signal: "evidence",
-        use: "Review a finished task or PR.",
-      },
-      {
-        label: "Explore",
-        file: "corpus-explorer",
-        icon: Compass,
-        signal: "reference",
-        use: "Read a codebase and report how something works.",
-      },
-      {
-        label: "Evidence",
-        file: "corpus-evidence-checker",
-        icon: ShieldCheck,
-        signal: "evidence",
-        use: "Re-run Verify items and flag missing evidence.",
+        use: "Review a finished task or PR, or re-run Verify items in proof-first mode.",
       },
       {
         label: "Challenge",
@@ -271,7 +246,7 @@ export default function AgentsPage() {
         >
           <p className="repo-manifest-label">role files</p>
           <div className="repo-manifest-grid">
-            <SignalStat label="workers" value="8" signal="reference" />
+            <SignalStat label="workers" value="6" signal="reference" />
             <SignalStat label="hooks" value="2" signal="muted" />
             <SignalStat
               label="home"
@@ -661,7 +636,7 @@ export default function AgentsPage() {
           </div>
           <Heading className="mt-3">The full catalog</Heading>
           <p className="mt-4 text-concrete-400">
-            Eight workers and two hooks. Read the file before you copy it.
+            Six workers and two hooks. Read the file before you copy it.
           </p>
           <p className="mt-6">
             <TextLink

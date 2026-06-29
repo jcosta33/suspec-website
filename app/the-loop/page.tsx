@@ -55,7 +55,8 @@ const steps = [
     number: "01",
     name: "Pull",
     signal: "core",
-    body: "Copy the request into an intake file. Preserve what was asked before you interpret it.",
+    optional: true,
+    body: "Point the spec's sources at the origin — a ticket, an issue, or self. When you want the raw request kept verbatim, capture it as an intake file first. Intake is optional; the spec is the unit.",
     example: {
       title: "intake/INTAKE-42.md",
       lines: [
@@ -110,7 +111,8 @@ const steps = [
     number: "03",
     name: "Task",
     signal: "core",
-    body: "Give the agent scope, limits, and Verify commands.",
+    optional: true,
+    body: "Only when one spec splits into parallel slices — most work is one spec → one implementer, no task file. When you do split, hand each agent a bounded packet: scope, do-not-change, Verify commands.",
     example: {
       title: "tasks/TASK-shell.md",
       lines: [
@@ -128,10 +130,12 @@ const steps = [
     number: "04",
     name: "Run",
     signal: "core",
-    body: "Implement the task and paste real evidence next to the requirement.",
+    body: "Implement the spec (or the task, when split); paste real evidence per requirement.",
     example: {
-      title: "tasks/TASK-shell.md",
+      title: "specs/shell/spec.md",
       lines: [
+        { prompt: false, text: "## Execution" },
+        { prompt: false, text: "" },
         { prompt: true, text: "npm run build" },
         { prompt: false, text: "✓ Compiled successfully" },
         { prompt: false, text: "Route (app): /, /kitchen-sink" },
@@ -194,6 +198,7 @@ const steps = [
   number: string;
   name: string;
   signal: SignalRole;
+  optional?: boolean;
   body: string;
   example: {
     title: string;
@@ -215,7 +220,8 @@ export default function TheLoopPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Six steps for moving agent work from request to review.
+            Six steps for moving agent work from request to review — the spec is
+            the unit; Pull and Task are optional.
           </p>
           <HeroTrace
             ariaLabel="Corpus loop trace"
@@ -312,6 +318,11 @@ export default function TheLoopPage() {
                         aria-hidden="true"
                       />
                       <Heading>{step.name}</Heading>
+                      {step.optional && (
+                        <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-brass">
+                          optional
+                        </span>
+                      )}
                     </div>
                     <p className="mt-4 text-concrete-400">{step.body}</p>
                   </div>

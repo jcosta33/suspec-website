@@ -475,7 +475,10 @@ export default function WritingSkillsPage() {
               </div>
               <Heading className="mt-3">Read the source</Heading>
               <p className="mt-4 max-w-2xl text-concrete-400">
-                The full catalog and current examples live in the skills repo.
+                The same file shape is used in both tiers. Framework-free examples
+                live in the corpus-skills catalog; the{" "}
+                <code className="text-corpus-yellow">write-*</code> family used
+                above (write-feature, write-fix, ...) lives in the Corpus kit.
               </p>
             </div>
             <ul className="space-y-3 md:min-w-56">
@@ -499,7 +502,19 @@ export default function WritingSkillsPage() {
                   className="gap-2"
                   touchTarget
                 >
-                  sample skills{" "}
+                  catalog skills{" "}
+                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                </TextLink>
+              </li>
+              <li>
+                <TextLink
+                  href="https://github.com/jcosta33/corpus-starter-kit/tree/main/.agents/skills"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gap-2"
+                  touchTarget
+                >
+                  kit skills (write-*){" "}
                   <ExternalLink className="h-4 w-4" aria-hidden="true" />
                 </TextLink>
               </li>

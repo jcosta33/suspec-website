@@ -2,17 +2,23 @@ import type { Metadata } from "next";
 import {
   ArrowRight,
   Bug,
+  ClipboardCheck,
+  Compass,
   ExternalLink,
   FileCode,
   Files,
   FolderSearch,
+  GitPullRequest,
   Glasses,
   Hammer,
   Layers,
   Puzzle,
   Rocket,
+  Save,
   Scale,
+  ScanSearch,
   ShieldCheck,
+  Split,
   Swords,
   Target,
   Terminal,
@@ -36,11 +42,11 @@ import { signalRoles } from "../components/signalStyles";
 export const metadata: Metadata = {
   title: "corpus-skills — Corpus",
   description:
-    "Agent guide files for Corpus review, writing, testing, and docs work.",
+    "Two tiers of agent guides: the framework-free corpus-skills catalog and the Corpus-coupled kit that ships in corpus-starter-kit.",
   openGraph: {
     title: "corpus-skills — Corpus",
     description:
-      "Agent guide files for Corpus review, writing, testing, and docs work.",
+      "Two tiers of agent guides: the framework-free corpus-skills catalog and the Corpus-coupled kit that ships in corpus-starter-kit.",
     type: "website",
     url: "/skills/",
     siteName: "Corpus",
@@ -59,19 +65,22 @@ export const metadata: Metadata = {
   },
 };
 
-const skillInstallCommands = [
-  "npx skills add jcosta33/corpus-skill",
-].join("\n");
+const catalogInstallCommand = "npx skills add jcosta33/corpus-skills";
 
+// Tier 1 — the universal catalog (corpus-skills). Framework-free disciplines and
+// stances, installable into any repo via `npx skills` with zero Corpus knowledge.
+const catalogRepo = "https://github.com/jcosta33/corpus-skills/tree/main/skills";
+
+// Review / judgment stances in the catalog.
 const stances = [
   {
-    skill: "persona-skeptic",
-    icon: Scale,
-    use: "review another agent's work",
+    skill: "adversarial-review",
+    icon: Swords,
+    use: "review another agent's work refute-by-default",
   },
   {
     skill: "persona-challenger",
-    icon: Swords,
+    icon: Scale,
     use: "pressure-test a proposal before build work starts",
   },
   {
@@ -84,13 +93,77 @@ const stances = [
     icon: ShieldCheck,
     use: "back completion claims with pasted output",
   },
+  {
+    skill: "security-review",
+    icon: ScanSearch,
+    use: "audit a change for security exposure",
+  },
+  {
+    skill: "debugging",
+    icon: Bug,
+    use: "find a defect's root cause from runtime evidence",
+  },
 ];
 
-const authoring = [
+// Working disciplines in the catalog — the everyday methods, not stances.
+const disciplines = [
+  {
+    skill: "codebase-exploration",
+    icon: Compass,
+    use: "map an unfamiliar codebase before changing it",
+  },
+  {
+    skill: "planning-spec",
+    icon: Target,
+    use: "plan a non-trivial change before fanning out",
+  },
+  {
+    skill: "git-pr",
+    icon: GitPullRequest,
+    use: "ship a change end to end as a clean PR",
+  },
+  {
+    skill: "concise-output",
+    icon: Zap,
+    use: "make agent output terse and evidence-first",
+  },
+  {
+    skill: "fix-flaky-test",
+    icon: Puzzle,
+    use: "stabilize an intermittent test",
+  },
+];
+
+// Tier 2 — the Corpus kit (ships in corpus-starter-kit/.agents/skills/). Every
+// skill that operates a Corpus concept; not installable framework-free.
+const kitRepo =
+  "https://github.com/jcosta33/corpus-starter-kit/tree/main/.agents/skills";
+
+const kitSkills = [
   {
     skill: "implement-task",
     icon: Terminal,
     use: "implement a Corpus task packet",
+  },
+  {
+    skill: "review-output",
+    icon: ShieldCheck,
+    use: "build the review packet for a finished task",
+  },
+  {
+    skill: "spec-check",
+    icon: ClipboardCheck,
+    use: "check a spec against the core checks",
+  },
+  {
+    skill: "split-work",
+    icon: Split,
+    use: "split a spec into non-colliding task packets",
+  },
+  {
+    skill: "save-findings",
+    icon: Save,
+    use: "save what a task taught as findings",
   },
   {
     skill: "write-feature",
@@ -132,36 +205,33 @@ const authoring = [
     icon: Glasses,
     use: "write human-facing docs",
   },
-  {
-    skill: "fix-flaky-test",
-    icon: Puzzle,
-    use: "stabilize an intermittent test",
-  },
 ];
+
+const catalogCount = stances.length + disciplines.length;
 
 const skillRoutes = [
   {
-    label: "Review guides",
+    label: "Review stances",
     href: "#review-guides",
-    count: "4",
+    count: String(stances.length),
     icon: ShieldCheck,
-    text: "Judgment, evidence, research, and challenge stances.",
+    text: "Catalog stances for judgment, evidence, security, and debugging.",
     signal: "evidence",
   },
   {
-    label: "Change guides",
+    label: "Working disciplines",
     href: "#change-guides",
-    count: "10",
+    count: String(disciplines.length),
     icon: Hammer,
-    text: "Feature, fix, refactor, rewrite, migration, performance, tests, docs.",
+    text: "Catalog methods: exploration, planning, PRs, concision, flaky tests.",
     signal: "core",
   },
   {
-    label: "Guide format",
-    href: "#write-skill",
-    count: "1",
-    icon: FileCode,
-    text: "The file shape for adding a guide without making it vague.",
+    label: "Corpus kit",
+    href: "#kit-skills",
+    count: String(kitSkills.length),
+    icon: Puzzle,
+    text: "Corpus-coupled skills that ship in corpus-starter-kit, not the catalog.",
     signal: "reference",
   },
 ] as const;
@@ -183,10 +253,13 @@ export default function SkillsPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Task-scoped guides for review, implementation, testing, and docs.
+            Two tiers of task-scoped guides: a framework-free catalog and a
+            Corpus-coupled kit.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
-            Install once. Load only the guide in scope.
+            The catalog (corpus-skills) installs into any repo via{" "}
+            <code className="text-corpus-yellow">npx skills</code>. The kit ships
+            in corpus-starter-kit. Load only the guide in scope.
           </p>
           <HeroTrace
             ariaLabel="Skill guide trace"
@@ -207,11 +280,14 @@ export default function SkillsPage() {
       >
         <PaperArtifact
           label="index"
-          title="load when"
-          meta="source -> local install"
+          title="two tiers"
+          meta="catalog (any repo) -> kit (Corpus repos)"
           className="h-full"
         >
-          <p>Use the catalog to select context. Keep repo policy local.</p>
+          <p>
+            The catalog is framework-free. The kit operates Corpus concepts. Keep
+            repo policy local.
+          </p>
         </PaperArtifact>
         <Card
           screws
@@ -220,8 +296,16 @@ export default function SkillsPage() {
         >
           <p className="repo-manifest-label">guide files</p>
           <div className="repo-manifest-grid">
-            <SignalStat label="review" value="4" signal="evidence" />
-            <SignalStat label="change" value="10" signal="core" />
+            <SignalStat
+              label="catalog"
+              value={String(catalogCount)}
+              signal="evidence"
+            />
+            <SignalStat
+              label="kit"
+              value={String(kitSkills.length)}
+              signal="core"
+            />
             <SignalStat
               label="file"
               value="SKILL.md"
@@ -293,34 +377,43 @@ export default function SkillsPage() {
           <span>skills add</span>
         </div>
         <Panel brushed className="p-2">
-          <TerminalWindow title="terminal" copyText={skillInstallCommands}>
+          <TerminalWindow title="terminal" copyText={catalogInstallCommand}>
             <p className="text-concrete-100">
               <span className="text-corpus-yellow">$</span>{" "}npx skills add{" "}
-              jcosta33/corpus-skill
+              jcosta33/corpus-skills
             </p>
           </TerminalWindow>
         </Panel>
         <p className="text-concrete-400">
-          Keep repo-specific commands in{" "}
-          <code className="text-corpus-yellow">AGENTS.md</code>. The installed
-          guide should stay portable.
+          This installs the framework-free catalog into any repo. The Corpus kit
+          ships separately in{" "}
+          <TextLink
+            href="https://github.com/jcosta33/corpus-starter-kit"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            corpus-starter-kit
+          </TextLink>
+          . Keep repo-specific commands in{" "}
+          <code className="text-corpus-yellow">AGENTS.md</code>.
         </p>
       </Section>
 
       <Section
         id="review-guides"
-        register="04 / review guides"
+        register="04 / catalog · review stances"
         registerTone="evidence"
         className="flex scroll-mt-28 flex-col gap-12"
       >
         <div className="max-w-2xl">
           <div className="section-kicker section-kicker-evidence">
             <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-            <span>review guides</span>
+            <span>catalog · review stances</span>
           </div>
-          <Heading className="mt-3">Review guides</Heading>
+          <Heading className="mt-3">Review stances</Heading>
           <p className="mt-4 text-concrete-400">
-            Use these when the task is about judgment, evidence, or research.
+            Framework-free catalog stances for judgment, evidence, security, and
+            debugging. Installed with <code className="text-corpus-yellow">npx skills</code>.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Badge variant="draft">markdown only</Badge>
@@ -333,7 +426,7 @@ export default function SkillsPage() {
           className="skill-guide-catalog skill-guide-catalog-evidence p-0"
         >
           <div className="skill-guide-catalog-header">
-            <span>review catalog</span>
+            <span>corpus-skills catalog</span>
             <span>{stances.length} guides</span>
           </div>
           <ul className="skill-guide-list">
@@ -342,7 +435,7 @@ export default function SkillsPage() {
               return (
                 <li key={s.skill}>
                   <a
-                    href={`https://github.com/jcosta33/corpus-skills/tree/main/skills/${s.skill}`}
+                    href={`${catalogRepo}/${s.skill}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${s.skill} skill on GitHub (opens in new tab)`}
@@ -380,19 +473,20 @@ export default function SkillsPage() {
 
       <Section
         id="change-guides"
-        register="05 / change guides"
+        register="05 / catalog · working disciplines"
         registerTone="core"
         className="flex scroll-mt-28 flex-col gap-12"
       >
         <div className="max-w-2xl">
           <div className="section-kicker section-kicker-core">
             <Hammer className="h-4 w-4" aria-hidden="true" />
-            <span>change guides</span>
+            <span>catalog · working disciplines</span>
           </div>
-          <Heading className="mt-3">Change guides</Heading>
+          <Heading className="mt-3">Working disciplines</Heading>
           <p className="mt-4 text-concrete-400">
-            Pick the guide that matches the work: feature, fix, refactor,
-            rewrite, migration, performance, testing, or docs.
+            The catalog&apos;s everyday methods: map a codebase, plan a change,
+            ship a PR, keep output terse, stabilize a flaky test. Also
+            framework-free.
           </p>
         </div>
         <Panel
@@ -401,16 +495,16 @@ export default function SkillsPage() {
           className="skill-guide-catalog skill-guide-catalog-core p-0"
         >
           <div className="skill-guide-catalog-header">
-            <span>change catalog</span>
-            <span>{authoring.length} guides</span>
+            <span>corpus-skills catalog</span>
+            <span>{disciplines.length} guides</span>
           </div>
           <ul className="skill-guide-list">
-            {authoring.map((s) => {
+            {disciplines.map((s) => {
               const Icon = s.icon;
               return (
                 <li key={s.skill}>
                   <a
-                    href={`https://github.com/jcosta33/corpus-skills/tree/main/skills/${s.skill}`}
+                    href={`${catalogRepo}/${s.skill}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${s.skill} skill on GitHub (opens in new tab)`}
@@ -447,8 +541,87 @@ export default function SkillsPage() {
       </Section>
 
       <Section
+        id="kit-skills"
+        register="06 / kit · corpus-coupled"
+        registerTone="reference"
+        className="flex scroll-mt-28 flex-col gap-12"
+      >
+        <div className="max-w-2xl">
+          <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
+            <Puzzle className="h-4 w-4" aria-hidden="true" />
+            <span>kit · corpus-coupled</span>
+          </div>
+          <Heading className="mt-3">The Corpus kit</Heading>
+          <p className="mt-4 text-concrete-400">
+            These skills operate Corpus concepts — task packets, review packets,
+            specs, findings — so they are not framework-free. They ship in{" "}
+            <TextLink
+              href="https://github.com/jcosta33/corpus-starter-kit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              corpus-starter-kit
+            </TextLink>{" "}
+            under <code className="text-corpus-yellow">.agents/skills/</code>, not
+            in the <code className="text-corpus-yellow">npx skills</code> catalog.
+            The <code className="text-corpus-yellow">write-*</code> family is opt-in
+            task-implementation depth.
+          </p>
+        </div>
+        <Panel
+          brushed
+          screws
+          className="skill-guide-catalog p-0"
+        >
+          <div className="skill-guide-catalog-header">
+            <span>corpus-starter-kit/.agents/skills</span>
+            <span>{kitSkills.length} guides</span>
+          </div>
+          <ul className="skill-guide-list">
+            {kitSkills.map((s) => {
+              const Icon = s.icon;
+              return (
+                <li key={s.skill}>
+                  <a
+                    href={`${kitRepo}/${s.skill}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${s.skill} skill on GitHub (opens in new tab)`}
+                    className="skill-guide-row catalog-row catalog-row-reference group focus-ring"
+                  >
+                    <div className="flex min-w-0 items-start gap-4">
+                      <HexBadge
+                        color="reference"
+                        className="catalog-row-badge skill-guide-row-badge"
+                      >
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </HexBadge>
+                      <div className="min-w-0">
+                        <h3
+                          className={`catalog-row-title font-mono text-sm font-semibold ${signalRoles.reference.text}`}
+                        >
+                          {s.skill}
+                        </h3>
+                        <p className="catalog-row-copy mt-1 text-sm leading-relaxed text-concrete-400">
+                          {s.use}
+                        </p>
+                      </div>
+                    </div>
+                    <ExternalLink
+                      className="skill-guide-row-arrow"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </Panel>
+      </Section>
+
+      <Section
         id="write-skill"
-        register="06 / authoring"
+        register="07 / authoring"
         registerTone="reference"
         className="grid scroll-mt-28 gap-6 lg:grid-cols-2"
       >
