@@ -148,21 +148,21 @@ const setupPath = [
     text: "Add the kit files once.",
     icon: LayoutTemplate,
     href: "#copy",
-    signal: "reference",
+    signal: "core",
   },
   {
     label: "Check",
     text: "Run the CLI check when you want a gate.",
     icon: Terminal,
     href: "#check",
-    signal: "evidence",
+    signal: "core",
   },
   {
     label: "Work",
     text: "Write a spec, cut a task, keep evidence.",
     icon: ClipboardList,
     href: "#work",
-    signal: "change",
+    signal: "core",
   },
 ] as const satisfies Array<{
   label: string;

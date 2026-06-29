@@ -2680,6 +2680,55 @@ section.bg-section-band::after {
   --trace-pattern: var(--signal-pattern-muted);
 }
 
+.page-hero .hero-trace {
+  --trace-signal: var(--hero-signal);
+  --trace-rgb: var(--hero-rgb);
+  --trace-pattern: var(--signal-pattern-muted);
+}
+
+.page-hero .hero-trace::before {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.15rem,
+      rgba(var(--hero-rgb), 0.1) 1.15rem 1.2rem
+    ),
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--hero-rgb), 0.2) 18%,
+      rgba(var(--hero-rgb), 0.26) 50%,
+      rgba(var(--hero-rgb), 0.2) 82%,
+      transparent
+    );
+  box-shadow: 0 0 10px rgba(var(--hero-rgb), 0.045);
+  opacity: 0.56;
+}
+
+.page-hero .hero-trace-item {
+  --trace-signal: var(--hero-signal);
+  --trace-rgb: var(--hero-rgb);
+  --trace-pattern: var(--signal-pattern-muted);
+  border-color: rgba(var(--hero-rgb), 0.15);
+  border-left-color: rgba(var(--hero-rgb), 0.3);
+  background:
+    linear-gradient(90deg, rgba(var(--hero-rgb), 0.018), transparent 58%),
+    linear-gradient(180deg, rgba(240, 226, 204, 0.024), transparent 48%),
+    var(--signal-pattern-muted),
+    rgba(18, 13, 9, 0.48);
+  box-shadow:
+    inset 1px 0 0 rgba(var(--hero-rgb), 0.13),
+    inset 0 1px 0 rgba(240, 226, 204, 0.03);
+}
+
+.page-hero .hero-trace-item::after {
+  opacity: 0.46;
+}
+
+.page-hero .hero-trace-index {
+  color: color-mix(in oklab, var(--hero-signal) 78%, var(--color-concrete-100));
+}
+
 @media (max-width: 40rem) {
   .hero-trace {
     display: flex;
