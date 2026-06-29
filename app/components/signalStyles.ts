@@ -14,9 +14,10 @@
 // Blue and smoked mauve are reserved for package hero accents, not general
 // status or work-state meaning.
 // A role is more than a color: use it for the text, lamp, rail, border, hatch,
-// mark, icon, command plate, and hover state. Setup is not automatically green:
-// only new-workspace paths get greenfield; mixed setup surfaces use reference,
-// core, or muted. If a
+// mark, icon, command plate, and hover state. Package cyan and faded violet are
+// identity accents only; terminal/status lamps stay semantic. Setup is not
+// automatically green: only new-workspace paths get greenfield; mixed setup
+// surfaces use reference, core, or muted. If a
 // role appears on only one of those surfaces, the color will read as random
 // decoration instead of product meaning.
 // In CSS, reach for --signal-pattern-* and --signal-mark-* with the matching
@@ -78,10 +79,10 @@ export const signalRoleMeta = {
   change: {
     label: "change",
     family: "work / attention",
-    hex: "#B95B62",
-    relationship: "red-earth attention: HSL(356 41% 54%)",
+    hex: "#C15A55",
+    relationship: "red-earth attention: HSL(3 47% 55%)",
     wheel: "-38° from core",
-    tone: "muted red earth",
+    tone: "muted red clay",
     use: "Edits, fixes, run work, blocked states, and attention markers.",
     surface: "angled change hatching and work-in-progress rails",
     pattern: "angled change hatching",

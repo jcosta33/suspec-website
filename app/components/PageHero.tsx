@@ -57,7 +57,7 @@ export function PageHero({
         <span>{tone}</span>
       </div>
       <Eyebrow
-        className="mb-6"
+        className="page-hero-eyebrow mb-6"
         icon={<PilotLamp color={tone} pulse className="scale-90" />}
       >
         {eyebrow}
