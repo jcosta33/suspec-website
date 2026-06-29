@@ -7347,6 +7347,69 @@ section.bg-section-band::after {
     0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
+.package-process-strip {
+  --package-strip-signal: var(--signal-core);
+  --package-strip-rgb: var(--signal-core-rgb);
+}
+
+.package-process-strip-cli {
+  --package-strip-signal: var(--package-cli);
+  --package-strip-rgb: var(--package-cli-rgb);
+}
+
+.package-process-strip-mcp {
+  --package-strip-signal: var(--package-mcp);
+  --package-strip-rgb: var(--package-mcp-rgb);
+}
+
+.package-process-strip
+  > :is(
+    .process-item-signal-core,
+    .process-item-signal-evidence,
+    .process-item-signal-greenfield,
+    .process-item-signal-brownfield,
+    .process-item-signal-change,
+    .process-item-signal-reference,
+    .process-item-signal-muted
+  ) {
+  --process-signal: var(--package-strip-signal);
+  --process-rgb: var(--package-strip-rgb);
+  --process-pattern: var(--signal-pattern-muted);
+  --process-mark: var(--signal-mark-muted);
+}
+
+.repo-product-page
+  .package-process-strip
+  :is(
+    .text-signal-core,
+    .text-signal-evidence,
+    .text-signal-greenfield,
+    .text-signal-brownfield,
+    .text-signal-change,
+    .text-signal-reference,
+    .text-signal-muted,
+    .hex-badge,
+    .motion-nudge-x
+  ) {
+  color: color-mix(
+    in oklab,
+    var(--package-strip-signal) 68%,
+    var(--color-concrete-100)
+  );
+}
+
+.repo-product-page .package-process-strip .hex-badge {
+  border-color: rgba(var(--package-strip-rgb), 0.14);
+  background:
+    linear-gradient(180deg, rgba(240, 226, 204, 0.046), transparent 48%),
+    radial-gradient(
+      86% 76% at 50% 0%,
+      rgba(var(--package-strip-rgb), 0.032),
+      transparent 66%
+    ),
+    rgba(24, 19, 14, 0.98);
+}
+
 @media (max-width: 40rem) {
   .repo-product-page {
     gap: 3rem;

@@ -21,7 +21,6 @@ import { Heading } from "../components/Heading";
 import { Badge } from "../components/Badge";
 import { PilotLamp } from "../components/PilotLamp";
 import { TextLink } from "../components/TextLink";
-import { SignalKey } from "../components/SignalKey";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 
 export const metadata: Metadata = {
@@ -213,29 +212,6 @@ const commandFamilies = [
   },
 ] as const;
 
-const commandSignalKey = [
-  {
-    label: "Setup",
-    role: "muted",
-    detail: "create or refresh kit files",
-  },
-  {
-    label: "Check / review",
-    role: "evidence",
-    detail: "report facts and compare evidence",
-  },
-  {
-    label: "Run",
-    role: "change",
-    detail: "isolate task work",
-  },
-  {
-    label: "JSON",
-    role: "reference",
-    detail: "machine-readable records",
-  },
-] as const;
-
 const cliPageNav = [
   { label: "Families", href: "#command-families", signal: "reference" },
   { label: "Install", href: "#install", signal: "core" },
@@ -310,17 +286,13 @@ export default function CliPage() {
         registerTone="reference"
         className="scroll-mt-28 space-y-4"
       >
-        <SignalKey
-          ariaLabel="corpus-cli command family color roles"
-          items={commandSignalKey}
-        />
         <Panel brushed screws className="cli-surface-panel p-0">
           <div className="cli-surface-header">
             <p>Command families</p>
             <span>optional helper surface</span>
           </div>
           <ol
-            className="cli-command-rail process-strip process-strip-signal-reference grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
+            className="cli-command-rail package-process-strip package-process-strip-cli process-strip process-strip-signal-reference grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
             aria-label="corpus-cli command families"
           >
             {commandFamilies.map((family, index) => {

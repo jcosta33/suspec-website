@@ -20,7 +20,6 @@ import { PageHero } from "../components/PageHero";
 import { Panel } from "../components/Panel";
 import { PaperArtifact } from "../components/PaperArtifact";
 import { Section } from "../components/Section";
-import { SignalKey } from "../components/SignalKey";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { TextLink } from "../components/TextLink";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
@@ -198,34 +197,6 @@ const bridgeFlow = [
   },
 ] as const;
 
-const bridgeSignalKey = [
-  {
-    label: "Host",
-    role: "muted",
-    detail: "client outside the workspace",
-  },
-  {
-    label: "Pipe",
-    role: "muted",
-    detail: "local stdio transport",
-  },
-  {
-    label: "Adapter",
-    role: "core",
-    detail: "corpus-mcp process",
-  },
-  {
-    label: "JSON",
-    role: "reference",
-    detail: "CLI contract surface",
-  },
-  {
-    label: "Records",
-    role: "reference",
-    detail: "CLI JSON and markdown facts",
-  },
-] as const;
-
 const mcpPageNav = [
   { label: "Bridge", href: "#bridge", signal: "muted" },
   { label: "Config", href: "#mcp-config", signal: "reference" },
@@ -301,10 +272,6 @@ export default function McpPage() {
         registerTone="reference"
         className="scroll-mt-28 space-y-4"
       >
-        <SignalKey
-          ariaLabel="corpus-mcp bridge color roles"
-          items={bridgeSignalKey}
-        />
         <Panel brushed screws className="mcp-adapter-panel p-0">
           <div className="mcp-adapter-header">
             <p>client request</p>
@@ -316,7 +283,7 @@ export default function McpPage() {
             </div>
           </div>
           <ol
-            className="mcp-adapter-rail process-strip process-strip-signal-reference grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
+            className="mcp-adapter-rail package-process-strip package-process-strip-mcp process-strip process-strip-signal-reference grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
             aria-label="corpus-mcp request path"
           >
             {bridgeFlow.map((item, index) => {
