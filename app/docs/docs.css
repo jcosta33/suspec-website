@@ -1090,9 +1090,9 @@
     grid-column: 1 / -1;
     order: 3;
     display: flex;
-    flex-wrap: nowrap;
-    gap: 0;
-    overflow: hidden;
+    flex-wrap: wrap;
+    gap: 0.18rem 0.32rem;
+    overflow: visible;
     min-height: 2.75rem;
     align-items: center;
     border: 1px solid rgba(var(--docs-source-rgb), 0.22);
@@ -1100,9 +1100,9 @@
     background:
       linear-gradient(90deg, rgba(var(--docs-source-rgb), 0.055), transparent 68%),
       rgba(10, 7, 5, 0.18);
-    padding-inline: 0.6rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    padding: 0.48rem 0.6rem;
+    line-height: 1.3;
+    white-space: normal;
   }
 
   .docs-source-label {
@@ -1111,17 +1111,18 @@
 
   .docs-prose .docs-source-note .docs-source-path a {
     display: flex;
-    min-height: 2.75rem;
+    min-height: 1.4rem;
     max-width: 100%;
     align-items: center;
     margin-top: 0;
-    overflow: hidden;
+    overflow: visible;
     border: 0;
     border-radius: calc(var(--radius-control) - 2px);
     padding: 0;
     background: transparent;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+    white-space: normal;
   }
 
   .docs-article-ledger {
