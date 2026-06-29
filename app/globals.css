@@ -6380,6 +6380,24 @@ section.bg-section-band::after {
     0 0 0 1px rgba(var(--plate-rgb), 0.06);
 }
 
+/* Hover states may illuminate a surface, but they should never move it. */
+:where(
+    .panel-raised,
+    .home-step-rail-item,
+    .home-hero-proof,
+    .agent-roster-cell,
+    .skill-category-link,
+    .cli-command-link,
+    .mcp-adapter-step-link,
+    .process-strip > :is(li, a, div),
+    .docs-index-section,
+    .docs-pager-link
+  ):is(:hover, :focus-visible, :focus-within) {
+  translate: none !important;
+  scale: none !important;
+  transform: none !important;
+}
+
 .panel-raised:has(.catalog-row-evidence) {
   --plate-signal: var(--signal-evidence);
   --plate-rgb: var(--signal-evidence-rgb);
