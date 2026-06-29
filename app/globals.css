@@ -43,8 +43,8 @@
   --color-greenfield: #7fbd82;
   --color-brownfield: #a96b40;
   --color-verdigris: #78bdb2;
-  --color-neon-bridge: #89718d;
-  --color-interface-blue: #5db4bf;
+  --color-neon-bridge: #9a8198;
+  --color-interface-blue: #58b6c8;
   --color-rubedo: #c44f43;
   --color-olive: var(--color-phosphor);
   --color-black-text: #100b07;
@@ -72,9 +72,9 @@
   --package-agents: #88ad96;
   --package-agents-rgb: 136, 173, 150;
   --package-cli: var(--color-interface-blue);
-  --package-cli-rgb: 93, 180, 191;
+  --package-cli-rgb: 88, 182, 200;
   --package-mcp: var(--color-neon-bridge);
-  --package-mcp-rgb: 137, 113, 141;
+  --package-mcp-rgb: 154, 129, 152;
 
   /* Role patterns: hue + mark travel together, so color does not become decoration. */
   --signal-pattern-core: linear-gradient(
@@ -300,8 +300,8 @@
   --c-greenfield: #7fbd82;
   --c-brownfield: #a96b40;
   --c-verdigris: #78bdb2;
-  --c-neon-bridge: #89718d;
-  --c-interface-blue: #5db4bf;
+  --c-neon-bridge: #9a8198;
+  --c-interface-blue: #58b6c8;
   --c-rubedo: #c44f43;
   --c-olive: var(--c-phosphor);
   --signal-core: var(--color-aurum);
@@ -319,9 +319,9 @@
   --package-agents: #88ad96;
   --package-agents-rgb: 136, 173, 150;
   --package-cli: var(--color-interface-blue);
-  --package-cli-rgb: 93, 180, 191;
+  --package-cli-rgb: 88, 182, 200;
   --package-mcp: var(--color-neon-bridge);
-  --package-mcp-rgb: 137, 113, 141;
+  --package-mcp-rgb: 154, 129, 152;
   --signal-reference: var(--color-verdigris);
   --signal-reference-rgb: 120, 189, 178;
   --signal-muted: var(--color-brass);
@@ -3853,8 +3853,8 @@ body::after {
   overflow: hidden;
   background-color: rgba(28, 22, 16, 0.96);
   background-image:
-    linear-gradient(90deg, rgba(var(--process-rgb), 0.002), transparent 34%),
-    linear-gradient(90deg, rgba(var(--process-rgb), 0.018) 0 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--process-rgb), 0.001), transparent 34%),
+    linear-gradient(90deg, rgba(var(--process-rgb), 0.012) 0 1px, transparent 1px),
     var(--signal-pattern-muted);
   transition:
     border-color 160ms ease,
@@ -3914,6 +3914,26 @@ body::after {
   > :is(li, a, div)
   :is(.text-corpus-yellow, .text-olive, .text-brass, .clip-hex, .motion-nudge-x, .motion-nudge-x-centered) {
   color: var(--process-signal);
+}
+
+.process-strip .hex-badge {
+  background:
+    linear-gradient(180deg, rgba(240, 226, 204, 0.06), transparent 46%),
+    radial-gradient(
+      86% 76% at 50% 0%,
+      rgba(var(--process-rgb), 0.07),
+      transparent 64%
+    ),
+    rgba(26, 21, 16, 0.98);
+}
+
+.process-strip .hex-badge-rail {
+  opacity: 0.54;
+  box-shadow: 0 0 5px currentColor;
+}
+
+.process-strip .hex-badge > span:last-child {
+  filter: drop-shadow(0 0 3px currentColor);
 }
 
 .process-strip > :is(li:hover, li:focus-within, a:hover, a:focus-visible, div:hover)::before {
@@ -9050,8 +9070,8 @@ body::after {
     var(--lamp-signal);
   box-shadow:
     inset 0 1px 1px rgba(0, 0, 0, 0.5),
-    0 0 10px rgba(var(--lamp-rgb), 0.38),
-    0 0 3px var(--lamp-signal);
+    0 0 8px rgba(var(--lamp-rgb), 0.28),
+    0 0 2px var(--lamp-signal);
 }
 
 .pilot-lamp-core,
@@ -9181,6 +9201,39 @@ body::after {
   background: var(--color-aurum);
   box-shadow: 0 0 8px rgba(216, 138, 36, 0.54);
   animation: blink 1.15s step-end infinite;
+}
+
+.terminal-title-label {
+  position: relative;
+  isolation: isolate;
+  max-width: min(18rem, 42vw);
+  padding: 0.24rem 0.48rem 0.22rem;
+  border: 1px solid rgba(var(--signal-muted-rgb), 0.18);
+  border-radius: calc(var(--radius-control) - 4px);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.08), transparent 44%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--signal-muted-rgb), 0.045) 0 1px,
+      transparent 1px 0.66rem
+    ),
+    rgba(10, 7, 5, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.terminal-title-label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.45rem;
+  width: 0.18rem;
+  height: 0.74rem;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  background: var(--signal-core);
+  box-shadow: 0 0 8px rgba(var(--signal-core-rgb), 0.42);
 }
 
 @media (max-width: 40rem) {
