@@ -9127,6 +9127,27 @@ body::after {
     width: 0.78rem;
     height: 0.78rem;
   }
+
+  .terminal-toolbar:has(.copy-button) {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .terminal-toolbar:has(.copy-button) .terminal-lamp-row {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .terminal-toolbar:has(.copy-button) > div:last-child {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .terminal-toolbar:has(.copy-button) .copy-button {
+    width: 100%;
+    min-height: 2.45rem;
+    justify-content: center;
+  }
 }
 
 .crt-screen::before {
