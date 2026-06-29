@@ -8,7 +8,7 @@
      greenfield = literal new-workspace paths, brownfield = existing-project
      adoption, change = active edits/attention, evidence = proof/review,
      reference = manuals and catalogs. Change is a red-oxide signal, separate
-     from the orange-gold core; cyan/faded violet are package accents only.
+     from the orange-gold core; cyan/faded periwinkle are package accents only.
      Brown means existing-project work.
      Green means greenfield, not "good"; sage means evidence, not "new";
      setup alone is not green.
@@ -43,8 +43,8 @@
   --color-greenfield: #7fbd82;
   --color-brownfield: #a96b40;
   --color-verdigris: #78bdb2;
-  --color-neon-bridge: #8d8196;
-  --color-interface-blue: #5bb7c8;
+  --color-neon-bridge: #9a8aa8;
+  --color-interface-blue: #67b9ca;
   --color-rubedo: #bd4b4f;
   --color-pwr-red: #d2624e;
   --color-olive: var(--color-phosphor);
@@ -73,9 +73,9 @@
   --package-agents: #8fb08d;
   --package-agents-rgb: 143, 176, 141;
   --package-cli: var(--color-interface-blue);
-  --package-cli-rgb: 91, 183, 200;
+  --package-cli-rgb: 103, 185, 202;
   --package-mcp: var(--color-neon-bridge);
-  --package-mcp-rgb: 141, 129, 150;
+  --package-mcp-rgb: 154, 138, 168;
 
   /* Role patterns: hue + mark travel together, so color does not become decoration. */
   --signal-pattern-core: linear-gradient(
@@ -301,8 +301,8 @@
   --c-greenfield: #7fbd82;
   --c-brownfield: #a96b40;
   --c-verdigris: #78bdb2;
-  --c-neon-bridge: #8d8196;
-  --c-interface-blue: #5bb7c8;
+  --c-neon-bridge: #9a8aa8;
+  --c-interface-blue: #67b9ca;
   --c-rubedo: #bd4b4f;
   --c-olive: var(--c-phosphor);
   --signal-core: var(--color-aurum);
@@ -320,9 +320,9 @@
   --package-agents: #8fb08d;
   --package-agents-rgb: 143, 176, 141;
   --package-cli: var(--color-interface-blue);
-  --package-cli-rgb: 91, 183, 200;
+  --package-cli-rgb: 103, 185, 202;
   --package-mcp: var(--color-neon-bridge);
-  --package-mcp-rgb: 141, 129, 150;
+  --package-mcp-rgb: 154, 138, 168;
   --signal-reference: var(--color-verdigris);
   --signal-reference-rgb: 120, 189, 178;
   --signal-muted: var(--color-brass);
@@ -716,15 +716,15 @@ body::after {
   align-items: center;
   gap: 0.65rem;
   overflow: hidden;
-  border: 1px solid rgba(var(--key-rgb), 0.075);
+  border: 1px solid rgba(var(--key-rgb), 0.058);
   border-radius: var(--radius-control);
   background:
-    linear-gradient(90deg, rgba(var(--key-rgb), 0.001), transparent 46%),
+    linear-gradient(90deg, rgba(var(--key-rgb), 0.0008), transparent 46%),
     var(--signal-pattern-muted),
     rgba(26, 21, 16, 0.78);
   padding: 0.62rem 0.82rem;
   box-shadow:
-    inset 2px 0 0 rgba(var(--key-rgb), 0.056),
+    inset 2px 0 0 rgba(var(--key-rgb), 0.042),
     inset 0 1px 0 rgba(240, 226, 204, 0.055);
 }
 
@@ -734,10 +734,10 @@ body::after {
   width: 1.05rem;
   min-height: 2rem;
   flex: 0 0 auto;
-  border: 1px solid rgba(var(--key-rgb), 0.12);
+  border: 1px solid rgba(var(--key-rgb), 0.085);
   border-radius: calc(var(--radius-control) - 4px);
   background:
-    linear-gradient(180deg, rgba(var(--key-rgb), 0.032), transparent 62%),
+    linear-gradient(180deg, rgba(var(--key-rgb), 0.02), transparent 62%),
     var(--key-mark),
     var(--key-pattern),
     rgba(10, 7, 5, 0.42);
@@ -762,7 +762,7 @@ body::after {
 
 .signal-key-lamp {
   flex: 0 0 auto;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .signal-key-copy {
@@ -773,7 +773,7 @@ body::after {
 }
 
 .signal-key-label {
-  color: color-mix(in oklab, var(--key-signal) 56%, var(--color-concrete-200));
+  color: color-mix(in oklab, var(--key-signal) 44%, var(--color-concrete-200));
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
   font-size: 0.66rem;
   font-weight: 760;
@@ -3062,6 +3062,8 @@ section.bg-section-band::after {
 .page-hero.page-hero-package-agents {
   --hero-signal: var(--package-agents);
   --hero-rgb: var(--package-agents-rgb);
+  --hero-motif-opacity-min: 0.38;
+  --hero-motif-opacity-max: 0.5;
   --hero-pattern: var(--signal-pattern-reference);
   --hero-mark: var(--signal-mark-reference);
 }
@@ -3069,21 +3071,23 @@ section.bg-section-band::after {
 .page-hero.page-hero-package-cli {
   --hero-signal: var(--package-cli);
   --hero-rgb: var(--package-cli-rgb);
+  --hero-motif-opacity-min: 0.34;
+  --hero-motif-opacity-max: 0.46;
   --hero-pattern: repeating-linear-gradient(
       0deg,
-      rgba(var(--hero-rgb), 0.022) 0 1px,
+      rgba(var(--hero-rgb), 0.014) 0 1px,
       transparent 1px 13px
     ),
-    linear-gradient(180deg, rgba(var(--hero-rgb), 0.018), transparent 42%);
+    linear-gradient(180deg, rgba(var(--hero-rgb), 0.012), transparent 42%);
   --hero-mark: linear-gradient(
       90deg,
       transparent 12%,
-      rgba(var(--hero-rgb), 0.09),
+      rgba(var(--hero-rgb), 0.058),
       transparent 88%
     ),
     radial-gradient(
       circle at 50% 50%,
-      rgba(var(--hero-rgb), 0.1) 0 0.32rem,
+      rgba(var(--hero-rgb), 0.064) 0 0.32rem,
       transparent 0.36rem
     );
 }
@@ -3091,8 +3095,8 @@ section.bg-section-band::after {
 .page-hero.page-hero-package-mcp {
   --hero-signal: var(--package-mcp);
   --hero-rgb: var(--package-mcp-rgb);
-  --hero-motif-opacity-min: 0.24;
-  --hero-motif-opacity-max: 0.34;
+  --hero-motif-opacity-min: 0.22;
+  --hero-motif-opacity-max: 0.3;
   --hero-pattern: repeating-linear-gradient(
       0deg,
       rgba(var(--hero-rgb), 0.004) 0 1px,
@@ -3118,7 +3122,7 @@ section.bg-section-band::after {
 }
 
 .page-hero.page-hero-package-mcp .product-name-suffix {
-  color: color-mix(in oklab, var(--package-mcp) 58%, var(--color-concrete-100));
+  color: color-mix(in oklab, var(--package-mcp) 48%, var(--color-concrete-100));
   text-shadow:
     0 0 8px rgba(var(--product-name-suffix-rgb), 0.012),
     0 1px 0 rgba(0, 0, 0, 0.32);
@@ -4028,7 +4032,7 @@ section.bg-section-band::after {
 .process-strip
   > :is(li, a, div)
   :is(.text-corpus-yellow, .text-olive, .text-brass, .clip-hex, .motion-nudge-x, .motion-nudge-x-centered) {
-  color: var(--process-signal);
+  color: color-mix(in oklab, var(--process-signal) 68%, var(--color-concrete-200));
 }
 
 .process-strip .hex-badge {
@@ -4043,12 +4047,12 @@ section.bg-section-band::after {
 }
 
 .process-strip .hex-badge-rail {
-  opacity: 0.44;
-  box-shadow: 0 0 4px currentColor;
+  opacity: 0.34;
+  box-shadow: 0 0 3px currentColor;
 }
 
 .process-strip .hex-badge > span:last-child {
-  filter: drop-shadow(0 0 2px currentColor);
+  filter: drop-shadow(0 0 1px currentColor);
 }
 
 .process-strip > :is(li:hover, li:focus-within, a:hover, a:focus-visible, div:hover)::before {

@@ -11,10 +11,10 @@
 // The exact complement is reserved for diagnostics; public complements use
 // softer field, sage, umber, readable red-oxide, and verdigris roles. Brown means existing
 // project; green means greenfield, not "good"; sage means evidence, not "new".
-// Cyan and faded violet are reserved for package hero accents, not general
+// Cyan and faded periwinkle are reserved for package hero accents, not general
 // status or work-state meaning.
 // A role is more than a color: use it for the text, lamp, rail, border, hatch,
-// mark, icon, command plate, and hover state. Package cyan and faded violet are
+// mark, icon, command plate, and hover state. Package cyan and faded periwinkle are
 // identity accents only; terminal/status lamps stay semantic. Setup is not
 // automatically green: only new-workspace paths get greenfield; mixed setup
 // surfaces use reference, core, or muted. If a
