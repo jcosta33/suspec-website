@@ -272,7 +272,10 @@ export default function HomePage() {
               <Button asChild className="w-full max-w-72 sm:w-auto sm:max-w-none">
                 <Link href="/get-started/">
                   Start the loop{" "}
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  <ArrowRight
+                    className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
                 </Link>
               </Button>
               <ActionLink
