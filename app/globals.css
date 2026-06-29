@@ -43,8 +43,8 @@
   --color-greenfield: #7fbd82;
   --color-brownfield: #a96b40;
   --color-verdigris: #78bdb2;
-  --color-neon-bridge: #8e8093;
-  --color-interface-blue: #63bdcb;
+  --color-neon-bridge: #a08aa6;
+  --color-interface-blue: #5bbdcc;
   --color-rubedo: #c44f43;
   --color-pwr-red: #d2624e;
   --color-olive: var(--color-phosphor);
@@ -70,12 +70,12 @@
      continues to use the semantic signal roles below. */
   --package-skills: var(--signal-evidence);
   --package-skills-rgb: var(--signal-evidence-rgb);
-  --package-agents: #88ad96;
-  --package-agents-rgb: 136, 173, 150;
+  --package-agents: #8fb08d;
+  --package-agents-rgb: 143, 176, 141;
   --package-cli: var(--color-interface-blue);
-  --package-cli-rgb: 99, 189, 203;
+  --package-cli-rgb: 91, 189, 204;
   --package-mcp: var(--color-neon-bridge);
-  --package-mcp-rgb: 142, 128, 147;
+  --package-mcp-rgb: 160, 138, 166;
 
   /* Role patterns: hue + mark travel together, so color does not become decoration. */
   --signal-pattern-core: linear-gradient(
@@ -301,8 +301,8 @@
   --c-greenfield: #7fbd82;
   --c-brownfield: #a96b40;
   --c-verdigris: #78bdb2;
-  --c-neon-bridge: #8e8093;
-  --c-interface-blue: #63bdcb;
+  --c-neon-bridge: #a08aa6;
+  --c-interface-blue: #5bbdcc;
   --c-rubedo: #c44f43;
   --c-olive: var(--c-phosphor);
   --signal-core: var(--color-aurum);
@@ -317,12 +317,12 @@
   --signal-change-rgb: 196, 79, 67;
   --package-skills: var(--signal-evidence);
   --package-skills-rgb: var(--signal-evidence-rgb);
-  --package-agents: #88ad96;
-  --package-agents-rgb: 136, 173, 150;
+  --package-agents: #8fb08d;
+  --package-agents-rgb: 143, 176, 141;
   --package-cli: var(--color-interface-blue);
-  --package-cli-rgb: 99, 189, 203;
+  --package-cli-rgb: 91, 189, 204;
   --package-mcp: var(--color-neon-bridge);
-  --package-mcp-rgb: 142, 128, 147;
+  --package-mcp-rgb: 160, 138, 166;
   --signal-reference: var(--color-verdigris);
   --signal-reference-rgb: 120, 189, 178;
   --signal-muted: var(--color-brass);
@@ -716,15 +716,15 @@ body::after {
   align-items: center;
   gap: 0.65rem;
   overflow: hidden;
-  border: 1px solid rgba(var(--key-rgb), 0.095);
+  border: 1px solid rgba(var(--key-rgb), 0.075);
   border-radius: var(--radius-control);
   background:
-    linear-gradient(90deg, rgba(var(--key-rgb), 0.002), transparent 46%),
+    linear-gradient(90deg, rgba(var(--key-rgb), 0.001), transparent 46%),
     var(--signal-pattern-muted),
     rgba(26, 21, 16, 0.78);
   padding: 0.62rem 0.82rem;
   box-shadow:
-    inset 2px 0 0 rgba(var(--key-rgb), 0.075),
+    inset 2px 0 0 rgba(var(--key-rgb), 0.056),
     inset 0 1px 0 rgba(240, 226, 204, 0.055);
 }
 
@@ -734,10 +734,10 @@ body::after {
   width: 1.05rem;
   min-height: 2rem;
   flex: 0 0 auto;
-  border: 1px solid rgba(var(--key-rgb), 0.16);
+  border: 1px solid rgba(var(--key-rgb), 0.12);
   border-radius: calc(var(--radius-control) - 4px);
   background:
-    linear-gradient(180deg, rgba(var(--key-rgb), 0.045), transparent 62%),
+    linear-gradient(180deg, rgba(var(--key-rgb), 0.032), transparent 62%),
     var(--key-mark),
     var(--key-pattern),
     rgba(10, 7, 5, 0.42);
@@ -754,7 +754,7 @@ body::after {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(var(--key-rgb), 0.12),
+    rgba(var(--key-rgb), 0.08),
     transparent
   );
   opacity: 0.44;
@@ -762,7 +762,7 @@ body::after {
 
 .signal-key-lamp {
   flex: 0 0 auto;
-  opacity: 0.78;
+  opacity: 0.7;
 }
 
 .signal-key-copy {
@@ -773,7 +773,7 @@ body::after {
 }
 
 .signal-key-label {
-  color: color-mix(in oklab, var(--key-signal) 66%, var(--color-concrete-200));
+  color: color-mix(in oklab, var(--key-signal) 56%, var(--color-concrete-200));
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
   font-size: 0.66rem;
   font-weight: 760;
@@ -3075,33 +3075,37 @@ section.bg-section-band::after {
   --hero-motif-opacity-max: 0.42;
   --hero-pattern: repeating-linear-gradient(
       0deg,
-      rgba(var(--hero-rgb), 0.008) 0 1px,
+      rgba(var(--hero-rgb), 0.006) 0 1px,
       transparent 1px 14px
     ),
-    linear-gradient(180deg, rgba(var(--hero-rgb), 0.006), transparent 44%);
+    linear-gradient(180deg, rgba(var(--hero-rgb), 0.004), transparent 44%);
   --hero-mark: radial-gradient(
       circle at 24% 50%,
-      rgba(var(--hero-rgb), 0.034) 0 0.42rem,
+      rgba(var(--hero-rgb), 0.022) 0 0.42rem,
       transparent 0.46rem
     ),
     radial-gradient(
       circle at 76% 50%,
-      rgba(var(--hero-rgb), 0.03) 0 0.42rem,
+      rgba(var(--hero-rgb), 0.02) 0 0.42rem,
       transparent 0.46rem
     ),
     linear-gradient(
       90deg,
       transparent 16%,
-      rgba(var(--hero-rgb), 0.024),
+      rgba(var(--hero-rgb), 0.016),
       transparent 84%
     );
 }
 
 .page-hero.page-hero-package-mcp .product-name-suffix {
-  color: color-mix(in oklab, var(--package-mcp) 84%, var(--color-concrete-100));
+  color: color-mix(in oklab, var(--package-mcp) 68%, var(--color-concrete-100));
   text-shadow:
-    0 0 8px rgba(var(--product-name-suffix-rgb), 0.018),
+    0 0 8px rgba(var(--product-name-suffix-rgb), 0.012),
     0 1px 0 rgba(0, 0, 0, 0.32);
+}
+
+.page-hero.page-hero-package-mcp .product-name-suffix::after {
+  opacity: 0.38;
 }
 
 .page-hero.page-hero-package-cli .page-hero-eyebrow .pilot-lamp-change {
@@ -3945,7 +3949,7 @@ section.bg-section-band::after {
   background-color: rgba(28, 22, 16, 0.96);
   background-image:
     linear-gradient(90deg, rgba(var(--process-rgb), 0.001), transparent 34%),
-    linear-gradient(90deg, rgba(var(--process-rgb), 0.012) 0 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--process-rgb), 0.008) 0 1px, transparent 1px),
     var(--signal-pattern-muted);
   transition:
     border-color 160ms ease,
@@ -3990,8 +3994,8 @@ section.bg-section-band::after {
   opacity: 0.56;
   background: linear-gradient(
     90deg,
-    rgba(var(--process-rgb), 0.042),
-    rgba(var(--process-rgb), 0.014),
+    rgba(var(--process-rgb), 0.028),
+    rgba(var(--process-rgb), 0.01),
     transparent
   );
 }
@@ -4012,19 +4016,19 @@ section.bg-section-band::after {
     linear-gradient(180deg, rgba(240, 226, 204, 0.06), transparent 46%),
     radial-gradient(
       86% 76% at 50% 0%,
-      rgba(var(--process-rgb), 0.07),
+      rgba(var(--process-rgb), 0.048),
       transparent 64%
     ),
     rgba(26, 21, 16, 0.98);
 }
 
 .process-strip .hex-badge-rail {
-  opacity: 0.54;
-  box-shadow: 0 0 5px currentColor;
+  opacity: 0.44;
+  box-shadow: 0 0 4px currentColor;
 }
 
 .process-strip .hex-badge > span:last-child {
-  filter: drop-shadow(0 0 3px currentColor);
+  filter: drop-shadow(0 0 2px currentColor);
 }
 
 .process-strip > :is(li:hover, li:focus-within, a:hover, a:focus-visible, div:hover)::before {
@@ -4035,9 +4039,9 @@ section.bg-section-band::after {
   border-color: rgba(var(--process-rgb), 0.18);
   background-color: rgba(32, 25, 18, 0.98);
   box-shadow:
-    inset 0 0 0 1px rgba(var(--process-rgb), 0.024),
+    inset 0 0 0 1px rgba(var(--process-rgb), 0.018),
     inset 0 1px 0 rgba(240, 226, 204, 0.05),
-    0 8px 18px rgba(0, 0, 0, 0.16);
+    0 8px 18px rgba(0, 0, 0, 0.14);
 }
 
 @media (max-width: 40rem) {
@@ -4047,7 +4051,7 @@ section.bg-section-band::after {
   }
 
   .process-strip > :is(li, a, div) {
-    border: 1px solid rgba(var(--process-rgb), 0.24);
+    border: 1px solid rgba(var(--process-rgb), 0.16);
     border-radius: var(--radius-panel);
   }
 
@@ -6746,7 +6750,7 @@ section.bg-section-band::after {
 .feature-accent-icon,
 .feature-accent-label,
 .feature-accent-title {
-  color: var(--accent-signal);
+  color: color-mix(in oklab, var(--accent-signal) 72%, var(--color-concrete-200));
 }
 
 /* Palette specimens — one visible rulebook for semantic color use. */
@@ -7531,25 +7535,35 @@ section.bg-section-band::after {
 
   .agent-page-nav-link,
   .section-jump-nav-link {
-    min-height: 2.8rem;
-    gap: 0.45rem;
-    border: 1px solid rgba(70, 57, 44, 0.54);
-    border-radius: var(--radius-control);
+    min-height: 2.52rem;
+    gap: 0.4rem;
+    border: 1px solid rgba(70, 57, 44, 0.38);
+    border-left-color: rgba(var(--agent-nav-rgb), 0.34);
+    border-radius: calc(var(--radius-control) - 2px);
     background:
-      linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.024), transparent 46%),
-      linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.18) 0 2px, transparent 2px),
+      linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.014), transparent 46%),
+      linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.12) 0 1px, transparent 1px),
       var(--signal-pattern-muted),
-      rgba(26, 21, 16, 0.66);
+      rgba(18, 14, 10, 0.44);
     box-shadow:
-      inset 2px 0 0 rgba(var(--agent-nav-rgb), 0.14),
-      inset 0 1px 0 rgba(240, 226, 204, 0.04);
-    padding: 0.52rem 0.58rem;
+      inset 1px 0 0 rgba(var(--agent-nav-rgb), 0.12),
+      inset 0 1px 0 rgba(240, 226, 204, 0.025);
+    padding: 0.46rem 0.56rem;
   }
 
   .agent-page-nav-link {
-    min-height: 2.28rem;
+    min-height: 2.18rem;
     width: 100%;
-    padding: 0.42rem 0.62rem;
+    padding: 0.38rem 0.58rem;
+  }
+
+  .agent-page-nav-link::before,
+  .section-jump-nav-link::before {
+    top: 0.42rem;
+    right: 0.44rem;
+    width: 0.18rem;
+    height: 0.18rem;
+    opacity: 0.46;
   }
 
   .agent-page-nav-label,
@@ -9236,9 +9250,9 @@ section.bg-section-band::after {
 }
 
 .terminal-window .terminal-toolbar .pilot-lamp-red {
-  --lamp-signal: var(--color-pwr-red);
-  --lamp-rgb: 210, 98, 78;
-  --lamp-highlight: rgba(255, 234, 226, 0.72);
+  --lamp-signal: var(--color-pwr-red) !important;
+  --lamp-rgb: 210, 98, 78 !important;
+  --lamp-highlight: rgba(255, 234, 226, 0.72) !important;
 }
 
 .terminal-window .terminal-toolbar .pilot-lamp-core,

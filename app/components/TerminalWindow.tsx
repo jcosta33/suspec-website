@@ -32,7 +32,7 @@ export function TerminalWindow({
         <div className="terminal-lamp-row flex min-w-0 flex-wrap items-center gap-2 sm:gap-3">
           <PilotLamp color="red" label="pwr" />
           <PilotLamp color="amber" pulse label="check" />
-          <PilotLamp color="green" label="evidence" />
+          <PilotLamp color="evidence" label="evidence" />
         </div>
         <div className="flex min-w-0 items-center gap-2">
           <span className="terminal-title-label hidden min-w-0 items-center gap-2 text-xs font-mono font-medium uppercase tracking-widest engraved sm:flex">
