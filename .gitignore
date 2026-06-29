@@ -1,6 +1,6 @@
 .DS_Store
 ALL_FILES.txt
-CORPUS_COMPREHENSIVE_REPORT.md
+SUSPEC_COMPREHENSIVE_REPORT.md
 
 # Next.js
 /node_modules
@@ -27,7 +27,7 @@ next-env.d.ts
 /dist
 
 # ephemeral canon clone (CI/Vercel) — never committed (single-sourcing)
-.corpus-canon/
+.suspec-canon/
 
 # precomputed canon git dates (prebuild output, ephemeral)
-.corpus-canon-dates.json
+.suspec-canon-dates.json

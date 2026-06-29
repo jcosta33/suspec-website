@@ -4,8 +4,8 @@ import { buildNav, canonAvailable, type NavSection } from "./lib/canon";
 import type { SignalRole } from "../components/signalStyles";
 
 export const metadata: Metadata = {
-  title: "Documentation · Corpus",
-  description: "The Corpus documentation.",
+  title: "Documentation · Suspec",
+  description: "The Suspec documentation.",
   alternates: { canonical: "/docs/" },
   openGraph: { url: "/docs/" }, // /docs/ is indexable — emit og:url so reshares consolidate
 };
@@ -92,7 +92,7 @@ export default function DocsIndex() {
           <p className="docs-index-kicker" data-pagefind-ignore>
             canon / manual index
           </p>
-          <h1>Corpus docs</h1>
+          <h1>Suspec docs</h1>
           <p className="docs-index-lede">
             Start with the numbered pages. Use the tutorial for one pass
             through the loop.

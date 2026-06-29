@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* corpus — warm control surface + alchemical signal + manuscript archive.
+  /* suspec — warm control surface + alchemical signal + manuscript archive.
      Palette math starts at primary gold #D88A24, HSL(34 71% 49%). Its exact
      complement is #2472D8, HSL(214 71% 49%), reserved for diagnostics only so
      the public site stays warm. Public accents are semantic, not decorative:
@@ -246,7 +246,7 @@
   --color-pencil: #5f554a;
 
   /* Palette grammar:
-     - core: Corpus identity, primary loop, CTAs, active nav, current step
+     - core: Suspec identity, primary loop, CTAs, active nav, current step
      - evidence: verified output, review/pass states, proof-oriented sections
      - greenfield: new repos, starter-kit setup, and first-run tutorial paths
      - brownfield: existing-project adoption, migration, and repo-history paths
@@ -266,7 +266,7 @@
   --color-gold-deep: #7c3c20;
   --color-cinnabar: var(--color-rubedo);
   --color-aluminium: var(--color-mercury);
-  --color-corpus-yellow: var(--color-aurum);
+  --color-suspec-yellow: var(--color-aurum);
   --color-hazard-orange: var(--color-amber);
   --color-drone-green: var(--color-phosphor);
 
@@ -485,7 +485,7 @@ body::after {
 }
 
 .soft-link {
-  color: var(--color-corpus-yellow);
+  color: var(--color-suspec-yellow);
   text-decoration: underline;
   text-decoration-color: rgba(216, 138, 36, 0.48);
   text-underline-offset: 3px;
@@ -543,7 +543,7 @@ body::after {
 }
 
 .section-kicker {
-  --section-kicker-color: var(--color-corpus-yellow);
+  --section-kicker-color: var(--color-suspec-yellow);
   --section-kicker-rule: rgba(216, 138, 36, 0.32);
   --section-kicker-rgb: var(--signal-core-rgb);
   position: relative;
@@ -4089,7 +4089,7 @@ section.bg-section-band::after {
 
 .process-strip
   > :is(li, a, div)
-  :is(.text-corpus-yellow, .text-olive, .text-brass, .clip-hex, .motion-nudge-x, .motion-nudge-x-centered) {
+  :is(.text-suspec-yellow, .text-olive, .text-brass, .clip-hex, .motion-nudge-x, .motion-nudge-x-centered) {
   color: color-mix(in oklab, var(--process-signal) 54%, var(--color-concrete-200));
 }
 
@@ -7213,7 +7213,7 @@ section.bg-section-band::after {
   --stat-mark: var(--signal-mark-muted);
 }
 
-/* Repo manifest — opening readout for corpus-agents and corpus-skills. */
+/* Repo manifest — opening readout for suspec-agents and suspec-skills. */
 .manifest-pair {
   align-items: stretch;
 }
@@ -7365,7 +7365,7 @@ section.bg-section-band::after {
 .repo-product-page
   .process-strip
   > :is(li, a, div)
-  :is(.text-corpus-yellow, .text-olive, .text-brass, .clip-hex, .motion-nudge-x, .motion-nudge-x-centered) {
+  :is(.text-suspec-yellow, .text-olive, .text-brass, .clip-hex, .motion-nudge-x, .motion-nudge-x-centered) {
   color: color-mix(in oklab, var(--process-signal) 62%, var(--color-concrete-200));
 }
 
@@ -8437,7 +8437,7 @@ section.bg-section-band::after {
     rgba(10, 7, 5, 0.42);
 }
 
-.setup-choice-card :is(.text-corpus-yellow, .text-brass) {
+.setup-choice-card :is(.text-suspec-yellow, .text-brass) {
   color: var(--choice-signal);
 }
 
@@ -8675,7 +8675,7 @@ section.bg-section-band::after {
 
 .kit-ledger-icon {
   margin-top: 0.1rem;
-  color: var(--color-corpus-yellow);
+  color: var(--color-suspec-yellow);
   filter: drop-shadow(0 0 8px rgba(216, 138, 36, 0.28));
 }
 

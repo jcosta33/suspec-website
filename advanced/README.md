@@ -30,14 +30,14 @@ The guides for the work these templates support — `write-audit`, `write-resear
 `write-rfc`, `write-prd`, `write-bug-report`, `write-change-plan`, `write-inventory`,
 `spec-check`, `split-work`, `save-findings`, `adversarial-review` — ship installed in the
 kit's `.agents/skills/`, beside the core loop guides. They are the **workspace authoring
-guides** (the name the kit README and the corpus-skills catalog both use). Nothing to install.
+guides** (the name the kit README and the suspec-skills catalog both use). Nothing to install.
 
-## More guides (the corpus-skills catalog)
+## More guides (the suspec-skills catalog)
 
 Conditioning stances (the personas) and long-form implementation guides per change
 shape (feature, fix, refactor, rewrite, migration, performance, testing,
 documentation, flaky tests) live in the
-[corpus-skills catalog](https://github.com/jcosta33/corpus-skills). Install them with
-`npx skills add jcosta33/corpus-skill`.
+[suspec-skills catalog](https://github.com/jcosta33/suspec-skills). Install them with
+`npx skills add jcosta33/suspec-skill`.
 
-Copy what you need; ignore the rest. Full instructions: `docs/ADOPTING.md` in the Corpus repo.
+Copy what you need; ignore the rest. Full instructions: `docs/ADOPTING.md` in the Suspec repo.

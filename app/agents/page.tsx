@@ -30,23 +30,23 @@ import { PageNav } from "../components/PageNav";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 
 export const metadata: Metadata = {
-  title: "corpus-agents — Corpus",
+  title: "suspec-agents — Suspec",
   description:
-    "Claude Code worker files for Corpus review, challenge, and authoring.",
+    "Claude Code worker files for Suspec review, challenge, and authoring.",
   openGraph: {
-    title: "corpus-agents — Corpus",
+    title: "suspec-agents — Suspec",
     description:
-      "Copy-based Claude Code worker files for Corpus roles.",
+      "Copy-based Claude Code worker files for Suspec roles.",
     type: "website",
     url: "/agents/",
-    siteName: "Corpus",
+    siteName: "Suspec",
     locale: "en_US",
     images: [
       {
         url: "/og-home.png",
         width: 1200,
         height: 630,
-        alt: "corpus-agents",
+        alt: "suspec-agents",
       },
     ],
   },
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 
 const agentInstallCommands = [
   "REPO=<your-repo>",
-  "AGENT=corpus-reviewer.md",
+  "AGENT=suspec-reviewer.md",
   'DEST="$REPO"/.claude/agents',
   'mkdir -p "$DEST"',
   'cp agents/"$AGENT" "$DEST"/',
@@ -68,12 +68,12 @@ const agentInstallCommands = [
 
 const readOnly = [
   {
-    agent: "corpus-reviewer",
+    agent: "suspec-reviewer",
     icon: Scale,
     use: "review a finished task or PR, or re-run Verify items in proof-first mode",
   },
   {
-    agent: "corpus-challenger",
+    agent: "suspec-challenger",
     icon: Swords,
     use: "pressure-test a proposal before build work starts",
   },
@@ -81,22 +81,22 @@ const readOnly = [
 
 const authoring = [
   {
-    agent: "corpus-spec-author",
+    agent: "suspec-spec-author",
     icon: PenTool,
     use: "draft a spec from an intake note",
   },
   {
-    agent: "corpus-researcher",
+    agent: "suspec-researcher",
     icon: Microscope,
     use: "research one question and write a note",
   },
   {
-    agent: "corpus-auditor",
+    agent: "suspec-auditor",
     icon: FileSearch,
     use: "audit a code area with file:line findings",
   },
   {
-    agent: "corpus-documentarian",
+    agent: "suspec-documentarian",
     icon: ScrollText,
     use: "draft human-facing docs",
   },
@@ -111,14 +111,14 @@ const rosterGroups = [
     items: [
       {
         label: "Review",
-        file: "corpus-reviewer",
+        file: "suspec-reviewer",
         icon: Scale,
         signal: "evidence",
         use: "Review a finished task or PR, or re-run Verify items in proof-first mode.",
       },
       {
         label: "Challenge",
-        file: "corpus-challenger",
+        file: "suspec-challenger",
         icon: Swords,
         signal: "muted",
         use: "Pressure-test a proposal before build work starts.",
@@ -133,28 +133,28 @@ const rosterGroups = [
     items: [
       {
         label: "Spec",
-        file: "corpus-spec-author",
+        file: "suspec-spec-author",
         icon: PenTool,
         signal: "core",
         use: "Draft a spec from an intake note.",
       },
       {
         label: "Research",
-        file: "corpus-researcher",
+        file: "suspec-researcher",
         icon: Microscope,
         signal: "reference",
         use: "Research one question and write a note.",
       },
       {
         label: "Audit",
-        file: "corpus-auditor",
+        file: "suspec-auditor",
         icon: FileSearch,
         signal: "evidence",
         use: "Audit a code area with file:line findings.",
       },
       {
         label: "Docs",
-        file: "corpus-documentarian",
+        file: "suspec-documentarian",
         icon: ScrollText,
         signal: "reference",
         use: "Draft human-facing docs.",
@@ -189,7 +189,7 @@ const agentPageNav = [
 }>;
 
 function repoHref(agent: string) {
-  return `https://github.com/jcosta33/corpus-agents/blob/main/agents/${agent}.md`;
+  return `https://github.com/jcosta33/suspec-agents/blob/main/agents/${agent}.md`;
 }
 
 export default function AgentsPage() {
@@ -204,12 +204,12 @@ export default function AgentsPage() {
           toneLabel="agents"
           title={
             <>
-              corpus<span className="product-name-suffix">-agents</span>
+              suspec<span className="product-name-suffix">-agents</span>
             </>
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Claude Code worker files for Corpus roles.
+            Claude Code worker files for Suspec roles.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
             Add one when a role needs its own operating context.
@@ -376,38 +376,38 @@ export default function AgentsPage() {
               # copy one worker
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}REPO=&lt;your-repo&gt;
+              <span className="text-suspec-yellow">$</span>{" "}REPO=&lt;your-repo&gt;
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}AGENT=corpus-reviewer.md
+              <span className="text-suspec-yellow">$</span>{" "}AGENT=suspec-reviewer.md
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}DEST=&quot;$REPO&quot;/.claude/agents
+              <span className="text-suspec-yellow">$</span>{" "}DEST=&quot;$REPO&quot;/.claude/agents
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}mkdir -p &quot;$DEST&quot;
+              <span className="text-suspec-yellow">$</span>{" "}mkdir -p &quot;$DEST&quot;
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}cp agents/&quot;$AGENT&quot; &quot;$DEST&quot;/
+              <span className="text-suspec-yellow">$</span>{" "}cp agents/&quot;$AGENT&quot; &quot;$DEST&quot;/
             </p>
             <p className="mt-2 text-concrete-500">
               # optional hooks
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}DEST=&quot;$REPO&quot;/.claude/hooks
+              <span className="text-suspec-yellow">$</span>{" "}DEST=&quot;$REPO&quot;/.claude/hooks
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}mkdir -p &quot;$DEST&quot;
+              <span className="text-suspec-yellow">$</span>{" "}mkdir -p &quot;$DEST&quot;
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}cp hooks/*.sh &quot;$DEST&quot;/
+              <span className="text-suspec-yellow">$</span>{" "}cp hooks/*.sh &quot;$DEST&quot;/
             </p>
           </TerminalWindow>
         </Panel>
         <p className="text-concrete-400">
           These are Claude Code agents in{" "}
-          <code className="text-corpus-yellow">.claude/agents/</code>.{" "}
-          <code className="text-corpus-yellow">npx skills</code> installs the{" "}
+          <code className="text-suspec-yellow">.claude/agents/</code>.{" "}
+          <code className="text-suspec-yellow">npx skills</code> installs the{" "}
           <TextLink href="/skills/">skills catalog</TextLink>, not these.
         </p>
       </Section>
@@ -562,7 +562,7 @@ export default function AgentsPage() {
           </p>
           <p className="mt-6">
             <TextLink
-              href="https://github.com/jcosta33/corpus-agents/blob/main/docs/enforcement.md"
+              href="https://github.com/jcosta33/suspec-agents/blob/main/docs/enforcement.md"
               target="_blank"
               rel="noopener noreferrer"
               touchTarget
@@ -586,7 +586,7 @@ export default function AgentsPage() {
           </p>
           <p className="mt-6">
             <TextLink
-              href="https://github.com/jcosta33/corpus-agents/blob/main/docs/provenance.md"
+              href="https://github.com/jcosta33/suspec-agents/blob/main/docs/provenance.md"
               target="_blank"
               rel="noopener noreferrer"
               touchTarget
@@ -610,8 +610,8 @@ export default function AgentsPage() {
           </div>
           <Heading className="mt-3">Claude Code first</Heading>
           <p className="mt-4 text-concrete-400">
-            <code className="text-corpus-yellow">
-              corpus agents emit --codex
+            <code className="text-suspec-yellow">
+              suspec agents emit --codex
             </code>{" "}
             generates Codex agent files from the same definitions.
           </p>
@@ -632,12 +632,12 @@ export default function AgentsPage() {
           </p>
           <p className="mt-6">
             <TextLink
-              href="https://github.com/jcosta33/corpus-agents"
+              href="https://github.com/jcosta33/suspec-agents"
               target="_blank"
               rel="noopener noreferrer"
               touchTarget
             >
-              Browse corpus-agents on GitHub →
+              Browse suspec-agents on GitHub →
             </TextLink>
           </p>
         </Card>

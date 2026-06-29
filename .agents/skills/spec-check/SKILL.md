@@ -14,7 +14,7 @@ description: >-
 
 A defect in a spec is cheapest to catch before any task is cut from it — after that, every
 agent run inherits it. This guide runs the check by hand and produces a short report. A future
-`corpus spec check` (corpus-cli) automates exactly this; until then, you are the checker, and the
+`suspec spec check` (suspec-cli) automates exactly this; until then, you are the checker, and the
 result is a review checklist, not a gate.
 
 ## The one rule: check, don't edit
@@ -66,7 +66,7 @@ _should_ happen instead?), and uncertainty buried in requirement prose ("probabl
 think") that belongs in Open questions.
 
 If the spec opts into structured requirements (`format: sol` in the frontmatter), also walk
-the SOL check catalogue — same discipline, finer grain. It lives in the Corpus repo at
+the SOL check catalogue — same discipline, finer grain. It lives in the Suspec repo at
 `docs/reference/checks.md`; the kit does not carry it. The notation itself is in
 `advanced/sol-reference.md`.
 
@@ -97,7 +97,7 @@ Result: 2 hard errors, 2 warnings, 1 watchlist hit. Not ready.
 
 Every line points at a requirement ID or section, so the author's fix is unambiguous. "Not
 ready" here is your recommendation — whether it blocks anything is the team's policy, not
-Corpus's.
+Suspec's.
 
 ## Before you finish
 

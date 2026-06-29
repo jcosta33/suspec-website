@@ -1,6 +1,6 @@
-# corpus-website
+# suspec-website
 
-The public marketing site for [Corpus](https://github.com/jcosta33/corpus), a lightweight spec and review workflow for teams using coding agents.
+The public marketing site for [Suspec](https://github.com/jcosta33/suspec), a lightweight spec and review workflow for teams using coding agents.
 
 ## Stack
 
@@ -41,4 +41,4 @@ Pushes to `main` deploy to Vercel automatically. Pull requests receive preview d
 
 ## Content sources
 
-Marketing copy is sourced from the `corpus` repo docs. See `CONTENT.md` for the source map and review cadence.
+Marketing copy is sourced from the `suspec` repo docs. See `CONTENT.md` for the source map and review cadence.

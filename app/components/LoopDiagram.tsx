@@ -90,7 +90,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
           <svg
             viewBox="0 0 100 100"
             className="h-full w-full"
-            aria-label="Corpus loop seal: the Spec-Run-Close spine inscribed in the six-step hexagon"
+            aria-label="Suspec loop seal: the Spec-Run-Close spine inscribed in the six-step hexagon"
             role="img"
           >
             <circle

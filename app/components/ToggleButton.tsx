@@ -43,7 +43,7 @@ export function ToggleButton({
         <span
           className={`absolute top-0.5 left-0.5 h-5 w-5 border border-panel-border panel-raised transition-transform duration-150 ${
             isChecked
-              ? "translate-x-7 bg-corpus-yellow"
+              ? "translate-x-7 bg-suspec-yellow"
               : "translate-x-0 bg-concrete-400"
           }`}
         />

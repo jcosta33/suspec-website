@@ -1,21 +1,27 @@
 // Single-sourcing: the docs site DERIVES from the canon at build time — no copy is committed here.
-// Locally the canon is the sibling `corpus` repo; on Vercel it must be made available to the build
-// (W3: a git submodule or a pre-build sync of corpus/docs — tracked as a deploy concern).
+// Locally the canon is the sibling `suspec` repo, or the unchanged local checkout folder `corpus`
+// while the repository rename is in flight; on Vercel it must be made available to the build.
 import fs from "node:fs";
 import path from "node:path";
 
 // The canon: the local sibling checkout in dev, else the vendored clone the prebuild step fetches
 // on CI/Vercel (see scripts/ensure-canon.mjs). Single source either way; the vendor copy is ephemeral.
-const SIBLING = path.join(process.cwd(), "..", "corpus", "docs");
-const VENDOR = path.join(process.cwd(), ".corpus-canon", "docs");
-export const CANON = fs.existsSync(SIBLING) ? SIBLING : VENDOR;
+const SIBLING_CANDIDATES = [
+  path.join(process.cwd(), "..", "suspec", "docs"),
+  path.join(process.cwd(), "..", "corpus", "docs"),
+];
+const SIBLING = SIBLING_CANDIDATES.find((candidate) =>
+  fs.existsSync(candidate),
+);
+const VENDOR = path.join(process.cwd(), ".suspec-canon", "docs");
+export const CANON = SIBLING ?? VENDOR;
 
 export function canonAvailable(): boolean {
   return fs.existsSync(CANON);
 }
 
 // Real created/modified dates per doc (git author dates), PRECOMPUTED once by the prebuild
-// (scripts/ensure-canon.mjs -> .corpus-canon-dates.json) so the build spawns no git per doc per
+// (scripts/ensure-canon.mjs -> .suspec-canon-dates.json) so the build spawns no git per doc per
 // worker. Returns null when a doc isn't in the map (untracked, or git unavailable) — the caller then
 // falls back to build time (sitemap) or omits the dates (TechArticle). Loaded + cached once.
 type DocDate = { created: string; modified: string };
@@ -25,7 +31,7 @@ function loadDates(): Record<string, DocDate> {
   try {
     datesMap = JSON.parse(
       fs.readFileSync(
-        path.join(process.cwd(), ".corpus-canon-dates.json"),
+        path.join(process.cwd(), ".suspec-canon-dates.json"),
         "utf8",
       ),
     );
@@ -38,8 +44,8 @@ export function docDates(slug: string): DocDate | null {
   return loadDates()[slug] ?? null;
 }
 
-// Every .md under the canon, as a slug ('01-what-is-corpus', 'reference/checks', 'adrs/0091-...').
-// Guard: if the canon is absent (e.g. a CI/Vercel build without the sibling corpus repo), return []
+// Every .md under the canon, as a slug ('01-what-is-suspec', 'reference/checks', 'adrs/0091-...').
+// Guard: if the canon is absent (e.g. a CI/Vercel build without the sibling suspec repo), return []
 // rather than throwing — the build degrades to an empty docs tree instead of a hard crash. W3 must
 // make the canon available to the build (submodule or pre-build sync). [skeptic REVISE]
 export function listDocs(): string[] {
@@ -102,7 +108,7 @@ export const humanizeSegment = (seg: string): string => {
   return words
     .map((word, index) => {
       const lower = word.toLowerCase();
-      if (lower === "corpus") return "Corpus";
+      if (lower === "suspec") return "Suspec";
       if (acronyms.has(lower)) return acronyms.get(lower);
       if (index === 0) return lower.charAt(0).toUpperCase() + lower.slice(1);
       return lower;

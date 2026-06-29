@@ -18,7 +18,7 @@ export function TerminalWindow({
   copyLabel,
   copyText,
   contentClassName = "",
-  title = "Corpus",
+  title = "Suspec",
   ariaLabel,
 }: TerminalWindowProps) {
   return (

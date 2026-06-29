@@ -16,7 +16,7 @@ import { DocsToc } from "../components/DocsToc";
 
 export const dynamicParams = false;
 
-const SITE_URL = "https://corpusframework.dev";
+const SITE_URL = "https://suspecframework.dev";
 
 // Build a BreadcrumbList. A section dir links to its README page when one exists; a section with no
 // README (e.g. reference/) emits a name-only, NON-navigable intermediate crumb (no `item`) rather
@@ -79,7 +79,7 @@ function articleFor(
     author: {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
-      name: "Corpus",
+      name: "Suspec",
     },
     url,
     mainEntityOfPage: url,
@@ -105,9 +105,9 @@ export async function generateMetadata({
   const { slug } = await params;
   const md = readDoc(slug.join("/"));
   const canonical = `/docs/${slug.join("/")}/`;
-  if (!md) return { title: "Corpus docs", alternates: { canonical } };
+  if (!md) return { title: "Suspec docs", alternates: { canonical } };
   return {
-    title: `${titleOf(md)} · Corpus`,
+    title: `${titleOf(md)} · Suspec`,
     description: descriptionOf(md),
     alternates: { canonical }, // self-canonical (was inheriting the home page's "/")
     openGraph: {
@@ -115,7 +115,7 @@ export async function generateMetadata({
       // image come from the layout default but openGraph is replaced wholesale, so restate them.
       type: "article",
       url: canonical,
-      siteName: "Corpus",
+      siteName: "Suspec",
       locale: "en_US",
       images: [
         { url: "/og-home.png", width: 1200, height: 630, alt: titleOf(md) },
@@ -150,7 +150,7 @@ export default async function DocPage({
     }
     return /^\d{2}-/.test(slug[0]) ? "Start here" : "Manual";
   })();
-  const sourceLabel = `corpus/docs/${slugPath}.md`;
+  const sourceLabel = `suspec/docs/${slugPath}.md`;
   const titleClassName = [
     "docs-article-title",
     title.length > 56 ? "docs-article-title-long" : "",
@@ -198,7 +198,7 @@ export default async function DocPage({
             <span className="docs-source-path">
               <span className="docs-source-label">Source:</span>{" "}
               <Link
-                href={`https://github.com/jcosta33/corpus/blob/main/docs/${slugPath}.md`}
+                href={`https://github.com/jcosta33/suspec/blob/main/docs/${slugPath}.md`}
                 target="_blank"
                 rel="noopener noreferrer"
               >

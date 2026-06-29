@@ -23,23 +23,23 @@ import { TextLink } from "../../components/TextLink";
 import { signalRoles, type SignalRole } from "../../components/signalStyles";
 
 export const metadata: Metadata = {
-  title: "Writing a skill — Corpus",
+  title: "Writing a skill — Suspec",
   description:
-    "A short guide to writing Corpus skills: description, body, references, templates, and scope.",
+    "A short guide to writing Suspec skills: description, body, references, templates, and scope.",
   openGraph: {
-    title: "Writing a skill — Corpus",
+    title: "Writing a skill — Suspec",
     description:
-      "A short guide to writing Corpus skills: description, body, references, templates, and scope.",
+      "A short guide to writing Suspec skills: description, body, references, templates, and scope.",
     type: "website",
     url: "/skills/writing/",
-    siteName: "Corpus",
+    siteName: "Suspec",
     locale: "en_US",
     images: [
       {
         url: "/og-skills.png",
         width: 1200,
         height: 630,
-        alt: "Writing a Corpus skill",
+        alt: "Writing a Suspec skill",
       },
     ],
   },
@@ -149,7 +149,7 @@ export default function WritingSkillsPage() {
           title={
             <>
               Writing a{" "}
-              <span className="text-corpus-yellow">skill</span>
+              <span className="text-suspec-yellow">skill</span>
             </>
           }
         >
@@ -209,7 +209,7 @@ export default function WritingSkillsPage() {
           className="mcp-adapter-panel skill-anatomy-panel p-0"
         >
           <div className="mcp-adapter-header skill-anatomy-header">
-            <p className="m-0 font-mono text-[0.68rem] font-bold tracking-[0.1em] text-corpus-yellow uppercase">
+            <p className="m-0 font-mono text-[0.68rem] font-bold tracking-[0.1em] text-suspec-yellow uppercase">
               Skill anatomy
             </p>
             <span className="font-mono text-[0.68rem] font-bold tracking-[0.1em] text-concrete-400 uppercase">
@@ -231,7 +231,7 @@ export default function WritingSkillsPage() {
                   className="focus-ring group flex min-h-[9.4rem] h-full flex-col p-5 no-underline sm:p-6"
                 >
                   <span className="flex items-start justify-between gap-3">
-                    <span className="font-mono text-xs font-semibold uppercase tracking-wide text-corpus-yellow">
+                    <span className="font-mono text-xs font-semibold uppercase tracking-wide text-suspec-yellow">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <ArrowRight
@@ -441,7 +441,7 @@ export default function WritingSkillsPage() {
           </div>
           <Heading className="mt-3">Keep repo knowledge out</Heading>
           <p className="mt-4 text-concrete-400">
-            A Corpus skill must work in any repo. Put local commands and product
+            A Suspec skill must work in any repo. Put local commands and product
             knowledge in that repo&apos;s AGENTS.md.
           </p>
         </div>
@@ -476,27 +476,27 @@ export default function WritingSkillsPage() {
               <Heading className="mt-3">Read the source</Heading>
               <p className="mt-4 max-w-2xl text-concrete-400">
                 The same file shape is used in both tiers. Framework-free examples
-                live in the corpus-skills catalog; the{" "}
-                <code className="text-corpus-yellow">write-*</code> family used
-                above (write-feature, write-fix, ...) lives in the Corpus kit.
+                live in the suspec-skills catalog; the{" "}
+                <code className="text-suspec-yellow">write-*</code> family used
+                above (write-feature, write-fix, ...) lives in the Suspec kit.
               </p>
             </div>
             <ul className="space-y-3 md:min-w-56">
               <li>
                 <TextLink
-                  href="https://github.com/jcosta33/corpus-skills/tree/main/docs"
+                  href="https://github.com/jcosta33/suspec-skills/tree/main/docs"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="gap-2"
                   touchTarget
                 >
-                  corpus-skills docs{" "}
+                  suspec-skills docs{" "}
                   <ExternalLink className="h-4 w-4" aria-hidden="true" />
                 </TextLink>
               </li>
               <li>
                 <TextLink
-                  href="https://github.com/jcosta33/corpus-skills/tree/main/skills"
+                  href="https://github.com/jcosta33/suspec-skills/tree/main/skills"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="gap-2"
@@ -508,7 +508,7 @@ export default function WritingSkillsPage() {
               </li>
               <li>
                 <TextLink
-                  href="https://github.com/jcosta33/corpus-starter-kit/tree/main/.agents/skills"
+                  href="https://github.com/jcosta33/suspec-starter-kit/tree/main/.agents/skills"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="gap-2"

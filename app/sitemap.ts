@@ -3,13 +3,13 @@ import { listDocs, docDates } from "./docs/lib/canon";
 
 export const dynamic = "force-static";
 
-const BASE_URL = "https://corpusframework.dev";
+const BASE_URL = "https://suspecframework.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const marketing = [
     "/",
-    "/what-is-corpus/",
+    "/what-is-suspec/",
     "/the-loop/",
     "/get-started/",
     "/skills/",

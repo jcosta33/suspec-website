@@ -1,12 +1,18 @@
 // Postbuild: write dist/llms-full.txt — the user-tier canon (numbered 01-10 + tutorial + examples)
 // concatenated into one markdown file for single-fetch ingestion by AI assistants. Single-sourced
-// from the same canon the site renders (sibling corpus/docs in dev, the vendored clone on CI/Vercel).
+// from the same canon the site renders (sibling suspec/docs in dev, the vendored clone on CI/Vercel).
 import fs from "node:fs";
 import path from "node:path";
 
-const SIBLING = path.join(process.cwd(), "..", "corpus", "docs");
-const VENDOR = path.join(process.cwd(), ".corpus-canon", "docs");
-const CANON = fs.existsSync(SIBLING) ? SIBLING : VENDOR;
+const SIBLING_CANDIDATES = [
+  path.join(process.cwd(), "..", "suspec", "docs"),
+  path.join(process.cwd(), "..", "corpus", "docs"),
+];
+const SIBLING = SIBLING_CANDIDATES.find((candidate) =>
+  fs.existsSync(candidate),
+);
+const VENDOR = path.join(process.cwd(), ".suspec-canon", "docs");
+const CANON = SIBLING ?? VENDOR;
 const OUT = path.join(process.cwd(), "dist", "llms-full.txt");
 
 if (!fs.existsSync(CANON)) {
@@ -33,11 +39,11 @@ const numbered = fs
 const order = [...numbered, ...dirDocs("tutorial"), ...dirDocs("examples")];
 
 const header =
-  `# corpus — full documentation\n\n` +
-  `> corpus is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. ` +
+  `# suspec — full documentation\n\n` +
+  `> suspec is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. ` +
   `Plain markdown, any agent, no runtime. This file concatenates the user-facing documentation for ` +
   `full-context ingestion by AI assistants.\n\n` +
-  `Site: https://corpusframework.dev/ · Canon: https://github.com/jcosta33/corpus\n\n---\n\n`;
+  `Site: https://suspecframework.dev/ · Canon: https://github.com/jcosta33/suspec\n\n---\n\n`;
 
 const body = order
   .map(
@@ -45,7 +51,7 @@ const body = order
       `<!-- ${rel} -->\n\n${fs
         .readFileSync(path.join(CANON, rel), "utf8")
         .trim()
-        .replace(/\bCorpus\b/g, "corpus")}\n`,
+        .replace(/\bSuspec\b/g, "suspec")}\n`,
   )
   .join("\n\n---\n\n");
 

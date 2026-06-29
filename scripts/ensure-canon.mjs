@@ -1,32 +1,37 @@
-// Ensure the corpus/docs canon is available to the build (prebuild step).
-// - local dev: use the sibling checkout ../corpus/docs (no-op).
-// - CI / Vercel (no sibling): shallow-clone the canon into .corpus-canon/ (gitignored, ephemeral —
-//   never committed, so single-sourcing holds). Pin a ref via CORPUS_REF for reproducible builds.
+// Ensure the suspec/docs canon is available to the build (prebuild step).
+// - local dev: use the sibling checkout ../suspec/docs, or the unchanged local
+//   checkout folder ../corpus/docs while the repository rename is in flight (no-op).
+// - CI / Vercel (no sibling): shallow-clone the canon into .suspec-canon/ (gitignored, ephemeral —
+//   never committed, so single-sourcing holds). Pin a ref via SUSPEC_REF for reproducible builds.
 // Chosen over a git submodule: lower contributor friction (no submodule init/update), works the same
-// locally and on Vercel, and CORPUS_REF gives the same pinning a submodule would.
+// locally and on Vercel, and SUSPEC_REF gives the same pinning a submodule would.
 import { existsSync, writeFileSync } from "node:fs";
 import { execSync } from "node:child_process";
 import path from "node:path";
 
 const cwd = process.cwd();
-const sibling = path.join(cwd, "..", "corpus", "docs");
-const vendor = path.join(cwd, ".corpus-canon");
+const siblingCandidates = [
+  path.join(cwd, "..", "suspec", "docs"),
+  path.join(cwd, "..", "corpus", "docs"),
+];
+const sibling = siblingCandidates.find((candidate) => existsSync(candidate));
+const vendor = path.join(cwd, ".suspec-canon");
 const vendorDocs = path.join(vendor, "docs");
-const ref = process.env.CORPUS_REF || "main";
-const repo = process.env.CORPUS_REPO || "https://github.com/jcosta33/corpus";
+const ref = process.env.SUSPEC_REF || "main";
+const repo = process.env.SUSPEC_REPO || "https://github.com/jcosta33/suspec";
 
 let repoRoot; // the git repo that contains docs/
-if (existsSync(sibling)) {
-  console.log("[ensure-canon] using the local sibling ../corpus/docs");
-  repoRoot = path.join(cwd, "..", "corpus");
+if (sibling) {
+  console.log(`[ensure-canon] using the local sibling ${path.relative(cwd, sibling)}`);
+  repoRoot = path.dirname(sibling);
 } else if (existsSync(vendorDocs)) {
-  console.log("[ensure-canon] using the vendored .corpus-canon/docs");
+  console.log("[ensure-canon] using the vendored .suspec-canon/docs");
   repoRoot = vendor;
 } else {
   // Full clone (NOT --depth 1): per-file git dates need history (a shallow clone collapses every
   // file's date to the single HEAD commit). The canon is markdown-only, so cheap.
   console.log(
-    `[ensure-canon] cloning ${repo}@${ref} -> .corpus-canon (full history for doc dates)`,
+    `[ensure-canon] cloning ${repo}@${ref} -> .suspec-canon (full history for doc dates)`,
   );
   execSync(`git clone --branch ${ref} ${repo} ${vendor}`, { stdio: "inherit" });
   repoRoot = vendor;
@@ -36,7 +41,7 @@ if (existsSync(sibling)) {
 // JSON the build reads — instead of spawning a `git log` per doc per worker during the parallel
 // static-export phase (~127 subprocesses), which contended for the filesystem and contributed to
 // intermittent build failures. Deterministic + fast. Falls back to an empty map if git is absent.
-const datesOut = path.join(cwd, ".corpus-canon-dates.json");
+const datesOut = path.join(cwd, ".suspec-canon-dates.json");
 try {
   const currentDocs = new Set(
     execSync("git ls-files 'docs/**/*.md' 'docs/*.md'", {
@@ -68,7 +73,7 @@ try {
   }
   writeFileSync(datesOut, JSON.stringify(dates));
   console.log(
-    `[ensure-canon] wrote ${Object.keys(dates).length} doc dates -> .corpus-canon-dates.json`,
+    `[ensure-canon] wrote ${Object.keys(dates).length} doc dates -> .suspec-canon-dates.json`,
   );
 } catch (e) {
   writeFileSync(datesOut, "{}");

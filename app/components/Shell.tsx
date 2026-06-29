@@ -8,7 +8,7 @@ import { Logo } from "./Logo";
 import { Section } from "./Section";
 
 const navLinks = [
-  { label: "What is Corpus", href: "/what-is-corpus" },
+  { label: "What is Suspec", href: "/what-is-suspec" },
   { label: "Loop", href: "/the-loop" },
   { label: "Skills", href: "/skills" },
   { label: "Agents", href: "/agents" },
@@ -16,7 +16,7 @@ const navLinks = [
   { label: "MCP", href: "/mcp" },
   { label: "Get started", href: "/get-started" },
   { label: "Docs", href: "/docs" },
-  { label: "GitHub", href: "https://github.com/jcosta33/corpus" },
+  { label: "GitHub", href: "https://github.com/jcosta33/suspec" },
 ];
 
 const mobileNavGroups = [
@@ -24,7 +24,7 @@ const mobileNavGroups = [
     title: "Work",
     tone: "core",
     links: [
-      { label: "What is Corpus", href: "/what-is-corpus", step: "01" },
+      { label: "What is Suspec", href: "/what-is-suspec", step: "01" },
       { label: "Loop", href: "/the-loop", step: "02" },
       { label: "Get started", href: "/get-started", step: "03" },
     ],
@@ -44,7 +44,7 @@ const mobileNavGroups = [
     tone: "reference",
     links: [
       { label: "Docs", href: "/docs" },
-      { label: "GitHub", href: "https://github.com/jcosta33/corpus" },
+      { label: "GitHub", href: "https://github.com/jcosta33/suspec" },
     ],
   },
 ];
@@ -60,7 +60,7 @@ const footerGroups = [
     title: "Work",
     tone: "core",
     links: [
-      { label: "What is Corpus", href: "/what-is-corpus" },
+      { label: "What is Suspec", href: "/what-is-suspec" },
       { label: "Loop", href: "/the-loop" },
       { label: "Get started", href: "/get-started" },
     ],
@@ -80,10 +80,10 @@ const footerGroups = [
     tone: "reference",
     links: [
       { label: "Docs", href: "/docs" },
-      { label: "GitHub", href: "https://github.com/jcosta33/corpus" },
+      { label: "GitHub", href: "https://github.com/jcosta33/suspec" },
       {
         label: "Starter kit",
-        href: "https://github.com/jcosta33/corpus-starter-kit",
+        href: "https://github.com/jcosta33/suspec-starter-kit",
       },
       { label: "Colophon", href: "/colophon" },
     ],
@@ -111,16 +111,16 @@ function isActiveLink(href: string, pathname: string) {
 
 function getFolioLabel(pathname: string) {
   const normalizedPath = normalizeHref(pathname);
-  if (normalizedPath === "/") return "Corpus / home";
-  if (normalizedPath.startsWith("/what-is-corpus/")) return "Corpus / overview";
-  if (normalizedPath.startsWith("/the-loop/")) return "Corpus / loop";
-  if (normalizedPath.startsWith("/get-started/")) return "Corpus / setup";
-  if (normalizedPath.startsWith("/agents/")) return "Corpus / agents";
-  if (normalizedPath.startsWith("/skills/")) return "Corpus / skills";
-  if (normalizedPath.startsWith("/cli/")) return "Corpus / cli";
-  if (normalizedPath.startsWith("/mcp/")) return "Corpus / mcp";
-  if (normalizedPath.startsWith("/docs/")) return "Corpus / manual";
-  return "Corpus / record";
+  if (normalizedPath === "/") return "Suspec / home";
+  if (normalizedPath.startsWith("/what-is-suspec/")) return "Suspec / overview";
+  if (normalizedPath.startsWith("/the-loop/")) return "Suspec / loop";
+  if (normalizedPath.startsWith("/get-started/")) return "Suspec / setup";
+  if (normalizedPath.startsWith("/agents/")) return "Suspec / agents";
+  if (normalizedPath.startsWith("/skills/")) return "Suspec / skills";
+  if (normalizedPath.startsWith("/cli/")) return "Suspec / cli";
+  if (normalizedPath.startsWith("/mcp/")) return "Suspec / mcp";
+  if (normalizedPath.startsWith("/docs/")) return "Suspec / manual";
+  return "Suspec / record";
 }
 
 function NavLink({
@@ -160,7 +160,7 @@ function NavLink({
       </span>
       {isActive && showIndicator && (
         <span
-          className="absolute -bottom-2 left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-corpus-yellow"
+          className="absolute -bottom-2 left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-suspec-yellow"
           aria-hidden="true"
         />
       )}
@@ -304,7 +304,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-screen flex-col">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-corpus-yellow focus:px-4 focus:py-2 focus:text-black"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-suspec-yellow focus:px-4 focus:py-2 focus:text-black"
       >
         Skip to main content
       </a>
@@ -321,7 +321,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <Link
             href="/"
             className="focus-ring inline-flex min-h-11 items-center rounded-sm"
-            aria-label="Corpus home"
+            aria-label="Suspec home"
           >
             <Logo className="text-xl text-concrete-100" />
           </Link>
@@ -340,8 +340,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
                   showIndicator
                   className={`site-nav-link min-h-11 px-2 text-sm font-medium transition-[color] focus-ring rounded-sm ${
                     active
-                      ? "text-corpus-yellow"
-                      : "text-concrete-400 hover:text-corpus-yellow"
+                      ? "text-suspec-yellow"
+                      : "text-concrete-400 hover:text-suspec-yellow"
                   }`}
                 />
               );
@@ -351,7 +351,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <button
             ref={toggleRef}
             type="button"
-            className={`toggle inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-control)] border p-2 text-concrete-100 hover:text-corpus-yellow focus-ring lg:hidden ${
+            className={`toggle inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-control)] border p-2 text-concrete-100 hover:text-suspec-yellow focus-ring lg:hidden ${
               headerIsOpaque
                 ? "border-panel-border bg-panel-raised shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-2px_0_rgba(0,0,0,0.5)] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.45)]"
                 : "border-transparent bg-transparent active:shadow-none"
@@ -384,7 +384,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
               aria-label="Mobile"
             >
               <div className="mobile-menu-register" aria-hidden="true">
-                <span>Browse Corpus</span>
+                <span>Browse Suspec</span>
                 <span>{folioLabel}</span>
               </div>
               {mobileNavGroups.map((group) => (
@@ -409,7 +409,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
                   </div>
                 </div>
               ))}
-              <ul className="mobile-menu-proof" aria-label="Corpus notes">
+              <ul className="mobile-menu-proof" aria-label="Suspec notes">
                 {mobileProofs.map((item) => (
                   <li
                     key={item.label}
@@ -476,13 +476,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <div className="site-footer-identity">
             <Link
               href="/"
-              aria-label="Corpus home"
+              aria-label="Suspec home"
               className="focus-ring inline-flex min-h-11 w-fit items-center rounded-sm"
             >
               <Logo className="text-xl text-concrete-100" />
             </Link>
             <p className="text-sm text-concrete-400">
-              Built with Corpus. Keep the evidence; make the call yourself.
+              Built with Suspec. Keep the evidence; make the call yourself.
             </p>
           </div>
 
@@ -503,8 +503,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
                         isActive={active}
                         className={`min-h-11 min-w-11 px-1 text-sm font-medium transition-[color] focus-ring rounded-sm ${
                           active
-                            ? "text-corpus-yellow"
-                            : "text-concrete-400 hover:text-corpus-yellow"
+                            ? "text-suspec-yellow"
+                            : "text-concrete-400 hover:text-suspec-yellow"
                         }`}
                       />
                     );
@@ -521,7 +521,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </ul>
 
           <p className="site-footer-year">
-            © {new Date().getFullYear()} Corpus contributors.
+            © {new Date().getFullYear()} Suspec contributors.
           </p>
         </Section>
       </div>

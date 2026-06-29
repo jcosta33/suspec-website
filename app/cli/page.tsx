@@ -25,23 +25,23 @@ import { PageNav } from "../components/PageNav";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 
 export const metadata: Metadata = {
-  title: "CLI — Corpus",
+  title: "CLI — Suspec",
   description:
-    "corpus-cli scaffolds workspaces, runs checks, manages task worktrees, and prints the board.",
+    "suspec-cli scaffolds workspaces, runs checks, manages task worktrees, and prints the board.",
   openGraph: {
-    title: "CLI — Corpus",
+    title: "CLI — Suspec",
     description:
-      "corpus-cli scaffolds workspaces, runs checks, manages task worktrees, and prints the board.",
+      "suspec-cli scaffolds workspaces, runs checks, manages task worktrees, and prints the board.",
     type: "website",
     url: "/cli/",
-    siteName: "Corpus",
+    siteName: "Suspec",
     locale: "en_US",
     images: [
       {
         url: "/og-cli.png",
         width: 1200,
         height: 630,
-        alt: "corpus-cli command reference",
+        alt: "suspec-cli command reference",
       },
     ],
   },
@@ -52,28 +52,28 @@ export const metadata: Metadata = {
 
 const cliInstallCommands = [
   "HOST=github.com/jcosta33",
-  "PKG=corpus-cli",
+  "PKG=suspec-cli",
   "SRC=$HOST/$PKG.git",
   "git clone https://$SRC",
   'cd "$PKG"',
   "npm install",
   "npm run build",
   "npm link",
-  "corpus --help",
+  "suspec --help",
 ].join("\n");
 
 const cliExampleCommands = [
-  "corpus check",
-  "corpus worktree create auth-refresh --task TASK-12",
-  "corpus review TASK-12",
-  "corpus status -i",
+  "suspec check",
+  "suspec worktree create auth-refresh --task TASK-12",
+  "suspec review TASK-12",
+  "suspec status -i",
 ].join("\n");
 
 const commands = [
   {
     cmd: "init [dir]",
     family: "Setup",
-    what: "Scaffold a Corpus workspace without overwriting existing files.",
+    what: "Scaffold a Suspec workspace without overwriting existing files.",
     icon: Blocks,
   },
   {
@@ -231,19 +231,19 @@ export default function CliPage() {
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
       <Section className="ambient-header">
         <PageHero
-          eyebrow="corpus-cli — reference implementation"
+          eyebrow="suspec-cli — reference implementation"
           className="page-hero-package-cli"
           motif="catalog"
           tone="reference"
           toneLabel="cli"
           title={
             <>
-              corpus<span className="product-name-suffix">-cli</span>
+              suspec<span className="product-name-suffix">-cli</span>
             </>
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Optional CLI for the Corpus workflow.
+            Optional CLI for the Suspec workflow.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
             Scaffold files, run checks, manage worktrees.
@@ -257,7 +257,7 @@ export default function CliPage() {
 
       <PageNav
         items={cliPageNav}
-        ariaLabel="corpus-cli page sections"
+        ariaLabel="suspec-cli page sections"
         wrapperClassName="-mt-4 mx-auto w-full max-w-7xl px-6 sm:-mt-6 lg:px-8"
       />
 
@@ -274,7 +274,7 @@ export default function CliPage() {
           </div>
           <ol
             className="cli-command-rail package-process-strip package-process-strip-cli process-strip process-strip-signal-reference grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
-            aria-label="corpus-cli command families"
+            aria-label="suspec-cli command families"
           >
             {commandFamilies.map((family, index) => {
               const Icon = family.icon;
@@ -344,32 +344,32 @@ export default function CliPage() {
               # source install for now
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}HOST=github.com/jcosta33
+              <span className="text-suspec-yellow">$</span>{" "}HOST=github.com/jcosta33
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}PKG=corpus-cli
+              <span className="text-suspec-yellow">$</span>{" "}PKG=suspec-cli
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}SRC=$HOST/$PKG.git
+              <span className="text-suspec-yellow">$</span>{" "}SRC=$HOST/$PKG.git
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}git clone https://$SRC
+              <span className="text-suspec-yellow">$</span>{" "}git clone https://$SRC
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}cd &quot;$PKG&quot;
+              <span className="text-suspec-yellow">$</span>{" "}cd &quot;$PKG&quot;
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}npm install
+              <span className="text-suspec-yellow">$</span>{" "}npm install
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}npm run build
+              <span className="text-suspec-yellow">$</span>{" "}npm run build
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}npm link
+              <span className="text-suspec-yellow">$</span>{" "}npm link
             </p>
             <p className="mt-2 text-concrete-500"># then run commands as</p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}corpus --help
+              <span className="text-suspec-yellow">$</span>{" "}suspec --help
             </p>
           </TerminalWindow>
         </Panel>
@@ -395,27 +395,27 @@ export default function CliPage() {
               # scaffold a workspace first
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}corpus check{" "}
+              <span className="text-suspec-yellow">$</span>{" "}suspec check{" "}
               <span className="text-concrete-500">
                 # lint a spec or the whole workspace; exit 0/1/2
               </span>
             </p>
             <p className="mt-1 text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}corpus worktree
+              <span className="text-suspec-yellow">$</span>{" "}suspec worktree
               create auth-refresh --task TASK-12{" "}
               <span className="text-concrete-500">
                 # isolate the task on its own branch
               </span>
             </p>
             <p className="mt-1 text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}corpus review
+              <span className="text-suspec-yellow">$</span>{" "}suspec review
               TASK-12{" "}
               <span className="text-concrete-500">
                 # reconcile the finished run — diff vs report vs spec
               </span>
             </p>
             <p className="mt-1 text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}corpus status -i{" "}
+              <span className="text-suspec-yellow">$</span>{" "}suspec status -i{" "}
               <span className="text-concrete-500">
                 # the board — specs, tasks, reviews, gaps
               </span>
@@ -437,9 +437,9 @@ export default function CliPage() {
           </div>
           <Heading className="mt-3">Commands</Heading>
           <p className="mt-4 max-w-2xl text-concrete-400">
-            Start with <code className="text-corpus-yellow">corpus check</code>
+            Start with <code className="text-suspec-yellow">suspec check</code>
             {" "}
-            and <code className="text-corpus-yellow">corpus review</code>. Use the
+            and <code className="text-suspec-yellow">suspec review</code>. Use the
             rest when the workspace needs them.
           </p>
           <ul className="cli-command-legend mt-6" aria-label="Command family shortcuts">
@@ -512,7 +512,7 @@ export default function CliPage() {
                               </HexBadge>
                               <div className="min-w-0">
                                 <h4 className={`catalog-row-title font-mono text-[13px] leading-snug font-semibold break-words sm:text-sm ${signalRoles[signal].text}`}>
-                                  corpus {c.cmd}
+                                  suspec {c.cmd}
                                 </h4>
                                 <p className="catalog-row-copy mt-1 text-sm leading-relaxed text-concrete-400">
                                   {c.what}
@@ -550,7 +550,7 @@ export default function CliPage() {
             Why a CLI?
           </Heading>
           <p className="mt-4 text-concrete-400">
-            Corpus is plain files. The CLI handles repeatable chores around
+            Suspec is plain files. The CLI handles repeatable chores around
             those files.
           </p>
         </div>
@@ -624,18 +624,18 @@ export default function CliPage() {
           <div className="mt-auto space-y-4">
             <p>
               <TextLink
-                href="https://github.com/jcosta33/corpus-cli"
+                href="https://github.com/jcosta33/suspec-cli"
                 target="_blank"
                 rel="noopener noreferrer"
                 touchTarget
               >
-                Open corpus-cli on GitHub →
+                Open suspec-cli on GitHub →
               </TextLink>
             </p>
             <p className="text-concrete-400">
               Using an MCP client?{" "}
               <TextLink href="/mcp/">
-                corpus-mcp exposes the same facts (read + reconcile, no verdict)
+                suspec-mcp exposes the same facts (read + reconcile, no verdict)
               </TextLink>
             </p>
           </div>

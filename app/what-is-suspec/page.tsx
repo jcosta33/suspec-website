@@ -25,28 +25,28 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "What is Corpus? — Corpus",
+  title: "What is Suspec? — Suspec",
   description:
-    "Corpus is a markdown workflow for specs, tasks, reviews, findings, and evidence.",
+    "Suspec is a markdown workflow for specs, tasks, reviews, findings, and evidence.",
   openGraph: {
-    title: "What is Corpus? — Corpus",
+    title: "What is Suspec? — Suspec",
     description:
-      "Corpus is a markdown workflow for specs, tasks, reviews, findings, and evidence.",
+      "Suspec is a markdown workflow for specs, tasks, reviews, findings, and evidence.",
     type: "website",
-    url: "/what-is-corpus/",
-    siteName: "Corpus",
+    url: "/what-is-suspec/",
+    siteName: "Suspec",
     locale: "en_US",
     images: [
       {
-        url: "/og-what-is-corpus.png",
+        url: "/og-what-is-suspec.png",
         width: 1200,
         height: 630,
-        alt: "What is Corpus? — a spec and review workflow",
+        alt: "What is Suspec? — a spec and review workflow",
       },
     ],
   },
   alternates: {
-    canonical: "/what-is-corpus/",
+    canonical: "/what-is-suspec/",
   },
 };
 
@@ -82,7 +82,7 @@ const adjacent = [
     signal: "muted",
     examples: "Claude Code, Cursor, Copilot, …",
     does: "write the code",
-    relation: "Corpus gives them scoped tasks and review records.",
+    relation: "Suspec gives them scoped tasks and review records.",
   },
   {
     product: "Spec-driven workflows",
@@ -90,7 +90,7 @@ const adjacent = [
     signal: "core",
     examples: "",
     does: "turn a written spec into an implementation",
-    relation: "Corpus keeps requirements tied to checks and evidence.",
+    relation: "Suspec keeps requirements tied to checks and evidence.",
   },
   {
     product: "Issue trackers",
@@ -98,7 +98,7 @@ const adjacent = [
     signal: "reference",
     examples: "Jira, Linear, GitHub Issues",
     does: "hold the backlog and the conversation",
-    relation: "Tickets stay there. Corpus snapshots the work into files.",
+    relation: "Tickets stay there. Suspec snapshots the work into files.",
   },
   {
     product: "Docs portals",
@@ -106,7 +106,7 @@ const adjacent = [
     signal: "reference",
     examples: "wikis, Notion, docs sites",
     does: "describe the system after the fact",
-    relation: "A Corpus spec drives a change before it ships.",
+    relation: "A Suspec spec drives a change before it ships.",
   },
   {
     product: "Review tooling",
@@ -133,7 +133,7 @@ const adjacent = [
   relation: string;
 }>;
 
-const overviewDiagnosticCommand = "cat what-is-corpus.md";
+const overviewDiagnosticCommand = "cat what-is-suspec.md";
 
 const overviewJumpLinks = [
   { label: "Boundaries", href: "#boundaries", signal: "muted" },
@@ -156,7 +156,7 @@ const boundarySteps = [
   },
   {
     label: "02",
-    title: "Corpus records the run",
+    title: "Suspec records the run",
     text: "Spec, task, review, and finding files keep the work inspectable.",
     signal: "core",
     icon: NotebookPen,
@@ -238,7 +238,7 @@ function BoundaryMap() {
   );
 }
 
-export default function WhatIsCorpusPage() {
+export default function WhatIsSuspecPage() {
   return (
     <div className="flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
       <Section className="ambient-header">
@@ -249,7 +249,7 @@ export default function WhatIsCorpusPage() {
           title={
             <>
               What is{" "}
-              <span className="text-corpus-yellow">Corpus?</span>
+              <span className="text-suspec-yellow">Suspec?</span>
             </>
           }
         >
@@ -258,7 +258,7 @@ export default function WhatIsCorpusPage() {
             review evidence, and saved findings.
           </p>
           <HeroTrace
-            ariaLabel="Corpus artifact chain"
+            ariaLabel="Suspec artifact chain"
             items={[
               { label: "Intake", signal: "reference" },
               { label: "Spec", signal: "core" },
@@ -285,11 +285,11 @@ export default function WhatIsCorpusPage() {
             contentClassName="overview-terminal-content"
           >
             <p className="text-concrete-400">
-              <span className="text-corpus-yellow">$</span> cat{" "}
-              what-is-corpus.md
+              <span className="text-suspec-yellow">$</span> cat{" "}
+              what-is-suspec.md
             </p>
             <p className="mt-2 text-concrete-100">
-              Corpus turns requests into specs, specs into tasks, and task
+              Suspec turns requests into specs, specs into tasks, and task
               output into review evidence.
             </p>
             <div className={`overview-check-grid mt-3 ${signalRoles.evidence.text}`}>
@@ -299,7 +299,7 @@ export default function WhatIsCorpusPage() {
               <p>plain markdown</p>
             </div>
             <p className="mt-2 text-concrete-400">
-              <span className="text-corpus-yellow">$</span> _
+              <span className="text-suspec-yellow">$</span> _
             </p>
           </TerminalWindow>
         </Panel>
@@ -319,7 +319,7 @@ export default function WhatIsCorpusPage() {
 
       <nav
         className="overview-section-nav-shell mx-auto w-full max-w-7xl px-6 lg:px-8"
-        aria-label="What is Corpus page sections"
+        aria-label="What is Suspec page sections"
       >
         <div className="section-jump-nav">
           {overviewJumpLinks.map((item, index) => (
@@ -353,7 +353,7 @@ export default function WhatIsCorpusPage() {
             <CheckCircle className="h-4 w-4" aria-hidden="true" />
             <span>what it is</span>
           </div>
-          <Heading className="mt-3">What Corpus is</Heading>
+          <Heading className="mt-3">What Suspec is</Heading>
           <ul className="mt-6 space-y-4">
             {isList.map((item) => {
               const Icon = item.icon;
@@ -377,7 +377,7 @@ export default function WhatIsCorpusPage() {
             <XCircle className="h-4 w-4" aria-hidden="true" />
             <span>what it is not</span>
           </div>
-          <Heading className="mt-3">What Corpus is not</Heading>
+          <Heading className="mt-3">What Suspec is not</Heading>
           <ul className="mt-5 divide-y divide-panel-border/70">
             {isNotList.map((item) => (
               <li
@@ -406,7 +406,7 @@ export default function WhatIsCorpusPage() {
             <DroneIcon className="h-4 w-4" />
             <span>nearby tools</span>
           </div>
-          <Heading className="mt-3">Where Corpus sits</Heading>
+          <Heading className="mt-3">Where Suspec sits</Heading>
         </div>
         <BoundaryMap />
         <ul className="overview-relation-grid reveal grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -441,7 +441,7 @@ export default function WhatIsCorpusPage() {
                     <dd>{row.does}</dd>
                   </div>
                   <div>
-                    <dt>Corpus job</dt>
+                    <dt>Suspec job</dt>
                     <dd>{row.relation}</dd>
                   </div>
                 </dl>
@@ -509,11 +509,11 @@ export default function WhatIsCorpusPage() {
             <p className="mt-4 text-sm text-concrete-400">
               Source:{" "}
               <TextLink
-                href="/docs/01-what-is-corpus/"
+                href="/docs/01-what-is-suspec/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                docs/01-what-is-corpus.md
+                docs/01-what-is-suspec.md
               </TextLink>
             </p>
           </div>

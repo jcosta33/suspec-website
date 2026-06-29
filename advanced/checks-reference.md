@@ -2,7 +2,7 @@
 
 <!-- The review checklist for specs, tasks, and review packets. Levels:
      convention = expected practice · checklist = review inspects it ·
-     toolable = a future `corpus spec check` can flag it. Nothing in this kit is
+     toolable = a future `suspec spec check` can flag it. Nothing in this kit is
      machine-enforced; teams may treat any item as blocking by policy. -->
 
 ## Spec checks (both forms)

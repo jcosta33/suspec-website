@@ -9,7 +9,7 @@ import "./globals.css";
 import { Shell } from "./components/Shell";
 import { JsonLd } from "./components/JsonLd";
 
-const SITE_URL = "https://corpusframework.dev";
+const SITE_URL = "https://suspecframework.dev";
 
 // Site-wide structured data (SEO/GEO). The Organization + WebSite entities give answer engines and
 // crawlers a stable, machine-readable statement of what this is; the SearchAction is wired to the
@@ -20,23 +20,23 @@ const siteGraph = {
     {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
-      name: "Corpus",
+      name: "Suspec",
       url: SITE_URL,
       description:
-        "Corpus is a markdown workflow for coding-agent work.",
+        "Suspec is a markdown workflow for coding-agent work.",
       sameAs: [
-        "https://github.com/jcosta33/corpus",
-        "https://github.com/jcosta33/corpus-starter-kit",
-        "https://github.com/jcosta33/corpus-skills",
-        "https://github.com/jcosta33/corpus-agents",
-        "https://github.com/jcosta33/corpus-cli",
-        "https://github.com/jcosta33/corpus-mcp",
+        "https://github.com/jcosta33/suspec",
+        "https://github.com/jcosta33/suspec-starter-kit",
+        "https://github.com/jcosta33/suspec-skills",
+        "https://github.com/jcosta33/suspec-agents",
+        "https://github.com/jcosta33/suspec-cli",
+        "https://github.com/jcosta33/suspec-mcp",
       ],
     },
     {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
-      name: "Corpus",
+      name: "Suspec",
       url: SITE_URL,
       publisher: { "@id": `${SITE_URL}/#organization` },
       potentialAction: {
@@ -76,7 +76,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 // Old-style serif for the title-page voice — the hero headings and the wordmark
-// carry the "Corpus Hermeticum" book character; the rest of the UI stays in the
+// carry the "Suspec Hermeticum" book character; the rest of the UI stays in the
 // geometric sans for the straight, scientific read. This is the hero's LCP font,
 // so it preloads (default).
 const ebGaramond = EB_Garamond({
@@ -88,10 +88,10 @@ const ebGaramond = EB_Garamond({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://corpusframework.dev"),
-  title: "Corpus — spec and review workflow",
+  metadataBase: new URL("https://suspecframework.dev"),
+  title: "Suspec — spec and review workflow",
   description:
-    "Corpus is a markdown workflow for specs, tasks, reviews, findings, and evidence.",
+    "Suspec is a markdown workflow for specs, tasks, reviews, findings, and evidence.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -102,14 +102,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    siteName: "Corpus",
+    siteName: "Suspec",
     locale: "en_US",
     images: [
       {
         url: "/og-home.png",
         width: 1200,
         height: 630,
-        alt: "Corpus — spec and review workflow",
+        alt: "Suspec — spec and review workflow",
       },
     ],
   },

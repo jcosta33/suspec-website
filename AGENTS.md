@@ -1,15 +1,15 @@
-# AGENTS.md — corpus-website (code repo)
+# AGENTS.md — suspec-website (code repo)
 
 <!-- Keep this file short — agents read it on every task. This is the CODE repo;
-     the Corpus workspace (specs, tasks, reviews, findings, decisions, the board)
-     lives in the sibling ../corpus-website-works. -->
+     the Suspec workspace (specs, tasks, reviews, findings, decisions, the board)
+     lives in the sibling ../suspec-website-works. -->
 
-## Corpus workspace
+## Suspec workspace
 
 The specs, tasks, reviews, findings, decisions, and board for this site live in
-**`../corpus-website-works`** — the dedicated Corpus workspace. Read the task packet
+**`../suspec-website-works`** — the dedicated Suspec workspace. Read the task packet
 you were given there first; for 1:1 work with no task, read the linked spec in
-`../corpus-website-works/specs/`. Do not implement behavior outside the task's scope.
+`../suspec-website-works/specs/`. Do not implement behavior outside the task's scope.
 Record the run (the spec's `## Execution`, or the task's `## Run summary`) and flip
 the board row in the workspace, not here.
 
@@ -47,6 +47,6 @@ whose command cannot be resolved reads Unverified, not Pass.
 
 ## Agent role
 
-You are an implementation or review worker for the Corpus website. Corpus
+You are an implementation or review worker for the Suspec website. Suspec
 organizes the work; you perform the assigned task — and you never review your
 own implementation.

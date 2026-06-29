@@ -96,9 +96,9 @@
   background-color: rgba(var(--signal-reference-rgb), 0.065);
 }
 .docs-nav a.is-active {
-  color: var(--color-corpus-yellow);
+  color: var(--color-suspec-yellow);
   background-color: rgba(var(--signal-core-rgb), 0.075);
-  border-left-color: var(--color-corpus-yellow);
+  border-left-color: var(--color-suspec-yellow);
   font-weight: 500;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45); /* engraved */
   box-shadow:
@@ -116,7 +116,7 @@
 .docs-prose a:focus-visible,
 .docs-prose .docs-pager-link:focus-visible,
 .docs-prose .docs-bridge a:focus-visible {
-  outline: 2px solid var(--color-corpus-yellow);
+  outline: 2px solid var(--color-suspec-yellow);
   outline-offset: 2px;
   border-radius: var(--radius-panel);
 }
@@ -233,7 +233,7 @@
 /* ---------- Search (Pagefind UI, themed via its CSS variables) ---------- */
 .docs-search {
   --pagefind-ui-scale: 0.8;
-  --pagefind-ui-primary: var(--color-corpus-yellow);
+  --pagefind-ui-primary: var(--color-suspec-yellow);
   --pagefind-ui-text: var(--color-concrete-100);
   --pagefind-ui-background: var(--color-panel-recessed);
   --pagefind-ui-border: var(--color-panel-border);
@@ -352,7 +352,7 @@
   }
   .docs-toc-count {
     flex: 0 0 auto;
-    color: var(--color-corpus-yellow);
+    color: var(--color-suspec-yellow);
     font-family: var(--font-mono), monospace;
     font-size: 0.62rem;
     font-weight: 700;
@@ -431,7 +431,7 @@
   }
   .docs-toc a:hover {
     background-color: rgba(var(--signal-core-rgb), 0.08);
-    color: var(--color-corpus-yellow);
+    color: var(--color-suspec-yellow);
     border-left-color: var(--color-brass);
   }
   .docs-toc a:hover::before {
@@ -441,19 +441,19 @@
     background:
       linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.14), transparent 70%),
       rgba(var(--signal-core-rgb), 0.045);
-    color: var(--color-corpus-yellow);
-    border-left-color: var(--color-corpus-yellow);
+    color: var(--color-suspec-yellow);
+    border-left-color: var(--color-suspec-yellow);
     font-weight: 500;
     box-shadow:
       inset 0 0 0 1px rgba(var(--signal-core-rgb), 0.14),
       inset 0 1px 0 rgba(240, 226, 204, 0.04);
   }
   .docs-toc a.is-active::before {
-    color: var(--color-corpus-yellow);
+    color: var(--color-suspec-yellow);
     opacity: 1;
   }
   .docs-toc a:focus-visible {
-    outline: 2px solid var(--color-corpus-yellow);
+    outline: 2px solid var(--color-suspec-yellow);
     outline-offset: 2px;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -1251,8 +1251,8 @@
     text-decoration-color 0.12s;
 }
 .docs-prose a:hover {
-  color: var(--color-corpus-yellow);
-  text-decoration-color: var(--color-corpus-yellow);
+  color: var(--color-suspec-yellow);
+  text-decoration-color: var(--color-suspec-yellow);
 }
 .docs-prose p a {
   display: inline-flex;
@@ -1598,7 +1598,7 @@
   margin: 1.25rem 0;
   padding: 0.85rem 1.1rem;
   border: 1px solid rgba(var(--signal-core-rgb), 0.24);
-  border-left: 3px solid var(--color-corpus-yellow);
+  border-left: 3px solid var(--color-suspec-yellow);
   border-radius: 0 var(--radius-panel) var(--radius-panel) 0;
   isolation: isolate;
   background:
@@ -1649,8 +1649,8 @@
   text-decoration-color: rgba(240, 184, 92, 0.5);
 }
 .docs-prose blockquote a:hover {
-  color: var(--color-corpus-yellow);
-  text-decoration-color: var(--color-corpus-yellow);
+  color: var(--color-suspec-yellow);
+  text-decoration-color: var(--color-suspec-yellow);
 }
 
 /* Tables — bordered panel with an engraved header */
@@ -1665,7 +1665,7 @@
   border-radius: var(--radius-panel);
 }
 .docs-table-scroll:focus-visible {
-  outline: 2px solid var(--color-corpus-yellow);
+  outline: 2px solid var(--color-suspec-yellow);
   outline-offset: 2px;
 }
 .docs-prose table {
@@ -2825,7 +2825,7 @@
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-corpus-yellow);
+  color: var(--color-suspec-yellow);
 }
 .docs-prose .docs-pager-title {
   color: var(--color-concrete-100);
@@ -2835,7 +2835,7 @@
   line-height: 1.25;
 }
 .docs-prose .docs-pager-link:hover .docs-pager-title {
-  color: var(--color-corpus-yellow);
+  color: var(--color-suspec-yellow);
 }
 @media (prefers-reduced-motion: reduce) {
   .docs-prose .docs-pager-link:hover {
@@ -2879,7 +2879,7 @@
   display: inline-flex;
   min-height: 1.6rem;
   align-items: center;
-  color: var(--color-corpus-yellow);
+  color: var(--color-suspec-yellow);
   text-decoration-color: rgba(var(--signal-core-rgb), 0.6);
 }
 @media (max-width: 40rem) {

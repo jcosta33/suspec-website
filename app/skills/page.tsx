@@ -40,23 +40,23 @@ import { SkillCatalog } from "../components/SkillCatalog";
 import { signalRoles } from "../components/signalStyles";
 
 export const metadata: Metadata = {
-  title: "corpus-skills — Corpus",
+  title: "suspec-skills — Suspec",
   description:
-    "Two tiers of agent guides: the framework-free corpus-skills catalog and the Corpus-coupled kit that ships in corpus-starter-kit.",
+    "Two tiers of agent guides: the framework-free suspec-skills catalog and the Suspec-coupled kit that ships in suspec-starter-kit.",
   openGraph: {
-    title: "corpus-skills — Corpus",
+    title: "suspec-skills — Suspec",
     description:
-      "Two tiers of agent guides: the framework-free corpus-skills catalog and the Corpus-coupled kit that ships in corpus-starter-kit.",
+      "Two tiers of agent guides: the framework-free suspec-skills catalog and the Suspec-coupled kit that ships in suspec-starter-kit.",
     type: "website",
     url: "/skills/",
-    siteName: "Corpus",
+    siteName: "Suspec",
     locale: "en_US",
     images: [
       {
         url: "/og-skills.png",
         width: 1200,
         height: 630,
-        alt: "corpus-skills",
+        alt: "suspec-skills",
       },
     ],
   },
@@ -65,11 +65,11 @@ export const metadata: Metadata = {
   },
 };
 
-const catalogInstallCommand = "npx skills add jcosta33/corpus-skills";
+const catalogInstallCommand = "npx skills add jcosta33/suspec-skills";
 
-// Tier 1 — the universal catalog (corpus-skills). Framework-free disciplines and
-// stances, installable into any repo via `npx skills` with zero Corpus knowledge.
-const catalogRepo = "https://github.com/jcosta33/corpus-skills/tree/main/skills";
+// Tier 1 — the universal catalog (suspec-skills). Framework-free disciplines and
+// stances, installable into any repo via `npx skills` with zero Suspec knowledge.
+const catalogRepo = "https://github.com/jcosta33/suspec-skills/tree/main/skills";
 
 // Review / judgment stances in the catalog.
 const stances = [
@@ -134,16 +134,16 @@ const disciplines = [
   },
 ];
 
-// Tier 2 — the Corpus kit (ships in corpus-starter-kit/.agents/skills/). Every
-// skill that operates a Corpus concept; not installable framework-free.
+// Tier 2 — the Suspec kit (ships in suspec-starter-kit/.agents/skills/). Every
+// skill that operates a Suspec concept; not installable framework-free.
 const kitRepo =
-  "https://github.com/jcosta33/corpus-starter-kit/tree/main/.agents/skills";
+  "https://github.com/jcosta33/suspec-starter-kit/tree/main/.agents/skills";
 
 const kitSkills = [
   {
     skill: "implement-task",
     icon: Terminal,
-    use: "implement a Corpus task packet",
+    use: "implement a Suspec task packet",
   },
   {
     skill: "review-output",
@@ -227,11 +227,11 @@ const skillRoutes = [
     signal: "core",
   },
   {
-    label: "Corpus kit",
+    label: "Suspec kit",
     href: "#kit-skills",
     count: String(kitSkills.length),
     icon: Puzzle,
-    text: "Corpus-coupled skills that ship in corpus-starter-kit, not the catalog.",
+    text: "Suspec-coupled skills that ship in suspec-starter-kit, not the catalog.",
     signal: "reference",
   },
 ] as const;
@@ -248,18 +248,18 @@ export default function SkillsPage() {
           toneLabel="skills"
           title={
             <>
-              corpus<span className="product-name-suffix">-skills</span>
+              suspec<span className="product-name-suffix">-skills</span>
             </>
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Two tiers of task-scoped guides: a framework-free catalog and a
-            Corpus-coupled kit.
+            Suspec-coupled kit.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
-            The catalog (corpus-skills) installs into any repo via{" "}
-            <code className="text-corpus-yellow">npx skills</code>. The kit ships
-            in corpus-starter-kit. Load only the guide in scope.
+            The catalog (suspec-skills) installs into any repo via{" "}
+            <code className="text-suspec-yellow">npx skills</code>. The kit ships
+            in suspec-starter-kit. Load only the guide in scope.
           </p>
           <HeroTrace
             ariaLabel="Skill guide trace"
@@ -281,11 +281,11 @@ export default function SkillsPage() {
         <PaperArtifact
           label="index"
           title="two tiers"
-          meta="catalog (any repo) -> kit (Corpus repos)"
+          meta="catalog (any repo) -> kit (Suspec repos)"
           className="h-full"
         >
           <p>
-            The catalog is framework-free. The kit operates Corpus concepts. Keep
+            The catalog is framework-free. The kit operates Suspec concepts. Keep
             repo policy local.
           </p>
         </PaperArtifact>
@@ -379,23 +379,23 @@ export default function SkillsPage() {
         <Panel brushed className="p-2">
           <TerminalWindow title="terminal" copyText={catalogInstallCommand}>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}npx skills add{" "}
-              jcosta33/corpus-skills
+              <span className="text-suspec-yellow">$</span>{" "}npx skills add{" "}
+              jcosta33/suspec-skills
             </p>
           </TerminalWindow>
         </Panel>
         <p className="text-concrete-400">
-          This installs the framework-free catalog into any repo. The Corpus kit
+          This installs the framework-free catalog into any repo. The Suspec kit
           ships separately in{" "}
           <TextLink
-            href="https://github.com/jcosta33/corpus-starter-kit"
+            href="https://github.com/jcosta33/suspec-starter-kit"
             target="_blank"
             rel="noopener noreferrer"
           >
-            corpus-starter-kit
+            suspec-starter-kit
           </TextLink>
           . Keep repo-specific commands in{" "}
-          <code className="text-corpus-yellow">AGENTS.md</code>.
+          <code className="text-suspec-yellow">AGENTS.md</code>.
         </p>
       </Section>
 
@@ -413,7 +413,7 @@ export default function SkillsPage() {
           <Heading className="mt-3">Review stances</Heading>
           <p className="mt-4 text-concrete-400">
             Framework-free catalog stances for judgment, evidence, security, and
-            debugging. Installed with <code className="text-corpus-yellow">npx skills</code>.
+            debugging. Installed with <code className="text-suspec-yellow">npx skills</code>.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Badge variant="draft">markdown only</Badge>
@@ -424,7 +424,7 @@ export default function SkillsPage() {
           tone="evidence"
           skills={stances}
           repo={catalogRepo}
-          headerLabel="corpus-skills catalog"
+          headerLabel="suspec-skills catalog"
           guidesLabel={`${stances.length} guides`}
         />
       </Section>
@@ -451,36 +451,36 @@ export default function SkillsPage() {
           tone="core"
           skills={disciplines}
           repo={catalogRepo}
-          headerLabel="corpus-skills catalog"
+          headerLabel="suspec-skills catalog"
           guidesLabel={`${disciplines.length} guides`}
         />
       </Section>
 
       <Section
         id="kit-skills"
-        register="06 / kit · corpus-coupled"
+        register="06 / kit · suspec-coupled"
         registerTone="reference"
         className="flex scroll-mt-28 flex-col gap-12"
       >
         <div className="max-w-2xl">
           <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
             <Puzzle className="h-4 w-4" aria-hidden="true" />
-            <span>kit · corpus-coupled</span>
+            <span>kit · suspec-coupled</span>
           </div>
-          <Heading className="mt-3">The Corpus kit</Heading>
+          <Heading className="mt-3">The Suspec kit</Heading>
           <p className="mt-4 text-concrete-400">
-            These skills operate Corpus concepts — task packets, review packets,
+            These skills operate Suspec concepts — task packets, review packets,
             specs, findings — so they are not framework-free. They ship in{" "}
             <TextLink
-              href="https://github.com/jcosta33/corpus-starter-kit"
+              href="https://github.com/jcosta33/suspec-starter-kit"
               target="_blank"
               rel="noopener noreferrer"
             >
-              corpus-starter-kit
+              suspec-starter-kit
             </TextLink>{" "}
-            under <code className="text-corpus-yellow">.agents/skills/</code>, not
-            in the <code className="text-corpus-yellow">npx skills</code> catalog.
-            The <code className="text-corpus-yellow">write-*</code> family is opt-in
+            under <code className="text-suspec-yellow">.agents/skills/</code>, not
+            in the <code className="text-suspec-yellow">npx skills</code> catalog.
+            The <code className="text-suspec-yellow">write-*</code> family is opt-in
             task-implementation depth.
           </p>
         </div>
@@ -488,7 +488,7 @@ export default function SkillsPage() {
           tone="reference"
           skills={kitSkills}
           repo={kitRepo}
-          headerLabel="corpus-starter-kit/.agents/skills"
+          headerLabel="suspec-starter-kit/.agents/skills"
           guidesLabel={`${kitSkills.length} guides`}
           toned={false}
         />
@@ -509,7 +509,7 @@ export default function SkillsPage() {
             <Terminal className="h-4 w-4" aria-hidden="true" />
             <span>authoring.guide — write your own</span>
           </div>
-          <Heading className="mt-3">How to write a Corpus skill</Heading>
+          <Heading className="mt-3">How to write a Suspec skill</Heading>
           <p className="mt-4 text-concrete-400">
             Use a clear description, a self-contained body, visible output, and
             the AGENTS.md command contract.
@@ -533,11 +533,11 @@ export default function SkillsPage() {
           <p className="mt-4 text-concrete-400">
             Review the guide before installing and pin to a commit when you use
             it in a team repo. For scaffolding and checks, use{" "}
-            <TextLink href="/cli/">corpus-cli</TextLink>.
+            <TextLink href="/cli/">suspec-cli</TextLink>.
           </p>
           <p className="mt-6">
             <TextLink
-              href="https://github.com/jcosta33/corpus-skills"
+              href="https://github.com/jcosta33/suspec-skills"
               target="_blank"
               rel="noopener noreferrer"
               touchTarget

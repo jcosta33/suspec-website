@@ -10,5 +10,5 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://corpusframework.dev/sitemap.xml
-# llms.txt: https://corpusframework.dev/llms.txt
+Sitemap: https://suspecframework.dev/sitemap.xml
+# llms.txt: https://suspecframework.dev/llms.txt

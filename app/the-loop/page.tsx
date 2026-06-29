@@ -25,23 +25,23 @@ import { signalRoles, type SignalRole } from "../components/signalStyles";
 const stepIcons = [Inbox, FileText, ListChecks, Terminal, ScanEye, GitMerge];
 
 export const metadata: Metadata = {
-  title: "The loop — Corpus",
+  title: "The loop — Suspec",
   description:
-    "Pull, Spec, Task, Run, Review, Close: the Corpus workflow.",
+    "Pull, Spec, Task, Run, Review, Close: the Suspec workflow.",
   openGraph: {
-    title: "The loop — Corpus",
+    title: "The loop — Suspec",
     description:
-      "Pull, Spec, Task, Run, Review, Close: the Corpus workflow.",
+      "Pull, Spec, Task, Run, Review, Close: the Suspec workflow.",
     type: "website",
     url: "/the-loop/",
-    siteName: "Corpus",
+    siteName: "Suspec",
     locale: "en_US",
     images: [
       {
         url: "/og-the-loop.png",
         width: 1200,
         height: 630,
-        alt: "The Corpus loop — Pull, Spec, Task, Run, Review, Close",
+        alt: "The Suspec loop — Pull, Spec, Task, Run, Review, Close",
       },
     ],
   },
@@ -216,7 +216,7 @@ export default function TheLoopPage() {
           motif="loop"
           title={
             <>
-              The <span className="text-corpus-yellow">loop</span>
+              The <span className="text-suspec-yellow">loop</span>
             </>
           }
         >
@@ -225,7 +225,7 @@ export default function TheLoopPage() {
             the unit; Pull, Task, and the formal review are optional.
           </p>
           <HeroTrace
-            ariaLabel="Corpus loop trace"
+            ariaLabel="Suspec loop trace"
             items={steps.map((step) => ({
               label: step.name,
               signal: "core",
@@ -252,7 +252,7 @@ export default function TheLoopPage() {
             </p>
           </PaperArtifact>
           <Panel variant="inset" className="p-5">
-            <p className="font-mono text-xs uppercase tracking-[0.12em] text-corpus-yellow">
+            <p className="font-mono text-xs uppercase tracking-[0.12em] text-suspec-yellow">
               prep records
             </p>
             <ul className="mt-4 divide-y divide-panel-border/70 text-sm text-concrete-400">
@@ -348,7 +348,7 @@ export default function TheLoopPage() {
                       }
                     >
                       {line.prompt && (
-                        <span className="text-corpus-yellow">$ </span>
+                        <span className="text-suspec-yellow">$ </span>
                       )}
                       {line.text}
                     </p>

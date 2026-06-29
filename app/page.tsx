@@ -30,35 +30,35 @@ import { signalRoles, type SignalRole } from "./components/signalStyles";
 const softwareApp = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "Corpus",
+  name: "Suspec",
   applicationCategory: "DeveloperApplication",
   operatingSystem: "Any",
   softwareVersion: "0.1.0",
-  url: "https://corpusframework.dev",
+  url: "https://suspecframework.dev",
   description:
-    "Corpus is a lightweight spec-and-review workflow for teams using coding agents. Plain markdown, any agent, no runtime.",
+    "Suspec is a lightweight spec-and-review workflow for teams using coding agents. Plain markdown, any agent, no runtime.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  publisher: { "@id": "https://corpusframework.dev/#organization" },
+  publisher: { "@id": "https://suspecframework.dev/#organization" },
 };
 
 export const metadata: Metadata = {
-  title: "Corpus — spec and review workflow",
+  title: "Suspec — spec and review workflow",
   description:
     "A markdown workflow for specs, tasks, reviews, findings, and evidence.",
   openGraph: {
-    title: "Corpus — spec and review workflow",
+    title: "Suspec — spec and review workflow",
     description:
       "A markdown workflow for specs, tasks, reviews, findings, and evidence.",
     type: "website",
     url: "/",
-    siteName: "Corpus",
+    siteName: "Suspec",
     locale: "en_US",
     images: [
       {
         url: "/og-home.png",
         width: 1200,
         height: 630,
-        alt: "Corpus — spec and review workflow",
+        alt: "Suspec — spec and review workflow",
       },
     ],
   },
@@ -77,7 +77,7 @@ const loopSteps = [
   href: string;
 }>;
 
-const heroReviewCommand = "corpus review TASK-auth-refresh";
+const heroReviewCommand = "suspec review TASK-auth-refresh";
 
 const heroProofs = [
   {
@@ -171,16 +171,16 @@ const features = [
 
 const faqs = [
   {
-    q: "Is Corpus an agent?",
-    a: "No. Your coding tool writes code. Corpus structures the work around it.",
+    q: "Is Suspec an agent?",
+    a: "No. Your coding tool writes code. Suspec structures the work around it.",
   },
   {
-    q: "Does Corpus decide whether code ships?",
+    q: "Does Suspec decide whether code ships?",
     a: "No. Checks produce evidence. Review decides what it means.",
   },
   {
     q: "Do I need the CLI?",
-    a: "No. Corpus works as markdown. The CLI handles setup and checks.",
+    a: "No. Suspec works as markdown. The CLI handles setup and checks.",
   },
   {
     q: "Why the seal?",
@@ -260,7 +260,7 @@ export default function HomePage() {
             eyebrow="workflow / six steps"
             motif="loop"
             titleSize="hero"
-            title="Corpus"
+            title="Suspec"
           >
             <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-100">
               Structured agent work, checked at every step.
@@ -308,14 +308,14 @@ export default function HomePage() {
                 </div>
                 <StepRail />
                 <TerminalWindow
-                  title="corpus status"
+                  title="suspec status"
                   copyText={heroReviewCommand}
                   copyLabel="Copy command"
                   className="mt-4"
                 >
                   <p className="text-concrete-500"># current run</p>
                   <p>
-                    <span className="text-signal-core">$</span> corpus review
+                    <span className="text-signal-core">$</span> suspec review
                     <wbr /> TASK-auth-refresh
                   </p>
                   <p className="mt-2 text-signal-evidence">
@@ -554,7 +554,7 @@ export default function HomePage() {
               </Link>
             </Button>
             <ActionLink
-              href="https://github.com/jcosta33/corpus-starter-kit"
+              href="https://github.com/jcosta33/suspec-starter-kit"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"

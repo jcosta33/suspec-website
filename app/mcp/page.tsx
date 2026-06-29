@@ -26,23 +26,23 @@ import { PageNav } from "../components/PageNav";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 
 export const metadata: Metadata = {
-  title: "corpus-mcp — Corpus",
+  title: "suspec-mcp — Suspec",
   description:
-    "corpus-mcp exposes Corpus workspace facts through a verdict-free MCP server.",
+    "suspec-mcp exposes Suspec workspace facts through a verdict-free MCP server.",
   openGraph: {
-    title: "corpus-mcp — Corpus",
+    title: "suspec-mcp — Suspec",
     description:
-      "A verdict-free MCP server for Corpus status, checks, artifacts, and review facts.",
+      "A verdict-free MCP server for Suspec status, checks, artifacts, and review facts.",
     type: "website",
     url: "/mcp/",
-    siteName: "Corpus",
+    siteName: "Suspec",
     locale: "en_US",
     images: [
       {
         url: "/og-home.png",
         width: 1200,
         height: 630,
-        alt: "corpus-mcp — a verdict-free MCP bridge for Corpus workspaces",
+        alt: "suspec-mcp — a verdict-free MCP bridge for Suspec workspaces",
       },
     ],
   },
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
 
 const mcpConfigSnippet = `{
   "mcpServers": {
-    "corpus": {
-      "command": "corpus-mcp",
+    "suspec": {
+      "command": "suspec-mcp",
       "args": ["--workspace", "/path/to/workspace"]
     }
   }
@@ -62,7 +62,7 @@ const mcpConfigSnippet = `{
 
 const mcpInstallCommands = [
   "HOST=github.com/jcosta33",
-  "PKG=corpus-mcp",
+  "PKG=suspec-mcp",
   "SRC=$HOST/$PKG.git",
   "git clone https://$SRC",
   'cd "$PKG"',
@@ -113,28 +113,28 @@ const tools = [
     group: "read",
     signal: "reference",
     items: [
-      "corpus_get_status",
-      "corpus_list",
-      "corpus_check_workspace",
-      "corpus_check_file",
-      "corpus_get_task",
-      "corpus_get_spec",
-      "corpus_get_review",
-      "corpus_get_checks",
+      "suspec_get_status",
+      "suspec_list",
+      "suspec_check_workspace",
+      "suspec_check_file",
+      "suspec_get_task",
+      "suspec_get_spec",
+      "suspec_get_review",
+      "suspec_get_checks",
     ],
   },
   {
     group: "reconcile",
     signal: "evidence",
-    items: ["corpus_reconcile"],
+    items: ["suspec_reconcile"],
   },
   {
     group: "safe-write",
     signal: "evidence",
     items: [
-      "corpus_scaffold_spec",
-      "corpus_split_task",
-      "corpus_scaffold_finding",
+      "suspec_scaffold_spec",
+      "suspec_split_task",
+      "suspec_scaffold_finding",
     ],
   },
 ] as const satisfies Array<{
@@ -144,21 +144,21 @@ const tools = [
 }>;
 
 const resources = [
-  "corpus://workspace",
-  "corpus://status",
-  "corpus://checks",
-  "corpus://tasks/{id}",
-  "corpus://specs/{id}",
-  "corpus://reviews/{id}",
-  "corpus://findings/{id}",
+  "suspec://workspace",
+  "suspec://status",
+  "suspec://checks",
+  "suspec://tasks/{id}",
+  "suspec://specs/{id}",
+  "suspec://reviews/{id}",
+  "suspec://findings/{id}",
 ];
 
 const prompts = [
-  "corpus_task_briefing",
-  "corpus_before_done",
-  "corpus_review_assistant",
-  "corpus_evidence_rule",
-  "corpus_finding_candidate",
+  "suspec_task_briefing",
+  "suspec_before_done",
+  "suspec_review_assistant",
+  "suspec_evidence_rule",
+  "suspec_finding_candidate",
 ];
 
 const bridgeFlow = [
@@ -179,7 +179,7 @@ const bridgeFlow = [
     signal: "reference",
   },
   {
-    label: "corpus-mcp",
+    label: "suspec-mcp",
     channel: "adapter",
     detail: "Verdict-free adapter around the workspace.",
     icon: Boxes,
@@ -229,12 +229,12 @@ export default function McpPage() {
           toneLabel="mcp"
           title={
             <>
-              corpus<span className="product-name-suffix">-mcp</span>
+              suspec<span className="product-name-suffix">-mcp</span>
             </>
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            A verdict-free MCP for Corpus workspace facts.
+            A verdict-free MCP for Suspec workspace facts.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
             Status, checks, artifacts, and review data over stdio.
@@ -249,7 +249,7 @@ export default function McpPage() {
 
       <PageNav
         items={mcpPageNav}
-        ariaLabel="corpus-mcp page sections"
+        ariaLabel="suspec-mcp page sections"
         wrapperClassName="-mt-4 mx-auto w-full max-w-7xl px-6 sm:-mt-6 lg:px-8"
       />
 
@@ -271,7 +271,7 @@ export default function McpPage() {
           </div>
           <ol
             className="mcp-adapter-rail package-process-strip package-process-strip-mcp process-strip process-strip-signal-reference grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
-            aria-label="corpus-mcp request path"
+            aria-label="suspec-mcp request path"
           >
             {bridgeFlow.map((item, index) => {
               const Icon = item.icon;
@@ -330,7 +330,7 @@ export default function McpPage() {
         <Panel brushed className="p-2">
           <TerminalWindow
             title="mcp.json"
-            ariaLabel="corpus-mcp config"
+            ariaLabel="suspec-mcp config"
             copyText={mcpConfigSnippet}
           >
             <p className="text-concrete-500">
@@ -338,9 +338,9 @@ export default function McpPage() {
             </p>
             <p>{"{"}</p>
             <p className="pl-4">&quot;mcpServers&quot;: {"{"}</p>
-            <p className="pl-8">&quot;corpus&quot;: {"{"}</p>
+            <p className="pl-8">&quot;suspec&quot;: {"{"}</p>
             <p className="pl-12">
-              &quot;command&quot;: &quot;corpus-mcp&quot;,
+              &quot;command&quot;: &quot;suspec-mcp&quot;,
             </p>
             <p className="pl-12">
               &quot;args&quot;: [&quot;--workspace&quot;,
@@ -358,9 +358,9 @@ export default function McpPage() {
           meta="adapter package / cli stays small"
         >
           <p>
-            corpus-mcp adapts the CLI&apos;s public{" "}
+            suspec-mcp adapts the CLI&apos;s public{" "}
             <span className="font-semibold">--json</span> contract. The SDK
-            lives here so corpus-cli can stay small.
+            lives here so suspec-cli can stay small.
           </p>
         </PaperArtifact>
       </Section>
@@ -463,7 +463,7 @@ export default function McpPage() {
           <Heading className="mt-3">Context the client can ask for</Heading>
           <p className="mt-4 text-concrete-400">
             Resources expose the board, checks, and selected artifacts. Prompts
-            give clients a Corpus-shaped starting point.
+            give clients a Suspec-shaped starting point.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <div className="mcp-fact-list tool-list-card tool-list-card-reference rounded-panel border bg-panel p-4">
@@ -513,62 +513,62 @@ export default function McpPage() {
           </div>
           <Heading className="mt-3">Install from source for now</Heading>
           <p className="mt-4 text-concrete-400">
-            The package exposes a <code>corpus-mcp</code> binary. It expects the{" "}
+            The package exposes a <code>suspec-mcp</code> binary. It expects the{" "}
             <TextLink
               href="/cli/"
             >
-              Corpus CLI
+              Suspec CLI
             </TextLink>{" "}
-            on PATH. Use <code>CORPUS_BIN</code> or{" "}
-            <code>--corpus-bin</code> to set the binary explicitly.
+            on PATH. Use <code>SUSPEC_BIN</code> or{" "}
+            <code>--suspec-bin</code> to set the binary explicitly.
           </p>
           <dl className="mcp-install-ledger mt-6">
             <div>
               <dt>Binary</dt>
-              <dd>corpus-mcp</dd>
+              <dd>suspec-mcp</dd>
             </div>
             <div>
               <dt>Requires</dt>
-              <dd>corpus CLI</dd>
+              <dd>suspec CLI</dd>
             </div>
             <div>
               <dt>Override</dt>
-              <dd>CORPUS_BIN</dd>
+              <dd>SUSPEC_BIN</dd>
             </div>
           </dl>
         </div>
         <Panel brushed className="p-2">
           <TerminalWindow
             title="terminal"
-            ariaLabel="install corpus-mcp"
+            ariaLabel="install suspec-mcp"
             copyText={mcpInstallCommands}
           >
             <p className="text-concrete-500">
               # until a published build is available
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}HOST=github.com/jcosta33
+              <span className="text-suspec-yellow">$</span>{" "}HOST=github.com/jcosta33
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}PKG=corpus-mcp
+              <span className="text-suspec-yellow">$</span>{" "}PKG=suspec-mcp
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}SRC=$HOST/$PKG.git
+              <span className="text-suspec-yellow">$</span>{" "}SRC=$HOST/$PKG.git
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}git clone https://$SRC
+              <span className="text-suspec-yellow">$</span>{" "}git clone https://$SRC
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}cd &quot;$PKG&quot;
+              <span className="text-suspec-yellow">$</span>{" "}cd &quot;$PKG&quot;
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}pnpm install
+              <span className="text-suspec-yellow">$</span>{" "}pnpm install
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}pnpm build
+              <span className="text-suspec-yellow">$</span>{" "}pnpm build
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}npm link
+              <span className="text-suspec-yellow">$</span>{" "}npm link
             </p>
           </TerminalWindow>
         </Panel>
@@ -597,7 +597,7 @@ export default function McpPage() {
           </div>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <TextLink
-              href="https://github.com/jcosta33/corpus-mcp"
+              href="https://github.com/jcosta33/suspec-mcp"
               target="_blank"
               rel="noopener noreferrer"
               className="w-fit gap-2 text-base font-semibold"

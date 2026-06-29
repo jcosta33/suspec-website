@@ -10,8 +10,8 @@ import { PageHero } from "../components/PageHero";
 import type { SignalRole } from "../components/signalStyles";
 
 export const metadata: Metadata = {
-  title: "Colophon — Corpus",
-  description: "How the Corpus website is built.",
+  title: "Colophon — Suspec",
+  description: "How the Suspec website is built.",
   robots: "noindex",
   alternates: {
     canonical: "/colophon/",
@@ -35,8 +35,8 @@ const buildTrace = [
 ];
 
 const provenanceFacts = [
-  { label: "Source", value: "jcosta33/corpus-website" },
-  { label: "Canon", value: "../corpus/docs" },
+  { label: "Source", value: "jcosta33/suspec-website" },
+  { label: "Canon", value: "../suspec/docs" },
   { label: "Export", value: "dist/" },
   { label: "Search", value: "Pagefind" },
 ];
@@ -54,7 +54,7 @@ const trace = [
     label: "OUTPUT",
     title: "Static export",
     text: "The deployed site is generated at build time and served as static files.",
-    href: "https://github.com/jcosta33/corpus-website",
+    href: "https://github.com/jcosta33/suspec-website",
     cta: "Open source",
     external: true,
     signal: "reference",
@@ -62,7 +62,7 @@ const trace = [
   {
     label: "CONTENT",
     title: "Docs source",
-    text: "Canonical framework docs are pulled from the sibling Corpus repository.",
+    text: "Canonical framework docs are pulled from the sibling Suspec repository.",
     href: "/docs/",
     cta: "Read the docs",
     newTab: true,
@@ -107,7 +107,7 @@ export default function ColophonPage() {
                   Build record
                 </h2>
                 <p className="mt-2 text-concrete-400">
-                  Built with Corpus. Drafted, reviewed, and merged through the
+                  Built with Suspec. Drafted, reviewed, and merged through the
                   same workflow.
                 </p>
               </div>
@@ -132,7 +132,7 @@ export default function ColophonPage() {
         <PaperArtifact
           label="source"
           title="site record"
-          meta="built with the same corpus workflow"
+          meta="built with the same suspec workflow"
           className="colophon-paper"
         >
           <p>
@@ -141,7 +141,7 @@ export default function ColophonPage() {
           </p>
           <p className="mt-4">
             <Link
-              href="https://github.com/jcosta33/corpus-website"
+              href="https://github.com/jcosta33/suspec-website"
               target="_blank"
               rel="noopener noreferrer"
               className="focus-ring inline-flex min-h-11 items-center rounded-sm px-1 font-semibold text-ink underline decoration-ink/40 underline-offset-4 hover:decoration-ink"
@@ -209,7 +209,7 @@ export default function ColophonPage() {
               <p className="text-sm leading-relaxed text-concrete-400">
                 {item.text}
               </p>
-              <span className="mt-auto inline-flex min-h-9 w-fit items-center gap-2 pt-2 font-mono text-xs font-semibold uppercase tracking-wide text-corpus-yellow">
+              <span className="mt-auto inline-flex min-h-9 w-fit items-center gap-2 pt-2 font-mono text-xs font-semibold uppercase tracking-wide text-suspec-yellow">
                 {item.cta}
                 {item.external ? (
                   <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />

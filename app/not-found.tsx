@@ -14,7 +14,7 @@ import { PilotLamp } from "./components/PilotLamp";
 import { signalRoles, type SignalRole } from "./components/signalStyles";
 
 export const metadata = {
-  title: "Page not found — Corpus",
+  title: "Page not found — Suspec",
   description: "The requested page was not found.",
   robots: "noindex",
 };
@@ -72,7 +72,7 @@ export default function NotFoundPage() {
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
           <ActionLink href="/">
-            <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to Corpus
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to Suspec
           </ActionLink>
           <ActionLink href="/docs/">
             <Search className="h-4 w-4" aria-hidden="true" /> Open docs

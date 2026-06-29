@@ -18,7 +18,7 @@ const SPINE = [HEX[1], HEX[3], HEX[5]] as const;
 const OPTIONAL = [HEX[0], HEX[2], HEX[4]] as const;
 
 export function Logo({ className = "" }: { className?: string }) {
-  const gradientId = `${useId().replaceAll(":", "")}-corpus-gilt`;
+  const gradientId = `${useId().replaceAll(":", "")}-suspec-gilt`;
 
   return (
     <span
@@ -93,7 +93,7 @@ export function Logo({ className = "" }: { className?: string }) {
         {/* center hub */}
         <circle cx="16" cy="16" r="1.4" fill="#d88a24" />
       </svg>
-      <span className="text-[1.1em] font-bold leading-[0.92]">Corpus</span>
+      <span className="text-[1.1em] font-bold leading-[0.92]">Suspec</span>
     </span>
   );
 }

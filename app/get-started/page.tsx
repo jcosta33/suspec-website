@@ -31,23 +31,23 @@ import {
 } from "../components/signalStyles";
 
 export const metadata: Metadata = {
-  title: "Get started — Corpus",
+  title: "Get started — Suspec",
   description:
-    "Set up Corpus in a new repo or an existing project.",
+    "Set up Suspec in a new repo or an existing project.",
   openGraph: {
-    title: "Get started — Corpus",
+    title: "Get started — Suspec",
     description:
-      "Set up Corpus in a new repo or an existing project.",
+      "Set up Suspec in a new repo or an existing project.",
     type: "website",
     url: "/get-started/",
-    siteName: "Corpus",
+    siteName: "Suspec",
     locale: "en_US",
     images: [
       {
         url: "/og-get-started.png",
         width: 1200,
         height: 630,
-        alt: "Get started with Corpus — a new repo or an existing project",
+        alt: "Get started with Suspec — a new repo or an existing project",
       },
     ],
   },
@@ -58,15 +58,15 @@ export const metadata: Metadata = {
 
 const cliInitCommands = [
   "HOST=github.com/jcosta33",
-  "PKG=corpus-cli",
+  "PKG=suspec-cli",
   "SRC=$HOST/$PKG.git",
   "git clone https://$SRC",
   'cd "$PKG"',
   "npm install",
   "npm run build",
   "npm link",
-  "corpus init",
-  "corpus check",
+  "suspec init",
+  "suspec check",
 ].join("\n");
 
 function KitIcon({
@@ -187,7 +187,7 @@ export default function GetStartedPage() {
             and checks.
           </p>
           <HeroTrace
-            ariaLabel="Corpus setup path trace"
+            ariaLabel="Suspec setup path trace"
             items={setupPath.map((step) => ({
               label: step.label,
               signal: step.signal,
@@ -200,7 +200,7 @@ export default function GetStartedPage() {
         <Panel brushed screws className="p-0">
           <ol
             className="setup-path-strip process-strip process-strip-signal-muted grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
-            aria-label="Corpus setup paths and next steps"
+            aria-label="Suspec setup paths and next steps"
           >
             {setupPath.map((step, index) => {
               const Icon = step.icon;
@@ -267,7 +267,7 @@ export default function GetStartedPage() {
         </div>
         <Card
           signal="greenfield"
-          href="https://github.com/jcosta33/corpus-starter-kit"
+          href="https://github.com/jcosta33/suspec-starter-kit"
           target="_blank"
           rel="noopener noreferrer"
           ariaLabel="Use the starter kit on GitHub"
@@ -359,10 +359,10 @@ export default function GetStartedPage() {
             </div>
             <div>
               <dt>Adds</dt>
-              <dd>Corpus records beside the code.</dd>
+              <dd>Suspec records beside the code.</dd>
             </div>
           </dl>
-          <code className="setup-choice-command">cp -R corpus-starter-kit/* .</code>
+          <code className="setup-choice-command">cp -R suspec-starter-kit/* .</code>
           <span className="setup-choice-action inline-flex min-h-11 w-fit items-center gap-2 text-sm font-semibold underline underline-offset-4 transition-colors">
             Read the adopting guide{" "}
             <ArrowRight
@@ -441,7 +441,7 @@ export default function GetStartedPage() {
         </div>
         <Heading>Prefer the command line?</Heading>
         <p className="max-w-2xl text-concrete-400">
-          <code className="text-corpus-yellow">corpus init</code> scaffolds the
+          <code className="text-suspec-yellow">suspec init</code> scaffolds the
           same workspace into a new or existing repo. It refuses to overwrite
           existing files. Install it from source for now.
         </p>
@@ -451,40 +451,40 @@ export default function GetStartedPage() {
               # install the CLI from source
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}HOST=github.com/jcosta33
+              <span className="text-suspec-yellow">$</span>{" "}HOST=github.com/jcosta33
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}PKG=corpus-cli
+              <span className="text-suspec-yellow">$</span>{" "}PKG=suspec-cli
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}SRC=$HOST/$PKG.git
+              <span className="text-suspec-yellow">$</span>{" "}SRC=$HOST/$PKG.git
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}git clone https://$SRC
+              <span className="text-suspec-yellow">$</span>{" "}git clone https://$SRC
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}cd &quot;$PKG&quot;
+              <span className="text-suspec-yellow">$</span>{" "}cd &quot;$PKG&quot;
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}npm install
+              <span className="text-suspec-yellow">$</span>{" "}npm install
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}npm run build
+              <span className="text-suspec-yellow">$</span>{" "}npm run build
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}npm link
+              <span className="text-suspec-yellow">$</span>{" "}npm link
             </p>
             <p className="mt-2 text-concrete-500">
               # then, in a new or existing repo
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}corpus init{" "}
+              <span className="text-suspec-yellow">$</span>{" "}suspec init{" "}
               <span className="text-concrete-500">
                 # scaffold the workspace, conflict-safe
               </span>
             </p>
             <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}corpus check{" "}
+              <span className="text-suspec-yellow">$</span>{" "}suspec check{" "}
               <span className="text-concrete-500">
                 # confirm it is well-formed; exit 0/1/2
               </span>

@@ -1,5 +1,5 @@
 // Palette grammar:
-// core = Corpus identity / loop / primary action
+// core = Suspec identity / loop / primary action
 // evidence = proof / review / verified output, not generic "green means good"
 // greenfield = literal new-repo or starter-kit paths only
 // brownfield = existing-project adoption and migration paths only
@@ -31,7 +31,7 @@ export const signalRoleMeta = {
     relationship: "base hue: HSL(34 71% 49%)",
     wheel: "0° from core",
     tone: "orangy gold",
-    use: "Corpus identity, primary CTAs, active navigation, and current loop state.",
+    use: "Suspec identity, primary CTAs, active navigation, and current loop state.",
     surface: "solid gilt plate, active rails, and primary controls",
     pattern: "single gilt rail with a soft center glow",
     avoid: "Do not use as a generic highlight when a more specific role exists.",

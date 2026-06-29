@@ -40,14 +40,14 @@ export function Button({
       // Matches the terminal Copy control: recessed panel, fine inset bevel, a
       // subtle hover shimmer (the .copy-button class), with a gold CTA accent.
       "copy-button group border border-panel-border bg-panel-recessed/80 text-concrete-100",
-      "hover:border-brass hover:text-corpus-yellow",
+      "hover:border-brass hover:text-suspec-yellow",
       "active:shadow-[inset_0_2px_5px_rgba(0,0,0,0.45)]",
       "disabled:border-panel-border disabled:bg-panel disabled:text-concrete-400 disabled:shadow-none",
     ].join(" "),
     secondary: [
       "border border-panel-border bg-panel-raised text-concrete-100",
       "shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-2px_0_rgba(0,0,0,0.5)]",
-      "hover:border-brass hover:text-corpus-yellow",
+      "hover:border-brass hover:text-suspec-yellow",
       "active:shadow-[inset_0_2px_5px_rgba(0,0,0,0.45)]",
       "disabled:border-panel-border disabled:text-concrete-400 disabled:shadow-none",
     ].join(" "),

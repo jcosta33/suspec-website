@@ -22,7 +22,7 @@ import {
 import { AlertTriangle, CheckCircle, Wrench } from "lucide-react";
 
 export const metadata = {
-  title: "Kitchen sink — Corpus",
+  title: "Kitchen sink — Suspec",
   robots: "noindex, nofollow",
 };
 
@@ -61,7 +61,7 @@ const specimenRegister = [
   },
 ];
 
-const terminalSpecimenCommand = "corpus status";
+const terminalSpecimenCommand = "suspec status";
 
 function PreviewSection({
   id,
@@ -137,7 +137,7 @@ export default function KitchenSinkPage() {
                     key={group.label}
                     className="kitchen-specimen-group bg-panel-raised/95 p-4 sm:p-5"
                   >
-                    <p className="font-mono text-xs font-semibold uppercase tracking-wide text-corpus-yellow">
+                    <p className="font-mono text-xs font-semibold uppercase tracking-wide text-suspec-yellow">
                       {String(index + 1).padStart(2, "0")}
                     </p>
                     <h3 className="mt-2 font-heading text-lg font-bold text-concrete-100 sm:mt-3 sm:text-xl">
@@ -151,7 +151,7 @@ export default function KitchenSinkPage() {
                         <li key={link.href}>
                           <a
                             href={link.href}
-                            className="focus-ring inline-flex min-h-11 min-w-11 items-center rounded-sm text-sm font-medium text-corpus-yellow underline decoration-corpus-yellow/40 underline-offset-4 transition-[color,text-decoration-color] hover:text-gold-bright hover:decoration-gold-bright"
+                            className="focus-ring inline-flex min-h-11 min-w-11 items-center rounded-sm text-sm font-medium text-suspec-yellow underline decoration-suspec-yellow/40 underline-offset-4 transition-[color,text-decoration-color] hover:text-gold-bright hover:decoration-gold-bright"
                           >
                             {link.label}
                           </a>
@@ -412,7 +412,7 @@ export default function KitchenSinkPage() {
         >
           <p className="text-concrete-500"># CRT monitor panel</p>
           <p className="text-concrete-100">
-              <span className="text-corpus-yellow">$</span>{" "}corpus status
+              <span className="text-suspec-yellow">$</span>{" "}suspec status
           </p>
           <p className="mt-1 text-signal-evidence">✓ all systems nominal</p>
         </TerminalWindow>
@@ -423,7 +423,7 @@ export default function KitchenSinkPage() {
       </PreviewSection>
 
       <PreviewSection id="icons" index="13" title="Icons">
-        <div className="flex gap-4 text-corpus-yellow">
+        <div className="flex gap-4 text-suspec-yellow">
           <AlertTriangle aria-label="Warning" />
           <CheckCircle aria-label="Success" />
           <Wrench aria-label="Tools" />
