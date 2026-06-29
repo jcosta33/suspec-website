@@ -25,8 +25,9 @@
   --color-panel-edge: #5b4937;
 
   --color-albedo: #f0e2cc;
+  --color-albedo-rgb: 240, 226, 204;
   --color-mercury: #b8aa96;
-  --color-ash: #7f735f;
+  --color-ash: #998d76;
   --color-concrete-100: var(--color-albedo);
   --color-concrete-200: #e0d0b8;
   --color-concrete-300: #cbbda7;
@@ -45,7 +46,7 @@
   --color-verdigris: #78bdb2;
   --color-neon-bridge: #9a839b;
   --color-interface-blue: #6ab8c4;
-  --color-rubedo: #ac4650;
+  --color-rubedo: #cf7079;
   --color-pwr-red: #d2624e;
   --color-olive: var(--color-phosphor);
   --color-black-text: #100b07;
@@ -60,7 +61,7 @@
   --signal-brownfield: var(--color-brownfield);
   --signal-brownfield-rgb: 169, 107, 64;
   --signal-change: var(--color-rubedo);
-  --signal-change-rgb: 172, 70, 80;
+  --signal-change-rgb: 207, 112, 121;
   --signal-reference: var(--color-verdigris);
   --signal-reference-rgb: 120, 189, 178;
   --signal-muted: var(--color-brass);
@@ -283,30 +284,7 @@
 
 :root {
   color-scheme: dark;
-  --c-night: #110e0c;
-  --c-chassis: #16100c;
-  --c-section-band: #0e0c08;
-  --c-panel: #1a1510;
-  --c-panel-raised: #241d15;
-  --c-panel-border: #46392c;
-  --c-footer: #070604;
-  --c-albedo: #f0e2cc;
-  --c-mercury: #b8aa96;
-  --c-ash: #7f735f;
-  --c-aurum: #d88a24;
-  --c-brass: #b8844a;
-  --c-amber: #f0a33a;
-  --c-complement: #2472d8;
-  --c-phosphor: #b7c96c;
-  --c-greenfield: #7fbd82;
-  --c-brownfield: #a96b40;
-  --c-verdigris: #78bdb2;
-  --c-neon-bridge: #9a839b;
-  --c-interface-blue: #6ab8c4;
-  --c-rubedo: #ac4650;
-  --c-pwr-red: #d2624e;
-  --c-olive: var(--c-phosphor);
-  --color-pwr-red: var(--c-pwr-red);
+  --color-pwr-red: #d2624e;
   --signal-core: var(--color-aurum);
   --signal-core-rgb: 216, 138, 36;
   --signal-evidence: var(--color-phosphor);
@@ -316,7 +294,7 @@
   --signal-brownfield: var(--color-brownfield);
   --signal-brownfield-rgb: 169, 107, 64;
   --signal-change: var(--color-rubedo);
-  --signal-change-rgb: 172, 70, 80;
+  --signal-change-rgb: 207, 112, 121;
   --package-skills: var(--signal-evidence);
   --package-skills-rgb: var(--signal-evidence-rgb);
   --package-agents: var(--signal-reference);
@@ -329,12 +307,6 @@
   --signal-reference-rgb: 120, 189, 178;
   --signal-muted: var(--color-brass);
   --signal-muted-rgb: 184, 132, 74;
-  --c-paper: #f0e2cc;
-  --c-paper-warm: #dcc9a9;
-  --c-paper-line: #b9a07d;
-  --c-ink: #100b07;
-  --c-pencil: #5f554a;
-  --c-black-text: #100b07;
   --cursor-x: 50vw;
   --cursor-y: -12vh;
 }
@@ -5275,7 +5247,7 @@ section.bg-section-band::after {
 
 .skill-guide-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   gap: 0.5rem;
   margin: 0;
   padding: 1rem;
