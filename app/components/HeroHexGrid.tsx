@@ -22,7 +22,7 @@ export function HeroHexGrid({ className = "" }: { className?: string }) {
       aria-hidden="true"
     >
       <svg
-        className="absolute inset-0 h-full w-full opacity-[0.16]"
+        className="absolute inset-0 h-full w-full opacity-[0.2]"
         viewBox="45 45 510 510"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -73,11 +73,11 @@ export function HeroHexGrid({ className = "" }: { className?: string }) {
         <polygon
           points={SPINE_POINTS.map((p) => `${p.x},${p.y}`).join(" ")}
           fill={GOLD}
-          fillOpacity="0.06"
+          fillOpacity="0.09"
           stroke={GOLD}
-          strokeWidth="1.5"
+          strokeWidth="2.2"
           strokeLinejoin="round"
-          opacity="0.95"
+          opacity="1"
         />
 
         {/* hub spokes to the spine */}
