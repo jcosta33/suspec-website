@@ -176,7 +176,7 @@ const commandFamilies = [
     commands: "init · update · new · pull · agents emit",
     detail: "Create or refresh kit-owned files.",
     icon: Blocks,
-    signal: "muted",
+    signal: "reference",
   },
   {
     label: "Check",
@@ -184,7 +184,7 @@ const commandFamilies = [
     commands: "check · status",
     detail: "Report workspace facts and gaps.",
     icon: ShieldCheck,
-    signal: "evidence",
+    signal: "reference",
   },
   {
     label: "Review",
@@ -192,7 +192,7 @@ const commandFamilies = [
     commands: "review · promote",
     detail: "Compare evidence and draft findings.",
     icon: ScanEye,
-    signal: "evidence",
+    signal: "reference",
   },
   {
     label: "Run",
@@ -200,7 +200,7 @@ const commandFamilies = [
     commands: "worktree · run",
     detail: "Isolate task work and launch agents.",
     icon: GitBranch,
-    signal: "muted",
+    signal: "reference",
   },
   {
     label: "JSON",

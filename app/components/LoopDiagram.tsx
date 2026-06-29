@@ -15,14 +15,12 @@ const steps = [
     label: "Pull",
     icon: Inbox,
     description: "Capture the ticket and intent in an intake file.",
-    signal: "core",
   },
   {
     number: "02",
     label: "Spec",
     icon: FileText,
     description: "Write requirements, each with a verification method.",
-    signal: "core",
   },
   {
     number: "03",
@@ -30,14 +28,12 @@ const steps = [
     icon: ListChecks,
     description:
       "Hand the agent a bounded packet: scope, do-not-change, verify.",
-    signal: "core",
   },
   {
     number: "04",
     label: "Run",
     icon: Terminal,
     description: "The agent implements and pastes real evidence.",
-    signal: "core",
   },
   {
     number: "05",
@@ -45,14 +41,12 @@ const steps = [
     icon: ScanEye,
     description:
       "Check evidence per requirement; human attention where needed.",
-    signal: "core",
   },
   {
     number: "06",
     label: "Close",
     icon: GitMerge,
     description: "Merge, save findings, update the board.",
-    signal: "core",
   },
 ] as const;
 
@@ -182,7 +176,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
           const Icon = step.icon;
           const showConnector = index < steps.length - 1 && index % 3 !== 2;
           const cardClassName =
-            `loop-step-card loop-step-card-${step.signal} ${
+            `loop-step-card loop-step-card-workflow ${
               linkSteps ? "loop-step-card-linked" : ""
             } focus-ring group relative flex min-h-[13rem] flex-col gap-3 p-4 panel-raised rivet-row transition-all duration-150 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-2px_0_rgba(0,0,0,0.5)]`;
           const content = (
@@ -192,7 +186,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
                   {step.number}
                 </span>
                 <SignalPulse
-                  color={step.signal}
+                  color="core"
                   className="opacity-60 group-hover:opacity-100"
                 />
               </div>

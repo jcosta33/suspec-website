@@ -221,7 +221,7 @@ export default function TheLoopPage() {
             ariaLabel="Corpus loop trace"
             items={steps.map((step) => ({
               label: step.name,
-              signal: step.signal,
+              signal: "core",
             }))}
           />
         </PageHero>

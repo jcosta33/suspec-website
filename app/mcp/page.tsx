@@ -161,7 +161,7 @@ const bridgeFlow = [
     detail: "Claude Desktop, Cursor, or another MCP host.",
     icon: MessagesSquare,
     href: "#mcp-config",
-    signal: "muted",
+    signal: "reference",
   },
   {
     label: "stdio",
@@ -169,7 +169,7 @@ const bridgeFlow = [
     detail: "A local process pipe, not a hosted service.",
     icon: Cable,
     href: "#install",
-    signal: "muted",
+    signal: "reference",
   },
   {
     label: "corpus-mcp",
@@ -177,7 +177,7 @@ const bridgeFlow = [
     detail: "Read-only adapter around the workspace.",
     icon: Boxes,
     href: "#guardrails",
-    signal: "core",
+    signal: "reference",
   },
   {
     label: "CLI JSON",

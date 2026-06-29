@@ -43,7 +43,7 @@
   --color-greenfield: #7fbd82;
   --color-brownfield: #a96b40;
   --color-verdigris: #78bdb2;
-  --color-neon-bridge: #8e7d91;
+  --color-neon-bridge: #9a839b;
   --color-interface-blue: #6ab8c4;
   --color-rubedo: #ac4650;
   --color-pwr-red: #d2624e;
@@ -70,12 +70,12 @@
      continues to use the semantic signal roles below. */
   --package-skills: var(--signal-evidence);
   --package-skills-rgb: var(--signal-evidence-rgb);
-  --package-agents: #86a984;
-  --package-agents-rgb: 134, 169, 132;
+  --package-agents: var(--signal-reference);
+  --package-agents-rgb: var(--signal-reference-rgb);
   --package-cli: var(--color-interface-blue);
   --package-cli-rgb: 106, 184, 196;
   --package-mcp: var(--color-neon-bridge);
-  --package-mcp-rgb: 142, 125, 145;
+  --package-mcp-rgb: 154, 131, 155;
 
   /* Role patterns: hue + mark travel together, so color does not become decoration. */
   --signal-pattern-core: linear-gradient(
@@ -301,7 +301,7 @@
   --c-greenfield: #7fbd82;
   --c-brownfield: #a96b40;
   --c-verdigris: #78bdb2;
-  --c-neon-bridge: #8e7d91;
+  --c-neon-bridge: #9a839b;
   --c-interface-blue: #6ab8c4;
   --c-rubedo: #ac4650;
   --c-pwr-red: #d2624e;
@@ -319,12 +319,12 @@
   --signal-change-rgb: 172, 70, 80;
   --package-skills: var(--signal-evidence);
   --package-skills-rgb: var(--signal-evidence-rgb);
-  --package-agents: #86a984;
-  --package-agents-rgb: 134, 169, 132;
+  --package-agents: var(--signal-reference);
+  --package-agents-rgb: var(--signal-reference-rgb);
   --package-cli: var(--color-interface-blue);
   --package-cli-rgb: 106, 184, 196;
   --package-mcp: var(--color-neon-bridge);
-  --package-mcp-rgb: 142, 125, 145;
+  --package-mcp-rgb: 154, 131, 155;
   --signal-reference: var(--color-verdigris);
   --signal-reference-rgb: 120, 189, 178;
   --signal-muted: var(--color-brass);
@@ -3422,6 +3422,7 @@ section.bg-section-band::after {
   }
 }
 
+.home-step-rail-item-workflow,
 .home-step-rail-item-core {
   --step-signal: var(--signal-core);
   --step-rgb: var(--signal-core-rgb);
@@ -5835,6 +5836,7 @@ section.bg-section-band::after {
   box-shadow: 0 0 14px rgba(var(--loop-step-rgb), 0.12);
 }
 
+.loop-step-card-workflow,
 .loop-step-card-core {
   --loop-step-signal: var(--signal-core);
   --loop-step-rgb: var(--signal-core-rgb);
@@ -5861,6 +5863,13 @@ section.bg-section-band::after {
   --loop-step-rgb: var(--signal-change-rgb);
   --loop-step-pattern: var(--signal-pattern-change);
   --loop-step-mark: var(--signal-mark-change);
+}
+
+.loop-diagram .loop-step-card {
+  --loop-step-signal: var(--signal-core);
+  --loop-step-rgb: var(--signal-core-rgb);
+  --loop-step-pattern: var(--signal-pattern-muted);
+  --loop-step-mark: var(--signal-mark-muted);
 }
 
 .loop-step-index,

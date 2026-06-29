@@ -66,15 +66,14 @@ export const metadata: Metadata = {
 };
 
 const loopSteps = [
-  { label: "Pull", signal: "core", href: "/the-loop/#pull" },
-  { label: "Spec", signal: "core", href: "/the-loop/#spec" },
-  { label: "Task", signal: "core", href: "/the-loop/#task" },
-  { label: "Run", signal: "core", href: "/the-loop/#run" },
-  { label: "Review", signal: "core", href: "/the-loop/#review" },
-  { label: "Close", signal: "core", href: "/the-loop/#close" },
+  { label: "Pull", href: "/the-loop/#pull" },
+  { label: "Spec", href: "/the-loop/#spec" },
+  { label: "Task", href: "/the-loop/#task" },
+  { label: "Run", href: "/the-loop/#run" },
+  { label: "Review", href: "/the-loop/#review" },
+  { label: "Close", href: "/the-loop/#close" },
 ] as const satisfies Array<{
   label: string;
-  signal: SignalRole;
   href: string;
 }>;
 
@@ -206,18 +205,16 @@ function StepRail() {
         <li key={step.label} className="min-w-0">
           <Link
             href={step.href}
-            className={`home-step-rail-item home-step-rail-item-${step.signal} focus-ring flex min-w-0 items-center justify-between gap-3 rounded-panel border bg-panel px-3 py-2 no-underline`}
+            className="home-step-rail-item home-step-rail-item-workflow focus-ring flex min-w-0 items-center justify-between gap-3 rounded-panel border bg-panel px-3 py-2 no-underline"
             aria-label={`Read the ${step.label} step in the loop`}
           >
-            <span
-              className={`font-mono text-xs ${signalRoles[step.signal].text}`}
-            >
+            <span className="font-mono text-xs text-signal-core">
               {String(index + 1).padStart(2, "0")}
             </span>
             <span className="min-w-0 break-words font-heading text-sm font-bold text-concrete-100">
               {step.label}
             </span>
-            <PilotLamp color={step.signal} className="scale-75" />
+            <PilotLamp color="core" className="scale-75" />
           </Link>
         </li>
       ))}
