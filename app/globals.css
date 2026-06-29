@@ -2514,13 +2514,19 @@ body::after {
 
 @media (max-width: 40rem) {
   .hero-trace {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    justify-content: center;
-    gap: 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.38rem;
     width: min(100%, 22rem);
-    overflow: visible;
-    margin-top: 1.08rem;
+    overflow-x: auto;
+    margin-top: 0.98rem;
+    padding-block: 0.05rem 0.22rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .hero-trace::-webkit-scrollbar {
+    display: none;
   }
 
   .hero-trace::before {
@@ -2528,17 +2534,15 @@ body::after {
   }
 
   .hero-trace-item {
-    min-width: 0;
-    min-height: 2.8rem;
-    padding: 0.48rem 0.68rem;
-  }
-
-  .hero-trace-item:nth-child(odd):last-child {
-    grid-column: 1 / -1;
+    min-width: 4.95rem;
+    min-height: 2.28rem;
+    flex: 0 0 auto;
+    padding: 0.42rem 0.58rem;
+    scroll-snap-align: start;
   }
 
   .hero-trace-label {
-    font-size: 0.8rem;
+    font-size: 0.74rem;
   }
 }
 
@@ -7288,7 +7292,6 @@ body::after {
   .agent-page-nav,
   .section-jump-nav {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.45rem;
     overflow: visible;
     border: 0;
@@ -7297,6 +7300,24 @@ body::after {
     box-shadow: none;
     margin-inline: 0;
     padding: 0;
+  }
+
+  .agent-page-nav {
+    display: flex;
+    gap: 0.38rem;
+    overflow-x: auto;
+    padding-block: 0.05rem 0.22rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    mask-image: linear-gradient(90deg, #000 0 calc(100% - 1.35rem), transparent);
+  }
+
+  .agent-page-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .section-jump-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .agent-page-nav::before,
@@ -7323,10 +7344,21 @@ body::after {
     padding: 0.52rem 0.58rem;
   }
 
+  .agent-page-nav-link {
+    min-height: 2.28rem;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    padding: 0.42rem 0.62rem;
+  }
+
   .agent-page-nav-label,
   .section-jump-nav-label {
     font-size: 0.78rem;
     white-space: nowrap;
+  }
+
+  .agent-page-nav-label {
+    font-size: 0.74rem;
   }
 
   .agent-page-nav-link > svg,
