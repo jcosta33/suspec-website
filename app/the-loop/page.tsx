@@ -149,7 +149,8 @@ const steps = [
     number: "05",
     name: "Review",
     signal: "core",
-    body: "Check evidence per requirement. Escalate missing or unclear evidence.",
+    optional: true,
+    body: "A non-implementer checks evidence per requirement. The formal packet is optional for a small change you verified — the judgment isn't.",
     example: {
       title: "reviews/REVIEW-shell.md",
       lines: [
@@ -221,7 +222,7 @@ export default function TheLoopPage() {
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Six steps for moving agent work from request to review — the spec is
-            the unit; Pull and Task are optional.
+            the unit; Pull, Task, and the formal review are optional.
           </p>
           <HeroTrace
             ariaLabel="Corpus loop trace"

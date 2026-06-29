@@ -27,11 +27,11 @@ import { signalRoles, type SignalRole } from "../components/signalStyles";
 export const metadata: Metadata = {
   title: "corpus-mcp — Corpus",
   description:
-    "corpus-mcp exposes Corpus workspace facts through a read-only MCP server.",
+    "corpus-mcp exposes Corpus workspace facts through a verdict-free MCP server.",
   openGraph: {
     title: "corpus-mcp — Corpus",
     description:
-      "A read-only MCP server for Corpus status, checks, artifacts, and review facts.",
+      "A verdict-free MCP server for Corpus status, checks, artifacts, and review facts.",
     type: "website",
     url: "/mcp/",
     siteName: "Corpus",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         url: "/og-home.png",
         width: 1200,
         height: 630,
-        alt: "corpus-mcp — a read-only MCP bridge for Corpus workspaces",
+        alt: "corpus-mcp — a verdict-free MCP bridge for Corpus workspaces",
       },
     ],
   },
@@ -221,7 +221,7 @@ export default function McpPage() {
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
       <Section className="ambient-header">
         <PageHero
-          eyebrow="mcp server / read-only adapter"
+          eyebrow="mcp server / verdict-free adapter"
           className="page-hero-package-mcp"
           motif="bridge"
           tone="reference"
@@ -233,7 +233,7 @@ export default function McpPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Read-only MCP for Corpus workspace facts.
+            A verdict-free MCP for Corpus workspace facts.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
             Status, checks, artifacts, and review data over stdio.

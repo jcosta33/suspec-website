@@ -43,8 +43,9 @@ const steps = [
     number: "05",
     label: "Review",
     icon: ScanEye,
+    optional: true,
     description:
-      "Check evidence per requirement; human attention where needed.",
+      "A non-implementer checks evidence per requirement. The formal packet is optional for a small change you verified.",
   },
   {
     number: "06",
