@@ -23,6 +23,7 @@ const recoveryRoutes = [
   {
     href: "/docs/",
     label: "Docs index",
+    path: "/docs",
     text: "Open the manual index.",
     icon: BookOpen,
     signal: "reference",
@@ -30,6 +31,7 @@ const recoveryRoutes = [
   {
     href: "/the-loop/",
     label: "The loop",
+    path: "/the-loop",
     text: "See the workflow.",
     icon: GitBranch,
     signal: "core",
@@ -37,6 +39,7 @@ const recoveryRoutes = [
   {
     href: "/get-started/",
     label: "Get started",
+    path: "/get-started",
     text: "Set up a workspace.",
     icon: ArrowRight,
     signal: "core",
@@ -44,6 +47,7 @@ const recoveryRoutes = [
 ] as const satisfies Array<{
   href: string;
   label: string;
+  path: string;
   text: string;
   icon: LucideIcon;
   signal: SignalRole;
@@ -110,8 +114,15 @@ export default function NotFoundPage() {
                   aria-hidden="true"
                 />
                 <span className="min-w-0 flex-1">
-                  <span className="block font-heading text-base font-bold text-concrete-100">
-                    {route.label}
+                  <span className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                    <span className="font-heading text-base font-bold text-concrete-100">
+                      {route.label}
+                    </span>
+                    <span
+                      className={`font-mono text-[0.66rem] font-semibold uppercase tracking-[0.08em] ${signalRoles[route.signal].text}`}
+                    >
+                      {route.path}
+                    </span>
                   </span>
                   <span className="mt-0.5 block text-sm leading-relaxed text-concrete-400">
                     {route.text}
