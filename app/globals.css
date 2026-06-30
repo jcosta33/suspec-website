@@ -7819,8 +7819,19 @@ section.bg-section-band::after {
   .repo-product-page .agent-page-nav {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
     overflow: visible;
-    padding: 0;
+    border: 1px solid rgba(var(--signal-muted-rgb), 0.18);
+    border-radius: calc(var(--radius-control) - 2px);
+    background:
+      linear-gradient(90deg, rgba(var(--signal-muted-rgb), 0.035), transparent 58%),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 1.3rem,
+        rgba(var(--signal-muted-rgb), 0.02) 1.3rem calc(1.3rem + 1px)
+      ),
+      rgba(12, 9, 6, 0.26);
+    padding: 0.12rem;
     mask-image: none;
   }
 
@@ -7862,10 +7873,17 @@ section.bg-section-band::after {
   }
 
   .agent-page-nav-link {
-    min-height: 2.18rem;
+    min-height: 2.02rem;
     min-width: 0;
     width: auto;
-    padding: 0.38rem 0.58rem;
+    border-color: rgba(70, 57, 44, 0.2);
+    border-left-color: rgba(var(--agent-nav-rgb), 0.26);
+    border-radius: calc(var(--radius-control) - 4px);
+    background:
+      linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.01), transparent 48%),
+      rgba(18, 14, 10, 0.2);
+    box-shadow: inset 1px 0 0 rgba(var(--agent-nav-rgb), 0.08);
+    padding: 0.32rem 0.5rem;
   }
 
   .agent-page-nav-link::before,
@@ -7884,7 +7902,7 @@ section.bg-section-band::after {
   }
 
   .agent-page-nav-label {
-    font-size: 0.74rem;
+    font-size: 0.72rem;
   }
 
   .agent-page-nav-link > svg,
