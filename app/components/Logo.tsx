@@ -50,9 +50,9 @@ export function Logo({ className = "" }: { className?: string }) {
         <polygon
           points={HEX.map(([x, y]) => `${x},${y}`).join(" ")}
           stroke={`url(#${gradientId})`}
-          strokeWidth="1.15"
+          strokeWidth="1.42"
           strokeLinejoin="round"
-          opacity="0.62"
+          opacity="0.68"
         />
 
         {/* the spine — inscribed triangle, a filled core within the loop */}
@@ -61,7 +61,7 @@ export function Logo({ className = "" }: { className?: string }) {
           fill={`url(#${gradientId})`}
           fillOpacity="0.1"
           stroke={`url(#${gradientId})`}
-          strokeWidth="1.65"
+          strokeWidth="1.9"
           strokeLinejoin="round"
         />
 
@@ -71,11 +71,11 @@ export function Logo({ className = "" }: { className?: string }) {
             key={`opt-${x}-${y}`}
             cx={x}
             cy={y}
-            r="0.9"
+            r="1.05"
             fill="#080604"
             stroke={`url(#${gradientId})`}
-            strokeWidth="0.85"
-            opacity="0.7"
+            strokeWidth="1.02"
+            opacity="0.76"
           />
         ))}
 
@@ -85,13 +85,13 @@ export function Logo({ className = "" }: { className?: string }) {
             key={`spine-${x}-${y}`}
             cx={x}
             cy={y}
-            r="1.85"
+            r="2"
             fill={`url(#${gradientId})`}
           />
         ))}
 
         {/* center hub */}
-        <circle cx="16" cy="16" r="1.4" fill="#d88a24" />
+        <circle cx="16" cy="16" r="1.56" fill="#d88a24" />
       </svg>
       <span className="text-[1.1em] font-bold leading-[0.92]">Suspec</span>
     </span>
