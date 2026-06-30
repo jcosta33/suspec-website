@@ -1,6 +1,5 @@
 // Ensure the suspec/docs canon is available to the build (prebuild step).
-// - local dev: use the sibling checkout ../suspec/docs, or the unchanged local
-//   checkout folder ../corpus/docs while the repository rename is in flight (no-op).
+// - local dev: use SUSPEC_CANON_DIR or the sibling checkout ../suspec/docs.
 // - CI / Vercel (no sibling): shallow-clone the canon into .suspec-canon/ (gitignored, ephemeral —
 //   never committed, so single-sourcing holds). Pin a ref via SUSPEC_REF for reproducible builds.
 // Chosen over a git submodule: lower contributor friction (no submodule init/update), works the same
@@ -10,10 +9,13 @@ import { execSync } from "node:child_process";
 import path from "node:path";
 
 const cwd = process.cwd();
+const explicitCanon = process.env.SUSPEC_CANON_DIR
+  ? path.resolve(process.env.SUSPEC_CANON_DIR)
+  : null;
 const siblingCandidates = [
+  explicitCanon,
   path.join(cwd, "..", "suspec", "docs"),
-  path.join(cwd, "..", "corpus", "docs"),
-];
+].filter(Boolean);
 const sibling = siblingCandidates.find((candidate) => existsSync(candidate));
 const vendor = path.join(cwd, ".suspec-canon");
 const vendorDocs = path.join(vendor, "docs");
@@ -22,7 +24,9 @@ const repo = process.env.SUSPEC_REPO || "https://github.com/jcosta33/suspec";
 
 let repoRoot; // the git repo that contains docs/
 if (sibling) {
-  console.log(`[ensure-canon] using the local sibling ${path.relative(cwd, sibling)}`);
+  console.log(
+    `[ensure-canon] using ${sibling === explicitCanon ? "SUSPEC_CANON_DIR" : `the local sibling ${path.relative(cwd, sibling)}`}`,
+  );
   repoRoot = path.dirname(sibling);
 } else if (existsSync(vendorDocs)) {
   console.log("[ensure-canon] using the vendored .suspec-canon/docs");

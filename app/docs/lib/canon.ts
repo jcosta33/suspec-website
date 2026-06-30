@@ -1,15 +1,17 @@
 // Single-sourcing: the docs site DERIVES from the canon at build time — no copy is committed here.
-// Locally the canon is the sibling `suspec` repo, or the unchanged local checkout folder `corpus`
-// while the repository rename is in flight; on Vercel it must be made available to the build.
+// Locally the canon is SUSPEC_CANON_DIR or the sibling `suspec` repo; on Vercel the prebuild step
+// makes it available to the build.
 import fs from "node:fs";
 import path from "node:path";
 
 // The canon: the local sibling checkout in dev, else the vendored clone the prebuild step fetches
 // on CI/Vercel (see scripts/ensure-canon.mjs). Single source either way; the vendor copy is ephemeral.
 const SIBLING_CANDIDATES = [
+  process.env.SUSPEC_CANON_DIR
+    ? path.resolve(process.env.SUSPEC_CANON_DIR)
+    : null,
   path.join(process.cwd(), "..", "suspec", "docs"),
-  path.join(process.cwd(), "..", "corpus", "docs"),
-];
+].filter(Boolean) as string[];
 const SIBLING = SIBLING_CANDIDATES.find((candidate) =>
   fs.existsSync(candidate),
 );
