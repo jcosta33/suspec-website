@@ -2289,7 +2289,7 @@
   .docs-index-cover {
     gap: 0.72rem;
     margin-bottom: 0.78rem;
-    padding: 0.78rem 0.78rem 0.82rem 1rem;
+    padding: 0.78rem 0.78rem 0.74rem 1rem;
   }
 
   .docs-index-cover::before {
@@ -2323,71 +2323,7 @@
   }
 
   .docs-index-manual {
-    gap: 0.32rem;
-    padding-top: 0.34rem;
-  }
-
-  .docs-index-manual-label {
-    padding: 0.2rem 0.36rem;
-    font-size: 0.52rem;
-  }
-
-  .docs-index-manual-stats {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.24rem;
-  }
-
-  .docs-index-manual-stats div {
-    min-height: 2.05rem;
-    padding: 0.22rem 0.28rem;
-  }
-
-  .docs-index-manual-stats dt {
-    font-size: 0.4rem;
-  }
-
-  .docs-index-manual-stats dd {
-    margin-top: 0.12rem;
-    font-size: 0.62rem;
-  }
-
-  .docs-index-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.28rem;
-    overflow: visible;
-    padding: 0.36rem 0 0.08rem;
-    mask-image: none;
-  }
-
-  .docs-index-legend-item {
-    flex: 1 1 calc(50% - 0.2rem);
-    min-height: 1.72rem;
-    min-width: 6.15rem;
-    border-top: 1px solid rgba(var(--legend-rgb), 0.34);
-    border-left-width: 0;
-    padding: 0.18rem 0.42rem;
-  }
-
-  .docs-prose .docs-index-legend-item a {
-    min-height: 1.72rem;
-    justify-items: start;
-  }
-
-  .docs-index-legend-item span {
-    text-align: left;
-    white-space: normal;
-  }
-
-  .docs-index-legend-item span:first-child {
-    font-size: 0.62rem;
-    line-height: 1.1;
-  }
-
-  .docs-index-legend-item span:last-child {
-    display: block;
-    font-size: 0.42rem;
-    line-height: 1.15;
+    display: none;
   }
 }
 
