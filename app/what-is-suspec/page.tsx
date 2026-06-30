@@ -354,15 +354,15 @@ export default function WhatIsSuspecPage() {
             <span>what it is</span>
           </div>
           <Heading className="mt-3">What Suspec is</Heading>
-          <ul className="mt-6 space-y-4">
+          <ul className="overview-is-list mt-6 space-y-4">
             {isList.map((item) => {
               const Icon = item.icon;
               return (
                 <li
                   key={item.text}
-                  className="flex items-start gap-4 text-concrete-100"
+                  className="overview-is-item flex items-start gap-4 text-concrete-100"
                 >
-                  <HexBadge color="evidence">
+                  <HexBadge color="evidence" className="overview-is-icon">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </HexBadge>
                   <span className="pt-3">{item.text}</span>
