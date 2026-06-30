@@ -3835,6 +3835,9 @@ section.bg-section-band::after {
 .home-hero-preview {
   position: relative;
   contain: layout;
+  translate: 0 0;
+  scale: 1;
+  transform: none;
   margin-top: 1.25rem;
   margin-bottom: clamp(2.5rem, 4vw, 4rem);
   max-height: none;
@@ -7083,8 +7086,16 @@ section.bg-section-band::after {
   opacity: 0.42;
 }
 
+.home-hero-preview:is(:hover, :focus-within),
 .home-hero-preview
-  :is(.rounded-panel, .terminal-window, .paper-artifact, .home-step-rail-item) {
+  :is(.rounded-panel, .terminal-window, .paper-artifact, .home-step-rail-item),
+.home-hero-preview
+  :is(
+    .rounded-panel,
+    .terminal-window,
+    .paper-artifact,
+    .home-step-rail-item
+  ):is(:hover, :focus-within) {
   translate: 0 0 !important;
   transform: none !important;
   scale: 1 !important;
