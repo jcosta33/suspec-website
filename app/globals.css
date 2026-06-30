@@ -3817,6 +3817,7 @@ section.bg-section-band::after {
 
 .home-hero-preview {
   position: relative;
+  contain: layout;
   margin-top: 1.25rem;
   margin-bottom: clamp(2.5rem, 4vw, 4rem);
   max-height: none;
@@ -3911,11 +3912,9 @@ section.bg-section-band::after {
   0%,
   100% {
     opacity: 0.52;
-    transform: translateX(-1.6%);
   }
   50% {
     opacity: 0.82;
-    transform: translateX(1.6%);
   }
 }
 
@@ -7040,6 +7039,29 @@ section.bg-section-band::after {
   > .surface-glint,
 .panel-raised:focus-within > .surface-glint {
   opacity: 0.68;
+}
+
+.panel-raised.home-hero-preview:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-engraving,
+.panel-raised.home-hero-preview:hover > .surface-engraving,
+.panel-raised.home-hero-preview:focus-within > .surface-engraving {
+  opacity: 0.5;
+}
+
+.panel-raised.home-hero-preview:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-glint,
+.panel-raised.home-hero-preview:hover > .surface-glint,
+.panel-raised.home-hero-preview:focus-within > .surface-glint {
+  opacity: 0.42;
+}
+
+.home-hero-preview :is(.rounded-panel, .terminal-window, .home-step-rail-item) {
+  translate: 0 0 !important;
+  transform: none !important;
 }
 
 .panel-inset:hover,
