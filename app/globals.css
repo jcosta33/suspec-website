@@ -4812,36 +4812,45 @@ section.bg-section-band::after {
   }
 
   .mcp-adapter-rail {
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 0.42rem !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1px !important;
   }
 
   .mcp-adapter-step:last-child {
-    grid-column: auto;
+    grid-column: 1 / -1;
   }
 
   .mcp-adapter-step-link {
     min-height: 0;
-    padding: 0.72rem 0.82rem;
+    padding: 0.62rem 0.66rem;
   }
 
   .mcp-adapter-step:last-child .mcp-adapter-step-link {
     min-height: 0;
-    padding-block: 0.72rem;
+    padding-block: 0.62rem;
   }
 
   .mcp-adapter-step-link::before {
-    inset: 0.72rem auto 0.72rem 0;
+    inset: 0.62rem auto 0.62rem 0;
   }
 
   .mcp-adapter-heading {
-    align-items: center;
-    gap: 0.6rem;
+    align-items: flex-start;
+    gap: 0.48rem;
+  }
+
+  .mcp-adapter-heading > .motion-nudge-x {
+    display: none;
   }
 
   .mcp-adapter-heading .hex-badge {
-    height: 1.7rem;
-    width: 1.7rem;
+    height: 1.45rem;
+    width: 1.45rem;
+  }
+
+  .mcp-adapter-heading .hex-badge :is(svg) {
+    height: 0.82rem;
+    width: 0.82rem;
   }
 
   .mcp-adapter-step-link .mcp-adapter-meta {
@@ -4852,20 +4861,25 @@ section.bg-section-band::after {
 
   .mcp-adapter-title {
     margin-top: 0.08rem;
-    font-size: 0.94rem;
+    font-size: 0.82rem;
     line-height: 1.15;
   }
 
   .mcp-adapter-detail {
-    margin-top: 0.42rem;
+    display: -webkit-box;
+    margin-top: 0.34rem;
     max-width: none;
-    font-size: 0.78rem;
-    line-height: 1.38;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 0.7rem;
+    line-height: 1.32;
   }
 
   .mcp-adapter-step:last-child .mcp-adapter-detail {
-    margin-top: 0.38rem;
+    margin-top: 0.32rem;
     max-width: none;
+    -webkit-line-clamp: 1;
   }
 }
 
@@ -5050,14 +5064,16 @@ section.bg-section-band::after {
   .mcp-fact-list ul {
     margin-top: 0.42rem;
     display: grid;
-    gap: 0.14rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.18rem 0.46rem;
   }
 
   .mcp-fact-list li {
     overflow-wrap: normal;
-    white-space: nowrap;
-    font-size: clamp(0.66rem, 2.85vw, 0.72rem);
-    line-height: 1.48;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    font-size: clamp(0.62rem, 2.55vw, 0.69rem);
+    line-height: 1.24;
   }
 }
 
