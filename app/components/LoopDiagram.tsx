@@ -127,9 +127,9 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
               points={sealPath}
               fill="none"
               stroke="var(--color-aurum)"
-              strokeWidth="0.38"
+              strokeWidth="0.3"
               strokeLinejoin="round"
-              opacity="0.2"
+              opacity="0.14"
             />
             {sealPoints.map((point) => (
               <line
@@ -139,8 +139,8 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
                 x2={point.x}
                 y2={point.y}
                 stroke="var(--color-aurum)"
-                strokeWidth="0.36"
-                opacity="0.24"
+                strokeWidth="0.28"
+                opacity="0.16"
               />
             ))}
             <polygon
@@ -148,30 +148,34 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
               fill="var(--color-aurum)"
               fillOpacity="0.09"
               stroke="var(--color-aurum)"
-              strokeWidth="1.35"
+              strokeWidth="1.5"
               strokeLinejoin="round"
             />
             <circle cx="50" cy="50" r="2.2" fill="var(--color-aurum)" />
-            {sealPoints.map((point) => (
-              <g key={point.label}>
-                <circle
-                  cx={point.x}
-                  cy={point.y}
-                  r="4.1"
-                  fill="var(--color-night)"
-                  stroke="var(--color-aurum)"
-                  strokeWidth="0.9"
-                />
-                <text
-                  x={point.x}
-                  y={point.y + 1.2}
-                  textAnchor="middle"
-                  className="fill-aurum font-mono text-[4px] font-semibold"
-                >
-                  {point.number}
-                </text>
-              </g>
-            ))}
+            {sealPoints.map((point) => {
+              const isSpine = !("optional" in point && point.optional);
+
+              return (
+                <g key={point.label} opacity={isSpine ? 1 : 0.68}>
+                  <circle
+                    cx={point.x}
+                    cy={point.y}
+                    r={isSpine ? "4.2" : "3.8"}
+                    fill="var(--color-night)"
+                    stroke="var(--color-aurum)"
+                    strokeWidth={isSpine ? "1" : "0.68"}
+                  />
+                  <text
+                    x={point.x}
+                    y={point.y + 1.2}
+                    textAnchor="middle"
+                    className="fill-aurum font-mono text-[4px] font-semibold"
+                  >
+                    {point.number}
+                  </text>
+                </g>
+              );
+            })}
           </svg>
         </div>
         <div className="loop-diagram-copy min-w-0">
