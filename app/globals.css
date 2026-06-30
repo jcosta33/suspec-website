@@ -2737,8 +2737,8 @@ section.bg-section-band::after {
 
 @media (max-width: 40rem) {
   .hero-trace {
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.34rem;
     width: min(100%, 20.5rem);
     overflow: visible;
@@ -2754,15 +2754,12 @@ section.bg-section-band::after {
   .hero-trace-item {
     min-width: 4.4rem;
     min-height: 2.12rem;
-    flex: 1 1 4.4rem;
-    max-width: 6.25rem;
+    max-width: none;
     padding: 0.38rem 0.52rem;
   }
 
   .hero-trace:is([data-count="5"], [data-count="6"]) .hero-trace-item {
     min-width: 5.85rem;
-    flex-basis: calc((100% - 0.68rem) / 3);
-    max-width: 6.35rem;
   }
 
   .hero-trace-label {
@@ -2896,6 +2893,23 @@ section.bg-section-band::after {
     overflow-x: clip;
   }
 
+  .page-hero-eyebrow {
+    display: inline-grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    max-width: min(100%, calc(100vw - 3rem));
+    align-items: center;
+    gap: 0.58rem;
+    padding-inline: 0.78rem;
+  }
+
+  .page-hero-eyebrow > span:last-child {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.28;
+    font-size: 0.68rem;
+    letter-spacing: 0.075em;
+  }
+
   .page-hero > .page-hero-calibration {
     display: none;
   }
@@ -2912,6 +2926,15 @@ section.bg-section-band::after {
     max-width: 15.75rem;
     font-size: 1.125rem;
     line-height: 1.55;
+  }
+
+  .hero-badge-row {
+    max-width: min(100%, 19.5rem);
+    margin-inline: auto;
+  }
+
+  .hero-badge-row > span {
+    flex: 1 1 8.6rem;
   }
 }
 
@@ -7868,13 +7891,15 @@ section.bg-section-band::after {
   }
 
   .writing-page-nav .section-jump-nav {
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.38rem;
-    overflow-x: auto;
+    overflow: visible;
     border: 0;
     background: transparent;
     box-shadow: none;
+    padding: 0;
+    mask-image: none;
   }
 
   .writing-page-nav .section-jump-nav::-webkit-scrollbar {
@@ -7883,6 +7908,7 @@ section.bg-section-band::after {
 
   .writing-page-nav .section-jump-nav-link {
     min-height: 2.28rem;
+    min-width: 0;
     width: auto;
     border: 1px solid rgba(70, 57, 44, 0.54);
     border-radius: var(--radius-control);
@@ -7898,7 +7924,7 @@ section.bg-section-band::after {
   }
 
   .writing-page-nav .section-jump-nav-label {
-    white-space: nowrap;
+    white-space: normal;
   }
 }
 

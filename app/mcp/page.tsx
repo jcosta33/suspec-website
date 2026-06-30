@@ -239,7 +239,7 @@ export default function McpPage() {
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
             Status, checks, artifacts, and review data over stdio.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+          <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
             <Badge variant="ready">v0.2 surface</Badge>
             <Badge variant="draft">no board</Badge>
             <Badge signal="muted">no verdict</Badge>

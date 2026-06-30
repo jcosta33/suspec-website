@@ -248,7 +248,7 @@ export default function CliPage() {
           <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
             Scaffold files, run checks, manage worktrees.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+          <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
             <Badge variant="draft">Command surface settling</Badge>
             <Badge variant="draft">No verdicts</Badge>
           </div>
