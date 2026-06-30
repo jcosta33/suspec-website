@@ -8016,7 +8016,22 @@ section.bg-section-band::after {
   }
 
   .section-jump-nav {
-    gap: 0.38rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    overflow: visible;
+    border: 1px solid rgba(var(--signal-muted-rgb), 0.18);
+    border-radius: calc(var(--radius-control) - 2px);
+    background:
+      linear-gradient(90deg, rgba(var(--signal-muted-rgb), 0.035), transparent 58%),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 1.3rem,
+        rgba(var(--signal-muted-rgb), 0.02) 1.3rem calc(1.3rem + 1px)
+      ),
+      rgba(12, 9, 6, 0.26);
+    padding: 0.12rem;
+    mask-image: none;
   }
 
   .agent-page-nav::before,
@@ -8061,6 +8076,13 @@ section.bg-section-band::after {
     padding: 0.32rem 0.5rem;
   }
 
+  .section-jump-nav-link {
+    flex: initial;
+    min-width: 0;
+    scroll-snap-align: none;
+    width: auto;
+  }
+
   .agent-page-nav-link::before,
   .section-jump-nav-link::before {
     top: 0.42rem;
@@ -8099,31 +8121,9 @@ section.bg-section-band::after {
     display: none;
   }
 
-  .writing-page-nav .section-jump-nav {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 0.38rem;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    border: 0;
-    background: transparent;
-    box-shadow: none;
-    padding: 0.05rem 1.05rem 0.22rem 0;
-    scroll-padding-inline: 0.1rem 1.05rem;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-    mask-image: linear-gradient(90deg, #000 0 calc(100% - 1.4rem), transparent);
-  }
-
-  .writing-page-nav .section-jump-nav::-webkit-scrollbar {
-    display: none;
-  }
-
   .writing-page-nav .section-jump-nav-link {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
+    min-width: 0;
     min-height: 2.28rem;
-    min-width: 6.35rem;
     border: 1px solid rgba(70, 57, 44, 0.54);
     border-radius: var(--radius-control);
     background:
