@@ -2252,7 +2252,7 @@
   }
 
   .docs-index-manual {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.4rem;
     padding-top: 0.44rem;
   }
@@ -2263,30 +2263,27 @@
     line-height: 1.12;
   }
 
-  .docs-index-legend {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 0.38rem;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    padding: 0.42rem 1.05rem 0.12rem 0;
-    scroll-padding-inline: 0.1rem 1.05rem;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-    mask-image: linear-gradient(90deg, #000 0 calc(100% - 1.4rem), transparent);
+  .docs-index-manual > span:nth-child(4) {
+    grid-column: 1 / -1;
   }
 
-  .docs-index-legend::-webkit-scrollbar {
-    display: none;
+  .docs-index-legend {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.36rem;
+    overflow: visible;
+    padding: 0.48rem 0 0.18rem;
+    mask-image: none;
   }
 
   .docs-index-legend-item {
     min-height: 2.35rem;
-    min-width: 5.8rem;
-    flex: 0 0 auto;
-    scroll-snap-align: start;
     border-left-width: 1px;
     padding: 0.34rem 0.42rem;
+  }
+
+  .docs-index-legend-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 
   .docs-prose .docs-index-legend-item a {
