@@ -10399,20 +10399,42 @@ section.bg-section-band::after {
   }
 
   .colophon-terminal-content {
-    padding: 0.95rem;
-    font-size: 0.8125rem;
+    padding: 0.8rem;
+    font-size: 0.78rem;
+    line-height: 1.42;
   }
 
   .colophon-terminal-content h2 {
-    font-size: 1.75rem;
+    font-size: 1.55rem;
+  }
+
+  .colophon-terminal-content p {
+    margin-top: 0.35rem;
+    line-height: 1.42;
+  }
+
+  .colophon-terminal-content dl {
+    gap: 0.55rem;
   }
 
   .colophon-fact-row {
-    grid-template-columns: 1fr;
-    gap: 0.22rem;
+    grid-template-columns: minmax(4.8rem, 0.36fr) minmax(0, 1fr);
+    gap: 0.62rem;
+    padding-top: 0.55rem;
+  }
+
+  .colophon-fact-row dt {
+    font-size: 0.56rem;
+    line-height: 1.25;
+  }
+
+  .colophon-fact-row dd {
+    font-size: 0.78rem;
+    line-height: 1.35;
   }
 
   .colophon-paper {
+    margin-top: 0.15rem;
     padding: 1rem;
   }
 
