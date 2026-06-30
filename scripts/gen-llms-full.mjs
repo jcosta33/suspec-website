@@ -5,9 +5,11 @@ import fs from "node:fs";
 import path from "node:path";
 
 const SIBLING_CANDIDATES = [
+  process.env.SUSPEC_CANON_DIR
+    ? path.resolve(process.env.SUSPEC_CANON_DIR)
+    : null,
   path.join(process.cwd(), "..", "suspec", "docs"),
-  path.join(process.cwd(), "..", "corpus", "docs"),
-];
+].filter(Boolean);
 const SIBLING = SIBLING_CANDIDATES.find((candidate) =>
   fs.existsSync(candidate),
 );
@@ -55,5 +57,5 @@ const body = order
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, header + body + "\n");
 console.log(
-  `[gen-llms-full] wrote ${OUT} — ${order.length} docs, ${header.length + body.length} bytes`,
+  `[gen-llms-full] wrote dist/llms-full.txt — ${order.length} docs, ${header.length + body.length} bytes`,
 );
