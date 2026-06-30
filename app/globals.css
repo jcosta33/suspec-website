@@ -8169,31 +8169,52 @@ section.bg-section-band::after {
 
 @media (max-width: 40rem) {
   .writing-page-nav {
-    overflow: hidden;
+    overflow: visible;
   }
 
   .writing-page-nav::after {
     display: none;
   }
 
+  .writing-page-nav .section-jump-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.38rem;
+    overflow-x: auto;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    padding: 0.04rem 1.05rem 0.24rem 0;
+    mask-image: linear-gradient(90deg, #000 0 calc(100% - 1.35rem), transparent);
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .writing-page-nav .section-jump-nav::-webkit-scrollbar {
+    display: none;
+  }
+
   .writing-page-nav .section-jump-nav-link {
-    min-width: 0;
-    min-height: 2.28rem;
-    border: 1px solid rgba(70, 57, 44, 0.54);
-    border-radius: var(--radius-control);
+    flex: 0 0 auto;
+    min-width: 6rem;
+    min-height: 2.08rem;
+    border: 1px solid rgba(70, 57, 44, 0.36);
+    border-left-color: rgba(var(--agent-nav-rgb), 0.28);
+    border-radius: calc(var(--radius-control) - 3px);
     background:
-      linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.024), transparent 46%),
-      linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.18) 0 2px, transparent 2px),
+      linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.014), transparent 46%),
+      linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.11) 0 1px, transparent 1px),
       var(--signal-pattern-muted),
-      rgba(26, 21, 16, 0.66);
+      rgba(18, 14, 10, 0.38);
     box-shadow:
-      inset 2px 0 0 rgba(var(--agent-nav-rgb), 0.14),
-      inset 0 1px 0 rgba(240, 226, 204, 0.04);
-    padding: 0.42rem 0.62rem;
+      inset 1px 0 0 rgba(var(--agent-nav-rgb), 0.1),
+      inset 0 1px 0 rgba(240, 226, 204, 0.025);
+    padding: 0.34rem 0.52rem;
   }
 
   .writing-page-nav .section-jump-nav-label {
-    white-space: normal;
+    white-space: nowrap;
   }
 }
 
