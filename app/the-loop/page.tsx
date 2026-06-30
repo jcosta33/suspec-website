@@ -316,14 +316,14 @@ export default function TheLoopPage() {
                     </span>
                   </HexBadge>
                   <div>
-                    <div className="flex items-center gap-2">
+                    <div className="loop-operating-title-row flex items-center gap-2">
                       <Icon
                         className={`h-5 w-5 ${signalRoles[step.signal].text}`}
                         aria-hidden="true"
                       />
                       <Heading>{step.name}</Heading>
                       {step.optional && (
-                        <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-brass">
+                        <span className="loop-operating-optional font-mono text-[0.625rem] uppercase tracking-[0.16em] text-brass">
                           optional
                         </span>
                       )}

@@ -218,7 +218,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
                   {step.label}
                 </span>
                 {"optional" in step && step.optional && (
-                  <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-brass">
+                  <span className="loop-step-optional font-mono text-[0.625rem] uppercase tracking-[0.16em] text-brass">
                     optional
                   </span>
                 )}
