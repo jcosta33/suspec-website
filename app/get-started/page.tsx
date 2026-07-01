@@ -128,6 +128,33 @@ const kitContents = [
   },
 ];
 
+function StarterKitContentsNote({ className = "" }: { className?: string }) {
+  return (
+    <div className={`copy-section-support flex flex-col gap-4 ${className}`}>
+      <PaperArtifact
+        label="note"
+        title="starter kit contents"
+        meta="workspace / committed artifacts"
+      >
+        <p>
+          Local rules, record templates, flow folders, and the board. Copy once;
+          keep the edits in repo.
+        </p>
+      </PaperArtifact>
+      <p className="copy-section-note text-concrete-400">
+        Setup notes:{" "}
+        <TextLink
+          href="/docs/ADOPTING/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          docs/ADOPTING.md
+        </TextLink>
+      </p>
+    </div>
+  );
+}
+
 const setupPath = [
   {
     label: "New repo",
@@ -388,33 +415,20 @@ export default function GetStartedPage() {
         id="copy"
         register="03 / kit contents"
         registerTone="reference"
-        className="grid scroll-mt-28 gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start"
+        className="copy-section grid scroll-mt-28 gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start"
       >
-        <div className="flex flex-col gap-5">
-          <Heading>Starter kit contents</Heading>
-          <PaperArtifact
-            label="note"
-            title="starter kit contents"
-            meta="workspace / committed artifacts"
-          >
-            <p>
-              Copy the kit once. It gives the repo a shared map: local rules,
-              record templates, flow folders, and a small board.
-            </p>
-          </PaperArtifact>
-          <p className="text-concrete-400">
-            More setup notes:{" "}
-            <TextLink
-              href="/docs/ADOPTING/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              docs/ADOPTING.md
-            </TextLink>
-          </p>
+        <div className="copy-section-left">
+          <div className="copy-section-heading">
+            <Heading>Starter kit contents</Heading>
+          </div>
+          <StarterKitContentsNote className="copy-section-support-desktop" />
         </div>
 
-        <Card screws className="h-full" contentClassName="space-y-5">
+        <Card
+          screws
+          className="copy-section-manifest h-full"
+          contentClassName="copy-section-manifest-body space-y-4 sm:space-y-5"
+        >
           <div className="section-kicker section-kicker-reference">
             <FolderTree className="h-4 w-4" aria-hidden="true" />
             <span>manifest — copied files</span>
@@ -438,6 +452,7 @@ export default function GetStartedPage() {
             })}
           </ul>
         </Card>
+        <StarterKitContentsNote className="copy-section-support-mobile" />
       </Section>
 
       <Section

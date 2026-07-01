@@ -9977,6 +9977,83 @@ section.bg-section-band::after {
   }
 }
 
+.copy-section-left {
+  display: contents;
+}
+
+.copy-section-heading,
+.copy-section-support,
+.copy-section-manifest {
+  min-width: 0;
+}
+
+.copy-section-heading {
+  order: 1;
+}
+
+.copy-section-manifest {
+  order: 2;
+}
+
+.copy-section-support {
+  order: 3;
+}
+
+.copy-section-support-desktop {
+  display: none !important;
+}
+
+@media (min-width: 64rem) {
+  .copy-section-left {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.15rem, 1.55vw, 1.35rem);
+  }
+
+  .copy-section-support-desktop {
+    display: flex !important;
+  }
+
+  .copy-section-support-mobile {
+    display: none !important;
+  }
+
+  .copy-section-manifest {
+    grid-column: 2;
+  }
+
+  .copy-section-heading,
+  .copy-section-manifest,
+  .copy-section-support {
+    order: 0;
+  }
+}
+
+@media (max-width: 40rem) {
+  .copy-section {
+    gap: clamp(1rem, 4vw, 1.25rem);
+  }
+
+  .copy-section-manifest {
+    padding: 1rem !important;
+  }
+
+  .copy-section-support {
+    gap: 0.82rem;
+  }
+
+  .copy-section-support .paper-artifact {
+    padding: 1rem !important;
+  }
+
+  .copy-section-note {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+}
+
 .kit-ledger {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -10106,7 +10183,11 @@ section.bg-section-band::after {
   .kit-ledger-copy {
     margin-top: 0.25rem;
     font-size: 0.78rem;
-    line-height: 1.38;
+    line-height: 1.34;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 }
 
