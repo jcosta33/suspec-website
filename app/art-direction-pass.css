@@ -682,7 +682,156 @@ body {
 
 @media (min-width: 64rem) {
   .docs-index-prose {
-    max-width: min(100%, 56rem) !important;
+    max-width: min(100%, 60rem) !important;
+  }
+
+  .docs-index-cover {
+    grid-template-columns: minmax(0, 1.08fr) minmax(15.5rem, 0.62fr) !important;
+    align-items: stretch !important;
+    gap: clamp(1.15rem, 2vw, 1.55rem) !important;
+    min-height: 12rem;
+    margin-bottom: clamp(1.35rem, 2.2vw, 1.75rem) !important;
+    padding: clamp(1.1rem, 1.7vw, 1.45rem) clamp(1.15rem, 1.8vw, 1.55rem)
+      clamp(1.15rem, 1.8vw, 1.5rem) clamp(1.45rem, 2.2vw, 1.85rem) !important;
+  }
+
+  .docs-index-cover-copy {
+    display: grid;
+    align-content: center;
+    max-width: 36rem;
+    padding-block: 0.62rem;
+  }
+
+  .docs-index-cover h1 {
+    margin-bottom: 0.58rem !important;
+  }
+
+  .docs-index-manual {
+    align-self: stretch;
+    align-content: center;
+    gap: 0.48rem;
+    min-height: 100%;
+    padding: 0.58rem 0.72rem 0.62rem !important;
+    border-left: 1px solid rgba(var(--signal-reference-rgb), 0.2) !important;
+    background:
+      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.075), transparent 70%),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0 1.2rem,
+        rgba(var(--signal-reference-rgb), 0.035) 1.2rem calc(1.2rem + 1px)
+      ) !important;
+  }
+
+  .docs-index-manual-label {
+    width: fit-content;
+    min-width: 9.5rem;
+  }
+
+  .docs-index-legend {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.12rem 0.42rem !important;
+    padding-top: 0.44rem !important;
+  }
+
+  .docs-index-legend-item,
+  .docs-prose .docs-index-legend-item a {
+    min-height: 2.02rem !important;
+  }
+
+  .docs-index-legend-item {
+    padding-block: 0.18rem !important;
+  }
+
+  .docs-index-legend-item span:first-child {
+    font-size: 0.6rem !important;
+  }
+
+  .docs-index-legend-item span:last-child {
+    font-size: 0.45rem !important;
+  }
+
+  .docs-index-grid,
+  .docs-index-top,
+  .docs-index-stack {
+    gap: clamp(1.05rem, 1.55vw, 1.28rem) !important;
+  }
+
+  .docs-index-top {
+    grid-template-columns: minmax(0, 1.13fr) minmax(19rem, 0.87fr) !important;
+  }
+
+  .docs-index-section {
+    padding: clamp(1.15rem, 1.48vw, 1.36rem) !important;
+  }
+
+  .docs-index-section-primary .docs-index-list {
+    gap: 0 !important;
+    overflow: hidden;
+    border-block: 1px solid rgba(var(--docs-index-rgb), 0.14);
+  }
+
+  .docs-index-section-primary .docs-index-list li + li {
+    border-top: 1px solid rgba(var(--docs-index-rgb), 0.105);
+  }
+
+  .docs-prose .docs-index-section-primary .docs-index-list a {
+    min-height: 2.42rem;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background:
+      linear-gradient(90deg, rgba(var(--docs-index-rgb), 0.026), transparent 50%),
+      transparent !important;
+    padding-inline: 0.42rem 1.45rem !important;
+    box-shadow: none !important;
+  }
+
+  .docs-index-section-reference {
+    display: grid !important;
+    grid-template-columns: minmax(12rem, 0.32fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 0.86rem clamp(1.3rem, 2.2vw, 1.7rem);
+  }
+
+  .docs-index-section-reference .docs-index-section-heading,
+  .docs-index-section-reference .docs-index-section-intro {
+    grid-column: 1;
+  }
+
+  .docs-index-section-reference .docs-index-list {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    margin-top: 0 !important;
+    align-self: start;
+  }
+
+  .docs-index-section-reference .docs-index-section-heading {
+    margin-bottom: 0 !important;
+  }
+
+  .docs-index-section-reference .docs-index-section-intro {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .docs-index-section-adrs {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 5.25rem;
+  }
+
+  .docs-index-section-adrs .docs-index-section-heading {
+    min-width: 9rem;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  .docs-index-section-adrs p {
+    max-width: 31rem;
+    margin: 0 !important;
   }
 }
 
