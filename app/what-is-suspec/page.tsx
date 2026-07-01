@@ -9,6 +9,7 @@ import { HexBadge } from "../components/HexBadge";
 import { PageHero } from "../components/PageHero";
 import { HeroTrace } from "../components/HeroTrace";
 import { Heading } from "../components/Heading";
+import { JsonLd } from "../components/JsonLd";
 import { PilotLamp } from "../components/PilotLamp";
 import { TextLink } from "../components/TextLink";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
@@ -24,14 +25,16 @@ import {
   XCircle,
 } from "lucide-react";
 
+const SITE_URL = "https://suspecframework.dev";
+const overviewDescription =
+  "A markdown workflow for turning requests into scoped agent work, review evidence, and saved findings.";
+
 export const metadata: Metadata = {
   title: "What is Suspec? — Suspec",
-  description:
-    "Suspec is a markdown workflow for specs, tasks, reviews, findings, and evidence.",
+  description: overviewDescription,
   openGraph: {
     title: "What is Suspec? — Suspec",
-    description:
-      "Suspec is a markdown workflow for specs, tasks, reviews, findings, and evidence.",
+    description: overviewDescription,
     type: "website",
     url: "/what-is-suspec/",
     siteName: "Suspec",
@@ -247,8 +250,41 @@ function BoundaryMap() {
 }
 
 export default function WhatIsSuspecPage() {
+  const overviewJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${SITE_URL}/what-is-suspec/#about`,
+    name: "What is Suspec?",
+    url: `${SITE_URL}/what-is-suspec/`,
+    description: overviewDescription,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    mainEntity: {
+      "@type": "SoftwareApplication",
+      name: "Suspec",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Any",
+      url: SITE_URL,
+      description: overviewDescription,
+    },
+    hasPart: [
+      {
+        "@type": "WebPageElement",
+        name: "What Suspec is",
+      },
+      {
+        "@type": "WebPageElement",
+        name: "What Suspec is not",
+      },
+      {
+        "@type": "WebPageElement",
+        name: "Where Suspec sits",
+      },
+    ],
+  };
+
   return (
     <div className="flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+      <JsonLd data={overviewJsonLd} />
       <Section className="ambient-header">
         <PageHero
           eyebrow="system overview"
