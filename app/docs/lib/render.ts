@@ -605,6 +605,50 @@ export function descriptionOf(markdown: string): string {
       .replace(/[`*_]/g, "")
       .replace(/\s+/g, " ")
       .trim();
+  const tableDescription = (): string | null => {
+    const parseCells = (row: string): string[] =>
+      row
+        .trim()
+        .replace(/^\|/, "")
+        .replace(/\|$/, "")
+        .split("|")
+        .map(clean);
+    const isSeparator = (row: string): boolean => {
+      const cells = parseCells(row);
+      return (
+        cells.length > 0 && cells.every((cell) => /^:?-{3,}:?$/.test(cell))
+      );
+    };
+    const describe = (rows: string[]): string | null => {
+      const separator = rows.findIndex(isSeparator);
+      if (separator < 1) return null;
+      const terms = rows
+        .slice(separator + 1)
+        .map((row) => parseCells(row)[0])
+        .filter(Boolean)
+        .slice(0, 5);
+      if (terms.length === 0) return null;
+      const title = titleOf(markdown);
+      const prefix =
+        title.toLowerCase() === "glossary"
+          ? "Glossary of Suspec terms"
+          : `${title} reference`;
+      return `${prefix}: ${terms.join(", ")}.`;
+    };
+
+    let tableRows: string[] = [];
+    for (const raw of body.split(/\r?\n/)) {
+      const line = raw.trim();
+      if (line.startsWith("|") && line.includes("|")) {
+        tableRows.push(line);
+        continue;
+      }
+      const text = describe(tableRows);
+      if (text) return text;
+      tableRows = [];
+    }
+    return describe(tableRows);
+  };
 
   // Collect each prose paragraph with the section heading it sits under. Fenced code blocks are
   // skipped wholesale — their content isn't prose and must never become the description.
@@ -648,7 +692,7 @@ export function descriptionOf(markdown: string): string {
     candidates.find((p) => p.text.length >= 40 && !p.text.endsWith(":")) ??
     candidates[0];
   const text = chosen?.text ?? "";
-  if (!text) return "Suspec documentation";
+  if (!text) return tableDescription() ?? "Suspec documentation";
   if (text.length <= 155) return text;
   const slice = text.slice(0, 152);
   const cut = slice.lastIndexOf(" ");
