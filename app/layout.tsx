@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import {
-  Cormorant_Garamond,
-  Fraunces,
+  Alegreya,
   Inter,
   JetBrains_Mono,
 } from "next/font/google";
@@ -68,19 +67,10 @@ const jetbrainsMono = JetBrains_Mono({
   preload: false,
 });
 
-// Textured old-style face for compact headings: manuscript warmth without turning
-// operational cards into display posters.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["500", "600", "700"],
-});
-
-// Sharper book-cover face for title-page moments: more Hermetic manuscript than
-// SaaS dashboard, with enough weight range for a sturdy wordmark and lighter heroes.
-const cormorantGaramond = Cormorant_Garamond({
-  variable: "--font-cormorant-garamond",
+// Manuscript display face for headings and title moments: old-style warmth with
+// sturdier enterprise-friendly weights than a delicate book serif.
+const alegreya = Alegreya({
+  variable: "--font-alegreya",
   subsets: ["latin"],
   display: "swap",
   weight: ["500", "600", "700"],
@@ -143,7 +133,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} ${fraunces.variable} ${cormorantGaramond.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetbrainsMono.variable} ${alegreya.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-chassis text-concrete-100">
         <JsonLd data={siteGraph} />
