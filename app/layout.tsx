@@ -5,6 +5,7 @@ import {
   JetBrains_Mono,
 } from "next/font/google";
 import "./globals.css";
+import "./art-direction-pass.css";
 import { Shell } from "./components/Shell";
 import { JsonLd } from "./components/JsonLd";
 
