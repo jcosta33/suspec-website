@@ -907,4 +907,25 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  .loop-diagram .loop-step-card-linked {
+    min-height: 7rem !important;
+    justify-content: flex-start !important;
+    gap: 0.5rem !important;
+    padding: 0.82rem 0.82rem 0.88rem !important;
+  }
+
+  .loop-diagram .loop-step-card-linked p {
+    display: block !important;
+    margin-top: 0 !important;
+    max-width: 31rem;
+    font-size: 0.78rem !important;
+    line-height: 1.42 !important;
+    color: var(--color-concrete-400);
+  }
+
+  .loop-diagram .loop-step-card-linked .loop-step-optional {
+    flex-basis: auto;
+    margin-left: 0.32rem;
+  }
 }
