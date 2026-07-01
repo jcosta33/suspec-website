@@ -53,7 +53,7 @@
     rgba(15, 11, 8, 0.58) !important;
 }
 
-.repo-product-page {
+.site-main-frame .repo-product-page.flex.flex-col {
   row-gap: clamp(1.1rem, 1.8vw, 1.65rem) !important;
 }
 
@@ -236,8 +236,8 @@
     margin-top: 1.35rem !important;
   }
 
-  .repo-product-page {
-    row-gap: 1.28rem !important;
+  .site-main-frame .repo-product-page.flex.flex-col {
+    row-gap: 1.22rem !important;
   }
 
   .repo-product-page > .page-nav-wrap,
