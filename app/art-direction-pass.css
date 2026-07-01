@@ -459,6 +459,10 @@ body {
   margin-top: clamp(-0.28rem, -0.24vw, -0.14rem) !important;
 }
 
+.skills-page > .manifest-pair {
+  margin-top: clamp(1.85rem, 2.65vw, 2.35rem) !important;
+}
+
 .repo-product-page > .page-nav-wrap + .section-register {
   margin-top: clamp(0.82rem, 1.24vw, 1.12rem) !important;
 }
