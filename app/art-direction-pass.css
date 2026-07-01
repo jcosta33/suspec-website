@@ -1,6 +1,58 @@
 /* Art-direction refinement layer.
    Scoped overrides only: keep the core design system in globals.css intact. */
 
+.home-hero-section .page-hero-title {
+  position: relative;
+  width: fit-content;
+  max-width: min(100%, 58rem);
+  margin-inline: auto;
+  padding-inline: clamp(0.58rem, 1.15vw, 0.95rem);
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.42),
+    0 0 24px rgba(var(--signal-core-rgb), 0.1);
+}
+
+.home-hero-section .page-hero-title::before,
+.home-hero-section .page-hero-title::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 1px;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent, rgba(var(--signal-core-rgb), 0.42), transparent),
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--signal-core-rgb), 0.16) 0 1px,
+      transparent 1px 1.4rem
+    );
+  opacity: 0.68;
+}
+
+.home-hero-section .page-hero-title::before {
+  top: -0.42rem;
+}
+
+.home-hero-section .page-hero-title::after {
+  bottom: -0.5rem;
+}
+
+.home-hero-proof-strip {
+  margin-top: clamp(1.7rem, 2.2vw, 2.05rem) !important;
+}
+
+.home-hero-proof {
+  background:
+    linear-gradient(90deg, rgba(var(--proof-rgb, var(--signal-muted-rgb)), 0.034), transparent 58%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.35rem,
+      rgba(240, 226, 204, 0.012) 1.35rem calc(1.35rem + 1px)
+    ),
+    rgba(15, 11, 8, 0.58) !important;
+}
+
 .repo-product-page {
   row-gap: clamp(1.1rem, 1.8vw, 1.65rem) !important;
 }
@@ -80,7 +132,90 @@
     0 18px 46px rgba(0, 0, 0, 0.18);
 }
 
+.agents-page .agent-roster-cell {
+  min-height: clamp(11.85rem, 14.2vw, 12.85rem) !important;
+  padding: clamp(1.2rem, 1.55vw, 1.42rem) !important;
+}
+
+.agents-page .agent-roster-cell > div {
+  grid-template-columns: 3.35rem minmax(0, 1fr) !important;
+  gap: clamp(0.92rem, 1.2vw, 1.06rem) !important;
+}
+
+.agents-page .agent-roster-cell-body {
+  grid-template-rows: 0.95rem minmax(1.42rem, auto) 1.15rem 1fr;
+  row-gap: 0.58rem;
+}
+
+.agents-page .agent-roster-cell-title,
+.agents-page .agent-roster-file,
+.agents-page .agent-roster-use {
+  margin-top: 0 !important;
+}
+
+.agents-page .agent-roster-use {
+  align-self: start;
+  max-width: 32rem;
+}
+
+.agents-page .agent-worker-list > li,
+.skills-page .skill-guide-list > li {
+  display: grid;
+}
+
+.agents-page .agent-worker-card,
+.skills-page .skill-guide-row.catalog-row {
+  height: 100%;
+}
+
+.agents-page .agent-worker-card .catalog-row,
+.skills-page .skill-guide-row.catalog-row {
+  min-height: 6.35rem !important;
+}
+
+.agents-page .agent-worker-card .catalog-row > div:first-child > div:last-child,
+.skills-page .skill-guide-row.catalog-row > div:first-child > div:last-child {
+  display: grid;
+  align-content: start;
+  grid-template-rows: minmax(1.28rem, auto) 1fr;
+  row-gap: 0.48rem;
+}
+
+.agents-page .agent-worker-card .catalog-row-copy,
+.skills-page .skill-guide-row .catalog-row-copy {
+  margin-top: 0 !important;
+}
+
+.skills-page .skill-guide-list {
+  align-items: stretch;
+}
+
+.skills-page .skill-guide-row.catalog-row {
+  grid-template-columns: 3.15rem minmax(0, 1fr) auto !important;
+  padding-block: 0.92rem !important;
+}
+
+.skills-page .skill-guide-row-badge {
+  align-self: start;
+}
+
 @media (max-width: 40rem) {
+  .home-hero-section .page-hero-title {
+    padding-inline: 0.3rem;
+  }
+
+  .home-hero-section .page-hero-title::before {
+    top: -0.32rem;
+  }
+
+  .home-hero-section .page-hero-title::after {
+    bottom: -0.38rem;
+  }
+
+  .home-hero-proof-strip {
+    margin-top: 1.35rem !important;
+  }
+
   .repo-product-page {
     row-gap: 1.28rem !important;
   }
@@ -107,5 +242,31 @@
 
   .cli-command-list {
     gap: 0;
+  }
+
+  .agents-page .agent-roster-cell {
+    min-height: auto !important;
+    padding: 0.86rem 0.92rem !important;
+  }
+
+  .agents-page .agent-roster-cell > div {
+    grid-template-columns: 2rem minmax(0, 1fr) !important;
+    gap: 0.72rem !important;
+  }
+
+  .agents-page .agent-roster-cell-body {
+    grid-template-rows: auto;
+    row-gap: 0.36rem;
+  }
+
+  .agents-page .agent-worker-card .catalog-row,
+  .skills-page .skill-guide-row.catalog-row {
+    min-height: auto !important;
+  }
+
+  .agents-page .agent-worker-card .catalog-row > div:first-child > div:last-child,
+  .skills-page .skill-guide-row.catalog-row > div:first-child > div:last-child {
+    grid-template-rows: auto auto;
+    row-gap: 0.22rem;
   }
 }
