@@ -22,16 +22,18 @@ import { Badge } from "../components/Badge";
 import { PilotLamp } from "../components/PilotLamp";
 import { TextLink } from "../components/TextLink";
 import { PageNav } from "../components/PageNav";
+import { PackageJsonLd } from "../components/PackageJsonLd";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
+
+const cliDescription =
+  "suspec-cli scaffolds workspaces, runs checks, manages task worktrees, and prints the board.";
 
 export const metadata: Metadata = {
   title: "CLI — Suspec",
-  description:
-    "suspec-cli scaffolds workspaces, runs checks, manages task worktrees, and prints the board.",
+  description: cliDescription,
   openGraph: {
     title: "CLI — Suspec",
-    description:
-      "suspec-cli scaffolds workspaces, runs checks, manages task worktrees, and prints the board.",
+    description: cliDescription,
     type: "website",
     url: "/cli/",
     siteName: "Suspec",
@@ -229,6 +231,19 @@ const cliPageNav = [
 export default function CliPage() {
   return (
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+      <PackageJsonLd
+        name="suspec-cli"
+        description={cliDescription}
+        path="/cli/"
+        repository="https://github.com/jcosta33/suspec-cli"
+        keywords={[
+          "command line interface",
+          "workspace checks",
+          "task worktrees",
+          "JSON output",
+          "board status",
+        ]}
+      />
       <Section className="ambient-header">
         <PageHero
           eyebrow="suspec-cli — reference implementation"

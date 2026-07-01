@@ -37,16 +37,18 @@ import { PaperArtifact } from "../components/PaperArtifact";
 import { TextLink } from "../components/TextLink";
 import { SignalStat } from "../components/SignalStat";
 import { SkillCatalog } from "../components/SkillCatalog";
+import { PackageJsonLd } from "../components/PackageJsonLd";
 import { signalRoles } from "../components/signalStyles";
+
+const skillsDescription =
+  "Two tiers of agent guides: the framework-free suspec-skills catalog and the Suspec-coupled kit that ships in suspec-starter-kit.";
 
 export const metadata: Metadata = {
   title: "suspec-skills — Suspec",
-  description:
-    "Two tiers of agent guides: the framework-free suspec-skills catalog and the Suspec-coupled kit that ships in suspec-starter-kit.",
+  description: skillsDescription,
   openGraph: {
     title: "suspec-skills — Suspec",
-    description:
-      "Two tiers of agent guides: the framework-free suspec-skills catalog and the Suspec-coupled kit that ships in suspec-starter-kit.",
+    description: skillsDescription,
     type: "website",
     url: "/skills/",
     siteName: "Suspec",
@@ -237,6 +239,19 @@ const skillRoutes = [
 export default function SkillsPage() {
   return (
     <div className="repo-product-page skills-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+      <PackageJsonLd
+        name="suspec-skills"
+        description={skillsDescription}
+        path="/skills/"
+        repository="https://github.com/jcosta33/suspec-skills"
+        keywords={[
+          "agent guides",
+          "npx skills",
+          "suspec-starter-kit",
+          "review guides",
+          "implementation guides",
+        ]}
+      />
       <Section className="ambient-header">
         <PageHero
           eyebrow="tool index / agent guides"

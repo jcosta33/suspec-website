@@ -27,16 +27,18 @@ import { PaperArtifact } from "../components/PaperArtifact";
 import { TextLink } from "../components/TextLink";
 import { SignalStat } from "../components/SignalStat";
 import { PageNav } from "../components/PageNav";
+import { PackageJsonLd } from "../components/PackageJsonLd";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
+
+const agentsDescription =
+  "Claude Code worker files for Suspec review, challenge, and authoring.";
 
 export const metadata: Metadata = {
   title: "suspec-agents — Suspec",
-  description:
-    "Claude Code worker files for Suspec review, challenge, and authoring.",
+  description: agentsDescription,
   openGraph: {
     title: "suspec-agents — Suspec",
-    description:
-      "Copy-based Claude Code worker files for Suspec roles.",
+    description: agentsDescription,
     type: "website",
     url: "/agents/",
     siteName: "Suspec",
@@ -253,6 +255,19 @@ function AgentInstallSection() {
 export default function AgentsPage() {
   return (
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+      <PackageJsonLd
+        name="suspec-agents"
+        description={agentsDescription}
+        path="/agents/"
+        repository="https://github.com/jcosta33/suspec-agents"
+        keywords={[
+          "Claude Code agents",
+          "worker files",
+          "review agents",
+          "challenge agents",
+          "authoring agents",
+        ]}
+      />
       <Section className="ambient-header">
         <PageHero
           eyebrow="worker files / agent roles"

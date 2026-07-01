@@ -23,16 +23,18 @@ import { Section } from "../components/Section";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { TextLink } from "../components/TextLink";
 import { PageNav } from "../components/PageNav";
+import { PackageJsonLd } from "../components/PackageJsonLd";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
+
+const mcpDescription =
+  "suspec-mcp exposes Suspec workspace facts through a verdict-free MCP server.";
 
 export const metadata: Metadata = {
   title: "suspec-mcp — Suspec",
-  description:
-    "suspec-mcp exposes Suspec workspace facts through a verdict-free MCP server.",
+  description: mcpDescription,
   openGraph: {
     title: "suspec-mcp — Suspec",
-    description:
-      "A verdict-free MCP server for Suspec status, checks, artifacts, and review facts.",
+    description: mcpDescription,
     type: "website",
     url: "/mcp/",
     siteName: "Suspec",
@@ -220,6 +222,19 @@ const mcpPageNav = [
 export default function McpPage() {
   return (
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+      <PackageJsonLd
+        name="suspec-mcp"
+        description={mcpDescription}
+        path="/mcp/"
+        repository="https://github.com/jcosta33/suspec-mcp"
+        keywords={[
+          "MCP server",
+          "stdio adapter",
+          "workspace facts",
+          "review data",
+          "no verdict",
+        ]}
+      />
       <Section className="ambient-header">
         <PageHero
           eyebrow="mcp server / verdict-free adapter"
