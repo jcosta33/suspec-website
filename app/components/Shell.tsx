@@ -245,10 +245,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
 
-      root.style.setProperty("--background-grid-x", `${(-normalX * 7).toFixed(2)}px`);
-      root.style.setProperty("--background-grid-y", `${(-normalY * 5).toFixed(2)}px`);
-      root.style.setProperty("--background-plane-tilt-x", `${(normalY * 1.35).toFixed(3)}deg`);
-      root.style.setProperty("--background-plane-tilt-y", `${(-normalX * 1.55).toFixed(3)}deg`);
+      root.style.setProperty("--background-grid-x", `${(-normalX * 8).toFixed(2)}px`);
+      root.style.setProperty("--background-grid-y", `${(-normalY * 6).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-tilt-x", `${(normalY * 2.1).toFixed(3)}deg`);
+      root.style.setProperty("--background-plane-tilt-y", `${(-normalX * 2.45).toFixed(3)}deg`);
     };
 
     const onPointerMove = (event: PointerEvent) => {

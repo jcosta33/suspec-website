@@ -16,8 +16,8 @@ body {
     radial-gradient(90% 70% at 50% 8%, rgba(95, 87, 37, 0.055), transparent 58%) fixed,
     var(--color-background);
   background-position:
-    var(--background-grid-x) var(--background-grid-y),
-    calc(var(--background-grid-x) * -0.65) calc(var(--background-grid-y) * 0.65),
+    0 0,
+    0 0,
     center top,
     center top,
     center;
@@ -30,35 +30,59 @@ body {
 }
 
 @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body {
+    background:
+      radial-gradient(120% 80% at 50% -16%, rgba(216, 138, 36, 0.035), transparent 50%) fixed,
+      radial-gradient(90% 70% at 50% 8%, rgba(95, 87, 37, 0.055), transparent 58%) fixed,
+      var(--color-background);
+    background-position:
+      center top,
+      center top,
+      center;
+    background-size:
+      auto,
+      auto,
+      auto;
+  }
+
   .site-main-frame::before {
     content: "";
     position: fixed;
-    inset: -10vmax;
+    inset: -18vmax;
     z-index: -1;
     pointer-events: none;
     background:
-      linear-gradient(rgba(70, 57, 44, 0.032) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(70, 57, 44, 0.026) 1px, transparent 1px);
+      linear-gradient(rgba(70, 57, 44, 0.088) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(70, 57, 44, 0.072) 1px, transparent 1px),
+      linear-gradient(rgba(var(--signal-core-rgb), 0.026) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.018) 1px, transparent 1px),
+      radial-gradient(82% 58% at 50% 6%, rgba(var(--signal-core-rgb), 0.035), transparent 60%);
     background-size:
-      52px 52px,
-      52px 52px;
+      48px 48px,
+      48px 48px,
+      192px 192px,
+      192px 192px,
+      auto;
     background-position:
-      calc(var(--background-grid-x) * -0.45) calc(var(--background-grid-y) * -0.45),
-      calc(var(--background-grid-x) * 0.35) calc(var(--background-grid-y) * -0.35);
-    opacity: 0.38;
-    transform: perspective(1200px) rotateX(var(--background-plane-tilt-x))
+      calc(50% + var(--background-grid-x)) calc(0% + var(--background-grid-y)),
+      calc(50% + var(--background-grid-x)) calc(0% + var(--background-grid-y)),
+      calc(50% + var(--background-grid-x) * 0.42) calc(0% + var(--background-grid-y) * 0.42),
+      calc(50% + var(--background-grid-x) * 0.42) calc(0% + var(--background-grid-y) * 0.42),
+      center top;
+    opacity: 0.64;
+    transform: perspective(980px) rotateX(var(--background-plane-tilt-x))
       rotateY(var(--background-plane-tilt-y))
       translate3d(
-        calc(var(--background-grid-x) * 0.35),
-        calc(var(--background-grid-y) * 0.35),
+        calc(var(--background-grid-x) * 0.22),
+        calc(var(--background-grid-y) * 0.22),
         0
-      );
-    transform-origin: center 18vh;
+      )
+      scale(1.04);
+    transform-origin: 50% 28vh;
     will-change: transform, background-position;
   }
 
-  .site-main-frame > .flex.flex-col > .ambient-header::before,
-  .repo-product-page > .ambient-header::before {
+  .site-main-frame .ambient-header::before {
     transform: translateX(calc(-50% + var(--background-grid-x) * 0.28))
       translateY(calc(var(--background-grid-y) * 0.18))
       perspective(1200px) rotateX(calc(var(--background-plane-tilt-x) * 0.34))
@@ -67,8 +91,29 @@ body {
     will-change: transform, background-position;
   }
 
-  .site-main-frame > .flex.flex-col > .ambient-header .page-hero-motif,
-  .repo-product-page > .ambient-header .page-hero-motif {
+  .site-main-frame .ambient-header::after {
+    transform: translateX(calc(-50% + var(--background-grid-x) * 0.22))
+      translateY(calc(var(--background-grid-y) * 0.14))
+      perspective(1200px) rotateX(calc(var(--background-plane-tilt-x) * 0.28))
+      rotateY(calc(var(--background-plane-tilt-y) * 0.32));
+    transform-origin: center 50%;
+    will-change: transform;
+  }
+
+  .site-main-frame .page-hero::before,
+  .site-main-frame .page-hero::after {
+    transform: translate3d(
+        calc(var(--background-grid-x) * 0.14),
+        calc(var(--background-grid-y) * 0.12),
+        0
+      )
+      perspective(1200px) rotateX(calc(var(--background-plane-tilt-x) * 0.22))
+      rotateY(calc(var(--background-plane-tilt-y) * 0.24));
+    transform-origin: center 42%;
+    will-change: transform;
+  }
+
+  .site-main-frame .ambient-header .page-hero-motif {
     animation-name: page-hero-motif-drift-pointer;
     transform-origin: center 48%;
     will-change: transform;
