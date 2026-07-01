@@ -275,15 +275,15 @@
 
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
-  --font-heading: var(--font-fraunces);
-  --font-display: var(--font-fraunces);
-  --font-title: var(--font-fraunces);
+  --font-heading: var(--font-alegreya);
+  --font-display: var(--font-alegreya);
+  --font-title: var(--font-alegreya);
 
   --radius-panel: 10px;
   --radius-control: 10px;
 
-  --font-weight-title: 455;
-  --font-weight-title-compact: 535;
+  --font-weight-title: 530;
+  --font-weight-title-compact: 580;
   --rhythm-kicker-title: clamp(1.16rem, 1.58vw, 1.42rem);
   --rhythm-title-body: clamp(1.02rem, 1.38vw, 1.28rem);
   --rhythm-register-gap: clamp(2.42rem, 3.05vw, 2.9rem);
@@ -297,9 +297,9 @@
   color-scheme: dark;
   /* Runtime aliases for next/font variables. Tailwind's theme layer also exposes
      these names for utilities; this keeps computed CSS variables aligned. */
-  --font-heading: var(--font-fraunces);
-  --font-display: var(--font-fraunces);
-  --font-title: var(--font-fraunces);
+  --font-heading: var(--font-alegreya);
+  --font-display: var(--font-alegreya);
+  --font-title: var(--font-alegreya);
   --color-pwr-red: #d2624e;
   --signal-core: var(--color-aurum);
   --signal-core-rgb: 216, 138, 36;
@@ -518,10 +518,6 @@ body::after {
   font-feature-settings:
     "kern" 1,
     "liga" 1;
-  font-variation-settings:
-    "SOFT" 36,
-    "WONK" 0,
-    "opsz" 26;
 }
 
 /* Display font — bookish display serif for title-page voice. */
@@ -531,10 +527,6 @@ body::after {
   font-feature-settings:
     "kern" 1,
     "liga" 1;
-  font-variation-settings:
-    "SOFT" 42,
-    "WONK" 1,
-    "opsz" 54;
 }
 
 /* Title font — book-cover scale only: heroes, docs H1, wordmark. */
@@ -544,10 +536,6 @@ body::after {
   font-feature-settings:
     "kern" 1,
     "liga" 1;
-  font-variation-settings:
-    "SOFT" 46,
-    "WONK" 1,
-    "opsz" 72;
 }
 
 /* Focus ring */

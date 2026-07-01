@@ -23,7 +23,7 @@ const facts = [
   { label: "Styling", value: "Tailwind CSS v4" },
   {
     label: "Fonts",
-    value: "Inter, Fraunces, JetBrains Mono",
+    value: "Inter, Alegreya, JetBrains Mono",
   },
   { label: "Icons", value: "Lucide React" },
   { label: "Hosting", value: "Vercel" },

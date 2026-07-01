@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import {
-  Fraunces,
+  Alegreya,
   Inter,
   JetBrains_Mono,
 } from "next/font/google";
@@ -67,14 +67,13 @@ const jetbrainsMono = JetBrains_Mono({
   preload: false,
 });
 
-// Display face for headings and title moments: warm archival serif with
-// controlled eccentricity, so Suspec reads bookish without getting theatrical.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+// Display face for headings and title moments: literary and a little strange,
+// but still sturdy enough for a technical product surface.
+const alegreya = Alegreya({
+  variable: "--font-alegreya",
   subsets: ["latin"],
   display: "swap",
   weight: "variable",
-  axes: ["SOFT", "WONK", "opsz"],
 });
 
 export const metadata: Metadata = {
@@ -134,7 +133,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetbrainsMono.variable} ${alegreya.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-chassis text-concrete-100">
         <JsonLd data={siteGraph} />
