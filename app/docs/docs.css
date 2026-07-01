@@ -667,6 +667,10 @@
   color: var(--color-concrete-100);
   line-height: 1.25;
   scroll-margin-top: 5rem;
+  font-variation-settings:
+    "SOFT" 36,
+    "WONK" 0,
+    "opsz" 26;
 }
 .docs-prose h1 {
   font-family: var(--font-title), "Iowan Old Style", Palatino, Georgia, serif;
@@ -674,6 +678,10 @@
   font-weight: var(--font-weight-title);
   margin: 0 0 1.05rem;
   letter-spacing: 0;
+  font-variation-settings:
+    "SOFT" 46,
+    "WONK" 1,
+    "opsz" 72;
   overflow-wrap: anywhere;
   text-wrap: pretty;
 }
@@ -2210,6 +2218,10 @@
   font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
   font-size: 0.8rem;
   font-weight: 760;
+  font-variation-settings:
+    "SOFT" 36,
+    "WONK" 0,
+    "opsz" 26;
   line-height: 1.05;
 }
 
@@ -2288,6 +2300,10 @@
   font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
   font-size: 0.68rem;
   font-weight: 750;
+  font-variation-settings:
+    "SOFT" 36,
+    "WONK" 0,
+    "opsz" 26;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -2910,6 +2926,10 @@
   font-family: var(--font-heading), sans-serif;
   font-size: 1.03rem;
   font-weight: 500;
+  font-variation-settings:
+    "SOFT" 36,
+    "WONK" 0,
+    "opsz" 26;
   line-height: 1.25;
 }
 .docs-prose .docs-pager-link:hover .docs-pager-title {
