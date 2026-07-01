@@ -229,6 +229,69 @@
     margin-top: 0.7rem !important;
   }
 
+  .get-started-page .setup-path-strip {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.58rem !important;
+    padding: 0.62rem !important;
+  }
+
+  .get-started-page .setup-path-strip > li,
+  .get-started-page .setup-path-strip > li:last-child {
+    grid-column: 1 / -1 !important;
+  }
+
+  .get-started-page .setup-path-strip > li > a {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: start !important;
+    min-height: 4.85rem !important;
+    padding: 0.78rem 0.86rem !important;
+  }
+
+  .get-started-page .setup-path-strip > li > a > div {
+    gap: 0.64rem !important;
+  }
+
+  .get-started-page .setup-path-strip p.mt-3 {
+    display: block !important;
+    max-width: 22rem;
+    margin-top: 0.46rem !important;
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  .get-started-page .setup-path-strip .motion-nudge-x {
+    opacity: 0.8;
+  }
+
+  .loop-diagram .loop-step-grid-linked {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.68rem !important;
+  }
+
+  .loop-diagram .loop-step-card-linked {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 5.25rem !important;
+    padding: 0.82rem 0.76rem 0.84rem !important;
+  }
+
+  .loop-diagram .loop-step-card-linked > div:first-child,
+  .loop-diagram .loop-step-card-linked > div:nth-child(2) {
+    display: flex !important;
+  }
+
+  .loop-diagram .loop-step-card-linked > div:first-child {
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .loop-diagram .loop-step-card-linked > div:nth-child(2) {
+    align-items: center;
+    gap: 0.42rem;
+  }
+
   .cli-command-catalog-header,
   .skill-guide-catalog-header,
   .mcp-adapter-header {
