@@ -176,7 +176,7 @@ const rosterGroups = [
 }>;
 
 const agentPageNav = [
-  { label: "Roster", href: "#worker-lanes", signal: "reference" },
+  { label: "Roster", href: "#roster-brief", signal: "reference" },
   { label: "Install", href: "#install", signal: "core" },
   { label: "Read-only", href: "#read-only-workers", signal: "reference" },
   { label: "Authoring", href: "#bounded-authoring", signal: "core" },
@@ -190,6 +190,64 @@ const agentPageNav = [
 
 function repoHref(agent: string) {
   return `https://github.com/jcosta33/suspec-agents/blob/main/agents/${agent}.md`;
+}
+
+function AgentInstallSection() {
+  return (
+    <Section
+      id="install"
+      register="02 / install"
+      registerTone="reference"
+      className="section-flow section-flow-tight"
+    >
+      <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
+        <DroneIcon className="h-4 w-4" />
+        <span>install.sh — copy one worker</span>
+      </div>
+      <Panel brushed className="p-2">
+        <TerminalWindow title="terminal" copyText={agentInstallCommands}>
+          <p className="text-concrete-500"># copy one worker</p>
+          <p className="text-concrete-100">
+            <span className="text-suspec-yellow">$</span>{" "}
+            REPO=&lt;your-repo&gt;
+          </p>
+          <p className="text-concrete-100">
+            <span className="text-suspec-yellow">$</span>{" "}
+            AGENT=suspec-reviewer.md
+          </p>
+          <p className="text-concrete-100">
+            <span className="text-suspec-yellow">$</span>{" "}
+            DEST=&quot;$REPO&quot;/.claude/agents
+          </p>
+          <p className="text-concrete-100">
+            <span className="text-suspec-yellow">$</span>{" "}
+            mkdir -p &quot;$DEST&quot;
+          </p>
+          <p className="text-concrete-100">
+            <span className="text-suspec-yellow">$</span>{" "}cp agents/&quot;$AGENT&quot; &quot;$DEST&quot;/
+          </p>
+          <p className="mt-2 text-concrete-500"># optional hooks</p>
+          <p className="text-concrete-100">
+            <span className="text-suspec-yellow">$</span>{" "}
+            DEST=&quot;$REPO&quot;/.claude/hooks
+          </p>
+          <p className="text-concrete-100">
+            <span className="text-suspec-yellow">$</span>{" "}
+            mkdir -p &quot;$DEST&quot;
+          </p>
+          <p className="text-concrete-100">
+            <span className="text-suspec-yellow">$</span>{" "}cp hooks/*.sh &quot;$DEST&quot;/
+          </p>
+        </TerminalWindow>
+      </Panel>
+      <p className="section-after-panel-note">
+        These are Claude Code agents in{" "}
+        <code className="text-suspec-yellow">.claude/agents/</code>.{" "}
+        <code className="text-suspec-yellow">npx skills</code> installs the{" "}
+        <TextLink href="/skills/">skills catalog</TextLink>, not these.
+      </p>
+    </Section>
+  );
 }
 
 export default function AgentsPage() {
@@ -233,6 +291,7 @@ export default function AgentsPage() {
       />
 
       <Section
+        id="roster-brief"
         register="01 / roster brief"
         registerTone="reference"
         className="manifest-pair grid gap-5 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-stretch"
@@ -268,9 +327,11 @@ export default function AgentsPage() {
         </Card>
       </Section>
 
+      <AgentInstallSection />
+
       <Section
         id="worker-lanes"
-        register="02 / worker lanes"
+        register="03 / worker lanes"
         registerTone="muted"
         className="agent-roster-grid grid gap-4 lg:grid-cols-[0.62fr_1fr]"
       >
@@ -359,58 +420,6 @@ export default function AgentsPage() {
             </div>
           </Panel>
         ))}
-      </Section>
-
-      <Section
-        id="install"
-        register="03 / install"
-        registerTone="reference"
-        className="section-flow section-flow-tight"
-      >
-        <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
-          <DroneIcon className="h-4 w-4" />
-          <span>install.sh — copy one worker</span>
-        </div>
-        <Panel brushed className="p-2">
-          <TerminalWindow title="terminal" copyText={agentInstallCommands}>
-            <p className="text-concrete-500">
-              # copy one worker
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}REPO=&lt;your-repo&gt;
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}AGENT=suspec-reviewer.md
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}DEST=&quot;$REPO&quot;/.claude/agents
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}mkdir -p &quot;$DEST&quot;
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}cp agents/&quot;$AGENT&quot; &quot;$DEST&quot;/
-            </p>
-            <p className="mt-2 text-concrete-500">
-              # optional hooks
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}DEST=&quot;$REPO&quot;/.claude/hooks
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}mkdir -p &quot;$DEST&quot;
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}cp hooks/*.sh &quot;$DEST&quot;/
-            </p>
-          </TerminalWindow>
-        </Panel>
-        <p className="section-after-panel-note">
-          These are Claude Code agents in{" "}
-          <code className="text-suspec-yellow">.claude/agents/</code>.{" "}
-          <code className="text-suspec-yellow">npx skills</code> installs the{" "}
-          <TextLink href="/skills/">skills catalog</TextLink>, not these.
-        </p>
       </Section>
 
       <Section
