@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import {
-  Fraunces,
+  Besley,
   Inter,
   JetBrains_Mono,
 } from "next/font/google";
@@ -67,14 +67,13 @@ const jetbrainsMono = JetBrains_Mono({
   preload: false,
 });
 
-// Display face for headings and title moments: bookish and a little strange,
-// but sturdy enough for product UI at software-site scale.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+// Display face for headings and title moments: printed-manual sturdiness with
+// enough antique serif character to keep the manuscript layer present.
+const besley = Besley({
+  variable: "--font-besley",
   subsets: ["latin"],
   display: "swap",
   weight: "variable",
-  axes: ["SOFT", "WONK", "opsz"],
 });
 
 export const metadata: Metadata = {
@@ -134,7 +133,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetbrainsMono.variable} ${besley.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-chassis text-concrete-100">
         <JsonLd data={siteGraph} />
