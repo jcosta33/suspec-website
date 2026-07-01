@@ -8701,9 +8701,9 @@ section.bg-section-band::after {
   flex: 1 1 auto;
   overflow-wrap: normal;
   word-break: normal;
-  font-family: var(--font-heading), var(--font-sans), sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-size: 0.86rem;
-  font-weight: 760;
+  font-weight: 600;
   line-height: 1.1;
 }
 
