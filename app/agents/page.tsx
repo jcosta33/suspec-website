@@ -267,10 +267,7 @@ export default function AgentsPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Claude Code worker files for Suspec roles.
-          </p>
-          <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
-            Add one when a role needs its own operating context.
+            Claude Code worker files for roles that need their own operating context.
           </p>
           <HeroTrace
             ariaLabel="Agent role trace"
@@ -348,7 +345,7 @@ export default function AgentsPage() {
                 >
                   lane {String(groupIndex + 1).padStart(2, "0")} — {group.tone}
                 </p>
-                <h2 className="mt-2 font-heading text-xl font-bold text-concrete-100">
+                <h2 className="mt-2 font-heading text-xl font-semibold text-concrete-100">
                   {group.title}
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-concrete-400">
@@ -402,7 +399,7 @@ export default function AgentsPage() {
                           aria-hidden="true"
                         />
                       </div>
-                      <h3 className="agent-roster-cell-title mt-3 font-heading text-xl font-bold">
+                      <h3 className="agent-roster-cell-title mt-3 font-heading text-xl font-semibold">
                         {item.label}
                       </h3>
                       <p
