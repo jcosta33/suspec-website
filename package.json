@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "predev": "node scripts/ensure-canon.mjs",
     "prebuild": "node scripts/ensure-canon.mjs",
     "build": "next build",
     "postbuild": "pagefind --site dist --output-subdir pagefind && node scripts/gen-llms-full.mjs",

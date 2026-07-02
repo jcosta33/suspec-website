@@ -1,22 +1,10 @@
-// Single-sourcing: the docs site DERIVES from the canon at build time — no copy is committed here.
-// Locally the canon is SUSPEC_CANON_DIR or the sibling `suspec` repo; on Vercel the prebuild step
-// makes it available to the build.
+// Single-sourcing: the docs site derives from the canon at build time.
+// The prebuild/predev step mirrors the source repo into .suspec-canon so app routes only read a
+// statically scoped project-local path. That keeps Next's file tracer from walking the whole repo.
 import fs from "node:fs";
 import path from "node:path";
 
-// The canon: the local sibling checkout in dev, else the vendored clone the prebuild step fetches
-// on CI/Vercel (see scripts/ensure-canon.mjs). Single source either way; the vendor copy is ephemeral.
-const SIBLING_CANDIDATES = [
-  process.env.SUSPEC_CANON_DIR
-    ? path.resolve(process.env.SUSPEC_CANON_DIR)
-    : null,
-  path.join(process.cwd(), "..", "suspec", "docs"),
-].filter(Boolean) as string[];
-const SIBLING = SIBLING_CANDIDATES.find((candidate) =>
-  fs.existsSync(candidate),
-);
-const VENDOR = path.join(process.cwd(), ".suspec-canon", "docs");
-export const CANON = SIBLING ?? VENDOR;
+export const CANON = path.join(process.cwd(), ".suspec-canon", "docs");
 
 export function canonAvailable(): boolean {
   return fs.existsSync(CANON);

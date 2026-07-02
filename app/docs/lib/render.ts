@@ -5,7 +5,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import { unified, type Plugin } from "unified";
-import { CANON } from "./canon";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
@@ -24,10 +23,14 @@ import type {
 
 export type DocHeading = { depth: 2 | 3; id: string; text: string };
 
-const REPO_ROOT = path.join(CANON, ".."); // the suspec repo root (docs/ lives under it)
+const REPO_ROOT = path.join(process.cwd(), ".suspec-canon"); // the suspec repo root mirror
 const GH_BLOB = "https://github.com/jcosta33/suspec/blob/main/";
-const repoHas = (repoRel: string): boolean =>
-  fs.existsSync(path.join(REPO_ROOT, repoRel));
+const repoHas = (repoRel: string): boolean => {
+  const root = path.resolve(REPO_ROOT);
+  const target = path.resolve(REPO_ROOT, repoRel);
+  if (target !== root && !target.startsWith(root + path.sep)) return false;
+  return fs.existsSync(target);
+};
 
 // Concatenated text of an mdast node (to unwrap a dead link to plain text).
 const mdastText = (n: {

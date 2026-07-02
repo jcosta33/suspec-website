@@ -4,7 +4,7 @@
 //   never committed, so single-sourcing holds). Pin a ref via SUSPEC_REF for reproducible builds.
 // Chosen over a git submodule: lower contributor friction (no submodule init/update), works the same
 // locally and on Vercel, and SUSPEC_REF gives the same pinning a submodule would.
-import { existsSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, rmSync, writeFileSync } from "node:fs";
 import { execSync } from "node:child_process";
 import path from "node:path";
 
@@ -28,6 +28,15 @@ if (sibling) {
     `[ensure-canon] using ${sibling === explicitCanon ? "SUSPEC_CANON_DIR" : `the local sibling ${path.relative(cwd, sibling)}`}`,
   );
   repoRoot = path.dirname(sibling);
+  if (path.resolve(repoRoot) !== path.resolve(vendor)) {
+    rmSync(vendor, { recursive: true, force: true });
+    cpSync(repoRoot, vendor, {
+      recursive: true,
+      filter: (src) =>
+        ![".git", "node_modules", "dist", ".next"].includes(path.basename(src)),
+    });
+    console.log("[ensure-canon] mirrored canon source -> .suspec-canon");
+  }
 } else if (existsSync(vendorDocs)) {
   console.log("[ensure-canon] using the vendored .suspec-canon/docs");
   repoRoot = vendor;
