@@ -50,19 +50,19 @@
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
       root.style.setProperty(
         "--background-plane-tilt-x",
-        `${(normalY * -6.2).toFixed(3)}deg`,
+        `${(normalY * -7.4).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-plane-tilt-y",
-        `${(normalX * 7.2).toFixed(3)}deg`,
+        `${(normalX * 8.2).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-header-tilt-x",
-        `${(normalY * -7.6).toFixed(3)}deg`,
+        `${(normalY * -8.6).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-header-tilt-y",
-        `${(normalX * 8.8).toFixed(3)}deg`,
+        `${(normalX * 9.6).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-plane-origin-x",
@@ -74,19 +74,19 @@
       );
       root.style.setProperty(
         "--background-plane-drift-x",
-        `${(-normalX * 7.5).toFixed(2)}px`,
+        `${(-normalX * 3.6).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-drift-y",
-        `${(-normalY * 5.5).toFixed(2)}px`,
+        `${(-normalY * 2.8).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-drift-x",
-        `${(-normalX * 4.8).toFixed(2)}px`,
+        `${(-normalX * 2.8).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-drift-y",
-        `${(-normalY * 3.6).toFixed(2)}px`,
+        `${(-normalY * 2.2).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-origin-x",
@@ -98,27 +98,27 @@
       );
       root.style.setProperty(
         "--background-plane-grid-x",
-        `${(-normalX * 18).toFixed(2)}px`,
+        `${(-normalX * 10).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-grid-y",
-        `${(-normalY * 12).toFixed(2)}px`,
+        `${(-normalY * 7).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-grid-minor-x",
-        `${(-normalX * 7).toFixed(2)}px`,
+        `${(-normalX * 4).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-grid-minor-y",
-        `${(-normalY * 5).toFixed(2)}px`,
+        `${(-normalY * 3).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-grid-x",
-        `${(normalX * 15).toFixed(2)}px`,
+        `${(normalX * 10).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-grid-y",
-        `${(normalY * 9).toFixed(2)}px`,
+        `${(normalY * 7).toFixed(2)}px`,
       );
     }
 

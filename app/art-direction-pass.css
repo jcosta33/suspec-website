@@ -49,7 +49,7 @@ body {
   display: none;
 }
 
-@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
   body {
     background:
       radial-gradient(120% 80% at 50% -16%, rgba(216, 138, 36, 0.035), transparent 50%) fixed,
@@ -72,7 +72,7 @@ body {
     display: block;
     overflow: hidden;
     pointer-events: none;
-    perspective: 520px;
+    perspective: 390px;
     perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     contain: paint;
@@ -80,14 +80,14 @@ body {
 
   .site-background-plane {
     position: absolute;
-    inset: -20vmax;
+    inset: -22vmax;
     display: block;
     background:
-      linear-gradient(rgba(70, 57, 44, 0.104) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(70, 57, 44, 0.086) 1px, transparent 1px),
-      linear-gradient(rgba(var(--signal-core-rgb), 0.032) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.022) 1px, transparent 1px),
-      radial-gradient(82% 58% at 50% 6%, rgba(var(--signal-core-rgb), 0.035), transparent 60%);
+      linear-gradient(rgba(70, 57, 44, 0.14) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(70, 57, 44, 0.118) 1px, transparent 1px),
+      linear-gradient(rgba(var(--signal-core-rgb), 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.028) 1px, transparent 1px),
+      radial-gradient(82% 58% at 50% 6%, rgba(var(--signal-core-rgb), 0.04), transparent 60%);
     background-size:
       48px 48px,
       48px 48px,
@@ -106,17 +106,20 @@ body {
       center top;
     opacity: 0.96;
     transform:
-      translate3d(var(--background-plane-drift-x), var(--background-plane-drift-y), 0)
-      translateZ(-110px)
-      rotateX(calc(var(--background-plane-tilt-x) * 1.48))
-      rotateY(calc(var(--background-plane-tilt-y) * 1.5))
-      scale(1.5);
-    transform-origin: center;
+      translate3d(
+        var(--background-plane-drift-x),
+        var(--background-plane-drift-y),
+        -76px
+      )
+      rotateX(calc(var(--background-plane-tilt-x) * 1.16))
+      rotateY(calc(var(--background-plane-tilt-y) * 1.18))
+      scale(1.42);
+    transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
     transition:
-      transform 80ms linear,
-      background-position 80ms linear;
+      transform 64ms linear,
+      background-position 64ms linear;
     will-change: transform, background-position;
   }
 
@@ -127,19 +130,19 @@ body {
   }
 
   .site-main-frame .ambient-header {
-    perspective: 440px;
+    perspective: 360px;
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
 
   .site-main-frame .ambient-header::before {
     animation-name: ambient-calibration-breathe-pointer;
-    width: min(62rem, 106vw);
+    width: min(70rem, 112vw);
     transform: translateX(-50%)
-      rotateX(calc(var(--background-header-tilt-x) * 1.58))
-      rotateY(calc(var(--background-header-tilt-y) * 1.7))
-      translate3d(var(--background-header-drift-x), var(--background-header-drift-y), 62px)
-      scale(1.1);
+      rotateX(calc(var(--background-header-tilt-x) * 1.62))
+      rotateY(calc(var(--background-header-tilt-y) * 1.74))
+      translate3d(var(--background-header-drift-x), var(--background-header-drift-y), 46px)
+      scale(1.14);
     background-position:
       calc(50% + var(--background-header-grid-x)) 50%,
       var(--background-plane-grid-x) var(--background-header-grid-y),
@@ -150,17 +153,17 @@ body {
     transform-style: preserve-3d;
     backface-visibility: hidden;
     transition:
-      transform 80ms linear,
-      background-position 80ms linear;
-    will-change: transform;
+      transform 64ms linear,
+      background-position 64ms linear;
+    will-change: transform, background-position;
   }
 
   .site-main-frame .ambient-header::after {
     transform: translateX(-50%)
-      rotateX(calc(var(--background-header-tilt-x) * 1.44))
-      rotateY(calc(var(--background-header-tilt-y) * 1.56))
-      translate3d(var(--background-header-drift-x), var(--background-header-drift-y), 54px)
-      scale(1.085);
+      rotateX(calc(var(--background-header-tilt-x) * 1.5))
+      rotateY(calc(var(--background-header-tilt-y) * 1.62))
+      translate3d(var(--background-header-drift-x), var(--background-header-drift-y), 40px)
+      scale(1.12);
     background-position:
       left calc(50% + var(--background-header-grid-y)),
       right calc(50% + var(--background-header-grid-y)),
@@ -168,23 +171,23 @@ body {
     transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     backface-visibility: hidden;
     transition:
-      transform 80ms linear,
-      background-position 80ms linear;
+      transform 64ms linear,
+      background-position 64ms linear;
     will-change: transform;
   }
 
   .site-main-frame .page-hero::before,
   .site-main-frame .page-hero::after {
     transform:
-      rotateX(calc(var(--background-header-tilt-x) * 1.36))
-      rotateY(calc(var(--background-header-tilt-y) * 1.48))
-      translate3d(var(--background-header-drift-x), var(--background-header-drift-y), 50px)
-      scale(1.075);
+      rotateX(calc(var(--background-header-tilt-x) * 1.52))
+      rotateY(calc(var(--background-header-tilt-y) * 1.64))
+      translate3d(var(--background-header-drift-x), var(--background-header-drift-y), 38px)
+      scale(1.12);
     transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     backface-visibility: hidden;
     transition:
-      transform 80ms linear,
-      background-position 80ms linear;
+      transform 64ms linear,
+      background-position 64ms linear;
     will-change: transform;
   }
 
@@ -196,23 +199,23 @@ body {
       calc(50% + var(--background-plane-grid-minor-x))
         calc(50% + var(--background-plane-grid-minor-y));
     transition:
-      transform 80ms linear,
-      background-position 80ms linear;
+      transform 64ms linear,
+      background-position 64ms linear;
   }
 
   .site-main-frame .page-hero::after {
     transition:
-      transform 80ms linear,
-      background-position 80ms linear;
+      transform 64ms linear,
+      background-position 64ms linear;
   }
 
   .site-main-frame .ambient-header .page-hero-motif {
     animation-name: page-hero-motif-breathe-pointer;
     transform: translateX(-50%)
-      rotateX(calc(var(--background-header-tilt-x) * 1.54))
-      rotateY(calc(var(--background-header-tilt-y) * 1.66))
-      translate3d(var(--background-header-drift-x), var(--background-header-drift-y), 64px)
-      scale(1.095);
+      rotateX(calc(var(--background-header-tilt-x) * 1.68))
+      rotateY(calc(var(--background-header-tilt-y) * 1.78))
+      translate3d(var(--background-header-drift-x), var(--background-header-drift-y), 48px)
+      scale(1.13);
     transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     background-position:
       calc(50% + var(--background-header-grid-x))
@@ -224,8 +227,8 @@ body {
       calc(50% + var(--background-plane-grid-x))
         calc(50% + var(--background-plane-grid-minor-y));
     transition:
-      transform 80ms linear,
-      background-position 80ms linear;
+      transform 64ms linear,
+      background-position 64ms linear;
     will-change: transform, background-position;
   }
 }
