@@ -389,7 +389,6 @@ export default function AgentsPage() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Read the running agents docs (opens in new tab)"
-              touchTarget={false}
             >
               the docs explain when to delegate
             </TextLink>

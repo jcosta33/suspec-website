@@ -9448,7 +9448,7 @@ section.bg-section-band::after {
   --agent-nav-mark: var(--signal-mark-reference);
   position: relative;
   display: flex;
-  min-height: 2.7rem;
+  min-height: 2.75rem;
   min-width: 0;
   align-items: center;
   gap: 0.56rem;
