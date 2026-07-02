@@ -11082,6 +11082,7 @@ section.bg-section-band::after {
 /* Overview summary — command evidence first, manuscript record second. */
 .overview-summary-grid {
   align-items: stretch;
+  gap: clamp(0.72rem, 1.4vw, 1rem);
 }
 
 .overview-answer-panel {
@@ -11332,8 +11333,8 @@ section.bg-section-band::after {
 
 @media (max-width: 40rem) {
   .overview-answer-panel {
-    gap: 0.72rem;
-    padding: 0.8rem 0.82rem;
+    gap: 0.64rem;
+    padding: 0.76rem 0.78rem;
   }
 
   .overview-answer-panel::before {
@@ -11355,7 +11356,7 @@ section.bg-section-band::after {
   }
 
   .overview-answer-copy p:last-child {
-    margin-top: 0.42rem;
+    margin-top: 0.36rem;
     font-size: 0.84rem;
     line-height: 1.36;
   }
@@ -11370,13 +11371,13 @@ section.bg-section-band::after {
     display: grid;
     grid-template-columns: minmax(4rem, 0.3fr) minmax(0, 1fr);
     align-items: start;
-    gap: 0.58rem;
+    gap: 0.52rem;
     border: 0;
     border-radius: 0;
     background:
       linear-gradient(90deg, rgba(var(--overview-answer-rgb), 0.04), transparent 68%),
       transparent;
-    padding: 0.54rem 0.05rem 0.58rem 0.38rem;
+    padding: 0.48rem 0.05rem 0.52rem 0.34rem;
   }
 
   .overview-answer-fact + .overview-answer-fact {
@@ -11408,10 +11409,10 @@ section.bg-section-band::after {
   }
 
   .overview-terminal-content {
-    max-height: 13.5rem;
-    padding: 0.9rem;
-    font-size: 0.78rem;
-    line-height: 1.45;
+    max-height: 11.8rem;
+    padding: 0.82rem 0.86rem;
+    font-size: 0.76rem;
+    line-height: 1.42;
   }
 
   .overview-check-grid {

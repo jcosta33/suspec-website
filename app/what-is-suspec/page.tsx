@@ -174,7 +174,7 @@ const overviewAnswerFacts = [
   },
   {
     label: "Does not",
-    text: "Runs an agent, approves code, replaces CI, or declares correctness.",
+    text: "Run an agent, approve code, replace CI, or declare correctness.",
     signal: "change",
   },
 ] as const satisfies Array<{
