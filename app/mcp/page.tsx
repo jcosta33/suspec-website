@@ -206,6 +206,28 @@ const bridgeFlow = [
   },
 ] as const;
 
+const bridgeContracts = [
+  {
+    label: "Host",
+    value: "An MCP-capable client asks for workspace context.",
+    signal: "reference",
+  },
+  {
+    label: "Adapter",
+    value: "suspec-mcp calls the public CLI JSON surface.",
+    signal: "core",
+  },
+  {
+    label: "Records",
+    value: "Markdown artifacts stay the source of truth.",
+    signal: "muted",
+  },
+] as const satisfies Array<{
+  label: string;
+  value: string;
+  signal: SignalRole;
+}>;
+
 const mcpPageNav = [
   { label: "Bridge", href: "#bridge", signal: "muted" },
   { label: "Config", href: "#mcp-config", signal: "reference" },
@@ -277,17 +299,46 @@ export default function McpPage() {
         id="bridge"
         register="01 / bridge"
         registerTone="reference"
-        className="scroll-mt-28 space-y-4"
+        className="section-flow scroll-mt-28"
       >
+        <div className="section-intro max-w-3xl">
+          <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
+            <Cable className="h-4 w-4" aria-hidden="true" />
+            <span>local bridge</span>
+          </div>
+          <Heading>Client asks, records answer</Heading>
+          <p className="text-concrete-400">
+            suspec-mcp is a local stdio bridge. It adapts the CLI&apos;s{" "}
+            <code>--json</code> contract for MCP clients; it does not become a
+            hosted service or a review authority.
+          </p>
+          <p className="text-sm text-concrete-400">
+            Source:{" "}
+            <TextLink
+              href="/docs/10-integrations/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Read the integrations documentation (opens in new tab)"
+            >
+              docs/10-integrations.md
+            </TextLink>
+          </p>
+        </div>
         <Panel brushed screws className="mcp-adapter-panel p-0">
           <div className="mcp-adapter-header">
             <p>client request</p>
             <span>local stdio</span>
-            <div className="mcp-adapter-path" aria-hidden="true">
-              {bridgeFlow.map((item) => (
-                <span key={item.channel}>{item.channel}</span>
+            <dl className="mcp-adapter-contracts">
+              {bridgeContracts.map((item) => (
+                <div
+                  key={item.label}
+                  className={`mcp-adapter-contract mcp-adapter-contract-${item.signal}`}
+                >
+                  <dt>{item.label}</dt>
+                  <dd>{item.value}</dd>
+                </div>
               ))}
-            </div>
+            </dl>
           </div>
           <ol
             className="mcp-adapter-rail package-process-strip package-process-strip-mcp process-strip process-strip-signal-reference grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
