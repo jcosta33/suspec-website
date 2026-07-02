@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import {
   IBM_Plex_Mono,
   Inter,
@@ -118,7 +119,10 @@ export default function RootLayout({
       className={`${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-chassis text-concrete-100">
-        <script src="/shell-interactions.js?v=20260702-plane-tilt-center" defer />
+        <Script
+          src="/shell-interactions.js?v=20260702-plane-tilt-center"
+          strategy="afterInteractive"
+        />
         <JsonLd data={siteGraph} />
         <Shell>{children}</Shell>
       </body>

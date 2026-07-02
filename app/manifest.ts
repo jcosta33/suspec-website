@@ -17,13 +17,13 @@ export default function manifest(): MetadataRoute.Manifest {
     // install criteria.
     icons: [
       {
-        src: "/icon/icon-192",
+        src: "/icon/icon-192?manifest=1",
         sizes: "192x192",
         type: "image/png",
         purpose: "any",
       },
       {
-        src: "/icon/icon-512",
+        src: "/icon/icon-512?manifest=1",
         sizes: "512x512",
         type: "image/png",
         purpose: "any",

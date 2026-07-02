@@ -303,13 +303,13 @@ export default function SkillsPage() {
       <Section
         register="01 / index"
         registerTone="reference"
-        className="manifest-pair grid gap-5 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-stretch"
+        className="manifest-pair grid gap-5 md:grid-cols-[minmax(16rem,0.68fr)_minmax(0,1.32fr)] md:items-start"
       >
         <PaperArtifact
           label="index"
           title="two tiers"
           meta="catalog (any repo) -> kit (Suspec repos)"
-          className="h-full"
+          className="manifest-paper-fit md:self-start"
         >
           <p>
             The catalog is framework-free. The kit operates Suspec concepts. Keep
