@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import {
   IBM_Plex_Mono,
   Inter,
-  JetBrains_Mono,
 } from "next/font/google";
 import "./globals.css";
 import "./art-direction-pass.css";
@@ -57,16 +56,6 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500"],
-  // Mono is only used for code/labels, never the LCP heading. Keep it from
-  // preload-competing with the display and body faces on the critical path.
-  preload: false,
 });
 
 // Display face for headings and title moments: console-like, technical, and
@@ -126,7 +115,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-chassis text-concrete-100">
         <script src="/shell-interactions.js" defer />
