@@ -598,7 +598,7 @@ body {
 }
 
 .repo-product-page > .section-register:not(.ambient-header) {
-  padding-top: clamp(0.18rem, 0.5vw, 0.42rem);
+  padding-top: var(--rhythm-register-gap);
 }
 
 .overview-section-nav-shell {
