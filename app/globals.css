@@ -5765,19 +5765,16 @@ section.bg-section-band::after {
 
 @media (min-width: 64rem) {
   .cli-command-rail {
-    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
   }
 
-  .cli-command-step {
-    grid-column: span 2;
-  }
-
+  .cli-command-step,
   .cli-command-step:nth-child(n + 4) {
-    grid-column: span 3;
+    grid-column: auto;
   }
 
   .cli-command-link {
-    min-height: 9.7rem;
+    min-height: 8.6rem;
   }
 
   .cli-command-step:not(:last-child) .cli-command-link::after {
@@ -5796,9 +5793,6 @@ section.bg-section-band::after {
     pointer-events: none;
   }
 
-  .cli-command-step:nth-child(3) .cli-command-link::after {
-    content: none;
-  }
 }
 
 @media (max-width: 40rem) {
