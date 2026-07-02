@@ -214,31 +214,69 @@ export default function WritingSkillsPage() {
         </PageHero>
       </Section>
 
-      <nav
-        className="writing-page-nav mx-auto w-full max-w-7xl px-6 lg:px-8"
-        aria-label="Writing a skill page sections"
-      >
-        <div className="section-jump-nav">
-          {writingPageNav.map((item, index) => (
-            <a
-              key={item.href}
-              href={item.href}
-              aria-label={`Jump to ${item.label} section`}
-              data-color-role={item.signal}
-              className={`section-jump-nav-link section-jump-nav-link-${item.signal} focus-ring group`}
+      <div className="writing-page-nav-stack mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <nav
+          className="writing-page-nav"
+          aria-label="Writing a skill page sections"
+        >
+          <div className="section-jump-nav">
+            {writingPageNav.map((item, index) => (
+              <a
+                key={item.href}
+                href={item.href}
+                aria-label={`Jump to ${item.label} section`}
+                data-color-role={item.signal}
+                className={`section-jump-nav-link section-jump-nav-link-${item.signal} focus-ring group`}
+              >
+                <span className="section-jump-nav-index">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="section-jump-nav-label">{item.label}</span>
+                <ArrowRight
+                  className={`motion-nudge-x h-3.5 w-3.5 ${signalRoles[item.signal].text}`}
+                  aria-hidden="true"
+                />
+              </a>
+            ))}
+          </div>
+        </nav>
+        <aside
+          className="writing-related-records"
+          aria-labelledby="writing-related-records-title"
+        >
+          <div>
+            <p
+              id="writing-related-records-title"
+              className="writing-related-records-kicker"
             >
-              <span className="section-jump-nav-index">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span className="section-jump-nav-label">{item.label}</span>
-              <ArrowRight
-                className={`motion-nudge-x h-3.5 w-3.5 ${signalRoles[item.signal].text}`}
-                aria-hidden="true"
-              />
-            </a>
-          ))}
-        </div>
-      </nav>
+              related records
+            </p>
+            <p className="writing-related-records-copy">
+              Use the catalog for install paths; use the manual when a team needs
+              routing rules.
+            </p>
+          </div>
+          <ul className="writing-related-records-links">
+            <li>
+              <TextLink href="/skills/" touchTarget>
+                suspec-skills index
+              </TextLink>
+            </li>
+            <li>
+              <TextLink
+                href="/docs/reference/agent-guides/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gap-2"
+                touchTarget
+              >
+                agent guide manual{" "}
+                <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              </TextLink>
+            </li>
+          </ul>
+        </aside>
+      </div>
 
       <Section
         id="anatomy"
