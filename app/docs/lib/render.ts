@@ -32,6 +32,21 @@ const repoHas = (repoRel: string): boolean => {
   return fs.existsSync(target);
 };
 
+const canonicalDocsHref = (href: string): string => {
+  if (!href.startsWith("/docs")) return href;
+
+  const [withoutHash, hash = ""] = href.split(/(?=#)/, 2);
+  const [pathname, query = ""] = withoutHash.split(/(?=\?)/, 2);
+
+  if (pathname === "/docs") return `/docs/${query}${hash}`;
+  if (!pathname.startsWith("/docs/") || pathname.endsWith("/")) return href;
+
+  const lastSegment = pathname.split("/").pop() ?? "";
+  if (/\.[a-z0-9]{2,8}$/i.test(lastSegment)) return href;
+
+  return `${pathname}/${query}${hash}`;
+};
+
 // Concatenated text of an mdast node (to unwrap a dead link to plain text).
 const mdastText = (n: {
   type?: string;
@@ -68,13 +83,17 @@ const rewriteMdLinks: Plugin<[string], Root> = (currentDir) => (tree) => {
       const docsRel = repoTarget.slice("docs/".length);
       if (pathPart.endsWith(".md")) {
         if (repoHas(repoTarget))
-          node.url = "/docs/" + docsRel.replace(/\.md$/, "") + anchor;
+          node.url = canonicalDocsHref(
+            "/docs/" + docsRel.replace(/\.md$/, "") + anchor,
+          );
         else unwrap(); // dangling canon link -> plain text (was a GitHub 404)
         return;
       }
       // directory / extensionless -> its README if present, else the source tree (if it exists)
       if (repoHas(repoTarget + "/README.md")) {
-        node.url = "/docs/" + docsRel.replace(/\/$/, "") + "/README" + anchor;
+        node.url = canonicalDocsHref(
+          "/docs/" + docsRel.replace(/\/$/, "") + "/README" + anchor,
+        );
       } else if (repoHas(repoTarget)) {
         node.url = GH_BLOB + repoTarget.replace(/\/$/, "") + anchor;
       } else {
@@ -169,6 +188,18 @@ const remarkLinkifyCitations: Plugin<[], Root> = () => (tree) => {
       ...(parts as unknown as typeof parent.children),
     );
     return [SKIP, index + parts.length];
+  });
+};
+
+const rehypeCanonicalizeDocsLinks: Plugin<[], HastRoot> = () => (tree) => {
+  visit(tree, "element", (node) => {
+    if (node.tagName !== "a") return;
+    const href =
+      typeof node.properties?.href === "string" ? node.properties.href : "";
+    const canonicalHref = canonicalDocsHref(href);
+    if (canonicalHref === href) return;
+    node.properties = node.properties ?? {};
+    node.properties.href = canonicalHref;
   });
 };
 
@@ -555,6 +586,7 @@ export async function renderDoc(
     .use(selectiveRawHtml)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
+    .use(rehypeCanonicalizeDocsLinks)
     .use(rehypeExternalLinks)
     .use(rehypeSlug)
     .use(rehypeNormalizeDisplayHeadings)
