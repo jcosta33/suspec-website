@@ -20,8 +20,10 @@ import { Heading } from "../components/Heading";
 import { PaperArtifact } from "../components/PaperArtifact";
 import { LoopDiagram } from "../components/LoopDiagram";
 import { TextLink } from "../components/TextLink";
+import { JsonLd } from "../components/JsonLd";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 
+const SITE_URL = "https://suspecframework.dev";
 const stepIcons = [Inbox, FileText, ListChecks, Terminal, ScanEye, GitMerge];
 
 export const metadata: Metadata = {
@@ -56,6 +58,8 @@ const steps = [
     name: "Pull",
     signal: "core",
     optional: true,
+    output: "Intake note or source link",
+    handoff: "Spec",
     body: "Point the spec's sources at the origin — a ticket, an issue, or self. When you want the raw request kept verbatim, capture it as an intake file first. Intake is optional; the spec is the unit.",
     example: {
       title: "intake/INTAKE-42.md",
@@ -79,6 +83,8 @@ const steps = [
     number: "02",
     name: "Spec",
     signal: "core",
+    output: "Requirements with checks",
+    handoff: "Task or Run",
     body: "Write requirements one per ID. Add the check for each one.",
     example: {
       title: "specs/shell/spec.md",
@@ -112,6 +118,8 @@ const steps = [
     name: "Task",
     signal: "core",
     optional: true,
+    output: "Bounded task packet",
+    handoff: "Run",
     body: "Only when one spec splits into parallel slices — most work is one spec → one implementer, no task file. When you do split, hand each agent a bounded packet: scope, do-not-change, Verify commands.",
     example: {
       title: "tasks/TASK-shell.md",
@@ -130,6 +138,8 @@ const steps = [
     number: "04",
     name: "Run",
     signal: "core",
+    output: "Execution evidence",
+    handoff: "Review",
     body: "Implement the spec (or the task, when split); paste real evidence per requirement.",
     example: {
       title: "specs/shell/spec.md",
@@ -150,6 +160,8 @@ const steps = [
     name: "Review",
     signal: "core",
     optional: true,
+    output: "Review packet or notes",
+    handoff: "Close",
     body: "A non-implementer checks evidence per requirement. The formal packet is optional for a small change you verified — the judgment isn't.",
     example: {
       title: "reviews/REVIEW-shell.md",
@@ -177,6 +189,8 @@ const steps = [
     number: "06",
     name: "Close",
     signal: "core",
+    output: "Findings and board update",
+    handoff: "Next Pull",
     body: "Merge, record any decision, save durable findings, and update the board.",
     example: {
       title: "findings/FINDING-tailwind-v4-syntax.md",
@@ -200,6 +214,8 @@ const steps = [
   name: string;
   signal: SignalRole;
   optional?: boolean;
+  output: string;
+  handoff: string;
   body: string;
   example: {
     title: string;
@@ -208,8 +224,30 @@ const steps = [
 }>;
 
 export default function TheLoopPage() {
+  const loopJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/the-loop/#webpage`,
+    name: "The Suspec loop",
+    url: `${SITE_URL}/the-loop/`,
+    description: metadata.description,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Suspec loop steps",
+      itemListElement: steps.map((step, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: step.name,
+        url: `${SITE_URL}/the-loop/#${step.name.toLowerCase()}`,
+        description: `${step.output}; hands off to ${step.handoff}. ${step.optional ? "Optional step." : "Core step."}`,
+      })),
+    },
+  };
+
   return (
     <div className="flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+      <JsonLd data={loopJsonLd} />
       <Section className="ambient-header">
         <PageHero
           eyebrow="workflow / six steps"
@@ -239,6 +277,38 @@ export default function TheLoopPage() {
         registerTone="core"
         className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-start"
       >
+        <div className="loop-ledger-panel panel-raised lg:col-span-2">
+          <div className="loop-ledger-copy">
+            <p className="loop-ledger-kicker">loop ledger</p>
+            <h2>Six steps, six handoffs</h2>
+            <p>
+              Each step either creates a record or checks one. The next step
+              should be able to continue without reading the chat transcript.
+            </p>
+          </div>
+          <ol className="loop-ledger-list" aria-label="Suspec loop handoffs">
+            {steps.map((step) => (
+              <li key={step.name} className="loop-ledger-item">
+                <a href={`#${step.name.toLowerCase()}`}>
+                  <span className="loop-ledger-number">{step.number}</span>
+                  <span className="loop-ledger-body">
+                    <span className="loop-ledger-title">
+                      {step.name}
+                      {step.optional ? (
+                        <span className="loop-ledger-status">optional</span>
+                      ) : null}
+                    </span>
+                    <span className="loop-ledger-meta">
+                      <span>{step.output}</span>
+                      <span aria-hidden="true">→</span>
+                      <span>{step.handoff}</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </div>
         <div className="contents lg:order-none lg:grid lg:content-start lg:gap-4">
           <div className="order-2 lg:order-none">
             <PaperArtifact
