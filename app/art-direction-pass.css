@@ -82,7 +82,7 @@ body {
     display: block;
     overflow: hidden;
     pointer-events: none;
-    perspective: 520px;
+    perspective: 460px;
     perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     contain: paint;
@@ -90,7 +90,7 @@ body {
 
   .site-background-plane {
     position: absolute;
-    inset: -22vmax;
+    inset: -26vmax;
     display: block;
     background:
       linear-gradient(rgba(70, 57, 44, 0.17) 1px, transparent 1px),
@@ -107,21 +107,19 @@ body {
     background-position:
       calc(50% + var(--background-plane-grid-x)) var(--background-plane-grid-y),
       calc(50% + var(--background-plane-grid-x)) var(--background-plane-grid-y),
-      calc(50% + var(--background-plane-grid-minor-x))
-        var(--background-plane-grid-minor-y),
-      calc(50% + var(--background-plane-grid-minor-x))
-        var(--background-plane-grid-minor-y),
+      calc(50% + var(--background-plane-grid-x)) var(--background-plane-grid-y),
+      calc(50% + var(--background-plane-grid-x)) var(--background-plane-grid-y),
       center top;
     opacity: 0.94;
     transform:
       translate3d(
         var(--background-plane-drift-x),
         var(--background-plane-drift-y),
-        -18px
+        -34px
       )
-      rotateX(var(--background-plane-rotate-x))
-      rotateY(var(--background-plane-rotate-y))
-      scale(1.24);
+      rotateX(var(--background-plane-tilt-x))
+      rotateY(var(--background-plane-tilt-y))
+      scale(1.34);
     transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -190,7 +188,7 @@ body {
   }
 
   .site-main-frame .ambient-header {
-    perspective: 500px;
+    perspective: 460px;
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
@@ -1319,12 +1317,12 @@ body {
   }
 
   .mcp-adapter-rail {
-    gap: 0.42rem !important;
-    padding: 0.48rem !important;
+    gap: 0.34rem !important;
+    padding: 0.42rem !important;
   }
 
   .mcp-adapter-rail::before {
-    left: 1.75rem !important;
+    left: 1.66rem !important;
     opacity: 0.58;
   }
 
@@ -1337,20 +1335,20 @@ body {
   .mcp-adapter-step-link {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr);
-    min-height: 4.72rem !important;
-    padding: 0.62rem 0.68rem 0.66rem !important;
+    min-height: 4.08rem !important;
+    padding: 0.52rem 0.62rem 0.56rem !important;
   }
 
   .mcp-adapter-heading {
     display: grid !important;
-    grid-template-columns: 1.7rem minmax(0, 1fr) auto;
+    grid-template-columns: 1.52rem minmax(0, 1fr) auto;
     align-items: center !important;
-    gap: 0.56rem !important;
+    gap: 0.5rem !important;
   }
 
   .mcp-adapter-heading .hex-badge {
-    height: 1.7rem !important;
-    width: 1.7rem !important;
+    height: 1.52rem !important;
+    width: 1.52rem !important;
   }
 
   .mcp-adapter-heading > .min-w-0 {
@@ -1371,22 +1369,23 @@ body {
 
   .mcp-adapter-title {
     margin-top: 0.05rem !important;
-    font-size: 0.9rem !important;
+    font-size: 0.86rem !important;
+    line-height: 1.08 !important;
   }
 
   .mcp-adapter-detail {
-    margin-top: 0.3rem !important;
-    margin-left: calc(1.7rem + 0.56rem) !important;
-    -webkit-line-clamp: 2 !important;
-    font-size: 0.72rem !important;
-    line-height: 1.32 !important;
+    margin-top: 0.22rem !important;
+    margin-left: calc(1.52rem + 0.5rem) !important;
+    -webkit-line-clamp: 1 !important;
+    font-size: 0.69rem !important;
+    line-height: 1.26 !important;
   }
 
   .cli-command-catalog-header,
   .skill-guide-catalog-header,
   .mcp-adapter-header {
-    min-height: 2.55rem;
-    padding-block: 0.62rem;
+    min-height: 2.38rem;
+    padding-block: 0.54rem;
   }
 
   .cli-command-section {

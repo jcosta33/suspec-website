@@ -314,9 +314,9 @@ export default function McpPage() {
                         >
                           {String(index + 1).padStart(2, "0")} / {item.channel}
                         </p>
-                        <h2 className="mcp-adapter-title font-heading text-lg font-semibold text-concrete-100">
+                        <span className="mcp-adapter-title block font-heading text-lg font-semibold text-concrete-100">
                           {item.label}
-                        </h2>
+                        </span>
                       </div>
                       <ArrowRight
                         className="motion-nudge-x ml-auto h-4 w-4 shrink-0 text-brass/70 lg:hidden"
