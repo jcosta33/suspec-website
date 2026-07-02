@@ -136,7 +136,7 @@ const adjacent = [
   relation: string;
 }>;
 
-const overviewDiagnosticCommand = "cat what-is-suspec.md";
+const overviewDiagnosticCommand = "cat docs/01-what-is-suspec.md";
 
 const overviewJumpLinks = [
   { label: "Boundaries", href: "#boundaries", signal: "muted" },
@@ -174,7 +174,7 @@ const overviewAnswerFacts = [
     signal: "evidence",
   },
   {
-    label: "Never",
+    label: "Does not",
     text: "Runs an agent, approves code, replaces CI, or declares correctness.",
     signal: "change",
   },
@@ -405,8 +405,8 @@ export default function WhatIsSuspecPage() {
             contentClassName="overview-terminal-content"
           >
             <p className="text-concrete-400">
-              <span className="text-suspec-yellow">$</span> cat{" "}
-              what-is-suspec.md
+              <span className="text-suspec-yellow">$</span>{" "}
+              {overviewDiagnosticCommand}
             </p>
             <p className="mt-2 text-concrete-100">
               Suspec turns requests into specs, specs into tasks, and task
@@ -565,7 +565,7 @@ export default function WhatIsSuspecPage() {
             <span>common failure modes</span>
           </div>
           <Heading className="mt-3">
-            Failure modes you are already seeing
+            Common failure modes
           </Heading>
         </div>
         <ul className="overview-failure-grid reveal grid gap-6 md:grid-cols-2 lg:grid-cols-3">

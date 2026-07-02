@@ -11124,8 +11124,8 @@ section.bg-section-band::after {
 
 @media (max-width: 40rem) {
   .overview-answer-panel {
-    gap: 0.92rem;
-    padding: 0.92rem;
+    gap: 0.72rem;
+    padding: 0.8rem 0.82rem;
   }
 
   .overview-answer-panel::before {
@@ -11143,12 +11143,13 @@ section.bg-section-band::after {
   }
 
   .overview-answer-copy h2 {
-    font-size: 1.16rem;
+    font-size: 1.1rem;
   }
 
   .overview-answer-copy p:last-child {
-    font-size: 0.88rem;
-    line-height: 1.42;
+    margin-top: 0.42rem;
+    font-size: 0.84rem;
+    line-height: 1.36;
   }
 
   .overview-answer-list {
@@ -11159,15 +11160,15 @@ section.bg-section-band::after {
 
   .overview-answer-fact {
     display: grid;
-    grid-template-columns: minmax(4.4rem, 0.32fr) minmax(0, 1fr);
+    grid-template-columns: minmax(4rem, 0.3fr) minmax(0, 1fr);
     align-items: start;
-    gap: 0.72rem;
+    gap: 0.58rem;
     border: 0;
     border-radius: 0;
     background:
       linear-gradient(90deg, rgba(var(--overview-answer-rgb), 0.04), transparent 68%),
       transparent;
-    padding: 0.66rem 0.1rem 0.7rem 0.42rem;
+    padding: 0.54rem 0.05rem 0.58rem 0.38rem;
   }
 
   .overview-answer-fact + .overview-answer-fact {
@@ -11182,8 +11183,8 @@ section.bg-section-band::after {
 
   .overview-answer-fact dd {
     margin-top: 0;
-    font-size: 0.82rem;
-    line-height: 1.4;
+    font-size: 0.78rem;
+    line-height: 1.34;
   }
 
   .overview-summary-grid .overview-terminal-shell {
