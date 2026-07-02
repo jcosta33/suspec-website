@@ -43,12 +43,13 @@ import { canonicalAlternates } from "../seo";
 
 const skillsDescription =
   "Two tiers of agent guides: the framework-free suspec-skills catalog and the Suspec-coupled kit that ships in suspec-starter-kit.";
+const skillsTitle = "suspec-skills — agent guide catalog for Suspec";
 
 export const metadata: Metadata = {
-  title: "suspec-skills — Suspec",
+  title: skillsTitle,
   description: skillsDescription,
   openGraph: {
-    title: "suspec-skills — Suspec",
+    title: skillsTitle,
     description: skillsDescription,
     type: "website",
     url: "/skills/",

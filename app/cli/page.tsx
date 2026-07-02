@@ -28,12 +28,13 @@ import { canonicalAlternates } from "../seo";
 
 const cliDescription =
   "suspec-cli scaffolds Suspec workspaces, runs checks, manages task worktrees, reviews evidence, and emits JSON without deciding correctness.";
+const cliTitle = "suspec-cli — setup, checks, review, JSON";
 
 export const metadata: Metadata = {
-  title: "CLI — Suspec",
+  title: cliTitle,
   description: cliDescription,
   openGraph: {
-    title: "CLI — Suspec",
+    title: cliTitle,
     description: cliDescription,
     type: "website",
     url: "/cli/",

@@ -27,12 +27,13 @@ import { canonicalAlternates } from "../../seo";
 const SITE_URL = "https://suspecframework.dev";
 const pageDescription =
   "A short guide to writing Suspec skills: description, body, references, templates, and scope.";
+const pageTitle = "Writing Suspec skills — structure and scope";
 
 export const metadata: Metadata = {
-  title: "Writing a skill — Suspec",
+  title: pageTitle,
   description: pageDescription,
   openGraph: {
-    title: "Writing a skill — Suspec",
+    title: pageTitle,
     description: pageDescription,
     type: "website",
     url: "/skills/writing/",

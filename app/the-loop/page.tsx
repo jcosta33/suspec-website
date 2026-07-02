@@ -26,15 +26,16 @@ import { canonicalAlternates } from "../seo";
 
 const SITE_URL = "https://suspecframework.dev";
 const stepIcons = [Inbox, FileText, ListChecks, Terminal, ScanEye, GitMerge];
+const loopDescription =
+  "Learn the Suspec loop: write a spec, hand off bounded task work, review evidence, and save findings without letting agents approve themselves.";
+const loopTitle = "Suspec loop — spec, run, review, close";
 
 export const metadata: Metadata = {
-  title: "The loop — Suspec",
-  description:
-    "Learn the Suspec loop: write a spec, hand off bounded task work, review evidence, and save findings without letting agents approve themselves.",
+  title: loopTitle,
+  description: loopDescription,
   openGraph: {
-    title: "The loop — Suspec",
-    description:
-      "Learn the Suspec loop: write a spec, hand off bounded task work, review evidence, and save findings without letting agents approve themselves.",
+    title: loopTitle,
+    description: loopDescription,
     type: "website",
     url: "/the-loop/",
     siteName: "Suspec",

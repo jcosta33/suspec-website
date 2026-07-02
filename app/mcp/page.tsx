@@ -29,12 +29,13 @@ import { canonicalAlternates } from "../seo";
 
 const mcpDescription =
   "suspec-mcp is a local stdio MCP adapter that exposes Suspec workspace status, checks, artifacts, and review data without writing verdicts.";
+const mcpTitle = "suspec-mcp — local MCP adapter for Suspec";
 
 export const metadata: Metadata = {
-  title: "suspec-mcp — Suspec",
+  title: mcpTitle,
   description: mcpDescription,
   openGraph: {
-    title: "suspec-mcp — Suspec",
+    title: mcpTitle,
     description: mcpDescription,
     type: "website",
     url: "/mcp/",

@@ -33,12 +33,13 @@ import { canonicalAlternates } from "../seo";
 
 const agentsDescription =
   "suspec-agents provides Claude Code worker files for Suspec review, challenge, research, spec, audit, and docs roles; workers return evidence, not verdicts.";
+const agentsTitle = "suspec-agents — Claude Code workers for Suspec";
 
 export const metadata: Metadata = {
-  title: "suspec-agents — Suspec",
+  title: agentsTitle,
   description: agentsDescription,
   openGraph: {
-    title: "suspec-agents — Suspec",
+    title: agentsTitle,
     description: agentsDescription,
     type: "website",
     url: "/agents/",

@@ -8,13 +8,14 @@ import { canonicalAlternates } from "../seo";
 const SITE_URL = "https://suspecframework.dev";
 const docsDescription =
   "The Suspec manual for workflow steps, artifact formats, checks, examples, ADRs, and glossary.";
+const docsTitle = "Suspec documentation — manual and reference";
 
 export const metadata: Metadata = {
-  title: "Documentation · Suspec",
+  title: docsTitle,
   description: docsDescription,
   alternates: canonicalAlternates("/docs/"),
   openGraph: {
-    title: "Documentation · Suspec",
+    title: docsTitle,
     description: docsDescription,
     type: "website",
     url: "/docs/",

@@ -29,12 +29,13 @@ import {
 const SITE_URL = "https://suspecframework.dev";
 const overviewDescription =
   "A markdown workflow for turning requests into scoped agent work, review evidence, and saved findings.";
+const overviewTitle = "What is Suspec? — specs, evidence, review";
 
 export const metadata: Metadata = {
-  title: "What is Suspec? — Suspec",
+  title: overviewTitle,
   description: overviewDescription,
   openGraph: {
-    title: "What is Suspec? — Suspec",
+    title: overviewTitle,
     description: overviewDescription,
     type: "website",
     url: "/what-is-suspec/",

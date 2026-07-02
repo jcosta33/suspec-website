@@ -36,12 +36,13 @@ import { canonicalAlternates } from "../seo";
 const SITE_URL = "https://suspecframework.dev";
 const getStartedDescription =
   "Set up Suspec with the starter kit, adopt it in an existing repo, and add the optional CLI only when you need scaffolding or checks.";
+const getStartedTitle = "Get started with Suspec — starter kit and CLI";
 
 export const metadata: Metadata = {
-  title: "Get started — Suspec",
+  title: getStartedTitle,
   description: getStartedDescription,
   openGraph: {
-    title: "Get started — Suspec",
+    title: getStartedTitle,
     description: getStartedDescription,
     type: "website",
     url: "/get-started/",
