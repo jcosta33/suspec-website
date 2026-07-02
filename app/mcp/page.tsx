@@ -234,6 +234,13 @@ export default function McpPage() {
           "review data",
           "no verdict",
         ]}
+        catalogItems={tools.flatMap((group) =>
+          group.items.map((tool) => ({
+            name: tool,
+            description: `${group.group} tool exposed by suspec-mcp.`,
+            category: `${group.group} MCP tool`,
+          })),
+        )}
       />
       <Section className="ambient-header">
         <PageHero

@@ -251,6 +251,26 @@ export default function SkillsPage() {
           "review guides",
           "implementation guides",
         ]}
+        catalogItems={[
+          ...methods.map((item) => ({
+            name: item.skill,
+            description: item.use,
+            url: `${catalogRepo}/${item.skill}`,
+            category: "Framework-free review catalog",
+          })),
+          ...disciplines.map((item) => ({
+            name: item.skill,
+            description: item.use,
+            url: `${catalogRepo}/${item.skill}`,
+            category: "Framework-free method catalog",
+          })),
+          ...kitSkills.map((item) => ({
+            name: item.skill,
+            description: item.use,
+            url: `${kitRepo}/${item.skill}`,
+            category: "Suspec-coupled starter kit",
+          })),
+        ]}
       />
       <Section className="ambient-header">
         <PageHero

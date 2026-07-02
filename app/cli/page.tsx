@@ -243,6 +243,11 @@ export default function CliPage() {
           "JSON output",
           "board status",
         ]}
+        catalogItems={commands.map((command) => ({
+          name: command.cmd,
+          description: command.what,
+          category: `${command.family} command`,
+        }))}
       />
       <Section className="ambient-header">
         <PageHero
