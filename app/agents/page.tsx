@@ -208,6 +208,25 @@ const laneSummary = [
   signal: SignalRole;
 }>;
 
+const delegationContract = [
+  {
+    label: "Input",
+    value: "Task, spec, PR, or focused question.",
+  },
+  {
+    label: "Scope",
+    value: "Role prompt plus any tool limits the runner can enforce.",
+  },
+  {
+    label: "Output",
+    value: "Evidence, draft text, or notes that a reviewer can inspect.",
+  },
+  {
+    label: "Gate",
+    value: "A human or team rule decides what passes.",
+  },
+] as const;
+
 const agentPageNav = [
   { label: "Roster", href: "#roster-brief", signal: "reference" },
   { label: "Install", href: "#install", signal: "core" },
@@ -321,8 +340,8 @@ export default function AgentsPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Claude Code worker files for review, challenge, research, spec,
-            audit, and docs roles. They return evidence, not verdicts.
+            Claude Code role files for review, challenge, research, spec, audit,
+            and docs work. They return evidence, not verdicts.
           </p>
           <HeroTrace
             ariaLabel="Agent role trace"
@@ -350,11 +369,18 @@ export default function AgentsPage() {
       >
         <PaperArtifact
           label="note"
-          title="delegation record"
-          meta="worker identity · inputs · tools · evidence"
+          title="delegation contract"
+          meta="input · scope · output · gate"
           className="manifest-paper-fit lg:self-start"
         >
-          <p>A worker can return evidence. It cannot certify its own result.</p>
+          <dl className="agent-delegation-contract">
+            {delegationContract.map((item) => (
+              <div key={item.label}>
+                <dt>{item.label}</dt>
+                <dd>{item.value}</dd>
+              </div>
+            ))}
+          </dl>
         </PaperArtifact>
         <Card
           screws
@@ -365,7 +391,7 @@ export default function AgentsPage() {
           <div className="repo-manifest-grid">
             <SignalStat
               label="workers"
-              value="role files"
+              value="6 role files"
               signal="reference"
               valueClassName="font-mono text-sm uppercase text-concrete-300"
             />
@@ -376,22 +402,23 @@ export default function AgentsPage() {
               valueClassName="font-mono text-sm uppercase text-concrete-300"
             />
             <SignalStat
-              label="home"
+              label="target"
               value=".claude/agents"
               signal="reference"
               valueClassName="font-mono text-sm text-concrete-300"
             />
           </div>
           <p className="repo-manifest-note">
-            This page is a roster. The repo holds the files;{" "}
+            Copy the role file that matches the job.{" "}
             <TextLink
               href="/docs/07-running-agents/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Read the running agents docs (opens in new tab)"
             >
-              the docs explain when to delegate
+              the docs cover delegation timing
             </TextLink>
+            , review boundaries, and what still needs human judgment
             .
           </p>
           <div className="agent-lane-summary" aria-label="Agent role lanes">
