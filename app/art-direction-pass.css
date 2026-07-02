@@ -77,12 +77,12 @@ body {
 
   .site-background-perspective {
     position: fixed;
-    inset: 0;
+    inset: -2vmax;
     z-index: 0;
     display: block;
     overflow: hidden;
     pointer-events: none;
-    perspective: 340px;
+    perspective: 430px;
     perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     contain: paint;
@@ -90,7 +90,7 @@ body {
 
   .site-background-plane {
     position: absolute;
-    inset: -34vmax;
+    inset: -42vmax;
     display: block;
     background:
       linear-gradient(rgba(70, 57, 44, 0.17) 1px, transparent 1px),
@@ -115,11 +115,11 @@ body {
       translate3d(
         var(--background-plane-drift-x),
         var(--background-plane-drift-y),
-        -54px
+        -74px
       )
-      rotateX(var(--background-plane-tilt-x))
-      rotateY(var(--background-plane-tilt-y))
-      scale(1.46);
+      rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
+      rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
+      scale(1.64);
     transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -188,7 +188,7 @@ body {
   }
 
   .site-main-frame .ambient-header {
-    perspective: 380px;
+    perspective: 430px;
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
@@ -200,11 +200,11 @@ body {
       translate3d(
         calc(-50% + var(--background-header-drift-x)),
         var(--background-header-drift-y),
-        28px
+        36px
       )
       rotateX(var(--background-header-before-rotate-x))
       rotateY(var(--background-header-before-rotate-y))
-      scale(1.14);
+      scale(1.2);
     background-position:
       calc(50% + var(--background-header-grid-x)) 50%,
       var(--background-header-grid-x) var(--background-header-grid-y),
@@ -224,11 +224,11 @@ body {
       translate3d(
         calc(-50% + var(--background-header-drift-x)),
         var(--background-header-drift-y),
-        24px
+        32px
       )
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y))
-      scale(1.12);
+      scale(1.18);
     background-position:
       left calc(50% + var(--background-header-grid-y)),
       right calc(50% + var(--background-header-grid-y)),
@@ -244,10 +244,10 @@ body {
   .site-main-frame .page-hero::before,
   .site-main-frame .page-hero::after {
     transform:
-      translateZ(24px)
+      translateZ(30px)
       rotateX(var(--background-hero-edge-rotate-x))
       rotateY(var(--background-hero-edge-rotate-y))
-      scale(1.12);
+      scale(1.16);
     transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     backface-visibility: hidden;
     transition:
@@ -278,11 +278,11 @@ body {
       translate3d(
         calc(-50% + var(--background-header-drift-x)),
         var(--background-header-drift-y),
-        30px
+        38px
       )
       rotateX(var(--background-hero-motif-rotate-x))
       rotateY(var(--background-hero-motif-rotate-y))
-      scale(1.15);
+      scale(1.2);
     transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     background-position:
       calc(50% + var(--background-header-grid-x)) 48%,
