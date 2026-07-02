@@ -19,17 +19,20 @@ import { HexBadge } from "../../components/HexBadge";
 import { PageHero } from "../../components/PageHero";
 import { HeroTrace } from "../../components/HeroTrace";
 import { Heading } from "../../components/Heading";
+import { JsonLd } from "../../components/JsonLd";
 import { TextLink } from "../../components/TextLink";
 import { signalRoles, type SignalRole } from "../../components/signalStyles";
 
+const SITE_URL = "https://suspecframework.dev";
+const pageDescription =
+  "A short guide to writing Suspec skills: description, body, references, templates, and scope.";
+
 export const metadata: Metadata = {
   title: "Writing a skill — Suspec",
-  description:
-    "A short guide to writing Suspec skills: description, body, references, templates, and scope.",
+  description: pageDescription,
   openGraph: {
     title: "Writing a skill — Suspec",
-    description:
-      "A short guide to writing Suspec skills: description, body, references, templates, and scope.",
+    description: pageDescription,
     type: "website",
     url: "/skills/writing/",
     siteName: "Suspec",
@@ -142,9 +145,47 @@ const writingPageNav = [
   signal: SignalRole;
 }>;
 
+const skillWritingJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "@id": `${SITE_URL}/skills/writing/#article`,
+  headline: "Writing a skill",
+  description: pageDescription,
+  url: `${SITE_URL}/skills/writing/`,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/skills/writing/`,
+  },
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: [
+    {
+      "@type": "SoftwareApplication",
+      name: "Suspec",
+      url: SITE_URL,
+    },
+    {
+      "@type": "CreativeWork",
+      name: "Suspec skill files",
+    },
+  ],
+  teaches:
+    "How to write a portable SKILL.md file with trigger, rules, references, scope, and source links.",
+  mainEntity: {
+    "@type": "ItemList",
+    name: "Writing a skill sections",
+    itemListElement: writingPageNav.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.label,
+      url: `${SITE_URL}/skills/writing/${item.href}`,
+    })),
+  },
+};
+
 export default function WritingSkillsPage() {
   return (
     <div className="writing-skill-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+      <JsonLd data={skillWritingJsonLd} />
       <Section className="ambient-header">
         <PageHero
           eyebrow="SKILL.md"
