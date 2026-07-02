@@ -263,11 +263,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
       root.style.setProperty(
         "--background-plane-tilt-x",
-        `${(normalY * -8.6).toFixed(3)}deg`,
+        `${(normalY * -7.8).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-plane-tilt-y",
-        `${(normalX * 10.2).toFixed(3)}deg`,
+        `${(normalX * 9.4).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-plane-origin-x",
@@ -279,19 +279,19 @@ export function Shell({ children }: { children: React.ReactNode }) {
       );
       root.style.setProperty(
         "--background-plane-drift-x",
-        `${(-normalX * 0.35).toFixed(2)}px`,
+        `${(-normalX * 0.12).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-drift-y",
-        `${(-normalY * 0.28).toFixed(2)}px`,
+        `${(-normalY * 0.1).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-drift-x",
-        `${(-normalX * 8.8).toFixed(2)}px`,
+        `${(-normalX * 4.8).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-drift-y",
-        `${(-normalY * 6.4).toFixed(2)}px`,
+        `${(-normalY * 3.6).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-origin-x",
@@ -303,27 +303,27 @@ export function Shell({ children }: { children: React.ReactNode }) {
       );
       root.style.setProperty(
         "--background-plane-grid-x",
-        `${(-normalX * 2.2).toFixed(2)}px`,
+        `${(-normalX * 0.58).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-grid-y",
-        `${(-normalY * 1.7).toFixed(2)}px`,
+        `${(-normalY * 0.44).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-grid-minor-x",
-        `${(-normalX * 0.8).toFixed(2)}px`,
+        `${(-normalX * 0.2).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-grid-minor-y",
-        `${(-normalY * 0.62).toFixed(2)}px`,
+        `${(-normalY * 0.16).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-grid-x",
-        `${(normalX * 18).toFixed(2)}px`,
+        `${(normalX * 12).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-grid-y",
-        `${(normalY * 11).toFixed(2)}px`,
+        `${(normalY * 7).toFixed(2)}px`,
       );
     };
 
