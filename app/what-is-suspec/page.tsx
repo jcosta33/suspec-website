@@ -617,7 +617,7 @@ export default function WhatIsSuspecPage() {
         <Card
           signal="core"
           screws
-          contentClassName="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
+          contentClassName="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center"
         >
           <div>
             <Heading>See how it actually runs</Heading>
@@ -637,13 +637,38 @@ export default function WhatIsSuspecPage() {
               </TextLink>
             </p>
           </div>
-          <TextLink
-            href="/the-loop/"
-            className="shrink-0 gap-2 text-base font-semibold"
-            touchTarget
-          >
-            See the loop <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </TextLink>
+          <nav className="md:min-w-64" aria-label="What is Suspec next pages">
+            <p className="font-mono text-[0.68rem] font-bold uppercase tracking-[0.14em] text-signal-core">
+              next records
+            </p>
+            <ul className="mt-2 grid gap-1">
+              <li>
+                <TextLink
+                  href="/the-loop/"
+                  className="gap-2 text-base font-semibold"
+                  touchTarget
+                >
+                  See the loop{" "}
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </TextLink>
+              </li>
+              <li>
+                <TextLink href="/get-started/" className="gap-2" touchTarget>
+                  Set up a workspace
+                </TextLink>
+              </li>
+              <li>
+                <TextLink href="/cli/" className="gap-2" touchTarget>
+                  Read the CLI page
+                </TextLink>
+              </li>
+              <li>
+                <TextLink href="/mcp/" className="gap-2" touchTarget>
+                  Read the MCP page
+                </TextLink>
+              </li>
+            </ul>
+          </nav>
         </Card>
       </Section>
     </div>
