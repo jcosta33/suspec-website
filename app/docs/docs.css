@@ -3324,3 +3324,78 @@
     margin-bottom: 1.55rem;
   }
 }
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .docs-index-cover,
+  .docs-article-header {
+    perspective: 460px;
+    perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transform-style: preserve-3d;
+  }
+
+  .docs-index-cover {
+    background-position:
+      left top,
+      var(--background-header-grid-x) 0,
+      0 var(--background-header-grid-y),
+      center,
+      center;
+    transition: background-position 90ms linear;
+  }
+
+  .docs-index-cover::before {
+    transform:
+      rotateX(calc(var(--background-plane-tilt-x) * 1.22))
+      rotateY(calc(var(--background-plane-tilt-y) * 1.34))
+      translate3d(var(--background-header-drift-x), var(--background-header-drift-y), 34px);
+    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transition: transform 90ms linear;
+    will-change: transform;
+  }
+
+  .docs-index-cover::after {
+    transform:
+      rotateX(calc(var(--background-plane-tilt-x) * 1.08))
+      rotateY(calc(var(--background-plane-tilt-y) * 1.18))
+      translate3d(
+        calc(var(--background-header-drift-x) * 0.45),
+        var(--background-header-drift-y),
+        24px
+      );
+    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transition: transform 90ms linear;
+    will-change: transform;
+  }
+
+  .docs-article-header {
+    background-position:
+      var(--background-header-grid-x) 0,
+      center,
+      center;
+    transition: background-position 90ms linear;
+  }
+
+  .docs-article-header::before {
+    transform:
+      rotateX(calc(var(--background-plane-tilt-x) * 1.18))
+      rotateY(calc(var(--background-plane-tilt-y) * 1.28))
+      translate3d(var(--background-header-drift-x), var(--background-header-drift-y), 30px);
+    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transition: transform 90ms linear;
+    will-change: transform;
+  }
+
+  .docs-article-header::after {
+    transform:
+      rotateX(calc(var(--background-plane-tilt-x) * 1))
+      rotateY(calc(var(--background-plane-tilt-y) * 1.08))
+      translate3d(
+        calc(var(--background-header-drift-x) * 0.42),
+        var(--background-header-drift-y),
+        22px
+      );
+    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transition: transform 90ms linear;
+    will-change: transform;
+  }
+}

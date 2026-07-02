@@ -263,11 +263,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
       root.style.setProperty(
         "--background-plane-tilt-x",
-        `${(normalY * -7.8).toFixed(3)}deg`,
+        `${(normalY * -7.2).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-plane-tilt-y",
-        `${(normalX * 9.4).toFixed(3)}deg`,
+        `${(normalX * 8.4).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-plane-origin-x",
@@ -279,11 +279,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
       );
       root.style.setProperty(
         "--background-plane-drift-x",
-        `${(-normalX * 0.12).toFixed(2)}px`,
+        `${(-normalX * 0.04).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-drift-y",
-        `${(-normalY * 0.1).toFixed(2)}px`,
+        `${(-normalY * 0.04).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-drift-x",
@@ -303,19 +303,19 @@ export function Shell({ children }: { children: React.ReactNode }) {
       );
       root.style.setProperty(
         "--background-plane-grid-x",
-        `${(-normalX * 0.58).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-grid-y",
-        `${(-normalY * 0.44).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-grid-minor-x",
-        `${(-normalX * 0.2).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-grid-minor-y",
-        `${(-normalY * 0.16).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-header-grid-x",
@@ -339,6 +339,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
     const startTracking = () => {
       if (tracking) return;
       tracking = true;
+      document.addEventListener("pointermove", onPointerMove, {
+        capture: true,
+        passive: true,
+      });
       window.addEventListener("pointermove", onPointerMove, { passive: true });
       updatePointer();
     };
@@ -346,6 +350,9 @@ export function Shell({ children }: { children: React.ReactNode }) {
     const stopTracking = () => {
       if (!tracking) return;
       tracking = false;
+      document.removeEventListener("pointermove", onPointerMove, {
+        capture: true,
+      });
       window.removeEventListener("pointermove", onPointerMove);
       if (frame !== 0) {
         window.cancelAnimationFrame(frame);
