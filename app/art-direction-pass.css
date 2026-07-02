@@ -82,7 +82,7 @@ body {
     display: block;
     overflow: hidden;
     pointer-events: none;
-    perspective: 430px;
+    perspective: 360px;
     perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     contain: paint;
@@ -90,7 +90,7 @@ body {
 
   .site-background-plane {
     position: absolute;
-    inset: -42vmax;
+    inset: -34vmax;
     display: block;
     background:
       linear-gradient(rgba(70, 57, 44, 0.17) 1px, transparent 1px),
@@ -107,24 +107,24 @@ body {
     background-position:
       calc(50% + var(--background-plane-grid-x)) var(--background-plane-grid-y),
       calc(50% + var(--background-plane-grid-x)) var(--background-plane-grid-y),
-      calc(50% + var(--background-plane-grid-x)) var(--background-plane-grid-y),
-      calc(50% + var(--background-plane-grid-x)) var(--background-plane-grid-y),
+      calc(50% + var(--background-plane-grid-minor-x)) var(--background-plane-grid-minor-y),
+      calc(50% + var(--background-plane-grid-minor-x)) var(--background-plane-grid-minor-y),
       center top;
     opacity: 0.94;
     transform:
       translate3d(
         var(--background-plane-drift-x),
         var(--background-plane-drift-y),
-        -74px
+        -92px
       )
       rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
       rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
-      scale(1.64);
+      scale(1.44);
     transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
     transition:
-      transform 96ms ease-out,
+      transform 110ms ease-out,
       opacity 160ms ease-out;
     will-change: transform;
   }
@@ -188,7 +188,7 @@ body {
   }
 
   .site-main-frame .ambient-header {
-    perspective: 430px;
+    perspective: 360px;
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
@@ -200,11 +200,11 @@ body {
       translate3d(
         calc(-50% + var(--background-header-drift-x)),
         var(--background-header-drift-y),
-        36px
+        52px
       )
       rotateX(var(--background-header-before-rotate-x))
       rotateY(var(--background-header-before-rotate-y))
-      scale(1.2);
+      scale(1.16);
     background-position:
       calc(50% + var(--background-header-grid-x)) 50%,
       var(--background-header-grid-x) var(--background-header-grid-y),
@@ -214,7 +214,7 @@ body {
     transform-style: preserve-3d;
     backface-visibility: hidden;
     transition:
-      transform 96ms ease-out,
+      transform 110ms ease-out,
       opacity 160ms ease-out;
     will-change: transform;
   }
@@ -224,11 +224,11 @@ body {
       translate3d(
         calc(-50% + var(--background-header-drift-x)),
         var(--background-header-drift-y),
-        32px
+        46px
       )
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y))
-      scale(1.18);
+      scale(1.14);
     background-position:
       left calc(50% + var(--background-header-grid-y)),
       right calc(50% + var(--background-header-grid-y)),
@@ -236,7 +236,7 @@ body {
     transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     backface-visibility: hidden;
     transition:
-      transform 96ms ease-out,
+      transform 110ms ease-out,
       opacity 160ms ease-out;
     will-change: transform;
   }
@@ -244,14 +244,14 @@ body {
   .site-main-frame .page-hero::before,
   .site-main-frame .page-hero::after {
     transform:
-      translateZ(30px)
+      translateZ(44px)
       rotateX(var(--background-hero-edge-rotate-x))
       rotateY(var(--background-hero-edge-rotate-y))
-      scale(1.16);
+      scale(1.13);
     transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     backface-visibility: hidden;
     transition:
-      transform 96ms ease-out,
+      transform 110ms ease-out,
       opacity 160ms ease-out;
     will-change: transform;
   }
@@ -262,7 +262,7 @@ body {
       calc(50% + var(--background-header-grid-x)) 50%,
       calc(50% + var(--background-header-grid-x)) 50%;
     transition:
-      transform 96ms ease-out,
+      transform 110ms ease-out,
       opacity 160ms ease-out;
   }
 
@@ -278,11 +278,11 @@ body {
       translate3d(
         calc(-50% + var(--background-header-drift-x)),
         var(--background-header-drift-y),
-        38px
+        56px
       )
       rotateX(var(--background-hero-motif-rotate-x))
       rotateY(var(--background-hero-motif-rotate-y))
-      scale(1.2);
+      scale(1.16);
     transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     background-position:
       calc(50% + var(--background-header-grid-x)) 48%,
@@ -290,7 +290,7 @@ body {
       calc(50% + var(--background-header-grid-x)) 48%,
       calc(50% + var(--background-header-grid-x)) 50%;
     transition:
-      transform 96ms ease-out,
+      transform 110ms ease-out,
       opacity 160ms ease-out;
     will-change: transform;
   }

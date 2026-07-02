@@ -289,34 +289,34 @@ export function Shell({ children }: { children: React.ReactNode }) {
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = -normalY * 5.4;
-      const planeTiltY = normalX * 6;
-      const headerTiltX = -normalY * 3.1;
-      const headerTiltY = normalX * 3.6;
+      const planeTiltX = -normalY * 6.8;
+      const planeTiltY = normalX * 7.4;
+      const headerTiltX = -normalY * 4.2;
+      const headerTiltY = normalX * 4.8;
 
       setPointerMotion(root, {
         "--background-plane-normal-x": normalX.toFixed(3),
         "--background-plane-normal-y": normalY.toFixed(3),
-        "--background-plane-origin-x": `${(50 + normalX * 8).toFixed(2)}%`,
-        "--background-plane-origin-y": `${(52 + normalY * 5).toFixed(2)}%`,
+        "--background-plane-origin-x": `${(50 + normalX * 9.5).toFixed(2)}%`,
+        "--background-plane-origin-y": `${(52 + normalY * 6.2).toFixed(2)}%`,
         "--background-plane-tilt-x": `${planeTiltX.toFixed(3)}deg`,
         "--background-plane-tilt-y": `${planeTiltY.toFixed(3)}deg`,
         "--background-plane-rotate-x": `${planeTiltX.toFixed(3)}deg`,
         "--background-plane-rotate-y": `${planeTiltY.toFixed(3)}deg`,
-        "--background-plane-drift-x": "0px",
-        "--background-plane-drift-y": "0px",
-        "--background-plane-grid-x": `${(normalX * -0.45).toFixed(3)}px`,
-        "--background-plane-grid-y": `${(normalY * -0.35).toFixed(3)}px`,
-        "--background-plane-grid-minor-x": `${(normalX * -0.22).toFixed(3)}px`,
-        "--background-plane-grid-minor-y": `${(normalY * -0.18).toFixed(3)}px`,
-        "--background-header-origin-x": `${(50 + normalX * 6.2).toFixed(2)}%`,
-        "--background-header-origin-y": `${(46 + normalY * 3.8).toFixed(2)}%`,
-        "--background-header-drift-x": `${(normalX * -7).toFixed(3)}px`,
-        "--background-header-drift-y": `${(normalY * -4.5).toFixed(3)}px`,
+        "--background-plane-drift-x": `${(normalX * -5).toFixed(3)}px`,
+        "--background-plane-drift-y": `${(normalY * -3.6).toFixed(3)}px`,
+        "--background-plane-grid-x": `${(normalX * -7.2).toFixed(3)}px`,
+        "--background-plane-grid-y": `${(normalY * -5.4).toFixed(3)}px`,
+        "--background-plane-grid-minor-x": `${(normalX * -3.8).toFixed(3)}px`,
+        "--background-plane-grid-minor-y": `${(normalY * -2.8).toFixed(3)}px`,
+        "--background-header-origin-x": `${(50 + normalX * 7.4).toFixed(2)}%`,
+        "--background-header-origin-y": `${(46 + normalY * 4.8).toFixed(2)}%`,
+        "--background-header-drift-x": `${(normalX * -12).toFixed(3)}px`,
+        "--background-header-drift-y": `${(normalY * -8).toFixed(3)}px`,
         "--background-header-tilt-x": `${headerTiltX.toFixed(3)}deg`,
         "--background-header-tilt-y": `${headerTiltY.toFixed(3)}deg`,
-        "--background-header-grid-x": `${(normalX * -10).toFixed(3)}px`,
-        "--background-header-grid-y": `${(normalY * -6).toFixed(3)}px`,
+        "--background-header-grid-x": `${(normalX * -18).toFixed(3)}px`,
+        "--background-header-grid-y": `${(normalY * -11).toFixed(3)}px`,
         "--background-header-before-rotate-x": `${(headerTiltX * 1.42).toFixed(3)}deg`,
         "--background-header-before-rotate-y": `${(headerTiltY * 1.5).toFixed(3)}deg`,
         "--background-header-after-rotate-x": `${(headerTiltX * 1.08).toFixed(3)}deg`,
