@@ -55,10 +55,10 @@
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = normalY * -6.8;
-      const planeTiltY = normalX * 7.4;
-      const headerTiltX = normalY * -4.2;
-      const headerTiltY = normalX * 4.8;
+      const planeTiltX = normalY * -8.4;
+      const planeTiltY = normalX * 9.2;
+      const headerTiltX = normalY * -5.4;
+      const headerTiltY = normalX * 6.1;
 
       root.style.setProperty("--background-plane-normal-x", normalX.toFixed(4));
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
@@ -136,35 +136,35 @@
       );
       root.style.setProperty(
         "--background-plane-drift-x",
-        `${(normalX * -5).toFixed(2)}px`,
+        `${(normalX * -2.4).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-drift-y",
-        `${(normalY * -3.6).toFixed(2)}px`,
+        `${(normalY * -1.8).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-drift-x",
-        `${(normalX * -12).toFixed(2)}px`,
+        `${(normalX * -8).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-drift-y",
-        `${(normalY * -8).toFixed(2)}px`,
+        `${(normalY * -5.6).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-grid-x",
-        `${(normalX * -7.2).toFixed(2)}px`,
+        `${(normalX * -2.8).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-grid-y",
-        `${(normalY * -5.4).toFixed(2)}px`,
+        `${(normalY * -2.1).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-grid-minor-x",
-        `${(normalX * -3.8).toFixed(2)}px`,
+        `${(normalX * -1.5).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-grid-minor-y",
-        `${(normalY * -2.8).toFixed(2)}px`,
+        `${(normalY * -1.1).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-grid-x",
@@ -178,6 +178,10 @@
 
     function queuePointer(event) {
       if (!tracking) return;
+      if (root.dataset.shellReact === "ready") {
+        stopTracking();
+        return;
+      }
       pointerX = event.clientX;
       pointerY = event.clientY;
       if (frame === 0) frame = window.requestAnimationFrame(updatePointer);

@@ -82,7 +82,7 @@ body {
     display: block;
     overflow: hidden;
     pointer-events: none;
-    perspective: 360px;
+    perspective: 420px;
     perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     contain: paint;
@@ -90,7 +90,7 @@ body {
 
   .site-background-plane {
     position: absolute;
-    inset: -34vmax;
+    inset: -26vmax;
     display: block;
     background:
       linear-gradient(rgba(70, 57, 44, 0.17) 1px, transparent 1px),
@@ -115,16 +115,16 @@ body {
       translate3d(
         var(--background-plane-drift-x),
         var(--background-plane-drift-y),
-        -92px
+        -24px
       )
       rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
       rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
-      scale(1.44);
+      scale(1.26);
     transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
     transition:
-      transform 110ms ease-out,
+      transform 90ms ease-out,
       opacity 160ms ease-out;
     will-change: transform;
   }
@@ -188,7 +188,7 @@ body {
   }
 
   .site-main-frame .ambient-header {
-    perspective: 360px;
+    perspective: 440px;
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
@@ -200,11 +200,11 @@ body {
       translate3d(
         calc(-50% + var(--background-header-drift-x)),
         var(--background-header-drift-y),
-        52px
+        34px
       )
       rotateX(var(--background-header-before-rotate-x))
       rotateY(var(--background-header-before-rotate-y))
-      scale(1.16);
+      scale(1.12);
     background-position:
       calc(50% + var(--background-header-grid-x)) 50%,
       var(--background-header-grid-x) var(--background-header-grid-y),
@@ -224,11 +224,11 @@ body {
       translate3d(
         calc(-50% + var(--background-header-drift-x)),
         var(--background-header-drift-y),
-        46px
+        32px
       )
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y))
-      scale(1.14);
+      scale(1.1);
     background-position:
       left calc(50% + var(--background-header-grid-y)),
       right calc(50% + var(--background-header-grid-y)),
