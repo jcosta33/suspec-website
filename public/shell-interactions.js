@@ -42,8 +42,8 @@
     let pointerX = window.innerWidth / 2;
     let pointerY = window.innerHeight / 2;
     let tracking = false;
-    const pointerMoveEvent =
-      "PointerEvent" in window ? "pointermove" : "mousemove";
+    const motionEvents =
+      "PointerEvent" in window ? ["pointermove", "mousemove"] : ["mousemove"];
 
     function resetPointer() {
       for (const property of resetProperties) root.style.removeProperty(property);
@@ -55,10 +55,10 @@
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = normalY * -4.8;
-      const planeTiltY = normalX * 5.6;
-      const headerTiltX = normalY * -2.8;
-      const headerTiltY = normalX * 3.4;
+      const planeTiltX = normalY * -3.7;
+      const planeTiltY = normalX * 4.4;
+      const headerTiltX = normalY * -2.4;
+      const headerTiltY = normalX * 3;
 
       root.style.setProperty("--background-plane-normal-x", normalX.toFixed(4));
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
@@ -152,19 +152,19 @@
       );
       root.style.setProperty(
         "--background-plane-grid-x",
-        `${(normalX * -5).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-grid-y",
-        `${(normalY * -3).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-grid-minor-x",
-        `${(normalX * -5).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-grid-minor-y",
-        `${(normalY * -3).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-header-grid-x",
@@ -187,9 +187,11 @@
       if (tracking) return;
       tracking = true;
       root.dataset.backgroundMotion = "active";
-      document.addEventListener(pointerMoveEvent, queuePointer, {
-        capture: true,
-        passive: true,
+      motionEvents.forEach((eventName) => {
+        document.addEventListener(eventName, queuePointer, {
+          capture: true,
+          passive: true,
+        });
       });
       updatePointer();
     }
@@ -198,7 +200,9 @@
       if (!tracking) return;
       tracking = false;
       delete root.dataset.backgroundMotion;
-      document.removeEventListener(pointerMoveEvent, queuePointer, true);
+      motionEvents.forEach((eventName) => {
+        document.removeEventListener(eventName, queuePointer, true);
+      });
       if (frame !== 0) window.cancelAnimationFrame(frame);
       frame = 0;
       resetPointer();
