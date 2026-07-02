@@ -10,6 +10,8 @@
     "--background-plane-drift-y",
     "--background-header-drift-x",
     "--background-header-drift-y",
+    "--background-header-tilt-x",
+    "--background-header-tilt-y",
     "--background-plane-normal-x",
     "--background-plane-normal-y",
     "--background-plane-grid-x",
@@ -46,11 +48,19 @@
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
       root.style.setProperty(
         "--background-plane-tilt-x",
-        `${(normalY * -7.2).toFixed(3)}deg`,
+        `${(normalY * -6.2).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-plane-tilt-y",
-        `${(normalX * 8.4).toFixed(3)}deg`,
+        `${(normalX * 7.2).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-header-tilt-x",
+        `${(normalY * -7.6).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-header-tilt-y",
+        `${(normalX * 8.8).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-plane-origin-x",
@@ -62,11 +72,11 @@
       );
       root.style.setProperty(
         "--background-plane-drift-x",
-        `${(-normalX * 7.2).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-drift-y",
-        `${(-normalY * 5.4).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-header-drift-x",
@@ -86,19 +96,19 @@
       );
       root.style.setProperty(
         "--background-plane-grid-x",
-        `${(-normalX * 9).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-grid-y",
-        `${(-normalY * 6).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-grid-minor-x",
-        `${(-normalX * 4.5).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-grid-minor-y",
-        `${(-normalY * 3).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-header-grid-x",
