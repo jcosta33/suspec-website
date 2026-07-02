@@ -1213,7 +1213,72 @@ body {
     gap: 0 !important;
     overflow: hidden !important;
     border-top: 1px solid rgba(var(--signal-core-rgb), 0.14);
-    padding: 0.32rem 0.62rem 0.38rem !important;
+    padding: 0.2rem 0.58rem 0.28rem !important;
+  }
+
+  .get-started-page .setup-route-header {
+    gap: 0.42rem !important;
+    padding: 0.56rem 0.68rem 0.52rem !important;
+  }
+
+  .get-started-page .setup-route-kicker {
+    font-size: 0.52rem !important;
+  }
+
+  .get-started-page .setup-route-title {
+    margin-top: 0.16rem !important;
+    font-size: 0.86rem !important;
+  }
+
+  .get-started-page .setup-route-meta {
+    gap: 0.18rem !important;
+  }
+
+  .get-started-page .setup-route-meta span {
+    min-height: 1.24rem !important;
+    padding-inline: 0.28rem !important;
+    font-size: 0.46rem !important;
+  }
+
+  .get-started-page .setup-command-strip {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 0.5rem !important;
+    padding: 0.48rem 0.68rem 0.5rem !important;
+  }
+
+  .get-started-page .setup-command-label {
+    margin-bottom: 0.18rem !important;
+    font-size: 0.48rem !important;
+  }
+
+  .get-started-page .setup-command-copy code {
+    font-size: 0.66rem !important;
+    line-height: 1.28 !important;
+  }
+
+  .get-started-page .setup-command-button {
+    min-height: 2.4rem !important;
+    padding: 0.48rem 0.58rem !important;
+    font-size: 0.6rem !important;
+    letter-spacing: 0.07em !important;
+  }
+
+  .get-started-page
+    .setup-command-button[data-compact-label="true"]
+    .copy-button-label-full {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .get-started-page
+    .setup-command-button[data-compact-label="true"]
+    .copy-button-label-compact {
+    display: inline-grid;
   }
 
   .get-started-page .setup-path-strip > li,
@@ -1236,14 +1301,14 @@ body {
     gap: 0.52rem;
     overflow: visible;
     justify-content: start !important;
-    min-height: 3.12rem !important;
+    min-height: 2.82rem !important;
     border: 0 !important;
     border-radius: 0 !important;
     background:
       linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.026), transparent 62%),
       transparent !important;
     box-shadow: none !important;
-    padding: 0.38rem 0.46rem !important;
+    padding: 0.3rem 0.42rem !important;
   }
 
   .get-started-page .setup-path-strip > li > a > div {
@@ -1253,8 +1318,8 @@ body {
   .get-started-page .setup-path-strip .kit-icon {
     grid-column: 1;
     grid-row: 1 / span 2;
-    height: 1.58rem !important;
-    width: 1.58rem !important;
+    height: 1.46rem !important;
+    width: 1.46rem !important;
   }
 
   .get-started-page .setup-path-strip .min-w-0 {
@@ -1271,21 +1336,21 @@ body {
   }
 
   .get-started-page .setup-path-step-title {
-    font-size: 0.92rem !important;
+    font-size: 0.86rem !important;
     line-height: 1.12 !important;
   }
 
   .get-started-page .setup-path-strip p.mt-3 {
     grid-column: 2;
     max-width: 22rem;
-    margin-top: 0.28rem !important;
+    margin-top: 0.18rem !important;
     overflow: hidden;
     color: var(--color-concrete-400);
     display: -webkit-box !important;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
-    font-size: 0.68rem;
-    line-height: 1.28;
+    font-size: 0.64rem;
+    line-height: 1.24;
   }
 
   .loop-diagram .loop-step-grid-linked {
