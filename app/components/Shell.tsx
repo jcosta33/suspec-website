@@ -123,6 +123,48 @@ function getFolioLabel(pathname: string) {
   return "Suspec / record";
 }
 
+const pointerMotionProperties = [
+  "--background-plane-tilt-x",
+  "--background-plane-tilt-y",
+  "--background-plane-origin-x",
+  "--background-plane-origin-y",
+  "--background-plane-drift-x",
+  "--background-plane-drift-y",
+  "--background-header-drift-x",
+  "--background-header-drift-y",
+  "--background-header-before-rotate-x",
+  "--background-header-before-rotate-y",
+  "--background-header-after-rotate-x",
+  "--background-header-after-rotate-y",
+  "--background-hero-edge-rotate-x",
+  "--background-hero-edge-rotate-y",
+  "--background-hero-motif-rotate-x",
+  "--background-hero-motif-rotate-y",
+  "--background-header-origin-x",
+  "--background-header-origin-y",
+  "--background-plane-normal-x",
+  "--background-plane-normal-y",
+  "--background-plane-grid-x",
+  "--background-plane-grid-y",
+  "--background-plane-grid-minor-x",
+  "--background-plane-grid-minor-y",
+  "--background-header-grid-x",
+  "--background-header-grid-y",
+] as const;
+
+function setPointerMotion(
+  root: HTMLElement,
+  values: Partial<Record<(typeof pointerMotionProperties)[number], string>>,
+) {
+  Object.entries(values).forEach(([name, value]) => {
+    root.style.setProperty(name, value);
+  });
+}
+
+function resetPointerMotion(root: HTMLElement) {
+  pointerMotionProperties.forEach((name) => root.style.removeProperty(name));
+}
+
 function NavLink({
   link,
   onClick,
@@ -225,6 +267,89 @@ export function Shell({ children }: { children: React.ReactNode }) {
       window.removeEventListener("scroll", requestTraceUpdate);
       window.removeEventListener("resize", requestTraceUpdate);
       if (frame !== 0) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const motionQuery = window.matchMedia(
+      "(hover: hover) and (prefers-reduced-motion: no-preference)",
+    );
+    let frame = 0;
+    let pointerX = window.innerWidth / 2;
+    let pointerY = window.innerHeight / 2;
+
+    const applyPointerMotion = () => {
+      frame = 0;
+      const width = Math.max(window.innerWidth, 1);
+      const height = Math.max(window.innerHeight, 1);
+      const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
+      const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
+
+      setPointerMotion(root, {
+        "--background-plane-normal-x": normalX.toFixed(3),
+        "--background-plane-normal-y": normalY.toFixed(3),
+        "--background-plane-origin-x": `${50 + normalX * 6}%`,
+        "--background-plane-origin-y": `${52 + normalY * 5}%`,
+        "--background-plane-tilt-x": `${(-normalY * 1.35).toFixed(3)}deg`,
+        "--background-plane-tilt-y": `${(normalX * 1.55).toFixed(3)}deg`,
+        "--background-plane-drift-x": `${(normalX * 3.5).toFixed(3)}px`,
+        "--background-plane-drift-y": `${(normalY * 2.5).toFixed(3)}px`,
+        "--background-plane-grid-x": `${(normalX * 7).toFixed(3)}px`,
+        "--background-plane-grid-y": `${(normalY * 5).toFixed(3)}px`,
+        "--background-plane-grid-minor-x": `${(normalX * 3.5).toFixed(3)}px`,
+        "--background-plane-grid-minor-y": `${(normalY * 2.5).toFixed(3)}px`,
+        "--background-header-origin-x": `${50 + normalX * 7}%`,
+        "--background-header-origin-y": `${46 + normalY * 5}%`,
+        "--background-header-drift-x": `${(normalX * 8).toFixed(3)}px`,
+        "--background-header-drift-y": `${(normalY * 5).toFixed(3)}px`,
+        "--background-header-grid-x": `${(normalX * 9).toFixed(3)}px`,
+        "--background-header-grid-y": `${(normalY * 6).toFixed(3)}px`,
+        "--background-header-before-rotate-x": `${(-normalY * 1.1).toFixed(3)}deg`,
+        "--background-header-before-rotate-y": `${(normalX * 1.3).toFixed(3)}deg`,
+        "--background-header-after-rotate-x": `${(-normalY * 0.85).toFixed(3)}deg`,
+        "--background-header-after-rotate-y": `${normalX.toFixed(3)}deg`,
+        "--background-hero-edge-rotate-x": `${(-normalY * 0.9).toFixed(3)}deg`,
+        "--background-hero-edge-rotate-y": `${(normalX * 1.1).toFixed(3)}deg`,
+        "--background-hero-motif-rotate-x": `${(-normalY * 0.7).toFixed(3)}deg`,
+        "--background-hero-motif-rotate-y": `${(normalX * 0.9).toFixed(3)}deg`,
+      });
+    };
+
+    const requestPointerMotion = () => {
+      if (frame === 0) {
+        frame = window.requestAnimationFrame(applyPointerMotion);
+      }
+    };
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (!motionQuery.matches || event.pointerType === "touch") return;
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      requestPointerMotion();
+    };
+
+    const onMotionPreferenceChange = () => {
+      if (motionQuery.matches) {
+        requestPointerMotion();
+      } else {
+        resetPointerMotion(root);
+      }
+    };
+
+    const onWindowBlur = () => resetPointerMotion(root);
+
+    onMotionPreferenceChange();
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("blur", onWindowBlur);
+    motionQuery.addEventListener("change", onMotionPreferenceChange);
+
+    return () => {
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("blur", onWindowBlur);
+      motionQuery.removeEventListener("change", onMotionPreferenceChange);
+      if (frame !== 0) window.cancelAnimationFrame(frame);
+      resetPointerMotion(root);
     };
   }, []);
 
