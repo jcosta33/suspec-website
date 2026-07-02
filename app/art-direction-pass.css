@@ -971,7 +971,7 @@ body {
 
   .docs-index-legend-item,
   .docs-prose .docs-index-legend-item a {
-    min-height: 2.02rem !important;
+    min-height: 2.75rem !important;
   }
 
   .docs-index-legend-item {
@@ -1011,7 +1011,7 @@ body {
   }
 
   .docs-prose .docs-index-section-primary .docs-index-list a {
-    min-height: 2.42rem;
+    min-height: 2.75rem;
     border: 0 !important;
     border-radius: 0 !important;
     background:
