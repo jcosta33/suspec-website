@@ -1062,37 +1062,82 @@ body {
 
   .get-started-page .setup-path-strip {
     grid-template-columns: minmax(0, 1fr) !important;
-    gap: 0.58rem !important;
-    padding: 0.62rem !important;
+    gap: 0 !important;
+    overflow: hidden !important;
+    border-top: 1px solid rgba(var(--signal-core-rgb), 0.14);
+    padding: 0.32rem 0.62rem 0.38rem !important;
   }
 
   .get-started-page .setup-path-strip > li,
   .get-started-page .setup-path-strip > li:last-child {
     grid-column: 1 / -1 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .get-started-page .setup-path-strip > li + li {
+    border-top: 1px solid rgba(var(--signal-core-rgb), 0.11);
   }
 
   .get-started-page .setup-path-strip > li > a {
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.7rem;
+    overflow: visible;
     justify-content: start !important;
-    min-height: 4.85rem !important;
-    padding: 0.78rem 0.86rem !important;
+    min-height: 3.72rem !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background:
+      linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.026), transparent 62%),
+      transparent !important;
+    box-shadow: none !important;
+    padding: 0.48rem 0.56rem !important;
   }
 
   .get-started-page .setup-path-strip > li > a > div {
-    gap: 0.64rem !important;
+    display: contents !important;
   }
 
-  .get-started-page .setup-path-strip p.mt-3 {
-    display: block !important;
-    max-width: 22rem;
-    margin-top: 0.46rem !important;
-    font-size: 0.76rem;
-    line-height: 1.35;
+  .get-started-page .setup-path-strip .kit-icon {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    height: 1.95rem !important;
+    width: 1.95rem !important;
+  }
+
+  .get-started-page .setup-path-strip .min-w-0 {
+    grid-column: 2;
+    min-width: 0;
   }
 
   .get-started-page .setup-path-strip .motion-nudge-x {
-    opacity: 0.8;
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    align-self: center;
+    margin-left: 0 !important;
+    opacity: 0.78;
+  }
+
+  .get-started-page .setup-path-step-title {
+    font-size: 1rem !important;
+    line-height: 1.16 !important;
+  }
+
+  .get-started-page .setup-path-strip p.mt-3 {
+    grid-column: 2;
+    max-width: 22rem;
+    margin-top: 0.28rem !important;
+    overflow: hidden;
+    color: var(--color-concrete-400);
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 0.74rem;
+    line-height: 1.34;
   }
 
   .loop-diagram .loop-step-grid-linked {
