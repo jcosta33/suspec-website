@@ -698,6 +698,7 @@ export default function CliPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 touchTarget
+                aria-label="Open suspec-cli on GitHub (opens in new tab)"
               >
                 Open suspec-cli on GitHub →
               </TextLink>
