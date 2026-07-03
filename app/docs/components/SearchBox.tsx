@@ -94,10 +94,11 @@ export function SearchBox() {
       <div
         className="docs-search-fallback"
         aria-hidden={PAGEFIND_ENABLED ? true : undefined}
+        aria-label={PAGEFIND_ENABLED ? undefined : "Search is available on the built site"}
         role={PAGEFIND_ENABLED ? undefined : "status"}
       >
         <span className="docs-search-fallback-icon" />
-        <span>{PAGEFIND_ENABLED ? "Search docs" : "Search after build"}</span>
+        <span>Search docs</span>
       </div>
     </div>
   );
