@@ -348,7 +348,7 @@ export default function McpPage() {
         id="bridge"
         register="01 / bridge"
         registerTone="reference"
-        className="section-flow scroll-mt-28"
+        className="mcp-bridge-overview section-flow scroll-mt-28"
       >
         <div className="section-intro max-w-3xl">
           <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
