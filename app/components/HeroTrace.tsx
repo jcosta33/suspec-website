@@ -32,8 +32,8 @@ export function HeroTrace({
             className={`hero-trace-item hero-trace-item-${role}`}
             data-role={role}
           >
-            <span className="hero-trace-index">
-              {String(index + 1).padStart(2, "0")}
+            <span className="hero-trace-index" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}{" "}
             </span>
             <span className="hero-trace-label">{item.label}</span>
             {item.detail ? (

@@ -294,14 +294,14 @@ export function Shell({ children }: { children: React.ReactNode }) {
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = -normalY * 6.4;
-      const planeTiltY = normalX * 7.2;
-      const headerTiltX = planeTiltX * 0.82;
-      const headerTiltY = planeTiltY * 0.82;
-      const headerShiftX = -normalX * 10;
-      const headerShiftY = -normalY * 6;
-      const heroShiftX = -normalX * 8;
-      const heroShiftY = -normalY * 4.8;
+      const planeTiltX = -normalY * 5.8;
+      const planeTiltY = normalX * 6.4;
+      const headerTiltX = planeTiltX * 0.96;
+      const headerTiltY = planeTiltY * 0.96;
+      const headerShiftX = -normalX * 4.8;
+      const headerShiftY = -normalY * 3.2;
+      const heroShiftX = -normalX * 4.2;
+      const heroShiftY = -normalY * 2.8;
 
       setPointerMotion(root, {
         "--background-plane-normal-x": normalX.toFixed(3),
@@ -371,21 +371,25 @@ export function Shell({ children }: { children: React.ReactNode }) {
       }
     };
 
-    const onWindowBlur = () => {
-      delete root.dataset.backgroundMotion;
-      resetPointerMotion(root);
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        delete root.dataset.backgroundMotion;
+        resetPointerMotion(root);
+      } else if (motionQuery.matches) {
+        requestPointerMotion();
+      }
     };
 
     onMotionPreferenceChange();
     window.addEventListener("pointermove", onPointerMove, { passive: true });
     window.addEventListener("mousemove", onMouseMove, { passive: true });
-    window.addEventListener("blur", onWindowBlur);
+    document.addEventListener("visibilitychange", onVisibilityChange);
     motionQuery.addEventListener("change", onMotionPreferenceChange);
 
     return () => {
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("blur", onWindowBlur);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       motionQuery.removeEventListener("change", onMotionPreferenceChange);
       if (frame !== 0) window.cancelAnimationFrame(frame);
       delete root.dataset.backgroundMotion;

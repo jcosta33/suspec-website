@@ -359,11 +359,12 @@ export default function GetStartedPage() {
                       <div className="min-w-0">
                         <p
                           className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles[step.signal].text}`}
+                          aria-hidden="true"
                         >
-                          {String(index + 1).padStart(2, "0")}
+                          {String(index + 1).padStart(2, "0")}{" "}
                         </p>
                         <p className="setup-path-step-title font-heading text-lg font-semibold text-concrete-100">
-                          {step.label}
+                          {step.label}{" "}
                         </p>
                       </div>
                       <ArrowRight
