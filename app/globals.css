@@ -11929,7 +11929,11 @@ section.bg-section-band::after {
 }
 
 .overview-next-source .link-motion {
-  min-height: 2rem;
+  min-height: 2.75rem;
+}
+
+.overview-next-source .overview-source-link {
+  min-height: 2.75rem;
 }
 
 .overview-next-nav {

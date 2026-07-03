@@ -651,6 +651,7 @@ export default function WhatIsSuspecPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Read docs/01-what-is-suspec.md (opens in new tab)"
+                className="overview-source-link"
               >
                 docs/01-what-is-suspec.md
               </TextLink>

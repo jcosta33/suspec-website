@@ -494,8 +494,8 @@ body {
   }
 
   .home-hero-run-card .home-step-rail-item {
-    min-height: 2.05rem;
-    padding-block: 0.42rem !important;
+    min-height: 2.75rem;
+    padding-block: 0.5rem !important;
   }
 
   .home-hero-run-card .terminal-window {
@@ -563,8 +563,8 @@ body {
   }
 
   .home-hero-run-card .home-step-rail-item {
-    min-height: 1.82rem;
-    padding-block: 0.32rem !important;
+    min-height: 2.75rem;
+    padding-block: 0.46rem !important;
   }
 
   .home-hero-run-card .terminal-window {
