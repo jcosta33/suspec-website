@@ -287,7 +287,7 @@ export default function CliPage() {
       >
         <Panel brushed screws className="cli-surface-panel p-0">
           <div className="cli-surface-header">
-            <p>Command families</p>
+            <h2>Command families</h2>
             <span>optional helper surface</span>
           </div>
           <ol
@@ -319,9 +319,9 @@ export default function CliPage() {
                         >
                           {String(index + 1).padStart(2, "0")}
                         </p>
-                        <h2 className="cli-command-title font-heading text-lg font-semibold text-concrete-100">
+                        <h3 className="cli-command-title font-heading text-lg font-semibold text-concrete-100">
                           {family.label}
-                        </h2>
+                        </h3>
                       </div>
                       <ArrowRight
                         className="text-signal-reference motion-nudge-x ml-auto h-4 w-4 shrink-0 opacity-70"

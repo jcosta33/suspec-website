@@ -5804,7 +5804,7 @@ section.bg-section-band::after {
   text-transform: uppercase;
 }
 
-.cli-surface-header p {
+.cli-surface-header :where(h2, p) {
   color: var(--signal-reference);
 }
 
