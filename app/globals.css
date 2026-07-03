@@ -10086,18 +10086,23 @@ section.bg-section-band::after {
   }
 
   .repo-product-page .agent-page-nav {
-    display: flex;
-    grid-template-columns: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.42rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-    padding: 0.04rem 1.8rem 0.2rem 0;
-    scroll-padding-inline: 0.1rem 1.8rem;
-    scroll-snap-type: x proximity;
+    overflow: visible;
+    border: 1px solid rgba(var(--signal-muted-rgb), 0.18);
+    border-radius: calc(var(--radius-control) - 2px);
+    background:
+      linear-gradient(90deg, rgba(var(--signal-muted-rgb), 0.035), transparent 58%),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 1.3rem,
+        rgba(var(--signal-muted-rgb), 0.02) 1.3rem calc(1.3rem + 1px)
+      ),
+      rgba(12, 9, 6, 0.26);
+    box-shadow: inset 0 1px 0 rgba(240, 226, 204, 0.025);
+    padding: 0.12rem;
+    scroll-snap-type: none;
   }
 
   .agent-page-nav::-webkit-scrollbar,
@@ -10167,11 +10172,11 @@ section.bg-section-band::after {
   }
 
   .repo-product-page .agent-page-nav-link {
-    flex: 0 0 auto;
+    flex: initial;
     min-height: 2.85rem;
-    min-width: 6.25rem;
+    min-width: 0;
     width: auto;
-    scroll-snap-align: start;
+    scroll-snap-align: none;
     padding: 0.4rem 0.56rem;
   }
 

@@ -35,8 +35,8 @@ export function PageNav({
       data-color-role={item.signal}
       className={`agent-page-nav-link agent-page-nav-link-${item.signal} focus-ring group`}
     >
-      <span className="agent-page-nav-index">
-        {String(index + 1).padStart(2, "0")}
+      <span className="agent-page-nav-index" aria-hidden="true">
+        {String(index + 1).padStart(2, "0")}{" "}
       </span>
       <span className="agent-page-nav-label">{item.label}</span>
       <ArrowRight className="motion-nudge-x h-3.5 w-3.5" aria-hidden="true" />
