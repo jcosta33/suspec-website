@@ -294,18 +294,18 @@ export function Shell({ children }: { children: React.ReactNode }) {
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = -normalY * 8.6;
-      const planeTiltY = normalX * 10.4;
-      const headerTiltX = planeTiltX * 0.96;
-      const headerTiltY = planeTiltY * 0.96;
-      const planeShiftX = -normalX * 5.2;
-      const planeShiftY = -normalY * 3.4;
-      const planeDriftX = -normalX * 5.8;
-      const planeDriftY = -normalY * 3.8;
-      const headerShiftX = -normalX * 18.6;
-      const headerShiftY = -normalY * 11.2;
-      const heroShiftX = -normalX * 15.4;
-      const heroShiftY = -normalY * 8.8;
+      const planeTiltX = -normalY * 7.2;
+      const planeTiltY = normalX * 8.8;
+      const headerTiltX = planeTiltX * 1.14;
+      const headerTiltY = planeTiltY * 1.14;
+      const planeShiftX = -normalX * 3.8;
+      const planeShiftY = -normalY * 2.6;
+      const planeDriftX = -normalX * 2.4;
+      const planeDriftY = -normalY * 1.8;
+      const headerShiftX = -normalX * 22;
+      const headerShiftY = -normalY * 13.2;
+      const heroShiftX = -normalX * 18.2;
+      const heroShiftY = -normalY * 10.4;
 
       setPointerMotion(root, {
         "--background-plane-normal-x": normalX.toFixed(3),

@@ -86,7 +86,7 @@ body {
     display: block;
     overflow: clip;
     pointer-events: none;
-    perspective: clamp(340px, 42vw, 560px);
+    perspective: clamp(300px, 34vw, 460px);
     perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     contain: layout style paint;
@@ -94,7 +94,7 @@ body {
 
   .site-background-plane {
     position: absolute;
-    inset: -22vmax;
+    inset: -28vmax;
     display: block;
     background:
       linear-gradient(rgba(84, 67, 49, 0.25) 1px, transparent 1px),
@@ -116,10 +116,10 @@ body {
        center top;
     opacity: 1;
     transform:
-      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), -72px)
+      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), -42px)
       rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
       rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
-      scale3d(1.38, 1.38, 1);
+      scale3d(1.34, 1.34, 1);
     transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -189,7 +189,7 @@ body {
   }
 
   .ambient-header {
-    perspective: 380px;
+    perspective: clamp(300px, 34vw, 430px);
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
@@ -205,7 +205,7 @@ body {
       translate3d(calc(-50% + var(--background-header-shift-x)), var(--background-header-shift-y), 0)
       rotateX(var(--background-header-before-rotate-x))
       rotateY(var(--background-header-before-rotate-y))
-      translateZ(82px)
+      translateZ(96px)
       scale(1.15);
     background-position:
        calc(50% + var(--background-header-shift-soft-x)) calc(50% + var(--background-header-shift-soft-y)),
@@ -227,7 +227,7 @@ body {
       translate3d(calc(-50% + var(--background-header-shift-soft-x)), var(--background-header-shift-soft-y), 0)
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y))
-      translateZ(68px)
+      translateZ(82px)
       scale(1.13);
     background-position:
        calc(0% + var(--background-header-shift-soft-x)) 50%,
@@ -247,7 +247,7 @@ body {
       translate3d(var(--background-hero-shift-x), var(--background-hero-shift-y), 0)
       rotateX(var(--background-hero-edge-rotate-x))
       rotateY(var(--background-hero-edge-rotate-y))
-      translateZ(58px)
+      translateZ(66px)
       scale(1.08);
     transform-origin: 50% 52%;
     backface-visibility: hidden;
@@ -279,7 +279,7 @@ body {
       translate3d(calc(-50% + var(--background-hero-shift-x)), var(--background-hero-shift-y), 0)
       rotateX(var(--background-hero-motif-rotate-x))
       rotateY(var(--background-hero-motif-rotate-y))
-      translateZ(88px)
+      translateZ(102px)
       scale(1.14);
     transform-origin: 50% 52%;
     background-position:
@@ -295,7 +295,7 @@ body {
 
   .docs-index-cover,
   .docs-article-header {
-    perspective: 580px;
+    perspective: clamp(360px, 42vw, 540px);
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
