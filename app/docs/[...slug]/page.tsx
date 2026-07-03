@@ -9,7 +9,12 @@ import {
   docSequence,
   docDates,
 } from "../lib/canon";
-import { renderDoc, titleOf, descriptionOf } from "../lib/render";
+import {
+  renderDoc,
+  titleOf,
+  descriptionOf,
+  type DocHeading,
+} from "../lib/render";
 import { JsonLd } from "../../components/JsonLd";
 import { DocsCodeCopy } from "../components/DocsCodeCopy";
 import { DocsToc } from "../components/DocsToc";
@@ -64,8 +69,10 @@ function articleFor(
   title: string,
   description: string,
   dates: { created: string; modified: string } | null,
+  headings: DocHeading[],
 ) {
   const url = `${SITE_URL}/docs/${slug.join("/")}/`;
+  const sectionHeadings = headings.filter((heading) => heading.depth === 2);
   // Google recommends headline <=110 chars; a few ADR titles run longer. Keep the full title in
   // `name` and a word-boundary-trimmed form in `headline`.
   const headline =
@@ -78,6 +85,7 @@ function articleFor(
   return {
     "@context": "https://schema.org",
     "@type": "TechArticle",
+    "@id": `${url}#article`,
     name: title,
     headline,
     description,
@@ -93,6 +101,17 @@ function articleFor(
     // Real git dates when history is available (omitted otherwise, never a fake build-time date).
     ...(dates
       ? { datePublished: dates.created, dateModified: dates.modified }
+      : {}),
+    ...(sectionHeadings.length > 0
+      ? {
+          hasPart: sectionHeadings.map((heading) => ({
+            "@type": "WebPageElement",
+            "@id": `${url}#${heading.id}`,
+            name: heading.text,
+            url: `${url}#${heading.id}`,
+            isPartOf: { "@id": `${url}#article` },
+          })),
+        }
       : {}),
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
@@ -189,6 +208,7 @@ export default async function DocPage({
           title,
           descriptionOf(md),
           dates,
+          headings,
         )}
       />
       <article className="docs-prose" data-pagefind-body>
