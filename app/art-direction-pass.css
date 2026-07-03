@@ -1284,7 +1284,7 @@ body {
     padding: 0.04rem 1.8rem 0.2rem 0 !important;
     scroll-padding-inline: 0.1rem 1.8rem !important;
     scroll-snap-type: x proximity !important;
-    scrollbar-width: auto;
+    scrollbar-width: none;
   }
 
   .repo-product-page .agent-page-nav::-webkit-scrollbar {
