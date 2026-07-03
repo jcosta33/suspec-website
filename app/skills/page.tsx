@@ -236,6 +236,21 @@ const skillRoutes = [
   },
 ] as const;
 
+const selectionRules = [
+  {
+    label: "Catalog",
+    text: "Any repo; framework-free method.",
+  },
+  {
+    label: "Kit",
+    text: "Suspec repo; loop and artifact context.",
+  },
+  {
+    label: "Gate",
+    text: "Read first; pin shared installs; commands in AGENTS.md.",
+  },
+] as const;
+
 export default function SkillsPage() {
   return (
     <div className="repo-product-page skills-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
@@ -308,43 +323,48 @@ export default function SkillsPage() {
       >
         <PaperArtifact
           label="index"
-          title="two tiers"
-          meta="catalog (any repo) -> kit (Suspec repos)"
+          title="selection rule"
+          meta="catalog -> repo policy -> kit"
           className="manifest-paper-fit md:self-start"
         >
-          <p>
-            The catalog is framework-free. The kit operates Suspec concepts. Keep
-            repo policy local.
-          </p>
+          <dl className="agent-delegation-contract skill-selection-contract">
+            {selectionRules.map((rule) => (
+              <div key={rule.label}>
+                <dt>{rule.label}</dt>
+                <dd>{rule.text}</dd>
+              </div>
+            ))}
+          </dl>
         </PaperArtifact>
         <Card
           screws
           className="repo-manifest-card h-full"
           contentClassName="repo-manifest-content"
         >
-          <p className="repo-manifest-label">guide files</p>
+          <p className="repo-manifest-label">activation contract</p>
           <div className="repo-manifest-grid">
             <SignalStat
-              label="catalog"
-              value="any repo"
+              label="install"
+              value="npx skills"
               signal="evidence"
               valueClassName="font-mono text-sm uppercase text-concrete-300"
             />
             <SignalStat
               label="kit"
-              value="Suspec loop"
+              value="starter-kit"
               signal="core"
               valueClassName="font-mono text-sm uppercase text-concrete-300"
             />
             <SignalStat
-              label="file"
-              value="SKILL.md"
+              label="policy"
+              value="AGENTS.md"
               signal="reference"
               valueClassName="font-mono text-sm text-concrete-300"
             />
           </div>
           <p className="repo-manifest-note">
-            Guidance only. Read the file before it shapes a team workflow.
+            Use the catalog for general agent discipline; use the kit only when
+            the repo already speaks Suspec. Skills advise; review still decides.
           </p>
         </Card>
       </Section>
@@ -366,7 +386,7 @@ export default function SkillsPage() {
                   key={route.href}
                   href={route.href}
                   className={`skill-category-link ${signalRoles[route.signal].processItem} focus-ring group block bg-panel-raised/95 p-5 transition-colors duration-150 hover:bg-panel sm:p-6`}
-                  aria-label={`Jump to ${route.text.toLowerCase()}`}
+                  aria-label={`Jump to ${route.label}`}
                 >
                   <div className="skill-category-heading flex items-center gap-3">
                     <HexBadge color={route.signal} className="h-10 w-10 shrink-0">

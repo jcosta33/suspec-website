@@ -6440,6 +6440,28 @@ section.bg-section-band::after {
   }
 }
 
+@media (max-width: 30rem) {
+  .skills-page .skill-category-rail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .skills-page .skill-category-link:last-child {
+    grid-column: auto;
+  }
+
+  .skills-page .skill-category-link {
+    min-height: 3.75rem;
+  }
+
+  .skills-page .skill-category-heading {
+    gap: 0.68rem;
+  }
+
+  .skills-page .skill-category-title {
+    font-size: 0.94rem;
+  }
+}
+
 /* Skill guide catalogs — compact rosters instead of another card grid. */
 .skill-guide-catalog {
   --skill-guide-signal: var(--signal-reference);
