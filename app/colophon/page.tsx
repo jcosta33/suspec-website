@@ -12,7 +12,7 @@ import type { SignalRole } from "../components/signalStyles";
 import { canonicalAlternates } from "../seo";
 
 const SITE_URL = "https://suspecframework.dev";
-const pageTitle = "Colophon — Suspec";
+const pageTitle = "Suspec website colophon";
 const pageDescription =
   "How the Suspec website is built, sourced, reviewed, exported, and shipped through the same plain-markdown workflow.";
 

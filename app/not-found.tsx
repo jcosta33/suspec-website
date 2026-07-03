@@ -14,8 +14,9 @@ import { PilotLamp } from "./components/PilotLamp";
 import { signalRoles, type SignalRole } from "./components/signalStyles";
 
 export const metadata = {
-  title: "Page not found — Suspec",
-  description: "The requested page was not found.",
+  title: "Page not found — recovery routes — Suspec",
+  description:
+    "The requested Suspec page was not found. Use the docs index, workflow page, or setup guide to recover a useful route.",
   robots: "noindex",
 };
 
