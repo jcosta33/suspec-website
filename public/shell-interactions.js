@@ -59,14 +59,18 @@
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = normalY * -7.2;
-      const planeTiltY = normalX * 8.2;
+      const planeTiltX = normalY * -8.2;
+      const planeTiltY = normalX * 9.4;
       const headerTiltX = planeTiltX * 0.82;
       const headerTiltY = planeTiltY * 0.82;
-      const headerShiftX = -normalX * 2.2;
-      const headerShiftY = -normalY * 1.5;
-      const heroShiftX = -normalX * 1.8;
-      const heroShiftY = -normalY * 1.2;
+      const planeShiftX = -normalX * 9.5;
+      const planeShiftY = -normalY * 6.5;
+      const planeDriftX = -normalX * 18;
+      const planeDriftY = -normalY * 12;
+      const headerShiftX = -normalX * 7.4;
+      const headerShiftY = -normalY * 4.8;
+      const heroShiftX = -normalX * 5.6;
+      const heroShiftY = -normalY * 3.7;
 
       root.style.setProperty("--background-plane-normal-x", normalX.toFixed(4));
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
@@ -96,27 +100,27 @@
       );
       root.style.setProperty(
         "--background-plane-shift-x",
-        "0px",
+        `${planeShiftX.toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-shift-y",
-        "0px",
+        `${planeShiftY.toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-drift-x",
-        "0px",
+        `${planeDriftX.toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-drift-y",
-        "0px",
+        `${planeDriftY.toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-drift-soft-x",
-        "0px",
+        `${(planeDriftX * 0.42).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-drift-soft-y",
-        "0px",
+        `${(planeDriftY * 0.42).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-plane-skew-x",

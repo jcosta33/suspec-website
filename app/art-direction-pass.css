@@ -86,7 +86,7 @@ body {
     display: block;
     overflow: clip;
     pointer-events: none;
-    perspective: clamp(420px, 42vw, 720px);
+    perspective: clamp(360px, 34vw, 620px);
     perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     contain: layout style paint;
@@ -94,7 +94,7 @@ body {
 
   .site-background-plane {
     position: absolute;
-    inset: -22vmax -24vmax;
+    inset: -18vmax -20vmax;
     display: block;
     background:
       linear-gradient(rgba(84, 67, 49, 0.25) 1px, transparent 1px),
@@ -109,17 +109,18 @@ body {
       192px 192px,
       auto;
     background-position:
-       50% 50%,
-       50% 50%,
-       50% 50%,
-       50% 50%,
+       calc(50% + var(--background-plane-drift-x)) calc(50% + var(--background-plane-drift-y)),
+       calc(50% + var(--background-plane-drift-x)) calc(50% + var(--background-plane-drift-y)),
+       calc(50% + var(--background-plane-drift-soft-x)) calc(50% + var(--background-plane-drift-soft-y)),
+       calc(50% + var(--background-plane-drift-soft-x)) calc(50% + var(--background-plane-drift-soft-y)),
        center top;
     opacity: 1;
     transform:
+      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), -74px)
       rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
       rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
-      translate3d(0, 0, -62px)
-      scale3d(1.36, 1.36, 1);
+      rotateZ(calc(var(--background-plane-normal-x) * -0.22deg))
+      scale3d(1.22, 1.22, 1);
     transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -203,6 +204,7 @@ body {
       translate3d(calc(-50% + var(--background-header-shift-x)), var(--background-header-shift-y), 0)
       rotateX(var(--background-header-before-rotate-x))
       rotateY(var(--background-header-before-rotate-y))
+      rotateZ(calc(var(--background-plane-normal-x) * -0.12deg))
       translateZ(32px)
       scale(1.16);
     background-position:
@@ -225,6 +227,7 @@ body {
       translate3d(calc(-50% + var(--background-header-shift-soft-x)), var(--background-header-shift-soft-y), 0)
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y))
+      rotateZ(calc(var(--background-plane-normal-x) * -0.1deg))
       translateZ(26px)
       scale(1.14);
     background-position:
@@ -245,6 +248,7 @@ body {
       translate3d(var(--background-hero-shift-x), var(--background-hero-shift-y), 0)
       rotateX(var(--background-hero-edge-rotate-x))
       rotateY(var(--background-hero-edge-rotate-y))
+      rotateZ(calc(var(--background-plane-normal-x) * -0.08deg))
       translateZ(24px)
       scale(1.08);
     transform-origin: 50% 52%;
@@ -277,6 +281,7 @@ body {
       translate3d(calc(-50% + var(--background-hero-shift-x)), var(--background-hero-shift-y), 0)
       rotateX(var(--background-hero-motif-rotate-x))
       rotateY(var(--background-hero-motif-rotate-y))
+      rotateZ(calc(var(--background-plane-normal-x) * -0.11deg))
       translateZ(30px)
       scale(1.12);
     transform-origin: 50% 52%;
@@ -340,7 +345,8 @@ body {
     transform:
       translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 36px)
       rotateX(var(--background-header-after-rotate-x))
-      rotateY(var(--background-header-after-rotate-y));
+      rotateY(var(--background-header-after-rotate-y))
+      rotateZ(calc(var(--background-plane-normal-x) * -0.08deg));
     transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transition:
       transform 74ms ease-out,
@@ -353,7 +359,8 @@ body {
     transform:
       translate3d(var(--background-plane-drift-x), var(--background-plane-drift-y), 24px)
       rotateX(var(--background-header-after-rotate-x))
-      rotateY(var(--background-header-after-rotate-y));
+      rotateY(var(--background-header-after-rotate-y))
+      rotateZ(calc(var(--background-plane-normal-x) * -0.07deg));
     transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transition:
       transform 74ms ease-out,
