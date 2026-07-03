@@ -280,22 +280,22 @@ export function Shell({ children }: { children: React.ReactNode }) {
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = -normalY * 7.8;
-      const planeTiltY = normalX * 9.6;
-      const headerTiltX = planeTiltX * 0.78;
-      const headerTiltY = planeTiltY * 0.78;
+      const planeTiltX = -normalY * 9.4;
+      const planeTiltY = normalX * 11.2;
+      const headerTiltX = planeTiltX * 0.86;
+      const headerTiltY = planeTiltY * 0.86;
 
       setPointerMotion(root, {
         "--background-plane-normal-x": normalX.toFixed(3),
         "--background-plane-normal-y": normalY.toFixed(3),
-        "--background-plane-origin-x": `${(50 + normalX * 9.5).toFixed(2)}%`,
-        "--background-plane-origin-y": `${(52 + normalY * 6.2).toFixed(2)}%`,
+        "--background-plane-origin-x": "50%",
+        "--background-plane-origin-y": "54%",
         "--background-plane-tilt-x": `${planeTiltX.toFixed(3)}deg`,
         "--background-plane-tilt-y": `${planeTiltY.toFixed(3)}deg`,
         "--background-plane-rotate-x": `${planeTiltX.toFixed(3)}deg`,
         "--background-plane-rotate-y": `${planeTiltY.toFixed(3)}deg`,
-        "--background-header-origin-x": `${(50 + normalX * 7.4).toFixed(2)}%`,
-        "--background-header-origin-y": `${(46 + normalY * 4.8).toFixed(2)}%`,
+        "--background-header-origin-x": "50%",
+        "--background-header-origin-y": "46%",
         "--background-header-tilt-x": `${headerTiltX.toFixed(3)}deg`,
         "--background-header-tilt-y": `${headerTiltY.toFixed(3)}deg`,
         "--background-header-before-rotate-x": `${(headerTiltX * 1.12).toFixed(3)}deg`,

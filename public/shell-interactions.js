@@ -45,10 +45,10 @@
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = normalY * -7.8;
-      const planeTiltY = normalX * 9.6;
-      const headerTiltX = planeTiltX * 0.78;
-      const headerTiltY = planeTiltY * 0.78;
+      const planeTiltX = normalY * -9.4;
+      const planeTiltY = normalX * 11.2;
+      const headerTiltX = planeTiltX * 0.86;
+      const headerTiltY = planeTiltY * 0.86;
 
       root.style.setProperty("--background-plane-normal-x", normalX.toFixed(4));
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
@@ -110,19 +110,19 @@
       );
       root.style.setProperty(
         "--background-plane-origin-x",
-        `${(50 + normalX * 9.5).toFixed(2)}%`,
+        "50%",
       );
       root.style.setProperty(
         "--background-plane-origin-y",
-        `${(52 + normalY * 6.2).toFixed(2)}%`,
+        "54%",
       );
       root.style.setProperty(
         "--background-header-origin-x",
-        `${(50 + normalX * 7.4).toFixed(2)}%`,
+        "50%",
       );
       root.style.setProperty(
         "--background-header-origin-y",
-        `${(46 + normalY * 4.8).toFixed(2)}%`,
+        "46%",
       );
     }
 
