@@ -28,9 +28,13 @@ import { TextLink } from "../components/TextLink";
 import { SignalStat } from "../components/SignalStat";
 import { PageNav } from "../components/PageNav";
 import { PackageJsonLd } from "../components/PackageJsonLd";
+import { JsonLd } from "../components/JsonLd";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 import { canonicalAlternates } from "../seo";
 
+const SITE_URL = "https://suspecframework.dev";
+const AGENTS_REPOSITORY = "https://github.com/jcosta33/suspec-agents";
+const AGENTS_PAGE_URL = `${SITE_URL}/agents/`;
 const agentsDescription =
   "suspec-agents provides Claude Code worker files for Suspec review, challenge, research, spec, audit, and docs roles; workers return evidence, not verdicts.";
 const agentsTitle = "suspec-agents — Claude Code workers for Suspec";
@@ -241,8 +245,43 @@ const agentPageNav = [
 }>;
 
 function repoHref(agent: string) {
-  return `https://github.com/jcosta33/suspec-agents/blob/main/agents/${agent}.md`;
+  return `${AGENTS_REPOSITORY}/blob/main/agents/${agent}.md`;
 }
+
+const agentCatalogItems = rosterGroups.flatMap((group) =>
+  group.items.map((item) => ({
+    name: item.file,
+    description: item.use,
+    url: repoHref(item.file),
+    category: group.title,
+  })),
+);
+
+const agentsPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${AGENTS_PAGE_URL}#webpage`,
+  name: "suspec-agents worker roster",
+  url: AGENTS_PAGE_URL,
+  description: agentsDescription,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: { "@id": `${AGENTS_PAGE_URL}#source-code` },
+  mainEntity: {
+    "@type": "ItemList",
+    name: "suspec-agents worker files",
+    itemListElement: agentCatalogItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "CreativeWork",
+        name: item.name,
+        description: item.description,
+        url: item.url,
+        genre: item.category,
+      },
+    })),
+  },
+};
 
 function AgentInstallSection() {
   return (
@@ -305,11 +344,12 @@ function AgentInstallSection() {
 export default function AgentsPage() {
   return (
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+      <JsonLd data={agentsPageJsonLd} />
       <PackageJsonLd
         name="suspec-agents"
         description={agentsDescription}
         path="/agents/"
-        repository="https://github.com/jcosta33/suspec-agents"
+        repository={AGENTS_REPOSITORY}
         keywords={[
           "Claude Code agents",
           "worker files",
@@ -317,14 +357,7 @@ export default function AgentsPage() {
           "challenge agents",
           "authoring agents",
         ]}
-        catalogItems={rosterGroups.flatMap((group) =>
-          group.items.map((item) => ({
-            name: item.file,
-            description: item.use,
-            url: repoHref(item.file),
-            category: group.title,
-          })),
-        )}
+        catalogItems={agentCatalogItems}
       />
       <Section className="ambient-header">
         <PageHero
