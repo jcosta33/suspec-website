@@ -14375,6 +14375,7 @@ section.bg-section-band::after {
 
 /* Mechanical button press */
 .toggle {
+  cursor: pointer;
   transition:
     box-shadow 80ms ease,
     color 140ms ease,

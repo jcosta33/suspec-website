@@ -455,7 +455,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <button
             ref={toggleRef}
             type="button"
-            className={`toggle rounded-control inline-flex h-11 w-11 items-center justify-center border p-2 text-concrete-100 hover:text-suspec-yellow focus-ring lg:hidden ${
+            className={`toggle cursor-pointer rounded-control inline-flex h-11 w-11 items-center justify-center border p-2 text-concrete-100 hover:text-suspec-yellow focus-ring lg:hidden ${
               headerIsOpaque
                 ? "border-panel-border bg-panel-raised shadow-panel-bevel active-shadow-toggle"
                 : "border-transparent bg-transparent active:shadow-none"
