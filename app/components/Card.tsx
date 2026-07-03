@@ -38,8 +38,8 @@ export function Card({
     ? `signal-surface signal-surface-${signalRole}`
     : "";
   const linkedChromeClassName = signalRole
-    ? "focus-ring block text-left no-underline hover:shadow-[0_18px_42px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(240,226,204,0.08)]"
-    : "focus-ring block text-left no-underline hover:border-brass/75 hover:shadow-[0_18px_42px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(240,226,204,0.08)]";
+    ? "focus-ring block text-left no-underline"
+    : "focus-ring block text-left no-underline hover:border-brass/75";
   const chromeClassName = `panel-raised group relative overflow-hidden ${
     screws ? "screw-corners screw-corners-bottom" : ""
   } ${href ? linkedChromeClassName : ""} ${signalSurfaceClass} p-6 transition-[border-color,box-shadow] duration-200 ease-out sm:p-7 ${className}`;
