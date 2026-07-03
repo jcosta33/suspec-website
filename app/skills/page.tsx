@@ -317,6 +317,7 @@ export default function SkillsPage() {
       </Section>
 
       <Section
+        id="index"
         register="01 / index"
         registerTone="reference"
         className="manifest-pair grid gap-5 md:grid-cols-[minmax(16rem,0.68fr)_minmax(0,1.32fr)] md:items-start"
@@ -370,6 +371,7 @@ export default function SkillsPage() {
       </Section>
 
       <Section
+        id="categories"
         register="02 / categories"
         registerTone="muted"
         className="space-y-4"
@@ -418,6 +420,7 @@ export default function SkillsPage() {
       </Section>
 
       <Section
+        id="install"
         register="03 / install"
         registerTone="reference"
         className="section-flow section-flow-tight"

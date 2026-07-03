@@ -294,18 +294,18 @@ export function Shell({ children }: { children: React.ReactNode }) {
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = -normalY * 8.4;
-      const planeTiltY = normalX * 10.2;
-      const headerTiltX = planeTiltX * 0.78;
-      const headerTiltY = planeTiltY * 0.78;
-      const planeShiftX = -normalX * 8;
-      const planeShiftY = -normalY * 5;
-      const planeDriftX = -normalX * 3;
-      const planeDriftY = -normalY * 2;
-      const headerShiftX = -normalX * 11;
-      const headerShiftY = -normalY * 7;
-      const heroShiftX = -normalX * 7;
-      const heroShiftY = -normalY * 4.8;
+      const planeTiltX = -normalY * 6.8;
+      const planeTiltY = normalX * 8.2;
+      const headerTiltX = planeTiltX * 1.04;
+      const headerTiltY = planeTiltY * 1.04;
+      const planeShiftX = -normalX * 2.6;
+      const planeShiftY = -normalY * 1.6;
+      const planeDriftX = -normalX * 1.4;
+      const planeDriftY = -normalY * 0.9;
+      const headerShiftX = -normalX * 8.4;
+      const headerShiftY = -normalY * 5.2;
+      const heroShiftX = -normalX * 5.6;
+      const heroShiftY = -normalY * 3.4;
 
       setPointerMotion(root, {
         "--background-plane-normal-x": normalX.toFixed(3),
@@ -322,8 +322,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
         "--background-plane-drift-y": `${planeDriftY.toFixed(2)}px`,
         "--background-plane-drift-soft-x": `${(planeDriftX * 0.54).toFixed(2)}px`,
         "--background-plane-drift-soft-y": `${(planeDriftY * 0.54).toFixed(2)}px`,
-        "--background-plane-skew-x": `${(normalX * 0.42).toFixed(3)}deg`,
-        "--background-plane-skew-y": `${(-normalY * 0.28).toFixed(3)}deg`,
+        "--background-plane-skew-x": "0deg",
+        "--background-plane-skew-y": "0deg",
         "--background-header-origin-x": `${(50 + normalX * 4).toFixed(2)}%`,
         "--background-header-origin-y": `${(46 + normalY * 3).toFixed(2)}%`,
         "--background-header-tilt-x": `${headerTiltX.toFixed(3)}deg`,
