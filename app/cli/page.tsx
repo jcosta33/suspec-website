@@ -390,6 +390,7 @@ export default function CliPage() {
         registerTone="core"
         className="section-flow section-flow-tight scroll-mt-28"
       >
+        <h2 className="sr-only">Install suspec-cli</h2>
         <div className="section-kicker section-kicker-core">
           <DroneIcon className="h-4 w-4" />
           <span>install</span>
@@ -441,6 +442,7 @@ export default function CliPage() {
         registerTone="core"
         className="section-flow section-flow-tight scroll-mt-28"
       >
+        <h2 className="sr-only">Run the Suspec loop with the CLI</h2>
         <div className="section-kicker section-kicker-core">
           <DroneIcon className="h-4 w-4" />
           <span>the-loop.sh — a task, end to end</span>
