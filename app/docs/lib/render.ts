@@ -652,6 +652,23 @@ export function descriptionOf(markdown: string): string {
     if (items.length === 2) return `${items[0]} and ${items[1]}`;
     return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
   };
+  const stepIndexDescription = (): string | null => {
+    const steps = [...body.matchAll(/^##\s+(?:\d+\.\s+)?(.+)$/gm)]
+      .map((match) =>
+        clean(match[1])
+          .replace(/\s*\([^)]*\)/g, "")
+          .replace(/\s+/g, " ")
+          .trim(),
+      )
+      .filter(
+        (heading) =>
+          heading &&
+          !/^(common paths|what not to skip|related)$/i.test(heading),
+      )
+      .slice(0, 8);
+    if (steps.length < 4) return null;
+    return `${titleOf(markdown)} covers ${joinItems(steps)}.`;
+  };
   const listLeadDescription = (): string | null => {
     let lead = "";
     let inCodeBlock = false;
@@ -772,7 +789,13 @@ export function descriptionOf(markdown: string): string {
   const chosen =
     candidates.find((p) => p.text.length >= 40 && !p.text.endsWith(":")) ??
     null;
-  const text = chosen?.text ?? "";
+  const titleHeading = titleOf(markdown).toLowerCase();
+  const chosenIsShortCrossReference =
+    chosen?.heading === titleHeading &&
+    chosen.text.length < 120 &&
+    /\bsee\b/i.test(chosen.text);
+  const text =
+    chosenIsShortCrossReference ? (stepIndexDescription() ?? chosen.text) : (chosen?.text ?? "");
   if (!text)
     return (
       listLeadDescription() ??
