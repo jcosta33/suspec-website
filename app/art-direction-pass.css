@@ -86,7 +86,7 @@ body {
     display: block;
     overflow: clip;
     pointer-events: none;
-    perspective: 640px;
+    perspective: 520px;
     perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     contain: layout style paint;
@@ -109,25 +109,24 @@ body {
       192px 192px,
       auto;
     background-position:
-      calc(50% + var(--background-plane-drift-x)) var(--background-plane-drift-y),
-      calc(50% + var(--background-plane-drift-x)) var(--background-plane-drift-y),
-      calc(50% + var(--background-plane-drift-soft-x)) var(--background-plane-drift-soft-y),
-      calc(50% + var(--background-plane-drift-soft-x)) var(--background-plane-drift-soft-y),
+      50% 0,
+      50% 0,
+      50% 0,
+      50% 0,
       center top;
     opacity: 0.98;
     transform:
-      perspective(720px)
-      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), -42px)
+      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), 0)
       rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
       rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
       skewX(var(--background-plane-skew-x))
       skewY(var(--background-plane-skew-y))
-      scale(1.22);
-    transform-origin: 50% 54%;
+      scale(1.28);
+    transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
     transition:
-      transform 86ms ease-out,
+      transform 115ms cubic-bezier(0.2, 0.8, 0.2, 1),
       opacity 160ms ease-out;
     will-change: transform;
   }
@@ -191,7 +190,7 @@ body {
   }
 
   .ambient-header {
-    perspective: 620px;
+    perspective: 560px;
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
@@ -200,10 +199,10 @@ body {
     animation: ambient-calibration-breathe-pointer 8s ease-in-out infinite alternate;
     width: min(70rem, 112vw);
     transform:
-      translate3d(calc(-50% + var(--background-header-shift-x)), var(--background-header-shift-y), 34px)
-      perspective(620px)
+      translate3d(calc(-50% + var(--background-header-shift-x)), var(--background-header-shift-y), 0)
       rotateX(var(--background-header-before-rotate-x))
       rotateY(var(--background-header-before-rotate-y))
+      translateZ(34px)
       scale(1.12);
     background-position:
       50% 50%,
@@ -222,10 +221,10 @@ body {
   .ambient-header::after {
     animation: ambient-rule-breathe 7s ease-in-out infinite;
     transform:
-      translate3d(calc(-50% + var(--background-header-shift-soft-x)), var(--background-header-shift-soft-y), 32px)
-      perspective(620px)
+      translate3d(calc(-50% + var(--background-header-shift-soft-x)), var(--background-header-shift-soft-y), 0)
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y))
+      translateZ(32px)
       scale(1.1);
     background-position:
       left 50%,
@@ -242,10 +241,10 @@ body {
   .page-hero::before,
   .page-hero::after {
     transform:
-      perspective(620px)
-      translate3d(var(--background-hero-shift-x), var(--background-hero-shift-y), 44px)
+      translate3d(var(--background-hero-shift-x), var(--background-hero-shift-y), 0)
       rotateX(var(--background-hero-edge-rotate-x))
       rotateY(var(--background-hero-edge-rotate-y))
+      translateZ(44px)
       scale(1.13);
     transform-origin: 50% 52%;
     backface-visibility: hidden;
@@ -274,10 +273,10 @@ body {
   .ambient-header .page-hero-motif {
     animation: page-hero-motif-breathe-pointer 7s ease-in-out infinite alternate;
     transform:
-      translate3d(calc(-50% + var(--background-hero-shift-x)), var(--background-hero-shift-y), 56px)
-      perspective(620px)
+      translate3d(calc(-50% + var(--background-hero-shift-x)), var(--background-hero-shift-y), 0)
       rotateX(var(--background-hero-motif-rotate-x))
       rotateY(var(--background-hero-motif-rotate-y))
+      translateZ(56px)
       scale(1.16);
     transform-origin: 50% 52%;
     background-position:
