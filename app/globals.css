@@ -11574,8 +11574,12 @@ section.bg-section-band::after {
 }
 
 @media (max-width: 40rem) {
+  .overview-summary-grid {
+    gap: 0.68rem;
+  }
+
   .overview-answer-panel {
-    gap: 0.64rem;
+    gap: 0.58rem;
     padding: 0.76rem 0.78rem;
   }
 
@@ -11642,8 +11646,20 @@ section.bg-section-band::after {
     order: 1 !important;
   }
 
+  .overview-terminal-shell {
+    padding: 0.44rem;
+  }
+
+  .overview-terminal-shell .terminal-toolbar {
+    padding: 0.5rem 0.58rem;
+  }
+
   .overview-summary-grid .overview-paper-artifact {
     order: 2 !important;
+  }
+
+  .overview-paper-artifact {
+    padding: 0.92rem 1rem !important;
   }
 
   .overview-paper-artifact > div:last-child {
@@ -11651,14 +11667,18 @@ section.bg-section-band::after {
   }
 
   .overview-terminal-content {
-    max-height: 11.8rem;
+    max-height: 8.6rem;
     padding: 0.82rem 0.86rem;
     font-size: 0.76rem;
     line-height: 1.42;
   }
 
   .overview-check-grid {
-    gap: 0.25rem;
+    display: none;
+  }
+
+  .overview-terminal-content > p:last-child {
+    display: none;
   }
 
   .overview-artifact-chain {
@@ -12092,7 +12112,7 @@ section.bg-section-band::after {
 
 @media (max-width: 639px) {
   #nearby-tools {
-    gap: 1.25rem;
+    gap: 1rem;
   }
 
   .overview-relation-grid {
@@ -12110,7 +12130,7 @@ section.bg-section-band::after {
   .relation-card {
     border-width: 0;
     border-radius: 0;
-    padding: 0.82rem 0.86rem 0.9rem;
+    padding: 0.68rem 0.76rem 0.74rem;
     box-shadow: inset 2px 0 0 rgba(var(--relation-rgb), 0.2);
   }
 
@@ -12131,8 +12151,8 @@ section.bg-section-band::after {
   }
 
   .relation-card-title {
-    margin-top: 0.14rem;
-    font-size: 0.9rem;
+    margin-top: 0.1rem;
+    font-size: 0.86rem;
     line-height: 1.24;
   }
 
@@ -12145,16 +12165,16 @@ section.bg-section-band::after {
   }
 
   .relation-card-body {
-    gap: 0.44rem;
-    margin-top: 0.64rem;
+    gap: 0.34rem;
+    margin-top: 0.48rem;
   }
 
   .relation-card-body div {
     display: grid;
     grid-template-columns: minmax(3.45rem, 0.3fr) 1fr;
     align-items: start;
-    gap: 0.58rem;
-    padding-top: 0.44rem;
+    gap: 0.5rem;
+    padding-top: 0.34rem;
   }
 
   .relation-card-body dt {
@@ -12164,8 +12184,8 @@ section.bg-section-band::after {
 
   .relation-card-body dd {
     margin-top: 0;
-    font-size: 0.74rem;
-    line-height: 1.42;
+    font-size: 0.72rem;
+    line-height: 1.34;
   }
 
   #failure-modes {
