@@ -449,10 +449,9 @@ export default function AgentsPage() {
               rel="noopener noreferrer"
               aria-label="Read the running agents docs (opens in new tab)"
             >
-              the docs cover delegation timing
+              The docs cover delegation timing
             </TextLink>
-            , review boundaries, and what still needs human judgment
-            .
+            , review boundaries, and what still needs human judgment.
           </p>
           <div className="agent-lane-summary" aria-label="Agent role lanes">
             {laneSummary.map((lane) => (
