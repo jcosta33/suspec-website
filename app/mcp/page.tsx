@@ -318,7 +318,7 @@ function CopyableIdentifier({
 
 export default function McpPage() {
   return (
-    <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+    <div className="repo-product-page mcp-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
       <Section className="ambient-header">
         <PageHero
           eyebrow="mcp server / verdict-free adapter"
@@ -348,6 +348,7 @@ export default function McpPage() {
       <PageNav
         items={mcpPageNav}
         ariaLabel="suspec-mcp page sections"
+        className="mcp-page-nav"
         wrapperClassName="mx-auto w-full max-w-7xl px-6 lg:px-8"
       />
 

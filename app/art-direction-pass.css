@@ -1387,6 +1387,38 @@ body {
     white-space: nowrap;
   }
 
+  .mcp-page > .ambient-header + .page-nav-wrap {
+    margin-top: 0.16rem !important;
+  }
+
+  .mcp-page > .page-nav-wrap,
+  .mcp-page > nav.page-nav-wrap {
+    margin-bottom: 0.52rem !important;
+  }
+
+  .mcp-page > .page-nav-wrap + .section-register {
+    margin-top: 0.28rem !important;
+  }
+
+  .mcp-page > #bridge {
+    padding-top: 2.78rem;
+  }
+
+  .mcp-page .mcp-page-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.34rem !important;
+  }
+
+  .mcp-page .mcp-page-nav .agent-page-nav-link {
+    min-height: 2.75rem !important;
+    gap: 0.28rem;
+    padding: 0.36rem 0.42rem !important;
+  }
+
+  .mcp-page .mcp-page-nav .agent-page-nav-label {
+    font-size: 0.72rem;
+  }
+
   .docs-prose .docs-index-list a {
     display: grid !important;
     grid-template-columns: 0.28rem 1.25rem minmax(0, 1fr);
