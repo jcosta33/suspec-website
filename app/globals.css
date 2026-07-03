@@ -12109,6 +12109,10 @@ section.bg-section-band::after {
     linear-gradient(180deg, rgba(232, 222, 203, 0.035), transparent 40%);
 }
 
+.overview-relation-grid {
+  align-items: stretch;
+}
+
 .relation-card-core {
   --relation-signal: var(--signal-core);
   --relation-rgb: var(--signal-core-rgb);
@@ -12259,9 +12263,94 @@ section.bg-section-band::after {
   font-weight: 650;
 }
 
+@media (min-width: 64rem) {
+  .overview-relation-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+    overflow: hidden;
+    border: 1px solid rgba(var(--signal-reference-rgb), 0.22);
+    border-radius: var(--radius-panel);
+    background:
+      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.028), transparent 42%),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 1.55rem,
+        rgba(var(--signal-reference-rgb), 0.014) 1.55rem calc(1.55rem + 1px)
+      ),
+      rgba(12, 9, 6, 0.24);
+    box-shadow:
+      inset 0 1px 0 rgba(240, 226, 204, 0.04),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.34);
+  }
+
+  .overview-relation-grid > li + li {
+    border-top: 1px solid rgba(var(--signal-reference-rgb), 0.12);
+  }
+
+  .overview-relation-grid .relation-card {
+    border: 0;
+    border-radius: 0;
+    background-image:
+      linear-gradient(90deg, rgba(var(--relation-rgb), 0.055), transparent 26%),
+      linear-gradient(180deg, rgba(232, 222, 203, 0.018), transparent 44%);
+    padding: 0.95rem 1.05rem;
+    box-shadow: inset 2px 0 0 rgba(var(--relation-rgb), 0.2);
+  }
+
+  .overview-relation-grid .relation-card > .relative {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.38fr) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(1.1rem, 2vw, 1.65rem);
+  }
+
+  .overview-relation-grid .relation-card::before {
+    display: none;
+  }
+
+  .overview-relation-grid .surface-engraving {
+    opacity: 0.32;
+  }
+
+  .overview-relation-grid .surface-glint {
+    opacity: 0.42;
+  }
+
+  .overview-relation-grid .relation-card-head {
+    min-width: 0;
+  }
+
+  .overview-relation-grid .relation-card-title {
+    margin-top: 0.28rem;
+    font-size: 0.98rem;
+  }
+
+  .overview-relation-grid .relation-card-examples {
+    max-width: 18rem;
+  }
+
+  .overview-relation-grid .relation-card-body {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(0.85rem, 1.35vw, 1.25rem);
+    margin-top: 0;
+  }
+
+  .overview-relation-grid .relation-card-body div {
+    min-height: 100%;
+    padding: 0 0 0 0.9rem;
+    border-top: 0;
+    border-left: 1px solid rgba(var(--relation-rgb), 0.18);
+  }
+
+  .overview-relation-grid .relation-card-body div:nth-child(2) {
+    border-top: 0;
+    border-left-color: rgba(var(--signal-core-rgb), 0.2);
+  }
+}
+
 @media (max-width: 639px) {
   #nearby-tools {
-    gap: 1rem;
+    gap: 1.15rem;
   }
 
   .overview-relation-grid {
