@@ -396,7 +396,8 @@ body {
   margin-inline: auto;
   padding-inline: clamp(0.58rem, 1.15vw, 0.95rem);
   letter-spacing: 0;
-  word-spacing: -0.18em;
+  text-wrap: balance;
+  word-spacing: -0.3em;
   text-shadow:
     0 1px 0 rgba(0, 0, 0, 0.42),
     0 0 24px rgba(var(--signal-core-rgb), 0.1);
@@ -404,7 +405,8 @@ body {
 
 .site-main-frame .page-hero-title {
   letter-spacing: 0;
-  word-spacing: -0.18em;
+  text-wrap: balance;
+  word-spacing: -0.26em;
 }
 
 .home-hero-section {
