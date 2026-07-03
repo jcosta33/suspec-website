@@ -409,7 +409,7 @@ export default function GetStartedPage() {
           href="https://github.com/jcosta33/suspec-starter-kit"
           target="_blank"
           rel="noopener noreferrer"
-          ariaLabel="Use the starter kit on GitHub"
+          ariaLabel="Use the starter kit on GitHub (opens in new tab)"
           screws
           className="setup-choice-card setup-choice-card-greenfield h-full"
           contentClassName="flex h-full flex-col gap-5"

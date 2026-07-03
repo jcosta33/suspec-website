@@ -1265,15 +1265,13 @@ body {
   }
 
   .get-started-page .setup-path-strip {
-    display: flex !important;
-    grid-template-columns: none !important;
-    gap: 0.28rem !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.36rem !important;
+    overflow: visible !important;
     border-top: 1px solid rgba(var(--signal-core-rgb), 0.14);
-    padding: 0.24rem 0.58rem 0.4rem !important;
-    scroll-padding-inline: 0.58rem;
-    scroll-snap-type: x proximity;
+    padding: 0.48rem 0.58rem 0.56rem !important;
+    scroll-snap-type: none;
     scrollbar-width: none;
   }
 
@@ -1348,8 +1346,8 @@ body {
 
   .get-started-page .setup-path-strip > li,
   .get-started-page .setup-path-strip > li:last-child {
-    flex: 0 0 clamp(7.6rem, 38vw, 9.4rem) !important;
-    grid-column: auto !important;
+    min-width: 0;
+    grid-column: auto;
     scroll-snap-align: start;
     border: 1px solid rgba(var(--process-rgb), 0.16) !important;
     border-radius: calc(var(--radius-panel) - 2px) !important;
@@ -1359,6 +1357,10 @@ body {
     box-shadow: inset 1px 0 0 rgba(var(--process-rgb), 0.1) !important;
   }
 
+  .get-started-page .setup-path-strip > li:last-child {
+    grid-column: 1 / -1;
+  }
+
   .get-started-page .setup-path-strip > li > a {
     display: grid !important;
     grid-template-columns: 1.35rem minmax(0, 1fr);
@@ -1366,7 +1368,7 @@ body {
     gap: 0.42rem;
     overflow: visible;
     justify-content: start !important;
-    min-height: 2.46rem !important;
+    min-height: 2.5rem !important;
     border: 0 !important;
     border-radius: calc(var(--radius-panel) - 2px) !important;
     background: transparent !important;
