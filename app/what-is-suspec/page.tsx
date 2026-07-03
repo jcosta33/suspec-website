@@ -325,7 +325,6 @@ export default function WhatIsSuspecPage() {
 
   return (
     <div className="flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
-      <JsonLd data={overviewJsonLd} />
       <Section className="ambient-header">
         <PageHero
           eyebrow="system overview"
@@ -694,6 +693,7 @@ export default function WhatIsSuspecPage() {
           </nav>
         </Card>
       </Section>
+      <JsonLd data={overviewJsonLd} />
     </div>
   );
 }

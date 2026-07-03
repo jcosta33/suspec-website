@@ -42,6 +42,8 @@ export function PageHero({
   motif = "overview",
   children,
 }: PageHeroProps) {
+  const calibrationToneLabel = typeof toneLabel === "string" ? toneLabel : tone;
+
   return (
     <div
       className={`page-hero page-hero-tone-${tone} ${HERO_MOTIFS[motif]} motion-surface mx-auto w-full min-w-0 max-w-4xl text-center ${className}`}
@@ -55,8 +57,8 @@ export function PageHero({
         <span />
       </div>
       <div className="page-hero-calibration" aria-hidden="true">
-        <span>{motif}</span>
-        <span>{toneLabel ?? tone}</span>
+        <span data-label={motif} />
+        <span data-label={calibrationToneLabel} />
       </div>
       <Eyebrow
         className="page-hero-eyebrow mb-6"

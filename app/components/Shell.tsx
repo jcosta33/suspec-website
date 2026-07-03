@@ -428,10 +428,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
       <main id="main-content" tabIndex={-1} className="site-main-frame flex-1">
         <div className="folio-rail folio-rail-left" aria-hidden="true">
-          <span>{folioLabel}</span>
+          <span data-label={folioLabel} />
         </div>
         <div className="folio-rail folio-rail-right" aria-hidden="true">
-          <span>reviewable work</span>
+          <span data-label="reviewable work" />
         </div>
         {children}
       </main>

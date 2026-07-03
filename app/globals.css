@@ -2498,6 +2498,7 @@ section.bg-section-band::after {
   .folio-rail span {
     position: absolute;
     top: 50%;
+    display: inline-flex;
     color: rgba(240, 226, 204, 0.22);
     font-family: var(--font-mono), ui-monospace, monospace;
     font-size: 0.64rem;
@@ -2506,6 +2507,10 @@ section.bg-section-band::after {
     text-transform: uppercase;
     white-space: nowrap;
     writing-mode: vertical-rl;
+  }
+
+  .folio-rail span::before {
+    content: attr(data-label);
   }
 
   .folio-rail-left {
@@ -3270,6 +3275,13 @@ section.bg-section-band::after {
   border-radius: 999px;
   background: var(--hero-signal);
   box-shadow: 0 0 10px rgba(var(--hero-rgb), 0.34);
+}
+
+.page-hero > .page-hero-calibration span::after {
+  content: attr(data-label);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .page-hero > .page-hero-calibration span:last-child {
