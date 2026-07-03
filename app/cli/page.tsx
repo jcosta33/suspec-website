@@ -22,10 +22,14 @@ import { Badge } from "../components/Badge";
 import { PilotLamp } from "../components/PilotLamp";
 import { TextLink } from "../components/TextLink";
 import { PageNav } from "../components/PageNav";
+import { JsonLd } from "../components/JsonLd";
 import { PackageJsonLd } from "../components/PackageJsonLd";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 import { canonicalAlternates } from "../seo";
 
+const SITE_URL = "https://suspecframework.dev";
+const CLI_REPOSITORY = "https://github.com/jcosta33/suspec-cli";
+const CLI_PAGE_URL = `${SITE_URL}/cli/`;
 const cliDescription =
   "suspec-cli scaffolds Suspec workspaces, runs checks, manages task worktrees, reviews evidence, and emits JSON without deciding correctness.";
 const cliTitle = "suspec-cli — setup, checks, review, JSON";
@@ -222,6 +226,39 @@ const commandFamilyHrefByLabel = Object.fromEntries(
   ]),
 ) as Record<string, `/cli/#${string}`>;
 
+const cliCommandItems = commands.map((command) => ({
+  name: `suspec ${command.cmd}`,
+  description: `${command.what} Family: ${command.family}.`,
+  url: commandFamilyHrefByLabel[command.family],
+  category: `${command.family} command`,
+}));
+
+const cliPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${CLI_PAGE_URL}#webpage`,
+  name: "suspec-cli command reference",
+  url: CLI_PAGE_URL,
+  description: cliDescription,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: { "@id": `${CLI_PAGE_URL}#source-code` },
+  mainEntity: {
+    "@type": "ItemList",
+    name: "suspec-cli commands",
+    itemListElement: cliCommandItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "CreativeWork",
+        name: item.name,
+        description: item.description,
+        url: `${SITE_URL}${item.url}`,
+        genre: item.category,
+      },
+    })),
+  },
+};
+
 const cliPageNav = [
   { label: "Families", href: "#command-families", signal: "reference" },
   { label: "Install", href: "#install", signal: "core" },
@@ -238,11 +275,12 @@ const cliPageNav = [
 export default function CliPage() {
   return (
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+      <JsonLd data={cliPageJsonLd} />
       <PackageJsonLd
         name="suspec-cli"
         description={cliDescription}
         path="/cli/"
-        repository="https://github.com/jcosta33/suspec-cli"
+        repository={CLI_REPOSITORY}
         keywords={[
           "command line interface",
           "workspace checks",
@@ -250,12 +288,7 @@ export default function CliPage() {
           "JSON output",
           "board status",
         ]}
-        catalogItems={commands.map((command) => ({
-          name: `suspec ${command.cmd}`,
-          description: `${command.what} Family: ${command.family}.`,
-          url: commandFamilyHrefByLabel[command.family],
-          category: `${command.family} command`,
-        }))}
+        catalogItems={cliCommandItems}
       />
       <Section className="ambient-header">
         <PageHero
