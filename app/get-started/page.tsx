@@ -74,6 +74,11 @@ const cliInitCommands = [
 ].join("\n");
 
 const manualCopyCommand = "cp -R path/to/suspec-starter-kit/. <project>-works/";
+const getStartedUrl = `${SITE_URL}/get-started/`;
+
+function getStartedSectionUrl(href: string) {
+  return `${getStartedUrl}${href}`;
+}
 
 function KitIcon({
   children,
@@ -216,26 +221,70 @@ const setupHeroTrace = [
   signal: SignalRole;
 }>;
 
+const setupHowToSteps = [
+  {
+    name: "Choose a setup path",
+    text: "Use the starter kit for a new repo, or add Suspec beside an existing codebase.",
+    href: "#choose",
+  },
+  {
+    name: "Copy local workspace files",
+    text: `Copy the starter kit into the workspace with ${manualCopyCommand}.`,
+    href: "#copy",
+  },
+  {
+    name: "Run optional CLI checks",
+    text: "Install suspec-cli from source when you want scaffolding or local checks, then run suspec init and suspec check.",
+    href: "#check",
+  },
+  {
+    name: "Add task-specific guides",
+    text: "Start with the starter kit, then add Suspec skills or agents only when the next change needs them.",
+    href: "#work",
+  },
+] as const;
+
 export default function GetStartedPage() {
   const setupJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": `${SITE_URL}/get-started/#webpage`,
     name: "Get started with Suspec",
-    url: `${SITE_URL}/get-started/`,
+    url: getStartedUrl,
     description: getStartedDescription,
     isPartOf: { "@id": `${SITE_URL}/#website` },
-    mainEntity: {
-      "@type": "ItemList",
-      name: "Suspec setup path",
-      itemListElement: setupPath.map((step, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: step.label,
-        url: `${SITE_URL}/get-started/${step.href}`,
-        description: step.text,
-      })),
-    },
+    mainEntity: [
+      {
+        "@type": "ItemList",
+        name: "Suspec setup path",
+        itemListElement: setupPath.map((step, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: step.label,
+          url: getStartedSectionUrl(step.href),
+          description: step.text,
+        })),
+      },
+      {
+        "@type": "HowTo",
+        name: "Set up a Suspec workspace",
+        description: getStartedDescription,
+        tool: [
+          { "@type": "HowToTool", name: "suspec-starter-kit" },
+          { "@type": "HowToTool", name: "suspec-cli", description: "Optional" },
+        ],
+        supply: [
+          { "@type": "HowToSupply", name: "A new or existing Git repository" },
+        ],
+        step: setupHowToSteps.map((step, index) => ({
+          "@type": "HowToStep",
+          position: index + 1,
+          name: step.name,
+          text: step.text,
+          url: getStartedSectionUrl(step.href),
+        })),
+      },
+    ],
   };
 
   return (
