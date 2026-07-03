@@ -86,7 +86,7 @@ body {
     display: block;
     overflow: clip;
     pointer-events: none;
-    perspective: clamp(640px, 54vw, 1080px);
+    perspective: clamp(560px, 48vw, 920px);
     perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     contain: layout style paint;
@@ -94,7 +94,7 @@ body {
 
   .site-background-plane {
     position: absolute;
-    inset: -20vmax -22vmax;
+    inset: -17vmax -19vmax;
     display: block;
     background:
       linear-gradient(rgba(84, 67, 49, 0.25) 1px, transparent 1px),
@@ -116,11 +116,11 @@ body {
        center top;
     opacity: 1;
     transform:
-      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), -86px)
+      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), -44px)
       rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
       rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
       rotateZ(calc(var(--background-plane-normal-x) * -0.16deg))
-      scale3d(1.28, 1.28, 1);
+      scale3d(1.22, 1.22, 1);
     transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -188,7 +188,7 @@ body {
   }
 
   .ambient-header {
-    perspective: clamp(440px, 44vw, 820px);
+    perspective: clamp(420px, 40vw, 740px);
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
@@ -205,7 +205,7 @@ body {
       rotateX(var(--background-header-before-rotate-x))
       rotateY(var(--background-header-before-rotate-y))
       rotateZ(calc(var(--background-plane-normal-x) * -0.16deg))
-      translateZ(54px)
+      translateZ(62px)
       scale(1.18);
     background-position:
        calc(50% + var(--background-header-shift-soft-x)) calc(50% + var(--background-header-shift-soft-y)),
@@ -228,7 +228,7 @@ body {
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y))
       rotateZ(calc(var(--background-plane-normal-x) * -0.14deg))
-      translateZ(48px)
+      translateZ(54px)
       scale(1.16);
     background-position:
        calc(0% + var(--background-header-shift-soft-x)) 50%,
