@@ -570,7 +570,7 @@
 .docs-article-header {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  overflow: clip;
   margin: 0 0 2.05rem;
   padding: 1.2rem 1.28rem 1.22rem;
   border: 1px solid rgba(var(--signal-reference-rgb), 0.28);
@@ -1908,7 +1908,7 @@
   position: relative;
   display: grid;
   gap: 1rem;
-  overflow: hidden;
+  overflow: clip;
   margin-bottom: 1.1rem;
   padding: 1rem 1rem 1rem 1.25rem;
   border: 1px solid rgba(var(--signal-reference-rgb), 0.3);
@@ -3348,7 +3348,7 @@
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .docs-index-cover,
   .docs-article-header {
-    perspective: 380px;
+    perspective: 520px;
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
@@ -3356,66 +3356,56 @@
   .docs-index-cover {
     background-position:
       left top,
-      var(--background-header-grid-x) 0,
-      0 var(--background-header-grid-y),
+      0 0,
+      0 0,
       center,
       center;
-    transition: background-position 90ms linear;
   }
 
   .docs-index-cover::before {
     transform:
-      rotateX(var(--background-header-tilt-x))
-      rotateY(var(--background-header-tilt-y))
-      translate3d(var(--background-header-drift-x), var(--background-header-drift-y), 32px);
-    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
-    transition: transform 90ms linear;
+      translate3d(0, 0, 32px)
+      rotateX(var(--background-header-before-rotate-x))
+      rotateY(var(--background-header-before-rotate-y));
+    transform-origin: 50% 52%;
+    transition: transform 110ms ease-out;
     will-change: transform;
   }
 
   .docs-index-cover::after {
     transform:
-      rotateX(var(--background-header-tilt-x))
-      rotateY(var(--background-header-tilt-y))
-      translate3d(
-        var(--background-header-drift-x),
-        var(--background-header-drift-y),
-        24px
-      );
-    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
-    transition: transform 90ms linear;
+      translate3d(0, 0, 24px)
+      rotateX(var(--background-header-after-rotate-x))
+      rotateY(var(--background-header-after-rotate-y));
+    transform-origin: 50% 52%;
+    transition: transform 110ms ease-out;
     will-change: transform;
   }
 
   .docs-article-header {
     background-position:
-      var(--background-header-grid-x) 0,
+      0 0,
       center,
       center;
-    transition: background-position 90ms linear;
   }
 
   .docs-article-header::before {
     transform:
-      rotateX(var(--background-header-tilt-x))
-      rotateY(var(--background-header-tilt-y))
-      translate3d(var(--background-header-drift-x), var(--background-header-drift-y), 30px);
-    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
-    transition: transform 90ms linear;
+      translate3d(0, 0, 30px)
+      rotateX(var(--background-header-before-rotate-x))
+      rotateY(var(--background-header-before-rotate-y));
+    transform-origin: 50% 52%;
+    transition: transform 110ms ease-out;
     will-change: transform;
   }
 
   .docs-article-header::after {
     transform:
-      rotateX(var(--background-header-tilt-x))
-      rotateY(var(--background-header-tilt-y))
-      translate3d(
-        var(--background-header-drift-x),
-        var(--background-header-drift-y),
-        22px
-      );
-    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
-    transition: transform 90ms linear;
+      translate3d(0, 0, 22px)
+      rotateX(var(--background-header-after-rotate-x))
+      rotateY(var(--background-header-after-rotate-y));
+    transform-origin: 50% 52%;
+    transition: transform 110ms ease-out;
     will-change: transform;
   }
 }

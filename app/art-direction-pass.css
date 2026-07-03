@@ -6,10 +6,6 @@
   --background-plane-tilt-y: 0deg;
   --background-plane-origin-x: 50%;
   --background-plane-origin-y: 52%;
-  --background-plane-drift-x: 0px;
-  --background-plane-drift-y: 0px;
-  --background-header-drift-x: 0px;
-  --background-header-drift-y: 0px;
   --background-header-tilt-x: 0deg;
   --background-header-tilt-y: 0deg;
   --background-plane-rotate-x: 0deg;
@@ -26,12 +22,6 @@
   --background-header-origin-y: 46%;
   --background-plane-normal-x: 0;
   --background-plane-normal-y: 0;
-  --background-plane-grid-x: 0px;
-  --background-plane-grid-y: 0px;
-  --background-plane-grid-minor-x: 0px;
-  --background-plane-grid-minor-y: 0px;
-  --background-header-grid-x: 0px;
-  --background-header-grid-y: 0px;
 }
 
 body {
@@ -77,20 +67,20 @@ body {
 
   .site-background-perspective {
     position: fixed;
-    inset: -2vmax;
+    inset: -4vmax;
     z-index: 0;
     display: block;
-    overflow: hidden;
+    overflow: clip;
     pointer-events: none;
-    perspective: 420px;
+    perspective: 520px;
     perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
-    contain: paint;
+    contain: layout style;
   }
 
   .site-background-plane {
     position: absolute;
-    inset: -26vmax;
+    inset: -20vmax;
     display: block;
     background:
       linear-gradient(rgba(70, 57, 44, 0.17) 1px, transparent 1px),
@@ -105,26 +95,22 @@ body {
       192px 192px,
       auto;
     background-position:
-      calc(50% + var(--background-plane-grid-x)) var(--background-plane-grid-y),
-      calc(50% + var(--background-plane-grid-x)) var(--background-plane-grid-y),
-      calc(50% + var(--background-plane-grid-minor-x)) var(--background-plane-grid-minor-y),
-      calc(50% + var(--background-plane-grid-minor-x)) var(--background-plane-grid-minor-y),
+      50% 0,
+      50% 0,
+      50% 0,
+      50% 0,
       center top;
     opacity: 0.94;
     transform:
-      translate3d(
-        var(--background-plane-drift-x),
-        var(--background-plane-drift-y),
-        -24px
-      )
+      translate3d(0, 0, -32px)
       rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
       rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
-      scale(1.26);
-    transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
+      scale(1.18);
+    transform-origin: 50% 52%;
     transform-style: preserve-3d;
     backface-visibility: hidden;
     transition:
-      transform 90ms ease-out,
+      transform 72ms ease-out,
       opacity 160ms ease-out;
     will-change: transform;
   }
@@ -187,30 +173,26 @@ body {
     z-index: 1;
   }
 
-  .site-main-frame .ambient-header {
-    perspective: 440px;
+  .ambient-header {
+    perspective: 520px;
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
 
-  .site-main-frame .ambient-header::before {
-    animation-name: ambient-calibration-breathe-pointer;
+  .ambient-header::before {
+    animation: ambient-calibration-breathe-pointer 8s ease-in-out infinite alternate;
     width: min(70rem, 112vw);
     transform:
-      translate3d(
-        calc(-50% + var(--background-header-drift-x)),
-        var(--background-header-drift-y),
-        34px
-      )
+      translate3d(-50%, 0, 34px)
       rotateX(var(--background-header-before-rotate-x))
       rotateY(var(--background-header-before-rotate-y))
       scale(1.12);
     background-position:
-      calc(50% + var(--background-header-grid-x)) 50%,
-      var(--background-header-grid-x) var(--background-header-grid-y),
-      calc(50% + var(--background-header-grid-x)) 50%,
+      50% 50%,
+      0 0,
+      50% 50%,
       center;
-    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transform-origin: 50% 52%;
     transform-style: preserve-3d;
     backface-visibility: hidden;
     transition:
@@ -219,21 +201,18 @@ body {
     will-change: transform;
   }
 
-  .site-main-frame .ambient-header::after {
+  .ambient-header::after {
+    animation: ambient-rule-breathe 7s ease-in-out infinite;
     transform:
-      translate3d(
-        calc(-50% + var(--background-header-drift-x)),
-        var(--background-header-drift-y),
-        32px
-      )
+      translate3d(-50%, 0, 32px)
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y))
       scale(1.1);
     background-position:
-      left calc(50% + var(--background-header-grid-y)),
-      right calc(50% + var(--background-header-grid-y)),
-      calc(50% + var(--background-header-grid-x)) center;
-    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+      left 50%,
+      right 50%,
+      50% center;
+    transform-origin: 50% 52%;
     backface-visibility: hidden;
     transition:
       transform 110ms ease-out,
@@ -241,14 +220,14 @@ body {
     will-change: transform;
   }
 
-  .site-main-frame .page-hero::before,
-  .site-main-frame .page-hero::after {
+  .page-hero::before,
+  .page-hero::after {
     transform:
       translateZ(44px)
       rotateX(var(--background-hero-edge-rotate-x))
       rotateY(var(--background-hero-edge-rotate-y))
       scale(1.13);
-    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transform-origin: 50% 52%;
     backface-visibility: hidden;
     transition:
       transform 110ms ease-out,
@@ -256,39 +235,35 @@ body {
     will-change: transform;
   }
 
-  .site-main-frame .page-hero::before {
+  .page-hero::before {
     background-position:
-      calc(50% + var(--background-header-grid-x)) 42%,
-      calc(50% + var(--background-header-grid-x)) 50%,
-      calc(50% + var(--background-header-grid-x)) 50%;
+      50% 42%,
+      50% 50%,
+      50% 50%;
     transition:
       transform 110ms ease-out,
       opacity 160ms ease-out;
   }
 
-  .site-main-frame .page-hero::after {
+  .page-hero::after {
     transition:
       transform 96ms ease-out,
       opacity 160ms ease-out;
   }
 
-  .site-main-frame .ambient-header .page-hero-motif {
-    animation-name: page-hero-motif-breathe-pointer;
+  .ambient-header .page-hero-motif {
+    animation: page-hero-motif-breathe-pointer 7s ease-in-out infinite alternate;
     transform:
-      translate3d(
-        calc(-50% + var(--background-header-drift-x)),
-        var(--background-header-drift-y),
-        56px
-      )
+      translate3d(-50%, 0, 56px)
       rotateX(var(--background-hero-motif-rotate-x))
       rotateY(var(--background-hero-motif-rotate-y))
       scale(1.16);
-    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transform-origin: 50% 52%;
     background-position:
-      calc(50% + var(--background-header-grid-x)) 48%,
-      calc(50% + var(--background-header-grid-x)) 50%,
-      calc(50% + var(--background-header-grid-x)) 48%,
-      calc(50% + var(--background-header-grid-x)) 50%;
+      50% 48%,
+      50% 50%,
+      50% 48%,
+      50% 50%;
     transition:
       transform 110ms ease-out,
       opacity 160ms ease-out;

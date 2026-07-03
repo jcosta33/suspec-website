@@ -128,10 +128,6 @@ const pointerMotionProperties = [
   "--background-plane-tilt-y",
   "--background-plane-origin-x",
   "--background-plane-origin-y",
-  "--background-plane-drift-x",
-  "--background-plane-drift-y",
-  "--background-header-drift-x",
-  "--background-header-drift-y",
   "--background-header-tilt-x",
   "--background-header-tilt-y",
   "--background-plane-rotate-x",
@@ -148,12 +144,6 @@ const pointerMotionProperties = [
   "--background-header-origin-y",
   "--background-plane-normal-x",
   "--background-plane-normal-y",
-  "--background-plane-grid-x",
-  "--background-plane-grid-y",
-  "--background-plane-grid-minor-x",
-  "--background-plane-grid-minor-y",
-  "--background-header-grid-x",
-  "--background-header-grid-y",
 ] as const;
 
 function setPointerMotion(
@@ -290,10 +280,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = -normalY * 8.4;
-      const planeTiltY = normalX * 9.2;
-      const headerTiltX = -normalY * 5.4;
-      const headerTiltY = normalX * 6.1;
+      const planeTiltX = -normalY * 7.8;
+      const planeTiltY = normalX * 9.6;
+      const headerTiltX = planeTiltX * 0.78;
+      const headerTiltY = planeTiltY * 0.78;
 
       setPointerMotion(root, {
         "--background-plane-normal-x": normalX.toFixed(3),
@@ -304,28 +294,18 @@ export function Shell({ children }: { children: React.ReactNode }) {
         "--background-plane-tilt-y": `${planeTiltY.toFixed(3)}deg`,
         "--background-plane-rotate-x": `${planeTiltX.toFixed(3)}deg`,
         "--background-plane-rotate-y": `${planeTiltY.toFixed(3)}deg`,
-        "--background-plane-drift-x": `${(normalX * -2.4).toFixed(3)}px`,
-        "--background-plane-drift-y": `${(normalY * -1.8).toFixed(3)}px`,
-        "--background-plane-grid-x": `${(normalX * -2.8).toFixed(3)}px`,
-        "--background-plane-grid-y": `${(normalY * -2.1).toFixed(3)}px`,
-        "--background-plane-grid-minor-x": `${(normalX * -1.5).toFixed(3)}px`,
-        "--background-plane-grid-minor-y": `${(normalY * -1.1).toFixed(3)}px`,
         "--background-header-origin-x": `${(50 + normalX * 7.4).toFixed(2)}%`,
         "--background-header-origin-y": `${(46 + normalY * 4.8).toFixed(2)}%`,
-        "--background-header-drift-x": `${(normalX * -8).toFixed(3)}px`,
-        "--background-header-drift-y": `${(normalY * -5.6).toFixed(3)}px`,
         "--background-header-tilt-x": `${headerTiltX.toFixed(3)}deg`,
         "--background-header-tilt-y": `${headerTiltY.toFixed(3)}deg`,
-        "--background-header-grid-x": `${(normalX * -18).toFixed(3)}px`,
-        "--background-header-grid-y": `${(normalY * -11).toFixed(3)}px`,
-        "--background-header-before-rotate-x": `${(headerTiltX * 1.42).toFixed(3)}deg`,
-        "--background-header-before-rotate-y": `${(headerTiltY * 1.5).toFixed(3)}deg`,
-        "--background-header-after-rotate-x": `${(headerTiltX * 1.08).toFixed(3)}deg`,
-        "--background-header-after-rotate-y": `${(headerTiltY * 1.2).toFixed(3)}deg`,
-        "--background-hero-edge-rotate-x": `${(headerTiltX * 1.1).toFixed(3)}deg`,
-        "--background-hero-edge-rotate-y": `${(headerTiltY * 1.18).toFixed(3)}deg`,
-        "--background-hero-motif-rotate-x": `${(headerTiltX * 1.3).toFixed(3)}deg`,
-        "--background-hero-motif-rotate-y": `${(headerTiltY * 1.42).toFixed(3)}deg`,
+        "--background-header-before-rotate-x": `${(headerTiltX * 1.12).toFixed(3)}deg`,
+        "--background-header-before-rotate-y": `${(headerTiltY * 1.12).toFixed(3)}deg`,
+        "--background-header-after-rotate-x": `${(headerTiltX * 0.92).toFixed(3)}deg`,
+        "--background-header-after-rotate-y": `${(headerTiltY * 0.92).toFixed(3)}deg`,
+        "--background-hero-edge-rotate-x": `${headerTiltX.toFixed(3)}deg`,
+        "--background-hero-edge-rotate-y": `${headerTiltY.toFixed(3)}deg`,
+        "--background-hero-motif-rotate-x": `${(headerTiltX * 1.08).toFixed(3)}deg`,
+        "--background-hero-motif-rotate-y": `${(headerTiltY * 1.08).toFixed(3)}deg`,
       });
     };
 
