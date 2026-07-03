@@ -572,6 +572,7 @@ export default function WritingSkillsPage() {
                   href="https://github.com/jcosta33/suspec-skills/tree/main/docs"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Open suspec-skills docs on GitHub (opens in new tab)"
                   className="gap-2"
                   touchTarget
                 >
@@ -584,6 +585,7 @@ export default function WritingSkillsPage() {
                   href="https://github.com/jcosta33/suspec-skills/tree/main/skills"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Open catalog skills on GitHub (opens in new tab)"
                   className="gap-2"
                   touchTarget
                 >
@@ -596,6 +598,7 @@ export default function WritingSkillsPage() {
                   href="https://github.com/jcosta33/suspec-starter-kit/tree/main/.agents/skills"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Open kit skills on GitHub (opens in new tab)"
                   className="gap-2"
                   touchTarget
                 >

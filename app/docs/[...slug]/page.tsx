@@ -234,6 +234,7 @@ export default async function DocPage({
                 href={`https://github.com/jcosta33/suspec/blob/main/docs/${sourcePath}.md`}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Open ${sourceLabel} source on GitHub (opens in new tab)`}
               >
                 {sourceLabel}
               </Link>

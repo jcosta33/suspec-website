@@ -559,6 +559,7 @@ export default function HomePage() {
               href="https://github.com/jcosta33/suspec-starter-kit"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Copy the kit from GitHub (opens in new tab)"
               className="w-full sm:w-auto"
             >
               Copy the kit

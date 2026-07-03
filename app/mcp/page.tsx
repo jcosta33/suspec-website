@@ -724,6 +724,7 @@ export default function McpPage() {
               href="https://github.com/jcosta33/suspec-mcp"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Open suspec-mcp on GitHub (opens in new tab)"
               className="w-fit gap-2 text-base font-semibold"
               touchTarget
             >

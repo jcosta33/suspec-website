@@ -206,6 +206,7 @@ export default function ColophonPage() {
               href="https://github.com/jcosta33/suspec-website"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Open the website repo on GitHub (opens in new tab)"
               className="focus-ring inline-flex min-h-11 items-center rounded-sm px-1 font-semibold text-ink underline decoration-ink/40 underline-offset-4 hover:decoration-ink"
             >
               Open the website repo
