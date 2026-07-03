@@ -145,6 +145,21 @@ const tools = [
   items: readonly string[];
 }>;
 
+const toolDescriptions = {
+  suspec_get_status: "Reads the current Suspec workspace status.",
+  suspec_list: "Lists Suspec workspace artifacts.",
+  suspec_check_workspace: "Reports workspace-level configuration and integrity checks.",
+  suspec_check_file: "Checks one Suspec artifact file.",
+  suspec_get_task: "Reads one task packet.",
+  suspec_get_spec: "Reads one spec artifact.",
+  suspec_get_review: "Reads one review packet.",
+  suspec_get_checks: "Reads the applicable check set.",
+  suspec_reconcile: "Compares records and reports workspace gaps.",
+  suspec_scaffold_spec: "Scaffolds a fresh spec artifact without issuing a verdict.",
+  suspec_split_task: "Scaffolds task packets from a spec without deciding correctness.",
+  suspec_scaffold_finding: "Scaffolds a fresh finding artifact without issuing a verdict.",
+} as const;
+
 const resources = [
   "suspec://workspace",
   "suspec://status",
@@ -259,7 +274,7 @@ export default function McpPage() {
         catalogItems={tools.flatMap((group) =>
           group.items.map((tool) => ({
             name: tool,
-            description: `${group.group} tool exposed by suspec-mcp.`,
+            description: toolDescriptions[tool],
             category: `${group.group} MCP tool`,
           })),
         )}
@@ -354,7 +369,7 @@ export default function McpPage() {
                   <a
                     href={item.href}
                     className="mcp-adapter-step-link focus-ring group block h-full p-5 transition-colors duration-150 hover:bg-panel sm:p-6"
-                    aria-label={`Jump to ${item.label} details`}
+                    aria-label={`Jump to ${item.label} step (${item.channel}): ${item.detail}`}
                   >
                     <div className="mcp-adapter-heading flex items-center gap-3">
                       <HexBadge color={item.signal} className="h-10 w-10 shrink-0">
