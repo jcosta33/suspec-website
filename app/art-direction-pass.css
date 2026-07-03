@@ -1742,8 +1742,8 @@ body {
   .writing-page-nav {
     position: relative;
     isolation: isolate;
-    margin-top: -0.24rem !important;
-    margin-bottom: 0.7rem !important;
+    margin-top: -0.72rem !important;
+    margin-bottom: 0.52rem !important;
     overflow-x: clip;
     overflow-y: visible;
   }
@@ -1767,7 +1767,7 @@ body {
   }
 
   .writing-page-nav + .section-register {
-    margin-top: 0.74rem !important;
+    margin-top: 0.48rem !important;
   }
 
   .writing-page-nav .section-jump-nav {
