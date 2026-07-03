@@ -11251,11 +11251,11 @@ section.bg-section-band::after {
 }
 
 .copy-section-manifest {
-  order: 2;
+  order: 3;
 }
 
 .copy-section-support {
-  order: 3;
+  order: 2;
 }
 
 .copy-section-support-desktop {
