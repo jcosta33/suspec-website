@@ -116,6 +116,7 @@ const colophonJsonLd = {
       "@type": "SoftwareSourceCode",
       name: "suspec-website",
       codeRepository: "https://github.com/jcosta33/suspec-website",
+      sameAs: "https://github.com/jcosta33/suspec-website",
       programmingLanguage: ["TypeScript", "CSS"],
       runtimePlatform: "Next.js 16 App Router",
     },

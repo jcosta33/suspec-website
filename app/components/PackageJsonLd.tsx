@@ -54,6 +54,7 @@ export function PackageJsonLd({
         description,
         url,
         codeRepository: repository,
+        sameAs: repository,
         keywords,
         mainEntityOfPage: {
           "@type": "WebPage",
