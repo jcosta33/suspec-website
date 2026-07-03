@@ -747,7 +747,7 @@ body {
 
   .cli-command-row.catalog-row {
     min-height: 5.45rem;
-    padding: 0.82rem 2.35rem 0.82rem 0.86rem;
+    padding: 0.82rem 7.15rem 0.82rem 0.86rem;
   }
 }
 
@@ -1552,7 +1552,7 @@ body {
     background:
       linear-gradient(90deg, rgba(var(--catalog-rgb), 0.032), transparent 58%),
       rgba(10, 7, 5, 0.16) !important;
-    padding: 0.72rem 2rem 0.76rem 0.76rem !important;
+    padding: 0.72rem 4.3rem 0.76rem 0.76rem !important;
     box-shadow:
       inset 2px 0 0 rgba(var(--catalog-rgb), 0.22),
       inset 0 1px 0 rgba(240, 226, 204, 0.03) !important;

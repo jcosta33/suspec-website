@@ -24,6 +24,7 @@ import { TextLink } from "../components/TextLink";
 import { PageNav } from "../components/PageNav";
 import { JsonLd } from "../components/JsonLd";
 import { PackageJsonLd } from "../components/PackageJsonLd";
+import { CopyButton } from "../components/CopyButton";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 import { canonicalAlternates } from "../seo";
 
@@ -575,10 +576,18 @@ export default function CliPage() {
                                 </p>
                               </div>
                             </div>
-                            <PilotLamp
-                              color={signal}
-                              className="cli-command-row-lamp"
-                            />
+                            <div className="cli-command-row-actions">
+                              <CopyButton
+                                text={`suspec ${c.cmd}`}
+                                label={`Copy suspec ${c.cmd} command`}
+                                compactLabel="cmd"
+                                className="cli-command-copy"
+                              />
+                              <PilotLamp
+                                color={signal}
+                                className="cli-command-row-lamp"
+                              />
+                            </div>
                           </div>
                         </li>
                       );
