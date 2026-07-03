@@ -9511,7 +9511,7 @@ section.bg-section-band::after {
 
 .writing-page-nav-stack .writing-page-nav {
   margin-top: 0;
-  margin-bottom: clamp(0.72rem, 1vw, 0.95rem);
+  margin-bottom: clamp(1rem, 1.42vw, 1.28rem);
 }
 
 .site-main-frame > .flex.flex-col > .ambient-header + .writing-page-nav,
@@ -10157,7 +10157,7 @@ section.bg-section-band::after {
   }
 
   .writing-page-nav-stack .writing-page-nav {
-    margin-bottom: 0.48rem;
+    margin-bottom: 0.62rem;
   }
 
   .writing-related-records {
