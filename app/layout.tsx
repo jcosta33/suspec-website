@@ -121,7 +121,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-chassis text-concrete-100">
         <Script
-          src="/shell-interactions.js?v=20260703-tilted-plane"
+          src="/shell-interactions.js?v=20260703-plane-headers"
           strategy="beforeInteractive"
         />
         <JsonLd data={siteGraph} />
