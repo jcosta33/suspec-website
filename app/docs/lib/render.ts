@@ -408,6 +408,73 @@ const rehypeWrapLedgerSections: Plugin<[], HastRoot> = () => (tree) => {
 const normalizeDisplayTitle = (title: string): string =>
   title === "The suspec CLI" ? "The Suspec CLI" : title;
 
+const MIN_META_DESCRIPTION_LENGTH = 70;
+const MAX_META_DESCRIPTION_LENGTH = 138;
+const DEFAULT_DESCRIPTION_CONTEXT =
+  "Part of the Suspec manual for specs, tasks, reviews, findings, and evidence.";
+
+const contextualDescriptionSuffix = (title: string): string => {
+  if (/brownfield|change plans/i.test(title)) {
+    return "Covers when to add inventory, change plans, and extra review records.";
+  }
+  if (/running agents/i.test(title)) {
+    return "Covers bounded task packets, agent output, and evidence handoff.";
+  }
+  if (/review/i.test(title)) {
+    return "Covers review packets, evidence rows, and human attention items.";
+  }
+  if (/integrations/i.test(title)) {
+    return "Covers how file-based tools, CLIs, and local workflows can read the records.";
+  }
+  if (/adopting/i.test(title)) {
+    return "Covers starter-kit setup, repo policy, and rollout boundaries.";
+  }
+  if (/examples/i.test(title)) {
+    return "Shows complete Pull, Spec, Task, Run, Review, and Close chains.";
+  }
+  if (/artifact formats/i.test(title)) {
+    return "Covers frontmatter, markdown packet structure, and reviewable records.";
+  }
+  if (/checks/i.test(title)) {
+    return "Covers honesty levels, core checks, packet checks, and writing rules.";
+  }
+  if (/distillation/i.test(title)) {
+    return "Covers when to compress working context into a durable artifact.";
+  }
+  if (/drift/i.test(title)) {
+    return "Covers how to spot and record mismatches between intent and evidence.";
+  }
+  if (/local checks/i.test(title)) {
+    return "Covers project-owned checks and how they fit beside Suspec conventions.";
+  }
+  if (/memory/i.test(title)) {
+    return "Covers durable findings, saved lessons, and close-step handoff.";
+  }
+  if (/principles/i.test(title)) {
+    return "Covers the rules that resolve conflicts in Suspec docs and templates.";
+  }
+  if (/step bars/i.test(title)) {
+    return "Covers pass, fail, blocked, and unverified status in loop steps.";
+  }
+  if (/what is Suspec/i.test(title)) {
+    return "Covers the records Suspec keeps and what the workflow does not decide.";
+  }
+  return DEFAULT_DESCRIPTION_CONTEXT;
+};
+
+const finishMetaDescription = (markdown: string, description: string): string => {
+  const title = titleOf(markdown);
+  let text = description.trim();
+  if (text.length < MIN_META_DESCRIPTION_LENGTH) {
+    const suffix = contextualDescriptionSuffix(title);
+    text = text ? `${text} ${suffix}` : suffix;
+  }
+  if (text.length <= MAX_META_DESCRIPTION_LENGTH) return text;
+  const slice = text.slice(0, MAX_META_DESCRIPTION_LENGTH - 3);
+  const cut = slice.lastIndexOf(" ");
+  return `${(cut > 60 ? slice.slice(0, cut) : slice).trimEnd()}…`;
+};
+
 const rehypeNormalizeDisplayHeadings: Plugin<[], HastRoot> = () => (tree) => {
   visit(tree, "element", (node: HastElement) => {
     if (node.tagName !== "h1") return;
@@ -796,15 +863,11 @@ export function descriptionOf(markdown: string): string {
     /\bsee\b/i.test(chosen.text);
   const text =
     chosenIsShortCrossReference ? (stepIndexDescription() ?? chosen.text) : (chosen?.text ?? "");
-  if (!text)
-    return (
-      listLeadDescription() ??
-      tableDescription() ??
-      candidates[0]?.text ??
-      "Suspec documentation"
-    );
-  if (text.length <= 155) return text;
-  const slice = text.slice(0, 152);
-  const cut = slice.lastIndexOf(" ");
-  return `${(cut > 60 ? slice.slice(0, cut) : slice).trimEnd()}…`;
+  const description =
+    text ||
+    listLeadDescription() ||
+    tableDescription() ||
+    candidates[0]?.text ||
+    "Suspec documentation";
+  return finishMetaDescription(markdown, description);
 }

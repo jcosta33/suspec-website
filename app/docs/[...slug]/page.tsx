@@ -28,6 +28,27 @@ const DOC_SOURCE_PATH_ALIASES: Record<string, string> = {
   // but the upstream source file was renamed to docs/reference/cli.md.
   "reference/future-cli": "reference/cli",
 };
+const GENERIC_METADATA_TITLES = new Set([
+  "Checks",
+  "Close",
+  "Docs",
+  "Drift",
+  "Examples",
+  "Glossary",
+  "Memory",
+  "Review",
+]);
+
+function metadataTitleOf(slug: string[], markdown: string): string {
+  const title = titleOf(markdown);
+  const slugPath = slug.join("/");
+  if (slugPath === "README") return "Suspec docs overview";
+  if (slugPath.endsWith("/README")) return `${humanizeSegment(slug[0])} overview`;
+  if (slug.length > 1 && GENERIC_METADATA_TITLES.has(title)) {
+    return `${humanizeSegment(slug[0])}: ${title}`;
+  }
+  return title;
+}
 
 // Build a BreadcrumbList. A section dir links to its README page when one exists; a section with no
 // README (e.g. reference/) emits a name-only, NON-navigable intermediate crumb (no `item`) rather
@@ -133,9 +154,11 @@ export async function generateMetadata({
   if (!md) {
     return { title: "Suspec docs", alternates: canonicalAlternates(canonical) };
   }
+  const title = metadataTitleOf(slug, md);
+  const description = descriptionOf(md);
   return {
-    title: `${titleOf(md)} · Suspec`,
-    description: descriptionOf(md),
+    title: `${title} · Suspec`,
+    description,
     alternates: canonicalAlternates(canonical),
     openGraph: {
       // og:type=article (a doc is an article) + og:url=canonical so reshares consolidate; siteName +
@@ -145,7 +168,7 @@ export async function generateMetadata({
       siteName: "Suspec",
       locale: "en_US",
       images: [
-        { url: "/og-home.png", width: 1200, height: 630, alt: titleOf(md) },
+        { url: "/og-home.png", width: 1200, height: 630, alt: title },
       ],
     },
   };
