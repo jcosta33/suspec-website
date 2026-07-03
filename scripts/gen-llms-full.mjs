@@ -41,11 +41,11 @@ const numbered = fs
 const order = [...numbered, ...dirDocs("tutorial"), ...dirDocs("examples")];
 
 const header =
-  `# suspec — full documentation\n\n` +
+  `# suspec - full documentation\n\n` +
   `> suspec is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. ` +
   `Plain markdown, any agent, no runtime. This file concatenates the user-facing documentation for ` +
   `full-context ingestion by AI assistants.\n\n` +
-  `Site: https://suspecframework.dev/ · Canon: https://github.com/jcosta33/suspec\n\n---\n\n`;
+  `Site: https://suspecframework.dev/ - Canon: https://github.com/jcosta33/suspec\n\n---\n\n`;
 
 const body = order
   .map(
