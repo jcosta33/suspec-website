@@ -835,6 +835,28 @@ body {
   gap: clamp(0.64rem, 1vw, 0.86rem);
 }
 
+@media (min-width: 64rem) {
+  .mcp-adapter-heading {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start !important;
+    gap: 0.62rem !important;
+  }
+
+  .mcp-adapter-heading > .min-w-0 {
+    min-width: 0;
+  }
+
+  .mcp-adapter-title,
+  .mcp-adapter-meta {
+    overflow-wrap: anywhere;
+  }
+
+  .mcp-adapter-detail {
+    max-width: 12rem;
+  }
+}
+
 .mcp-fact-card > .relative,
 .mcp-guardrail-card > .relative {
   gap: clamp(0.9rem, 1.25vw, 1.12rem);
