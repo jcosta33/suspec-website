@@ -23,10 +23,14 @@ import { Section } from "../components/Section";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { TextLink } from "../components/TextLink";
 import { PageNav } from "../components/PageNav";
+import { JsonLd } from "../components/JsonLd";
 import { PackageJsonLd } from "../components/PackageJsonLd";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 import { canonicalAlternates } from "../seo";
 
+const SITE_URL = "https://suspecframework.dev";
+const MCP_REPOSITORY = "https://github.com/jcosta33/suspec-mcp";
+const MCP_PAGE_URL = `${SITE_URL}/mcp/`;
 const mcpDescription =
   "suspec-mcp is a local stdio MCP adapter that exposes Suspec workspace status, checks, artifacts, and review data without writing verdicts.";
 const mcpTitle = "suspec-mcp — local MCP adapter for Suspec";
@@ -160,6 +164,41 @@ const toolDescriptions = {
   suspec_scaffold_finding: "Scaffolds a fresh finding artifact without issuing a verdict.",
 } as const;
 
+const mcpToolCatalogItems = tools.flatMap((group) =>
+  group.items.map((tool) => ({
+    name: tool,
+    description: toolDescriptions[tool],
+    url: `${MCP_PAGE_URL}#mcp-tools`,
+    category: `${group.group} MCP tool`,
+  })),
+);
+
+const mcpPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${MCP_PAGE_URL}#webpage`,
+  name: "suspec-mcp adapter reference",
+  url: MCP_PAGE_URL,
+  description: mcpDescription,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: { "@id": `${MCP_PAGE_URL}#source-code` },
+  mainEntity: {
+    "@type": "ItemList",
+    name: "suspec-mcp MCP tools",
+    itemListElement: mcpToolCatalogItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "CreativeWork",
+        name: item.name,
+        description: item.description,
+        url: item.url,
+        genre: item.category,
+      },
+    })),
+  },
+};
+
 const resources = [
   "suspec://workspace",
   "suspec://status",
@@ -259,11 +298,12 @@ const mcpPageNav = [
 export default function McpPage() {
   return (
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+      <JsonLd data={mcpPageJsonLd} />
       <PackageJsonLd
         name="suspec-mcp"
         description={mcpDescription}
         path="/mcp/"
-        repository="https://github.com/jcosta33/suspec-mcp"
+        repository={MCP_REPOSITORY}
         keywords={[
           "MCP server",
           "stdio adapter",
@@ -271,13 +311,7 @@ export default function McpPage() {
           "review data",
           "no verdict",
         ]}
-        catalogItems={tools.flatMap((group) =>
-          group.items.map((tool) => ({
-            name: tool,
-            description: toolDescriptions[tool],
-            category: `${group.group} MCP tool`,
-          })),
-        )}
+        catalogItems={mcpToolCatalogItems}
       />
       <Section className="ambient-header">
         <PageHero
