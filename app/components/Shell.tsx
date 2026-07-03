@@ -294,18 +294,14 @@ export function Shell({ children }: { children: React.ReactNode }) {
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = -normalY * 6.6;
-      const planeTiltY = normalX * 7.8;
-      const headerTiltX = planeTiltX * 0.92;
-      const headerTiltY = planeTiltY * 0.92;
-      const planeShiftX = -normalX * 1.2;
-      const planeShiftY = -normalY * 0.9;
-      const planeDriftX = -normalX * 0.8;
-      const planeDriftY = -normalY * 0.6;
-      const headerShiftX = -normalX * 10;
-      const headerShiftY = -normalY * 6;
-      const heroShiftX = -normalX * 8;
-      const heroShiftY = -normalY * 4.8;
+      const planeTiltX = -normalY * 5.6;
+      const planeTiltY = normalX * 6.4;
+      const headerTiltX = planeTiltX * 0.94;
+      const headerTiltY = planeTiltY * 0.94;
+      const headerShiftX = -normalX * 13;
+      const headerShiftY = -normalY * 7.5;
+      const heroShiftX = -normalX * 10.5;
+      const heroShiftY = -normalY * 6.2;
 
       setPointerMotion(root, {
         "--background-plane-normal-x": normalX.toFixed(3),
@@ -316,12 +312,12 @@ export function Shell({ children }: { children: React.ReactNode }) {
         "--background-plane-tilt-y": `${planeTiltY.toFixed(3)}deg`,
         "--background-plane-rotate-x": `${planeTiltX.toFixed(3)}deg`,
         "--background-plane-rotate-y": `${planeTiltY.toFixed(3)}deg`,
-        "--background-plane-shift-x": `${planeShiftX.toFixed(2)}px`,
-        "--background-plane-shift-y": `${planeShiftY.toFixed(2)}px`,
-        "--background-plane-drift-x": `${planeDriftX.toFixed(2)}px`,
-        "--background-plane-drift-y": `${planeDriftY.toFixed(2)}px`,
-        "--background-plane-drift-soft-x": `${(planeDriftX * 0.54).toFixed(2)}px`,
-        "--background-plane-drift-soft-y": `${(planeDriftY * 0.54).toFixed(2)}px`,
+        "--background-plane-shift-x": "0px",
+        "--background-plane-shift-y": "0px",
+        "--background-plane-drift-x": "0px",
+        "--background-plane-drift-y": "0px",
+        "--background-plane-drift-soft-x": "0px",
+        "--background-plane-drift-soft-y": "0px",
         "--background-plane-skew-x": "0deg",
         "--background-plane-skew-y": "0deg",
         "--background-header-origin-x": `${(50 + normalX * 2.2).toFixed(2)}%`,
