@@ -3387,7 +3387,7 @@
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .docs-index-cover,
   .docs-article-header {
-    perspective: 460px;
+    perspective: 380px;
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
@@ -3403,9 +3403,10 @@
 
   .docs-index-cover::before {
     transform:
-      translate3d(var(--background-header-shift-x), var(--background-header-shift-y), 66px)
+      translate3d(var(--background-header-shift-x), var(--background-header-shift-y), 78px)
       rotateX(var(--background-header-before-rotate-x))
-      rotateY(var(--background-header-before-rotate-y));
+      rotateY(var(--background-header-before-rotate-y))
+      scale(1.06);
     transform-origin: 50% 52%;
     transition: transform 86ms ease-out;
     will-change: transform;
@@ -3413,9 +3414,10 @@
 
   .docs-index-cover::after {
     transform:
-      translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 54px)
+      translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 62px)
       rotateX(var(--background-header-after-rotate-x))
-      rotateY(var(--background-header-after-rotate-y));
+      rotateY(var(--background-header-after-rotate-y))
+      scale(1.04);
     transform-origin: 50% 52%;
     transition: transform 86ms ease-out;
     will-change: transform;
@@ -3430,9 +3432,10 @@
 
   .docs-article-header::before {
     transform:
-      translate3d(var(--background-header-shift-x), var(--background-header-shift-y), 64px)
+      translate3d(var(--background-header-shift-x), var(--background-header-shift-y), 76px)
       rotateX(var(--background-header-before-rotate-x))
-      rotateY(var(--background-header-before-rotate-y));
+      rotateY(var(--background-header-before-rotate-y))
+      scale(1.06);
     transform-origin: 50% 52%;
     transition: transform 86ms ease-out;
     will-change: transform;
@@ -3440,9 +3443,10 @@
 
   .docs-article-header::after {
     transform:
-      translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 52px)
+      translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 60px)
       rotateX(var(--background-header-after-rotate-x))
-      rotateY(var(--background-header-after-rotate-y));
+      rotateY(var(--background-header-after-rotate-y))
+      scale(1.04);
     transform-origin: 50% 52%;
     transition: transform 86ms ease-out;
     will-change: transform;

@@ -294,24 +294,24 @@ export function Shell({ children }: { children: React.ReactNode }) {
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = -normalY * 12.2;
-      const planeTiltY = normalX * 14.4;
-      const headerTiltX = planeTiltX * 1.08;
-      const headerTiltY = planeTiltY * 1.08;
-      const planeShiftX = -normalX * 0.34;
-      const planeShiftY = -normalY * 0.22;
-      const planeDriftX = -normalX * 0.05;
-      const planeDriftY = -normalY * 0.035;
-      const headerShiftX = -normalX * 18.2;
-      const headerShiftY = -normalY * 11.2;
-      const heroShiftX = -normalX * 14.8;
-      const heroShiftY = -normalY * 8.8;
+      const planeTiltX = -normalY * 7.8;
+      const planeTiltY = normalX * 9.2;
+      const headerTiltX = planeTiltX * 1.02;
+      const headerTiltY = planeTiltY * 1.02;
+      const planeShiftX = -normalX * 4.2;
+      const planeShiftY = -normalY * 2.8;
+      const planeDriftX = -normalX * 3.6;
+      const planeDriftY = -normalY * 2.4;
+      const headerShiftX = -normalX * 15.4;
+      const headerShiftY = -normalY * 9.4;
+      const heroShiftX = -normalX * 12.8;
+      const heroShiftY = -normalY * 7.4;
 
       setPointerMotion(root, {
         "--background-plane-normal-x": normalX.toFixed(3),
         "--background-plane-normal-y": normalY.toFixed(3),
-        "--background-plane-origin-x": `${(50 + normalX * 1.5).toFixed(2)}%`,
-        "--background-plane-origin-y": `${(52 + normalY * 1.15).toFixed(2)}%`,
+        "--background-plane-origin-x": `${(50 + normalX * 5).toFixed(2)}%`,
+        "--background-plane-origin-y": `${(54 + normalY * 4).toFixed(2)}%`,
         "--background-plane-tilt-x": `${planeTiltX.toFixed(3)}deg`,
         "--background-plane-tilt-y": `${planeTiltY.toFixed(3)}deg`,
         "--background-plane-rotate-x": `${planeTiltX.toFixed(3)}deg`,
@@ -324,8 +324,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
         "--background-plane-drift-soft-y": `${(planeDriftY * 0.54).toFixed(2)}px`,
         "--background-plane-skew-x": "0deg",
         "--background-plane-skew-y": "0deg",
-        "--background-header-origin-x": `${(50 + normalX * 2.2).toFixed(2)}%`,
-        "--background-header-origin-y": `${(46 + normalY * 1.8).toFixed(2)}%`,
+        "--background-header-origin-x": `${(50 + normalX * 4).toFixed(2)}%`,
+        "--background-header-origin-y": `${(46 + normalY * 3).toFixed(2)}%`,
         "--background-header-tilt-x": `${headerTiltX.toFixed(3)}deg`,
         "--background-header-tilt-y": `${headerTiltY.toFixed(3)}deg`,
         "--background-header-before-rotate-x": `${(headerTiltX * 1.12).toFixed(3)}deg`,
