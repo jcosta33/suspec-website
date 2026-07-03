@@ -90,7 +90,7 @@ body {
     display: block;
     overflow: clip;
     pointer-events: none;
-    perspective: clamp(420px, 42vw, 760px);
+    perspective: clamp(280px, 32vw, 560px);
     perspective-origin: var(--background-plane-perspective-x) var(--background-plane-perspective-y);
     transform-style: preserve-3d;
     contain: layout style paint;
@@ -120,11 +120,11 @@ body {
        center top;
     opacity: 1;
     transform:
-      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), -12px)
+      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), 0)
       rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
       rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
       rotateZ(calc(var(--background-plane-normal-x) * -0.16deg))
-      scale3d(1.15, 1.15, 1);
+      scale3d(1.18, 1.18, 1);
     transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -192,7 +192,7 @@ body {
   }
 
   .ambient-header {
-    perspective: clamp(360px, 36vw, 640px);
+    perspective: clamp(280px, 32vw, 560px);
     perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
     transform-style: preserve-3d;
   }
@@ -209,7 +209,7 @@ body {
       rotateX(var(--background-header-before-rotate-x))
       rotateY(var(--background-header-before-rotate-y))
       rotateZ(calc(var(--background-plane-normal-x) * -0.16deg))
-      translateZ(78px)
+      translateZ(96px)
       scale(1.22);
     background-position:
        calc(50% + var(--background-header-shift-soft-x)) calc(50% + var(--background-header-shift-soft-y)),
@@ -232,7 +232,7 @@ body {
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y))
       rotateZ(calc(var(--background-plane-normal-x) * -0.14deg))
-      translateZ(66px)
+      translateZ(84px)
       scale(1.18);
     background-position:
        calc(0% + var(--background-header-shift-soft-x)) 50%,
@@ -253,7 +253,7 @@ body {
       rotateX(var(--background-hero-edge-rotate-x))
       rotateY(var(--background-hero-edge-rotate-y))
       rotateZ(calc(var(--background-plane-normal-x) * -0.1deg))
-      translateZ(56px)
+      translateZ(74px)
       scale(1.12);
     transform-origin: 50% 52%;
     backface-visibility: hidden;
@@ -286,7 +286,7 @@ body {
       rotateX(var(--background-hero-motif-rotate-x))
       rotateY(var(--background-hero-motif-rotate-y))
       rotateZ(calc(var(--background-plane-normal-x) * -0.14deg))
-      translateZ(66px)
+      translateZ(88px)
       scale(1.16);
     transform-origin: 50% 52%;
     background-position:
@@ -301,7 +301,7 @@ body {
   }
 
   .home-hero-section {
-    perspective: clamp(440px, 44vw, 780px);
+    perspective: clamp(300px, 34vw, 620px);
     perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
     transform-style: preserve-3d;
   }
@@ -311,7 +311,7 @@ body {
       translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 0)
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y))
-      translateZ(42px);
+      translateZ(58px);
     transform-origin: 50% 52%;
     transition:
       transform 92ms cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -320,7 +320,7 @@ body {
   }
 
   .home-hero-seal-field {
-    perspective: clamp(440px, 44vw, 780px);
+    perspective: clamp(300px, 34vw, 620px);
     perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
     transform-style: preserve-3d;
   }
@@ -330,7 +330,7 @@ body {
       translate3d(var(--background-hero-shift-x), var(--background-hero-shift-y), 0)
       rotateX(var(--background-hero-motif-rotate-x))
       rotateY(var(--background-hero-motif-rotate-y))
-      translateZ(32px)
+      translateZ(46px)
       scale(1.015);
     transform-origin: 50% 50%;
     transition: transform 92ms cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -339,7 +339,7 @@ body {
 
   .docs-index-cover,
   .docs-article-header {
-    perspective: clamp(360px, 42vw, 540px);
+    perspective: clamp(300px, 34vw, 560px);
     perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
     transform-style: preserve-3d;
   }
@@ -347,7 +347,7 @@ body {
   .docs-index-cover::before,
   .docs-article-header::before {
     transform:
-      translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 36px)
+      translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 52px)
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y))
       rotateZ(calc(var(--background-plane-normal-x) * -0.08deg));
@@ -361,7 +361,7 @@ body {
   .docs-index-cover::after,
   .docs-article-header::after {
     transform:
-      translate3d(var(--background-plane-drift-x), var(--background-plane-drift-y), 24px)
+      translate3d(var(--background-plane-drift-x), var(--background-plane-drift-y), 40px)
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y))
       rotateZ(calc(var(--background-plane-normal-x) * -0.07deg));
