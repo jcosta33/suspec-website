@@ -461,17 +461,17 @@ body {
 
 @media (min-width: 48.0625rem) {
   .home-hero-section {
-    padding-bottom: clamp(2.25rem, 3.35vw, 3.2rem);
+    padding-bottom: clamp(1.35rem, 2.25vw, 2.25rem);
   }
 
   .home-hero-section .ambient-header {
-    padding-top: clamp(4.7rem, 5.6vw, 5.2rem);
+    padding-top: clamp(4.35rem, 5vw, 4.85rem);
   }
 
   .home-hero-proof-strip {
     max-width: min(100%, 45rem);
     gap: 0.5rem;
-    margin-top: clamp(1.25rem, 1.7vw, 1.55rem) !important;
+    margin-top: clamp(1rem, 1.35vw, 1.28rem) !important;
   }
 
   .home-hero-proof {
@@ -491,8 +491,9 @@ body {
   }
 
   .home-hero-preview {
-    margin-top: clamp(0.85rem, 1.15vw, 1rem);
-    margin-bottom: clamp(1.25rem, 1.8vw, 1.65rem) !important;
+    margin-top: clamp(0.62rem, 0.88vw, 0.82rem);
+    margin-bottom: clamp(0.6rem, 1vw, 0.95rem) !important;
+    padding: 0.6rem !important;
   }
 
   .home-hero-preview > .relative > .grid {
@@ -500,7 +501,7 @@ body {
   }
 
   .home-hero-run-card {
-    padding: 0.9rem !important;
+    padding: 0.74rem !important;
   }
 
   .home-hero-run-card > div:first-child {
@@ -513,7 +514,7 @@ body {
   }
 
   .home-hero-run-card .terminal-window {
-    margin-top: 0.72rem !important;
+    margin-top: 0.56rem !important;
   }
 
   .home-hero-run-card .terminal-toolbar {
@@ -521,7 +522,7 @@ body {
   }
 
   .home-hero-run-card .terminal-content {
-    max-height: 10.75rem;
+    max-height: 8.9rem;
     padding: 0.78rem 0.95rem !important;
     font-size: 0.76rem;
     line-height: 1.45;
@@ -631,6 +632,61 @@ body {
     .copy-button[data-compact-label="true"]
     .copy-button-label-compact {
     display: inline-grid;
+  }
+}
+
+@media (max-width: 48rem) {
+  .home-hero-section {
+    padding-bottom: 0.25rem;
+  }
+
+  .home-hero-section .ambient-header {
+    padding-top: clamp(4.55rem, 16vw, 4.95rem);
+  }
+
+  .home-hero-section .page-hero > p:first-of-type {
+    margin-top: 0.88rem !important;
+  }
+
+  .home-hero-section .page-hero > p:nth-of-type(2) {
+    margin-top: 0.46rem !important;
+  }
+
+  .home-hero-section .page-hero > p:nth-of-type(2) + div {
+    margin-top: 0.92rem !important;
+  }
+
+  .home-hero-preview {
+    margin-top: 0.54rem !important;
+    margin-bottom: 0 !important;
+    padding: 0.3rem !important;
+  }
+
+  .home-hero-run-card {
+    padding: 0.54rem !important;
+  }
+
+  .home-hero-run-card > div:first-child {
+    margin-bottom: 0.34rem !important;
+  }
+
+  .home-step-rail-item {
+    min-height: 2.02rem;
+    padding-block: 0.3rem !important;
+  }
+
+  .home-hero-preview .terminal-window {
+    margin-top: 0.38rem !important;
+  }
+
+  .home-hero-preview .terminal-toolbar {
+    min-height: 2.36rem;
+    padding-block: 0.26rem !important;
+  }
+
+  .home-hero-preview .terminal-content {
+    max-height: 4.35rem;
+    padding: 0.48rem 0.58rem !important;
   }
 }
 
