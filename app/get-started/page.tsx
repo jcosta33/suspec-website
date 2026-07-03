@@ -165,35 +165,35 @@ function StarterKitContentsNote({ className = "" }: { className?: string }) {
 const setupPath = [
   {
     label: "New repo",
-    text: "Start from the starter kit.",
+    text: "Use the starter kit template.",
     icon: FolderPlus,
     href: "#choose",
     signal: "greenfield",
   },
   {
     label: "Existing project",
-    text: "Adopt files into a repo with history.",
+    text: "Add Suspec beside existing code.",
     icon: FolderTree,
     href: "#choose",
     signal: "brownfield",
   },
   {
     label: "Copy",
-    text: "Add the kit files once.",
+    text: "Commit rules, templates, and board.",
     icon: LayoutTemplate,
     href: "#copy",
     signal: "core",
   },
   {
     label: "Check",
-    text: "Run the CLI check when you want a gate.",
+    text: "Run CLI checks for review or CI.",
     icon: Terminal,
     href: "#check",
     signal: "core",
   },
   {
     label: "Work",
-    text: "Write a spec, run it, keep evidence.",
+    text: "Keep specs, reviews, and evidence.",
     icon: ClipboardList,
     href: "#work",
     signal: "core",
@@ -263,8 +263,8 @@ export default function GetStartedPage() {
         <Panel brushed screws className="setup-route-panel p-0">
           <div className="setup-route-header">
             <div className="min-w-0">
-              <p className="setup-route-kicker">route ledger</p>
-              <p className="setup-route-title">Starter kit → workspace</p>
+              <p className="setup-route-kicker">setup route</p>
+              <p className="setup-route-title">Starter kit → local records</p>
             </div>
             <div className="setup-route-meta" aria-label="Setup notes">
               <span>plain files</span>
@@ -376,7 +376,13 @@ export default function GetStartedPage() {
                 >
                   greenfield / starter kit
                 </p>
-                <Heading className="setup-choice-title mt-2">New repo</Heading>
+                <Heading
+                  as="h3"
+                  size="xl"
+                  className="setup-choice-title mt-2"
+                >
+                  New repo
+                </Heading>
               </div>
             </div>
             <span className="setup-choice-index">
@@ -429,7 +435,11 @@ export default function GetStartedPage() {
                 >
                   brownfield / adoption
                 </p>
-                <Heading className="setup-choice-title mt-2">
+                <Heading
+                  as="h3"
+                  size="xl"
+                  className="setup-choice-title mt-2"
+                >
                   Existing project
                 </Heading>
               </div>
@@ -440,7 +450,7 @@ export default function GetStartedPage() {
             </span>
           </div>
           <p className="text-concrete-400">
-            Copy the kit into this repo. Keep the app structure.
+            Keep the app structure; add only the Suspec workspace files.
           </p>
           <dl className="setup-choice-facts">
             <div>
@@ -581,6 +591,17 @@ export default function GetStartedPage() {
         registerTone="reference"
         className="grid scroll-mt-28 gap-6 md:grid-cols-2"
       >
+        <div className="md:col-span-2">
+          <div className="section-kicker section-kicker-reference">
+            <Wrench className="h-4 w-4" aria-hidden="true" />
+            <span>next moves</span>
+          </div>
+          <Heading className="mt-3">Add only what the task needs</Heading>
+          <p className="mt-4 max-w-2xl leading-relaxed text-concrete-400">
+            The starter kit is enough to begin. Add skills or worker files when
+            the next change needs a narrower role.
+          </p>
+        </div>
         <Card
           signal="reference"
           screws
@@ -592,9 +613,11 @@ export default function GetStartedPage() {
               <Wrench className="h-6 w-6" aria-hidden="true" />
             </KitIcon>
             <div>
-              <Heading>Need more depth?</Heading>
+              <Heading as="h3" size="xl">
+                Skills
+              </Heading>
               <p className="mt-2 text-concrete-400">
-                Install optional skills for review, fixes, features, and docs.
+                Optional guides for review, fixes, features, and docs.
               </p>
             </div>
           </div>
@@ -614,9 +637,11 @@ export default function GetStartedPage() {
               <Terminal className="h-6 w-6" aria-hidden="true" />
             </KitIcon>
             <div>
-              <Heading>Using Claude Code?</Heading>
+              <Heading as="h3" size="xl">
+                Agents
+              </Heading>
               <p className="mt-2 text-concrete-400">
-                Copy a worker definition for review, exploration, or authoring.
+                Worker definitions for review, exploration, or authoring.
               </p>
             </div>
           </div>

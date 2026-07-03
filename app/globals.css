@@ -4835,7 +4835,7 @@ section.bg-section-band::after {
 }
 
 .get-started-page .setup-route-panel {
-  max-width: 76rem;
+  max-width: 72rem;
   margin-inline: auto;
   background:
     linear-gradient(180deg, rgba(240, 226, 204, 0.018), transparent 38%),
@@ -4844,13 +4844,13 @@ section.bg-section-band::after {
 }
 
 .get-started-page .setup-path-strip > li > a {
-  min-height: 7.45rem;
-  padding: 1rem 1.08rem;
+  min-height: 6.85rem;
+  padding: 0.92rem 1rem;
 }
 
 .get-started-page .setup-path-strip .kit-icon {
-  height: 2.25rem;
-  width: 2.25rem;
+  height: 2.08rem;
+  width: 2.08rem;
 }
 
 .get-started-page .setup-path-strip h2 {
@@ -4859,7 +4859,7 @@ section.bg-section-band::after {
 }
 
 .get-started-page .setup-path-strip p.mt-3 {
-  margin-top: 0.62rem;
+  margin-top: 0.5rem;
   color: var(--color-concrete-400);
 }
 
