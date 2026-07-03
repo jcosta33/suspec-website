@@ -10,14 +10,28 @@
     "--background-header-tilt-y",
     "--background-plane-rotate-x",
     "--background-plane-rotate-y",
+    "--background-plane-shift-x",
+    "--background-plane-shift-y",
+    "--background-plane-drift-x",
+    "--background-plane-drift-y",
+    "--background-plane-drift-soft-x",
+    "--background-plane-drift-soft-y",
+    "--background-plane-skew-x",
+    "--background-plane-skew-y",
     "--background-header-before-rotate-x",
     "--background-header-before-rotate-y",
     "--background-header-after-rotate-x",
     "--background-header-after-rotate-y",
+    "--background-header-shift-x",
+    "--background-header-shift-y",
+    "--background-header-shift-soft-x",
+    "--background-header-shift-soft-y",
     "--background-hero-edge-rotate-x",
     "--background-hero-edge-rotate-y",
     "--background-hero-motif-rotate-x",
     "--background-hero-motif-rotate-y",
+    "--background-hero-shift-x",
+    "--background-hero-shift-y",
     "--background-plane-normal-x",
     "--background-plane-normal-y",
     "--background-header-origin-x",
@@ -45,10 +59,18 @@
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = normalY * -9.4;
-      const planeTiltY = normalX * 11.2;
-      const headerTiltX = planeTiltX * 0.86;
-      const headerTiltY = planeTiltY * 0.86;
+      const planeTiltX = normalY * -7.2;
+      const planeTiltY = normalX * 8.6;
+      const headerTiltX = planeTiltX * 0.78;
+      const headerTiltY = planeTiltY * 0.78;
+      const planeShiftX = -normalX * 18;
+      const planeShiftY = -normalY * 10;
+      const planeDriftX = -normalX * 10;
+      const planeDriftY = -normalY * 7;
+      const headerShiftX = -normalX * 9;
+      const headerShiftY = -normalY * 5.5;
+      const heroShiftX = -normalX * 6;
+      const heroShiftY = -normalY * 4;
 
       root.style.setProperty("--background-plane-normal-x", normalX.toFixed(4));
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
@@ -77,6 +99,38 @@
         `${planeTiltY.toFixed(3)}deg`,
       );
       root.style.setProperty(
+        "--background-plane-shift-x",
+        `${planeShiftX.toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-plane-shift-y",
+        `${planeShiftY.toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-plane-drift-x",
+        `${planeDriftX.toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-plane-drift-y",
+        `${planeDriftY.toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-plane-drift-soft-x",
+        `${(planeDriftX * 0.54).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-plane-drift-soft-y",
+        `${(planeDriftY * 0.54).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-plane-skew-x",
+        `${(normalX * 0.42).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-plane-skew-y",
+        `${(-normalY * 0.28).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
         "--background-header-before-rotate-x",
         `${(headerTiltX * 1.12).toFixed(3)}deg`,
       );
@@ -91,6 +145,22 @@
       root.style.setProperty(
         "--background-header-after-rotate-y",
         `${(headerTiltY * 0.92).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-header-shift-x",
+        `${headerShiftX.toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-header-shift-y",
+        `${headerShiftY.toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-header-shift-soft-x",
+        `${(headerShiftX * 0.72).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-header-shift-soft-y",
+        `${(headerShiftY * 0.72).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-hero-edge-rotate-x",
@@ -109,20 +179,28 @@
         `${(headerTiltY * 1.08).toFixed(3)}deg`,
       );
       root.style.setProperty(
+        "--background-hero-shift-x",
+        `${heroShiftX.toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-hero-shift-y",
+        `${heroShiftY.toFixed(2)}px`,
+      );
+      root.style.setProperty(
         "--background-plane-origin-x",
-        "50%",
+        `${(50 + normalX * 5).toFixed(2)}%`,
       );
       root.style.setProperty(
         "--background-plane-origin-y",
-        "54%",
+        `${(54 + normalY * 4).toFixed(2)}%`,
       );
       root.style.setProperty(
         "--background-header-origin-x",
-        "50%",
+        `${(50 + normalX * 4).toFixed(2)}%`,
       );
       root.style.setProperty(
         "--background-header-origin-y",
-        "46%",
+        `${(46 + normalY * 3).toFixed(2)}%`,
       );
     }
 

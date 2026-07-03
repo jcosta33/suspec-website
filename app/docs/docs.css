@@ -3364,7 +3364,7 @@
 
   .docs-index-cover::before {
     transform:
-      translate3d(0, 0, 32px)
+      translate3d(var(--background-header-shift-x), var(--background-header-shift-y), 32px)
       rotateX(var(--background-header-before-rotate-x))
       rotateY(var(--background-header-before-rotate-y));
     transform-origin: 50% 52%;
@@ -3374,7 +3374,7 @@
 
   .docs-index-cover::after {
     transform:
-      translate3d(0, 0, 24px)
+      translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 24px)
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y));
     transform-origin: 50% 52%;
@@ -3391,7 +3391,7 @@
 
   .docs-article-header::before {
     transform:
-      translate3d(0, 0, 30px)
+      translate3d(var(--background-header-shift-x), var(--background-header-shift-y), 30px)
       rotateX(var(--background-header-before-rotate-x))
       rotateY(var(--background-header-before-rotate-y));
     transform-origin: 50% 52%;
@@ -3401,7 +3401,7 @@
 
   .docs-article-header::after {
     transform:
-      translate3d(0, 0, 22px)
+      translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 22px)
       rotateX(var(--background-header-after-rotate-x))
       rotateY(var(--background-header-after-rotate-y));
     transform-origin: 50% 52%;
