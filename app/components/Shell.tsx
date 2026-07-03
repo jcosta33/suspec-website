@@ -90,6 +90,37 @@ const footerGroups = [
   },
 ];
 
+const backgroundMotionVars = [
+  "--background-plane-origin-x",
+  "--background-plane-origin-y",
+  "--background-header-origin-x",
+  "--background-header-origin-y",
+  "--background-plane-normal-x",
+  "--background-plane-normal-y",
+  "--background-plane-rotate-x",
+  "--background-plane-rotate-y",
+  "--background-plane-shift-x",
+  "--background-plane-shift-y",
+  "--background-plane-drift-x",
+  "--background-plane-drift-y",
+  "--background-plane-drift-soft-x",
+  "--background-plane-drift-soft-y",
+  "--background-header-before-rotate-x",
+  "--background-header-before-rotate-y",
+  "--background-header-after-rotate-x",
+  "--background-header-after-rotate-y",
+  "--background-header-shift-x",
+  "--background-header-shift-y",
+  "--background-header-shift-soft-x",
+  "--background-header-shift-soft-y",
+  "--background-hero-edge-rotate-x",
+  "--background-hero-edge-rotate-y",
+  "--background-hero-motif-rotate-x",
+  "--background-hero-motif-rotate-y",
+  "--background-hero-shift-x",
+  "--background-hero-shift-y",
+] as const;
+
 function isExternal(href: string) {
   return href.startsWith("http");
 }
@@ -182,6 +213,94 @@ export function Shell({ children }: { children: React.ReactNode }) {
     document.documentElement.dataset.shellReact = "ready";
     return () => {
       delete document.documentElement.dataset.shellReact;
+    };
+  }, []);
+
+  useEffect(() => {
+    const canAnimate = window.matchMedia(
+      "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+    );
+    if (!canAnimate.matches) return;
+
+    const root = document.documentElement;
+    let frame = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    const writeMotion = () => {
+      frame = 0;
+      currentX += (targetX - currentX) * 0.16;
+      currentY += (targetY - currentY) * 0.16;
+
+      const x = Math.max(-1, Math.min(1, currentX));
+      const y = Math.max(-1, Math.min(1, currentY));
+      const absX = Math.abs(x);
+      const absY = Math.abs(y);
+      const originX = 50 + x * 10;
+      const originY = 52 + y * 8;
+
+      root.style.setProperty("--background-plane-origin-x", `${originX}%`);
+      root.style.setProperty("--background-plane-origin-y", `${originY}%`);
+      root.style.setProperty("--background-header-origin-x", `${50 + x * 7}%`);
+      root.style.setProperty("--background-header-origin-y", `${46 + y * 6}%`);
+      root.style.setProperty("--background-plane-normal-x", x.toFixed(3));
+      root.style.setProperty("--background-plane-normal-y", y.toFixed(3));
+      root.style.setProperty("--background-plane-rotate-x", `${(-y * 2.2).toFixed(3)}deg`);
+      root.style.setProperty("--background-plane-rotate-y", `${(x * 2.6).toFixed(3)}deg`);
+      root.style.setProperty("--background-plane-shift-x", `${(-x * 9).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-shift-y", `${(-y * 7).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-drift-x", `${(-x * 5).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-drift-y", `${(-y * 4).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-drift-soft-x", `${(-x * 2.5).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-drift-soft-y", `${(-y * 2).toFixed(2)}px`);
+      root.style.setProperty("--background-header-before-rotate-x", `${(-y * 1.5).toFixed(3)}deg`);
+      root.style.setProperty("--background-header-before-rotate-y", `${(x * 1.8).toFixed(3)}deg`);
+      root.style.setProperty("--background-header-after-rotate-x", `${(-y * 1.05).toFixed(3)}deg`);
+      root.style.setProperty("--background-header-after-rotate-y", `${(x * 1.25).toFixed(3)}deg`);
+      root.style.setProperty("--background-header-shift-x", `${(-x * 7).toFixed(2)}px`);
+      root.style.setProperty("--background-header-shift-y", `${(-y * 5).toFixed(2)}px`);
+      root.style.setProperty("--background-header-shift-soft-x", `${(-x * 3.5).toFixed(2)}px`);
+      root.style.setProperty("--background-header-shift-soft-y", `${(-y * 2.5).toFixed(2)}px`);
+      root.style.setProperty("--background-hero-edge-rotate-x", `${(-y * 1.2).toFixed(3)}deg`);
+      root.style.setProperty("--background-hero-edge-rotate-y", `${(x * 1.45).toFixed(3)}deg`);
+      root.style.setProperty("--background-hero-motif-rotate-x", `${(-y * 1.6).toFixed(3)}deg`);
+      root.style.setProperty("--background-hero-motif-rotate-y", `${(x * 1.9).toFixed(3)}deg`);
+      root.style.setProperty("--background-hero-shift-x", `${(-x * (3 + absY * 2)).toFixed(2)}px`);
+      root.style.setProperty("--background-hero-shift-y", `${(-y * (3 + absX * 2)).toFixed(2)}px`);
+
+      if (Math.abs(targetX - currentX) > 0.003 || Math.abs(targetY - currentY) > 0.003) {
+        frame = window.requestAnimationFrame(writeMotion);
+      }
+    };
+
+    const requestMotion = () => {
+      if (frame === 0) frame = window.requestAnimationFrame(writeMotion);
+    };
+
+    const handlePointerMove = (event: PointerEvent) => {
+      targetX = (event.clientX / window.innerWidth - 0.5) * 2;
+      targetY = (event.clientY / window.innerHeight - 0.5) * 2;
+      requestMotion();
+    };
+
+    const settleMotion = () => {
+      targetX = 0;
+      targetY = 0;
+      requestMotion();
+    };
+
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    window.addEventListener("pointerleave", settleMotion);
+    window.addEventListener("blur", settleMotion);
+
+    return () => {
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerleave", settleMotion);
+      window.removeEventListener("blur", settleMotion);
+      if (frame !== 0) window.cancelAnimationFrame(frame);
+      backgroundMotionVars.forEach((name) => root.style.removeProperty(name));
     };
   }, []);
 
