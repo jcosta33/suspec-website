@@ -478,7 +478,12 @@ body::before {
     radial-gradient(1px 1px at 210px 132px, rgba(232, 222, 203, 0.06), transparent);
   background-repeat: repeat;
   background-size: 240px 190px;
-  animation: archival-tooth-drift 36s linear infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body::before {
+    animation: archival-tooth-drift 36s linear infinite;
+  }
 }
 
 /* Edge vignette — deepens the chassis toward the frame. */
@@ -7190,10 +7195,6 @@ section.bg-section-band::after {
   }
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 6s ease-in-out infinite;
-}
-
 @keyframes blink {
   0%,
   100% {
@@ -7202,10 +7203,6 @@ section.bg-section-band::after {
   50% {
     opacity: 0;
   }
-}
-
-.animate-blink {
-  animation: blink 1s step-end infinite;
 }
 
 @keyframes lamp-breathe {
@@ -7218,10 +7215,6 @@ section.bg-section-band::after {
   }
 }
 
-.pilot-lamp-pulse {
-  animation: lamp-breathe 3.8s ease-in-out infinite;
-}
-
 @keyframes scanline {
   0% {
     transform: translateY(-100%);
@@ -7232,7 +7225,7 @@ section.bg-section-band::after {
 }
 
 .animate-scanline {
-  animation: scanline 8s linear infinite;
+  transform: translateY(-100%);
 }
 
 /* Slow instrument rotation — for alchemical rings */
@@ -7245,8 +7238,26 @@ section.bg-section-band::after {
   }
 }
 
-.animate-rotate-slow {
-  animation: rotate-slow 120s linear infinite;
+@media (prefers-reduced-motion: no-preference) {
+  .animate-pulse-slow {
+    animation: pulse-slow 6s ease-in-out infinite;
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  .pilot-lamp-pulse {
+    animation: lamp-breathe 3.8s ease-in-out infinite;
+  }
+
+  .animate-scanline {
+    animation: scanline 8s linear infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 120s linear infinite;
+  }
 }
 
 .seal-ticks {
