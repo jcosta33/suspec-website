@@ -2,9 +2,11 @@
 
 import { useEffect, useRef } from "react";
 
-// Loads the Pagefind UI (generated into /pagefind by the postbuild step) at runtime. In `next dev`
-// the index doesn't exist yet, so the script 404s harmlessly and search is empty — it works on the
-// built/served site. Static, no API key, no third-party service.
+// Loads the Pagefind UI (generated into /pagefind by the postbuild step) at runtime.
+// The index is a production-export artifact, so `next dev` keeps a non-interactive
+// placeholder instead of requesting files it cannot serve.
+const PAGEFIND_ENABLED = process.env.NODE_ENV === "production";
+
 declare global {
   interface Window {
     PagefindUI?: new (opts: Record<string, unknown>) => { triggerSearch?: (term: string) => void };
@@ -17,6 +19,12 @@ export function SearchBox() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    if (!PAGEFIND_ENABLED) {
+      el.dataset.searchState = "unavailable";
+      return;
+    }
+
     // The Pagefind UI input is labeled only by placeholder/title → axe `label-title-only`. Add a
     // programmatic aria-label once the input mounts (it may render a tick after construction). [a11y gate]
     const labelInput = (): boolean => {
@@ -29,6 +37,7 @@ export function SearchBox() {
     const init = () => {
       if (!window.PagefindUI) return;
       el.querySelector(".docs-search-fallback")?.remove();
+      el.dataset.searchState = "ready";
       const ui = new window.PagefindUI({ element: el, showSubResults: true, resetStyles: false });
       // Deep-link: /docs/?q=term runs the search on load — this is what the WebSite SearchAction in
       // the JSON-LD points at, so that structured-data claim is real rather than decorative.
@@ -54,6 +63,11 @@ export function SearchBox() {
       s.src = "/pagefind/pagefind-ui.js";
       s.async = true;
       s.onload = init;
+      s.onerror = () => {
+        el.dataset.searchState = "unavailable";
+        css.remove();
+        s.remove();
+      };
       document.body.appendChild(s);
     };
 
@@ -76,10 +90,14 @@ export function SearchBox() {
   // <form role="search" aria-label="Search this site">, so a wrapper role would create a second,
   // duplicate search landmark. The input itself is still named via the aria-label pass above.
   return (
-    <div className="docs-search" ref={ref}>
-      <div className="docs-search-fallback" aria-hidden="true">
+    <div className="docs-search" data-search-state="loading" ref={ref}>
+      <div
+        className="docs-search-fallback"
+        aria-hidden={PAGEFIND_ENABLED ? true : undefined}
+        role={PAGEFIND_ENABLED ? undefined : "status"}
+      >
         <span className="docs-search-fallback-icon" />
-        <span>Search docs</span>
+        <span>{PAGEFIND_ENABLED ? "Search docs" : "Search after build"}</span>
       </div>
     </div>
   );

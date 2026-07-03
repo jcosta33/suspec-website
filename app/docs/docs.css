@@ -3405,7 +3405,7 @@
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .docs-index-cover,
   .docs-article-header {
-    perspective: clamp(340px, 38vw, 640px);
+    perspective: clamp(500px, 46vw, 820px);
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }

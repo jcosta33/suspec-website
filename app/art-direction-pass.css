@@ -86,7 +86,7 @@ body {
     display: block;
     overflow: clip;
     pointer-events: none;
-    perspective: clamp(300px, 32vw, 560px);
+    perspective: clamp(680px, 64vw, 1180px);
     perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     contain: layout style paint;
@@ -116,11 +116,11 @@ body {
        center top;
     opacity: 1;
     transform:
-      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), -34px)
+      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), -62px)
       rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
       rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
       rotateZ(calc(var(--background-plane-normal-x) * -0.22deg))
-      scale3d(1.18, 1.18, 1);
+      scale3d(1.24, 1.24, 1);
     transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -188,7 +188,7 @@ body {
   }
 
   .ambient-header {
-    perspective: clamp(340px, 38vw, 680px);
+    perspective: clamp(520px, 48vw, 860px);
     perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
     transform-style: preserve-3d;
   }
