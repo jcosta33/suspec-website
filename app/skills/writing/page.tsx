@@ -266,6 +266,7 @@ export default function WritingSkillsPage() {
                 href="/docs/reference/agent-guides/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Open the agent guide manual docs (opens in a new tab)"
                 className="gap-2"
                 touchTarget
               >

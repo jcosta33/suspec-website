@@ -78,7 +78,12 @@ export default function NotFoundPage() {
           <ActionLink href="/">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to Suspec
           </ActionLink>
-          <ActionLink href="/docs/">
+          <ActionLink
+            href="/docs/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open docs (opens in a new tab)"
+          >
             <Search className="h-4 w-4" aria-hidden="true" /> Open docs
           </ActionLink>
         </div>
