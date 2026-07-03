@@ -9,6 +9,10 @@
   align-items: flex-start;
 }
 
+.docs-layout:has(.docs-index-prose) {
+  padding-top: clamp(4.35rem, 5.8vw, 5.25rem);
+}
+
 @media (min-width: 64rem) {
   .docs-layout {
     padding-inline: clamp(2rem, calc(50vw - 38rem), 4rem);
@@ -538,6 +542,15 @@
     flex-direction: column;
     gap: 1.5rem;
     padding-top: 5rem;
+  }
+
+  .docs-layout:has(.docs-index-prose) {
+    gap: 1rem;
+    padding-top: 4.15rem;
+  }
+
+  .docs-layout:has(.docs-index-prose) > aside {
+    display: none;
   }
 
   .docs-layout > aside {
@@ -2540,6 +2553,11 @@
   .docs-layout {
     gap: 1.05rem;
     padding-top: 5rem;
+  }
+
+  .docs-layout:has(.docs-index-prose) {
+    gap: 0.88rem;
+    padding-top: 4.05rem;
   }
 
   .docs-index-cover {
