@@ -11749,12 +11749,14 @@ section.bg-section-band::after {
 
   .overview-is-list {
     margin-top: 1.1rem;
+    display: grid;
+    gap: 0.48rem;
   }
 
   .overview-is-item {
     align-items: center;
     gap: 0.8rem;
-    min-height: 3.2rem;
+    min-height: 2.72rem;
   }
 
   .overview-is-icon {
@@ -11769,8 +11771,28 @@ section.bg-section-band::after {
 
   .overview-is-item > span:last-child {
     padding-top: 0;
-    font-size: 0.98rem;
-    line-height: 1.35;
+    font-size: 0.9rem;
+    line-height: 1.28;
+  }
+
+  #boundaries .panel-inset {
+    padding: 1rem !important;
+  }
+
+  #boundaries .panel-inset .section-kicker + .font-heading {
+    margin-top: 0.62rem !important;
+  }
+
+  #boundaries .panel-inset ul:not(.overview-is-list) {
+    margin-top: 0.92rem !important;
+  }
+
+  #boundaries .panel-inset ul:not(.overview-is-list) li {
+    align-items: center;
+    gap: 0.58rem;
+    padding-block: 0.58rem;
+    font-size: 0.9rem;
+    line-height: 1.32;
   }
 }
 

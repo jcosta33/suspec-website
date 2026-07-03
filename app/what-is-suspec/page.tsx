@@ -456,7 +456,7 @@ export default function WhatIsSuspecPage() {
         id="boundaries"
         register="02 / boundaries"
         registerTone="muted"
-        className="reveal grid gap-12 lg:grid-cols-2"
+        className="reveal grid gap-12 md:grid-cols-2"
       >
         <Panel variant="inset" className="h-full p-5 sm:p-6">
           <div className={`section-kicker ${signalRoles.evidence.sectionKicker}`}>
