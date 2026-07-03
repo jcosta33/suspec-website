@@ -10,7 +10,7 @@
 }
 
 .docs-layout:has(.docs-index-prose) {
-  padding-top: clamp(4.35rem, 5.8vw, 5.25rem);
+  padding-top: clamp(5.15rem, 6.2vw, 5.9rem);
 }
 
 @media (min-width: 64rem) {
@@ -546,7 +546,7 @@
 
   .docs-layout:has(.docs-index-prose) {
     gap: 1rem;
-    padding-top: 4.15rem;
+    padding-top: 5.25rem;
   }
 
   .docs-layout:has(.docs-index-prose) > aside {
@@ -2557,7 +2557,7 @@
 
   .docs-layout:has(.docs-index-prose) {
     gap: 0.88rem;
-    padding-top: 4.05rem;
+    padding-top: 5.35rem;
   }
 
   .docs-index-cover {
