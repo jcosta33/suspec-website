@@ -11702,6 +11702,125 @@ section.bg-section-band::after {
   gap: 0.04rem;
 }
 
+.overview-boundary-panel {
+  background-image:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.028), transparent 48%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.65rem,
+      rgba(var(--signal-reference-rgb), 0.014) 1.65rem calc(1.65rem + 1px)
+    );
+}
+
+.overview-boundary-panel-is {
+  border-color: rgba(var(--signal-evidence-rgb), 0.22);
+  border-left-color: rgba(var(--signal-evidence-rgb), 0.38);
+}
+
+.overview-boundary-panel-not {
+  border-color: rgba(var(--signal-change-rgb), 0.22);
+  border-left-color: rgba(var(--signal-change-rgb), 0.36);
+}
+
+.overview-is-list {
+  display: grid;
+  gap: 0.62rem;
+}
+
+.overview-is-item {
+  min-height: 3.35rem;
+  border: 1px solid rgba(var(--signal-evidence-rgb), 0.12);
+  border-radius: calc(var(--radius-panel) - 2px);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-evidence-rgb), 0.04), transparent 62%),
+    rgba(9, 7, 5, 0.18);
+  padding: 0.42rem 0.56rem 0.44rem;
+}
+
+.overview-boundary-copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.16rem;
+  line-height: 1.4;
+}
+
+.overview-boundary-label {
+  color: var(--signal-evidence);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 760;
+  letter-spacing: 0.1em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.overview-boundary-panel-not .overview-boundary-label {
+  color: var(--signal-change);
+}
+
+.overview-not-list {
+  overflow: hidden;
+  border-block: 1px solid rgba(var(--signal-change-rgb), 0.12);
+}
+
+.overview-not-item {
+  min-height: 3rem;
+  padding-inline: 0.12rem;
+}
+
+.overview-next-card {
+  border-color: rgba(var(--signal-core-rgb), 0.28);
+  background-image:
+    linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.06), transparent 42%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.7rem,
+      rgba(var(--signal-core-rgb), 0.014) 1.7rem calc(1.7rem + 1px)
+    ),
+    linear-gradient(180deg, rgba(240, 226, 204, 0.026), transparent 48%);
+}
+
+.overview-next-content {
+  align-items: stretch;
+}
+
+.overview-next-copy {
+  max-width: 44rem;
+}
+
+.overview-next-source {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.18rem 0.42rem;
+  align-items: center;
+  border-top: 1px solid rgba(var(--signal-core-rgb), 0.16);
+  padding-top: 0.9rem;
+}
+
+.overview-next-source .link-motion {
+  min-height: 2rem;
+}
+
+.overview-next-nav {
+  border-left: 1px solid rgba(var(--signal-core-rgb), 0.22);
+  padding-left: clamp(1rem, 2vw, 1.35rem);
+}
+
+.overview-next-links {
+  gap: 0.12rem;
+}
+
+.overview-next-links .link-motion {
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(var(--signal-core-rgb), 0.12);
+  padding-inline: 0.02rem;
+}
+
+.overview-next-links li:last-child .link-motion {
+  border-bottom: 0;
+}
+
 @media (max-width: 40rem) {
   .overview-summary-grid {
     gap: 0.68rem;
@@ -11840,6 +11959,7 @@ section.bg-section-band::after {
     align-items: center;
     gap: 0.8rem;
     min-height: 2.72rem;
+    padding: 0.42rem 0.48rem;
   }
 
   .overview-is-icon {
@@ -11856,6 +11976,19 @@ section.bg-section-band::after {
     padding-top: 0;
     font-size: 0.9rem;
     line-height: 1.28;
+  }
+
+  .overview-boundary-copy {
+    gap: 0.1rem;
+  }
+
+  .overview-boundary-label {
+    font-size: 0.54rem;
+    letter-spacing: 0.08em;
+  }
+
+  .overview-not-list {
+    margin-top: 1rem !important;
   }
 
   #boundaries .panel-inset {
@@ -11876,6 +12009,29 @@ section.bg-section-band::after {
     padding-block: 0.58rem;
     font-size: 0.9rem;
     line-height: 1.32;
+  }
+
+  .overview-next-card {
+    padding: 1rem !important;
+  }
+
+  .overview-next-content {
+    gap: 1.25rem;
+  }
+
+  .overview-next-source {
+    padding-top: 0.78rem;
+  }
+
+  .overview-next-nav {
+    border-top: 1px solid rgba(var(--signal-core-rgb), 0.18);
+    border-left: 0;
+    padding-top: 0.95rem;
+    padding-left: 0;
+  }
+
+  .overview-next-links {
+    margin-top: 0.55rem;
   }
 }
 

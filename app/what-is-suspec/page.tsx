@@ -54,28 +54,30 @@ export const metadata: Metadata = {
 };
 
 const isList = [
-  { text: "specs humans write and agents work from", icon: FileText },
-  { text: "optional task packets for split work", icon: LayoutList },
+  { label: "spec", text: "specs humans write and agents work from", icon: FileText },
+  { label: "task", text: "optional task packets for split work", icon: LayoutList },
   {
+    label: "review",
     text: "review packets with evidence per requirement",
     icon: NotebookPen,
   },
   {
+    label: "finding",
     text: "findings that carry lessons forward",
     icon: CheckCircle,
   },
-  { text: "markdown templates", icon: Layers },
-  { text: "workspace conventions", icon: Workflow },
+  { label: "template", text: "markdown templates", icon: Layers },
+  { label: "convention", text: "workspace conventions", icon: Workflow },
 ];
 
 const isNotList = [
-  "an agent or agent runtime",
-  "a Jira/Linear replacement",
-  "a code generator",
-  "a replacement for PRs and CI",
-  "a formal verification system",
-  "a guarantee that code is correct",
-  "permission to skip review",
+  { label: "runtime", text: "an agent or agent runtime" },
+  { label: "tracker", text: "a Jira/Linear replacement" },
+  { label: "generator", text: "a code generator" },
+  { label: "gate", text: "a replacement for PRs and CI" },
+  { label: "proof", text: "a formal verification system" },
+  { label: "verdict", text: "a guarantee that code is correct" },
+  { label: "shortcut", text: "permission to skip review" },
 ];
 
 const adjacent = [
@@ -458,7 +460,10 @@ export default function WhatIsSuspecPage() {
         registerTone="muted"
         className="reveal grid gap-12 md:grid-cols-2"
       >
-        <Panel variant="inset" className="h-full p-5 sm:p-6">
+        <Panel
+          variant="inset"
+          className="overview-boundary-panel overview-boundary-panel-is h-full p-5 sm:p-6"
+        >
           <div className={`section-kicker ${signalRoles.evidence.sectionKicker}`}>
             <CheckCircle className="h-4 w-4" aria-hidden="true" />
             <span>what it is</span>
@@ -475,30 +480,43 @@ export default function WhatIsSuspecPage() {
                   <HexBadge color="evidence" className="overview-is-icon">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </HexBadge>
-                  <span className="pt-3">{item.text}</span>
+                  <span className="overview-boundary-copy grid min-w-0 gap-1 pt-3 leading-snug">
+                    <span className="overview-boundary-label block">
+                      {item.label}:{" "}
+                    </span>
+                    <span>{item.text}</span>
+                  </span>
                 </li>
               );
             })}
           </ul>
         </Panel>
 
-        <Panel variant="inset" className="h-full p-5 sm:p-6">
+        <Panel
+          variant="inset"
+          className="overview-boundary-panel overview-boundary-panel-not h-full p-5 sm:p-6"
+        >
           <div className={`section-kicker ${signalRoles.change.sectionKicker}`}>
             <XCircle className="h-4 w-4" aria-hidden="true" />
             <span>what it is not</span>
           </div>
           <Heading className="mt-3">What Suspec is not</Heading>
-          <ul className="mt-5 divide-y divide-panel-border/70">
+          <ul className="overview-not-list mt-5 divide-y divide-panel-border/70">
             {isNotList.map((item) => (
               <li
-                key={item}
-                className="flex items-start gap-3 py-3 text-concrete-400 first:pt-0 last:pb-0"
+                key={item.text}
+                className="overview-not-item flex items-start gap-3 py-3 text-concrete-400 first:pt-0 last:pb-0"
               >
                 <XCircle
                   className="mt-0.5 h-4 w-4 shrink-0 text-signal-change"
                   aria-hidden="true"
                 />
-                <span>{item}</span>
+                <span className="overview-boundary-copy grid min-w-0 gap-1 leading-snug">
+                  <span className="overview-boundary-label block">
+                    {item.label}:{" "}
+                  </span>
+                  <span>{item.text}</span>
+                </span>
               </li>
             ))}
           </ul>
@@ -617,15 +635,16 @@ export default function WhatIsSuspecPage() {
         <Card
           signal="core"
           screws
-          contentClassName="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center"
+          className="overview-next-card"
+          contentClassName="overview-next-content grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center"
         >
-          <div>
+          <div className="overview-next-copy">
             <Heading>See how it actually runs</Heading>
             <p className="mt-2 text-concrete-400">
               Six steps, each producing a file the next one reads. That is the
               framework: no runtime, no automatic decision.
             </p>
-            <p className="mt-4 text-sm text-concrete-400">
+            <p className="overview-next-source mt-4 text-sm text-concrete-400">
               Source:{" "}
               <TextLink
                 href="/docs/01-what-is-suspec/"
@@ -637,11 +656,14 @@ export default function WhatIsSuspecPage() {
               </TextLink>
             </p>
           </div>
-          <nav className="md:min-w-64" aria-label="What is Suspec next pages">
+          <nav
+            className="overview-next-nav md:min-w-64"
+            aria-label="What is Suspec next pages"
+          >
             <p className="font-mono text-[0.68rem] font-bold uppercase tracking-[0.14em] text-signal-core">
               next records
             </p>
-            <ul className="mt-2 grid gap-1">
+            <ul className="overview-next-links mt-2 grid gap-1">
               <li>
                 <TextLink
                   href="/the-loop/"
