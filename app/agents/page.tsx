@@ -447,7 +447,7 @@ export default function AgentsPage() {
         id="worker-lanes"
         register="03 / worker lanes"
         registerTone="muted"
-        className="agent-roster-grid grid gap-4 lg:grid-cols-[0.62fr_1fr]"
+        className="agent-roster-grid grid gap-4 min-[54rem]:grid-cols-[0.58fr_1fr] lg:grid-cols-[0.62fr_1fr]"
       >
         {rosterGroups.map((group, groupIndex) => (
           <Panel
