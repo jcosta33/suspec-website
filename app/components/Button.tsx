@@ -33,7 +33,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "btn toggle inline-flex min-h-11 items-center justify-center gap-2 rounded-[var(--radius-control)] px-6 py-3 text-center text-base font-semibold leading-snug focus-ring";
+    "btn toggle rounded-control inline-flex min-h-11 items-center justify-center gap-2 px-6 py-3 text-center text-base font-semibold leading-snug focus-ring";
 
   const styles = {
     primary: [
@@ -41,14 +41,14 @@ export function Button({
       // subtle hover shimmer (the .copy-button class), with a gold CTA accent.
       "copy-button group border border-panel-border bg-panel-recessed/80 text-concrete-100",
       "hover:border-brass hover:text-suspec-yellow",
-      "active:shadow-[inset_0_2px_5px_rgba(0,0,0,0.45)]",
+      "active-shadow-control",
       "disabled:border-panel-border disabled:bg-panel disabled:text-concrete-400 disabled:shadow-none",
     ].join(" "),
     secondary: [
       "border border-panel-border bg-panel-raised text-concrete-100",
-      "shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-2px_0_rgba(0,0,0,0.5)]",
+      "shadow-panel-bevel",
       "hover:border-brass hover:text-suspec-yellow",
-      "active:shadow-[inset_0_2px_5px_rgba(0,0,0,0.45)]",
+      "active-shadow-control",
       "disabled:border-panel-border disabled:text-concrete-400 disabled:shadow-none",
     ].join(" "),
     ghost: [

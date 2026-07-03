@@ -229,7 +229,7 @@ function HeroProofStrip() {
         <li
           key={proof.label}
           aria-label={`${proof.label}: ${proof.text}`}
-          className={`home-hero-proof home-hero-proof-${proof.signal} group flex min-w-0 items-start gap-3 rounded-panel border bg-panel/80 px-3 py-3 shadow-[inset_0_1px_0_rgba(240,226,204,0.04)] transition-colors duration-150`}
+          className={`home-hero-proof home-hero-proof-${proof.signal} shadow-proof-hairline group flex min-w-0 items-start gap-3 rounded-panel border bg-panel/80 px-3 py-3 transition-colors duration-150`}
         >
           <PilotLamp
             color={proof.signal}

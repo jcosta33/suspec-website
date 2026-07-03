@@ -23,7 +23,7 @@ export function Badge({ children, signal, variant = "default" }: BadgeProps) {
   // blocked = change, draft = reference, archived = muted.
   const styles = {
     default:
-      "border-panel-border bg-panel-raised text-concrete-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
+      "border-panel-border bg-panel-raised text-concrete-400 shadow-badge-hairline",
     success: "badge-signal badge-signal-evidence",
     ready: "badge-signal badge-signal-core",
     pass: "badge-signal badge-signal-evidence",

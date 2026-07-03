@@ -326,9 +326,9 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <button
             ref={toggleRef}
             type="button"
-            className={`toggle inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-control)] border p-2 text-concrete-100 hover:text-suspec-yellow focus-ring lg:hidden ${
+            className={`toggle rounded-control inline-flex h-11 w-11 items-center justify-center border p-2 text-concrete-100 hover:text-suspec-yellow focus-ring lg:hidden ${
               headerIsOpaque
-                ? "border-panel-border bg-panel-raised shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-2px_0_rgba(0,0,0,0.5)] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.45)]"
+                ? "border-panel-border bg-panel-raised shadow-panel-bevel active-shadow-toggle"
                 : "border-transparent bg-transparent active:shadow-none"
             }`}
             aria-expanded={menuOpen}

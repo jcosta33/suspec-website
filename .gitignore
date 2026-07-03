@@ -13,6 +13,7 @@ SUSPEC_COMPREHENSIVE_REPORT.md
 !.yarn/versions
 /coverage
 /.next/
+/.next-dev/
 /out/
 /build
 *.pem

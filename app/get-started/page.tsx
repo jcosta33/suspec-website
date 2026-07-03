@@ -89,7 +89,7 @@ function KitIcon({
 }) {
   return (
     <div
-      className={`kit-icon kit-icon-${signal} relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-panel border bg-panel-raised shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.45)]`}
+      className={`kit-icon kit-icon-${signal} shadow-kit-bevel relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-panel border bg-panel-raised`}
     >
       <div
         className="brushed-metal absolute inset-0 pointer-events-none z-0"

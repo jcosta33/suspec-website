@@ -202,7 +202,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
           const cardClassName =
             `loop-step-card loop-step-card-workflow ${
               linkSteps ? "loop-step-card-linked" : ""
-            } focus-ring group relative flex h-full min-h-[13rem] flex-col gap-3 p-4 panel-raised rivet-row transition-[border-color,box-shadow,background-color] duration-150 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-2px_0_rgba(0,0,0,0.5)]`;
+            } focus-ring hover-shadow-step group relative flex h-full min-h-[13rem] flex-col gap-3 p-4 panel-raised rivet-row transition-[border-color,box-shadow,background-color] duration-150`;
           const content = (
             <>
               <div className="flex items-center justify-between">

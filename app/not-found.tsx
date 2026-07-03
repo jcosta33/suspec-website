@@ -56,7 +56,7 @@ const recoveryRoutes = [
 export default function NotFoundPage() {
   return (
     <Section className="not-found-shell grid min-w-0 grid-cols-[minmax(0,1fr)] gap-6 overflow-hidden py-14 sm:py-16 md:min-h-[calc(100svh-28rem)] md:grid-cols-[minmax(18rem,0.82fr)_minmax(20rem,0.95fr)] md:items-center md:gap-10 md:py-20 lg:gap-14">
-      <div className="not-found-control min-w-0 rounded-panel border border-panel-border bg-panel-raised/70 p-5 text-left shadow-[inset_0_1px_0_rgba(240,226,204,0.05)] sm:p-6">
+      <div className="not-found-control shadow-soft-hairline min-w-0 rounded-panel border border-panel-border bg-panel-raised/70 p-5 text-left sm:p-6">
         <div className="not-found-status-row">
           <span className="inline-flex items-center gap-2">
             <PilotLamp color="change" />
@@ -94,7 +94,7 @@ export default function NotFoundPage() {
         </PaperArtifact>
         <nav
           aria-label="Recovery routes"
-          className="process-strip process-strip-signal-muted overflow-hidden rounded-panel border border-panel-border bg-panel-raised/70 text-left shadow-[inset_0_1px_0_rgba(240,226,204,0.05)]"
+          className="process-strip process-strip-signal-muted shadow-soft-hairline overflow-hidden rounded-panel border border-panel-border bg-panel-raised/70 text-left"
         >
           {recoveryRoutes.map((route, index) => {
             const Icon = route.icon;
