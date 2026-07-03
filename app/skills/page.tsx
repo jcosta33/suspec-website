@@ -37,10 +37,15 @@ import { PaperArtifact } from "../components/PaperArtifact";
 import { TextLink } from "../components/TextLink";
 import { SignalStat } from "../components/SignalStat";
 import { SkillCatalog } from "../components/SkillCatalog";
+import { JsonLd } from "../components/JsonLd";
 import { PackageJsonLd } from "../components/PackageJsonLd";
 import { signalRoles } from "../components/signalStyles";
 import { canonicalAlternates } from "../seo";
 
+const SITE_URL = "https://suspecframework.dev";
+const SKILLS_REPOSITORY = "https://github.com/jcosta33/suspec-skills";
+const STARTER_KIT_REPOSITORY = "https://github.com/jcosta33/suspec-starter-kit";
+const SKILLS_PAGE_URL = `${SITE_URL}/skills/`;
 const skillsDescription =
   "Two tiers of agent guides: the framework-free suspec-skills catalog and the Suspec-coupled kit that ships in suspec-starter-kit.";
 const skillsTitle = "suspec-skills — agent guide catalog for Suspec";
@@ -71,7 +76,7 @@ const catalogInstallCommand = "npx skills add jcosta33/suspec-skills";
 
 // Tier 1 — the universal catalog (suspec-skills). Framework-free disciplines and
 // methods, installable into any repo via `npx skills` with zero Suspec knowledge.
-const catalogRepo = "https://github.com/jcosta33/suspec-skills/tree/main/skills";
+const catalogRepo = `${SKILLS_REPOSITORY}/tree/main/skills`;
 
 // Market / review methods in the catalog.
 const methods = [
@@ -139,7 +144,7 @@ const disciplines = [
 // Tier 2 — the Suspec kit (ships in suspec-starter-kit/.agents/skills/). Every
 // skill that operates a Suspec concept; not installable framework-free.
 const kitRepo =
-  "https://github.com/jcosta33/suspec-starter-kit/tree/main/.agents/skills";
+  `${STARTER_KIT_REPOSITORY}/tree/main/.agents/skills`;
 
 const kitSkills = [
   {
@@ -251,14 +256,62 @@ const selectionRules = [
   },
 ] as const;
 
+const skillCatalogItems = [
+  ...methods.map((item) => ({
+    name: item.skill,
+    description: item.use,
+    url: `${catalogRepo}/${item.skill}`,
+    category: "Framework-free review catalog",
+  })),
+  ...disciplines.map((item) => ({
+    name: item.skill,
+    description: item.use,
+    url: `${catalogRepo}/${item.skill}`,
+    category: "Framework-free method catalog",
+  })),
+  ...kitSkills.map((item) => ({
+    name: item.skill,
+    description: item.use,
+    url: `${kitRepo}/${item.skill}`,
+    category: "Suspec-coupled starter kit",
+  })),
+];
+
+const skillsPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${SKILLS_PAGE_URL}#webpage`,
+  name: "suspec-skills agent guide catalog",
+  url: SKILLS_PAGE_URL,
+  description: skillsDescription,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: { "@id": `${SKILLS_PAGE_URL}#source-code` },
+  mainEntity: {
+    "@type": "ItemList",
+    name: "suspec-skills guide catalog",
+    itemListElement: skillCatalogItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "CreativeWork",
+        name: item.name,
+        description: item.description,
+        url: item.url,
+        genre: item.category,
+      },
+    })),
+  },
+};
+
 export default function SkillsPage() {
   return (
     <div className="repo-product-page skills-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+      <JsonLd data={skillsPageJsonLd} />
       <PackageJsonLd
         name="suspec-skills"
         description={skillsDescription}
         path="/skills/"
-        repository="https://github.com/jcosta33/suspec-skills"
+        repository={SKILLS_REPOSITORY}
         keywords={[
           "agent guides",
           "npx skills",
@@ -266,26 +319,7 @@ export default function SkillsPage() {
           "review guides",
           "implementation guides",
         ]}
-        catalogItems={[
-          ...methods.map((item) => ({
-            name: item.skill,
-            description: item.use,
-            url: `${catalogRepo}/${item.skill}`,
-            category: "Framework-free review catalog",
-          })),
-          ...disciplines.map((item) => ({
-            name: item.skill,
-            description: item.use,
-            url: `${catalogRepo}/${item.skill}`,
-            category: "Framework-free method catalog",
-          })),
-          ...kitSkills.map((item) => ({
-            name: item.skill,
-            description: item.use,
-            url: `${kitRepo}/${item.skill}`,
-            category: "Suspec-coupled starter kit",
-          })),
-        ]}
+        catalogItems={skillCatalogItems}
       />
       <Section className="ambient-header">
         <PageHero
