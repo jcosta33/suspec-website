@@ -320,10 +320,10 @@ export default function HomePage() {
                   <p className="mt-2 text-signal-evidence">
                     PASS AC-001 — output pasted
                   </p>
-                  <p className="text-signal-change">
+                  <p className="hidden text-signal-change md:block">
                     UNVERIFIED AC-002 — manual resize pending
                   </p>
-                  <p className="text-concrete-400">
+                  <p className="hidden text-concrete-400 md:block">
                     HUMAN ATTENTION — retry.ts changed outside scope
                   </p>
                 </TerminalWindow>

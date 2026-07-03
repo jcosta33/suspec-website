@@ -4429,7 +4429,7 @@ section.bg-section-band::after {
 @media (max-width: 48rem) {
   .home-hero-section {
     padding-top: 0;
-    padding-bottom: 2.75rem;
+    padding-bottom: 0.75rem;
   }
 
   .home-hero-section .page-hero > p:first-of-type {
@@ -4449,7 +4449,7 @@ section.bg-section-band::after {
   }
 
   .home-hero-proof-strip {
-    display: grid;
+    display: none;
     width: min(100%, 17.75rem);
     grid-template-columns: minmax(0, 1fr);
     gap: 0.42rem;
@@ -4483,8 +4483,8 @@ section.bg-section-band::after {
 
   .home-hero-preview {
     max-height: none;
-    margin-top: 0.75rem;
-    margin-bottom: 1.45rem;
+    margin-top: 1.1rem;
+    margin-bottom: 0.35rem;
     padding: 0.45rem;
   }
 
@@ -4543,10 +4543,6 @@ section.bg-section-band::after {
     padding: 0.72rem;
     font-size: 0.68rem;
     line-height: 1.45;
-  }
-
-  .home-hero-preview .terminal-content p:nth-child(n + 5) {
-    display: none;
   }
 
   .home-hero-artifact {
