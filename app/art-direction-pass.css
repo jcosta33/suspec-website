@@ -90,7 +90,7 @@ body {
     display: block;
     overflow: clip;
     pointer-events: none;
-    perspective: clamp(360px, 38vw, 680px);
+    perspective: clamp(380px, 42vw, 760px);
     perspective-origin: var(--background-plane-perspective-x) var(--background-plane-perspective-y);
     transform-style: preserve-3d;
     contain: layout style paint;
@@ -113,19 +113,18 @@ body {
       192px 192px,
       auto;
     background-position:
-       calc(50% + var(--background-plane-drift-x)) calc(50% + var(--background-plane-drift-y)),
-       calc(50% + var(--background-plane-drift-x)) calc(50% + var(--background-plane-drift-y)),
-       calc(50% + var(--background-plane-drift-soft-x)) calc(50% + var(--background-plane-drift-soft-y)),
-       calc(50% + var(--background-plane-drift-soft-x)) calc(50% + var(--background-plane-drift-soft-y)),
+       50% 50%,
+       50% 50%,
+       50% 50%,
+       50% 50%,
        center top;
     opacity: 1;
     transform:
-      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), 0)
+      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), -28px)
       rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
       rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
       rotateZ(calc(var(--background-plane-normal-x) * -0.16deg))
-      translateZ(-18px)
-      scale3d(1.1, 1.1, 1);
+      scale3d(1.16, 1.16, 1);
     transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -205,6 +204,7 @@ body {
   .ambient-header::before {
     animation: ambient-calibration-breathe-pointer 8s ease-in-out infinite alternate;
     width: min(78rem, 118vw);
+    height: clamp(9.25rem, 15vw, 12.5rem);
     transform:
       translate3d(calc(-50% + var(--background-header-shift-x)), var(--background-header-shift-y), 0)
       rotateX(var(--background-header-before-rotate-x))
@@ -234,7 +234,7 @@ body {
       rotateY(var(--background-header-after-rotate-y))
       rotateZ(calc(var(--background-plane-normal-x) * -0.14deg))
       translateZ(64px)
-      scale(1.14);
+      scale(1.18);
     background-position:
        calc(0% + var(--background-header-shift-soft-x)) 50%,
        calc(100% + var(--background-header-shift-soft-x)) 50%,

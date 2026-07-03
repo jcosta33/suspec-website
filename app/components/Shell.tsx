@@ -242,8 +242,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
       const y = Math.max(-1, Math.min(1, currentY));
       const absX = Math.abs(x);
       const absY = Math.abs(y);
-      const planePerspectiveX = 50 + x * 22;
-      const planePerspectiveY = 52 + y * 16;
+      const planePerspectiveX = 50 + x * 8;
+      const planePerspectiveY = 52 + y * 6;
       const headerPerspectiveX = 50 + x * 18;
       const headerPerspectiveY = 48 + y * 13;
 
@@ -257,10 +257,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
       root.style.setProperty("--background-header-perspective-y", `${headerPerspectiveY}%`);
       root.style.setProperty("--background-plane-normal-x", x.toFixed(3));
       root.style.setProperty("--background-plane-normal-y", y.toFixed(3));
-      root.style.setProperty("--background-plane-rotate-x", `${(-y * 7.6).toFixed(3)}deg`);
-      root.style.setProperty("--background-plane-rotate-y", `${(x * 9.2).toFixed(3)}deg`);
-      root.style.setProperty("--background-plane-shift-x", `${(-x * 7.5).toFixed(2)}px`);
-      root.style.setProperty("--background-plane-shift-y", `${(-y * 5.6).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-rotate-x", `${(-y * 8.8).toFixed(3)}deg`);
+      root.style.setProperty("--background-plane-rotate-y", `${(x * 10.8).toFixed(3)}deg`);
+      root.style.setProperty("--background-plane-shift-x", `${(-x * 4.6).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-shift-y", `${(-y * 3.4).toFixed(2)}px`);
       root.style.setProperty("--background-plane-drift-x", `${(-x * 4.2).toFixed(2)}px`);
       root.style.setProperty("--background-plane-drift-y", `${(-y * 3.2).toFixed(2)}px`);
       root.style.setProperty("--background-plane-drift-soft-x", `${(-x * 2.1).toFixed(2)}px`);
