@@ -59,14 +59,14 @@
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = normalY * -6.8;
-      const planeTiltY = normalX * 7.6;
-      const headerTiltX = planeTiltX * 0.76;
-      const headerTiltY = planeTiltY * 0.76;
-      const headerShiftX = -normalX * 12;
-      const headerShiftY = -normalY * 7;
-      const heroShiftX = -normalX * 9;
-      const heroShiftY = -normalY * 5;
+      const planeTiltX = normalY * -6.4;
+      const planeTiltY = normalX * 7.2;
+      const headerTiltX = planeTiltX * 0.82;
+      const headerTiltY = planeTiltY * 0.82;
+      const headerShiftX = -normalX * 10;
+      const headerShiftY = -normalY * 6;
+      const heroShiftX = -normalX * 8;
+      const heroShiftY = -normalY * 4.8;
 
       root.style.setProperty("--background-plane-normal-x", normalX.toFixed(4));
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
