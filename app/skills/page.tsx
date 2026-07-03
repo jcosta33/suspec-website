@@ -478,6 +478,7 @@ export default function SkillsPage() {
             href="https://github.com/jcosta33/suspec-starter-kit"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Open suspec-starter-kit on GitHub (opens in new tab)"
           >
             suspec-starter-kit
           </TextLink>
@@ -563,6 +564,7 @@ export default function SkillsPage() {
                 href="https://github.com/jcosta33/suspec-starter-kit"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Open suspec-starter-kit on GitHub (opens in new tab)"
               >
                 suspec-starter-kit
               </TextLink>{" "}
@@ -628,6 +630,7 @@ export default function SkillsPage() {
               target="_blank"
               rel="noopener noreferrer"
               touchTarget
+              aria-label="Browse the full suspec-skills catalog on GitHub (opens in new tab)"
             >
               Browse the full catalog on GitHub →
             </TextLink>
