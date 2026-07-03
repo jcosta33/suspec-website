@@ -1450,12 +1450,12 @@ body {
     gap: 0.42rem;
     overflow: visible;
     justify-content: start !important;
-    min-height: 2.5rem !important;
+    min-height: 2.75rem !important;
     border: 0 !important;
     border-radius: calc(var(--radius-panel) - 2px) !important;
     background: transparent !important;
     box-shadow: none !important;
-    padding: 0.32rem 0.46rem !important;
+    padding: 0.38rem 0.5rem !important;
   }
 
   .get-started-page .setup-path-strip > li > a > div {

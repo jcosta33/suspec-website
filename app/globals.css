@@ -5071,7 +5071,7 @@ section.bg-section-band::after {
 }
 
 .setup-command-button {
-  min-height: 2.55rem;
+  min-height: 2.75rem;
   align-self: center;
   border-color: rgba(var(--signal-core-rgb), 0.28);
   color: var(--color-concrete-200);
@@ -5150,7 +5150,7 @@ section.bg-section-band::after {
 
   .setup-command-button {
     width: fit-content;
-    min-height: 2.45rem;
+    min-height: 2.75rem;
   }
 }
 
