@@ -283,6 +283,7 @@ export default function CliPage() {
           motif="catalog"
           tone="reference"
           toneLabel="cli"
+          titleLabel="suspec-cli"
           title={
             <>
               suspec<span className="product-name-suffix">-cli</span>

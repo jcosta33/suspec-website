@@ -22,6 +22,7 @@ const HERO_MOTIFS = {
 export interface PageHeroProps {
   eyebrow: ReactNode;
   title: ReactNode;
+  titleLabel?: string;
   className?: string;
   cursor?: boolean;
   toneLabel?: ReactNode;
@@ -34,6 +35,7 @@ export interface PageHeroProps {
 export function PageHero({
   eyebrow,
   title,
+  titleLabel,
   className = "",
   cursor = false,
   toneLabel,
@@ -67,6 +69,7 @@ export function PageHero({
         {eyebrow}
       </Eyebrow>
       <h1
+        aria-label={titleLabel}
         className={`page-hero-title max-w-full break-words font-title text-4xl font-semibold tracking-[0] text-concrete-100 ${TITLE_SIZES[titleSize]}`}
       >
         {title}

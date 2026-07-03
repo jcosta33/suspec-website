@@ -326,6 +326,7 @@ export default function McpPage() {
           motif="bridge"
           tone="reference"
           toneLabel="mcp"
+          titleLabel="suspec-mcp"
           title={
             <>
               suspec<span className="product-name-suffix">-mcp</span>

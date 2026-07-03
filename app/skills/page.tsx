@@ -313,6 +313,7 @@ export default function SkillsPage() {
           motif="catalog"
           tone="evidence"
           toneLabel="skills"
+          titleLabel="suspec-skills"
           title={
             <>
               suspec<span className="product-name-suffix">-skills</span>

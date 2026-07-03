@@ -351,6 +351,7 @@ export default function AgentsPage() {
           motif="catalog"
           tone="reference"
           toneLabel="agents"
+          titleLabel="suspec-agents"
           title={
             <>
               suspec<span className="product-name-suffix">-agents</span>
