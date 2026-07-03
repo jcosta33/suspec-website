@@ -211,13 +211,21 @@ export default async function DocPage({
           headings,
         )}
       />
-      <article className="docs-prose" data-pagefind-body>
+      <article
+        id="docs-primary-content"
+        className="docs-prose"
+        data-pagefind-body
+        tabIndex={-1}
+        aria-labelledby="docs-article-title"
+      >
         <header className="docs-article-header">
           <div className="docs-article-kicker" data-pagefind-ignore>
             <span>manual page</span>
             <span>/ {docGroup}</span>
           </div>
-          <h1 className={titleClassName}>{title}</h1>
+          <h1 id="docs-article-title" className={titleClassName}>
+            {title}
+          </h1>
           <div className="docs-source-note" data-pagefind-ignore>
             <span className="paper-stamp">source</span>
             <span className="docs-source-path">

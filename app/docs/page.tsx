@@ -161,14 +161,20 @@ export default function DocsIndex() {
   };
 
   return (
-    <div className="docs-prose docs-index-prose" data-pagefind-body>
+    <section
+      id="docs-primary-content"
+      className="docs-prose docs-index-prose"
+      data-pagefind-body
+      tabIndex={-1}
+      aria-labelledby="docs-index-title"
+    >
       <JsonLd data={docsIndexJsonLd} />
       <header className="docs-index-cover">
         <div className="docs-index-cover-copy">
           <p className="docs-index-kicker" data-pagefind-ignore>
             canon / manual index
           </p>
-          <h1>Suspec docs</h1>
+          <h1 id="docs-index-title">Suspec docs</h1>
           <p className="docs-index-lede">
             Start with the numbered pages, use the tutorial for one loop, and
             keep the reference pages nearby for artifact formats, checks,
@@ -312,6 +318,6 @@ export default function DocsIndex() {
           </section>
         ) : null}
       </div>
-    </div>
+    </section>
   );
 }
