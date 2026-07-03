@@ -41,8 +41,8 @@ const numbered = fs
 const order = [...numbered, ...dirDocs("tutorial"), ...dirDocs("examples")];
 
 const header =
-  `# suspec - full documentation\n\n` +
-  `> suspec is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. ` +
+  `# Suspec - full documentation\n\n` +
+  `> Suspec is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. ` +
   `Plain markdown, any agent, no runtime. This file concatenates the user-facing documentation for ` +
   `full-context ingestion by AI assistants.\n\n` +
   `Site: https://suspecframework.dev/ - Canon: https://github.com/jcosta33/suspec\n\n---\n\n`;
@@ -52,8 +52,7 @@ const body = order
     (rel) =>
       `<!-- ${rel} -->\n\n${fs
         .readFileSync(path.join(CANON, rel), "utf8")
-        .trim()
-        .replace(/\bSuspec\b/g, "suspec")}\n`,
+        .trim()}\n`,
   )
   .join("\n\n---\n\n");
 

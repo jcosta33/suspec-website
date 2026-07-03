@@ -22,8 +22,8 @@ function userFacingDocSlugs() {
 function buildLlmsFullText() {
   const slugs = userFacingDocSlugs();
   const header =
-    `# suspec - full documentation\n\n` +
-    `> suspec is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. ` +
+    `# Suspec - full documentation\n\n` +
+    `> Suspec is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. ` +
     `Plain markdown, any agent, no runtime. This file concatenates the user-facing documentation for ` +
     `full-context ingestion by AI assistants.\n\n` +
     `Site: ${SITE_URL} - Canon: ${CANON_URL}\n\n---\n\n`;
@@ -36,9 +36,7 @@ function buildLlmsFullText() {
     .map((slug) => {
       const doc = readDoc(slug);
       if (!doc) return null;
-      return `<!-- ${slug}.md -->\n\n${doc
-        .trim()
-        .replace(/\bSuspec\b/g, "suspec")}\n`;
+      return `<!-- ${slug}.md -->\n\n${doc.trim()}\n`;
     })
     .filter((doc): doc is string => Boolean(doc))
     .join("\n\n---\n\n");

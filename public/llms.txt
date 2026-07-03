@@ -32,7 +32,9 @@ Suspec keeps a human in charge of the firehose. Agents draft, run, and paste the
 - [Full documentation, concatenated](https://suspecframework.dev/llms-full.txt): Every user-facing doc (the numbered path, the tutorial, and the worked examples) in one markdown file for full-context ingestion.
 - [Documentation home](https://suspecframework.dev/docs/): The full documentation, including the reference layer and the decision ledger.
 - [Get started](https://suspecframework.dev/get-started/): The two adoption paths — copy the starter kit, or run it by hand.
-- [The CLI](https://suspecframework.dev/cli/): The optional reference companion and its command surface.
-- [suspec-mcp](https://suspecframework.dev/mcp/): The optional read-only MCP bridge for agent clients.
+- [suspec-skills](https://suspecframework.dev/skills/): Framework-free agent disciplines, plus Suspec-coupled kit files for loop-aware work.
+- [suspec-agents](https://suspecframework.dev/agents/): Claude Code role files for review, challenge, research, spec, audit, and docs work.
+- [suspec-cli](https://suspecframework.dev/cli/): The optional reference companion and its command surface.
+- [suspec-mcp](https://suspecframework.dev/mcp/): The optional local MCP adapter for workspace status, checks, artifacts, and review data.
 - [Canon on GitHub](https://github.com/jcosta33/suspec): The source repository for the docs, ADRs, and the checks contract.
 - [Starter kit](https://github.com/jcosta33/suspec-starter-kit): The copy-whole workspace template.
