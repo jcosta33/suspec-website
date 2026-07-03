@@ -228,8 +228,8 @@ export default function WritingSkillsPage() {
                 data-color-role={item.signal}
                 className={`section-jump-nav-link section-jump-nav-link-${item.signal} focus-ring group`}
               >
-                <span className="section-jump-nav-index">
-                  {String(index + 1).padStart(2, "0")}
+                <span className="section-jump-nav-index" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}{" "}
                 </span>
                 <span className="section-jump-nav-label">{item.label}</span>
                 <ArrowRight

@@ -391,11 +391,12 @@ export default function WhatIsSuspecPage() {
               <a
                 key={item.href}
                 href={item.href}
+                aria-label={`Jump to ${item.label} section`}
                 data-color-role={item.signal}
                 className={`section-jump-nav-link section-jump-nav-link-${item.signal} focus-ring group`}
               >
-                <span className="section-jump-nav-index">
-                  {String(index + 2).padStart(2, "0")}
+                <span className="section-jump-nav-index" aria-hidden="true">
+                  {String(index + 2).padStart(2, "0")}{" "}
                 </span>
                 <span className="section-jump-nav-label">{item.label}</span>
                 <ArrowRight
