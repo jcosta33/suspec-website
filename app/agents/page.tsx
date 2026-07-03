@@ -592,7 +592,7 @@ export default function AgentsPage() {
                   href={repoHref(a.agent)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${a.agent} definition on GitHub (opens in new tab)`}
+                  aria-label={`${a.agent}.md role file on GitHub (opens in new tab)`}
                   className="group block rounded-sm focus-ring"
                 >
                   <Card
@@ -604,19 +604,24 @@ export default function AgentsPage() {
                         <HexBadge color="reference" className="catalog-row-badge">
                           <Icon className="h-5 w-5" aria-hidden="true" />
                         </HexBadge>
-                        <div>
+                        <div className="agent-worker-body min-w-0">
                           <h3
                             className={`catalog-row-title font-mono text-sm font-semibold ${signalRoles.reference.text}`}
                           >
                             {a.agent}
                           </h3>
-                          <p className="catalog-row-copy mt-1 text-sm leading-relaxed text-concrete-400">
+                          <p className="agent-worker-file font-mono text-xs leading-relaxed text-concrete-500">
+                            <span className="sr-only"> role file </span>
+                            .claude/agents/{a.agent}.md
+                          </p>
+                          <p className="catalog-row-copy text-sm leading-relaxed text-concrete-400">
+                            <span className="sr-only"> purpose </span>
                             {a.use}
                           </p>
                         </div>
                       </div>
                       <ExternalLink
-                        className="mt-0.5 h-4 w-4 shrink-0 text-concrete-500 opacity-0 transition-opacity group-hover:opacity-100 group-focus:opacity-100"
+                        className="catalog-row-link-icon mt-0.5 h-4 w-4 shrink-0 text-concrete-500 transition-opacity group-hover:opacity-100 group-focus:opacity-100"
                         aria-hidden="true"
                       />
                     </div>
@@ -658,7 +663,7 @@ export default function AgentsPage() {
                   href={repoHref(a.agent)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${a.agent} definition on GitHub (opens in new tab)`}
+                  aria-label={`${a.agent}.md role file on GitHub (opens in new tab)`}
                   className="group block rounded-sm focus-ring"
                 >
                   <Card
@@ -670,19 +675,24 @@ export default function AgentsPage() {
                         <HexBadge color="core" className="catalog-row-badge">
                           <Icon className="h-5 w-5" aria-hidden="true" />
                         </HexBadge>
-                        <div>
+                        <div className="agent-worker-body min-w-0">
                           <h3
                             className={`catalog-row-title font-mono text-sm font-semibold ${signalRoles.core.text}`}
                           >
                             {a.agent}
                           </h3>
-                          <p className="catalog-row-copy mt-1 text-sm leading-relaxed text-concrete-400">
+                          <p className="agent-worker-file font-mono text-xs leading-relaxed text-concrete-500">
+                            <span className="sr-only"> role file </span>
+                            .claude/agents/{a.agent}.md
+                          </p>
+                          <p className="catalog-row-copy text-sm leading-relaxed text-concrete-400">
+                            <span className="sr-only"> purpose </span>
                             {a.use}
                           </p>
                         </div>
                       </div>
                       <ExternalLink
-                        className="mt-0.5 h-4 w-4 shrink-0 text-concrete-500 opacity-0 transition-opacity group-hover:opacity-100 group-focus:opacity-100"
+                        className="catalog-row-link-icon mt-0.5 h-4 w-4 shrink-0 text-concrete-500 transition-opacity group-hover:opacity-100 group-focus:opacity-100"
                         aria-hidden="true"
                       />
                     </div>
