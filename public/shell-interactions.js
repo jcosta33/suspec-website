@@ -45,32 +45,37 @@
     let frame = 0;
     let pointerX = window.innerWidth / 2;
     let pointerY = window.innerHeight / 2;
+    let currentX = 0;
+    let currentY = 0;
+    let targetX = 0;
+    let targetY = 0;
     let tracking = false;
     const motionEvents =
       "PointerEvent" in window ? ["pointermove", "mousemove"] : ["mousemove"];
+    const settleEvents =
+      "PointerEvent" in window ? ["pointerleave", "mouseleave"] : ["mouseleave"];
 
     function resetPointer() {
       for (const property of resetProperties) root.style.removeProperty(property);
+      currentX = 0;
+      currentY = 0;
+      targetX = 0;
+      targetY = 0;
     }
 
-    function updatePointer() {
-      frame = 0;
-      const width = Math.max(window.innerWidth, 1);
-      const height = Math.max(window.innerHeight, 1);
-      const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
-      const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = normalY * -8.2;
-      const planeTiltY = normalX * 9.4;
-      const headerTiltX = planeTiltX * 0.82;
-      const headerTiltY = planeTiltY * 0.82;
-      const planeShiftX = -normalX * 9.5;
-      const planeShiftY = -normalY * 6.5;
-      const planeDriftX = -normalX * 18;
-      const planeDriftY = -normalY * 12;
-      const headerShiftX = -normalX * 7.4;
-      const headerShiftY = -normalY * 4.8;
-      const heroShiftX = -normalX * 5.6;
-      const heroShiftY = -normalY * 3.7;
+    function writePointerMotion(normalX, normalY) {
+      const planeTiltX = normalY * -4.4;
+      const planeTiltY = normalX * 5;
+      const headerTiltX = planeTiltX * 0.62;
+      const headerTiltY = planeTiltY * 0.62;
+      const planeShiftX = -normalX * 8;
+      const planeShiftY = -normalY * 6;
+      const planeDriftX = normalX * 12;
+      const planeDriftY = normalY * 9;
+      const headerShiftX = normalX * 5.2;
+      const headerShiftY = normalY * 3.8;
+      const heroShiftX = normalX * 4.6;
+      const heroShiftY = normalY * 3.2;
 
       root.style.setProperty("--background-plane-normal-x", normalX.toFixed(4));
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
@@ -132,19 +137,19 @@
       );
       root.style.setProperty(
         "--background-header-before-rotate-x",
-        `${(headerTiltX * 1.12).toFixed(3)}deg`,
+        `${headerTiltX.toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-header-before-rotate-y",
-        `${(headerTiltY * 1.12).toFixed(3)}deg`,
+        `${headerTiltY.toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-header-after-rotate-x",
-        `${(headerTiltX * 0.92).toFixed(3)}deg`,
+        `${(headerTiltX * 0.74).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-header-after-rotate-y",
-        `${(headerTiltY * 0.92).toFixed(3)}deg`,
+        `${(headerTiltY * 0.74).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-header-shift-x",
@@ -156,27 +161,27 @@
       );
       root.style.setProperty(
         "--background-header-shift-soft-x",
-        `${(headerShiftX * 0.72).toFixed(2)}px`,
+        `${(headerShiftX * 0.54).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-header-shift-soft-y",
-        `${(headerShiftY * 0.72).toFixed(2)}px`,
+        `${(headerShiftY * 0.54).toFixed(2)}px`,
       );
       root.style.setProperty(
         "--background-hero-edge-rotate-x",
-        `${headerTiltX.toFixed(3)}deg`,
+        `${(headerTiltX * 0.72).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-hero-edge-rotate-y",
-        `${headerTiltY.toFixed(3)}deg`,
+        `${(headerTiltY * 0.72).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-hero-motif-rotate-x",
-        `${(headerTiltX * 1.08).toFixed(3)}deg`,
+        `${(headerTiltX * 0.9).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-hero-motif-rotate-y",
-        `${(headerTiltY * 1.08).toFixed(3)}deg`,
+        `${(headerTiltY * 0.9).toFixed(3)}deg`,
       );
       root.style.setProperty(
         "--background-hero-shift-x",
@@ -188,27 +193,67 @@
       );
       root.style.setProperty(
         "--background-plane-origin-x",
-        `${(50 + normalX * 4.6).toFixed(2)}%`,
+        `${(50 + normalX * 6).toFixed(2)}%`,
       );
       root.style.setProperty(
         "--background-plane-origin-y",
-        `${(52 + normalY * 3.4).toFixed(2)}%`,
+        `${(54 + normalY * 4.2).toFixed(2)}%`,
       );
       root.style.setProperty(
         "--background-header-origin-x",
-        `${(50 + normalX * 2.8).toFixed(2)}%`,
+        `${(50 + normalX * 4).toFixed(2)}%`,
       );
       root.style.setProperty(
         "--background-header-origin-y",
-        `${(46 + normalY * 2).toFixed(2)}%`,
+        `${(46 + normalY * 2.8).toFixed(2)}%`,
       );
+    }
+
+    function renderPointerMotion() {
+      currentX += (targetX - currentX) * 0.16;
+      currentY += (targetY - currentY) * 0.16;
+
+      const settled =
+        Math.abs(targetX - currentX) < 0.001 &&
+        Math.abs(targetY - currentY) < 0.001;
+
+      if (settled) {
+        currentX = targetX;
+        currentY = targetY;
+      }
+
+      writePointerMotion(currentX, currentY);
+
+      if (settled) {
+        frame = 0;
+      } else {
+        frame = window.requestAnimationFrame(renderPointerMotion);
+      }
+    }
+
+    function queueRender() {
+      if (frame === 0) frame = window.requestAnimationFrame(renderPointerMotion);
+    }
+
+    function updateTarget(clientX, clientY) {
+      const width = Math.max(window.innerWidth, 1);
+      const height = Math.max(window.innerHeight, 1);
+      targetX = Math.max(-1, Math.min(1, (clientX / width - 0.5) * 2));
+      targetY = Math.max(-1, Math.min(1, (clientY / height - 0.5) * 2));
+      queueRender();
     }
 
     function queuePointer(event) {
       if (!tracking) return;
       pointerX = event.clientX;
       pointerY = event.clientY;
-      if (frame === 0) frame = window.requestAnimationFrame(updatePointer);
+      updateTarget(pointerX, pointerY);
+    }
+
+    function settlePointer() {
+      targetX = 0;
+      targetY = 0;
+      queueRender();
     }
 
     function startTracking() {
@@ -221,7 +266,10 @@
           passive: true,
         });
       });
-      updatePointer();
+      settleEvents.forEach((eventName) => {
+        window.addEventListener(eventName, settlePointer);
+      });
+      writePointerMotion(0, 0);
     }
 
     function stopTracking() {
@@ -230,6 +278,9 @@
       delete root.dataset.backgroundMotion;
       motionEvents.forEach((eventName) => {
         document.removeEventListener(eventName, queuePointer, true);
+      });
+      settleEvents.forEach((eventName) => {
+        window.removeEventListener(eventName, settlePointer);
       });
       if (frame !== 0) window.cancelAnimationFrame(frame);
       frame = 0;
@@ -245,7 +296,7 @@
       pointerX = Math.max(0, Math.min(window.innerWidth, pointerX));
       pointerY = Math.max(0, Math.min(window.innerHeight, pointerY));
       syncTracking();
-      if (tracking) updatePointer();
+      if (tracking) updateTarget(pointerX, pointerY);
     }
 
     if (typeof motionQuery.addEventListener === "function") {
