@@ -64,18 +64,18 @@
     }
 
     function writePointerMotion(normalX, normalY) {
-      const planeTiltX = normalY * -4.4;
-      const planeTiltY = normalX * 5;
-      const headerTiltX = planeTiltX * 0.62;
-      const headerTiltY = planeTiltY * 0.62;
-      const planeShiftX = -normalX * 8;
-      const planeShiftY = -normalY * 6;
-      const planeDriftX = normalX * 12;
-      const planeDriftY = normalY * 9;
-      const headerShiftX = normalX * 5.2;
-      const headerShiftY = normalY * 3.8;
-      const heroShiftX = normalX * 4.6;
-      const heroShiftY = normalY * 3.2;
+      const planeTiltX = normalY * -6.2;
+      const planeTiltY = normalX * 7.1;
+      const headerTiltX = planeTiltX * 0.74;
+      const headerTiltY = planeTiltY * 0.74;
+      const planeShiftX = -normalX * 3.8;
+      const planeShiftY = -normalY * 3;
+      const planeDriftX = normalX * 3.2;
+      const planeDriftY = normalY * 2.4;
+      const headerShiftX = normalX * 7.4;
+      const headerShiftY = normalY * 5.4;
+      const heroShiftX = normalX * 6.6;
+      const heroShiftY = normalY * 4.8;
 
       root.style.setProperty("--background-plane-normal-x", normalX.toFixed(4));
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
@@ -193,19 +193,19 @@
       );
       root.style.setProperty(
         "--background-plane-origin-x",
-        `${(50 + normalX * 6).toFixed(2)}%`,
+        `${(50 + normalX * 9).toFixed(2)}%`,
       );
       root.style.setProperty(
         "--background-plane-origin-y",
-        `${(54 + normalY * 4.2).toFixed(2)}%`,
+        `${(54 + normalY * 6.2).toFixed(2)}%`,
       );
       root.style.setProperty(
         "--background-header-origin-x",
-        `${(50 + normalX * 4).toFixed(2)}%`,
+        `${(50 + normalX * 6).toFixed(2)}%`,
       );
       root.style.setProperty(
         "--background-header-origin-y",
-        `${(46 + normalY * 2.8).toFixed(2)}%`,
+        `${(46 + normalY * 4.2).toFixed(2)}%`,
       );
     }
 
