@@ -907,8 +907,8 @@ body {
 
 .repo-product-page .agent-worker-card .catalog-row,
 .skills-page .skill-guide-row.catalog-row {
-  min-height: 6.55rem !important;
-  padding-block: 1rem !important;
+  min-height: 6.35rem !important;
+  padding-block: 0.9rem !important;
 }
 
 .repo-product-page .agent-worker-card .catalog-row {
@@ -920,14 +920,18 @@ body {
 .skills-page .skill-guide-row.catalog-row > div:first-child > div:last-child {
   display: grid;
   align-content: start;
-  grid-template-rows: minmax(1.35rem, auto) minmax(2.55rem, auto);
-  row-gap: 0.46rem;
+  grid-template-rows: auto auto 1fr;
+  row-gap: 0.3rem;
 }
 
 .repo-product-page .agent-worker-card .catalog-row-copy,
 .skills-page .skill-guide-row .catalog-row-copy {
   align-self: start;
   margin-top: 0 !important;
+}
+
+.skills-page .skill-guide-row-file {
+  overflow-wrap: anywhere;
 }
 
 .repo-product-page .agent-worker-card .catalog-row-title,

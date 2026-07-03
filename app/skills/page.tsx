@@ -514,6 +514,7 @@ export default function SkillsPage() {
           repo={catalogRepo}
           headerLabel="suspec-skills catalog"
           guidesLabel="guides"
+          sourcePath="skills"
         />
       </Section>
 
@@ -541,6 +542,7 @@ export default function SkillsPage() {
           repo={catalogRepo}
           headerLabel="suspec-skills catalog"
           guidesLabel="guides"
+          sourcePath="skills"
         />
       </Section>
 
@@ -579,6 +581,7 @@ export default function SkillsPage() {
           repo={kitRepo}
           headerLabel="suspec-starter-kit/.agents/skills"
           guidesLabel="guides"
+          sourcePath=".agents/skills"
           toned={false}
         />
       </Section>
