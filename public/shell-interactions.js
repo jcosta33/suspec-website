@@ -40,7 +40,7 @@
 
   function startBackgroundMotion() {
     const motionQuery = window.matchMedia(
-      "(hover: hover) and (prefers-reduced-motion: no-preference)",
+      "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
     );
     let frame = 0;
     let pointerX = window.innerWidth / 2;
@@ -59,14 +59,14 @@
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = normalY * -8.2;
-      const planeTiltY = normalX * 9.4;
-      const headerTiltX = planeTiltX * 0.88;
-      const headerTiltY = planeTiltY * 0.88;
-      const headerShiftX = -normalX * 8.2;
-      const headerShiftY = -normalY * 5.2;
-      const heroShiftX = -normalX * 6.4;
-      const heroShiftY = -normalY * 4;
+      const planeTiltX = normalY * -7.2;
+      const planeTiltY = normalX * 8.2;
+      const headerTiltX = planeTiltX * 0.82;
+      const headerTiltY = planeTiltY * 0.82;
+      const headerShiftX = -normalX * 2.2;
+      const headerShiftY = -normalY * 1.5;
+      const heroShiftX = -normalX * 1.8;
+      const heroShiftY = -normalY * 1.2;
 
       root.style.setProperty("--background-plane-normal-x", normalX.toFixed(4));
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));

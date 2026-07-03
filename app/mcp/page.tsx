@@ -319,21 +319,6 @@ function CopyableIdentifier({
 export default function McpPage() {
   return (
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
-      <JsonLd data={mcpPageJsonLd} />
-      <PackageJsonLd
-        name="suspec-mcp"
-        description={mcpDescription}
-        path="/mcp/"
-        repository={MCP_REPOSITORY}
-        keywords={[
-          "MCP server",
-          "stdio adapter",
-          "workspace facts",
-          "review data",
-          "no verdict",
-        ]}
-        catalogItems={mcpToolCatalogItems}
-      />
       <Section className="ambient-header">
         <PageHero
           eyebrow="mcp server / verdict-free adapter"
@@ -765,6 +750,21 @@ export default function McpPage() {
           </div>
         </Card>
       </Section>
+      <JsonLd data={mcpPageJsonLd} />
+      <PackageJsonLd
+        name="suspec-mcp"
+        description={mcpDescription}
+        path="/mcp/"
+        repository={MCP_REPOSITORY}
+        keywords={[
+          "MCP server",
+          "stdio adapter",
+          "workspace facts",
+          "review data",
+          "no verdict",
+        ]}
+        catalogItems={mcpToolCatalogItems}
+      />
     </div>
   );
 }

@@ -140,7 +140,6 @@ const colophonJsonLd = {
 export default function ColophonPage() {
   return (
     <div className="flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
-      <JsonLd data={colophonJsonLd} />
       <Section className="ambient-header">
         <PageHero
           eyebrow="site record / build notes"
@@ -294,6 +293,7 @@ export default function ColophonPage() {
           ))}
         </div>
       </Section>
+      <JsonLd data={colophonJsonLd} />
     </div>
   );
 }

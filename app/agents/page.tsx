@@ -344,21 +344,6 @@ function AgentInstallSection() {
 export default function AgentsPage() {
   return (
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
-      <JsonLd data={agentsPageJsonLd} />
-      <PackageJsonLd
-        name="suspec-agents"
-        description={agentsDescription}
-        path="/agents/"
-        repository={AGENTS_REPOSITORY}
-        keywords={[
-          "Claude Code agents",
-          "worker files",
-          "review agents",
-          "challenge agents",
-          "authoring agents",
-        ]}
-        catalogItems={agentCatalogItems}
-      />
       <Section className="ambient-header">
         <PageHero
           eyebrow="worker files / agent roles"
@@ -805,6 +790,21 @@ export default function AgentsPage() {
           </p>
         </Card>
       </Section>
+      <JsonLd data={agentsPageJsonLd} />
+      <PackageJsonLd
+        name="suspec-agents"
+        description={agentsDescription}
+        path="/agents/"
+        repository={AGENTS_REPOSITORY}
+        keywords={[
+          "Claude Code agents",
+          "worker files",
+          "review agents",
+          "challenge agents",
+          "authoring agents",
+        ]}
+        catalogItems={agentCatalogItems}
+      />
     </div>
   );
 }

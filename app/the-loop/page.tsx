@@ -247,7 +247,6 @@ export default function TheLoopPage() {
 
   return (
     <div className="flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
-      <JsonLd data={loopJsonLd} />
       <Section className="ambient-header">
         <PageHero
           eyebrow="workflow / six steps"
@@ -469,6 +468,7 @@ export default function TheLoopPage() {
       </Section>
 
       <GiltBand height="sm" />
+      <JsonLd data={loopJsonLd} />
     </div>
   );
 }

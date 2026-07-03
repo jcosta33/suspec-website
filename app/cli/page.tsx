@@ -276,21 +276,6 @@ const cliPageNav = [
 export default function CliPage() {
   return (
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
-      <JsonLd data={cliPageJsonLd} />
-      <PackageJsonLd
-        name="suspec-cli"
-        description={cliDescription}
-        path="/cli/"
-        repository={CLI_REPOSITORY}
-        keywords={[
-          "command line interface",
-          "workspace checks",
-          "task worktrees",
-          "JSON output",
-          "board status",
-        ]}
-        catalogItems={cliCommandItems}
-      />
       <Section className="ambient-header">
         <PageHero
           eyebrow="suspec-cli — reference implementation"
@@ -723,6 +708,21 @@ export default function CliPage() {
           </div>
         </Card>
       </Section>
+      <JsonLd data={cliPageJsonLd} />
+      <PackageJsonLd
+        name="suspec-cli"
+        description={cliDescription}
+        path="/cli/"
+        repository={CLI_REPOSITORY}
+        keywords={[
+          "command line interface",
+          "workspace checks",
+          "task worktrees",
+          "JSON output",
+          "board status",
+        ]}
+        catalogItems={cliCommandItems}
+      />
     </div>
   );
 }

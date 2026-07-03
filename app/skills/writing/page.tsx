@@ -185,7 +185,6 @@ const skillWritingJsonLd = {
 export default function WritingSkillsPage() {
   return (
     <div className="writing-skill-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
-      <JsonLd data={skillWritingJsonLd} />
       <Section className="ambient-header">
         <PageHero
           eyebrow="SKILL.md"
@@ -607,6 +606,7 @@ export default function WritingSkillsPage() {
           </Card>
         </div>
       </Section>
+      <JsonLd data={skillWritingJsonLd} />
     </div>
   );
 }

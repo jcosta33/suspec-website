@@ -252,7 +252,6 @@ function HeroProofStrip() {
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={softwareApp} />
       <section className="home-hero-section relative isolate border-b border-panel-border">
         <HeroHexGrid />
         <Section className="ambient-header relative z-10">
@@ -505,7 +504,6 @@ export default function HomePage() {
         </Section>
       </section>
 
-      <JsonLd data={faqJsonLd} />
       <section className="pb-8 pt-16 sm:py-20">
         <Section
           register="05 / answers"
@@ -568,6 +566,9 @@ export default function HomePage() {
           </div>
         </Section>
       </section>
+
+      <JsonLd data={softwareApp} />
+      <JsonLd data={faqJsonLd} />
     </>
   );
 }

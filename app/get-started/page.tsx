@@ -289,7 +289,6 @@ export default function GetStartedPage() {
 
   return (
     <div className="get-started-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
-      <JsonLd data={setupJsonLd} />
       <Section className="ambient-header">
         <PageHero
           eyebrow="setup / first workspace"
@@ -700,6 +699,7 @@ export default function GetStartedPage() {
           </ActionLink>
         </Card>
       </Section>
+      <JsonLd data={setupJsonLd} />
     </div>
   );
 }

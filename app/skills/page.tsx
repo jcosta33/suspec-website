@@ -306,21 +306,6 @@ const skillsPageJsonLd = {
 export default function SkillsPage() {
   return (
     <div className="repo-product-page skills-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
-      <JsonLd data={skillsPageJsonLd} />
-      <PackageJsonLd
-        name="suspec-skills"
-        description={skillsDescription}
-        path="/skills/"
-        repository={SKILLS_REPOSITORY}
-        keywords={[
-          "agent guides",
-          "npx skills",
-          "suspec-starter-kit",
-          "review guides",
-          "implementation guides",
-        ]}
-        catalogItems={skillCatalogItems}
-      />
       <Section className="ambient-header">
         <PageHero
           eyebrow="tool index / agent guides"
@@ -642,6 +627,21 @@ export default function SkillsPage() {
           </p>
         </Card>
       </Section>
+      <JsonLd data={skillsPageJsonLd} />
+      <PackageJsonLd
+        name="suspec-skills"
+        description={skillsDescription}
+        path="/skills/"
+        repository={SKILLS_REPOSITORY}
+        keywords={[
+          "agent guides",
+          "npx skills",
+          "suspec-starter-kit",
+          "review guides",
+          "implementation guides",
+        ]}
+        catalogItems={skillCatalogItems}
+      />
     </div>
   );
 }
