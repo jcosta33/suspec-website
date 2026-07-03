@@ -354,13 +354,13 @@ export default function SkillsPage() {
         id="index"
         register="01 / index"
         registerTone="reference"
-        className="manifest-pair grid gap-5 md:grid-cols-[minmax(16rem,0.68fr)_minmax(0,1.32fr)] md:items-start"
+        className="manifest-pair grid gap-5 lg:grid-cols-[minmax(16rem,0.68fr)_minmax(0,1.32fr)] lg:items-start"
       >
         <PaperArtifact
           label="index"
           title="selection rule"
           meta="catalog -> repo policy -> kit"
-          className="manifest-paper-fit md:self-start"
+          className="manifest-paper-fit lg:self-start"
         >
           <dl className="agent-delegation-contract skill-selection-contract">
             {selectionRules.map((rule) => (
