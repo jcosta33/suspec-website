@@ -1605,7 +1605,7 @@ body {
   }
 
   .repo-product-page .agent-roster-cell {
-    min-height: auto !important;
+    min-height: 7.05rem !important;
     padding: 0.7rem 0.74rem !important;
   }
 
@@ -1696,10 +1696,14 @@ body {
   }
 
   .repo-product-page .agent-worker-card .catalog-row {
-    min-height: 4.45rem !important;
+    min-height: 6.15rem !important;
     grid-template-columns: 2.6rem minmax(0, 1fr);
     gap: 0.74rem !important;
     padding: 0.78rem 0.82rem !important;
+  }
+
+  .repo-product-page .agent-worker-card {
+    min-height: 9.25rem;
   }
 
   .repo-product-page .agent-worker-card .catalog-row > div:first-child > div:last-child,
