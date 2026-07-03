@@ -3455,7 +3455,7 @@
   .docs-index-cover,
   .docs-article-header {
     perspective: clamp(500px, 46vw, 820px);
-    perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
     transform-style: preserve-3d;
   }
 

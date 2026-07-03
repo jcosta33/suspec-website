@@ -93,8 +93,12 @@ const footerGroups = [
 const backgroundMotionVars = [
   "--background-plane-origin-x",
   "--background-plane-origin-y",
+  "--background-plane-perspective-x",
+  "--background-plane-perspective-y",
   "--background-header-origin-x",
   "--background-header-origin-y",
+  "--background-header-perspective-x",
+  "--background-header-perspective-y",
   "--background-plane-normal-x",
   "--background-plane-normal-y",
   "--background-plane-rotate-x",
@@ -238,37 +242,43 @@ export function Shell({ children }: { children: React.ReactNode }) {
       const y = Math.max(-1, Math.min(1, currentY));
       const absX = Math.abs(x);
       const absY = Math.abs(y);
-      const originX = 50 + x * 12;
-      const originY = 53 + y * 9;
+      const planePerspectiveX = 50 + x * 10;
+      const planePerspectiveY = 53 + y * 7;
+      const headerPerspectiveX = 50 + x * 11;
+      const headerPerspectiveY = 47 + y * 8;
 
-      root.style.setProperty("--background-plane-origin-x", `${originX}%`);
-      root.style.setProperty("--background-plane-origin-y", `${originY}%`);
-      root.style.setProperty("--background-header-origin-x", `${50 + x * 10}%`);
-      root.style.setProperty("--background-header-origin-y", `${46 + y * 8}%`);
+      root.style.setProperty("--background-plane-origin-x", "50%");
+      root.style.setProperty("--background-plane-origin-y", "54%");
+      root.style.setProperty("--background-plane-perspective-x", `${planePerspectiveX}%`);
+      root.style.setProperty("--background-plane-perspective-y", `${planePerspectiveY}%`);
+      root.style.setProperty("--background-header-origin-x", "50%");
+      root.style.setProperty("--background-header-origin-y", "52%");
+      root.style.setProperty("--background-header-perspective-x", `${headerPerspectiveX}%`);
+      root.style.setProperty("--background-header-perspective-y", `${headerPerspectiveY}%`);
       root.style.setProperty("--background-plane-normal-x", x.toFixed(3));
       root.style.setProperty("--background-plane-normal-y", y.toFixed(3));
-      root.style.setProperty("--background-plane-rotate-x", `${(-y * 10.8).toFixed(3)}deg`);
-      root.style.setProperty("--background-plane-rotate-y", `${(x * 12.2).toFixed(3)}deg`);
-      root.style.setProperty("--background-plane-shift-x", `${(-x * 4.2).toFixed(2)}px`);
-      root.style.setProperty("--background-plane-shift-y", `${(-y * 3.15).toFixed(2)}px`);
-      root.style.setProperty("--background-plane-drift-x", `${(-x * 1.42).toFixed(2)}px`);
-      root.style.setProperty("--background-plane-drift-y", `${(-y * 1.12).toFixed(2)}px`);
-      root.style.setProperty("--background-plane-drift-soft-x", `${(-x * 0.78).toFixed(2)}px`);
-      root.style.setProperty("--background-plane-drift-soft-y", `${(-y * 0.62).toFixed(2)}px`);
-      root.style.setProperty("--background-header-before-rotate-x", `${(-y * 7.2).toFixed(3)}deg`);
-      root.style.setProperty("--background-header-before-rotate-y", `${(x * 7.8).toFixed(3)}deg`);
-      root.style.setProperty("--background-header-after-rotate-x", `${(-y * 5.25).toFixed(3)}deg`);
-      root.style.setProperty("--background-header-after-rotate-y", `${(x * 5.85).toFixed(3)}deg`);
-      root.style.setProperty("--background-header-shift-x", `${(-x * 13.4).toFixed(2)}px`);
-      root.style.setProperty("--background-header-shift-y", `${(-y * 9.6).toFixed(2)}px`);
-      root.style.setProperty("--background-header-shift-soft-x", `${(-x * 8.2).toFixed(2)}px`);
-      root.style.setProperty("--background-header-shift-soft-y", `${(-y * 6.25).toFixed(2)}px`);
-      root.style.setProperty("--background-hero-edge-rotate-x", `${(-y * 5.45).toFixed(3)}deg`);
-      root.style.setProperty("--background-hero-edge-rotate-y", `${(x * 6.25).toFixed(3)}deg`);
-      root.style.setProperty("--background-hero-motif-rotate-x", `${(-y * 6.15).toFixed(3)}deg`);
-      root.style.setProperty("--background-hero-motif-rotate-y", `${(x * 6.95).toFixed(3)}deg`);
-      root.style.setProperty("--background-hero-shift-x", `${(-x * (9.2 + absY * 2.2)).toFixed(2)}px`);
-      root.style.setProperty("--background-hero-shift-y", `${(-y * (7.25 + absX * 1.8)).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-rotate-x", `${(-y * 12.6).toFixed(3)}deg`);
+      root.style.setProperty("--background-plane-rotate-y", `${(x * 14.4).toFixed(3)}deg`);
+      root.style.setProperty("--background-plane-shift-x", `${(-x * 2.2).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-shift-y", `${(-y * 1.65).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-drift-x", `${(-x * 0.24).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-drift-y", `${(-y * 0.18).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-drift-soft-x", `${(-x * 0.12).toFixed(2)}px`);
+      root.style.setProperty("--background-plane-drift-soft-y", `${(-y * 0.1).toFixed(2)}px`);
+      root.style.setProperty("--background-header-before-rotate-x", `${(-y * 8.45).toFixed(3)}deg`);
+      root.style.setProperty("--background-header-before-rotate-y", `${(x * 9.05).toFixed(3)}deg`);
+      root.style.setProperty("--background-header-after-rotate-x", `${(-y * 6.3).toFixed(3)}deg`);
+      root.style.setProperty("--background-header-after-rotate-y", `${(x * 6.8).toFixed(3)}deg`);
+      root.style.setProperty("--background-header-shift-x", `${(-x * 10.6).toFixed(2)}px`);
+      root.style.setProperty("--background-header-shift-y", `${(-y * 7.75).toFixed(2)}px`);
+      root.style.setProperty("--background-header-shift-soft-x", `${(-x * 6.8).toFixed(2)}px`);
+      root.style.setProperty("--background-header-shift-soft-y", `${(-y * 5.2).toFixed(2)}px`);
+      root.style.setProperty("--background-hero-edge-rotate-x", `${(-y * 6.55).toFixed(3)}deg`);
+      root.style.setProperty("--background-hero-edge-rotate-y", `${(x * 7.35).toFixed(3)}deg`);
+      root.style.setProperty("--background-hero-motif-rotate-x", `${(-y * 7.35).toFixed(3)}deg`);
+      root.style.setProperty("--background-hero-motif-rotate-y", `${(x * 8.15).toFixed(3)}deg`);
+      root.style.setProperty("--background-hero-shift-x", `${(-x * (7.6 + absY * 1.5)).toFixed(2)}px`);
+      root.style.setProperty("--background-hero-shift-y", `${(-y * (6.15 + absX * 1.2)).toFixed(2)}px`);
 
       if (Math.abs(targetX - currentX) > 0.003 || Math.abs(targetY - currentY) > 0.003) {
         frame = window.requestAnimationFrame(writeMotion);

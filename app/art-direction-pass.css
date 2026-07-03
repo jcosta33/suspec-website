@@ -6,8 +6,12 @@
   --background-plane-tilt-y: 0deg;
   --background-plane-origin-x: 50%;
   --background-plane-origin-y: 54%;
+  --background-plane-perspective-x: 50%;
+  --background-plane-perspective-y: 53%;
   --background-header-tilt-x: 0deg;
   --background-header-tilt-y: 0deg;
+  --background-header-perspective-x: 50%;
+  --background-header-perspective-y: 47%;
   --background-plane-rotate-x: 0deg;
   --background-plane-rotate-y: 0deg;
   --background-plane-shift-x: 0px;
@@ -87,7 +91,7 @@ body {
     overflow: clip;
     pointer-events: none;
     perspective: clamp(420px, 42vw, 760px);
-    perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
+    perspective-origin: var(--background-plane-perspective-x) var(--background-plane-perspective-y);
     transform-style: preserve-3d;
     contain: layout style paint;
   }
@@ -97,10 +101,10 @@ body {
     inset: -22vmax -24vmax;
     display: block;
     background:
-      linear-gradient(rgba(84, 67, 49, 0.25) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(84, 67, 49, 0.21) 1px, transparent 1px),
-      linear-gradient(rgba(var(--signal-core-rgb), 0.044) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.03) 1px, transparent 1px),
+      linear-gradient(rgba(84, 67, 49, 0.21) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(84, 67, 49, 0.18) 1px, transparent 1px),
+      linear-gradient(rgba(var(--signal-core-rgb), 0.036) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.026) 1px, transparent 1px),
       linear-gradient(180deg, rgba(240, 226, 204, 0.014), transparent 34%, rgba(0, 0, 0, 0.08) 100%);
     background-size:
       48px 48px,
@@ -116,11 +120,11 @@ body {
        center top;
     opacity: 1;
     transform:
-      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), -30px)
+      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), -12px)
       rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
       rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
       rotateZ(calc(var(--background-plane-normal-x) * -0.16deg))
-      scale3d(1.18, 1.18, 1);
+      scale3d(1.15, 1.15, 1);
     transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -176,7 +180,7 @@ body {
         rgba(240, 226, 204, 0.018) 48%,
         transparent 58% 100%
       );
-    opacity: 0.4;
+    opacity: 0.34;
     mix-blend-mode: screen;
     mask-image: radial-gradient(92% 76% at 50% 36%, #000 0 54%, transparent 100%);
   }
@@ -189,7 +193,7 @@ body {
 
   .ambient-header {
     perspective: clamp(360px, 36vw, 640px);
-    perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
     transform-style: preserve-3d;
   }
 
@@ -298,7 +302,7 @@ body {
 
   .home-hero-section {
     perspective: clamp(440px, 44vw, 780px);
-    perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
     transform-style: preserve-3d;
   }
 
@@ -317,7 +321,7 @@ body {
 
   .home-hero-seal-field {
     perspective: clamp(440px, 44vw, 780px);
-    perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
     transform-style: preserve-3d;
   }
 
@@ -336,7 +340,7 @@ body {
   .docs-index-cover,
   .docs-article-header {
     perspective: clamp(360px, 42vw, 540px);
-    perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
     transform-style: preserve-3d;
   }
 
