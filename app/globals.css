@@ -4849,13 +4849,13 @@ section.bg-section-band::after {
 }
 
 .get-started-page .setup-path-strip > li > a {
-  min-height: 6.85rem;
-  padding: 0.92rem 1rem;
+  min-height: 5.4rem;
+  padding: 0.78rem 0.9rem;
 }
 
 .get-started-page .setup-path-strip .kit-icon {
-  height: 2.08rem;
-  width: 2.08rem;
+  height: 1.9rem;
+  width: 1.9rem;
 }
 
 .get-started-page .setup-path-strip h2 {
@@ -4864,8 +4864,10 @@ section.bg-section-band::after {
 }
 
 .get-started-page .setup-path-strip p.mt-3 {
-  margin-top: 0.5rem;
+  margin-top: 0.36rem;
   color: var(--color-concrete-400);
+  font-size: 0.8rem;
+  line-height: 1.35;
 }
 
 .setup-route-header {
