@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Badge } from "../components/Badge";
 import { Card } from "../components/Card";
+import { CopyButton } from "../components/CopyButton";
 import { DroneIcon } from "../components/DroneIcon";
 import { Heading } from "../components/Heading";
 import { HexBadge } from "../components/HexBadge";
@@ -295,6 +296,26 @@ const mcpPageNav = [
   signal: SignalRole;
 }>;
 
+function CopyableIdentifier({
+  value,
+  kind,
+}: {
+  value: string;
+  kind: "MCP tool" | "MCP resource URI" | "MCP prompt";
+}) {
+  return (
+    <li className="mcp-copy-row">
+      <code className="mcp-copy-code">{value}</code>
+      <CopyButton
+        text={value}
+        label={`Copy ${value} ${kind}`}
+        compactLabel="copy"
+        className="mcp-identifier-copy"
+      />
+    </li>
+  );
+}
+
 export default function McpPage() {
   return (
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
@@ -552,7 +573,7 @@ export default function McpPage() {
               <div
                 key={group.group}
                 className={`mcp-fact-list tool-list-card tool-list-card-${group.signal} rounded-panel border bg-panel p-4 ${
-                  group.group === "read" ? "sm:row-span-2" : ""
+                  group.group === "read" ? "sm:col-span-2" : ""
                 }`}
               >
                 <p
@@ -560,14 +581,13 @@ export default function McpPage() {
                 >
                   {group.group}
                 </p>
-                <ul className="mt-3 space-y-2">
+                <ul className="mcp-copy-list mt-3">
                   {group.items.map((item) => (
-                    <li
+                    <CopyableIdentifier
                       key={item}
-                      className="whitespace-nowrap font-mono text-[0.8125rem] leading-6 text-concrete-300"
-                    >
-                      {item}
-                    </li>
+                      value={item}
+                      kind="MCP tool"
+                    />
                   ))}
                 </ul>
               </div>
@@ -590,14 +610,13 @@ export default function McpPage() {
               <p className="font-mono text-xs uppercase tracking-wide text-signal-reference">
                 resources
               </p>
-              <ul className="mt-3 space-y-2">
+              <ul className="mcp-copy-list mt-3">
                 {resources.map((item) => (
-                  <li
+                  <CopyableIdentifier
                     key={item}
-                    className="whitespace-nowrap font-mono text-[0.8125rem] leading-6 text-concrete-300"
-                  >
-                    {item}
-                  </li>
+                    value={item}
+                    kind="MCP resource URI"
+                  />
                 ))}
               </ul>
             </div>
@@ -605,14 +624,13 @@ export default function McpPage() {
               <p className="font-mono text-xs uppercase tracking-wide text-signal-core">
                 prompts
               </p>
-              <ul className="mt-3 space-y-2">
+              <ul className="mcp-copy-list mt-3">
                 {prompts.map((item) => (
-                  <li
+                  <CopyableIdentifier
                     key={item}
-                    className="whitespace-nowrap font-mono text-[0.8125rem] leading-6 text-concrete-300"
-                  >
-                    {item}
-                  </li>
+                    value={item}
+                    kind="MCP prompt"
+                  />
                 ))}
               </ul>
             </div>

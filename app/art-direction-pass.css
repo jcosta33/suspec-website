@@ -86,7 +86,7 @@ body {
     display: block;
     overflow: clip;
     pointer-events: none;
-    perspective: clamp(420px, 42vw, 720px);
+    perspective: clamp(520px, 48vw, 860px);
     perspective-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
     transform-style: preserve-3d;
     contain: layout style paint;
@@ -109,25 +109,23 @@ body {
       192px 192px,
       auto;
     background-position:
-       calc(50% + var(--background-plane-drift-x)) calc(50% + var(--background-plane-drift-y)),
-       calc(50% + var(--background-plane-drift-x)) calc(50% + var(--background-plane-drift-y)),
-       calc(50% + var(--background-plane-drift-soft-x)) calc(50% + var(--background-plane-drift-soft-y)),
-       calc(50% + var(--background-plane-drift-soft-x)) calc(50% + var(--background-plane-drift-soft-y)),
+       50% 50%,
+       50% 50%,
+       50% 50%,
+       50% 50%,
        center top;
     opacity: 1;
     transform:
-      translate3d(var(--background-plane-shift-x), var(--background-plane-shift-y), 0)
       rotateX(var(--background-plane-rotate-x, var(--background-plane-tilt-x)))
       rotateY(var(--background-plane-rotate-y, var(--background-plane-tilt-y)))
-      translateZ(-86px)
-      scale3d(1.5, 1.5, 1);
-    transform-origin: var(--background-plane-origin-x) var(--background-plane-origin-y);
+      translateZ(-78px)
+      scale3d(1.48, 1.48, 1);
+    transform-origin: 50% 50%;
     transform-style: preserve-3d;
     backface-visibility: hidden;
     filter: contrast(1.06);
     transition:
-      background-position 88ms cubic-bezier(0.2, 0.8, 0.2, 1),
-      transform 88ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      transform 92ms cubic-bezier(0.2, 0.8, 0.2, 1),
       opacity 160ms ease-out;
     will-change: transform;
   }
@@ -164,15 +162,13 @@ body {
           rgba(var(--signal-core-rgb), 0.032) 1px,
           transparent 1px
         )
-        calc(50% + var(--background-plane-drift-soft-x))
-        calc(0% + var(--background-plane-drift-soft-y)) / 96px 96px,
+        50% 0% / 96px 96px,
       linear-gradient(
           90deg,
           rgba(var(--signal-reference-rgb), 0.024) 1px,
           transparent 1px
         )
-        calc(50% + var(--background-plane-drift-soft-x))
-        calc(0% + var(--background-plane-drift-soft-y)) / 96px 96px,
+        50% 0% / 96px 96px,
       linear-gradient(
         115deg,
         transparent 0 38%,
@@ -211,7 +207,7 @@ body {
       scale(1.18);
     background-position:
        calc(50% + var(--background-header-shift-soft-x)) calc(50% + var(--background-header-shift-soft-y)),
-       calc(50% + var(--background-plane-drift-x)) 0,
+        calc(50% + var(--background-header-shift-soft-x)) 0,
        calc(50% + var(--background-header-shift-soft-x)) calc(50% + var(--background-header-shift-soft-y)),
        center;
     transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
@@ -262,7 +258,7 @@ body {
   .page-hero::before {
     background-position:
        calc(50% + var(--background-hero-shift-x)) calc(42% + var(--background-hero-shift-y)),
-       calc(50% + var(--background-plane-drift-x)) 50%,
+       calc(50% + var(--background-hero-shift-x)) 50%,
        50% 50%;
     transition:
       transform 72ms ease-out,
@@ -286,12 +282,49 @@ body {
     transform-origin: 50% 52%;
     background-position:
        calc(50% + var(--background-hero-shift-x)) calc(48% + var(--background-hero-shift-y)),
-       calc(50% + var(--background-plane-drift-soft-x)) calc(50% + var(--background-plane-drift-soft-y)),
+       calc(50% + var(--background-hero-shift-x)) calc(50% + var(--background-hero-shift-y)),
        calc(50% + var(--background-hero-shift-x)) calc(48% + var(--background-hero-shift-y)),
-       calc(50% + var(--background-plane-drift-soft-x)) 50%;
+       calc(50% + var(--background-hero-shift-x)) 50%;
     transition:
       transform 88ms ease-out,
       opacity 160ms ease-out;
+    will-change: transform;
+  }
+
+  .home-hero-section {
+    perspective: clamp(520px, 48vw, 860px);
+    perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transform-style: preserve-3d;
+  }
+
+  .home-hero-section::before {
+    transform:
+      translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 0)
+      rotateX(var(--background-header-after-rotate-x))
+      rotateY(var(--background-header-after-rotate-y))
+      translateZ(34px);
+    transform-origin: 50% 52%;
+    transition:
+      transform 92ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 160ms ease-out;
+    will-change: transform;
+  }
+
+  .home-hero-seal-field {
+    perspective: clamp(520px, 48vw, 860px);
+    perspective-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transform-style: preserve-3d;
+  }
+
+  .home-hero-seal-field svg {
+    transform:
+      translate3d(var(--background-hero-shift-x), var(--background-hero-shift-y), 0)
+      rotateX(var(--background-hero-motif-rotate-x))
+      rotateY(var(--background-hero-motif-rotate-y))
+      translateZ(26px)
+      scale(1.015);
+    transform-origin: 50% 50%;
+    transition: transform 92ms cubic-bezier(0.2, 0.8, 0.2, 1);
     will-change: transform;
   }
 

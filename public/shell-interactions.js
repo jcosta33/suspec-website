@@ -59,18 +59,14 @@
       const height = Math.max(window.innerHeight, 1);
       const normalX = Math.max(-1, Math.min(1, (pointerX / width - 0.5) * 2));
       const normalY = Math.max(-1, Math.min(1, (pointerY / height - 0.5) * 2));
-      const planeTiltX = normalY * -7.2;
-      const planeTiltY = normalX * 8.4;
-      const headerTiltX = planeTiltX * 0.88;
-      const headerTiltY = planeTiltY * 0.88;
-      const planeShiftX = -normalX * 6;
-      const planeShiftY = -normalY * 4;
-      const planeDriftX = -normalX * 18;
-      const planeDriftY = -normalY * 12;
-      const headerShiftX = -normalX * 10;
-      const headerShiftY = -normalY * 6;
-      const heroShiftX = -normalX * 8;
-      const heroShiftY = -normalY * 4.8;
+      const planeTiltX = normalY * -6.8;
+      const planeTiltY = normalX * 7.6;
+      const headerTiltX = planeTiltX * 0.76;
+      const headerTiltY = planeTiltY * 0.76;
+      const headerShiftX = -normalX * 12;
+      const headerShiftY = -normalY * 7;
+      const heroShiftX = -normalX * 9;
+      const heroShiftY = -normalY * 5;
 
       root.style.setProperty("--background-plane-normal-x", normalX.toFixed(4));
       root.style.setProperty("--background-plane-normal-y", normalY.toFixed(4));
@@ -100,27 +96,27 @@
       );
       root.style.setProperty(
         "--background-plane-shift-x",
-        `${planeShiftX.toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-shift-y",
-        `${planeShiftY.toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-drift-x",
-        `${planeDriftX.toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-drift-y",
-        `${planeDriftY.toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-drift-soft-x",
-        `${(planeDriftX * 0.48).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-drift-soft-y",
-        `${(planeDriftY * 0.48).toFixed(2)}px`,
+        "0px",
       );
       root.style.setProperty(
         "--background-plane-skew-x",
@@ -196,11 +192,11 @@
       );
       root.style.setProperty(
         "--background-header-origin-x",
-        `${(50 + normalX * 2.2).toFixed(2)}%`,
+        `${(50 + normalX * 2.8).toFixed(2)}%`,
       );
       root.style.setProperty(
         "--background-header-origin-y",
-        `${(46 + normalY * 1.6).toFixed(2)}%`,
+        `${(46 + normalY * 2).toFixed(2)}%`,
       );
     }
 
