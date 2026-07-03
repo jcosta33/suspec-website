@@ -716,6 +716,7 @@ export default function AgentsPage() {
               target="_blank"
               rel="noopener noreferrer"
               touchTarget
+              aria-label="Read the suspec-agents enforcement notes on GitHub (opens in new tab)"
             >
               Read the enforcement notes →
             </TextLink>
@@ -740,6 +741,7 @@ export default function AgentsPage() {
               target="_blank"
               rel="noopener noreferrer"
               touchTarget
+              aria-label="Read how the suspec-agents delegation trace works on GitHub (opens in new tab)"
             >
               How the delegation trace works →
             </TextLink>
@@ -786,6 +788,7 @@ export default function AgentsPage() {
               target="_blank"
               rel="noopener noreferrer"
               touchTarget
+              aria-label="Browse suspec-agents on GitHub (opens in new tab)"
             >
               Browse suspec-agents on GitHub →
             </TextLink>
