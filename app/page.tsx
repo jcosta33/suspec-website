@@ -466,8 +466,12 @@ export default function HomePage() {
           <div className="max-w-2xl">
             <Eyebrow>what you get</Eyebrow>
             <h2 className="mt-4 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
-              The pieces.
+              What Suspec adds.
             </h2>
+            <p className="mt-4 text-concrete-400">
+              A few records and boundaries around the agent: spec, review,
+              branch, and explicit limits.
+            </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature) => {
