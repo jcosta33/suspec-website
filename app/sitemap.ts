@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/agents/",
     "/cli/",
     "/mcp/",
+    "/colophon/",
     "/llms.txt",
     "/llms-full.txt",
   ];

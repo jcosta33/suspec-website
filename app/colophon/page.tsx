@@ -7,18 +7,21 @@ import { Panel } from "../components/Panel";
 import { TerminalWindow } from "../components/TerminalWindow";
 import { PaperArtifact } from "../components/PaperArtifact";
 import { PageHero } from "../components/PageHero";
+import { JsonLd } from "../components/JsonLd";
 import type { SignalRole } from "../components/signalStyles";
 import { canonicalAlternates } from "../seo";
 
+const SITE_URL = "https://suspecframework.dev";
+const pageTitle = "Colophon — Suspec";
+const pageDescription =
+  "How the Suspec website is built, sourced, reviewed, exported, and shipped through the same plain-markdown workflow.";
+
 export const metadata: Metadata = {
-  title: "Colophon — Suspec",
-  description:
-    "How the Suspec website is built, sourced, reviewed, exported, and shipped through the same plain-markdown workflow.",
-  robots: "noindex",
+  title: pageTitle,
+  description: pageDescription,
   openGraph: {
-    title: "Colophon — Suspec",
-    description:
-      "How the Suspec website is built, sourced, reviewed, exported, and shipped through the same plain-markdown workflow.",
+    title: pageTitle,
+    description: pageDescription,
     type: "website",
     url: "/colophon/",
     siteName: "Suspec",
@@ -99,9 +102,45 @@ const trace = [
   signal: SignalRole;
 }>;
 
+const colophonJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE_URL}/colophon/#webpage`,
+  name: pageTitle,
+  headline: "Colophon",
+  description: pageDescription,
+  url: `${SITE_URL}/colophon/`,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: [
+    {
+      "@type": "SoftwareSourceCode",
+      name: "suspec-website",
+      codeRepository: "https://github.com/jcosta33/suspec-website",
+      programmingLanguage: ["TypeScript", "CSS"],
+      runtimePlatform: "Next.js 16 App Router",
+    },
+    {
+      "@type": "CreativeWork",
+      name: "Suspec documentation canon",
+      url: `${SITE_URL}/docs/`,
+    },
+  ],
+  mainEntity: {
+    "@type": "ItemList",
+    name: "Website build record",
+    itemListElement: facts.map((fact, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: fact.label,
+      description: fact.value,
+    })),
+  },
+};
+
 export default function ColophonPage() {
   return (
     <div className="flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
+      <JsonLd data={colophonJsonLd} />
       <Section className="ambient-header">
         <PageHero
           eyebrow="site record / build notes"
