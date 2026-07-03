@@ -215,6 +215,13 @@ const commandFamilies = [
   },
 ] as const;
 
+const commandFamilyHrefByLabel = Object.fromEntries(
+  commandFamilies.map((family) => [
+    family.label,
+    `/cli/#${family.id}` as `/cli/#${string}`,
+  ]),
+) as Record<string, `/cli/#${string}`>;
+
 const cliPageNav = [
   { label: "Families", href: "#command-families", signal: "reference" },
   { label: "Install", href: "#install", signal: "core" },
@@ -244,8 +251,9 @@ export default function CliPage() {
           "board status",
         ]}
         catalogItems={commands.map((command) => ({
-          name: command.cmd,
-          description: command.what,
+          name: `suspec ${command.cmd}`,
+          description: `${command.what} Family: ${command.family}.`,
+          url: commandFamilyHrefByLabel[command.family],
           category: `${command.family} command`,
         }))}
       />
@@ -304,7 +312,7 @@ export default function CliPage() {
                   <a
                     href={`#${family.id}`}
                     className="cli-command-link focus-ring group block h-full p-5 transition-colors duration-150 hover:bg-panel sm:p-6"
-                    aria-label={`Jump to ${family.label.toLowerCase()} commands`}
+                    aria-label={`Jump to ${family.label} commands: ${family.commands}. ${family.detail}`}
                   >
                     <div className="cli-command-heading flex items-center gap-3">
                       <HexBadge
