@@ -38,6 +38,8 @@ Marketing and ecosystem pages also draw from the separate Suspec repos:
 | `/agents`         | `suspec-agents`, `suspec/docs/adrs/0092-suspec-agents-member.md`                                     |
 | `/cli`            | `suspec-cli`, `suspec/docs/adrs/0077-suspec-cli-reconcile-only-harness.md`                           |
 | `/mcp`            | `suspec-mcp`, `suspec/docs/adrs/0085-suspec-mcp-adapts-the-json-contract.md`                         |
+| `/llms.txt`       | hand-authored site and docs index in `public/llms.txt`                                               |
+| `/llms-full.txt`  | generated from user-facing docs in `suspec/docs/**`                                                  |
 
 ## Quarterly review
 
