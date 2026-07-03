@@ -356,6 +356,7 @@ export default function SkillsPage() {
         registerTone="reference"
         className="manifest-pair grid gap-5 lg:grid-cols-[minmax(16rem,0.68fr)_minmax(0,1.32fr)] lg:items-start"
       >
+        <h2 className="sr-only">Skill selection index</h2>
         <PaperArtifact
           label="index"
           title="selection rule"
@@ -459,6 +460,7 @@ export default function SkillsPage() {
         registerTone="reference"
         className="section-flow section-flow-tight"
       >
+        <h2 className="sr-only">Install suspec-skills</h2>
         <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
           <DroneIcon className="h-4 w-4" />
           <span>skills add</span>
