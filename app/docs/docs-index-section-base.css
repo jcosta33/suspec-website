@@ -1,0 +1,45 @@
+.docs-index-section {
+  --docs-index-signal: var(--signal-core);
+  --docs-index-rgb: var(--signal-core-rgb);
+  --docs-index-pattern: var(--signal-pattern-core);
+  position: relative;
+  scroll-margin-top: 6rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1.22rem;
+  border: 1px solid rgba(var(--docs-index-rgb), 0.14);
+  border-radius: var(--radius-panel);
+  background:
+    linear-gradient(90deg, rgba(var(--docs-index-rgb), 0.012), transparent 42%),
+    linear-gradient(0deg, rgba(var(--docs-index-rgb), 0.014) 1px, transparent 1px),
+    var(--signal-pattern-muted),
+    rgba(18, 14, 10, 0.62);
+  background-size:
+    auto,
+    100% 1.55rem,
+    auto,
+    auto;
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.045),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.docs-index-section::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0.38rem;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent, rgba(var(--docs-index-rgb), 0.2), transparent),
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--docs-index-rgb), 0.08) 0 1px,
+      transparent 1px 0.55rem
+    );
+  opacity: 0.48;
+}

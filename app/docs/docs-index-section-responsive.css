@@ -1,0 +1,36 @@
+@media (min-width: 46rem) {
+  .docs-index-grid:not(.docs-index-grid-balanced) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .docs-index-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .docs-index-top > .docs-index-section,
+  .docs-index-stack {
+    height: 100%;
+  }
+
+  .docs-index-stack {
+    align-content: stretch;
+    gap: 1rem;
+  }
+
+  .docs-index-section-primary {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+  }
+
+  .docs-index-section-primary .docs-index-list {
+    flex: 1;
+    align-content: start;
+  }
+
+  .docs-index-section-wide {
+    grid-column: 1 / -1;
+  }
+
+}

@@ -1,0 +1,58 @@
+.docs-index-section-core,
+.docs-index-section-primary {
+  --docs-index-signal: var(--signal-core);
+  --docs-index-rgb: var(--signal-core-rgb);
+  --docs-index-pattern:
+    radial-gradient(
+      80% 72% at 16% 0%,
+      rgba(var(--docs-index-rgb), 0.05),
+      transparent 62%
+    ),
+    var(--signal-pattern-core);
+}
+
+.docs-index-section-greenfield {
+  --docs-index-signal: var(--signal-greenfield);
+  --docs-index-rgb: var(--signal-greenfield-rgb);
+  --docs-index-pattern:
+    var(--signal-pattern-greenfield),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 23px,
+      rgba(var(--docs-index-rgb), 0.022) 23px 24px
+    );
+}
+
+.docs-index-section-change {
+  --docs-index-signal: var(--signal-change);
+  --docs-index-rgb: var(--signal-change-rgb);
+  --docs-index-pattern:
+    repeating-linear-gradient(
+      135deg,
+      rgba(var(--docs-index-rgb), 0.026) 0 1px,
+      transparent 1px 13px
+    ),
+    linear-gradient(180deg, rgba(var(--docs-index-rgb), 0.018), transparent 48%);
+}
+
+.docs-index-section-reference {
+  --docs-index-signal: var(--signal-reference);
+  --docs-index-rgb: var(--signal-reference-rgb);
+  --docs-index-pattern:
+    var(--signal-pattern-reference),
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--docs-index-rgb), 0.012) 0 1px,
+      transparent 1px 28px
+    );
+}
+
+.docs-index-section-muted,
+.docs-index-section-examples,
+.docs-index-section-adrs {
+  --docs-index-signal: var(--signal-muted);
+  --docs-index-rgb: var(--signal-muted-rgb);
+  --docs-index-pattern:
+    var(--signal-pattern-muted),
+    linear-gradient(180deg, rgba(var(--docs-index-rgb), 0.016), transparent 52%);
+}
