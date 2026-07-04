@@ -1,0 +1,63 @@
+/* Focus ring */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.soft-link {
+  color: var(--color-suspec-yellow);
+  text-decoration: underline;
+  text-decoration-color: rgba(216, 138, 36, 0.48);
+  text-underline-offset: 3px;
+  transition:
+    color 140ms ease,
+    text-decoration-color 140ms ease;
+}
+
+.soft-link:hover {
+  color: var(--color-gold-bright);
+  text-decoration-color: var(--color-gold-bright);
+}
+
+.link-motion {
+  position: relative;
+  isolation: isolate;
+}
+
+.link-motion::before {
+  content: none;
+}
+
+.link-motion:hover::before,
+.link-motion:focus-visible::before {
+  content: none;
+}
+
+.link-motion > svg {
+  transition:
+    color 150ms ease,
+    opacity 150ms ease;
+}
+
+.motion-nudge-x,
+.motion-nudge-x-centered {
+  --motion-nudge-x: 0px;
+  transition:
+    color 150ms ease,
+    opacity 150ms ease;
+}
+
+.motion-nudge-x {
+  transform: none;
+}
+
+.motion-nudge-x-centered {
+  transform: translateY(-50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link-motion::before,
+  .link-motion > svg {
+    transform: none !important;
+  }
+}

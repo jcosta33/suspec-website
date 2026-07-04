@@ -11,7 +11,7 @@ component TypeScript.
 | --- | --- |
 | `app/styles/site.css` | Root CSS manifest imported by `app/layout.tsx`; preserves the cascade order in one file. |
 | `app/styles/theme.css` | Tailwind import, design tokens, semantic signal roles, package accents, utility aliases. |
-| `app/styles/base.css` | Runtime aliases, document/body defaults, selection, target focus, reduced-motion baseline. |
+| `app/styles/base.css`, `app/styles/base-*.css` | Runtime aliases, document/body defaults, selection, target focus, reduced-motion baseline. |
 | `app/globals.css` | Late global utilities: gilt trim/rules, `.toggle`, scrollbars, selection compatibility. |
 | `app/styles/site-chrome.css`, `app/styles/site-chrome-*.css` | Header/nav chrome, scroll-revealed top bar, mobile menu states. |
 | `app/styles/site-surfaces.css`, `app/styles/site-surfaces-*.css`, `app/styles/surface-primitives.css`, `app/styles/surface-primitive-*.css`, `app/styles/artifact-surfaces.css`, `app/styles/artifact-*.css`, `app/styles/terminal-window.css`, `app/styles/paper-artifact.css` | Reusable panels, terminals, paper artifacts, buttons, badges, lamps, tactile surface primitives. |

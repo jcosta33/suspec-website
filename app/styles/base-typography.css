@@ -1,0 +1,29 @@
+/* Heading font utility — console display face for compact UI headings. */
+.font-heading {
+  font-family: var(--font-heading), var(--font-mono), ui-monospace, monospace;
+  font-optical-sizing: auto;
+  font-feature-settings:
+    "kern" 1,
+    "liga" 0,
+    "zero" 1;
+}
+
+/* Display font — terminal-console voice for title-page moments. */
+.font-display {
+  font-family: var(--font-display), var(--font-mono), ui-monospace, monospace;
+  font-optical-sizing: auto;
+  font-feature-settings:
+    "kern" 1,
+    "liga" 0,
+    "zero" 1;
+}
+
+/* Title font — console-cover scale only: heroes, docs H1, wordmark. */
+.font-title {
+  font-family: var(--font-title), var(--font-mono), ui-monospace, monospace;
+  font-optical-sizing: auto;
+  font-feature-settings:
+    "kern" 1,
+    "liga" 0,
+    "zero" 1;
+}

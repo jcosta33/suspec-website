@@ -1,0 +1,115 @@
+body {
+  background:
+    linear-gradient(rgba(70, 57, 44, 0.1) 1px, transparent 1px) fixed,
+    linear-gradient(90deg, rgba(70, 57, 44, 0.08) 1px, transparent 1px) fixed,
+    radial-gradient(120% 80% at 50% -16%, rgba(216, 138, 36, 0.035), transparent 50%) fixed,
+    radial-gradient(90% 70% at 50% 8%, rgba(95, 87, 37, 0.055), transparent 58%) fixed,
+    var(--color-background);
+  background-size:
+    48px 48px,
+    48px 48px,
+    auto,
+    auto,
+    auto;
+  color: var(--color-foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings:
+    "liga" 1,
+    "calt" 1;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(var(--signal-core-rgb), 0.34);
+  color: var(--color-albedo);
+}
+
+@supports (text-wrap: balance) {
+  :where(h1, h2, h3, .font-heading, .page-hero-title) {
+    text-wrap: balance;
+  }
+}
+
+@supports (text-wrap: pretty) {
+  :where(p, li, dd) {
+    text-wrap: pretty;
+  }
+
+  :where(
+      .terminal-window,
+      .terminal-content,
+      .site-header,
+      .mobile-menu-panel,
+      .site-footer-proof,
+      .docs-sidebar,
+      .docs-index-list
+    )
+    :where(p, li, dd) {
+    text-wrap: wrap;
+  }
+}
+
+h1.font-heading,
+h2.font-heading,
+h3.font-heading,
+h4.font-heading,
+h5.font-heading,
+h6.font-heading,
+.page-hero-title {
+  font-weight: var(--font-weight-title);
+}
+
+.paper-artifact .paper-artifact-title,
+.loop-step-card .loop-step-label,
+.catalog-row .catalog-row-title,
+.feature-accent-title,
+.agent-roster-cell-title,
+.mcp-guardrail-title,
+.kit-ledger-title,
+.setup-route-title,
+.setup-choice-title,
+.skill-anatomy-label,
+.boundary-step-title,
+.relation-card-title,
+.colophon-build-trace-title,
+.site-footer-link-title {
+  font-weight: var(--font-weight-title-compact);
+}
+
+/* Archival tooth — barely visible paper grain over the dark instrument shell. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image:
+    radial-gradient(1px 1px at 18px 22px, rgba(232, 222, 203, 0.1), transparent),
+    radial-gradient(1px 1px at 76px 92px, rgba(232, 222, 203, 0.06), transparent),
+    radial-gradient(1px 1px at 142px 44px, rgba(216, 138, 36, 0.055), transparent),
+    radial-gradient(1px 1px at 210px 132px, rgba(232, 222, 203, 0.06), transparent);
+  background-repeat: repeat;
+  background-size: 240px 190px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body::before {
+    animation: archival-tooth-drift 36s linear infinite;
+  }
+}
+
+/* Edge vignette — deepens the chassis toward the frame. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 92% 72% at 50% 30%,
+    transparent 56%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
