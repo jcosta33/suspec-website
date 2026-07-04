@@ -1,0 +1,31 @@
+@media (max-width: 48rem) {
+  .docs-prose pre.docs-flow-pre {
+    overflow-x: visible;
+    padding-inline: 0.95rem;
+  }
+
+  .docs-prose pre.docs-flow-pre code {
+    display: block;
+    width: auto;
+    min-width: 0;
+    white-space: pre-line;
+    overflow-wrap: break-word;
+  }
+
+  .docs-prose pre.docs-flow-pre::after {
+    display: none;
+  }
+
+  .docs-prose pre.docs-wrap-pre {
+    overflow-x: visible;
+  }
+
+  .docs-prose pre.docs-wrap-pre::after {
+    display: none;
+  }
+
+  .docs-prose pre.docs-wrap-pre code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}

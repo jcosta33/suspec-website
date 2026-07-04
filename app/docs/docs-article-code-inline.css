@@ -1,0 +1,12 @@
+/* Inline code — amber command text on a recessed well (terminal feel) */
+.docs-prose code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85em;
+  color: var(--color-amber);
+  background: var(--color-panel-recessed);
+  border: 1px solid var(--color-panel-border);
+  padding: 0.08em 0.34em;
+  border-radius: var(--radius-panel);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
