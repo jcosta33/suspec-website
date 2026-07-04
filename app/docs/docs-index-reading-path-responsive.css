@@ -1,0 +1,111 @@
+@media (min-width: 54rem) {
+  .docs-reading-path {
+    grid-template-columns: minmax(13rem, 0.42fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .docs-reading-path-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .docs-prose .docs-reading-path-item a {
+    height: 100%;
+  }
+}
+
+@media (min-width: 46rem) and (max-width: 53.99rem) {
+  .docs-reading-path {
+    grid-template-columns: minmax(12rem, 0.36fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 0.86rem;
+    margin-bottom: 1.1rem;
+    padding: 0.82rem 0.9rem;
+  }
+
+  .docs-reading-path-copy {
+    align-self: center;
+    padding-left: 0.34rem;
+  }
+
+  .docs-reading-path-copy p:last-child {
+    margin-top: 0.38rem;
+    font-size: 0.84rem;
+    line-height: 1.4;
+  }
+
+  .docs-reading-path-list {
+    gap: 0.42rem;
+  }
+
+  .docs-prose .docs-reading-path-item a {
+    min-height: 3.25rem;
+    align-items: center;
+    gap: 0.54rem;
+    padding: 0.46rem 0.62rem;
+  }
+
+  .docs-reading-path-detail {
+    margin-top: 0.14rem;
+    font-size: 0.76rem;
+    line-height: 1.28;
+  }
+}
+
+@media (max-width: 40rem) {
+  .docs-reading-path {
+    gap: 0.52rem;
+    margin-bottom: 0.95rem;
+    padding: 0.62rem 0.68rem;
+  }
+
+  .docs-reading-path::before {
+    top: 0.55rem;
+    bottom: 0.55rem;
+    left: 0.55rem;
+  }
+
+  .docs-reading-path::after {
+    display: none;
+  }
+
+  .docs-reading-path-copy {
+    padding-left: 0.38rem;
+  }
+
+  .docs-reading-path h2 {
+    font-size: 1.05rem;
+  }
+
+  .docs-reading-path-copy p:last-child {
+    margin-top: 0.28rem;
+    font-size: 0.78rem;
+    line-height: 1.32;
+  }
+
+  .docs-reading-path-list {
+    gap: 0.34rem;
+  }
+
+  .docs-prose .docs-reading-path-item a {
+    min-height: 3.18rem;
+    align-items: center;
+    gap: 0.44rem;
+    padding: 0.42rem 0.54rem;
+  }
+
+  .docs-reading-path-index {
+    font-size: 0.62rem;
+    line-height: 1.45;
+  }
+
+  .docs-reading-path-label {
+    font-size: 0.84rem;
+    line-height: 1.22;
+  }
+
+  .docs-reading-path-detail {
+    margin-top: 0.12rem;
+    font-size: 0.72rem;
+    line-height: 1.24;
+  }
+}
