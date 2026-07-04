@@ -1,0 +1,12 @@
+/* Mobile sidebar disclosure — PURE CSS (a visually-hidden checkbox + label), so the collapsed mobile
+   state is the initial render with no post-hydration JS toggle and therefore no layout shift. Desktop
+   shows the nav always and hides the toggle. */
+.docs-nav-toggle {
+  display: none; /* desktop: no toggle at all (so it isn't a focusable dead tab stop) */
+}
+.docs-nav-summary {
+  display: none; /* desktop: no toggle; the nav is always expanded */
+}
+.docs-nav-disclosure {
+  position: relative;
+}

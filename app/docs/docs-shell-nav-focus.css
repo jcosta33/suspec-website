@@ -1,0 +1,14 @@
+/* Keyboard focus — match the site-wide branded ring (globals.css .focus-ring) on the docs nav, the
+   Pagefind search input, the mobile disclosure toggle, and the docs-body links (prose, pager, the
+   get-started bridge) — none of which ship a :focus style of their own. */
+.docs-nav a:focus-visible,
+.docs-nav-group > summary:focus-visible,
+.docs-nav-toggle:focus-visible ~ .docs-nav-summary,
+.docs-search input:focus-visible,
+.docs-prose a:focus-visible,
+.docs-prose .docs-pager-link:focus-visible,
+.docs-prose .docs-bridge a:focus-visible {
+  outline: 2px solid var(--color-suspec-yellow);
+  outline-offset: 2px;
+  border-radius: var(--radius-panel);
+}
