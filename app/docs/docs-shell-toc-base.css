@@ -1,0 +1,4 @@
+/* ---------- On-this-page TOC rail (wide screens only — hidden where there isn't room) ---------- */
+.docs-toc {
+  display: none;
+}

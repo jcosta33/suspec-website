@@ -1,0 +1,7 @@
+@media (min-width: 80rem) {
+  @media (prefers-reduced-motion: reduce) {
+    .docs-toc-progress > span {
+      transition: none;
+    }
+  }
+}
