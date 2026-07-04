@@ -1,0 +1,120 @@
+.mcp-adapter-rail {
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.1), transparent 22%),
+    var(--color-panel-border);
+}
+
+.mcp-adapter-rail::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.mcp-adapter-step {
+  background-image:
+    radial-gradient(
+      70% 64% at 18% 0%,
+      rgba(var(--process-rgb), 0.024),
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(240, 226, 204, 0.025),
+      transparent 44%
+    );
+}
+
+.mcp-adapter-step-link {
+  position: relative;
+  min-height: 7.1rem;
+  padding: 0.875rem;
+}
+
+@media (min-width: 40rem) {
+  .mcp-adapter-step-link {
+    padding: 0.95rem;
+  }
+}
+
+.mcp-adapter-step-link p {
+  margin-top: 0.55rem;
+}
+
+.mcp-adapter-step-link::before {
+  content: "";
+  position: absolute;
+  inset: 1rem auto 1rem 0;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(var(--process-rgb), 0.54),
+    transparent
+  );
+  box-shadow: 0 0 10px rgba(var(--process-rgb), 0.12);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@media (min-width: 64rem) {
+  .mcp-bridge-overview {
+    display: grid;
+    grid-template-columns: minmax(17rem, 0.34fr) minmax(0, 0.66fr);
+    align-items: start;
+    gap: clamp(1.45rem, 2.4vw, 2rem);
+  }
+
+  .mcp-bridge-overview .section-intro {
+    display: grid;
+    gap: clamp(0.9rem, 1.3vw, 1.12rem);
+    max-width: none;
+    padding-top: clamp(0.35rem, 0.8vw, 0.65rem);
+  }
+
+  .mcp-bridge-overview .section-intro > :where(.section-kicker, h2, p) {
+    margin-top: 0;
+  }
+
+  .mcp-bridge-overview .section-intro h2 {
+    max-width: 22rem;
+    text-wrap: normal;
+  }
+
+  .mcp-bridge-overview .mcp-adapter-panel {
+    min-width: 0;
+  }
+
+  .mcp-adapter-rail::before {
+    left: 2.2rem;
+    right: 2.2rem;
+    top: 50%;
+    z-index: 1;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--signal-reference-rgb), 0.26) 8%,
+      rgba(var(--signal-reference-rgb), 0.34) 50%,
+      rgba(var(--signal-core-rgb), 0.2) 82%,
+      transparent
+    );
+  }
+
+  .mcp-adapter-step:not(:last-child) .mcp-adapter-step-link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 0.72rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      rgba(var(--process-rgb), 0.08),
+      rgba(var(--process-rgb), 0.38)
+    );
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}
