@@ -377,7 +377,7 @@
   }
 
   .setup-choice-card {
-    padding: 1rem !important;
+    padding: 1rem;
   }
 
   .setup-choice-card > .relative {
@@ -451,7 +451,7 @@
 }
 
 .copy-section-support-desktop {
-  display: none !important;
+  display: none;
 }
 
 @media (min-width: 64rem) {
@@ -463,11 +463,11 @@
   }
 
   .copy-section-support-desktop {
-    display: flex !important;
+    display: flex;
   }
 
   .copy-section-support-mobile {
-    display: none !important;
+    display: none;
   }
 
   .copy-section-manifest {
@@ -487,7 +487,7 @@
   }
 
   .copy-section-manifest {
-    padding: 1rem !important;
+    padding: 1rem;
   }
 
   .copy-section-support {
@@ -495,7 +495,7 @@
   }
 
   .copy-section-support .paper-artifact {
-    padding: 1rem !important;
+    padding: 1rem;
   }
 
   .copy-section-note {
