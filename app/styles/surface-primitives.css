@@ -1,0 +1,1121 @@
+/* Hexagonal clip — the seal cell */
+.clip-hex {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hex-badge {
+  --hex-signal: var(--signal-core);
+  --hex-rgb: var(--signal-core-rgb);
+  --hex-pattern: var(--signal-pattern-core);
+  --hex-mark: var(--signal-mark-core);
+  color: var(--hex-signal);
+  background:
+    linear-gradient(180deg, rgba(240, 226, 204, 0.08), transparent 46%),
+    var(--hex-mark),
+    var(--hex-pattern),
+    radial-gradient(
+      86% 76% at 50% 0%,
+      rgba(var(--hex-rgb), 0.13),
+      transparent 64%
+    ),
+    var(--color-panel-raised);
+}
+
+.hex-badge-core {
+  --hex-signal: var(--signal-core);
+  --hex-rgb: var(--signal-core-rgb);
+  --hex-pattern: var(--signal-pattern-core);
+  --hex-mark: var(--signal-mark-core);
+}
+
+.hex-badge-evidence {
+  --hex-signal: var(--signal-evidence);
+  --hex-rgb: var(--signal-evidence-rgb);
+  --hex-pattern: var(--signal-pattern-evidence);
+  --hex-mark: var(--signal-mark-evidence);
+}
+
+.hex-badge-greenfield {
+  --hex-signal: var(--signal-greenfield);
+  --hex-rgb: var(--signal-greenfield-rgb);
+  --hex-pattern: var(--signal-pattern-greenfield);
+  --hex-mark: var(--signal-mark-greenfield);
+}
+
+.hex-badge-brownfield {
+  --hex-signal: var(--signal-brownfield);
+  --hex-rgb: var(--signal-brownfield-rgb);
+  --hex-pattern: var(--signal-pattern-brownfield);
+  --hex-mark: var(--signal-mark-brownfield);
+}
+
+.hex-badge-change {
+  --hex-signal: var(--signal-change);
+  --hex-rgb: var(--signal-change-rgb);
+  --hex-pattern: var(--signal-pattern-change);
+  --hex-mark: var(--signal-mark-change);
+}
+
+.hex-badge-reference {
+  --hex-signal: var(--signal-reference);
+  --hex-rgb: var(--signal-reference-rgb);
+  --hex-pattern: var(--signal-pattern-reference);
+  --hex-mark: var(--signal-mark-reference);
+}
+
+.hex-badge-muted {
+  --hex-signal: var(--signal-muted);
+  --hex-rgb: var(--signal-muted-rgb);
+  --hex-pattern: var(--signal-pattern-muted);
+  --hex-mark: var(--signal-mark-muted);
+}
+
+.hex-badge-rail {
+  position: absolute;
+  top: 28%;
+  bottom: 28%;
+  width: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  opacity: 0.78;
+}
+
+.hex-badge-rail-left {
+  left: 2px;
+}
+
+.hex-badge-rail-right {
+  right: 2px;
+}
+
+/* Raised plate — a thin-lined engraved card, lifted just off the night */
+.panel-raised {
+  --plate-signal: var(--signal-core);
+  --plate-rgb: var(--signal-core-rgb);
+  position: relative;
+  border-radius: var(--radius-panel);
+  border: 1px solid var(--color-panel-border);
+  background-color: var(--color-panel-raised);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(var(--plate-rgb), 0.032),
+      transparent 24%
+    ),
+    radial-gradient(
+      70% 58% at 16% 0%,
+      rgba(var(--plate-rgb), 0.048),
+      transparent 62%
+    ),
+    radial-gradient(
+      80% 80% at 100% 100%,
+      rgba(0, 0, 0, 0.2),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(232, 222, 203, 0.035) 0%,
+      transparent 38%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(232, 222, 203, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 1px 2px rgba(0, 0, 0, 0.5);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+/* Recessed well / screen — a deep inset terminal cavity. */
+.panel-inset {
+  position: relative;
+  border-radius: var(--radius-panel);
+  border: 1px solid var(--color-panel-border);
+  background-color: var(--color-night);
+  box-shadow:
+    inset 0 3px 9px rgba(0, 0, 0, 0.72),
+    inset 0 0 64px rgba(0, 0, 0, 0.45);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+.panel-raised:is(a, button):hover,
+.panel-raised:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover,
+.panel-raised:focus-within {
+  border-color: rgba(var(--plate-rgb), 0.32);
+  background-color: #251c15;
+  box-shadow:
+    inset 0 1px 0 rgba(232, 222, 203, 0.075),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(var(--plate-rgb), 0.045);
+}
+
+.panel-raised.home-hero-preview:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover,
+.panel-raised.home-hero-preview:hover,
+.panel-raised.home-hero-preview:focus-within {
+  border-color: var(--color-panel-border);
+  background-color: var(--color-panel-raised);
+  box-shadow:
+    0 -1px 0 rgba(var(--signal-core-rgb), 0.18),
+    0 -18px 54px rgba(var(--signal-core-rgb), 0.045),
+    0 18px 44px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(240, 226, 204, 0.08);
+}
+
+/* Hover states may illuminate a surface, but they should never move it. */
+:where(
+    .panel-raised,
+    .paper-artifact,
+    .terminal-window,
+    .home-step-rail-item,
+    .home-hero-run-card,
+    .home-hero-preview,
+    .home-hero-proof,
+    .review-signal-node,
+    .signal-key-item,
+    .accent-card,
+    .setup-choice-card,
+    .agent-roster-cell,
+    .skill-category-link,
+    .skill-guide-row,
+    .cli-command-link,
+    .cli-command-row,
+    .mcp-guardrail-card,
+    .mcp-adapter-step-link,
+    .loop-step-card,
+    .process-strip > :is(li, a, div),
+    .docs-index-section,
+    .docs-pager-link
+  ):is(:hover, :focus-visible, :focus-within) {
+  translate: 0 0 !important;
+  scale: 1 !important;
+  transform: none !important;
+}
+
+.hover-stable-surface,
+.hover-stable-surface:is(:hover, :focus-within),
+.hover-stable-surface:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover {
+  translate: 0 0 !important;
+  scale: 1 !important;
+  transform: none !important;
+  border-color: var(--color-panel-border);
+  background-color: var(--color-panel-raised);
+}
+
+.hover-stable-surface > .surface-engraving,
+.hover-stable-surface > .surface-glint {
+  transition: none;
+}
+
+.hover-stable-surface:is(:hover, :focus-within) > .surface-engraving {
+  opacity: 0.5;
+}
+
+.hover-stable-surface:is(:hover, :focus-within) > .surface-glint {
+  opacity: 0.42;
+}
+
+.panel-raised:has(.catalog-row-evidence) {
+  --plate-signal: var(--signal-evidence);
+  --plate-rgb: var(--signal-evidence-rgb);
+}
+
+.panel-raised:has(.catalog-row-change) {
+  --plate-signal: var(--signal-change);
+  --plate-rgb: var(--signal-change-rgb);
+}
+
+.panel-raised:has(.catalog-row-reference, .catalog-row-olive) {
+  --plate-signal: var(--signal-reference);
+  --plate-rgb: var(--signal-reference-rgb);
+}
+
+.panel-raised:has(.catalog-row-greenfield) {
+  --plate-signal: var(--signal-greenfield);
+  --plate-rgb: var(--signal-greenfield-rgb);
+}
+
+.panel-raised:has(.catalog-row-brownfield) {
+  --plate-signal: var(--signal-brownfield);
+  --plate-rgb: var(--signal-brownfield-rgb);
+}
+
+.panel-raised:where(.signal-surface) {
+  --surface-signal: var(--signal-core);
+  --surface-rgb: var(--signal-core-rgb);
+  --surface-pattern: var(--signal-pattern-core);
+  --surface-mark: var(--signal-mark-core);
+  --plate-signal: var(--surface-signal);
+  --plate-rgb: var(--surface-rgb);
+  border-color: rgba(var(--surface-rgb), 0.15);
+  border-left-color: rgba(var(--surface-rgb), 0.3);
+  background-color: var(--color-panel-raised);
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(36, 29, 21, 0.44),
+      rgba(36, 29, 21, 0.56)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(var(--surface-rgb), 0.034) 0,
+      rgba(var(--surface-rgb), 0.034) 2px,
+      transparent 2px
+    ),
+    linear-gradient(90deg, rgba(var(--surface-rgb), 0.004), transparent 34%),
+    var(--surface-mark),
+    var(--surface-pattern),
+    radial-gradient(
+      70% 58% at 16% 0%,
+      rgba(var(--surface-rgb), 0.004),
+      transparent 62%
+    ),
+    radial-gradient(
+      80% 80% at 100% 100%,
+      rgba(0, 0, 0, 0.2),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(232, 222, 203, 0.032) 0%,
+      transparent 38%
+    );
+}
+
+.panel-raised:where(.signal-surface):is(a, button):hover,
+.panel-raised:where(.signal-surface):has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover,
+.panel-raised:where(.signal-surface):focus-within {
+  border-color: rgba(var(--surface-rgb), 0.26);
+  box-shadow:
+    inset 0 1px 0 rgba(232, 222, 203, 0.09),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    inset 2px 0 0 rgba(var(--surface-rgb), 0.1),
+    0 0 0 1px rgba(var(--surface-rgb), 0.026);
+}
+
+.signal-surface-core {
+  --surface-signal: var(--signal-core);
+  --surface-rgb: var(--signal-core-rgb);
+  --surface-pattern: var(--signal-pattern-core);
+  --surface-mark: var(--signal-mark-core);
+  border-top-color: rgba(var(--signal-core-rgb), 0.3);
+}
+
+.signal-surface-evidence {
+  --surface-signal: var(--signal-evidence);
+  --surface-rgb: var(--signal-evidence-rgb);
+  --surface-pattern: var(--signal-pattern-evidence);
+  --surface-mark: var(--signal-mark-evidence);
+  border-left-color: rgba(var(--signal-evidence-rgb), 0.3);
+  border-top-color: rgba(var(--signal-evidence-rgb), 0.18);
+}
+
+.signal-surface-greenfield {
+  --surface-signal: var(--signal-greenfield);
+  --surface-rgb: var(--signal-greenfield-rgb);
+  --surface-pattern: var(--signal-pattern-greenfield);
+  --surface-mark: var(--signal-mark-greenfield);
+  border-left-color: rgba(var(--signal-greenfield-rgb), 0.32);
+  border-right-color: rgba(var(--signal-greenfield-rgb), 0.1);
+}
+
+.signal-surface-brownfield {
+  --surface-signal: var(--signal-brownfield);
+  --surface-rgb: var(--signal-brownfield-rgb);
+  --surface-pattern: var(--signal-pattern-brownfield);
+  --surface-mark: var(--signal-mark-brownfield);
+  border-left-color: rgba(var(--signal-brownfield-rgb), 0.34);
+  border-bottom-color: rgba(var(--signal-brownfield-rgb), 0.16);
+}
+
+.signal-surface-change {
+  --surface-signal: var(--signal-change);
+  --surface-rgb: var(--signal-change-rgb);
+  --surface-pattern: var(--signal-pattern-change);
+  --surface-mark: var(--signal-mark-change);
+  border-left-color: rgba(var(--signal-change-rgb), 0.3);
+  border-bottom-color: rgba(var(--signal-change-rgb), 0.18);
+}
+
+.signal-surface-reference {
+  --surface-signal: var(--signal-reference);
+  --surface-rgb: var(--signal-reference-rgb);
+  --surface-pattern: var(--signal-pattern-reference);
+  --surface-mark: var(--signal-mark-reference);
+  border-left-color: rgba(var(--signal-reference-rgb), 0.3);
+  border-top-color: rgba(var(--signal-reference-rgb), 0.14);
+}
+
+.signal-surface-muted {
+  --surface-signal: var(--signal-muted);
+  --surface-rgb: var(--signal-muted-rgb);
+  --surface-pattern: var(--signal-pattern-muted);
+  --surface-mark: var(--signal-mark-muted);
+  border-left-color: rgba(var(--signal-muted-rgb), 0.22);
+}
+
+.panel-raised.skill-guide-catalog {
+  --plate-signal: var(--skill-guide-signal);
+  --plate-rgb: var(--skill-guide-rgb);
+  border-color: rgba(var(--skill-guide-rgb), 0.2);
+  background-color: var(--color-panel-raised);
+  background-image:
+    linear-gradient(90deg, rgba(var(--skill-guide-rgb), 0.018), transparent 38%),
+    var(--skill-guide-pattern),
+    radial-gradient(
+      70% 58% at 16% 0%,
+      rgba(var(--skill-guide-rgb), 0.026),
+      transparent 62%
+    ),
+    radial-gradient(
+      80% 80% at 100% 100%,
+      rgba(0, 0, 0, 0.2),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(232, 222, 203, 0.04) 0%,
+      transparent 38%
+    );
+}
+
+.panel-raised.skill-guide-catalog:hover,
+.panel-raised.skill-guide-catalog:focus-within {
+  border-color: rgba(var(--skill-guide-rgb), 0.48);
+}
+
+.surface-glint {
+  border-radius: inherit;
+  mix-blend-mode: screen;
+  opacity: 0.32;
+  background:
+    linear-gradient(
+      122deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(var(--plate-rgb), 0.058) 46%,
+      rgba(240, 226, 204, 0.026) 50%,
+      transparent 58%,
+      transparent 100%
+    ),
+    radial-gradient(
+      70% 60% at 18% 0%,
+      rgba(var(--plate-rgb), 0.052),
+      transparent 58%
+    );
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.surface-engraving {
+  border-radius: inherit;
+  opacity: 0.4;
+  background:
+    linear-gradient(90deg, rgba(var(--plate-rgb), 0.1), transparent 22%) left
+      top / 1px 100% no-repeat,
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 27px,
+      rgba(240, 226, 204, 0.012) 27px,
+      rgba(240, 226, 204, 0.012) 28px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 31px,
+      rgba(240, 226, 204, 0.009) 31px,
+      rgba(240, 226, 204, 0.009) 32px
+    );
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.surface-engraving::before,
+.surface-engraving::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.surface-engraving::before {
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--plate-rgb), 0.26),
+    rgba(var(--plate-rgb), 0.07),
+    transparent
+  );
+  opacity: 0.42;
+}
+
+.surface-engraving::after {
+  right: 1rem;
+  bottom: 1rem;
+  width: 2.6rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+     rgba(var(--plate-rgb), 0.26)
+   );
+  opacity: 0.34;
+}
+
+.panel-raised:is(a, button):hover > .surface-engraving,
+.panel-raised:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-engraving,
+.panel-raised:focus-within > .surface-engraving {
+  opacity: 0.54;
+}
+
+.panel-raised:is(a, button):hover > .surface-glint,
+.panel-raised:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-glint,
+.panel-raised:focus-within > .surface-glint {
+  opacity: 0.5;
+}
+
+.panel-raised.home-hero-preview:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-engraving,
+.panel-raised.home-hero-preview:hover > .surface-engraving,
+.panel-raised.home-hero-preview:focus-within > .surface-engraving {
+  opacity: 0.5;
+}
+
+.panel-raised.home-hero-preview:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-glint,
+.panel-raised.home-hero-preview:hover > .surface-glint,
+.panel-raised.home-hero-preview:focus-within > .surface-glint {
+  opacity: 0.42;
+}
+
+.home-hero-preview:is(:hover, :focus-within),
+.home-hero-preview
+  :is(.rounded-panel, .terminal-window, .paper-artifact, .home-step-rail-item),
+.home-hero-preview
+  :is(
+    .rounded-panel,
+    .terminal-window,
+    .paper-artifact,
+    .home-step-rail-item
+  ):is(:hover, :focus-within) {
+  translate: 0 0 !important;
+  transform: none !important;
+  scale: 1 !important;
+}
+
+.home-hero-preview .paper-artifact {
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.home-hero-preview .terminal-window:is(:hover, :focus-within) {
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.08),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.home-hero-preview .paper-artifact:is(:hover, :focus-within) {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(8, 9, 11, 0.08),
+    0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.panel-inset:hover,
+.panel-inset:focus-within {
+  border-color: rgba(216, 138, 36, 0.38);
+  box-shadow:
+    inset 0 3px 9px rgba(0, 0, 0, 0.72),
+    inset 0 0 64px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(216, 138, 36, 0.07);
+}
+
+.catalog-row {
+  --catalog-signal: var(--signal-core);
+  --catalog-rgb: var(--signal-core-rgb);
+  --catalog-signal-soft: rgba(var(--catalog-rgb), 0.2);
+  --catalog-mark: var(--signal-mark-core);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+  position: relative;
+  min-height: 3.5rem;
+  padding-left: 1rem;
+  border-radius: calc(var(--radius-panel) - 2px);
+  background-image: var(--catalog-pattern);
+}
+
+.catalog-row::before {
+  content: "";
+  position: absolute;
+  top: 0.1rem;
+  bottom: 0.1rem;
+  left: 0;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--catalog-signal),
+    transparent
+  );
+  opacity: 0.42;
+  transition: opacity 160ms ease;
+}
+
+.catalog-row-reference,
+.catalog-row-olive {
+  --catalog-signal: var(--signal-reference);
+  --catalog-rgb: var(--signal-reference-rgb);
+  --catalog-mark: var(--signal-mark-reference);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-core {
+  --catalog-signal: var(--signal-core);
+  --catalog-rgb: var(--signal-core-rgb);
+  --catalog-mark: var(--signal-mark-core);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.014), transparent 54%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-change {
+  --catalog-signal: var(--signal-change);
+  --catalog-rgb: var(--signal-change-rgb);
+  --catalog-mark: var(--signal-mark-change);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-evidence {
+  --catalog-signal: var(--signal-evidence);
+  --catalog-rgb: var(--signal-evidence-rgb);
+  --catalog-mark: var(--signal-mark-evidence);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-greenfield {
+  --catalog-signal: var(--signal-greenfield);
+  --catalog-rgb: var(--signal-greenfield-rgb);
+  --catalog-mark: var(--signal-mark-greenfield);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-brownfield {
+  --catalog-signal: var(--signal-brownfield);
+  --catalog-rgb: var(--signal-brownfield-rgb);
+  --catalog-mark: var(--signal-mark-brownfield);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row .catalog-row-title {
+  color: color-mix(in oklab, var(--catalog-signal) 60%, var(--color-concrete-100));
+  transition:
+    color 160ms ease,
+    text-shadow 160ms ease;
+}
+
+.catalog-row-copy {
+  color: var(--color-concrete-300);
+  transition: color 160ms ease;
+}
+
+.catalog-row-badge {
+  transition:
+    filter 160ms ease;
+}
+
+.group:hover .catalog-row::before,
+.group:focus-within .catalog-row::before,
+.catalog-row:hover::before,
+.catalog-row:focus-visible::before {
+  opacity: 0.62;
+}
+
+.group:hover .catalog-row-title,
+.group:focus-within .catalog-row-title {
+  color: color-mix(in oklab, var(--catalog-signal) 82%, var(--color-concrete-100));
+  text-shadow: 0 0 8px var(--catalog-signal-soft);
+}
+
+.group:hover .catalog-row-copy,
+.group:focus-within .catalog-row-copy {
+  color: var(--color-concrete-200);
+}
+
+.group:hover .catalog-row-badge,
+.group:focus-within .catalog-row-badge {
+  filter: saturate(1.04) brightness(1.02);
+}
+
+.accent-card {
+  --accent-signal: var(--signal-core);
+  --accent-rgb: var(--signal-core-rgb);
+  --accent-pattern: var(--signal-pattern-core);
+  --accent-mark: var(--signal-mark-core);
+  --plate-signal: var(--accent-signal);
+  --plate-rgb: var(--accent-rgb);
+  border-color: rgba(var(--accent-rgb), 0.11);
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(36, 29, 21, 0.34),
+      rgba(36, 29, 21, 0.48)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(var(--accent-rgb), 0.028) 0,
+      rgba(var(--accent-rgb), 0.028) 2px,
+      transparent 2px
+    ),
+    var(--signal-mark-muted),
+    var(--signal-pattern-muted),
+    radial-gradient(
+      72% 70% at 12% 0%,
+      rgba(var(--accent-rgb), 0.008),
+      transparent 62%
+    );
+}
+
+.accent-card-core,
+.accent-card-aurum {
+  --accent-signal: var(--signal-core);
+  --accent-rgb: var(--signal-core-rgb);
+  --accent-pattern: var(--signal-pattern-core);
+  --accent-mark: var(--signal-mark-core);
+}
+
+.accent-card-evidence,
+.accent-card-phosphor,
+.accent-card-olive {
+  --accent-signal: var(--signal-evidence);
+  --accent-rgb: var(--signal-evidence-rgb);
+  --accent-pattern: var(--signal-pattern-evidence);
+  --accent-mark: var(--signal-mark-evidence);
+}
+
+.accent-card-greenfield {
+  --accent-signal: var(--signal-greenfield);
+  --accent-rgb: var(--signal-greenfield-rgb);
+  --accent-pattern: var(--signal-pattern-greenfield);
+  --accent-mark: var(--signal-mark-greenfield);
+}
+
+.accent-card-brownfield {
+  --accent-signal: var(--signal-brownfield);
+  --accent-rgb: var(--signal-brownfield-rgb);
+  --accent-pattern: var(--signal-pattern-brownfield);
+  --accent-mark: var(--signal-mark-brownfield);
+}
+
+.accent-card-change,
+.accent-card-rubedo {
+  --accent-signal: var(--signal-change);
+  --accent-rgb: var(--signal-change-rgb);
+  --accent-pattern: var(--signal-pattern-change);
+  --accent-mark: var(--signal-mark-change);
+}
+
+.accent-card-reference {
+  --accent-signal: var(--signal-reference);
+  --accent-rgb: var(--signal-reference-rgb);
+  --accent-pattern: var(--signal-pattern-reference);
+  --accent-mark: var(--signal-mark-reference);
+}
+
+.accent-card-muted {
+  --accent-signal: var(--signal-muted);
+  --accent-rgb: var(--signal-muted-rgb);
+  --accent-pattern: var(--signal-pattern-muted);
+  --accent-mark: var(--signal-mark-muted);
+}
+
+.accent-card:hover,
+.accent-card:focus-within {
+  border-color: rgba(var(--accent-rgb), 0.24);
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.08),
+    0 0 0 1px rgba(var(--accent-rgb), 0.04);
+}
+
+.accent-card-kicker,
+.feature-accent-icon,
+.feature-accent-label,
+.feature-accent-title {
+  color: color-mix(in oklab, var(--accent-signal) 72%, var(--color-concrete-200));
+}
+
+/* Palette specimens — one visible rulebook for semantic color use. */
+.palette-specimen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1rem;
+}
+
+.palette-grammar-note {
+  display: grid;
+  gap: 0.45rem;
+  max-width: 52rem;
+  border: 1px solid rgba(var(--signal-reference-rgb), 0.24);
+  border-left-color: rgba(var(--signal-reference-rgb), 0.66);
+  border-radius: var(--radius-panel);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--signal-reference-rgb), 0.035) 0 1px,
+      transparent 1px 14px
+    ),
+    rgba(10, 7, 5, 0.34);
+  padding: 0.9rem 1rem;
+}
+
+.palette-grammar-note span {
+  color: var(--signal-reference);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.palette-grammar-note p {
+  color: var(--color-concrete-300);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.palette-specimen {
+  position: relative;
+  --palette-pattern: var(--accent-pattern);
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(var(--accent-rgb), 0.34);
+  border-radius: var(--radius-panel);
+  background:
+    linear-gradient(90deg, rgba(var(--accent-rgb), 0.055), transparent 40%),
+    linear-gradient(180deg, rgba(240, 226, 204, 0.03), transparent 42%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--accent-rgb), 0.018) 0 1px,
+      transparent 1px 18px
+    ),
+    var(--color-panel);
+  padding: 1rem;
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.055),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.38);
+}
+
+.palette-specimen::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(var(--accent-rgb), 0.92),
+    transparent
+  );
+  opacity: 0.82;
+}
+
+.palette-specimen-swatch {
+  flex: 0 0 auto;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.62);
+  border-radius: calc(var(--radius-control) - 3px);
+  background:
+    radial-gradient(circle at 35% 28%, rgba(240, 226, 204, 0.42), transparent 18%),
+    linear-gradient(135deg, rgba(var(--accent-rgb), 1), rgba(var(--accent-rgb), 0.5));
+  box-shadow:
+    0 0 0 3px rgba(var(--accent-rgb), 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.palette-specimen-relationship {
+  margin-top: 0.35rem;
+  color: var(--color-concrete-500);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.palette-specimen-family {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 1.55rem;
+  align-items: center;
+  margin-top: 0.45rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
+  border-radius: calc(var(--radius-control) - 3px);
+  background:
+    linear-gradient(90deg, rgba(var(--accent-rgb), 0.045), transparent 64%),
+    rgba(10, 7, 5, 0.3);
+  color: var(--accent-signal);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  line-height: 1;
+  padding: 0.1rem 0.42rem;
+  text-transform: uppercase;
+}
+
+.palette-specimen-hex {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 1.9rem;
+  align-items: center;
+  margin-top: 1rem;
+  color: var(--accent-signal);
+  background: rgba(10, 7, 5, 0.42);
+  border: 1px solid rgba(var(--accent-rgb), 0.26);
+  border-radius: calc(var(--radius-control) - 3px);
+  padding: 0.16rem 0.48rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 40rem) {
+  .palette-specimen-grid {
+    gap: 0.75rem;
+  }
+
+  .palette-specimen {
+    padding: 0.86rem 0.9rem 0.92rem;
+  }
+
+  .palette-specimen-swatch {
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+
+  .palette-specimen-relationship {
+    margin-top: 0.24rem;
+    font-size: 0.6rem;
+    line-height: 1.25;
+  }
+
+  .palette-specimen-family {
+    min-height: 1.3rem;
+    margin-top: 0.34rem;
+    font-size: 0.52rem;
+  }
+
+  .palette-specimen > p {
+    margin-top: 0.72rem;
+    font-size: 0.82rem;
+    line-height: 1.48;
+  }
+
+  .palette-specimen dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.58rem 0.7rem;
+    margin-top: 0.72rem;
+    padding-top: 0.72rem;
+  }
+
+  .palette-specimen dl > div:nth-child(n + 3) {
+    display: none;
+  }
+
+  .palette-specimen-hex {
+    min-height: 1.55rem;
+    margin-top: 0.72rem;
+    font-size: 0.64rem;
+  }
+}
+
+.tool-list-card {
+  --tool-signal: var(--signal-reference);
+  --tool-rgb: var(--signal-reference-rgb);
+  --tool-pattern: var(--signal-pattern-reference);
+  --tool-mark: var(--signal-mark-reference);
+  border-color: rgba(var(--tool-rgb), 0.18);
+  background-image:
+    linear-gradient(90deg, rgba(var(--tool-rgb), 0.018), transparent 50%),
+    var(--signal-mark-muted),
+    var(--signal-pattern-muted),
+    linear-gradient(180deg, rgba(240, 226, 204, 0.025), transparent 44%);
+}
+
+.tool-list-card-core {
+  --tool-signal: var(--signal-core);
+  --tool-rgb: var(--signal-core-rgb);
+  --tool-pattern: var(--signal-pattern-core);
+  --tool-mark: var(--signal-mark-core);
+}
+
+.tool-list-card-evidence {
+  --tool-signal: var(--signal-evidence);
+  --tool-rgb: var(--signal-evidence-rgb);
+  --tool-pattern: var(--signal-pattern-evidence);
+  --tool-mark: var(--signal-mark-evidence);
+}
+
+.tool-list-card-reference {
+  --tool-signal: var(--signal-reference);
+  --tool-rgb: var(--signal-reference-rgb);
+  --tool-pattern: var(--signal-pattern-reference);
+  --tool-mark: var(--signal-mark-reference);
+}
+
+.tool-list-card-change {
+  --tool-signal: var(--signal-change);
+  --tool-rgb: var(--signal-change-rgb);
+  --tool-pattern: var(--signal-pattern-change);
+  --tool-mark: var(--signal-mark-change);
+}
+
+.tool-list-card-greenfield {
+  --tool-signal: var(--signal-greenfield);
+  --tool-rgb: var(--signal-greenfield-rgb);
+  --tool-pattern: var(--signal-pattern-greenfield);
+  --tool-mark: var(--signal-mark-greenfield);
+}
+
+.tool-list-card-brownfield {
+  --tool-signal: var(--signal-brownfield);
+  --tool-rgb: var(--signal-brownfield-rgb);
+  --tool-pattern: var(--signal-pattern-brownfield);
+  --tool-mark: var(--signal-mark-brownfield);
+}
+
+.tool-list-card-muted {
+  --tool-signal: var(--signal-muted);
+  --tool-rgb: var(--signal-muted-rgb);
+  --tool-pattern: var(--signal-pattern-muted);
+  --tool-mark: var(--signal-mark-muted);
+}
+
+/* Signal stats — compact role-coloured readouts for summary panels. */
+.signal-stat {
+  --stat-signal: var(--signal-core);
+  --stat-rgb: var(--signal-core-rgb);
+  --stat-pattern: var(--signal-pattern-core);
+  --stat-mark: var(--signal-mark-core);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(var(--stat-rgb), 0.13);
+  border-radius: calc(var(--radius-control) - 2px);
+  background:
+    linear-gradient(90deg, rgba(var(--stat-rgb), 0.026), transparent 58%),
+    var(--signal-pattern-muted),
+    rgba(10, 7, 5, 0.16);
+  padding: 0.85rem 0.9rem;
+  box-shadow: inset 0 1px 0 rgba(240, 226, 204, 0.035);
+}
+
+.signal-stat::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(var(--stat-rgb), 0.44),
+    transparent
+  );
+  opacity: 0.56;
+}
+
+.signal-stat-core {
+  --stat-signal: var(--signal-core);
+  --stat-rgb: var(--signal-core-rgb);
+  --stat-pattern: var(--signal-pattern-core);
+  --stat-mark: var(--signal-mark-core);
+  border-top-color: rgba(var(--signal-core-rgb), 0.28);
+}
+
+.signal-stat-evidence {
+  --stat-signal: var(--signal-evidence);
+  --stat-rgb: var(--signal-evidence-rgb);
+  --stat-pattern: var(--signal-pattern-evidence);
+  --stat-mark: var(--signal-mark-evidence);
+  border-top-color: rgba(var(--signal-evidence-rgb), 0.26);
+}
+
+.signal-stat-greenfield {
+  --stat-signal: var(--signal-greenfield);
+  --stat-rgb: var(--signal-greenfield-rgb);
+  --stat-pattern: var(--signal-pattern-greenfield);
+  --stat-mark: var(--signal-mark-greenfield);
+  border-left-color: rgba(var(--signal-greenfield-rgb), 0.4);
+}
+
+.signal-stat-brownfield {
+  --stat-signal: var(--signal-brownfield);
+  --stat-rgb: var(--signal-brownfield-rgb);
+  --stat-pattern: var(--signal-pattern-brownfield);
+  --stat-mark: var(--signal-mark-brownfield);
+  border-left-color: rgba(var(--signal-brownfield-rgb), 0.4);
+}
+
+.signal-stat-change {
+  --stat-signal: var(--signal-change);
+  --stat-rgb: var(--signal-change-rgb);
+  --stat-pattern: var(--signal-pattern-change);
+  --stat-mark: var(--signal-mark-change);
+  border-bottom-color: rgba(var(--signal-change-rgb), 0.18);
+}
+
+.signal-stat-reference {
+  --stat-signal: var(--signal-reference);
+  --stat-rgb: var(--signal-reference-rgb);
+  --stat-pattern: var(--signal-pattern-reference);
+  --stat-mark: var(--signal-mark-reference);
+  border-top-color: rgba(var(--signal-reference-rgb), 0.24);
+}
+
+.signal-stat-muted {
+  --stat-signal: var(--signal-muted);
+  --stat-rgb: var(--signal-muted-rgb);
+  --stat-pattern: var(--signal-pattern-muted);
+  --stat-mark: var(--signal-mark-muted);
+}
