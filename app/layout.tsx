@@ -23,6 +23,7 @@ import "./styles/repo-products.css";
 import "./styles/get-started-choices.css";
 import "./styles/what-is-suspec.css";
 import "./styles/artifact-surfaces.css";
+import "./styles/colophon.css";
 import "./globals.css";
 import "./styles/motion-surfaces.css";
 import "./styles/art-direction-pass.css";
