@@ -1,0 +1,50 @@
+@media (max-width: 40rem) {
+  .skill-guide-catalog-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.22rem;
+  }
+
+  .skill-guide-list {
+    gap: 0.42rem;
+    padding: 0.55rem;
+  }
+
+  .skill-guide-row.catalog-row {
+    min-height: auto;
+    align-items: center;
+    gap: 0.65rem;
+    border-radius: calc(var(--radius-panel) - 6px);
+    padding: 0.68rem 2.1rem 0.68rem 0.72rem;
+  }
+
+  .skill-guide-row.catalog-row > div:first-child {
+    align-items: center;
+    gap: 0.72rem;
+  }
+
+  .skill-guide-row-badge {
+    height: 1.85rem;
+    width: 1.85rem;
+  }
+
+  .skill-guide-row-badge svg {
+    height: 0.88rem;
+    width: 0.88rem;
+  }
+
+  .skill-guide-row .catalog-row-title {
+    font-size: 0.74rem;
+    line-height: 1.2;
+  }
+
+  .skill-guide-row .catalog-row-copy {
+    margin-top: 0.18rem;
+    font-size: 0.72rem;
+    line-height: 1.38;
+  }
+
+  .skill-guide-row-arrow {
+    display: none;
+  }
+}

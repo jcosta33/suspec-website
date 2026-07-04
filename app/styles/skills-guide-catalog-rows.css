@@ -1,0 +1,97 @@
+.skill-guide-list {
+  counter-reset: skill-guide;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0.95rem;
+  list-style: none;
+  background:
+    radial-gradient(
+      88% 72% at 48% 0%,
+      rgba(var(--skill-guide-rgb), 0.045),
+      transparent 62%
+    ),
+    rgba(10, 7, 5, 0.18);
+}
+
+.skill-guide-list > li {
+  counter-increment: skill-guide;
+  min-width: 0;
+}
+
+.skill-guide-row.catalog-row {
+  --catalog-signal: var(--skill-guide-signal);
+  --catalog-rgb: var(--skill-guide-rgb);
+  --catalog-signal-soft: rgba(var(--skill-guide-rgb), 0.28);
+  position: relative;
+  display: flex;
+  min-height: 6rem;
+  min-width: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(var(--catalog-rgb), 0.13);
+  border-radius: calc(var(--radius-panel) - 3px);
+  background:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.032), transparent 52%),
+    linear-gradient(180deg, rgba(240, 226, 204, 0.024), transparent 44%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 1.08rem,
+      rgba(240, 226, 204, 0.014) 1.08rem calc(1.08rem + 1px)
+    ),
+    rgba(11, 8, 6, 0.66);
+  color: inherit;
+  padding: 0.92rem 2.45rem 0.92rem 0.95rem;
+  text-decoration: none;
+  box-shadow:
+    inset 1px 0 0 rgba(var(--catalog-rgb), 0.2),
+    inset 0 1px 0 rgba(240, 226, 204, 0.026);
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.skill-guide-row.catalog-row::after {
+  content: counter(skill-guide, decimal-leading-zero);
+  position: absolute;
+  right: 0.78rem;
+  bottom: 0.66rem;
+  color: rgba(var(--catalog-rgb), 0.44);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.skill-guide-row.catalog-row:hover,
+.skill-guide-row.catalog-row:focus-visible {
+  border-color: rgba(var(--catalog-rgb), 0.26);
+  box-shadow:
+    inset 1px 0 0 rgba(var(--catalog-rgb), 0.32),
+    inset 0 1px 0 rgba(240, 226, 204, 0.04),
+    0 0 0 1px rgba(var(--catalog-rgb), 0.04);
+}
+
+.skill-guide-row-arrow {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.78rem;
+  margin-top: 0;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  color: var(--color-concrete-500);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.skill-guide-row.catalog-row:hover .skill-guide-row-arrow,
+.skill-guide-row.catalog-row:focus-visible .skill-guide-row-arrow {
+  opacity: 1;
+}

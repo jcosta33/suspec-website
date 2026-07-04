@@ -1,0 +1,45 @@
+.skill-guide-catalog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.1rem;
+  border-bottom: 1px solid rgba(var(--skill-guide-rgb), 0.16);
+  background:
+    linear-gradient(90deg, rgba(var(--skill-guide-rgb), 0.032), transparent 48%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.32rem,
+      rgba(var(--skill-guide-rgb), 0.018) 1.32rem calc(1.32rem + 1px)
+    ),
+    rgba(10, 7, 5, 0.32);
+  padding: 0.78rem 1rem;
+  color: var(--color-concrete-400);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skill-guide-catalog-header span:first-child {
+  color: color-mix(
+    in oklab,
+    var(--skill-guide-signal) 82%,
+    var(--color-concrete-100)
+  );
+}
+
+.skill-guide-catalog-header span:last-child {
+  border: 1px solid rgba(var(--skill-guide-rgb), 0.22);
+  border-radius: calc(var(--radius-control) - 4px);
+  background:
+    linear-gradient(90deg, rgba(var(--skill-guide-rgb), 0.08), transparent 72%),
+    rgba(10, 7, 5, 0.34);
+  color: color-mix(
+    in oklab,
+    var(--skill-guide-signal) 62%,
+    var(--color-concrete-200)
+  );
+  padding: 0.18rem 0.52rem;
+}
