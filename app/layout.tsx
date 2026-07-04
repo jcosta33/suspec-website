@@ -6,6 +6,7 @@ import {
 } from "next/font/google";
 import "./styles/theme.css";
 import "./styles/base.css";
+import "./styles/sections.css";
 import "./globals.css";
 import "./styles/motion-surfaces.css";
 import "./styles/art-direction-pass.css";
