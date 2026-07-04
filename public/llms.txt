@@ -1,8 +1,8 @@
 # Suspec
 
-> Suspec is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. It is plain markdown and conventions — any agent, no runtime. The framework turns each change into a bounded spec, an agent run, and review evidence; task packets are added only when work needs split slices, so "almost right" has to prove it is right before it ships.
+> Suspec is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. It is plain markdown and conventions — any agent, no runtime. The framework turns each change into a bounded spec, an agent run, and review evidence; task packets are added only when work needs split slices, so "almost right" has to leave evidence before anyone treats it as done.
 
-Suspec keeps a human in charge of the firehose. Agents draft, run, and paste the output; the human decides when the evidence is good enough. Every rule states what kind of guarantee it is — convention, checklist, toolable, or enforced — and admits when the honest answer is "nothing checks this yet." An optional reference CLI (`suspec`) does the chores — checking specs, isolating each task in its own git worktree, reconciling a finished run against the diff — but it never renders the review verdict; that stays with a person.
+Suspec keeps a human in charge of the firehose. Agents draft, run, and paste the output; the human decides when the evidence is good enough. Every rule states its force — convention, checklist, toolable, or enforced — and admits when the honest answer is "nothing checks this yet." An optional reference CLI (`suspec`) does the chores — checking specs, isolating each task in its own git worktree, reconciling a finished run against the diff — but it never renders the review verdict; that stays with a person.
 
 ## Start here
 

@@ -76,7 +76,7 @@ const isNotList = [
   { label: "generator", text: "a code generator" },
   { label: "gate", text: "a replacement for PRs and CI" },
   { label: "proof", text: "a formal verification system" },
-  { label: "verdict", text: "a guarantee that code is correct" },
+  { label: "verdict", text: "a correctness stamp" },
   { label: "shortcut", text: "permission to skip review" },
 ];
 
