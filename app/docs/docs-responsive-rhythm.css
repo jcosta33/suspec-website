@@ -1,0 +1,40 @@
+/* Rhythm pass — the manual needs a little more air than dense app panels. */
+.docs-index-cover {
+  margin-bottom: clamp(1.35rem, 2.1vw, 1.85rem);
+}
+
+.docs-index-grid,
+.docs-index-top,
+.docs-index-stack {
+  gap: clamp(1.15rem, 1.8vw, 1.5rem);
+}
+
+.docs-article-header {
+  margin-bottom: clamp(2.15rem, 2.65vw, 2.65rem);
+}
+
+@media (max-width: 64rem) {
+  .docs-layout {
+    gap: clamp(1.45rem, 3.6vw, 2rem);
+  }
+}
+
+@media (max-width: 40rem) {
+  .docs-layout {
+    gap: 1.35rem;
+  }
+
+  .docs-index-cover {
+    margin-bottom: 1.15rem;
+  }
+
+  .docs-index-grid,
+  .docs-index-top,
+  .docs-index-stack {
+    gap: 1.08rem;
+  }
+
+  .docs-article-header {
+    margin-bottom: 1.55rem;
+  }
+}
