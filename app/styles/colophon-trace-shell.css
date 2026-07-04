@@ -1,0 +1,33 @@
+.colophon-build-trace {
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(216, 138, 36, 0.26);
+  background:
+    linear-gradient(90deg, rgba(216, 138, 36, 0.065), transparent 42%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--signal-muted-rgb), 0.032) 0 1px,
+      transparent 1px 1.15rem
+    ),
+    rgba(19, 15, 11, 0.78);
+}
+
+.colophon-build-trace::after {
+  content: "";
+  position: absolute;
+  inset: auto 1.1rem 0 1.1rem;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(216, 138, 36, 0.34),
+    rgba(var(--signal-reference-rgb), 0.16),
+    transparent
+  );
+}
+
+.colophon-build-trace-inner {
+  display: grid;
+  gap: 1rem;
+}

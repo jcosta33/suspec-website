@@ -1,0 +1,18 @@
+@media (min-width: 64rem) {
+  .colophon-build-trace-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.88fr);
+    align-items: center;
+    column-gap: 1.6rem;
+    row-gap: 0.55rem;
+  }
+
+  .colophon-build-trace-inner > p,
+  .colophon-build-trace-inner > ol {
+    grid-column: 1;
+  }
+
+  .colophon-provenance-grid {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+}
