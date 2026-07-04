@@ -152,8 +152,8 @@
   padding: 1.25rem;
 }
 
-.agent-roster-cells {
-  gap: 0.55rem !important;
+.repo-product-page .agent-roster-cells {
+  gap: 0.55rem;
   padding: 0.75rem;
   background:
     radial-gradient(
@@ -373,9 +373,9 @@
     line-height: 1.35;
   }
 
-  .agent-roster-cells {
+  .repo-product-page .agent-roster-cells {
     grid-template-columns: minmax(0, 1fr);
-    gap: 0.42rem !important;
+    gap: 0.42rem;
     padding: 0.55rem;
   }
 
