@@ -725,11 +725,11 @@ export default function AgentsPage() {
             <span>delegation trace</span>
           </div>
           <Heading className="mt-3">
-            Why not just the built-in reviewer?
+            When role files help
           </Heading>
           <p className="mt-4 text-concrete-400">
-            Use built-ins when they are enough. Use these when a role file or
-            delegation trace helps.
+            Use built-ins for quick passes. Use role files when the review needs
+            a repeatable scope, tool list, or delegation trace.
           </p>
           <p className="mt-6">
             <TextLink

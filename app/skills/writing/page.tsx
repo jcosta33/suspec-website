@@ -348,9 +348,9 @@ export default function WritingSkillsPage() {
           </div>
           <Heading className="mt-3">Use a small folder</Heading>
           <p className="mt-4 text-concrete-400">
-            A simple skill has one{" "}
-            <code className="text-suspec-yellow">SKILL.md</code>. Add references
-            only when the body would become too long.
+            Keep the entry point in{" "}
+            <code className="text-suspec-yellow">SKILL.md</code>. Move support
+            material to references only when it would bury the load rule.
           </p>
           <dl className="skill-folder-ledger mt-6">
             <div>
@@ -406,7 +406,8 @@ export default function WritingSkillsPage() {
           </div>
           <Heading className="mt-3">Write the trigger first</Heading>
           <p className="mt-4 text-concrete-400">
-            The description decides whether the skill loads. Make it direct.
+            Treat the description as the load contract. Name the work it should
+            match.
           </p>
         </div>
         <Card screws className="border-panel-border">
