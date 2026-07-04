@@ -1,0 +1,63 @@
+.agent-page-nav-link-core,
+.section-jump-nav-link-core {
+  --agent-nav-signal: var(--signal-core);
+  --agent-nav-rgb: var(--signal-core-rgb);
+  --agent-nav-pattern: var(--signal-pattern-core);
+  --agent-nav-mark: var(--signal-mark-core);
+}
+
+.agent-page-nav-link-evidence,
+.section-jump-nav-link-evidence {
+  --agent-nav-signal: var(--signal-evidence);
+  --agent-nav-rgb: var(--signal-evidence-rgb);
+  --agent-nav-pattern: var(--signal-pattern-evidence);
+  --agent-nav-mark: var(--signal-mark-evidence);
+}
+
+.agent-page-nav-link-greenfield,
+.section-jump-nav-link-greenfield {
+  --agent-nav-signal: var(--signal-greenfield);
+  --agent-nav-rgb: var(--signal-greenfield-rgb);
+  --agent-nav-pattern: var(--signal-pattern-greenfield);
+  --agent-nav-mark: var(--signal-mark-greenfield);
+}
+
+.agent-page-nav-link-brownfield,
+.section-jump-nav-link-brownfield {
+  --agent-nav-signal: var(--signal-brownfield);
+  --agent-nav-rgb: var(--signal-brownfield-rgb);
+  --agent-nav-pattern: var(--signal-pattern-brownfield);
+  --agent-nav-mark: var(--signal-mark-brownfield);
+}
+
+.agent-page-nav-link-change,
+.section-jump-nav-link-change {
+  --agent-nav-signal: var(--signal-change);
+  --agent-nav-rgb: var(--signal-change-rgb);
+  --agent-nav-pattern: var(--signal-pattern-change);
+  --agent-nav-mark: var(--signal-mark-change);
+}
+
+.agent-page-nav-link-reference,
+.section-jump-nav-link-reference {
+  --agent-nav-signal: var(--signal-reference);
+  --agent-nav-rgb: var(--signal-reference-rgb);
+  --agent-nav-pattern: var(--signal-pattern-reference);
+  --agent-nav-mark: var(--signal-mark-reference);
+}
+
+.agent-page-nav-link-muted,
+.section-jump-nav-link-muted {
+  --agent-nav-signal: var(--signal-muted);
+  --agent-nav-rgb: var(--signal-muted-rgb);
+  --agent-nav-pattern: var(--signal-pattern-muted);
+  --agent-nav-mark: var(--signal-mark-muted);
+}
+
+.agent-page-nav-link:not(.agent-page-nav-link-core),
+.section-jump-nav-link:not(.section-jump-nav-link-core) {
+  --agent-nav-signal: var(--signal-muted);
+  --agent-nav-rgb: var(--signal-muted-rgb);
+  --agent-nav-pattern: var(--signal-pattern-muted);
+  --agent-nav-mark: var(--signal-mark-muted);
+}
