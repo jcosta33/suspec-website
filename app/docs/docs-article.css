@@ -88,10 +88,6 @@
     padding-top: 5.25rem;
   }
 
-  .docs-layout:has(.docs-index-prose) > aside {
-    display: none;
-  }
-
   .docs-layout > aside {
     position: static;
     width: 100%;
