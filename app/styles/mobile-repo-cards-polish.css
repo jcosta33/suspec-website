@@ -1,12 +1,12 @@
 @media (max-width: 40rem) {
   .repo-product-page .agent-roster-cell {
-    min-height: 7.05rem !important;
-    padding: 0.7rem 0.74rem !important;
+    min-height: 7.05rem;
+    padding: 0.7rem 0.74rem;
   }
 
   .repo-product-page .agent-roster-cell > div {
-    grid-template-columns: 1.74rem minmax(0, 1fr) !important;
-    gap: 0.58rem !important;
+    grid-template-columns: 1.74rem minmax(0, 1fr);
+    gap: 0.58rem;
   }
 
   .repo-product-page .agent-roster-cell-body {
@@ -15,28 +15,28 @@
   }
 
   .repo-product-page .agent-roster-icon {
-    height: 1.58rem !important;
-    width: 1.58rem !important;
+    height: 1.58rem;
+    width: 1.58rem;
   }
 
   .repo-product-page .agent-roster-icon svg {
-    height: 0.76rem !important;
-    width: 0.76rem !important;
+    height: 0.76rem;
+    width: 0.76rem;
   }
 
   .repo-product-page .agent-roster-cell-body > div:first-child p {
-    font-size: 0.58rem !important;
-    line-height: 1.1 !important;
+    font-size: 0.58rem;
+    line-height: 1.1;
   }
 
   .repo-product-page .agent-roster-cell-title {
-    font-size: 1rem !important;
-    line-height: 1.12 !important;
+    font-size: 1rem;
+    line-height: 1.12;
   }
 
   .repo-product-page .agent-roster-file {
-    font-size: 0.66rem !important;
-    line-height: 1.18 !important;
+    font-size: 0.66rem;
+    line-height: 1.18;
   }
 
   .repo-product-page .agent-roster-use {
@@ -44,24 +44,24 @@
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-    font-size: 0.74rem !important;
-    line-height: 1.3 !important;
+    font-size: 0.74rem;
+    line-height: 1.3;
   }
 
   .repo-product-page .repo-manifest-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 0.44rem !important;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.44rem;
   }
 
   .repo-product-page .repo-manifest-grid .signal-stat,
   .repo-product-page .repo-manifest-grid .signal-stat:nth-child(3) {
-    display: grid !important;
-    grid-column: auto !important;
-    grid-template-columns: auto minmax(0, 1fr) !important;
-    min-height: 2.65rem !important;
-    align-items: center !important;
-    gap: 0.7rem !important;
-    padding: 0.52rem 0.62rem !important;
+    display: grid;
+    grid-column: auto;
+    grid-template-columns: auto minmax(0, 1fr);
+    min-height: 2.65rem;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.52rem 0.62rem;
   }
 
   .repo-product-page .repo-manifest-grid .signal-stat p:last-child,
@@ -74,14 +74,14 @@
     .signal-stat:nth-child(3)
     p:last-child {
     justify-self: end;
-    margin-top: 0 !important;
-    overflow: hidden !important;
-    overflow-wrap: normal !important;
-    text-align: right !important;
-    text-overflow: ellipsis !important;
-    white-space: nowrap !important;
-    font-size: 0.82rem !important;
-    line-height: 1.1 !important;
+    margin-top: 0;
+    overflow: hidden;
+    overflow-wrap: normal;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.82rem;
+    line-height: 1.1;
   }
 
   .repo-product-page .agent-worker-card .catalog-row,

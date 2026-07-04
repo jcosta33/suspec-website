@@ -1,11 +1,11 @@
 .repo-product-page .agent-roster-cell {
-  min-height: clamp(11.65rem, 13.6vw, 12.35rem) !important;
-  padding: clamp(1.16rem, 1.48vw, 1.34rem) !important;
+  min-height: clamp(11.65rem, 13.6vw, 12.35rem);
+  padding: clamp(1.16rem, 1.48vw, 1.34rem);
 }
 
 .repo-product-page .agent-roster-cell > div {
-  grid-template-columns: 3.25rem minmax(0, 1fr) !important;
-  gap: clamp(0.9rem, 1.12vw, 1rem) !important;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  gap: clamp(0.9rem, 1.12vw, 1rem);
 }
 
 .repo-product-page .agent-roster-cell-body {
