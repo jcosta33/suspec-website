@@ -250,7 +250,7 @@
 }
 
 .cli-command-reference-intro > :where(.section-kicker, .font-heading, p, ul) {
-  margin: 0 !important;
+  margin: 0;
 }
 
 .cli-command-reference-intro > p {
@@ -488,8 +488,8 @@
     padding: 0.54rem;
   }
 
-  .cli-command-copy .copy-button-label-compact {
-    display: none !important;
+  .cli-command-copy[data-compact-label="true"] .copy-button-label-compact {
+    display: none;
   }
 
   .cli-command-row-lamp {
