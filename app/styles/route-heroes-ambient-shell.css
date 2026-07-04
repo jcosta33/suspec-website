@@ -1,0 +1,24 @@
+/* Route header ruling — faint manuscript marks behind the hero title. */
+.ambient-header {
+  --ambient-signal: var(--signal-reference);
+  --ambient-rgb: var(--signal-reference-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-reference);
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-top: var(--rhythm-hero-nav-clearance);
+}
+
+.home-hero-section .ambient-header {
+  padding-top: clamp(5.25rem, 6.4vw, 5.85rem);
+}
+
+.repo-product-page > .ambient-header {
+  padding-top: clamp(5.15rem, 6.4vw, 5.85rem);
+}
+
+.repo-product-page > .ambient-header .page-hero,
+.site-main-frame > .flex.flex-col > .ambient-header .page-hero {
+  padding-top: clamp(0.46rem, 0.76vw, 0.74rem);
+}

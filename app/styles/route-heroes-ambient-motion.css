@@ -1,0 +1,64 @@
+@media (prefers-reduced-motion: no-preference) {
+  .ambient-header::before {
+    animation: ambient-calibration-sweep 18s ease-in-out infinite alternate;
+  }
+
+  .ambient-header::after {
+    animation: ambient-rule-breathe 7s ease-in-out infinite;
+  }
+}
+
+@keyframes ambient-calibration-sweep {
+  from {
+    opacity: 0.46;
+    background-position:
+      44% 50%,
+      0 0,
+      center;
+  }
+  to {
+    opacity: 0.58;
+    background-position:
+      56% 50%,
+      12px 0,
+      center;
+  }
+}
+
+@keyframes ambient-rule-breathe {
+  0%,
+  100% {
+    opacity: 0.56;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.ambient-header::after {
+  top: clamp(5.95rem, 6.72vw, 6.55rem);
+  width: min(28rem, 72vw);
+  height: 0.8rem;
+  opacity: 0.68;
+  background:
+    radial-gradient(
+        circle,
+        rgba(var(--ambient-rgb), 0.68) 0 1.5px,
+        transparent 2px
+      )
+      left center / 0.8rem 0.8rem no-repeat,
+    radial-gradient(
+        circle,
+        rgba(var(--ambient-secondary-rgb), 0.68) 0 1.5px,
+        transparent 2px
+      )
+      right center / 0.8rem 0.8rem no-repeat,
+    linear-gradient(
+         90deg,
+         transparent,
+        rgba(var(--ambient-rgb), 0.34),
+        rgba(var(--ambient-secondary-rgb), 0.38),
+         transparent
+       )
+      center / 100% 1px no-repeat;
+}

@@ -1,0 +1,81 @@
+.ambient-header:has(.page-hero-tone-core) {
+  --ambient-signal: var(--signal-core);
+  --ambient-rgb: var(--signal-core-rgb);
+  --ambient-secondary-rgb: var(--signal-reference-rgb);
+  --ambient-pattern: var(--signal-pattern-core);
+}
+
+.ambient-header:has(.page-hero-tone-evidence) {
+  --ambient-signal: var(--signal-evidence);
+  --ambient-rgb: var(--signal-evidence-rgb);
+  --ambient-secondary-rgb: var(--signal-reference-rgb);
+  --ambient-pattern: var(--signal-pattern-evidence);
+}
+
+.ambient-header:has(.page-hero-tone-greenfield) {
+  --ambient-signal: var(--signal-greenfield);
+  --ambient-rgb: var(--signal-greenfield-rgb);
+  --ambient-secondary-rgb: var(--signal-brownfield-rgb);
+  --ambient-pattern: var(--signal-pattern-greenfield);
+}
+
+.ambient-header:has(.page-hero-tone-brownfield) {
+  --ambient-signal: var(--signal-brownfield);
+  --ambient-rgb: var(--signal-brownfield-rgb);
+  --ambient-secondary-rgb: var(--signal-greenfield-rgb);
+  --ambient-pattern: var(--signal-pattern-brownfield);
+}
+
+.ambient-header:has(.page-hero-tone-change) {
+  --ambient-signal: var(--signal-change);
+  --ambient-rgb: var(--signal-change-rgb);
+  --ambient-secondary-rgb: var(--signal-evidence-rgb);
+  --ambient-pattern: var(--signal-pattern-change);
+}
+
+.ambient-header:has(.page-hero-tone-reference) {
+  --ambient-signal: var(--signal-reference);
+  --ambient-rgb: var(--signal-reference-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-reference);
+}
+
+.ambient-header:has(.page-hero-package-skills) {
+  --ambient-signal: var(--package-skills);
+  --ambient-rgb: var(--package-skills-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-evidence);
+}
+
+.ambient-header:has(.page-hero-package-agents) {
+  --ambient-signal: var(--package-agents);
+  --ambient-rgb: var(--package-agents-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-reference);
+}
+
+.ambient-header:has(.page-hero-package-cli) {
+  --ambient-signal: var(--package-cli);
+  --ambient-rgb: var(--package-cli-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-change);
+}
+
+.ambient-header:has(.page-hero-package-mcp) {
+  --ambient-signal: var(--package-mcp);
+  --ambient-rgb: var(--package-mcp-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: repeating-linear-gradient(
+      0deg,
+      rgba(var(--ambient-rgb), 0.014) 0 1px,
+      transparent 1px 14px
+    ),
+    linear-gradient(180deg, rgba(var(--ambient-rgb), 0.012), transparent 44%);
+}
+
+.ambient-header:has(.page-hero-tone-muted) {
+  --ambient-signal: var(--signal-muted);
+  --ambient-rgb: var(--signal-muted-rgb);
+  --ambient-secondary-rgb: var(--signal-reference-rgb);
+  --ambient-pattern: var(--signal-pattern-muted);
+}

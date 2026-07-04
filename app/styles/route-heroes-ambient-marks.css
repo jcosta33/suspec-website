@@ -1,0 +1,45 @@
+.ambient-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+.ambient-header::before,
+.ambient-header::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  pointer-events: none;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.ambient-header::before {
+  top: clamp(1.85rem, 2.35vw, 2.22rem);
+  width: min(48rem, 86vw);
+  height: 8.5rem;
+  border-radius: 9999px;
+  opacity: 0.48;
+  background:
+    linear-gradient(
+        90deg,
+        transparent 0%,
+        transparent 34%,
+        rgba(var(--ambient-secondary-rgb), 0.05) 48%,
+        transparent 62%,
+        transparent 100%
+      )
+      center / 72% 100% no-repeat,
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 23px,
+      rgba(var(--ambient-rgb), 0.08) 23px,
+      rgba(var(--ambient-rgb), 0.08) 24px
+    ),
+    var(--ambient-pattern),
+    radial-gradient(
+      ellipse at center,
+      rgba(var(--ambient-rgb), 0.08),
+      transparent 68%
+    );
+}
