@@ -1,0 +1,29 @@
+.docs-prose thead {
+  background: var(--color-panel-raised);
+}
+.docs-prose th {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-aluminium);
+  text-align: left;
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+.docs-prose th,
+.docs-prose td {
+  border: 1px solid var(--color-panel-border);
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.docs-prose td a {
+  display: inline-flex;
+  min-height: 2rem;
+  min-width: 2.75rem;
+  align-items: center;
+}
+.docs-prose tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.018);
+}

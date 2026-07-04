@@ -1,0 +1,26 @@
+@media (min-width: 48.001rem) {
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    th:first-child,
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    td[data-label="ID"],
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    th:last-child,
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    td[data-label="Severity"] {
+    width: 1%;
+    overflow-wrap: normal;
+    white-space: nowrap;
+  }
+
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    th:nth-child(2),
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    td[data-label="Name"] {
+    width: 9.5rem;
+  }
+
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    td[data-label="ID"] {
+    font-variant-numeric: tabular-nums;
+  }
+}

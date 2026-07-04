@@ -1,0 +1,22 @@
+/* Tables — bordered panel with an engraved header */
+.docs-table-scroll {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  position: relative;
+  scrollbar-color: rgba(var(--signal-muted-rgb), 0.34) rgba(10, 7, 5, 0.38);
+  scrollbar-width: thin;
+  border: 1px solid var(--color-panel-border);
+  border-radius: var(--radius-panel);
+}
+.docs-table-scroll:focus-visible {
+  outline: 2px solid var(--color-suspec-yellow);
+  outline-offset: 2px;
+}
+.docs-prose table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: min(42rem, 100%);
+  font-size: 0.9rem;
+  margin: 0;
+}
