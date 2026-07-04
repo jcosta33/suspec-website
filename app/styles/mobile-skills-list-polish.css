@@ -1,0 +1,42 @@
+@media (max-width: 40rem) {
+  .skills-page .skill-guide-list {
+    gap: 0.34rem !important;
+    padding: 0.46rem !important;
+  }
+
+  .skills-page .skill-guide-row.catalog-row {
+    grid-template-columns: 2rem minmax(0, 1fr) auto !important;
+    min-height: 4.35rem !important;
+    gap: 0 0.58rem !important;
+    padding: 0.58rem 1.82rem 0.58rem 0.6rem !important;
+  }
+
+  .skills-page .skill-guide-row-badge {
+    height: 1.6rem !important;
+    width: 1.6rem !important;
+    margin-top: 0.08rem !important;
+  }
+
+  .skills-page .skill-guide-row-badge svg {
+    height: 0.78rem !important;
+    width: 0.78rem !important;
+  }
+
+  .skills-page .skill-guide-row.catalog-row > div:first-child > div:last-child {
+    row-gap: 0.22rem !important;
+  }
+
+  .skills-page .skill-guide-row .catalog-row-title {
+    font-size: 0.72rem !important;
+    line-height: 1.16 !important;
+  }
+
+  .skills-page .skill-guide-row .catalog-row-copy {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 0.7rem !important;
+    line-height: 1.28 !important;
+  }
+}

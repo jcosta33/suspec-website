@@ -1,0 +1,66 @@
+@media (max-width: 40rem) {
+  .mcp-adapter-rail {
+    gap: 0.34rem !important;
+    padding: 0.42rem !important;
+  }
+
+  .mcp-adapter-rail::before {
+    left: 1.66rem !important;
+    opacity: 0.58;
+  }
+
+  .mcp-adapter-step {
+    border-color: rgba(var(--package-mcp-rgb), 0.13) !important;
+    border-left-color: rgba(var(--package-mcp-rgb), 0.3) !important;
+    background-color: rgba(20, 16, 12, 0.88) !important;
+  }
+
+  .mcp-adapter-step-link {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 4.08rem !important;
+    padding: 0.52rem 0.62rem 0.56rem !important;
+  }
+
+  .mcp-adapter-heading {
+    display: grid !important;
+    grid-template-columns: 1.52rem minmax(0, 1fr) auto;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  .mcp-adapter-heading .hex-badge {
+    height: 1.52rem !important;
+    width: 1.52rem !important;
+  }
+
+  .mcp-adapter-heading > .min-w-0 {
+    min-width: 0;
+  }
+
+  .mcp-adapter-heading > .motion-nudge-x {
+    display: block !important;
+    grid-column: 3;
+    margin-left: 0 !important;
+    opacity: 0.48;
+  }
+
+  .mcp-adapter-step-link .mcp-adapter-meta {
+    font-size: 0.52rem;
+    letter-spacing: 0.08em;
+  }
+
+  .mcp-adapter-title {
+    margin-top: 0.05rem !important;
+    font-size: 0.86rem !important;
+    line-height: 1.08 !important;
+  }
+
+  .mcp-adapter-detail {
+    margin-top: 0.22rem !important;
+    margin-left: calc(1.52rem + 0.5rem) !important;
+    -webkit-line-clamp: 1 !important;
+    font-size: 0.69rem !important;
+    line-height: 1.26 !important;
+  }
+}

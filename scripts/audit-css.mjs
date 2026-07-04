@@ -71,7 +71,7 @@ if (important > BUDGETS.important) {
   failures.push(`!important budget exceeded: ${important} > ${BUDGETS.important}`);
 }
 if (fs.existsSync(path.join(ROOT, "app/art-direction-pass.css"))) {
-  failures.push("stale app/art-direction-pass.css exists; art-direction files now live under app/styles/");
+  failures.push("stale app/art-direction-pass.css exists; late tuning now lives in app/styles/*-polish.css");
 }
 if (layoutImports.at(-1) !== "app/styles/reduced-motion.css") {
   failures.push("app/styles/reduced-motion.css must remain the final root layout CSS import");

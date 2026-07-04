@@ -1,0 +1,46 @@
+@media (max-width: 40rem) {
+  .cli-command-catalog-header,
+  .skill-guide-catalog-header,
+  .mcp-adapter-header {
+    min-height: 2.38rem;
+    padding-block: 0.54rem;
+  }
+
+  .cli-command-section {
+    padding: 0.95rem 0.9rem 1.05rem;
+  }
+
+  .cli-command-list {
+    gap: 0.44rem;
+    border: 0;
+  }
+
+  .cli-command-row.catalog-row {
+    min-height: 4.8rem !important;
+    border-width: 1px !important;
+    border-color: rgba(var(--catalog-rgb), 0.16) !important;
+    border-radius: calc(var(--radius-panel) - 5px) !important;
+    background:
+      linear-gradient(90deg, rgba(var(--catalog-rgb), 0.032), transparent 58%),
+      rgba(10, 7, 5, 0.16) !important;
+    padding: 0.72rem 4.3rem 0.76rem 0.76rem !important;
+    box-shadow:
+      inset 2px 0 0 rgba(var(--catalog-rgb), 0.22),
+      inset 0 1px 0 rgba(240, 226, 204, 0.03) !important;
+  }
+
+  .cli-command-row.catalog-row > div:first-child {
+    display: grid !important;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    align-items: start;
+    gap: 0.72rem !important;
+  }
+
+  .cli-command-row .catalog-row-copy {
+    max-width: 26rem;
+  }
+
+  .cli-command-list > li:last-child .cli-command-row.catalog-row {
+    border-bottom: 1px solid rgba(var(--catalog-rgb), 0.16) !important;
+  }
+}

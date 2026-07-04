@@ -15,13 +15,14 @@ component TypeScript.
 | `app/styles/site-chrome.css` | Header/nav chrome, scroll-revealed top bar, mobile menu states. |
 | `app/styles/site-surfaces.css`, `app/styles/surface-primitives.css`, `app/styles/artifact-surfaces.css` | Reusable panels, terminals, paper artifacts, buttons, badges, lamps, tactile surface primitives. |
 | `app/styles/sections.css`, `app/styles/route-heroes.css`, `app/styles/process-strips.css` | Shared route rhythm, section headings, route heroes, process rails. |
-| `app/styles/home.css`, `app/styles/get-started.css`, `app/styles/get-started-choices.css`, `app/styles/what-is-suspec.css`, `app/styles/loop.css`, `app/styles/cli.css`, `app/styles/mcp.css`, `app/styles/skills.css`, `app/styles/repo-product-*.css`, `app/styles/home-hero-*-polish.css`, `app/styles/docs-index-polish.css`, `app/styles/colophon.css`, `app/styles/footer.css` | Route and product-page styling. Product shared CSS is split into manifest, navigation, roster, worker-card, and late product-polish families; home/docs late tuning now sits beside route owners. |
+| `app/styles/home.css`, `app/styles/get-started.css`, `app/styles/get-started-choices.css`, `app/styles/what-is-suspec.css`, `app/styles/loop.css`, `app/styles/cli.css`, `app/styles/mcp.css`, `app/styles/skills.css`, `app/styles/repo-product-*.css`, `app/styles/home-hero-*-polish.css`, `app/styles/docs-index-polish.css`, `app/styles/mobile-*-polish.css`, `app/styles/colophon.css`, `app/styles/footer.css` | Route and product-page styling. Product shared CSS is split into manifest, navigation, roster, worker-card, and late product-polish families; home/docs/mobile tuning now sits beside route owners. |
 | `app/styles/motion-primitives.css`, `app/styles/motion-surfaces.css`, `app/styles/reduced-motion.css` | Cursor/background motion, hover-safe transforms, reduced-motion clamp. `reduced-motion.css` stays last. |
-| `app/styles/art-direction-mobile.css` | Remaining late mobile tuning from the redesign. Product, home, and docs tuning now live in `*-polish.css` files at the same cascade point. |
+| `app/styles/mobile-*-polish.css` | Late mobile tuning from the redesign, split by route family at the same cascade point. These still contain most remaining `!important` cleanup work. |
 | `app/docs/docs-shell.css`, `app/docs/docs-article.css`, `app/docs/docs-index.css`, `app/docs/docs-footer.css`, `app/docs/docs-responsive.css` | Docs shell, rendered markdown, index, footer, and docs-specific responsive fixes. |
 
-`app/art-direction-pass.css` no longer exists; its work is split into the four
-`app/styles/art-direction-*.css` files.
+`app/art-direction-pass.css` and the later `app/styles/art-direction-*.css`
+files no longer exist; their work is split into `*-polish.css` files by route
+family.
 
 ## Current Interfaces
 
@@ -47,8 +48,8 @@ component TypeScript.
 
 - `route-heroes.css`, `docs-article.css`, and `what-is-suspec.css` are still
   large enough that unrelated concerns are easy to mix.
-- `art-direction-mobile.css` still uses many `!important` declarations because
-  it was added as a late tuning layer.
+- mobile polish files still use many `!important` declarations because the old
+  mobile art-direction layer was added as a late tuning pass.
 - Several route files still combine Tailwind utilities with named global
   classes, so moving a selector requires checking JSX call sites.
 - CSS Modules could reduce global leakage, but renaming all selectors at once
@@ -75,7 +76,7 @@ component TypeScript.
 | 2 | Split `repo-products.css` into manifest, navigation, agent roster, and worker-card files without changing selectors. | Product page layout, package colors, nav behavior. | `npm run audit:css`, `npm run audit:site`; visual spot-check `/skills`, `/agents`, `/cli`, `/mcp`. |
 | 3 | Fold stable `art-direction-products.css` rules into owning late product-polish files, preserving cascade before merging them earlier. | Product page spacing and mobile fit. | `npm run audit:css`, `npm run audit:site`; screenshot product pages at mobile/tablet/desktop. |
 | 4 | Fold stable `art-direction-home.css` and `art-direction-docs.css` rules into owning late home/docs polish files, preserving cascade before merging them earlier. | Home first viewport, docs search/nav alignment, docs quote/code tone. | `npm run audit:css`, `npm run audit:site`; screenshot `/`, `/docs`, one short doc, one long doc. |
-| 5 | Reduce `!important` in mobile overrides only after the owning selector order is clear. | Mobile no-overflow and reduced-motion behavior. | `npm run audit:css`, `npm run audit:site`, representative keyboard/a11y checks. |
+| 5 | Split the old mobile art-direction layer by route family, then reduce `!important` only after the owning selector order is clear. | Mobile no-overflow and reduced-motion behavior. | `npm run audit:css`, `npm run audit:site`, representative keyboard/a11y checks. |
 
 ## Cutover And Rollback
 

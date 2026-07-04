@@ -1,0 +1,29 @@
+@media (max-width: 40rem) {
+  .loop-diagram .loop-step-grid-linked {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.68rem !important;
+  }
+
+  .loop-diagram .loop-step-card-linked {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 5.25rem !important;
+    padding: 0.82rem 0.76rem 0.84rem !important;
+  }
+
+  .loop-diagram .loop-step-card-linked > div:first-child,
+  .loop-diagram .loop-step-card-linked > div:nth-child(2) {
+    display: flex !important;
+  }
+
+  .loop-diagram .loop-step-card-linked > div:first-child {
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .loop-diagram .loop-step-card-linked > div:nth-child(2) {
+    align-items: center;
+    gap: 0.42rem;
+  }
+}

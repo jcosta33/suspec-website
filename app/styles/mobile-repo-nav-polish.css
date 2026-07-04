@@ -1,0 +1,94 @@
+@media (max-width: 40rem) {
+  .site-main-frame .repo-product-page.flex.flex-col {
+    row-gap: 1.22rem !important;
+  }
+
+  .repo-product-page > .ambient-header + .page-nav-wrap {
+    margin-top: 0.72rem !important;
+  }
+
+  .repo-product-page > .page-nav-wrap,
+  .repo-product-page > nav.page-nav-wrap {
+    margin-bottom: 0.92rem !important;
+  }
+
+  .repo-product-page > .page-nav-wrap + .section-register {
+    margin-top: 0.7rem !important;
+  }
+
+  .repo-product-page > .page-nav-wrap::after {
+    display: none;
+  }
+
+  .repo-product-page .agent-page-nav {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.42rem !important;
+    overflow: visible !important;
+    border: 1px solid rgba(var(--signal-muted-rgb), 0.18) !important;
+    border-radius: calc(var(--radius-control) - 2px) !important;
+    background:
+      linear-gradient(90deg, rgba(var(--signal-muted-rgb), 0.035), transparent 58%),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 1.3rem,
+        rgba(var(--signal-muted-rgb), 0.02) 1.3rem calc(1.3rem + 1px)
+      ),
+      rgba(12, 9, 6, 0.26) !important;
+    box-shadow: inset 0 1px 0 rgba(240, 226, 204, 0.025) !important;
+    padding: 0.12rem !important;
+    scroll-snap-type: none !important;
+  }
+
+  .repo-product-page .agent-page-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .repo-product-page .agent-page-nav-link {
+    flex: initial !important;
+    min-width: 0 !important;
+    min-height: 2.85rem !important;
+    width: auto !important;
+    scroll-snap-align: none !important;
+  }
+
+  .repo-product-page .agent-page-nav-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mcp-page > .ambient-header + .page-nav-wrap {
+    margin-top: 0.16rem !important;
+  }
+
+  .mcp-page > .page-nav-wrap,
+  .mcp-page > nav.page-nav-wrap {
+    margin-bottom: 0.52rem !important;
+  }
+
+  .mcp-page > .page-nav-wrap + .section-register {
+    margin-top: 0.28rem !important;
+  }
+
+  .mcp-page > #bridge {
+    padding-top: 2.78rem;
+  }
+
+  .mcp-page .mcp-page-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.34rem !important;
+  }
+
+  .mcp-page .mcp-page-nav .agent-page-nav-link {
+    min-height: 2.75rem !important;
+    gap: 0.28rem;
+    padding: 0.36rem 0.42rem !important;
+  }
+
+  .mcp-page .mcp-page-nav .agent-page-nav-label {
+    font-size: 0.72rem;
+  }
+
+}

@@ -1,0 +1,87 @@
+@media (max-width: 40rem) {
+  .writing-page-nav {
+    position: relative;
+    isolation: isolate;
+    margin-top: -0.72rem !important;
+    margin-bottom: 0.52rem !important;
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+
+  .writing-page-nav::after {
+    display: none;
+  }
+
+  .writing-page-nav + .section-register {
+    margin-top: 0.48rem !important;
+  }
+
+  .writing-page-nav .section-jump-nav {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1px !important;
+    width: 100% !important;
+    margin-inline: 0 !important;
+    padding: 0.12rem !important;
+    overflow: visible !important;
+    border: 1px solid rgba(var(--signal-muted-rgb), 0.18) !important;
+    border-radius: calc(var(--radius-control) - 2px) !important;
+    background:
+      linear-gradient(90deg, rgba(var(--signal-muted-rgb), 0.035), transparent 58%),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 1.3rem,
+        rgba(var(--signal-muted-rgb), 0.02) 1.3rem calc(1.3rem + 1px)
+      ),
+      rgba(12, 9, 6, 0.26) !important;
+    box-shadow: inset 0 1px 0 rgba(240, 226, 204, 0.025) !important;
+    scroll-snap-type: none !important;
+  }
+
+  .writing-page-nav .section-jump-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .writing-page-nav .section-jump-nav-link {
+    flex: initial !important;
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 2.75rem !important;
+    justify-content: flex-start !important;
+    padding: 0.46rem 0.56rem !important;
+    scroll-snap-align: none !important;
+  }
+
+  .writing-page-nav .section-jump-nav-link:nth-child(odd):last-child {
+    grid-column: 1 / -1 !important;
+    justify-self: stretch !important;
+  }
+
+  .writing-page-nav .section-jump-nav-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .loop-diagram .loop-step-card-linked {
+    min-height: 7rem !important;
+    justify-content: flex-start !important;
+    gap: 0.5rem !important;
+    padding: 0.82rem 0.82rem 0.88rem !important;
+  }
+
+  .loop-diagram .loop-step-card-linked p {
+    display: block !important;
+    margin-top: 0 !important;
+    max-width: 31rem;
+    font-size: 0.78rem !important;
+    line-height: 1.42 !important;
+    color: var(--color-concrete-400);
+  }
+
+  .loop-diagram .loop-step-card-linked .loop-step-optional {
+    flex-basis: auto;
+    margin-left: 0.32rem;
+  }
+}
