@@ -114,8 +114,8 @@
   opacity: 0.78;
 }
 
-.docs-index-kicker {
-  margin: 0 0 0.35rem !important;
+.docs-index-prose .docs-index-kicker {
+  margin: 0 0 0.35rem;
   color: var(--signal-reference);
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.68rem;
@@ -131,9 +131,9 @@
   line-height: 1.08;
 }
 
-.docs-index-lede {
+.docs-index-prose .docs-index-lede {
   max-width: 45rem;
-  margin: 0 !important;
+  margin: 0;
 }
 
 .docs-reading-path {
@@ -202,8 +202,8 @@
   padding-left: 0.45rem;
 }
 
-.docs-reading-path-kicker {
-  margin: 0 0 0.28rem !important;
+.docs-index-prose .docs-reading-path-kicker {
+  margin: 0 0 0.28rem;
   color: var(--signal-reference);
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.6rem;
@@ -225,18 +225,18 @@
 
 .docs-reading-path-copy p:last-child {
   max-width: 42rem;
-  margin: 0.5rem 0 0 !important;
+  margin: 0.5rem 0 0;
   color: var(--color-concrete-400);
   font-size: 0.92rem;
   line-height: 1.5;
 }
 
-.docs-reading-path-list {
+.docs-index-prose .docs-reading-path-list {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 0.62rem;
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
@@ -350,7 +350,7 @@
   }
 
   .docs-reading-path-copy p:last-child {
-    margin-top: 0.38rem !important;
+    margin-top: 0.38rem;
     font-size: 0.84rem;
     line-height: 1.4;
   }
@@ -399,7 +399,7 @@
   }
 
   .docs-reading-path-copy p:last-child {
-    margin-top: 0.28rem !important;
+    margin-top: 0.28rem;
     font-size: 0.78rem;
     line-height: 1.32;
   }
@@ -490,10 +490,10 @@
   opacity: 0.42;
 }
 
-.docs-index-manual-label {
+.docs-index-prose .docs-index-manual-label {
   position: relative;
   z-index: 1;
-  margin: 0 !important;
+  margin: 0;
   border: 1px solid rgba(var(--signal-reference-rgb), 0.18);
   border-radius: calc(var(--radius-control) - 4px);
   border-color: transparent;
@@ -667,8 +667,8 @@
     padding-left: 0.68rem;
   }
 
-  .docs-index-kicker {
-    margin-bottom: 0.24rem !important;
+  .docs-index-prose .docs-index-kicker {
+    margin-bottom: 0.24rem;
     font-size: 0.58rem;
   }
 
@@ -921,18 +921,18 @@
   margin-bottom: 0;
 }
 
-.docs-index-section-intro {
+.docs-index-prose .docs-index-section-intro {
   max-width: 36rem;
-  margin: 0.05rem 0 1rem !important;
+  margin: 0.05rem 0 1rem;
   color: var(--color-concrete-400);
   font-size: 0.91rem;
   line-height: 1.5;
 }
 
-.docs-index-list {
+.docs-index-prose .docs-index-list {
   display: grid;
   gap: 0.58rem 1rem;
-  padding-left: 0 !important;
+  padding-left: 0;
   list-style: none;
 }
 
