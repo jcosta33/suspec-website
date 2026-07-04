@@ -1,0 +1,39 @@
+.mcp-adapter-rail,
+.mcp-guardrail-grid,
+.cli-command-legend {
+  gap: clamp(0.64rem, 1vw, 0.86rem);
+}
+
+@media (min-width: 64rem) {
+  .mcp-adapter-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 0.62rem;
+  }
+
+  .mcp-adapter-heading > .min-w-0 {
+    min-width: 0;
+  }
+
+  .mcp-adapter-title,
+  .mcp-adapter-meta {
+    overflow-wrap: anywhere;
+  }
+
+  .mcp-adapter-detail {
+    max-width: 12rem;
+  }
+}
+
+.mcp-fact-card > .relative,
+.mcp-guardrail-card > .relative {
+  gap: clamp(0.9rem, 1.25vw, 1.12rem);
+}
+
+.repo-product-page .terminal-window {
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.52),
+    0 18px 46px rgba(0, 0, 0, 0.18);
+}
