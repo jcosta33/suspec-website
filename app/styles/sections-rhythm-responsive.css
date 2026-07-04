@@ -1,0 +1,42 @@
+@media (min-width: 48rem) {
+  .section-register :where(.section-kicker + .font-heading) {
+    display: flex;
+    max-width: min(100%, 52rem);
+    align-items: center;
+    gap: 0.78rem;
+  }
+
+  .section-register
+    :where(.panel-raised, .panel-inset, .paper-artifact, .terminal-window)
+    :where(.section-kicker + .font-heading) {
+    display: block;
+    max-width: none;
+  }
+
+  .section-register :where(.section-kicker + .font-heading)::after {
+    content: "";
+    width: clamp(1.65rem, 8.5vw, 5.15rem);
+    height: 1px;
+    flex: 0 1 clamp(1.65rem, 8.5vw, 5.15rem);
+    margin-top: 0.12em;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(var(--section-register-rgb), 0.36),
+        rgba(var(--section-register-rgb), 0.12) 54%,
+        transparent
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(var(--section-register-rgb), 0.22) 0 1px,
+        transparent 1px 0.68rem
+      );
+    opacity: 0.56;
+  }
+
+  .section-register
+    :where(.panel-raised, .panel-inset, .paper-artifact, .terminal-window)
+    :where(.section-kicker + .font-heading)::after {
+    content: none;
+  }
+}

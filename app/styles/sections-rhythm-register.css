@@ -1,0 +1,27 @@
+.section-register :where(.section-kicker + .font-heading) {
+  margin-top: var(--rhythm-kicker-title);
+}
+
+.section-register .section-kicker + .font-heading {
+  font-family: var(--font-title), var(--font-mono), ui-monospace, monospace;
+  font-weight: var(--font-weight-title);
+  line-height: 1.05;
+  margin-top: var(--rhythm-kicker-title);
+}
+
+.section-register
+  :where(.panel-raised, .panel-inset, .paper-artifact, .terminal-window)
+  :where(.section-kicker + .font-heading) {
+  font-family: var(--font-heading), var(--font-mono), ui-monospace, monospace;
+  line-height: inherit;
+}
+
+.section-register :where(.font-heading + p) {
+  margin-top: var(--rhythm-title-body);
+  max-width: min(100%, 68ch);
+  line-height: 1.68;
+}
+
+.section-register .font-heading + p {
+  margin-top: var(--rhythm-title-body);
+}

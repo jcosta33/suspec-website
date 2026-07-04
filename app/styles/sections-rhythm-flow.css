@@ -1,0 +1,14 @@
+.section-flow {
+  --section-flow-gap: clamp(2.1rem, 2.85vw, 2.68rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-flow-gap);
+}
+
+.section-flow-tight {
+  --section-flow-gap: clamp(1.18rem, 1.58vw, 1.45rem);
+}
+
+.section-flow-spacious {
+  --section-flow-gap: clamp(2.72rem, 3.8vw, 3.42rem);
+}

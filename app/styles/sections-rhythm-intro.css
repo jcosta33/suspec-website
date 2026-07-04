@@ -1,0 +1,59 @@
+.section-intro {
+  display: block;
+  max-width: min(100%, 42rem);
+}
+
+.section-intro > :where(h1, h2, h3, p, ul, ol, div) {
+  margin-block: 0;
+}
+
+.section-intro > .section-kicker + .font-heading,
+.section-intro > .section-kicker + :where(h1, h2, h3) {
+  margin-top: var(--rhythm-kicker-title);
+}
+
+.section-register > :where(div, header):first-child
+  :where(.eyebrow, .section-kicker)
+  + :where(.font-heading, h1, h2, h3) {
+  font-family: var(--font-title), var(--font-mono), ui-monospace, monospace;
+  font-weight: var(--font-weight-title);
+  line-height: 1.05;
+  margin-top: var(--rhythm-kicker-title);
+}
+
+.section-intro > .font-heading + :where(p, .section-prose-stack),
+.section-intro > :where(h1, h2, h3) + :where(p, .section-prose-stack) {
+  margin-top: var(--rhythm-title-body);
+}
+
+.section-register > :where(div, header):first-child
+  :where(.font-heading, h1, h2, h3)
+  + :where(p, .section-prose-stack) {
+  margin-top: var(--rhythm-title-body);
+}
+
+.section-intro > :where(p, .section-prose-stack) + :where(p, ul, ol, div),
+.section-intro > :where(ul, ol, div) + :where(p, ul, ol, div) {
+  margin-top: clamp(1.05rem, 1.42vw, 1.34rem);
+}
+
+.section-prose-stack {
+  display: grid;
+  max-width: min(100%, 68ch);
+  gap: clamp(0.88rem, 1.18vw, 1.12rem);
+}
+
+.section-prose-stack > p,
+.section-after-panel-note {
+  margin: 0;
+  color: var(--color-concrete-400);
+  line-height: 1.74;
+}
+
+.section-after-panel-note {
+  max-width: min(100%, 82ch);
+}
+
+.section-flow-tight > .section-after-panel-note {
+  margin-top: clamp(-0.18rem, -0.18vw, -0.08rem);
+}
