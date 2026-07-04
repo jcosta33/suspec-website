@@ -117,7 +117,7 @@
 }
 
 .skills-page .skill-guide-row .catalog-row-copy {
-  margin-top: 0.42rem !important;
+  margin-top: 0.42rem;
   max-width: 44ch;
   line-height: 1.5;
 }
@@ -193,7 +193,7 @@
   }
 
   .skills-page .skill-guide-row .catalog-row-copy {
-    margin-top: 0.24rem !important;
+    margin-top: 0.24rem;
     max-width: none;
   }
 }

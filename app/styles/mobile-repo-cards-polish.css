@@ -86,15 +86,15 @@
 
   .repo-product-page .agent-worker-card .catalog-row,
   .skills-page .skill-guide-row.catalog-row {
-    min-height: 5.25rem !important;
-    padding-block: 0.82rem !important;
+    min-height: 5.25rem;
+    padding-block: 0.82rem;
   }
 
   .repo-product-page .agent-worker-card .catalog-row {
-    min-height: 6.15rem !important;
+    min-height: 6.15rem;
     grid-template-columns: 2.6rem minmax(0, 1fr);
-    gap: 0.74rem !important;
-    padding: 0.78rem 0.82rem !important;
+    gap: 0.74rem;
+    padding: 0.78rem 0.82rem;
   }
 
   .repo-product-page .agent-worker-card {
@@ -109,6 +109,6 @@
 
   .repo-product-page .agent-worker-card .catalog-row,
   .skills-page .skill-guide-row.catalog-row {
-    align-items: start !important;
+    align-items: start;
   }
 }
