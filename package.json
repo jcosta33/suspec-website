@@ -9,6 +9,7 @@
     "build": "next build",
     "postbuild": "pagefind --site dist --output-subdir pagefind && node scripts/gen-llms-full.mjs",
     "audit:site": "node scripts/audit-site.mjs",
+    "audit:perf": "node scripts/audit-performance.mjs",
     "start": "next start",
     "lint": "eslint"
   },
