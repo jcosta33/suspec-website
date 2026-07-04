@@ -335,7 +335,7 @@
 }
 
 .page-hero .page-hero-eyebrow {
-  margin-bottom: var(--rhythm-hero-eyebrow-title) !important;
+  margin-bottom: var(--rhythm-hero-eyebrow-title);
 }
 
 .page-hero-title {
@@ -355,15 +355,15 @@
 }
 
 .page-hero-datum + p {
-  margin-top: clamp(0.82rem, 1.08vw, 1.05rem) !important;
+  margin-top: clamp(0.82rem, 1.08vw, 1.05rem);
 }
 
 .page-hero > p + p {
-  margin-top: clamp(0.72rem, 0.95vw, 0.92rem) !important;
+  margin-top: clamp(0.72rem, 0.95vw, 0.92rem);
 }
 
 .page-hero .hero-badge-row {
-  margin-top: clamp(1.85rem, 2.4vw, 2.28rem) !important;
+  margin-top: clamp(1.85rem, 2.4vw, 2.28rem);
 }
 
 .hero-trace {
