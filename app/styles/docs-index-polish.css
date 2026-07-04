@@ -129,8 +129,8 @@
   }
 
   .docs-index-section-reference .docs-index-section-intro {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .docs-index-section-adrs {
