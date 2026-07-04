@@ -1,31 +1,31 @@
 @media (max-width: 40rem) {
   .cli-command-rail {
-    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .cli-command-step:last-child {
-    grid-column: auto !important;
+    grid-column: auto;
   }
 
   .cli-command-link,
   .cli-command-step:last-child .cli-command-link {
-    display: grid !important;
+    display: grid;
     grid-template-columns: 2rem minmax(0, 1fr) auto;
-    min-height: 5.05rem !important;
+    min-height: 5.05rem;
     align-items: start;
-    gap: 0.18rem 0.72rem !important;
-    padding: 0.72rem 0.76rem !important;
+    gap: 0.18rem 0.72rem;
+    padding: 0.72rem 0.76rem;
   }
 
   .cli-command-heading {
-    display: contents !important;
+    display: contents;
   }
 
   .cli-command-heading .hex-badge {
     grid-column: 1;
     grid-row: 1 / span 3;
-    height: 1.8rem !important;
-    width: 1.8rem !important;
+    height: 1.8rem;
+    width: 1.8rem;
     margin-top: 0.05rem;
   }
 
@@ -44,21 +44,21 @@
   .cli-command-code {
     grid-column: 2 / 4;
     grid-row: 2;
-    margin-top: 0.06rem !important;
-    overflow: visible !important;
-    text-overflow: clip !important;
-    white-space: normal !important;
-    font-size: 0.62rem !important;
-    line-height: 1.32 !important;
+    margin-top: 0.06rem;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+    font-size: 0.62rem;
+    line-height: 1.32;
   }
 
   .cli-command-detail {
-    display: block !important;
+    display: block;
     grid-column: 2 / 4;
     grid-row: 3;
-    margin-top: 0.04rem !important;
-    font-size: 0.74rem !important;
-    line-height: 1.35 !important;
+    margin-top: 0.04rem;
+    font-size: 0.74rem;
+    line-height: 1.35;
     color: var(--color-concrete-400);
   }
 }

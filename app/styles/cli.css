@@ -68,7 +68,7 @@
 
 @media (min-width: 64rem) {
   .cli-command-rail {
-    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .cli-command-step,
@@ -108,9 +108,9 @@
   }
 
   .cli-command-rail {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 1px !important;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
     overflow-x: visible;
     padding: 0;
     scroll-snap-type: none;
