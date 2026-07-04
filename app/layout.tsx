@@ -10,6 +10,7 @@ import "./styles/sections.css";
 import "./styles/site-chrome.css";
 import "./styles/site-surfaces.css";
 import "./styles/route-heroes.css";
+import "./styles/home.css";
 import "./globals.css";
 import "./styles/motion-surfaces.css";
 import "./styles/art-direction-pass.css";
