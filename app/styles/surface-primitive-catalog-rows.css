@@ -1,0 +1,128 @@
+
+.catalog-row {
+  --catalog-signal: var(--signal-core);
+  --catalog-rgb: var(--signal-core-rgb);
+  --catalog-signal-soft: rgba(var(--catalog-rgb), 0.2);
+  --catalog-mark: var(--signal-mark-core);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+  position: relative;
+  min-height: 3.5rem;
+  padding-left: 1rem;
+  border-radius: calc(var(--radius-panel) - 2px);
+  background-image: var(--catalog-pattern);
+}
+
+.catalog-row::before {
+  content: "";
+  position: absolute;
+  top: 0.1rem;
+  bottom: 0.1rem;
+  left: 0;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--catalog-signal),
+    transparent
+  );
+  opacity: 0.42;
+  transition: opacity 160ms ease;
+}
+
+.catalog-row-reference,
+.catalog-row-olive {
+  --catalog-signal: var(--signal-reference);
+  --catalog-rgb: var(--signal-reference-rgb);
+  --catalog-mark: var(--signal-mark-reference);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-core {
+  --catalog-signal: var(--signal-core);
+  --catalog-rgb: var(--signal-core-rgb);
+  --catalog-mark: var(--signal-mark-core);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.014), transparent 54%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-change {
+  --catalog-signal: var(--signal-change);
+  --catalog-rgb: var(--signal-change-rgb);
+  --catalog-mark: var(--signal-mark-change);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-evidence {
+  --catalog-signal: var(--signal-evidence);
+  --catalog-rgb: var(--signal-evidence-rgb);
+  --catalog-mark: var(--signal-mark-evidence);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-greenfield {
+  --catalog-signal: var(--signal-greenfield);
+  --catalog-rgb: var(--signal-greenfield-rgb);
+  --catalog-mark: var(--signal-mark-greenfield);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-brownfield {
+  --catalog-signal: var(--signal-brownfield);
+  --catalog-rgb: var(--signal-brownfield-rgb);
+  --catalog-mark: var(--signal-mark-brownfield);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row .catalog-row-title {
+  color: color-mix(in oklab, var(--catalog-signal) 60%, var(--color-concrete-100));
+  transition:
+    color 160ms ease,
+    text-shadow 160ms ease;
+}
+
+.catalog-row-copy {
+  color: var(--color-concrete-300);
+  transition: color 160ms ease;
+}
+
+.catalog-row-badge {
+  transition:
+    filter 160ms ease;
+}
+
+.group:hover .catalog-row::before,
+.group:focus-within .catalog-row::before,
+.catalog-row:hover::before,
+.catalog-row:focus-visible::before {
+  opacity: 0.62;
+}
+
+.group:hover .catalog-row-title,
+.group:focus-within .catalog-row-title {
+  color: color-mix(in oklab, var(--catalog-signal) 82%, var(--color-concrete-100));
+  text-shadow: 0 0 8px var(--catalog-signal-soft);
+}
+
+.group:hover .catalog-row-copy,
+.group:focus-within .catalog-row-copy {
+  color: var(--color-concrete-200);
+}
+
+.group:hover .catalog-row-badge,
+.group:focus-within .catalog-row-badge {
+  filter: saturate(1.04) brightness(1.02);
+}

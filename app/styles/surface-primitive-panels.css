@@ -1,0 +1,161 @@
+
+/* Raised plate — a thin-lined engraved card, lifted just off the night */
+.panel-raised {
+  --plate-signal: var(--signal-core);
+  --plate-rgb: var(--signal-core-rgb);
+  position: relative;
+  border-radius: var(--radius-panel);
+  border: 1px solid var(--color-panel-border);
+  background-color: var(--color-panel-raised);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(var(--plate-rgb), 0.032),
+      transparent 24%
+    ),
+    radial-gradient(
+      70% 58% at 16% 0%,
+      rgba(var(--plate-rgb), 0.048),
+      transparent 62%
+    ),
+    radial-gradient(
+      80% 80% at 100% 100%,
+      rgba(0, 0, 0, 0.2),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(232, 222, 203, 0.035) 0%,
+      transparent 38%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(232, 222, 203, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 1px 2px rgba(0, 0, 0, 0.5);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+/* Recessed well / screen — a deep inset terminal cavity. */
+.panel-inset {
+  position: relative;
+  border-radius: var(--radius-panel);
+  border: 1px solid var(--color-panel-border);
+  background-color: var(--color-night);
+  box-shadow:
+    inset 0 3px 9px rgba(0, 0, 0, 0.72),
+    inset 0 0 64px rgba(0, 0, 0, 0.45);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+.panel-raised:is(a, button):hover,
+.panel-raised:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover,
+.panel-raised:focus-within {
+  border-color: rgba(var(--plate-rgb), 0.32);
+  background-color: #251c15;
+  box-shadow:
+    inset 0 1px 0 rgba(232, 222, 203, 0.075),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(var(--plate-rgb), 0.045);
+}
+
+.panel-raised.home-hero-preview:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover,
+.panel-raised.home-hero-preview:hover,
+.panel-raised.home-hero-preview:focus-within {
+  border-color: var(--color-panel-border);
+  background-color: var(--color-panel-raised);
+  box-shadow:
+    0 -1px 0 rgba(var(--signal-core-rgb), 0.18),
+    0 -18px 54px rgba(var(--signal-core-rgb), 0.045),
+    0 18px 44px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(240, 226, 204, 0.08);
+}
+
+/* Hover states may illuminate a surface, but they should never move it. */
+:where(
+    .panel-raised,
+    .paper-artifact,
+    .terminal-window,
+    .home-step-rail-item,
+    .home-hero-run-card,
+    .home-hero-preview,
+    .home-hero-proof,
+    .review-signal-node,
+    .signal-key-item,
+    .accent-card,
+    .setup-choice-card,
+    .agent-roster-cell,
+    .skill-category-link,
+    .skill-guide-row,
+    .cli-command-link,
+    .cli-command-row,
+    .mcp-guardrail-card,
+    .mcp-adapter-step-link,
+    .loop-step-card,
+    .process-strip > :is(li, a, div),
+    .docs-index-section,
+    .docs-pager-link
+  ):is(:hover, :focus-visible, :focus-within) {
+  translate: 0 0 !important;
+  scale: 1 !important;
+  transform: none !important;
+}
+
+.hover-stable-surface,
+.hover-stable-surface:is(:hover, :focus-within),
+.hover-stable-surface:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover {
+  translate: 0 0 !important;
+  scale: 1 !important;
+  transform: none !important;
+  border-color: var(--color-panel-border);
+  background-color: var(--color-panel-raised);
+}
+
+.hover-stable-surface > .surface-engraving,
+.hover-stable-surface > .surface-glint {
+  transition: none;
+}
+
+.hover-stable-surface:is(:hover, :focus-within) > .surface-engraving {
+  opacity: 0.5;
+}
+
+.hover-stable-surface:is(:hover, :focus-within) > .surface-glint {
+  opacity: 0.42;
+}
+
+.panel-raised:has(.catalog-row-evidence) {
+  --plate-signal: var(--signal-evidence);
+  --plate-rgb: var(--signal-evidence-rgb);
+}
+
+.panel-raised:has(.catalog-row-change) {
+  --plate-signal: var(--signal-change);
+  --plate-rgb: var(--signal-change-rgb);
+}
+
+.panel-raised:has(.catalog-row-reference, .catalog-row-olive) {
+  --plate-signal: var(--signal-reference);
+  --plate-rgb: var(--signal-reference-rgb);
+}
+
+.panel-raised:has(.catalog-row-greenfield) {
+  --plate-signal: var(--signal-greenfield);
+  --plate-rgb: var(--signal-greenfield-rgb);
+}
+
+.panel-raised:has(.catalog-row-brownfield) {
+  --plate-signal: var(--signal-brownfield);
+  --plate-rgb: var(--signal-brownfield-rgb);
+}

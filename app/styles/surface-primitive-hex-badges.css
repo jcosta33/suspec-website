@@ -1,0 +1,90 @@
+/* Hexagonal clip — the seal cell */
+.clip-hex {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hex-badge {
+  --hex-signal: var(--signal-core);
+  --hex-rgb: var(--signal-core-rgb);
+  --hex-pattern: var(--signal-pattern-core);
+  --hex-mark: var(--signal-mark-core);
+  color: var(--hex-signal);
+  background:
+    linear-gradient(180deg, rgba(240, 226, 204, 0.08), transparent 46%),
+    var(--hex-mark),
+    var(--hex-pattern),
+    radial-gradient(
+      86% 76% at 50% 0%,
+      rgba(var(--hex-rgb), 0.13),
+      transparent 64%
+    ),
+    var(--color-panel-raised);
+}
+
+.hex-badge-core {
+  --hex-signal: var(--signal-core);
+  --hex-rgb: var(--signal-core-rgb);
+  --hex-pattern: var(--signal-pattern-core);
+  --hex-mark: var(--signal-mark-core);
+}
+
+.hex-badge-evidence {
+  --hex-signal: var(--signal-evidence);
+  --hex-rgb: var(--signal-evidence-rgb);
+  --hex-pattern: var(--signal-pattern-evidence);
+  --hex-mark: var(--signal-mark-evidence);
+}
+
+.hex-badge-greenfield {
+  --hex-signal: var(--signal-greenfield);
+  --hex-rgb: var(--signal-greenfield-rgb);
+  --hex-pattern: var(--signal-pattern-greenfield);
+  --hex-mark: var(--signal-mark-greenfield);
+}
+
+.hex-badge-brownfield {
+  --hex-signal: var(--signal-brownfield);
+  --hex-rgb: var(--signal-brownfield-rgb);
+  --hex-pattern: var(--signal-pattern-brownfield);
+  --hex-mark: var(--signal-mark-brownfield);
+}
+
+.hex-badge-change {
+  --hex-signal: var(--signal-change);
+  --hex-rgb: var(--signal-change-rgb);
+  --hex-pattern: var(--signal-pattern-change);
+  --hex-mark: var(--signal-mark-change);
+}
+
+.hex-badge-reference {
+  --hex-signal: var(--signal-reference);
+  --hex-rgb: var(--signal-reference-rgb);
+  --hex-pattern: var(--signal-pattern-reference);
+  --hex-mark: var(--signal-mark-reference);
+}
+
+.hex-badge-muted {
+  --hex-signal: var(--signal-muted);
+  --hex-rgb: var(--signal-muted-rgb);
+  --hex-pattern: var(--signal-pattern-muted);
+  --hex-mark: var(--signal-mark-muted);
+}
+
+.hex-badge-rail {
+  position: absolute;
+  top: 28%;
+  bottom: 28%;
+  width: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  opacity: 0.78;
+}
+
+.hex-badge-rail-left {
+  left: 2px;
+}
+
+.hex-badge-rail-right {
+  right: 2px;
+}

@@ -1,0 +1,162 @@
+
+.surface-glint {
+  border-radius: inherit;
+  mix-blend-mode: screen;
+  opacity: 0.32;
+  background:
+    linear-gradient(
+      122deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(var(--plate-rgb), 0.058) 46%,
+      rgba(240, 226, 204, 0.026) 50%,
+      transparent 58%,
+      transparent 100%
+    ),
+    radial-gradient(
+      70% 60% at 18% 0%,
+      rgba(var(--plate-rgb), 0.052),
+      transparent 58%
+    );
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.surface-engraving {
+  border-radius: inherit;
+  opacity: 0.4;
+  background:
+    linear-gradient(90deg, rgba(var(--plate-rgb), 0.1), transparent 22%) left
+      top / 1px 100% no-repeat,
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 27px,
+      rgba(240, 226, 204, 0.012) 27px,
+      rgba(240, 226, 204, 0.012) 28px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 31px,
+      rgba(240, 226, 204, 0.009) 31px,
+      rgba(240, 226, 204, 0.009) 32px
+    );
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.surface-engraving::before,
+.surface-engraving::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.surface-engraving::before {
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--plate-rgb), 0.26),
+    rgba(var(--plate-rgb), 0.07),
+    transparent
+  );
+  opacity: 0.42;
+}
+
+.surface-engraving::after {
+  right: 1rem;
+  bottom: 1rem;
+  width: 2.6rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+     rgba(var(--plate-rgb), 0.26)
+   );
+  opacity: 0.34;
+}
+
+.panel-raised:is(a, button):hover > .surface-engraving,
+.panel-raised:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-engraving,
+.panel-raised:focus-within > .surface-engraving {
+  opacity: 0.54;
+}
+
+.panel-raised:is(a, button):hover > .surface-glint,
+.panel-raised:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-glint,
+.panel-raised:focus-within > .surface-glint {
+  opacity: 0.5;
+}
+
+.panel-raised.home-hero-preview:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-engraving,
+.panel-raised.home-hero-preview:hover > .surface-engraving,
+.panel-raised.home-hero-preview:focus-within > .surface-engraving {
+  opacity: 0.5;
+}
+
+.panel-raised.home-hero-preview:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-glint,
+.panel-raised.home-hero-preview:hover > .surface-glint,
+.panel-raised.home-hero-preview:focus-within > .surface-glint {
+  opacity: 0.42;
+}
+
+.home-hero-preview:is(:hover, :focus-within),
+.home-hero-preview
+  :is(.rounded-panel, .terminal-window, .paper-artifact, .home-step-rail-item),
+.home-hero-preview
+  :is(
+    .rounded-panel,
+    .terminal-window,
+    .paper-artifact,
+    .home-step-rail-item
+  ):is(:hover, :focus-within) {
+  translate: 0 0 !important;
+  transform: none !important;
+  scale: 1 !important;
+}
+
+.home-hero-preview .paper-artifact {
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.home-hero-preview .terminal-window:is(:hover, :focus-within) {
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.08),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.home-hero-preview .paper-artifact:is(:hover, :focus-within) {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(8, 9, 11, 0.08),
+    0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.panel-inset:hover,
+.panel-inset:focus-within {
+  border-color: rgba(216, 138, 36, 0.38);
+  box-shadow:
+    inset 0 3px 9px rgba(0, 0, 0, 0.72),
+    inset 0 0 64px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(216, 138, 36, 0.07);
+}

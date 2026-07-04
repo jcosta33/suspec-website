@@ -1,0 +1,62 @@
+
+.tool-list-card {
+  --tool-signal: var(--signal-reference);
+  --tool-rgb: var(--signal-reference-rgb);
+  --tool-pattern: var(--signal-pattern-reference);
+  --tool-mark: var(--signal-mark-reference);
+  border-color: rgba(var(--tool-rgb), 0.18);
+  background-image:
+    linear-gradient(90deg, rgba(var(--tool-rgb), 0.018), transparent 50%),
+    var(--signal-mark-muted),
+    var(--signal-pattern-muted),
+    linear-gradient(180deg, rgba(240, 226, 204, 0.025), transparent 44%);
+}
+
+.tool-list-card-core {
+  --tool-signal: var(--signal-core);
+  --tool-rgb: var(--signal-core-rgb);
+  --tool-pattern: var(--signal-pattern-core);
+  --tool-mark: var(--signal-mark-core);
+}
+
+.tool-list-card-evidence {
+  --tool-signal: var(--signal-evidence);
+  --tool-rgb: var(--signal-evidence-rgb);
+  --tool-pattern: var(--signal-pattern-evidence);
+  --tool-mark: var(--signal-mark-evidence);
+}
+
+.tool-list-card-reference {
+  --tool-signal: var(--signal-reference);
+  --tool-rgb: var(--signal-reference-rgb);
+  --tool-pattern: var(--signal-pattern-reference);
+  --tool-mark: var(--signal-mark-reference);
+}
+
+.tool-list-card-change {
+  --tool-signal: var(--signal-change);
+  --tool-rgb: var(--signal-change-rgb);
+  --tool-pattern: var(--signal-pattern-change);
+  --tool-mark: var(--signal-mark-change);
+}
+
+.tool-list-card-greenfield {
+  --tool-signal: var(--signal-greenfield);
+  --tool-rgb: var(--signal-greenfield-rgb);
+  --tool-pattern: var(--signal-pattern-greenfield);
+  --tool-mark: var(--signal-mark-greenfield);
+}
+
+.tool-list-card-brownfield {
+  --tool-signal: var(--signal-brownfield);
+  --tool-rgb: var(--signal-brownfield-rgb);
+  --tool-pattern: var(--signal-pattern-brownfield);
+  --tool-mark: var(--signal-mark-brownfield);
+}
+
+.tool-list-card-muted {
+  --tool-signal: var(--signal-muted);
+  --tool-rgb: var(--signal-muted-rgb);
+  --tool-pattern: var(--signal-pattern-muted);
+  --tool-mark: var(--signal-mark-muted);
+}
