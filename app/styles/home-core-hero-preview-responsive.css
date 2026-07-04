@@ -1,0 +1,19 @@
+@media (min-width: 48.0625rem) and (max-height: 62rem) {
+  .home-hero-section {
+    padding-bottom: 2rem;
+  }
+
+  .home-hero-preview {
+    max-height: none;
+  }
+
+  .home-hero-preview::after {
+    content: none;
+  }
+}
+
+@media (max-width: 64rem) {
+  .review-signal-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
