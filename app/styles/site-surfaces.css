@@ -338,8 +338,8 @@
 }
 
 .site-main-frame > .flex.flex-col {
-  padding-top: 0 !important;
-  row-gap: clamp(2.45rem, 3.25vw, 3.2rem) !important;
+  padding-top: 0;
+  row-gap: clamp(2.45rem, 3.25vw, 3.2rem);
 }
 
 section.bg-section-band {
