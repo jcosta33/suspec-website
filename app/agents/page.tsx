@@ -528,15 +528,15 @@ export default function AgentsPage() {
                           aria-hidden="true"
                         />
                       </div>
-                      <h3 className="agent-roster-cell-title mt-3 font-heading text-xl font-semibold">
+                      <h3 className="agent-roster-cell-title font-heading text-xl font-semibold">
                         {item.label}
                       </h3>
                       <p
-                        className={`agent-roster-file mt-2 break-words font-mono text-xs leading-relaxed ${signalRoles[item.signal].text}`}
+                        className={`agent-roster-file break-words font-mono text-xs leading-relaxed ${signalRoles[item.signal].text}`}
                       >
                         {item.file}
                       </p>
-                      <p className="agent-roster-use mt-3 text-sm leading-relaxed text-concrete-400">
+                      <p className="agent-roster-use text-sm leading-relaxed text-concrete-400">
                         {item.use}
                       </p>
                     </div>
