@@ -176,6 +176,10 @@
   justify-content: flex-start;
 }
 
+.site-footer-link-list a[aria-current="page"] {
+  color: var(--color-suspec-yellow);
+}
+
 .site-footer-link-list a:last-child {
   border-bottom-color: transparent;
 }
