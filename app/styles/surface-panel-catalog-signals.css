@@ -1,0 +1,24 @@
+.panel-raised:has(.catalog-row-evidence) {
+  --plate-signal: var(--signal-evidence);
+  --plate-rgb: var(--signal-evidence-rgb);
+}
+
+.panel-raised:has(.catalog-row-change) {
+  --plate-signal: var(--signal-change);
+  --plate-rgb: var(--signal-change-rgb);
+}
+
+.panel-raised:has(.catalog-row-reference, .catalog-row-olive) {
+  --plate-signal: var(--signal-reference);
+  --plate-rgb: var(--signal-reference-rgb);
+}
+
+.panel-raised:has(.catalog-row-greenfield) {
+  --plate-signal: var(--signal-greenfield);
+  --plate-rgb: var(--signal-greenfield-rgb);
+}
+
+.panel-raised:has(.catalog-row-brownfield) {
+  --plate-signal: var(--signal-brownfield);
+  --plate-rgb: var(--signal-brownfield-rgb);
+}

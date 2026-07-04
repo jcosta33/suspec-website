@@ -1,0 +1,26 @@
+.panel-raised:is(a, button):hover,
+.panel-raised:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover,
+.panel-raised:focus-within {
+  border-color: rgba(var(--plate-rgb), 0.32);
+  background-color: #251c15;
+  box-shadow:
+    inset 0 1px 0 rgba(232, 222, 203, 0.075),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(var(--plate-rgb), 0.045);
+}
+
+.panel-raised.home-hero-preview:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover,
+.panel-raised.home-hero-preview:hover,
+.panel-raised.home-hero-preview:focus-within {
+  border-color: var(--color-panel-border);
+  background-color: var(--color-panel-raised);
+  box-shadow:
+    0 -1px 0 rgba(var(--signal-core-rgb), 0.18),
+    0 -18px 54px rgba(var(--signal-core-rgb), 0.045),
+    0 18px 44px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(240, 226, 204, 0.08);
+}

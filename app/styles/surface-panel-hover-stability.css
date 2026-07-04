@@ -1,0 +1,54 @@
+/* Hover states may illuminate a surface, but they should never move it. */
+:where(
+    .panel-raised,
+    .paper-artifact,
+    .terminal-window,
+    .home-step-rail-item,
+    .home-hero-run-card,
+    .home-hero-preview,
+    .home-hero-proof,
+    .review-signal-node,
+    .signal-key-item,
+    .accent-card,
+    .setup-choice-card,
+    .agent-roster-cell,
+    .skill-category-link,
+    .skill-guide-row,
+    .cli-command-link,
+    .cli-command-row,
+    .mcp-guardrail-card,
+    .mcp-adapter-step-link,
+    .loop-step-card,
+    .process-strip > :is(li, a, div),
+    .docs-index-section,
+    .docs-pager-link
+  ):is(:hover, :focus-visible, :focus-within) {
+  translate: 0 0 !important;
+  scale: 1 !important;
+  transform: none !important;
+}
+
+.hover-stable-surface,
+.hover-stable-surface:is(:hover, :focus-within),
+.hover-stable-surface:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover {
+  translate: 0 0 !important;
+  scale: 1 !important;
+  transform: none !important;
+  border-color: var(--color-panel-border);
+  background-color: var(--color-panel-raised);
+}
+
+.hover-stable-surface > .surface-engraving,
+.hover-stable-surface > .surface-glint {
+  transition: none;
+}
+
+.hover-stable-surface:is(:hover, :focus-within) > .surface-engraving {
+  opacity: 0.5;
+}
+
+.hover-stable-surface:is(:hover, :focus-within) > .surface-glint {
+  opacity: 0.42;
+}
