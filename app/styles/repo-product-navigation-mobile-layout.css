@@ -1,0 +1,39 @@
+@media (max-width: 40rem) {
+  .repo-product-page {
+    row-gap: 0.86rem;
+    padding-top: 3rem;
+  }
+
+  .repo-product-page > .page-nav-wrap {
+    position: relative;
+    isolation: isolate;
+    overflow: visible;
+    margin-top: 0;
+    margin-bottom: 0.64rem;
+  }
+
+  .writing-page-nav::after {
+    content: "";
+    position: absolute;
+    top: -0.08rem;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 3.3rem;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      rgba(22, 16, 12, 0),
+      rgba(22, 16, 12, 0.84) 58%,
+      rgba(22, 16, 12, 0.98)
+    );
+  }
+
+  .repo-product-page > .ambient-header + .page-nav-wrap {
+    margin-top: -0.08rem;
+  }
+
+  .repo-product-page > .page-nav-wrap + .section-register {
+    margin-top: 0.36rem;
+  }
+}
