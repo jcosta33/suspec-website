@@ -65,18 +65,18 @@
   }
 
   .loop-diagram .loop-step-card-linked {
-    min-height: 7rem !important;
-    justify-content: flex-start !important;
-    gap: 0.5rem !important;
-    padding: 0.82rem 0.82rem 0.88rem !important;
+    min-height: 7rem;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding: 0.82rem 0.82rem 0.88rem;
   }
 
   .loop-diagram .loop-step-card-linked p {
-    display: block !important;
-    margin-top: 0 !important;
+    display: block;
+    margin-top: 0;
     max-width: 31rem;
-    font-size: 0.78rem !important;
-    line-height: 1.42 !important;
+    font-size: 0.78rem;
+    line-height: 1.42;
     color: var(--color-concrete-400);
   }
 
