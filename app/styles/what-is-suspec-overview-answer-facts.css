@@ -1,0 +1,55 @@
+.overview-answer-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.62rem;
+}
+
+.overview-answer-fact {
+  --overview-answer-signal: var(--signal-muted);
+  --overview-answer-rgb: var(--signal-muted-rgb);
+  min-width: 0;
+  border: 1px solid rgba(var(--overview-answer-rgb), 0.1);
+  border-left-color: rgba(var(--overview-answer-rgb), 0.38);
+  border-radius: calc(var(--radius-panel) - 1px);
+  background:
+    linear-gradient(90deg, rgba(var(--overview-answer-rgb), 0.032), transparent 64%),
+    rgba(10, 8, 6, 0.2);
+  padding: 0.72rem 0.78rem;
+}
+
+.overview-answer-fact-core {
+  --overview-answer-signal: var(--signal-core);
+  --overview-answer-rgb: var(--signal-core-rgb);
+}
+
+.overview-answer-fact-evidence {
+  --overview-answer-signal: var(--signal-evidence);
+  --overview-answer-rgb: var(--signal-evidence-rgb);
+}
+
+.overview-answer-fact-reference {
+  --overview-answer-signal: var(--signal-reference);
+  --overview-answer-rgb: var(--signal-reference-rgb);
+}
+
+.overview-answer-fact-change {
+  --overview-answer-signal: var(--signal-change);
+  --overview-answer-rgb: var(--signal-change-rgb);
+}
+
+.overview-answer-fact dt {
+  color: var(--overview-answer-signal);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.64rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.overview-answer-fact dd {
+  margin-top: 0.36rem;
+  color: var(--color-concrete-200);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}

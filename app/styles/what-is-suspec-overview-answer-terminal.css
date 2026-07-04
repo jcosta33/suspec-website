@@ -1,0 +1,48 @@
+.overview-section-nav-inline {
+  width: 100%;
+  max-width: none;
+}
+
+.overview-section-nav-inline .section-jump-nav {
+  background:
+    linear-gradient(180deg, rgba(240, 226, 204, 0.018), transparent 44%),
+    linear-gradient(90deg, rgba(var(--signal-muted-rgb), 0.03), transparent 58%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.45rem,
+      rgba(var(--signal-muted-rgb), 0.018) 1.45rem calc(1.45rem + 1px)
+    ),
+    rgba(12, 9, 6, 0.38);
+}
+
+.overview-terminal-shell {
+  border-color: rgba(var(--signal-evidence-rgb), 0.24);
+}
+
+.overview-terminal-content {
+  max-height: 16rem;
+  padding: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.overview-check-grid {
+  display: grid;
+  gap: 0.35rem 1rem;
+}
+
+.overview-check-grid p {
+  position: relative;
+  padding-left: 0.9rem;
+}
+
+.overview-check-grid p::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 0.36rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.86;
+}
