@@ -1,0 +1,42 @@
+.docs-reading-path-copy {
+  max-width: 46rem;
+  padding-left: 0.45rem;
+}
+
+.docs-index-prose .docs-reading-path-kicker {
+  margin: 0 0 0.28rem;
+  color: var(--signal-reference);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.docs-reading-path h2 {
+  margin: 0;
+  border: 0;
+  color: var(--color-concrete-100);
+  font-family: var(--font-heading), ui-monospace, monospace;
+  font-size: clamp(1.18rem, 2.1vw, 1.48rem);
+  font-weight: var(--font-weight-title-compact);
+  line-height: 1.12;
+}
+
+.docs-reading-path-copy p:last-child {
+  max-width: 42rem;
+  margin: 0.5rem 0 0;
+  color: var(--color-concrete-400);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.docs-index-prose .docs-reading-path-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.62rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
