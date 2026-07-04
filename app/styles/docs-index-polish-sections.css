@@ -1,0 +1,50 @@
+@media (min-width: 64rem) {
+  .docs-index-section-reference {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.32fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 0.86rem clamp(1.3rem, 2.2vw, 1.7rem);
+  }
+
+  .docs-index-section-reference .docs-index-section-heading,
+  .docs-index-section-reference .docs-index-section-intro {
+    grid-column: 1;
+  }
+
+  .docs-index-section-reference .docs-index-list {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0;
+    align-self: start;
+  }
+
+  .docs-index-section-reference .docs-index-section-heading {
+    margin-bottom: 0;
+  }
+
+  .docs-index-section-reference .docs-index-section-intro {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .docs-index-section-adrs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 5.25rem;
+  }
+
+  .docs-index-section-adrs .docs-index-section-heading {
+    min-width: 9rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .docs-index-section-adrs p {
+    max-width: 31rem;
+    margin: 0;
+  }
+}

@@ -1,0 +1,26 @@
+@media (min-width: 64rem) {
+  .docs-index-prose {
+    max-width: min(100%, 60rem);
+  }
+
+  .docs-index-cover {
+    grid-template-columns: minmax(0, 1.08fr) minmax(15.5rem, 0.62fr);
+    align-items: stretch;
+    gap: clamp(1.15rem, 2vw, 1.55rem);
+    min-height: 12rem;
+    margin-bottom: clamp(1.35rem, 2.2vw, 1.75rem);
+    padding: clamp(1.1rem, 1.7vw, 1.45rem) clamp(1.15rem, 1.8vw, 1.55rem)
+      clamp(1.15rem, 1.8vw, 1.5rem) clamp(1.45rem, 2.2vw, 1.85rem);
+  }
+
+  .docs-index-cover-copy {
+    display: grid;
+    align-content: center;
+    max-width: 36rem;
+    padding-block: 0.62rem;
+  }
+
+  .docs-index-cover h1 {
+    margin-bottom: 0.58rem;
+  }
+}

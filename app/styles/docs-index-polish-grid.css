@@ -1,0 +1,36 @@
+@media (min-width: 64rem) {
+  .docs-index-grid,
+  .docs-index-top,
+  .docs-index-stack {
+    gap: clamp(1.05rem, 1.55vw, 1.28rem);
+  }
+
+  .docs-index-top {
+    grid-template-columns: minmax(0, 1.13fr) minmax(19rem, 0.87fr);
+  }
+
+  .docs-index-section {
+    padding: clamp(1.15rem, 1.48vw, 1.36rem);
+  }
+
+  .docs-index-section-primary .docs-index-list {
+    gap: 0;
+    overflow: hidden;
+    border-block: 1px solid rgba(var(--docs-index-rgb), 0.14);
+  }
+
+  .docs-index-section-primary .docs-index-list li + li {
+    border-top: 1px solid rgba(var(--docs-index-rgb), 0.105);
+  }
+
+  .docs-prose .docs-index-section-primary .docs-index-list a {
+    min-height: 2.75rem;
+    border: 0;
+    border-radius: 0;
+    background:
+      linear-gradient(90deg, rgba(var(--docs-index-rgb), 0.026), transparent 50%),
+      transparent;
+    padding-inline: 0.42rem 1.45rem;
+    box-shadow: none;
+  }
+}

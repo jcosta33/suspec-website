@@ -1,0 +1,45 @@
+@media (min-width: 64rem) {
+  .docs-index-manual {
+    align-self: stretch;
+    align-content: center;
+    gap: 0.48rem;
+    min-height: 100%;
+    padding: 0.58rem 0.72rem 0.62rem;
+    border-left: 1px solid rgba(var(--signal-reference-rgb), 0.2);
+    background:
+      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.075), transparent 70%),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0 1.2rem,
+        rgba(var(--signal-reference-rgb), 0.035) 1.2rem calc(1.2rem + 1px)
+      );
+  }
+
+  .docs-index-manual-label {
+    width: fit-content;
+    min-width: 9.5rem;
+  }
+
+  .docs-index-legend {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.12rem 0.42rem;
+    padding-top: 0.44rem;
+  }
+
+  .docs-index-legend-item,
+  .docs-prose .docs-index-legend-item a {
+    min-height: 2.75rem;
+  }
+
+  .docs-index-legend-item {
+    padding-block: 0.18rem;
+  }
+
+  .docs-index-legend-item span:first-child {
+    font-size: 0.6rem;
+  }
+
+  .docs-index-legend-item span:last-child {
+    font-size: 0.45rem;
+  }
+}
