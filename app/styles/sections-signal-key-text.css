@@ -1,0 +1,27 @@
+.text-signal-core {
+  color: var(--signal-core);
+}
+
+.text-signal-evidence {
+  color: var(--signal-evidence);
+}
+
+.text-signal-greenfield {
+  color: var(--signal-greenfield);
+}
+
+.text-signal-brownfield {
+  color: var(--signal-brownfield);
+}
+
+.text-signal-change {
+  color: var(--signal-change);
+}
+
+.text-signal-reference {
+  color: var(--signal-reference);
+}
+
+.text-signal-muted {
+  color: var(--signal-muted);
+}

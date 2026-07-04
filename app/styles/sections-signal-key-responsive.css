@@ -1,0 +1,47 @@
+@media (max-width: 40rem) {
+  .signal-key {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+  }
+
+  .signal-key-item {
+    min-width: 0;
+    min-height: 2.45rem;
+    flex: initial;
+    gap: 0.45rem;
+    padding: 0.46rem 0.55rem;
+  }
+
+  .signal-key-item:nth-child(odd):last-child {
+    grid-column: 1 / -1;
+  }
+
+  .signal-key-swatch {
+    width: 0.46rem;
+    min-height: 1.35rem;
+  }
+
+  .signal-key-lamp {
+    transform: scale(0.72);
+    transform-origin: center;
+  }
+
+  .signal-key-copy {
+    gap: 0;
+  }
+
+  .signal-key-label {
+    font-size: 0.58rem;
+    line-height: 1.1;
+  }
+
+  .signal-key-detail {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+}

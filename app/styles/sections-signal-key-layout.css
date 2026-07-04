@@ -1,0 +1,12 @@
+.signal-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.signal-key + .panel-raised {
+  margin-top: 0.9rem;
+}
