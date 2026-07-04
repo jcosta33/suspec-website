@@ -283,7 +283,7 @@
   }
 
   .mcp-bridge-overview .section-intro > :where(.section-kicker, h2, p) {
-    margin-top: 0 !important;
+    margin-top: 0;
   }
 
   .mcp-bridge-overview .section-intro h2 {
@@ -341,7 +341,7 @@
   #bridge .section-intro .section-kicker,
   #bridge .section-intro h2,
   #bridge .section-intro p {
-    margin-top: 0 !important;
+    margin-top: 0;
   }
 
   #bridge .section-intro h2 {
@@ -415,8 +415,8 @@
   }
 
   .mcp-adapter-rail {
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 0.48rem !important;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.48rem;
     padding: 0.62rem;
     background:
       linear-gradient(90deg, rgba(var(--package-mcp-rgb), 0.04), transparent 62%),
@@ -443,11 +443,11 @@
     border: 1px solid rgba(var(--package-mcp-rgb), 0.16);
     border-left-color: rgba(var(--package-mcp-rgb), 0.3);
     border-radius: calc(var(--radius-panel) - 2px);
-    background-color: rgba(24, 19, 14, 0.92) !important;
+    background-color: rgba(24, 19, 14, 0.92);
   }
 
   .mcp-adapter-step-link {
-    display: block !important;
+    display: block;
     min-height: 0;
     padding: 0.72rem 0.82rem 0.76rem;
   }
@@ -627,7 +627,7 @@
   .mcp-guardrail-card p {
     grid-column: 2 / 4;
     grid-row: 2;
-    margin-top: 0 !important;
+    margin-top: 0;
     font-size: 0.82rem;
     line-height: 1.45;
   }
