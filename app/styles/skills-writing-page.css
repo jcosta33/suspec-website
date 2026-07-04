@@ -1,0 +1,30 @@
+/* Skill anatomy rail — small manual index for SKILL.md. */
+.writing-skill-page {
+  row-gap: clamp(2.75rem, 4vw, 4rem);
+}
+
+.writing-skill-page > .ambient-header {
+  margin-bottom: -0.45rem;
+}
+
+.writing-skill-page .page-hero {
+  max-width: 50rem;
+}
+
+.writing-skill-page .hero-trace {
+  margin-top: 1.15rem;
+}
+
+.writing-skill-page .section-register {
+  scroll-margin-top: 7rem;
+}
+
+.writing-skill-page .section-kicker + .font-heading,
+.writing-skill-page .section-kicker + :where(h1, h2, h3) {
+  margin-top: 0.95rem;
+}
+
+.writing-skill-page .font-heading + p,
+.writing-skill-page :where(h1, h2, h3) + p {
+  margin-top: 0.86rem;
+}

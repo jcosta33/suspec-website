@@ -1,0 +1,153 @@
+@media (max-width: 40rem) {
+  .writing-skill-page {
+    row-gap: 2.35rem;
+  }
+
+  .writing-skill-page > .ambient-header {
+    margin-bottom: -0.25rem;
+  }
+
+  .writing-skill-page .page-hero {
+    max-width: 20.5rem;
+  }
+
+  .writing-skill-page .hero-trace {
+    margin-top: 0.95rem;
+  }
+
+  .writing-skill-page .section-register {
+    padding-top: 2.72rem;
+  }
+
+  .skill-anatomy-header {
+    align-items: center;
+    flex-direction: row;
+    gap: 0.65rem;
+    padding: 0.68rem 0.82rem;
+  }
+
+  .skill-anatomy-header h2,
+  .skill-anatomy-header span {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+  }
+
+  .skill-anatomy-header span {
+    max-width: 11rem;
+    text-align: right;
+  }
+
+  .skill-anatomy-rail {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+  }
+
+  .skill-anatomy-step {
+    min-height: 0;
+  }
+
+  .skill-anatomy-step > a {
+    min-height: 0;
+    padding: 0.78rem 0.74rem;
+  }
+
+  .writing-skill-page .skill-anatomy-step > a {
+    min-height: 0;
+    padding: 0.76rem 0.72rem;
+  }
+
+  .skill-anatomy-step > a > span:first-child {
+    align-items: center;
+  }
+
+  .skill-anatomy-step > a > span:first-child svg {
+    width: 0.82rem;
+    height: 0.82rem;
+  }
+
+  .skill-anatomy-label {
+    margin-top: 0.58rem;
+    font-size: 1rem;
+    line-height: 1.05;
+  }
+
+  .skill-anatomy-tag {
+    margin-top: 0.38rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    line-height: 1.15;
+  }
+
+  .skill-anatomy-copy {
+    display: -webkit-box;
+    margin-top: 0.42rem;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    font-size: 0.76rem;
+    line-height: 1.28;
+  }
+
+  .skill-folder-ledger {
+    margin-top: 1.1rem;
+  }
+
+  .skill-folder-ledger div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    padding: 0.72rem 0.82rem;
+  }
+
+  #rules {
+    gap: 1.35rem;
+  }
+
+  .skill-body-rule-list {
+    gap: 0;
+    overflow: hidden;
+    border: 1px solid rgba(var(--signal-reference-rgb), 0.24);
+    border-radius: var(--radius-panel);
+    background:
+      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.055), transparent 48%),
+      rgba(10, 7, 5, 0.2);
+  }
+
+  .skill-body-rule-list > li:not(:last-child) {
+    border-bottom: 1px solid rgba(var(--signal-reference-rgb), 0.2);
+  }
+
+  .skill-body-rule-card {
+    border: 0;
+    border-radius: 0;
+    padding: 0.74rem 0.8rem;
+    box-shadow: inset 2px 0 0 rgba(var(--signal-reference-rgb), 0.2);
+  }
+
+  .skill-body-rule-card > div:last-child {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 0 0.68rem;
+  }
+
+  .skill-body-rule-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0;
+  }
+
+  .skill-body-rule-card h3 {
+    margin-top: 0.05rem;
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+
+  .skill-body-rule-card p {
+    grid-column: 2;
+    margin-top: 0.12rem;
+    font-size: 0.78rem;
+    line-height: 1.32;
+  }
+}
