@@ -1,0 +1,86 @@
+@media (max-width: 40rem) {
+  .overview-is-list {
+    margin-top: 1.1rem;
+    display: grid;
+    gap: 0.48rem;
+  }
+
+  .overview-is-item {
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 2.72rem;
+    padding: 0.42rem 0.48rem;
+  }
+
+  .overview-is-icon {
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+
+  .overview-is-icon svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .overview-is-item > span:last-child {
+    padding-top: 0;
+    font-size: 0.9rem;
+    line-height: 1.28;
+  }
+
+  .overview-boundary-copy {
+    gap: 0.1rem;
+  }
+
+  .overview-boundary-label {
+    font-size: 0.54rem;
+    letter-spacing: 0.08em;
+  }
+
+  .overview-not-list {
+    margin-top: 1rem;
+  }
+
+  #boundaries .panel-inset {
+    padding: 1rem;
+  }
+
+  #boundaries .panel-inset .section-kicker + .font-heading {
+    margin-top: 0.62rem;
+  }
+
+  #boundaries .panel-inset ul:not(.overview-is-list) {
+    margin-top: 0.92rem;
+  }
+
+  #boundaries .panel-inset ul:not(.overview-is-list) li {
+    align-items: center;
+    gap: 0.58rem;
+    padding-block: 0.58rem;
+    font-size: 0.9rem;
+    line-height: 1.32;
+  }
+
+  .overview-next-card {
+    padding: 1rem;
+  }
+
+  .overview-next-content {
+    gap: 1.25rem;
+  }
+
+  .overview-next-source {
+    padding-top: 0.78rem;
+  }
+
+  .overview-next-nav {
+    border-top: 1px solid rgba(var(--signal-core-rgb), 0.18);
+    border-left: 0;
+    padding-top: 0.95rem;
+    padding-left: 0;
+  }
+
+  .overview-next-links {
+    margin-top: 0.55rem;
+  }
+}

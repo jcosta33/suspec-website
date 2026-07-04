@@ -1,0 +1,60 @@
+@media (max-width: 40rem) {
+  .overview-summary-grid .overview-terminal-shell {
+    order: 1;
+  }
+
+  .overview-terminal-shell {
+    padding: 0.44rem;
+  }
+
+  .overview-terminal-shell .terminal-toolbar {
+    padding: 0.5rem 0.58rem;
+  }
+
+  .overview-summary-grid .overview-paper-artifact {
+    order: 2;
+  }
+
+  .overview-paper-artifact {
+    padding: 0.92rem 1rem;
+  }
+
+  .overview-paper-artifact > div:last-child {
+    line-height: 1.46;
+  }
+
+  .overview-terminal-content {
+    max-height: 8.6rem;
+    padding: 0.82rem 0.86rem;
+    font-size: 0.76rem;
+    line-height: 1.42;
+  }
+
+  .overview-check-grid {
+    display: none;
+  }
+
+  .overview-terminal-content > p:last-child {
+    display: none;
+  }
+
+  .overview-artifact-chain {
+    gap: 0.22rem 0.42rem;
+    margin-bottom: 0.72rem;
+    padding-block: 0.42rem;
+  }
+
+  .overview-artifact-chain li {
+    min-height: 0.96rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.065em;
+  }
+
+  .overview-artifact-chain li:not(:last-child)::after {
+    margin-left: 0.34rem;
+  }
+
+  .overview-artifact-lines {
+    gap: 0.08rem;
+  }
+}

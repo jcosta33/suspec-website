@@ -1,0 +1,69 @@
+@media (max-width: 40rem) {
+  .overview-summary-grid {
+    gap: 0.68rem;
+  }
+
+  .overview-answer-panel {
+    gap: 0.58rem;
+    padding: 0.76rem 0.78rem;
+  }
+
+  .overview-answer-panel::before {
+    top: 0.58rem;
+    bottom: 0.58rem;
+    left: 0.58rem;
+  }
+
+  .overview-answer-panel::after {
+    display: none;
+  }
+
+  .overview-answer-copy {
+    padding-left: 0.42rem;
+  }
+
+  .overview-answer-copy h2 {
+    font-size: 1.1rem;
+  }
+
+  .overview-answer-copy p:last-child {
+    margin-top: 0.36rem;
+    font-size: 0.84rem;
+    line-height: 1.36;
+  }
+
+  .overview-answer-list {
+    gap: 0;
+    overflow: hidden;
+    border-block: 1px solid rgba(var(--signal-reference-rgb), 0.12);
+  }
+
+  .overview-answer-fact {
+    display: grid;
+    grid-template-columns: minmax(4rem, 0.3fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 0.52rem;
+    border: 0;
+    border-radius: 0;
+    background:
+      linear-gradient(90deg, rgba(var(--overview-answer-rgb), 0.04), transparent 68%),
+      transparent;
+    padding: 0.48rem 0.05rem 0.52rem 0.34rem;
+  }
+
+  .overview-answer-fact + .overview-answer-fact {
+    border-top: 1px solid rgba(var(--signal-reference-rgb), 0.095);
+  }
+
+  .overview-answer-fact dt {
+    padding-top: 0.12rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.075em;
+  }
+
+  .overview-answer-fact dd {
+    margin-top: 0;
+    font-size: 0.78rem;
+    line-height: 1.34;
+  }
+}
