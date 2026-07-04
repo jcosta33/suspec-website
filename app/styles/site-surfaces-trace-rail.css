@@ -1,0 +1,138 @@
+
+.trace-rail {
+  --trace-progress: 0%;
+  display: none;
+}
+
+@media (min-width: 80rem) {
+  .trace-rail {
+    position: fixed;
+    top: 7.25rem;
+    right: max(0.72rem, calc((100vw - 92rem) / 2 - 2.15rem));
+    bottom: 4.75rem;
+    z-index: 30;
+    display: grid;
+    width: 2.18rem;
+    pointer-events: none;
+    grid-template-rows: auto minmax(8rem, 1fr) auto;
+    justify-items: center;
+    gap: 0.56rem;
+    opacity: 0;
+    transform: translateX(0.35rem);
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease;
+  }
+
+  .trace-rail[data-active="true"] {
+    opacity: 0.5;
+    transform: translateX(0);
+  }
+
+  .trace-rail-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(var(--signal-muted-rgb), 0.16);
+    border-radius: calc(var(--radius-control) - 5px);
+    background:
+      linear-gradient(90deg, rgba(var(--signal-muted-rgb), 0.035), transparent 62%),
+      rgba(10, 7, 5, 0.34);
+    color: color-mix(in oklab, var(--signal-muted) 46%, var(--color-concrete-400));
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.52rem;
+    font-weight: 750;
+    letter-spacing: 0.11em;
+    line-height: 1;
+    padding: 0.34rem 0.22rem;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+
+  .trace-rail-track {
+    position: relative;
+    width: 0.24rem;
+    min-height: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(var(--signal-reference-rgb), 0.14);
+    border-radius: 999px;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgba(var(--signal-reference-rgb), 0.09) 0 1px,
+        transparent 1px 0.58rem
+      ),
+      rgba(10, 7, 5, 0.26);
+    box-shadow:
+      inset 0 1px 0 rgba(240, 226, 204, 0.026),
+      0 0 0 1px rgba(var(--signal-reference-rgb), 0.02);
+  }
+
+  .trace-rail-fill {
+    position: absolute;
+    inset: auto 0 0;
+    height: var(--trace-progress);
+    border-radius: inherit;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(var(--signal-reference-rgb), 0.58),
+        rgba(var(--signal-core-rgb), 0.64)
+      );
+    box-shadow:
+      0 0 10px rgba(var(--signal-reference-rgb), 0.12),
+      0 0 14px rgba(var(--signal-core-rgb), 0.1);
+    transition: height 120ms linear;
+  }
+
+  .trace-rail-fill::before {
+    content: "";
+    position: absolute;
+    top: -0.28rem;
+    left: 50%;
+    width: 0.46rem;
+    height: 0.46rem;
+    border: 1px solid rgba(var(--signal-core-rgb), 0.52);
+    border-radius: 999px;
+    background: var(--signal-core);
+    box-shadow: 0 0 10px rgba(var(--signal-core-rgb), 0.2);
+    transform: translateX(-50%);
+  }
+
+  .trace-rail-readout {
+    display: inline-flex;
+    min-width: 2.18rem;
+    min-height: 1.35rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(var(--signal-reference-rgb), 0.28);
+    border-radius: calc(var(--radius-control) - 4px);
+    background:
+      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.08), transparent 64%),
+      rgba(10, 7, 5, 0.64);
+    color: var(--signal-reference);
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.58rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    opacity: 0;
+    transform: translateY(0.18rem);
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease;
+    box-shadow: inset 0 1px 0 rgba(240, 226, 204, 0.045);
+  }
+
+  .trace-rail[data-started="true"] .trace-rail-readout {
+    opacity: 0.82;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trace-rail,
+  .trace-rail-fill {
+    transition: none !important;
+  }
+}

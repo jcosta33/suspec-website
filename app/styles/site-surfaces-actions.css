@@ -1,0 +1,224 @@
+
+.btn-primary {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(16, 11, 7, 0.28) 0 0.52rem,
+      transparent 0.52rem calc(100% - 0.52rem),
+      rgba(16, 11, 7, 0.22) calc(100% - 0.52rem) 100%
+    ),
+    linear-gradient(90deg, rgba(16, 11, 7, 0.18), transparent 18%),
+    linear-gradient(180deg, #f0b85c 0%, #e19a33 48%, #bf7927 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 238, 190, 0.66),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.36),
+    0 0 0 1px rgba(240, 184, 92, 0.18),
+    0 12px 28px rgba(216, 138, 36, 0.14);
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: calc(var(--radius-control) - 2px);
+  border: 1px solid rgba(24, 17, 11, 0.18);
+  background:
+    linear-gradient(120deg, rgba(255, 241, 202, 0.24), transparent 36%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(24, 17, 11, 0.09) 0 1px,
+      transparent 1px 9px
+    );
+  opacity: 0.56;
+  pointer-events: none;
+}
+
+.btn-primary:hover {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(16, 11, 7, 0.3) 0 0.52rem,
+      transparent 0.52rem calc(100% - 0.52rem),
+      rgba(16, 11, 7, 0.24) calc(100% - 0.52rem) 100%
+    ),
+    linear-gradient(90deg, rgba(16, 11, 7, 0.2), transparent 20%),
+    linear-gradient(180deg, #ffcb70 0%, #eba140 50%, #ca812b 100%);
+}
+
+.btn-primary:disabled {
+  background: var(--color-panel);
+  box-shadow: none;
+}
+
+.btn-primary:disabled::before {
+  content: none;
+}
+
+.copy-button {
+  position: relative;
+  isolation: isolate;
+  flex-shrink: 0;
+  overflow: hidden;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.36);
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.copy-button-label-stack {
+  align-items: center;
+}
+
+.copy-button-icon {
+  grid-area: 1 / 1;
+}
+
+.copy-button-icon-check {
+  display: none;
+}
+
+.copy-button[data-copied="true"] .copy-button-icon-copy {
+  display: none;
+}
+
+.copy-button[data-copied="true"] .copy-button-icon-check {
+  display: block;
+}
+
+.copy-button-label-full.copy-button-label-stack {
+  display: inline-grid;
+}
+
+.copy-button-label-compact.copy-button-label-stack {
+  display: none;
+}
+
+.copy-button-label-current,
+.copy-button-label-sizer {
+  grid-area: 1 / 1;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.copy-button-label-sizer {
+  visibility: hidden;
+}
+
+.copy-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transform: translateX(-58%);
+  background:
+    linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(var(--signal-evidence-rgb), 0.08) 34%,
+      rgba(var(--signal-evidence-rgb), 0.28) 49%,
+      rgba(var(--signal-evidence-rgb), 0.08) 64%,
+      transparent 100%
+    );
+}
+
+.copy-button:hover {
+  color: var(--signal-reference);
+  border-color: rgba(var(--signal-reference-rgb), 0.58);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--signal-reference-rgb), 0.12),
+      rgba(13, 11, 8, 0.94)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.08),
+    0 0 0 1px rgba(var(--signal-reference-rgb), 0.06);
+}
+
+.copy-button:active {
+  box-shadow:
+    inset 0 1px 0 rgba(0, 0, 0, 0.32),
+    inset 0 -1px 0 rgba(240, 226, 204, 0.05);
+}
+
+.copy-button[data-copied="true"] {
+  color: var(--signal-evidence);
+  border-color: rgba(var(--signal-evidence-rgb), 0.62);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--signal-evidence-rgb), 0.15),
+      rgba(13, 18, 11, 0.94)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(173, 214, 152, 0.16),
+    0 0 0 1px rgba(var(--signal-evidence-rgb), 0.07);
+}
+
+.copy-button[data-copied="true"]::after {
+  opacity: 1;
+}
+
+.copy-button[data-copied="true"] svg {
+  filter: drop-shadow(0 0 7px rgba(var(--signal-evidence-rgb), 0.34));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .copy-button[data-copied="true"]::after {
+    animation: copy-confirm-scan 900ms ease-out both;
+  }
+
+  .copy-button[data-copied="true"] svg {
+    animation: copy-confirm-pop 420ms ease-out both;
+  }
+}
+
+@keyframes copy-confirm-scan {
+  0% {
+    opacity: 0;
+    transform: translateX(-58%);
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(58%);
+  }
+}
+
+@keyframes copy-confirm-pop {
+  0% {
+    transform: scale(0.86);
+  }
+
+  48% {
+    transform: scale(1.12);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy-button,
+  .copy-button::after,
+  .copy-button svg {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .copy-button:active {
+    transform: none;
+  }
+}

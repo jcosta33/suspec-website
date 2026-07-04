@@ -1,0 +1,33 @@
+
+.site-footer {
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(70, 57, 44, 0.07) 1px, transparent 1px),
+    radial-gradient(
+      85% 120% at 50% 0%,
+      rgba(216, 138, 36, 0.06),
+      transparent 58%
+    ),
+    var(--color-footer);
+  background-size:
+    56px 100%,
+    auto,
+    auto;
+}
+
+.site-footer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(240, 226, 204, 0.035),
+    transparent 42%
+  );
+}
+
+.site-footer > * {
+  position: relative;
+  z-index: 1;
+}
