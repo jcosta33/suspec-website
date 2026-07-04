@@ -274,7 +274,7 @@ export default function TheLoopPage() {
       <Section
         register="01 / seal map"
         registerTone="core"
-        className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-start"
+        className="loop-seal-section grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-start"
       >
         <div className="loop-ledger-panel panel-raised lg:col-span-2">
           <div className="loop-ledger-copy">

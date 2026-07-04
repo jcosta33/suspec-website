@@ -517,6 +517,11 @@
 }
 
 @media (max-width: 40rem) {
+  .loop-seal-section {
+    gap: 1.2rem;
+    padding-top: 2.15rem;
+  }
+
   section[data-register="02 / operating steps"] {
     gap: 2.25rem;
   }
