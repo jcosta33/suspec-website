@@ -1,0 +1,34 @@
+.section-register-core {
+  --section-register-signal: var(--signal-core);
+  --section-register-rgb: var(--signal-core-rgb);
+}
+
+.section-register-evidence {
+  --section-register-signal: var(--signal-evidence);
+  --section-register-rgb: var(--signal-evidence-rgb);
+}
+
+.section-register-greenfield {
+  --section-register-signal: var(--signal-greenfield);
+  --section-register-rgb: var(--signal-greenfield-rgb);
+}
+
+.section-register-brownfield {
+  --section-register-signal: var(--signal-brownfield);
+  --section-register-rgb: var(--signal-brownfield-rgb);
+}
+
+.section-register-change {
+  --section-register-signal: var(--signal-change);
+  --section-register-rgb: var(--signal-change-rgb);
+}
+
+.section-register-reference {
+  --section-register-signal: var(--signal-reference);
+  --section-register-rgb: var(--signal-reference-rgb);
+}
+
+.section-register-muted {
+  --section-register-signal: var(--color-concrete-400);
+  --section-register-rgb: var(--signal-muted-rgb);
+}

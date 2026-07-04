@@ -1,0 +1,20 @@
+@media (prefers-reduced-motion: no-preference) {
+  .section-register::after {
+    animation: section-register-scan 10s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes section-register-scan {
+  from {
+    opacity: 0.42;
+    background-position:
+      0 50%,
+      0 50%;
+  }
+  to {
+    opacity: 0.58;
+    background-position:
+      0 50%,
+      1.35rem 50%;
+  }
+}

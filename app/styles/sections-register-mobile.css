@@ -1,0 +1,19 @@
+@media (max-width: 40rem) {
+  .section-register {
+    padding-top: 3.02rem;
+  }
+
+  .section-register::before {
+    top: -0.95rem;
+    left: 1rem;
+    max-width: calc(100% - 2rem);
+    font-size: 0.62rem;
+    padding: 0.19rem 0.44rem 0.19rem 1.08rem;
+  }
+
+  .section-register::after {
+    top: -0.52rem;
+    left: 1rem;
+    width: calc(100% - 2rem);
+  }
+}

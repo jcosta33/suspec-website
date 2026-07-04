@@ -1,0 +1,52 @@
+.section-kicker-core,
+.section-kicker-gold {
+  --section-kicker-color: var(--signal-core);
+  --section-kicker-rule: rgba(var(--signal-core-rgb), 0.34);
+  --section-kicker-rgb: var(--signal-core-rgb);
+}
+
+.section-kicker-secondary,
+.section-kicker-brass {
+  --section-kicker-color: var(--signal-muted);
+  --section-kicker-rule: rgba(var(--signal-muted-rgb), 0.3);
+  --section-kicker-rgb: var(--signal-muted-rgb);
+}
+
+.section-kicker-muted {
+  --section-kicker-color: var(--color-concrete-400);
+  --section-kicker-rule: rgba(184, 170, 150, 0.2);
+  --section-kicker-rgb: var(--signal-muted-rgb);
+}
+
+.section-kicker-reference {
+  --section-kicker-color: var(--signal-reference);
+  --section-kicker-rule: rgba(var(--signal-reference-rgb), 0.3);
+  --section-kicker-rgb: var(--signal-reference-rgb);
+}
+
+.section-kicker-change,
+.section-kicker-rubedo {
+  --section-kicker-color: var(--signal-change);
+  --section-kicker-rule: rgba(var(--signal-change-rgb), 0.3);
+  --section-kicker-rgb: var(--signal-change-rgb);
+}
+
+.section-kicker-evidence,
+.section-kicker-phosphor,
+.section-kicker-olive {
+  --section-kicker-color: var(--signal-evidence);
+  --section-kicker-rule: rgba(var(--signal-evidence-rgb), 0.26);
+  --section-kicker-rgb: var(--signal-evidence-rgb);
+}
+
+.section-kicker-greenfield {
+  --section-kicker-color: var(--signal-greenfield);
+  --section-kicker-rule: rgba(var(--signal-greenfield-rgb), 0.26);
+  --section-kicker-rgb: var(--signal-greenfield-rgb);
+}
+
+.section-kicker-brownfield {
+  --section-kicker-color: var(--signal-brownfield);
+  --section-kicker-rule: rgba(var(--signal-brownfield-rgb), 0.3);
+  --section-kicker-rgb: var(--signal-brownfield-rgb);
+}
