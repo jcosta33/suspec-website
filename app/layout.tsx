@@ -19,6 +19,7 @@ import "./styles/skills.css";
 import "./styles/motion-primitives.css";
 import "./styles/loop.css";
 import "./styles/surface-primitives.css";
+import "./styles/repo-products.css";
 import "./globals.css";
 import "./styles/motion-surfaces.css";
 import "./styles/art-direction-pass.css";
