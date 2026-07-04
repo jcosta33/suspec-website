@@ -27,6 +27,9 @@ const routes = [
   "/kitchen-sink/",
 ];
 
+const sitemapRoutes = routes.filter((route) => route !== "/kitchen-sink/");
+const agentResourceRoutes = ["/llms.txt", "/llms-full.txt"];
+
 const viewports = [
   { name: "desktop", width: 1280, height: 900, mobile: false, dpr: 1 },
   { name: "tablet", width: 768, height: 1024, mobile: false, dpr: 1 },
@@ -325,6 +328,86 @@ async function auditReducedMotion(cdp, baseUrl) {
   })()`);
 }
 
+async function fetchText(baseUrl, route) {
+  const response = await fetch(`${baseUrl}${route}`);
+  return {
+    route,
+    ok: response.ok,
+    status: response.status,
+    type: response.headers.get("content-type") ?? "",
+    text: await response.text(),
+  };
+}
+
+async function auditSeoArtifacts(baseUrl) {
+  const [robots, sitemap, llms, llmsFull] = await Promise.all([
+    fetchText(baseUrl, "/robots.txt"),
+    fetchText(baseUrl, "/sitemap.xml"),
+    fetchText(baseUrl, "/llms.txt"),
+    fetchText(baseUrl, "/llms-full.txt"),
+  ]);
+
+  const failures = [];
+  for (const resource of [robots, sitemap, llms, llmsFull]) {
+    if (!resource.ok) failures.push(`${resource.route} returned ${resource.status}`);
+  }
+
+  if (!robots.text.includes("Sitemap: https://suspecframework.dev/sitemap.xml")) {
+    failures.push("robots.txt missing sitemap directive");
+  }
+
+  for (const route of [...sitemapRoutes, ...agentResourceRoutes]) {
+    const absoluteUrl = `https://suspecframework.dev${route}`;
+    if (!sitemap.text.includes(`<loc>${absoluteUrl}</loc>`)) {
+      failures.push(`sitemap missing ${absoluteUrl}`);
+    }
+  }
+
+  for (const route of [
+    "/docs/01-what-is-suspec/",
+    "/docs/reference/advanced-lifecycle/",
+  ]) {
+    const absoluteUrl = `https://suspecframework.dev${route}`;
+    if (!sitemap.text.includes(`<loc>${absoluteUrl}</loc>`)) {
+      failures.push(`sitemap missing docs route ${absoluteUrl}`);
+    }
+  }
+
+  const llmsRequired = [
+    "# Suspec",
+    "any agent, no runtime",
+    "https://suspecframework.dev/docs/",
+    "https://suspecframework.dev/llms-full.txt",
+    "https://suspecframework.dev/mcp/",
+  ];
+  for (const needle of llmsRequired) {
+    if (!llms.text.includes(needle)) failures.push(`llms.txt missing ${needle}`);
+  }
+
+  const fullRequired = [
+    "# Suspec - full documentation",
+    "<!-- 01-what-is-suspec.md -->",
+    "<!-- tutorial/README.md -->",
+    "<!-- examples/large-pr-review.md -->",
+  ];
+  for (const needle of fullRequired) {
+    if (!llmsFull.text.includes(needle)) {
+      failures.push(`llms-full.txt missing ${needle}`);
+    }
+  }
+  if (llmsFull.text.length < 20000) failures.push("llms-full.txt unexpectedly short");
+
+  return {
+    failures,
+    lengths: {
+      robots: robots.text.length,
+      sitemap: sitemap.text.length,
+      llms: llms.text.length,
+      llmsFull: llmsFull.text.length,
+    },
+  };
+}
+
 const server = http.createServer(serveFile);
 const port = await listen(server);
 const baseUrl = `http://127.0.0.1:${port}`;
@@ -366,6 +449,14 @@ try {
   }
 
   const routeCount = new Set(results.map((result) => result.route)).size;
+  const seoArtifacts = await auditSeoArtifacts(baseUrl);
+  if (seoArtifacts.failures.length) {
+    exitCode = 1;
+    console.log(`FAIL seo-artifacts ${JSON.stringify(seoArtifacts)}`);
+  } else {
+    console.log(`PASS seo-artifacts ${JSON.stringify(seoArtifacts.lengths)}`);
+  }
+
   console.log(`[audit-site] routes=${routeCount} viewport-runs=${results.length}`);
   await close();
 } finally {
