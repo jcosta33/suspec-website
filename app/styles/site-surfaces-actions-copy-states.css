@@ -1,0 +1,41 @@
+.copy-button:hover {
+  color: var(--signal-reference);
+  border-color: rgba(var(--signal-reference-rgb), 0.58);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--signal-reference-rgb), 0.12),
+      rgba(13, 11, 8, 0.94)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.08),
+    0 0 0 1px rgba(var(--signal-reference-rgb), 0.06);
+}
+
+.copy-button:active {
+  box-shadow:
+    inset 0 1px 0 rgba(0, 0, 0, 0.32),
+    inset 0 -1px 0 rgba(240, 226, 204, 0.05);
+}
+
+.copy-button[data-copied="true"] {
+  color: var(--signal-evidence);
+  border-color: rgba(var(--signal-evidence-rgb), 0.62);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--signal-evidence-rgb), 0.15),
+      rgba(13, 18, 11, 0.94)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(173, 214, 152, 0.16),
+    0 0 0 1px rgba(var(--signal-evidence-rgb), 0.07);
+}
+
+.copy-button[data-copied="true"]::after {
+  opacity: 1;
+}
+
+.copy-button[data-copied="true"] svg {
+  filter: drop-shadow(0 0 7px rgba(var(--signal-evidence-rgb), 0.34));
+}
