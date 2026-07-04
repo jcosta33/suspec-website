@@ -1,0 +1,57 @@
+.docs-index-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.docs-index-manual {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.42rem;
+  align-content: start;
+  overflow: visible;
+  margin: 0;
+  padding: 0.32rem 0 0;
+  border: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.34), transparent 74%)
+      top left / 100% 1px no-repeat,
+    radial-gradient(82% 90% at 100% 0%, rgba(var(--signal-reference-rgb), 0.045), transparent 66%);
+  box-shadow: none;
+}
+
+.docs-index-manual::before,
+.docs-index-manual::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.docs-index-manual::before {
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2.35rem;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--signal-reference-rgb), 0.055),
+    transparent
+  );
+  opacity: 0.9;
+}
+
+.docs-index-manual::after {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 0.3rem;
+  background: radial-gradient(
+      circle,
+      rgba(var(--signal-reference-rgb), 0.28) 0 1px,
+      transparent 1.55px
+    )
+    left center / 0.78rem 0.3rem repeat-x;
+  opacity: 0.42;
+}

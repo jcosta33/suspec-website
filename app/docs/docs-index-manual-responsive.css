@@ -1,0 +1,58 @@
+@media (min-width: 58rem) {
+  .docs-index-cover {
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 17rem);
+    align-items: center;
+  }
+}
+
+@media (max-width: 40rem) {
+  .docs-layout {
+    gap: 1.05rem;
+    padding-top: 5rem;
+  }
+
+  .docs-layout:has(.docs-index-prose) {
+    gap: 0.88rem;
+    padding-top: 5.35rem;
+  }
+
+  .docs-index-cover {
+    gap: 0.72rem;
+    margin-bottom: 0.78rem;
+    padding: 0.78rem 0.78rem 0.74rem 1rem;
+  }
+
+  .docs-index-cover::before {
+    inset: 0.58rem;
+  }
+
+  .docs-index-cover::after {
+    left: 0.58rem;
+    width: 0.42rem;
+    opacity: 0.54;
+  }
+
+  .docs-index-cover-copy {
+    padding-left: 0.68rem;
+  }
+
+  .docs-index-prose .docs-index-kicker {
+    margin-bottom: 0.24rem;
+    font-size: 0.58rem;
+  }
+
+  .docs-index-cover h1 {
+    margin-bottom: 0.32rem;
+    font-size: 1.95rem;
+    line-height: 1.06;
+  }
+
+  .docs-index-lede {
+    font-size: 0.91rem;
+    line-height: 1.42;
+  }
+
+  .docs-index-manual {
+    display: none;
+  }
+}
