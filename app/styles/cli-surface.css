@@ -1,0 +1,193 @@
+/* CLI command rail — command families as a compact operating surface. */
+.cli-surface-panel {
+  border-color: rgba(var(--signal-reference-rgb), 0.36);
+  background:
+    radial-gradient(
+      80% 80% at 50% 0%,
+      rgba(var(--signal-reference-rgb), 0.075),
+      transparent 62%
+    ),
+    var(--color-panel-raised);
+}
+
+.cli-surface-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--color-panel-border);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.08), transparent 46%),
+    rgba(10, 7, 5, 0.22);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cli-surface-header :where(h2, p) {
+  color: var(--signal-reference);
+}
+
+.cli-surface-header span {
+  border: 1px solid rgba(var(--signal-reference-rgb), 0.24);
+  border-radius: calc(var(--radius-control) - 4px);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.08), transparent 68%),
+    rgba(10, 7, 5, 0.28);
+  color: var(--color-concrete-300);
+  padding: 0.16rem 0.48rem;
+}
+
+.cli-command-rail {
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.1), transparent 22%),
+    var(--color-panel-border);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+
+.cli-command-step {
+  background-image:
+    radial-gradient(
+      70% 64% at 18% 0%,
+      rgba(var(--process-rgb), 0.014),
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(240, 226, 204, 0.025),
+      transparent 44%
+    );
+}
+
+.cli-command-link {
+  min-height: 10.2rem;
+}
+
+@media (min-width: 64rem) {
+  .cli-command-rail {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .cli-command-step,
+  .cli-command-step:nth-child(n + 4) {
+    grid-column: auto;
+  }
+
+  .cli-command-link {
+    min-height: 8.6rem;
+  }
+
+  .cli-command-step:not(:last-child) .cli-command-link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 0.72rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      rgba(var(--process-rgb), 0.07),
+      rgba(var(--process-rgb), 0.34)
+    );
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+}
+
+@media (max-width: 40rem) {
+  .cli-surface-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0.62rem 0.72rem;
+    font-size: 0.58rem;
+  }
+
+  .cli-command-rail {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    overflow-x: visible;
+    padding: 0;
+    scroll-snap-type: none;
+  }
+
+  .cli-command-rail > li {
+    flex: initial;
+    min-width: 0;
+    width: 100%;
+    scroll-snap-align: none;
+  }
+
+  .cli-command-step:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .cli-command-link {
+    display: flex;
+    min-height: 3.55rem;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.54rem 0.6rem;
+  }
+
+  .cli-command-step:last-child .cli-command-link {
+    min-height: 3.55rem;
+    padding-block: 0.54rem;
+  }
+
+  .cli-command-heading {
+    align-items: center;
+    gap: 0.42rem;
+    width: 100%;
+  }
+
+  .cli-command-heading .hex-badge {
+    height: 1.28rem;
+    width: 1.28rem;
+  }
+
+  .cli-command-heading > div {
+    display: block;
+    min-width: 0;
+  }
+
+  .cli-command-heading p {
+    font-size: 0.54rem;
+    line-height: 1.2;
+  }
+
+  .cli-command-title {
+    margin-top: 0.04rem;
+    font-size: 0.78rem;
+    line-height: 1.15;
+  }
+
+  .cli-command-heading > svg {
+    display: block;
+    margin-left: auto;
+    width: 0.72rem;
+    height: 0.72rem;
+    opacity: 0.58;
+  }
+
+  .cli-command-code {
+    display: block;
+    width: 100%;
+    margin-top: 0.32rem;
+    overflow: hidden;
+    color: var(--color-concrete-500);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.56rem;
+    line-height: 1.25;
+  }
+
+  .cli-command-detail {
+    display: none;
+  }
+}
