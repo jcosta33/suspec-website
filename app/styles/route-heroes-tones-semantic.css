@@ -1,0 +1,41 @@
+.page-hero-tone-evidence {
+  --hero-signal: var(--signal-evidence);
+  --hero-rgb: var(--signal-evidence-rgb);
+  --hero-pattern: var(--signal-pattern-evidence);
+  --hero-mark: var(--signal-mark-evidence);
+}
+
+.page-hero-tone-greenfield {
+  --hero-signal: var(--signal-greenfield);
+  --hero-rgb: var(--signal-greenfield-rgb);
+  --hero-pattern: var(--signal-pattern-greenfield);
+  --hero-mark: var(--signal-mark-greenfield);
+}
+
+.page-hero-tone-brownfield {
+  --hero-signal: var(--signal-brownfield);
+  --hero-rgb: var(--signal-brownfield-rgb);
+  --hero-pattern: var(--signal-pattern-brownfield);
+  --hero-mark: var(--signal-mark-brownfield);
+}
+
+.page-hero-tone-change {
+  --hero-signal: var(--signal-change);
+  --hero-rgb: var(--signal-change-rgb);
+  --hero-pattern: var(--signal-pattern-change);
+  --hero-mark: var(--signal-mark-change);
+}
+
+.page-hero-tone-reference {
+  --hero-signal: var(--signal-reference);
+  --hero-rgb: var(--signal-reference-rgb);
+  --hero-pattern: var(--signal-pattern-reference);
+  --hero-mark: var(--signal-mark-reference);
+}
+
+.page-hero-tone-muted {
+  --hero-signal: var(--signal-muted);
+  --hero-rgb: var(--signal-muted-rgb);
+  --hero-pattern: var(--signal-pattern-muted);
+  --hero-mark: var(--signal-mark-muted);
+}

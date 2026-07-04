@@ -1,0 +1,46 @@
+.page-hero.page-hero-package-mcp .product-name-suffix {
+  color: color-mix(in oklab, var(--package-mcp) 38%, var(--color-concrete-100));
+  text-shadow:
+    0 0 8px rgba(var(--product-name-suffix-rgb), 0.012),
+    0 1px 0 rgba(0, 0, 0, 0.32);
+}
+
+.page-hero.page-hero-package-mcp .product-name-suffix::after {
+  opacity: 0.38;
+}
+
+.page-hero.page-hero-package-cli
+  .page-hero-eyebrow
+  :is(.pilot-lamp-change, .pilot-lamp-reference) {
+  --lamp-signal: var(--package-cli);
+  --lamp-rgb: var(--package-cli-rgb);
+}
+
+.page-hero.page-hero-package-mcp .page-hero-eyebrow .pilot-lamp-reference {
+  --lamp-signal: var(--package-mcp);
+  --lamp-rgb: var(--package-mcp-rgb);
+}
+
+.page-hero.page-hero-package-mcp .hero-badge-row .badge-signal {
+  --badge-signal: color-mix(
+    in oklab,
+    var(--package-mcp) 54%,
+    var(--color-concrete-100)
+  );
+  --badge-rgb: var(--package-mcp-rgb);
+  --badge-pattern: repeating-linear-gradient(
+      90deg,
+      rgba(var(--package-mcp-rgb), 0.08) 0 1px,
+      transparent 1px 12px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--package-mcp-rgb), 0.055),
+      transparent 68%
+    );
+  --badge-mark: radial-gradient(
+    circle at 0.7rem 50%,
+    rgba(var(--package-mcp-rgb), 0.24) 0 1px,
+    transparent 1.7px
+  );
+}
