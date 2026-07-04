@@ -1,0 +1,18 @@
+/* Footer ledger — a quiet close, grouped like an index rather than a link strip. */
+.site-footer {
+  background-image:
+    linear-gradient(rgba(70, 57, 44, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 57, 44, 0.055) 1px, transparent 1px),
+    radial-gradient(70% 100% at 50% 0%, rgba(216, 138, 36, 0.05), transparent 56%);
+  background-size:
+    48px 48px,
+    48px 48px,
+    auto;
+}
+
+.site-footer-grid {
+  display: grid;
+  grid-template-columns: minmax(14rem, 1.1fr) minmax(0, 2fr) minmax(12rem, 0.88fr);
+  gap: 1.85rem 2rem;
+  align-items: start;
+}
