@@ -1,0 +1,200 @@
+/* Overview summary — command evidence first, manuscript record second. */
+.overview-summary-grid {
+  align-items: stretch;
+  gap: clamp(0.72rem, 1.4vw, 1rem);
+}
+
+.overview-answer-panel {
+  position: relative;
+  display: grid;
+  gap: clamp(1rem, 1.8vw, 1.35rem);
+  overflow: hidden;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border-color: rgba(var(--signal-reference-rgb), 0.2);
+  border-left-color: rgba(var(--signal-core-rgb), 0.38);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.052), transparent 46%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.8rem,
+      rgba(var(--signal-reference-rgb), 0.018) 1.8rem calc(1.8rem + 1px)
+    ),
+    radial-gradient(84% 130% at 0% 0%, rgba(var(--signal-reference-rgb), 0.06), transparent 62%),
+    var(--color-panel-raised);
+}
+
+.overview-answer-panel::before,
+.overview-answer-panel::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.overview-answer-panel::before {
+  inset: 0.7rem auto 0.7rem 0.72rem;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--signal-core-rgb), 0.58),
+    rgba(var(--signal-reference-rgb), 0.2),
+    transparent
+  );
+  opacity: 0.75;
+}
+
+.overview-answer-panel::after {
+  top: 0.78rem;
+  right: 0.9rem;
+  width: min(18rem, 44%);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--signal-reference-rgb), 0.36),
+    rgba(var(--signal-core-rgb), 0.28)
+  );
+  opacity: 0.7;
+}
+
+.overview-answer-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.overview-answer-copy {
+  max-width: 48rem;
+  padding-left: 0.42rem;
+}
+
+.overview-answer-kicker {
+  margin: 0 0 0.34rem;
+  color: var(--signal-reference);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.overview-answer-copy h2 {
+  margin: 0;
+  color: var(--color-concrete-100);
+  font-family: var(--font-heading), ui-monospace, monospace;
+  font-size: clamp(1.25rem, 2.15vw, 1.55rem);
+  font-weight: var(--font-weight-title-compact);
+  line-height: 1.12;
+}
+
+.overview-answer-copy p:last-child {
+  max-width: 43rem;
+  margin-top: 0.54rem;
+  color: var(--color-concrete-300);
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.overview-answer-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.62rem;
+}
+
+.overview-answer-fact {
+  --overview-answer-signal: var(--signal-muted);
+  --overview-answer-rgb: var(--signal-muted-rgb);
+  min-width: 0;
+  border: 1px solid rgba(var(--overview-answer-rgb), 0.1);
+  border-left-color: rgba(var(--overview-answer-rgb), 0.38);
+  border-radius: calc(var(--radius-panel) - 1px);
+  background:
+    linear-gradient(90deg, rgba(var(--overview-answer-rgb), 0.032), transparent 64%),
+    rgba(10, 8, 6, 0.2);
+  padding: 0.72rem 0.78rem;
+}
+
+.overview-answer-fact-core {
+  --overview-answer-signal: var(--signal-core);
+  --overview-answer-rgb: var(--signal-core-rgb);
+}
+
+.overview-answer-fact-evidence {
+  --overview-answer-signal: var(--signal-evidence);
+  --overview-answer-rgb: var(--signal-evidence-rgb);
+}
+
+.overview-answer-fact-reference {
+  --overview-answer-signal: var(--signal-reference);
+  --overview-answer-rgb: var(--signal-reference-rgb);
+}
+
+.overview-answer-fact-change {
+  --overview-answer-signal: var(--signal-change);
+  --overview-answer-rgb: var(--signal-change-rgb);
+}
+
+.overview-answer-fact dt {
+  color: var(--overview-answer-signal);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.64rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.overview-answer-fact dd {
+  margin-top: 0.36rem;
+  color: var(--color-concrete-200);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.overview-section-nav-inline {
+  width: 100%;
+  max-width: none;
+}
+
+.overview-section-nav-inline .section-jump-nav {
+  background:
+    linear-gradient(180deg, rgba(240, 226, 204, 0.018), transparent 44%),
+    linear-gradient(90deg, rgba(var(--signal-muted-rgb), 0.03), transparent 58%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.45rem,
+      rgba(var(--signal-muted-rgb), 0.018) 1.45rem calc(1.45rem + 1px)
+    ),
+    rgba(12, 9, 6, 0.38);
+}
+
+.overview-terminal-shell {
+  border-color: rgba(var(--signal-evidence-rgb), 0.24);
+}
+
+.overview-terminal-content {
+  max-height: 16rem;
+  padding: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.overview-check-grid {
+  display: grid;
+  gap: 0.35rem 1rem;
+}
+
+.overview-check-grid p {
+  position: relative;
+  padding-left: 0.9rem;
+}
+
+.overview-check-grid p::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 0.36rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.86;
+}
