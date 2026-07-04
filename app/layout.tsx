@@ -5,6 +5,7 @@ import {
   Inter,
 } from "next/font/google";
 import "./styles/theme.css";
+import "./styles/base.css";
 import "./globals.css";
 import "./styles/motion-surfaces.css";
 import "./styles/art-direction-pass.css";
