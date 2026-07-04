@@ -1,0 +1,294 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* suspec — warm control surface + alchemical signal + manuscript archive.
+     Palette math starts at primary gold #D88A24, HSL(34 71% 49%). Its exact
+     complement is #2472D8, HSL(214 71% 49%), reserved for diagnostics only so
+     the public site stays warm. Public accents are semantic, not decorative:
+     greenfield = literal new-workspace paths, brownfield = existing-project
+     adoption, change = attention/change records, evidence = proof/review,
+     reference = manuals and catalogs. Change is a red-clay signal, separate
+     from the orange-gold core; muted terminal blue/dusty violet are package accents only.
+     Brown means existing-project work.
+     Green means greenfield, not "good"; sage means evidence, not "new";
+     setup alone is not green.
+     The role should travel as a set: text, lamp, rail, border, hatch, hover.
+     Panels stay dark; color marks meaning instead of painting surfaces. */
+  --color-night: #110e0c;
+  --color-chassis: #16100c;
+  --color-section-band: #0e0c08;
+  --color-panel: #1a1510;
+  --color-panel-raised: #241d15;
+  --color-panel-recessed: #0a0705;
+  --color-footer: #070604;
+  --color-panel-border: #46392c;
+  --color-panel-edge: #5b4937;
+
+  --color-albedo: #f0e2cc;
+  --color-albedo-rgb: 240, 226, 204;
+  --color-mercury: #b8aa96;
+  --color-ash: #998d76;
+  --color-concrete-100: var(--color-albedo);
+  --color-concrete-200: #e0d0b8;
+  --color-concrete-300: #cbbda7;
+  --color-concrete-400: var(--color-mercury);
+  --color-concrete-500: var(--color-ash);
+  --color-concrete-900: #100b07;
+  --color-black: #000000;
+
+  --color-aurum: #d88a24;
+  --color-brass: #b8844a;
+  --color-amber: #f0a33a;
+  --color-complement: #2472d8;
+  --color-phosphor: #b7c96c;
+  --color-greenfield: #7fbd82;
+  --color-brownfield: #b6784c;
+  --color-verdigris: #78bdb2;
+  --color-neon-bridge: #9a839b;
+  --color-interface-blue: #7fa6d9;
+  --color-rubedo: #cf7079;
+  --color-pwr-red: #d2624e;
+  --color-olive: var(--color-phosphor);
+  --color-black-text: #100b07;
+
+  /* Semantic signal roles. Use these by meaning, not by list position. */
+  --signal-core: var(--color-aurum);
+  --signal-core-rgb: 216, 138, 36;
+  --signal-evidence: var(--color-phosphor);
+  --signal-evidence-rgb: 183, 201, 108;
+  --signal-greenfield: var(--color-greenfield);
+  --signal-greenfield-rgb: 127, 189, 130;
+  --signal-brownfield: var(--color-brownfield);
+  --signal-brownfield-rgb: 182, 120, 76;
+  --signal-change: var(--color-rubedo);
+  --signal-change-rgb: 207, 112, 121;
+  --signal-reference: var(--color-verdigris);
+  --signal-reference-rgb: 120, 189, 178;
+  --signal-muted: var(--color-brass);
+  --signal-muted-rgb: 184, 132, 74;
+
+  /* Package identity accents. These are only for repo page heroes; page content
+     continues to use the semantic signal roles below. */
+  --package-skills: var(--signal-evidence);
+  --package-skills-rgb: var(--signal-evidence-rgb);
+  --package-agents: var(--signal-reference);
+  --package-agents-rgb: var(--signal-reference-rgb);
+  --package-cli: var(--color-interface-blue);
+  --package-cli-rgb: 127, 166, 217;
+  --package-mcp: var(--color-neon-bridge);
+  --package-mcp-rgb: 154, 131, 155;
+
+  /* Role patterns: hue + mark travel together, so color does not become decoration. */
+  --signal-pattern-core: linear-gradient(
+      90deg,
+      rgba(var(--signal-core-rgb), 0.12) 0 2px,
+      transparent 2px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--signal-core-rgb), 0.045),
+      transparent 58%
+    );
+  --signal-pattern-evidence: radial-gradient(
+      circle at 0.7rem 0.7rem,
+      rgba(var(--signal-evidence-rgb), 0.32) 0 1px,
+      transparent 1.8px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.28rem,
+      rgba(var(--signal-evidence-rgb), 0.05) 1.28rem calc(1.28rem + 1px)
+    );
+  --signal-pattern-greenfield: repeating-linear-gradient(
+      90deg,
+      rgba(var(--signal-greenfield-rgb), 0.07) 0 1px,
+      transparent 1px 13px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 2.2rem,
+      rgba(var(--signal-greenfield-rgb), 0.035) 2.2rem calc(2.2rem + 1px)
+    );
+  --signal-pattern-brownfield: repeating-linear-gradient(
+      -24deg,
+      rgba(var(--signal-brownfield-rgb), 0.075) 0 1px,
+      transparent 1px 13px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.65rem,
+      rgba(var(--signal-brownfield-rgb), 0.028) 1.65rem calc(1.65rem + 1px)
+    );
+  --signal-pattern-change: repeating-linear-gradient(
+      135deg,
+      rgba(var(--signal-change-rgb), 0.068) 0 1px,
+      transparent 1px 12px
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0 64%,
+      rgba(var(--signal-change-rgb), 0.055) 64% 66%,
+      transparent 66%
+    );
+  --signal-pattern-reference: repeating-linear-gradient(
+      0deg,
+      rgba(var(--signal-reference-rgb), 0.058) 0 1px,
+      transparent 1px 15px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--signal-reference-rgb), 0.04),
+      transparent 42%
+    );
+  --signal-pattern-muted: repeating-linear-gradient(
+      90deg,
+      transparent 0 0.72rem,
+      rgba(var(--signal-muted-rgb), 0.044) 0.72rem calc(0.72rem + 1px)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 3.6rem,
+      rgba(var(--signal-muted-rgb), 0.085) 3.6rem calc(3.6rem + 1px)
+    );
+  --signal-mark-core: radial-gradient(
+      circle at calc(100% - 1.15rem) 1.15rem,
+      rgba(var(--signal-core-rgb), 0.34) 0 1.45px,
+      transparent 2.25px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(var(--signal-core-rgb), 0.16) 0 2px,
+      transparent 2px
+    );
+  --signal-mark-evidence: radial-gradient(
+      circle at calc(100% - 1.2rem) 1.2rem,
+      rgba(var(--signal-evidence-rgb), 0.38) 0 1.35px,
+      transparent 2.15px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 0.9rem,
+      rgba(var(--signal-evidence-rgb), 0.07) 0.9rem calc(0.9rem + 1px)
+    );
+  --signal-mark-greenfield: radial-gradient(
+      circle at 1.2rem 1.2rem,
+      rgba(var(--signal-greenfield-rgb), 0.4) 0 1.55px,
+      transparent 2.35px
+    ),
+    radial-gradient(
+      circle at calc(100% - 1.45rem) calc(100% - 1.45rem),
+      rgba(var(--signal-greenfield-rgb), 0.26) 0 1.2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 1.45rem calc(100% - 1.45rem),
+      rgba(var(--signal-greenfield-rgb), 0.2) 0 1px,
+      transparent 1.8px
+    );
+  --signal-mark-brownfield: linear-gradient(
+      135deg,
+      transparent 0 calc(100% - 2.1rem),
+      rgba(var(--signal-brownfield-rgb), 0.2) calc(100% - 2.1rem)
+        calc(100% - 2rem),
+      transparent calc(100% - 2rem)
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0 calc(100% - 3.2rem),
+      rgba(var(--signal-brownfield-rgb), 0.14) calc(100% - 3.2rem)
+        calc(100% - 3.1rem),
+      transparent calc(100% - 3.1rem)
+    ),
+    radial-gradient(
+      circle at 1.2rem calc(100% - 1.2rem),
+      rgba(var(--signal-brownfield-rgb), 0.3) 0 1.35px,
+      transparent 2.15px
+    );
+  --signal-mark-change: linear-gradient(
+      135deg,
+      transparent 0 calc(100% - 1.9rem),
+      rgba(var(--signal-change-rgb), 0.21) calc(100% - 1.9rem)
+        calc(100% - 1.75rem),
+      transparent calc(100% - 1.75rem)
+    ),
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 1.2rem,
+      rgba(var(--signal-change-rgb), 0.064) 1.2rem calc(1.2rem + 1px)
+    );
+  --signal-mark-reference: linear-gradient(
+      180deg,
+      transparent 0 calc(100% - 1.6rem),
+      rgba(var(--signal-reference-rgb), 0.17) calc(100% - 1.6rem)
+        calc(100% - 1.55rem),
+      transparent calc(100% - 1.55rem)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 1.05rem,
+      rgba(var(--signal-reference-rgb), 0.06) 1.05rem calc(1.05rem + 1px)
+    );
+  --signal-mark-muted: linear-gradient(
+      90deg,
+      rgba(var(--signal-muted-rgb), 0.12) 0 1px,
+      transparent 1px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.55rem,
+      rgba(var(--signal-muted-rgb), 0.035) 1.55rem calc(1.55rem + 1px)
+    );
+
+  --color-paper: #f0e2cc;
+  --color-paper-warm: #dcc9a9;
+  --color-paper-line: #b9a07d;
+  --color-ink: #100b07;
+  --color-pencil: #5f554a;
+
+  /* Palette grammar:
+     - core: Suspec identity, primary loop, CTAs, active nav, current step
+     - evidence: verified output, review/pass states, proof-oriented sections
+     - greenfield: new repos, starter-kit setup, and first-run tutorial paths
+     - brownfield: existing-project adoption, migration, and repo-history paths
+     - change: attention states, defects, and explicit change records
+     - reference: docs, ledgers, command catalogs, source metadata
+     - muted: hardware, counters, neutral trim
+     A role must travel as a set: hue, lamp, rail, hatch, border, and hover.
+     When a component cannot use the whole set, prefer neutral chrome. */
+  /* Compatibility aliases for older component classes while the site migrates. */
+  --color-night-raised: var(--color-panel-raised);
+  --color-night-well: var(--color-panel-recessed);
+  --color-line: var(--color-panel-border);
+  --color-line-bright: var(--color-panel-edge);
+  --color-pewter: var(--color-mercury);
+  --color-gold: var(--color-aurum);
+  --color-gold-bright: #f0b85c;
+  --color-gold-deep: #7c3c20;
+  --color-cinnabar: var(--color-rubedo);
+  --color-aluminium: var(--color-mercury);
+  --color-suspec-yellow: var(--color-aurum);
+  --color-hazard-orange: var(--color-amber);
+  --color-drone-green: var(--color-phosphor);
+
+  --color-background: var(--color-night);
+  --color-foreground: var(--color-concrete-100);
+
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-ibm-plex-mono);
+  --font-heading: var(--font-ibm-plex-mono);
+  --font-display: var(--font-ibm-plex-mono);
+  --font-title: var(--font-ibm-plex-mono);
+
+  --radius-panel: 10px;
+  --radius-control: 10px;
+
+  --font-weight-title: 500;
+  --font-weight-title-compact: 600;
+  --rhythm-kicker-title: clamp(1.16rem, 1.58vw, 1.42rem);
+  --rhythm-title-body: clamp(1.02rem, 1.38vw, 1.28rem);
+  --rhythm-register-gap: clamp(2.42rem, 3.05vw, 2.9rem);
+  --rhythm-hero-nav-clearance: clamp(5.15rem, 6.4vw, 5.85rem);
+  --rhythm-hero-eyebrow-title: clamp(2.1rem, 2.72vw, 2.62rem);
+  --rhythm-after-page-nav: clamp(0.95rem, 1.45vw, 1.28rem);
+  --rhythm-page-nav-to-register: clamp(0.88rem, 1.38vw, 1.18rem);
+}

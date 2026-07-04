@@ -4,6 +4,7 @@ import {
   IBM_Plex_Mono,
   Inter,
 } from "next/font/google";
+import "./styles/theme.css";
 import "./globals.css";
 import "./styles/motion-surfaces.css";
 import "./styles/art-direction-pass.css";
