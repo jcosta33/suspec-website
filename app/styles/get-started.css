@@ -11,11 +11,11 @@
 }
 
 .get-started-page .page-hero {
-  max-width: 50rem !important;
+  max-width: 50rem;
 }
 
 .get-started-page .hero-trace {
-  margin-top: 1.12rem !important;
+  margin-top: 1.12rem;
 }
 
 .get-started-page .setup-route-panel {
@@ -204,11 +204,11 @@
   }
 
   .get-started-page .page-hero {
-    max-width: 20.5rem !important;
+    max-width: 20.5rem;
   }
 
   .get-started-page .hero-trace {
-    margin-top: 0.95rem !important;
+    margin-top: 0.95rem;
   }
 
   .get-started-page .setup-path-strip > li > a {
