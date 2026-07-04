@@ -1,0 +1,65 @@
+.overview-boundary-panel {
+  background-image:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.028), transparent 48%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.65rem,
+      rgba(var(--signal-reference-rgb), 0.014) 1.65rem calc(1.65rem + 1px)
+    );
+}
+
+.overview-boundary-panel-is {
+  border-color: rgba(var(--signal-evidence-rgb), 0.22);
+  border-left-color: rgba(var(--signal-evidence-rgb), 0.38);
+}
+
+.overview-boundary-panel-not {
+  border-color: rgba(var(--signal-change-rgb), 0.22);
+  border-left-color: rgba(var(--signal-change-rgb), 0.36);
+}
+
+.overview-is-list {
+  display: grid;
+  gap: 0.62rem;
+}
+
+.overview-is-item {
+  min-height: 3.35rem;
+  border: 1px solid rgba(var(--signal-evidence-rgb), 0.12);
+  border-radius: calc(var(--radius-panel) - 2px);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-evidence-rgb), 0.04), transparent 62%),
+    rgba(9, 7, 5, 0.18);
+  padding: 0.42rem 0.56rem 0.44rem;
+}
+
+.overview-boundary-copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.16rem;
+  line-height: 1.4;
+}
+
+.overview-boundary-label {
+  color: var(--signal-evidence);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 760;
+  letter-spacing: 0.1em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.overview-boundary-panel-not .overview-boundary-label {
+  color: var(--signal-change);
+}
+
+.overview-not-list {
+  overflow: hidden;
+  border-block: 1px solid rgba(var(--signal-change-rgb), 0.12);
+}
+
+.overview-not-item {
+  min-height: 3rem;
+  padding-inline: 0.12rem;
+}

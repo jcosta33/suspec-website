@@ -1,0 +1,50 @@
+.overview-paper-artifact {
+  min-height: 0;
+}
+
+.overview-paper-artifact > div:first-child {
+  padding-bottom: 0.85rem;
+}
+
+.overview-paper-artifact > div:last-child {
+  margin-top: 0.9rem;
+  line-height: 1.55;
+}
+
+.overview-artifact-chain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.26rem 0.5rem;
+  margin: 0 0 0.82rem;
+  padding: 0.48rem 0;
+  border-block: 1px solid rgba(46, 38, 27, 0.18);
+  list-style: none;
+}
+
+.overview-artifact-chain li {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 1rem;
+  padding: 0;
+  color: var(--color-ink);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.overview-artifact-chain li:not(:last-child)::after {
+  content: "->";
+  margin-left: 0.48rem;
+  color: var(--color-pencil);
+  font-weight: 700;
+  opacity: 0.72;
+}
+
+.overview-artifact-lines {
+  display: grid;
+  gap: 0.04rem;
+}
