@@ -417,7 +417,7 @@
   }
 
   .colophon-trace-card > .relative {
-    display: flex !important;
+    display: flex;
     min-height: 0;
     height: auto;
     row-gap: 0.42rem;
@@ -429,8 +429,8 @@
   }
 
   .colophon-trace-card > div.relative > :is(div, h2, p, span) {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .colophon-trace-card p:not(:first-child) {
@@ -443,7 +443,7 @@
   }
 
   .colophon-trace-card span.mt-auto {
-    margin-top: 0.46rem !important;
+    margin-top: 0.46rem;
     min-height: 1.65rem;
     padding-top: 0;
     font-size: 0.66rem;
