@@ -1,0 +1,19 @@
+.relation-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--relation-signal),
+    transparent
+  );
+  opacity: 0.34;
+  transition: opacity 160ms ease;
+}
+
+.relation-card:hover::before,
+.relation-card:focus-within::before {
+  opacity: 0.82;
+}

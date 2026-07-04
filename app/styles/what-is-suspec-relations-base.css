@@ -1,0 +1,54 @@
+.relation-card {
+  --relation-signal: var(--signal-muted);
+  --relation-rgb: var(--signal-muted-rgb);
+  --relation-pattern: var(--signal-pattern-muted);
+  --plate-signal: var(--relation-signal);
+  --plate-rgb: var(--relation-rgb);
+  border-color: rgba(var(--relation-rgb), 0.24);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(var(--relation-rgb), 0.16),
+      transparent 38%
+    ),
+    var(--relation-pattern),
+    radial-gradient(
+      75% 68% at 16% 0%,
+      rgba(var(--relation-rgb), 0.08),
+      transparent 64%
+    ),
+    linear-gradient(180deg, rgba(232, 222, 203, 0.035), transparent 40%);
+}
+
+.overview-relation-grid {
+  align-items: stretch;
+}
+
+.relation-card-core {
+  --relation-signal: var(--signal-core);
+  --relation-rgb: var(--signal-core-rgb);
+  --relation-pattern: var(--signal-pattern-core);
+}
+
+.relation-card-evidence {
+  --relation-signal: var(--signal-evidence);
+  --relation-rgb: var(--signal-evidence-rgb);
+  --relation-pattern: var(--signal-pattern-evidence);
+}
+
+.relation-card-change {
+  --relation-signal: var(--signal-change);
+  --relation-rgb: var(--signal-change-rgb);
+  --relation-pattern: var(--signal-pattern-change);
+}
+
+.relation-card-reference {
+  --relation-signal: var(--signal-reference);
+  --relation-rgb: var(--signal-reference-rgb);
+  --relation-pattern: var(--signal-pattern-reference);
+}
+
+.relation-card-muted {
+  --relation-signal: var(--signal-muted);
+  --relation-rgb: var(--signal-muted-rgb);
+}
