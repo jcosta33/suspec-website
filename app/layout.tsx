@@ -7,6 +7,7 @@ import {
 import "./styles/theme.css";
 import "./styles/base.css";
 import "./styles/sections.css";
+import "./styles/site-chrome.css";
 import "./globals.css";
 import "./styles/motion-surfaces.css";
 import "./styles/art-direction-pass.css";
