@@ -1,0 +1,69 @@
+@media (max-width: 48rem) {
+  .home-hero-preview {
+    max-height: none;
+    margin-top: 1.1rem;
+    margin-bottom: 0.35rem;
+    padding: 0.45rem;
+  }
+
+  .home-hero-preview::after {
+    content: none;
+  }
+
+  .home-hero-preview > div:last-child {
+    gap: 0.55rem;
+  }
+
+  .home-hero-preview .rounded-panel.border-panel-border {
+    padding: 0.8rem;
+  }
+
+  .home-hero-preview .rounded-panel.border-panel-border > div:first-child {
+    margin-bottom: 0.65rem;
+    gap: 0.55rem;
+  }
+
+  .home-hero-preview .rounded-panel.border-panel-border h2 {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .home-hero-preview .rounded-panel.border-panel-border .badge-signal {
+    display: none;
+  }
+
+  .home-hero-preview ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.38rem;
+  }
+
+  .home-step-rail-item {
+    gap: 0.35rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.58rem;
+  }
+
+  .home-step-rail-item span:nth-child(2) {
+    font-size: 0.72rem;
+  }
+
+  .home-step-rail-item .pilot-lamp {
+    width: 12px;
+    height: 12px;
+    border-width: 1px;
+  }
+
+  .home-hero-preview .terminal-window {
+    margin-top: 0.65rem;
+  }
+
+  .home-hero-preview .terminal-content {
+    padding: 0.72rem;
+    font-size: 0.68rem;
+    line-height: 1.45;
+  }
+
+  .home-hero-artifact {
+    display: none;
+  }
+}

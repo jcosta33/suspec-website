@@ -1,0 +1,29 @@
+@media (max-width: 48rem) {
+  .review-signal-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .review-signal-rail::before {
+    display: none;
+  }
+
+  .review-signal-node {
+    min-height: auto;
+    padding: 0.85rem 0.75rem;
+  }
+
+  .review-signal-node-head {
+    min-height: 1.25rem;
+  }
+
+  .review-signal-node h3 {
+    margin-top: 0.7rem;
+    font-size: 1rem;
+    line-height: 1.15;
+  }
+
+  .review-signal-node > p:last-child {
+    display: none;
+  }
+}
