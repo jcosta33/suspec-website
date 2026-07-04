@@ -5,7 +5,7 @@ import {
   Inter,
 } from "next/font/google";
 import "./globals.css";
-import "./art-direction-pass.css";
+import "./styles/art-direction-pass.css";
 import { Shell } from "./components/Shell";
 import { JsonLd } from "./components/JsonLd";
 import { canonicalAlternates } from "./seo";
