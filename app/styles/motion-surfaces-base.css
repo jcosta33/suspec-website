@@ -1,0 +1,68 @@
+/* Art-direction refinement layer.
+   Scoped overrides only: keep the core design system in globals.css intact. */
+
+:root {
+  --background-plane-tilt-x: 0deg;
+  --background-plane-tilt-y: 0deg;
+  --background-plane-origin-x: 50%;
+  --background-plane-origin-y: 54%;
+  --background-plane-perspective-x: 50%;
+  --background-plane-perspective-y: 53%;
+  --background-header-tilt-x: 0deg;
+  --background-header-tilt-y: 0deg;
+  --background-header-perspective-x: 50%;
+  --background-header-perspective-y: 47%;
+  --background-plane-rotate-x: 0deg;
+  --background-plane-rotate-y: 0deg;
+  --background-plane-shift-x: 0px;
+  --background-plane-shift-y: 0px;
+  --background-plane-drift-x: 0px;
+  --background-plane-drift-y: 0px;
+  --background-plane-drift-soft-x: 0px;
+  --background-plane-drift-soft-y: 0px;
+  --background-plane-skew-x: 0deg;
+  --background-plane-skew-y: 0deg;
+  --background-header-before-rotate-x: 0deg;
+  --background-header-before-rotate-y: 0deg;
+  --background-header-after-rotate-x: 0deg;
+  --background-header-after-rotate-y: 0deg;
+  --background-header-shift-x: 0px;
+  --background-header-shift-y: 0px;
+  --background-header-shift-soft-x: 0px;
+  --background-header-shift-soft-y: 0px;
+  --background-hero-edge-rotate-x: 0deg;
+  --background-hero-edge-rotate-y: 0deg;
+  --background-hero-motif-rotate-x: 0deg;
+  --background-hero-motif-rotate-y: 0deg;
+  --background-hero-shift-x: 0px;
+  --background-hero-shift-y: 0px;
+  --background-header-origin-x: 50%;
+  --background-header-origin-y: 46%;
+  --background-plane-normal-x: 0;
+  --background-plane-normal-y: 0;
+}
+
+body {
+  background:
+    linear-gradient(rgba(70, 57, 44, 0.1) 1px, transparent 1px) fixed,
+    linear-gradient(90deg, rgba(70, 57, 44, 0.08) 1px, transparent 1px) fixed,
+    radial-gradient(120% 80% at 50% -16%, rgba(216, 138, 36, 0.035), transparent 50%) fixed,
+    radial-gradient(90% 70% at 50% 8%, rgba(95, 87, 37, 0.055), transparent 58%) fixed,
+    var(--color-background);
+  background-position:
+    0 0,
+    0 0,
+    center top,
+    center top,
+    center;
+  background-size:
+    48px 48px,
+    48px 48px,
+    auto,
+    auto,
+    auto;
+}
+
+.site-background-perspective {
+  display: none;
+}

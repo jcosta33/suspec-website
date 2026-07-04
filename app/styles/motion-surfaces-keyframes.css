@@ -1,0 +1,20 @@
+
+@keyframes ambient-calibration-breathe-pointer {
+  from {
+    opacity: 0.46;
+  }
+
+  to {
+    opacity: 0.58;
+  }
+}
+
+@keyframes page-hero-motif-breathe-pointer {
+  from {
+    opacity: var(--hero-motif-opacity-min);
+  }
+
+  to {
+    opacity: var(--hero-motif-opacity-max);
+  }
+}
