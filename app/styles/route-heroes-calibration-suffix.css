@@ -1,0 +1,28 @@
+.product-name-suffix {
+  --product-name-suffix: var(--hero-signal, var(--signal-core));
+  --product-name-suffix-rgb: var(--hero-rgb, var(--signal-core-rgb));
+  position: relative;
+  display: inline-block;
+  color: var(--product-name-suffix);
+  text-shadow:
+    0 0 14px rgba(var(--product-name-suffix-rgb), 0.1),
+    0 1px 0 rgba(0, 0, 0, 0.32);
+}
+
+.product-name-suffix::after {
+  content: "";
+  position: absolute;
+  right: 0.03em;
+  bottom: 0.04em;
+  left: 0.14em;
+  height: 0.06em;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--product-name-suffix-rgb), 0.52),
+    rgba(var(--product-name-suffix-rgb), 0.12),
+    transparent
+  );
+  opacity: 0.62;
+  pointer-events: none;
+}
