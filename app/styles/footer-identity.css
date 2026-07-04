@@ -1,0 +1,41 @@
+.site-footer-identity {
+  position: relative;
+  display: grid;
+  gap: 0.6rem;
+  min-height: 9.1rem;
+  max-width: 19rem;
+  overflow: hidden;
+  border: 1px solid rgba(var(--signal-core-rgb), 0.18);
+  border-left-color: rgba(var(--signal-core-rgb), 0.55);
+  border-radius: var(--radius-panel);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.08), transparent 56%),
+    var(--signal-pattern-muted),
+    rgba(10, 7, 5, 0.36);
+  padding: 0.95rem 1.05rem;
+  box-shadow:
+    inset 2px 0 0 rgba(var(--signal-core-rgb), 0.18),
+    inset 0 1px 0 rgba(240, 226, 204, 0.035);
+}
+
+.site-footer-identity::after {
+  content: "";
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  left: 0.95rem;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--signal-core-rgb), 0.42),
+    rgba(var(--signal-reference-rgb), 0.12),
+    transparent
+  );
+  opacity: 0.62;
+}
+
+.site-footer-identity p {
+  max-width: 15rem;
+  line-height: 1.55;
+}
