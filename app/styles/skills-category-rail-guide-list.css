@@ -1,0 +1,61 @@
+.skills-page .skill-guide-list {
+  gap: 0.48rem;
+  padding: 0.82rem;
+}
+
+.skills-page .skill-guide-row.catalog-row {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0 0.78rem;
+  min-height: 5.42rem;
+  border-color: rgba(var(--catalog-rgb), 0.105);
+  background:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.018), transparent 54%),
+    linear-gradient(180deg, rgba(240, 226, 204, 0.018), transparent 42%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 1.08rem,
+      rgba(240, 226, 204, 0.01) 1.08rem calc(1.08rem + 1px)
+    ),
+    rgba(10, 7, 5, 0.58);
+  padding: 0.84rem 2.35rem 0.84rem 0.9rem;
+}
+
+.skills-page .skill-guide-row.catalog-row > div:first-child {
+  display: contents;
+}
+
+.skills-page .skill-guide-row-badge {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  margin-top: 0;
+  opacity: 0.86;
+}
+
+.skills-page .skill-guide-row.catalog-row > div:first-child > div:last-child {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.skills-page .skill-guide-row-arrow {
+  position: static;
+  grid-column: 3;
+  grid-row: 1;
+  margin-top: 0.08rem;
+}
+
+.skills-page .skill-guide-row .catalog-row-title {
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.skills-page .skill-guide-row .catalog-row-copy {
+  margin-top: 0.42rem;
+  max-width: 44ch;
+  line-height: 1.5;
+}
+
+.skills-page .skill-guide-row.catalog-row::after {
+  opacity: 0.82;
+}
