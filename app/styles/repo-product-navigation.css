@@ -1,21 +1,21 @@
 /* Agent roster — first-pass worker file map, denser than generic cards. */
 .repo-product-page {
-  row-gap: clamp(0.34rem, 0.64vw, 0.58rem) !important;
-  padding-top: clamp(2.05rem, 2.78vw, 2.45rem) !important;
+  row-gap: clamp(0.34rem, 0.64vw, 0.58rem);
+  padding-top: clamp(2.05rem, 2.78vw, 2.45rem);
 }
 
 .repo-product-page > .page-nav-wrap {
-  margin-top: 0 !important;
+  margin-top: 0;
   margin-bottom: clamp(0.46rem, 0.82vw, 0.78rem);
 }
 
 .repo-product-page > nav.page-nav-wrap {
-  margin-top: 0 !important;
+  margin-top: 0;
   margin-bottom: clamp(0.46rem, 0.82vw, 0.78rem);
 }
 
 .repo-product-page > .ambient-header + .page-nav-wrap {
-  margin-top: clamp(-0.55rem, -0.48vw, -0.28rem) !important;
+  margin-top: clamp(-0.55rem, -0.48vw, -0.28rem);
 }
 
 .repo-product-page > .page-nav-wrap + .section-register {
@@ -433,15 +433,15 @@
 
 @media (max-width: 40rem) {
   .repo-product-page {
-    row-gap: 0.86rem !important;
-    padding-top: 3rem !important;
+    row-gap: 0.86rem;
+    padding-top: 3rem;
   }
 
   .repo-product-page > .page-nav-wrap {
     position: relative;
     isolation: isolate;
     overflow: visible;
-    margin-top: 0 !important;
+    margin-top: 0;
     margin-bottom: 0.64rem;
   }
 
@@ -463,7 +463,7 @@
   }
 
   .repo-product-page > .ambient-header + .page-nav-wrap {
-    margin-top: -0.08rem !important;
+    margin-top: -0.08rem;
   }
 
   .repo-product-page > .page-nav-wrap + .section-register {
@@ -649,11 +649,11 @@
 
 @media (min-width: 40.01rem) and (max-width: 48rem) {
   .repo-product-page {
-    row-gap: 0.9rem !important;
+    row-gap: 0.9rem;
   }
 
   .repo-product-page > .ambient-header + .page-nav-wrap {
-    margin-top: 0 !important;
+    margin-top: 0;
   }
 
   .repo-product-page > .page-nav-wrap,
@@ -780,4 +780,3 @@
     white-space: nowrap;
   }
 }
-
