@@ -19,7 +19,8 @@ component TypeScript.
 | `app/styles/home.css`, `app/styles/get-started.css`, `app/styles/get-started-choices.css`, `app/styles/what-is-suspec.css`, `app/styles/loop.css`, `app/styles/cli.css`, `app/styles/mcp.css`, `app/styles/skills.css`, `app/styles/repo-product-*.css`, `app/styles/home-hero-*-polish.css`, `app/styles/mobile-*-polish.css`, `app/styles/colophon.css`, `app/styles/footer.css` | Route and product-page styling. Product shared CSS is split into manifest, navigation, roster, worker-card, and late product-polish families; home and product mobile tuning now sits beside route owners. |
 | `app/styles/motion-primitives.css`, `app/styles/motion-surfaces.css`, `app/styles/reduced-motion.css` | Cursor/background motion, hover-safe transforms, reduced-motion clamp. `reduced-motion.css` stays last. |
 | `app/styles/mobile-*-polish.css` | Late mobile tuning from the redesign, split by route family at the same cascade point. |
-| `app/docs/docs-shell.css`, `app/docs/docs-article.css`, `app/docs/docs-index.css`, `app/docs/docs-footer.css`, `app/docs/docs-responsive.css`, `app/styles/docs-index-polish.css`, `app/styles/mobile-docs-index-polish.css` | Docs shell, rendered markdown, index, footer, docs-specific responsive fixes, and late docs-index polish imported only under the docs layout. |
+| `app/docs/docs.css` | Docs CSS manifest imported by `app/docs/layout.tsx`; keeps docs-only cascade in one place. |
+| `app/docs/docs-shell.css`, `app/docs/docs-article.css`, `app/docs/docs-index.css`, `app/docs/docs-footer.css`, `app/docs/docs-responsive.css`, `app/styles/docs-index-polish.css`, `app/styles/mobile-docs-index-polish.css` | Docs shell, rendered markdown, index, footer, docs-specific responsive fixes, and late docs-index polish imported only under the docs layout manifest. |
 
 `app/art-direction-pass.css` and the later `app/styles/art-direction-*.css`
 files no longer exist; their work is split into `*-polish.css` files by route
@@ -30,7 +31,7 @@ family.
 | Interface | Callers | Observed contract |
 | --- | --- | --- |
 | Root CSS imports | `app/layout.tsx`, `app/styles/site.css` | `app/layout.tsx` imports one root manifest. The manifest defines cascade: tokens/base first, component and route files next, `globals.css`, motion/art-direction overrides, then `reduced-motion.css` last. |
-| Docs CSS imports | `app/docs/layout.tsx` | Docs styles load only under the docs layout and style `.docs-layout`, docs nav, docs index, and rendered markdown. |
+| Docs CSS imports | `app/docs/layout.tsx`, `app/docs/docs.css` | `app/docs/layout.tsx` imports one docs manifest. Docs styles load only under the docs layout and style `.docs-layout`, docs nav, docs index, and rendered markdown. |
 | Semantic signal tokens | `app/styles/theme.css`, `app/components/signalStyles.ts`, route pages | Signal roles carry meaning: core gold, evidence sage, greenfield green, brownfield umber, change red, reference verdigris, muted brass. |
 | Route hero classes | Route pages using `PageHero`, `Section`, product package pages | `.ambient-header`, `.page-hero-*`, package classes, and product suffix classes control first-viewport rhythm and package accents. |
 | Reduced-motion clamp | `app/layout.tsx` import order, `app/styles/reduced-motion.css` | Final import disables cursor, lamp, terminal, diagram, and hover motion for reduced-motion users. |
@@ -40,7 +41,7 @@ family.
 | ID | Behavior | Evidence |
 | --- | --- | --- |
 | PG-CSS-001 | Root route CSS order keeps `reduced-motion.css` last. | `app/layout.tsx` imports `./styles/site.css`; `app/styles/site.css` imports `./reduced-motion.css` after all other root CSS. |
-| PG-CSS-002 | Docs route keeps docs-specific CSS out of non-docs pages. | `app/docs/layout.tsx` imports `docs-shell.css`, `docs-article.css`, `docs-index.css`, `docs-footer.css`, and `docs-responsive.css`. |
+| PG-CSS-002 | Docs route keeps docs-specific CSS out of non-docs pages. | `app/docs/layout.tsx` imports `./docs.css`; `app/docs/docs.css` imports docs-only CSS. |
 | PG-CSS-003 | Generated pages remain static/crawlable while CSS is global. | Verify with `npm run build`. |
 | PG-CSS-004 | Route matrix has no horizontal overflow, obvious terminal overflow, missing metadata, or reduced-motion regression. | Verify with `npm run audit:site`. |
 | PG-CSS-005 | CSS growth stays bounded while refactoring proceeds. | Verify with `npm run audit:css`. |
