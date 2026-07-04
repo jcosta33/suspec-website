@@ -1,0 +1,22 @@
+@media (min-width: 40.01rem) and (max-width: 48rem) {
+  .repo-product-page {
+    row-gap: 0.9rem;
+  }
+
+  .repo-product-page > .ambient-header + .page-nav-wrap {
+    margin-top: 0;
+  }
+
+  .repo-product-page > .page-nav-wrap,
+  .repo-product-page > nav.page-nav-wrap {
+    margin-bottom: 0.52rem;
+  }
+
+  .repo-product-page > .page-nav-wrap + .section-register {
+    margin-top: 0.42rem;
+  }
+
+  .repo-product-page > .section-register {
+    padding-top: 3.02rem;
+  }
+}
