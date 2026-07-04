@@ -1,0 +1,59 @@
+.cli-command-catalog {
+  overflow: hidden;
+  border-color: rgba(var(--signal-reference-rgb), 0.32);
+  background:
+    radial-gradient(
+      86% 72% at 50% 0%,
+      rgba(var(--signal-reference-rgb), 0.075),
+      transparent 64%
+    ),
+    var(--color-panel-raised);
+}
+
+.cli-command-reference {
+  --section-flow-gap: clamp(1.45rem, 2vw, 1.8rem);
+}
+
+.cli-command-reference-intro {
+  display: grid;
+  gap: clamp(1rem, 1.35vw, 1.25rem);
+}
+
+.cli-command-reference-intro > :where(.section-kicker, .font-heading, p, ul) {
+  margin: 0;
+}
+
+.cli-command-reference-intro > p {
+  max-width: min(100%, 64ch);
+  line-height: 1.62;
+}
+
+.cli-command-catalog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(var(--signal-reference-rgb), 0.24);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.08), transparent 48%),
+    rgba(10, 7, 5, 0.28);
+  padding: 0.78rem 1rem;
+  color: var(--color-concrete-400);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cli-command-catalog-header span:first-child {
+  color: var(--signal-reference);
+}
+
+.cli-command-catalog-body {
+  display: grid;
+}
+
+.cli-command-catalog-body > .cli-command-section:last-child {
+  border-bottom: 0;
+}

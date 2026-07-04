@@ -1,0 +1,67 @@
+.cli-command-row.catalog-row {
+  --catalog-signal: var(--cli-section-signal);
+  --catalog-rgb: var(--cli-section-rgb);
+  --catalog-signal-soft: rgba(var(--cli-section-rgb), 0.62);
+  position: relative;
+  min-height: 6.4rem;
+  overflow: hidden;
+  border: 1px solid rgba(var(--catalog-rgb), 0.15);
+  border-radius: calc(var(--radius-panel) - 2px);
+  background:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.04), transparent 56%),
+    rgba(10, 7, 5, 0.2);
+  padding: 0.85rem 6.8rem 0.85rem 0.9rem;
+  box-shadow:
+    inset 2px 0 0 rgba(var(--catalog-rgb), 0.18),
+    inset 0 1px 0 rgba(240, 226, 204, 0.035);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.cli-command-row.catalog-row:hover,
+.cli-command-row.catalog-row:focus-within {
+  border-color: rgba(var(--catalog-rgb), 0.3);
+  box-shadow:
+    inset 2px 0 0 rgba(var(--catalog-rgb), 0.34),
+    inset 0 1px 0 rgba(240, 226, 204, 0.05),
+    0 0 0 1px rgba(var(--catalog-rgb), 0.055);
+}
+
+.cli-command-row-actions {
+  position: absolute;
+  right: 0.58rem;
+  top: 0.58rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.cli-command-copy {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0.52rem 0.62rem;
+  border-color: rgba(var(--catalog-rgb), 0.22);
+  background: rgba(8, 6, 4, 0.56);
+  color: rgba(240, 226, 204, 0.7);
+}
+
+.cli-command-copy[data-compact-label="true"] .copy-button-label-full {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.cli-command-copy[data-compact-label="true"] .copy-button-label-compact {
+  display: inline-grid;
+}
+
+.cli-command-row-lamp {
+  position: relative;
+  right: auto;
+  top: auto;
+}

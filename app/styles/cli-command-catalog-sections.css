@@ -1,0 +1,35 @@
+.cli-command-section {
+  --cli-section-signal: var(--signal-reference);
+  --cli-section-rgb: var(--signal-reference-rgb);
+  --cli-section-pattern: var(--signal-pattern-reference);
+  position: relative;
+  border-bottom: 1px solid rgba(var(--cli-section-rgb), 0.18);
+  background:
+    linear-gradient(90deg, rgba(var(--cli-section-rgb), 0.03), transparent 42%),
+    var(--signal-pattern-muted);
+  padding: 1rem;
+}
+
+.cli-command-section-core {
+  --cli-section-signal: var(--signal-core);
+  --cli-section-rgb: var(--signal-core-rgb);
+  --cli-section-pattern: var(--signal-pattern-core);
+}
+
+.cli-command-section-evidence {
+  --cli-section-signal: var(--signal-evidence);
+  --cli-section-rgb: var(--signal-evidence-rgb);
+  --cli-section-pattern: var(--signal-pattern-evidence);
+}
+
+.cli-command-section-change {
+  --cli-section-signal: var(--signal-change);
+  --cli-section-rgb: var(--signal-change-rgb);
+  --cli-section-pattern: var(--signal-pattern-change);
+}
+
+.cli-command-section-reference {
+  --cli-section-signal: var(--signal-reference);
+  --cli-section-rgb: var(--signal-reference-rgb);
+  --cli-section-pattern: var(--signal-pattern-reference);
+}
