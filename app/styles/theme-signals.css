@@ -1,0 +1,28 @@
+@theme inline {
+  /* Semantic signal roles. Use these by meaning, not by list position. */
+  --signal-core: var(--color-aurum);
+  --signal-core-rgb: 216, 138, 36;
+  --signal-evidence: var(--color-phosphor);
+  --signal-evidence-rgb: 183, 201, 108;
+  --signal-greenfield: var(--color-greenfield);
+  --signal-greenfield-rgb: 127, 189, 130;
+  --signal-brownfield: var(--color-brownfield);
+  --signal-brownfield-rgb: 182, 120, 76;
+  --signal-change: var(--color-rubedo);
+  --signal-change-rgb: 207, 112, 121;
+  --signal-reference: var(--color-verdigris);
+  --signal-reference-rgb: 120, 189, 178;
+  --signal-muted: var(--color-brass);
+  --signal-muted-rgb: 184, 132, 74;
+
+  /* Package identity accents. These are only for repo page heroes; page content
+     continues to use the semantic signal roles below. */
+  --package-skills: var(--signal-evidence);
+  --package-skills-rgb: var(--signal-evidence-rgb);
+  --package-agents: var(--signal-reference);
+  --package-agents-rgb: var(--signal-reference-rgb);
+  --package-cli: var(--color-interface-blue);
+  --package-cli-rgb: 127, 166, 217;
+  --package-mcp: var(--color-neon-bridge);
+  --package-mcp-rgb: 154, 131, 155;
+}

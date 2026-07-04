@@ -10,7 +10,7 @@ component TypeScript.
 | Path | Current role |
 | --- | --- |
 | `app/styles/site.css` | Root CSS manifest imported by `app/layout.tsx`; preserves the cascade order in one file. |
-| `app/styles/theme.css` | Tailwind import, design tokens, semantic signal roles, package accents, utility aliases. |
+| `app/styles/theme.css`, `app/styles/theme-*.css` | Tailwind import, design tokens, semantic signal roles, package accents, utility aliases. |
 | `app/styles/base.css`, `app/styles/base-*.css` | Runtime aliases, document/body defaults, selection, target focus, reduced-motion baseline. |
 | `app/globals.css` | Late global utilities: gilt trim/rules, `.toggle`, scrollbars, selection compatibility. |
 | `app/styles/site-chrome.css`, `app/styles/site-chrome-*.css` | Header/nav chrome, scroll-revealed top bar, mobile menu states. |

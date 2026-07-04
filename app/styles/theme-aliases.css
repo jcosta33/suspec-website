@@ -1,0 +1,54 @@
+@theme inline {
+  --color-paper: #f0e2cc;
+  --color-paper-warm: #dcc9a9;
+  --color-paper-line: #b9a07d;
+  --color-ink: #100b07;
+  --color-pencil: #5f554a;
+
+  /* Palette grammar:
+     - core: Suspec identity, primary loop, CTAs, active nav, current step
+     - evidence: verified output, review/pass states, proof-oriented sections
+     - greenfield: new repos, starter-kit setup, and first-run tutorial paths
+     - brownfield: existing-project adoption, migration, and repo-history paths
+     - change: attention states, defects, and explicit change records
+     - reference: docs, ledgers, command catalogs, source metadata
+     - muted: hardware, counters, neutral trim
+     A role must travel as a set: hue, lamp, rail, hatch, border, and hover.
+     When a component cannot use the whole set, prefer neutral chrome. */
+  /* Compatibility aliases for older component classes while the site migrates. */
+  --color-night-raised: var(--color-panel-raised);
+  --color-night-well: var(--color-panel-recessed);
+  --color-line: var(--color-panel-border);
+  --color-line-bright: var(--color-panel-edge);
+  --color-pewter: var(--color-mercury);
+  --color-gold: var(--color-aurum);
+  --color-gold-bright: #f0b85c;
+  --color-gold-deep: #7c3c20;
+  --color-cinnabar: var(--color-rubedo);
+  --color-aluminium: var(--color-mercury);
+  --color-suspec-yellow: var(--color-aurum);
+  --color-hazard-orange: var(--color-amber);
+  --color-drone-green: var(--color-phosphor);
+
+  --color-background: var(--color-night);
+  --color-foreground: var(--color-concrete-100);
+
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-ibm-plex-mono);
+  --font-heading: var(--font-ibm-plex-mono);
+  --font-display: var(--font-ibm-plex-mono);
+  --font-title: var(--font-ibm-plex-mono);
+
+  --radius-panel: 10px;
+  --radius-control: 10px;
+
+  --font-weight-title: 500;
+  --font-weight-title-compact: 600;
+  --rhythm-kicker-title: clamp(1.16rem, 1.58vw, 1.42rem);
+  --rhythm-title-body: clamp(1.02rem, 1.38vw, 1.28rem);
+  --rhythm-register-gap: clamp(2.42rem, 3.05vw, 2.9rem);
+  --rhythm-hero-nav-clearance: clamp(5.15rem, 6.4vw, 5.85rem);
+  --rhythm-hero-eyebrow-title: clamp(2.1rem, 2.72vw, 2.62rem);
+  --rhythm-after-page-nav: clamp(0.95rem, 1.45vw, 1.28rem);
+  --rhythm-page-nav-to-register: clamp(0.88rem, 1.38vw, 1.18rem);
+}
