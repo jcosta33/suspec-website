@@ -15,6 +15,7 @@ import "./styles/process-strips.css";
 import "./styles/get-started.css";
 import "./styles/mcp.css";
 import "./styles/cli.css";
+import "./styles/skills.css";
 import "./globals.css";
 import "./styles/motion-surfaces.css";
 import "./styles/art-direction-pass.css";
