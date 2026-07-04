@@ -1,0 +1,93 @@
+@media (max-width: 40rem) {
+  .cli-surface-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0.62rem 0.72rem;
+    font-size: 0.58rem;
+  }
+
+  .cli-command-rail {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    overflow-x: visible;
+    padding: 0;
+    scroll-snap-type: none;
+  }
+
+  .cli-command-rail > li {
+    flex: initial;
+    min-width: 0;
+    width: 100%;
+    scroll-snap-align: none;
+  }
+
+  .cli-command-step:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .cli-command-link {
+    display: flex;
+    min-height: 3.55rem;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.54rem 0.6rem;
+  }
+
+  .cli-command-step:last-child .cli-command-link {
+    min-height: 3.55rem;
+    padding-block: 0.54rem;
+  }
+
+  .cli-command-heading {
+    align-items: center;
+    gap: 0.42rem;
+    width: 100%;
+  }
+
+  .cli-command-heading .hex-badge {
+    height: 1.28rem;
+    width: 1.28rem;
+  }
+
+  .cli-command-heading > div {
+    display: block;
+    min-width: 0;
+  }
+
+  .cli-command-heading p {
+    font-size: 0.54rem;
+    line-height: 1.2;
+  }
+
+  .cli-command-title {
+    margin-top: 0.04rem;
+    font-size: 0.78rem;
+    line-height: 1.15;
+  }
+
+  .cli-command-heading > svg {
+    display: block;
+    margin-left: auto;
+    width: 0.72rem;
+    height: 0.72rem;
+    opacity: 0.58;
+  }
+
+  .cli-command-code {
+    display: block;
+    width: 100%;
+    margin-top: 0.32rem;
+    overflow: hidden;
+    color: var(--color-concrete-500);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.56rem;
+    line-height: 1.25;
+  }
+
+  .cli-command-detail {
+    display: none;
+  }
+}

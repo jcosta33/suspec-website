@@ -1,0 +1,24 @@
+.cli-command-rail {
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.1), transparent 22%),
+    var(--color-panel-border);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+
+.cli-command-step {
+  background-image:
+    radial-gradient(
+      70% 64% at 18% 0%,
+      rgba(var(--process-rgb), 0.014),
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(240, 226, 204, 0.025),
+      transparent 44%
+    );
+}
+
+.cli-command-link {
+  min-height: 10.2rem;
+}

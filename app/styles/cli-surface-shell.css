@@ -1,0 +1,42 @@
+/* CLI command rail — command families as a compact operating surface. */
+.cli-surface-panel {
+  border-color: rgba(var(--signal-reference-rgb), 0.36);
+  background:
+    radial-gradient(
+      80% 80% at 50% 0%,
+      rgba(var(--signal-reference-rgb), 0.075),
+      transparent 62%
+    ),
+    var(--color-panel-raised);
+}
+
+.cli-surface-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--color-panel-border);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.08), transparent 46%),
+    rgba(10, 7, 5, 0.22);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cli-surface-header :where(h2, p) {
+  color: var(--signal-reference);
+}
+
+.cli-surface-header span {
+  border: 1px solid rgba(var(--signal-reference-rgb), 0.24);
+  border-radius: calc(var(--radius-control) - 4px);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.08), transparent 68%),
+    rgba(10, 7, 5, 0.28);
+  color: var(--color-concrete-300);
+  padding: 0.16rem 0.48rem;
+}

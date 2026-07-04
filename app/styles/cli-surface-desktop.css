@@ -1,0 +1,31 @@
+@media (min-width: 64rem) {
+  .cli-command-rail {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .cli-command-step,
+  .cli-command-step:nth-child(n + 4) {
+    grid-column: auto;
+  }
+
+  .cli-command-link {
+    min-height: 8.6rem;
+  }
+
+  .cli-command-step:not(:last-child) .cli-command-link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 0.72rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      rgba(var(--process-rgb), 0.07),
+      rgba(var(--process-rgb), 0.34)
+    );
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+}
