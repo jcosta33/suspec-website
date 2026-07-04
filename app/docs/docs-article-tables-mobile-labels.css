@@ -1,0 +1,15 @@
+@media (max-width: 48rem) {
+  .docs-prose td::before {
+    content: attr(data-label);
+    font-family: var(--font-mono), monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+  }
+
+  .docs-prose td[data-label=""]::before {
+    display: none;
+  }
+}

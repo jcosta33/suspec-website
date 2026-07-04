@@ -1,0 +1,32 @@
+@media (max-width: 48rem) {
+  .docs-table-scroll {
+    margin: 1.15rem 0;
+    overflow-x: visible;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .docs-table-scroll::after {
+    display: none;
+  }
+
+  .docs-prose table {
+    display: block;
+    min-width: 100%;
+    font-size: 0.86rem;
+  }
+
+  .docs-prose thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .docs-prose tbody {
+    display: grid;
+    gap: 0.42rem;
+  }
+}
