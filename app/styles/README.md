@@ -20,7 +20,7 @@ component TypeScript.
 | `app/styles/motion-primitives.css`, `app/styles/motion-surfaces.css`, `app/styles/motion-surfaces-*.css`, `app/styles/reduced-motion.css` | Cursor/background motion, hover-safe transforms, reduced-motion clamp. `reduced-motion.css` stays last. |
 | `app/styles/mobile-*-polish.css` | Late mobile tuning from the redesign, split by route family at the same cascade point. |
 | `app/docs/docs.css` | Docs CSS manifest imported by `app/docs/layout.tsx`; keeps docs-only cascade in one place. |
-| `app/docs/docs-shell.css`, `app/docs/docs-shell-*.css`, `app/docs/docs-article.css`, `app/docs/docs-article-*.css`, `app/docs/docs-index.css`, `app/docs/docs-index-*.css`, `app/docs/docs-footer.css`, `app/docs/docs-responsive.css`, `app/styles/docs-index-polish.css`, `app/styles/mobile-docs-index-polish.css` | Docs shell, rendered markdown, article and index subfamilies, footer, docs-specific responsive fixes, and late docs-index polish imported only under the docs layout manifest. |
+| `app/docs/docs-shell.css`, `app/docs/docs-shell-*.css`, `app/docs/docs-article.css`, `app/docs/docs-article-*.css`, `app/docs/docs-article-heading-*.css`, `app/docs/docs-index.css`, `app/docs/docs-index-*.css`, `app/docs/docs-footer.css`, `app/docs/docs-responsive.css`, `app/styles/docs-index-polish.css`, `app/styles/mobile-docs-index-polish.css` | Docs shell, rendered markdown, article heading/text/code/table/media subfamilies, index subfamilies, footer, docs-specific responsive fixes, and late docs-index polish imported only under the docs layout manifest. |
 
 `app/art-direction-pass.css` and the later `app/styles/art-direction-*.css`
 files no longer exist; their work is split into `*-polish.css` files by route

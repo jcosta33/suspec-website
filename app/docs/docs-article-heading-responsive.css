@@ -1,0 +1,25 @@
+@media (max-width: 48rem) {
+  .docs-article-html h2 {
+    gap: 0.5rem;
+    margin-top: 2.15rem;
+    margin-bottom: 0.8rem;
+    padding: 0.52rem 0.62rem;
+    font-size: 1.12rem;
+  }
+
+  .docs-article-html h2::before,
+  .docs-heading-prefix {
+    width: 1.55rem;
+    height: 1.32rem;
+    font-size: 0.62rem;
+  }
+
+  .docs-article-html h2::after {
+    display: none;
+  }
+
+  .docs-article-html h3 {
+    margin-top: 1.65rem;
+    padding-left: 0.72rem;
+  }
+}
