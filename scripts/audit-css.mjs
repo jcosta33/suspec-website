@@ -28,12 +28,36 @@ function read(file) {
   return fs.readFileSync(file, "utf8");
 }
 
-function cssImports(file) {
+function jsCssImports(file) {
   const source = read(path.join(ROOT, file));
   return [...source.matchAll(/import\s+"([^"]+\.css)";/g)].map((match) => {
     const from = path.dirname(file);
     return rel(path.resolve(ROOT, from, match[1]));
   });
+}
+
+function cssFileImports(file) {
+  const source = read(path.join(ROOT, file));
+  return [...source.matchAll(/@import\s+(?:url\()?["']([^"']+\.css)["']\)?\s*;/g)].map(
+    (match) => {
+      const from = path.dirname(file);
+      return rel(path.resolve(ROOT, from, match[1]));
+    },
+  );
+}
+
+function expandCssImports(imports, seen = new Set()) {
+  const expanded = [];
+  for (const file of imports) {
+    if (seen.has(file)) continue;
+    seen.add(file);
+    expanded.push(file);
+    const absolute = path.join(ROOT, file);
+    if (fs.existsSync(absolute)) {
+      expanded.push(...expandCssImports(cssFileImports(file), seen));
+    }
+  }
+  return expanded;
 }
 
 const files = CSS_ROOTS.flatMap(walkCss).sort((a, b) => rel(a).localeCompare(rel(b)));
@@ -52,12 +76,14 @@ const mostImportant = [...summaries]
   .sort((a, b) => b.important - a.important)
   .slice(0, 8);
 
-const imported = new Set(LAYOUT_IMPORTS.flatMap(cssImports));
+const imported = new Set(
+  LAYOUT_IMPORTS.flatMap((file) => expandCssImports(jsCssImports(file))),
+);
 const unimported = summaries
   .map((item) => item.file)
   .filter((file) => !imported.has(file) && file !== "app/docs/docs-responsive.css");
 
-const layoutImports = cssImports("app/layout.tsx");
+const layoutImports = expandCssImports(jsCssImports("app/layout.tsx"));
 const failures = [];
 if (totalLines > BUDGETS.totalLines) {
   failures.push(`css line budget exceeded: ${totalLines} > ${BUDGETS.totalLines}`);
