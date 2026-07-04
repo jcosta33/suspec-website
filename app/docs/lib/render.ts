@@ -1,6 +1,6 @@
 // The W1-proven design-B markdown pipeline (GFM, not MDX), as a build-time renderer.
 // - rewrite .md links -> /docs routes (resolve ../, preserve #anchor)
-// - selective raw HTML: keep <a> anchors, drop HTML comments, turn every other bare <token> literal
+// - selective raw HTML: keep source anchors, drop HTML comments, turn every other bare <token> literal
 // - rehype-slug for github-slugger-aligned heading ids (W1: byte-identical to GitHub's anchors)
 import fs from "node:fs";
 import path from "node:path";
@@ -122,8 +122,25 @@ const selectiveRawHtml: Plugin<[], Root> = () => (tree) => {
       parent.children[index] = { type: "text", value: "" }; // drop HTML comments
       return;
     }
-    if (/^<\/?a(\s|>)/i.test(v)) return; // keep <a> anchors (the 94 sources.md ids)
+    if (/^<\/?a(\s|>)/i.test(v)) return; // keep source anchors; rehype turns id-only anchors into spans
     parent.children[index] = { type: "text", value: node.value }; // bare <token> -> literal text
+  });
+};
+
+// Canon sources use raw `<a id="KEY"></a>` targets so `[[KEY]]` citations can resolve in markdown.
+// In HTML, those are not links. Preserve the fragment target but render it as a neutral element so
+// keyboard/a11y/link audits do not see dozens of empty anchors.
+const rehypeNormalizeAnchorTargets: Plugin<[], HastRoot> = () => (tree) => {
+  visit(tree, "element", (node) => {
+    if (node.tagName !== "a") return;
+    const href = node.properties?.href;
+    const id = node.properties?.id ?? node.properties?.name;
+    if (href || typeof id !== "string") return;
+    node.tagName = "span";
+    node.properties = {
+      ...node.properties,
+      ariaHidden: "true",
+    };
   });
 };
 
@@ -660,6 +677,7 @@ export async function renderDoc(
     .use(selectiveRawHtml)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
+    .use(rehypeNormalizeAnchorTargets)
     .use(rehypeCanonicalizeDocsLinks)
     .use(rehypeExternalLinks)
     .use(rehypeSlug)
