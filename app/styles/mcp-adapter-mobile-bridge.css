@@ -1,0 +1,31 @@
+@media (max-width: 40rem) {
+  #bridge {
+    --section-flow-gap: 0.92rem;
+  }
+
+  #bridge .section-intro {
+    display: grid;
+    gap: 0.64rem;
+  }
+
+  #bridge .section-intro .section-kicker,
+  #bridge .section-intro h2,
+  #bridge .section-intro p {
+    margin-top: 0;
+  }
+
+  #bridge .section-intro h2 {
+    max-width: 18rem;
+    font-size: clamp(1.38rem, 6.6vw, 1.62rem);
+    line-height: 1.1;
+  }
+
+  #bridge .section-intro p {
+    font-size: 0.94rem;
+    line-height: 1.5;
+  }
+
+  #bridge .section-intro p:last-child {
+    font-size: 0.82rem;
+  }
+}
