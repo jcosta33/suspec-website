@@ -1,0 +1,23 @@
+.boundary-map {
+  counter-reset: boundary-step;
+}
+
+.boundary-step {
+  --boundary-signal: var(--signal-reference);
+  --boundary-rgb: var(--signal-reference-rgb);
+}
+
+.boundary-step-core {
+  --boundary-signal: var(--signal-core);
+  --boundary-rgb: var(--signal-core-rgb);
+}
+
+.boundary-step-reference {
+  --boundary-signal: var(--signal-reference);
+  --boundary-rgb: var(--signal-reference-rgb);
+}
+
+.boundary-step-muted {
+  --boundary-signal: var(--signal-muted);
+  --boundary-rgb: var(--signal-muted-rgb);
+}
