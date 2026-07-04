@@ -1,0 +1,54 @@
+@media (max-width: 40rem) {
+  .hero-trace {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.34rem;
+    width: min(100%, 20.5rem);
+    overflow: visible;
+    margin-top: 0.92rem;
+    padding: 0.05rem 0 0.1rem;
+    mask-image: none;
+  }
+
+  .hero-trace:is([data-count="6"]) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hero-trace:is([data-count="5"]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-trace::before {
+    display: none;
+  }
+
+  .hero-trace-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    min-width: 4.4rem;
+    min-height: 1.88rem;
+    max-width: none;
+    align-content: center;
+    align-items: center;
+    column-gap: 0.42rem;
+    padding: 0.34rem 0.52rem;
+  }
+
+  .hero-trace:is([data-count="6"]) .hero-trace-item {
+    min-width: 5.85rem;
+  }
+
+  .hero-trace:is([data-count="5"]) .hero-trace-item:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .hero-trace-label {
+    font-size: 0.7rem;
+    line-height: 1;
+  }
+
+  .hero-trace-detail {
+    grid-column: 2 / -1;
+    font-size: 0.62rem;
+  }
+}
