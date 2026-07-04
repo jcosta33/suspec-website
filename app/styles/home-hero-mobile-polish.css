@@ -8,62 +8,62 @@
   }
 
   .home-hero-section .page-hero > p:first-of-type {
-    margin-top: 0.88rem !important;
+    margin-top: 0.88rem;
   }
 
   .home-hero-section .page-hero > p:nth-of-type(2) {
-    margin-top: 0.46rem !important;
+    margin-top: 0.46rem;
   }
 
   .home-hero-section .page-hero > p:nth-of-type(2) + div {
-    margin-top: 0.92rem !important;
+    margin-top: 0.92rem;
   }
 
   .home-hero-preview {
-    margin-top: 0.54rem !important;
-    margin-bottom: 0 !important;
-    padding: 0.3rem !important;
+    margin-top: 0.54rem;
+    margin-bottom: 0;
+    padding: 0.3rem;
   }
 
   .home-hero-run-card {
-    padding: 0.54rem !important;
+    padding: 0.54rem;
   }
 
   .home-hero-run-card > div:first-child {
-    margin-bottom: 0.34rem !important;
+    margin-bottom: 0.34rem;
   }
 
   .home-step-rail-item {
     min-height: 2.75rem;
-    padding-block: 0.5rem !important;
+    padding-block: 0.5rem;
   }
 
   .home-hero-preview .terminal-window {
-    margin-top: 0.38rem !important;
+    margin-top: 0.38rem;
   }
 
   .home-hero-preview .terminal-toolbar {
     min-height: 2.36rem;
-    padding-block: 0.26rem !important;
+    padding-block: 0.26rem;
   }
 
   .home-hero-preview .terminal-content {
     max-height: 4.35rem;
-    padding: 0.48rem 0.58rem !important;
+    padding: 0.48rem 0.58rem;
   }
 }
 
 @media (min-width: 40.0625rem) and (max-width: 48rem) {
   .home-hero-proof-strip {
-    width: min(100%, 34rem) !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 0.48rem !important;
+    width: min(100%, 34rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.48rem;
   }
 
   .home-hero-proof {
     justify-content: center;
     min-height: 2.3rem;
-    padding-inline: 0.58rem !important;
+    padding-inline: 0.58rem;
   }
 
   .home-hero-proof > div {

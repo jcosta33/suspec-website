@@ -49,7 +49,7 @@
 }
 
 .home-hero-proof-strip {
-  margin-top: clamp(1.7rem, 2.2vw, 2.05rem) !important;
+  margin-top: clamp(1.7rem, 2.2vw, 2.05rem);
 }
 
 .home-hero-proof {
@@ -60,6 +60,6 @@
       transparent 0 1.35rem,
       rgba(240, 226, 204, 0.012) 1.35rem calc(1.35rem + 1px)
     ),
-    rgba(15, 11, 8, 0.58) !important;
+    rgba(15, 11, 8, 0.58);
 }
 

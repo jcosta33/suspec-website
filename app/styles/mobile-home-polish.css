@@ -12,25 +12,25 @@
   }
 
   .home-hero-proof-strip {
-    width: min(100%, 21.5rem) !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 0.32rem !important;
-    margin-top: 1.35rem !important;
+    width: min(100%, 21.5rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.32rem;
+    margin-top: 1.35rem;
   }
 
   .home-hero-proof {
     position: relative;
     justify-content: center;
-    gap: 0.28rem !important;
-    min-height: 2.12rem !important;
-    padding: 0.42rem 0.34rem !important;
+    gap: 0.28rem;
+    min-height: 2.12rem;
+    padding: 0.42rem 0.34rem;
   }
 
   .home-hero-proof-lamp {
     position: absolute;
     top: 50%;
     left: 0.3rem;
-    transform: translateY(-50%) scale(0.54) !important;
+    transform: translateY(-50%) scale(0.54);
   }
 
   .home-hero-proof > div {
@@ -39,13 +39,13 @@
   }
 
   .home-hero-proof-label {
-    font-size: 0.54rem !important;
-    letter-spacing: 0.035em !important;
+    font-size: 0.54rem;
+    letter-spacing: 0.035em;
   }
 
   @media (max-width: 22rem) {
     .home-hero-proof-strip {
-      grid-template-columns: minmax(0, 1fr) !important;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 }
