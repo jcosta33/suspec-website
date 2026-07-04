@@ -1,0 +1,46 @@
+.page-hero-motif-bridge .page-hero-motif {
+  --hero-motif-opacity-min: 0.5;
+  --hero-motif-opacity-max: 0.64;
+  background:
+    radial-gradient(circle at 22% 50%, rgba(var(--hero-rgb), 0.18) 0 0.42rem, transparent 0.45rem),
+    radial-gradient(circle at 50% 50%, rgba(var(--hero-rgb), 0.16) 0 0.3rem, transparent 0.34rem),
+    radial-gradient(circle at 78% 50%, rgba(var(--hero-rgb), 0.18) 0 0.42rem, transparent 0.45rem),
+    linear-gradient(90deg, transparent 13%, rgba(var(--hero-rgb), 0.16) 13% 87%, transparent 87%)
+      center 50% / 100% 1px no-repeat,
+    var(--hero-mark),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.9rem,
+      rgba(var(--hero-rgb), 0.04) 1.9rem calc(1.9rem + 1px)
+    );
+}
+
+.page-hero-motif-manual .page-hero-motif {
+  --hero-motif-opacity-min: 0.38;
+  --hero-motif-opacity-max: 0.5;
+  background:
+    linear-gradient(90deg, rgba(var(--hero-rgb), 0.16) 0 1px, transparent 1px)
+      16% 0 / 1px 100% no-repeat,
+    linear-gradient(90deg, rgba(var(--hero-rgb), 0.1) 0 1px, transparent 1px)
+      84% 0 / 1px 100% no-repeat,
+    var(--hero-mark),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 0.82rem,
+      rgba(var(--hero-rgb), 0.048) 0.82rem calc(0.82rem + 1px)
+    );
+}
+
+.page-hero-motif-internal .page-hero-motif {
+  --hero-motif-opacity-min: 0.3;
+  --hero-motif-opacity-max: 0.4;
+  background:
+    linear-gradient(90deg, transparent, rgba(var(--hero-rgb), 0.1), transparent)
+      center 50% / 70% 1px no-repeat,
+    var(--hero-mark),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 2rem,
+      rgba(var(--hero-rgb), 0.036) 2rem calc(2rem + 1px)
+    );
+}

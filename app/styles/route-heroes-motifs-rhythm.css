@@ -1,0 +1,3 @@
+.ambient-header + .section-register {
+  margin-top: clamp(0.75rem, 1.4vw, 1.25rem);
+}

@@ -1,0 +1,16 @@
+@media (prefers-reduced-motion: no-preference) {
+  .page-hero-motif {
+    animation: page-hero-motif-drift 16s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes page-hero-motif-drift {
+  from {
+    opacity: var(--hero-motif-opacity-min);
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    opacity: var(--hero-motif-opacity-max);
+    transform: translateX(-50%) translateY(0.18rem);
+  }
+}
