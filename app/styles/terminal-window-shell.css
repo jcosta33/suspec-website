@@ -1,0 +1,46 @@
+/* Aged-glass screen — terminal well, readable before theatrical. */
+.crt-screen {
+  position: relative;
+  background-color: var(--color-night-well);
+  box-shadow:
+    inset 0 3px 8px rgba(0, 0, 0, 0.72),
+    inset 0 0 64px rgba(0, 0, 0, 0.45);
+}
+
+.terminal-window {
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.terminal-window:hover,
+.terminal-window:focus-within {
+  border-color: rgba(216, 138, 36, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.09),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(216, 138, 36, 0.05);
+}
+
+.terminal-content {
+  scrollbar-gutter: stable;
+}
+
+.terminal-content > :not(.pointer-events-none) {
+  position: relative;
+  z-index: 4;
+}
+
+.terminal-content .text-concrete-500 {
+  color: var(--color-concrete-400);
+}
+
+.terminal-title-caret {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.78rem;
+  border-radius: 1px;
+  background: var(--color-aurum);
+  box-shadow: 0 0 8px rgba(216, 138, 36, 0.54);
+  animation: blink 1.15s step-end infinite;
+}
