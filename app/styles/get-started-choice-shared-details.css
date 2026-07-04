@@ -1,0 +1,75 @@
+.setup-choice-index {
+  display: inline-flex;
+  min-height: 1.8rem;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid rgba(var(--choice-rgb), 0.4);
+  border-radius: var(--radius-control);
+  padding: 0 0.55rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--choice-signal);
+  background:
+    linear-gradient(180deg, rgba(var(--choice-rgb), 0.08), transparent),
+    rgba(14, 11, 8, 0.5);
+}
+
+.setup-choice-head {
+  position: relative;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(var(--choice-rgb), 0.28);
+}
+
+.setup-choice-command {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(var(--choice-rgb), 0.3);
+  border-radius: var(--radius-control);
+  padding: 0.72rem 0.78rem;
+  color: var(--color-concrete-200);
+  background:
+    linear-gradient(90deg, rgba(var(--choice-rgb), 0.12), transparent 36%),
+    var(--choice-pattern),
+    rgba(10, 7, 5, 0.42);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.setup-choice-facts {
+  display: grid;
+  gap: 0;
+  margin-top: auto;
+  border-top: 1px solid rgba(var(--choice-rgb), 0.24);
+}
+
+.setup-choice-facts div {
+  display: grid;
+  grid-template-columns: minmax(4.75rem, 0.34fr) minmax(0, 1fr);
+  gap: 0.85rem;
+  padding: 0.78rem 0;
+  border-bottom: 1px solid rgba(var(--choice-rgb), 0.18);
+}
+
+.setup-choice-facts dt {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--choice-signal);
+}
+
+.setup-choice-facts dd {
+  min-width: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-concrete-300);
+}

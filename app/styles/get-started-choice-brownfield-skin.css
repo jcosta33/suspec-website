@@ -1,0 +1,57 @@
+
+.setup-choice-card-brownfield {
+  --choice-signal: var(--signal-brownfield);
+  --choice-rgb: var(--signal-brownfield-rgb);
+  --choice-pattern: var(--signal-pattern-brownfield);
+  --choice-mark: var(--signal-mark-brownfield);
+  background-image:
+    linear-gradient(
+     90deg,
+     rgba(var(--choice-rgb), 0.42) 0,
+     rgba(var(--choice-rgb), 0.42) 3px,
+     transparent 3px
+    ),
+    var(--signal-mark-brownfield),
+    repeating-linear-gradient(
+      -24deg,
+      transparent 0 1.15rem,
+      rgba(var(--choice-rgb), 0.052) 1.15rem calc(1.15rem + 1px)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.7rem,
+      rgba(var(--choice-rgb), 0.026) 1.7rem calc(1.7rem + 1px)
+    ),
+    var(--choice-pattern),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 27px,
+      rgba(var(--choice-rgb), 0.014) 27px 28px
+    ),
+    radial-gradient(
+      78% 68% at 10% 0%,
+      rgba(var(--choice-rgb), 0.085),
+      transparent 62%
+    ),
+    linear-gradient(180deg, rgba(232, 222, 203, 0.045) 0%, transparent 38%);
+}
+
+.setup-choice-card-brownfield .setup-choice-title {
+  color: var(--signal-brownfield);
+  text-shadow: 0 0 16px rgba(var(--signal-brownfield-rgb), 0.14);
+}
+
+.setup-choice-card-brownfield .kit-icon {
+  background:
+    var(--signal-mark-brownfield),
+    linear-gradient(180deg, rgba(var(--choice-rgb), 0.1), transparent 62%),
+    var(--signal-pattern-brownfield),
+    var(--color-panel-raised);
+}
+
+.setup-choice-card-brownfield .setup-choice-command {
+  background:
+    linear-gradient(90deg, rgba(var(--choice-rgb), 0.11), transparent 42%),
+    var(--signal-pattern-brownfield),
+    rgba(10, 7, 5, 0.42);
+}

@@ -1,0 +1,45 @@
+.setup-choice-card :is(.text-suspec-yellow, .text-brass) {
+  color: var(--choice-signal);
+}
+
+.setup-choice-card:hover,
+.setup-choice-card:focus-within {
+  border-color: rgba(var(--choice-rgb), 0.66);
+  box-shadow:
+    inset 3px 0 0 rgba(var(--choice-rgb), 0.54),
+    inset 0 1px 0 rgba(232, 222, 203, 0.09),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(var(--choice-rgb), 0.07);
+}
+
+.setup-choice-action {
+  color: var(--choice-signal);
+  text-decoration-color: rgba(var(--choice-rgb), 0.56);
+}
+
+.setup-choice-title {
+  position: relative;
+  display: inline-block;
+}
+
+.setup-choice-title::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -0.18rem;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--choice-rgb), 0.76),
+    rgba(var(--choice-rgb), 0.16),
+    transparent
+  );
+  opacity: 0.84;
+}
+
+.setup-choice-card:hover .setup-choice-action,
+.setup-choice-card:focus-within .setup-choice-action {
+  color: var(--choice-signal);
+  text-decoration-color: var(--choice-signal);
+}
