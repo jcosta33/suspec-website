@@ -1,0 +1,59 @@
+.mcp-adapter-contracts {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.58rem;
+  margin: 0;
+  border-top: 1px solid rgba(var(--signal-reference-rgb), 0.22);
+  padding-top: 0.62rem;
+}
+
+.mcp-adapter-contract {
+  --contract-signal: var(--signal-reference);
+  --contract-rgb: var(--signal-reference-rgb);
+  min-width: 0;
+  border: 1px solid rgba(var(--contract-rgb), 0.18);
+  border-left: 2px solid rgba(var(--contract-rgb), 0.48);
+  border-radius: calc(var(--radius-control) - 3px);
+  background:
+    linear-gradient(90deg, rgba(var(--contract-rgb), 0.07), transparent 70%),
+    var(--signal-pattern-muted),
+    rgba(10, 7, 5, 0.26);
+  padding: 0.56rem 0.66rem 0.6rem;
+}
+
+.mcp-adapter-contract-reference {
+  --contract-signal: var(--signal-reference);
+  --contract-rgb: var(--signal-reference-rgb);
+}
+
+.mcp-adapter-contract-core {
+  --contract-signal: var(--signal-core);
+  --contract-rgb: var(--signal-core-rgb);
+}
+
+.mcp-adapter-contract-muted {
+  --contract-signal: var(--signal-muted);
+  --contract-rgb: var(--signal-muted-rgb);
+}
+
+.mcp-adapter-contract dt {
+  color: color-mix(in oklab, var(--contract-signal) 72%, var(--color-concrete-100));
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.64rem;
+  font-weight: 760;
+  letter-spacing: 0.12em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.mcp-adapter-contract dd {
+  margin: 0.32rem 0 0;
+  color: var(--color-concrete-300);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.42;
+  text-transform: none;
+}

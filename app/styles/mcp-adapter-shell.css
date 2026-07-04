@@ -1,0 +1,46 @@
+/* MCP adapter rail — a read-only path, not another generic card row. */
+.mcp-adapter-panel {
+  border-color: rgba(var(--signal-reference-rgb), 0.34);
+  background:
+    radial-gradient(
+      80% 80% at 50% 0%,
+      rgba(var(--signal-reference-rgb), 0.08),
+      transparent 62%
+    ),
+    var(--color-panel-raised);
+}
+
+.mcp-adapter-header {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.62rem 1rem;
+  border-bottom: 1px solid var(--color-panel-border);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.1), transparent 46%),
+    rgba(10, 7, 5, 0.22);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mcp-adapter-header::after {
+  content: "";
+  position: absolute;
+  right: 1rem;
+  bottom: -1px;
+  left: 1rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--signal-muted-rgb), 0.2),
+    rgba(var(--signal-reference-rgb), 0.72) 44%,
+    rgba(var(--signal-core-rgb), 0.66),
+    rgba(var(--signal-reference-rgb), 0.2)
+  );
+  pointer-events: none;
+}

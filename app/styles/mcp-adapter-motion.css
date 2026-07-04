@@ -1,0 +1,40 @@
+@media (prefers-reduced-motion: no-preference) {
+  .mcp-adapter-header::before {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 1rem;
+    z-index: 3;
+    width: 0.34rem;
+    height: 0.34rem;
+    border-radius: 999px;
+    background: var(--signal-reference);
+    box-shadow:
+      0 0 0 3px rgba(var(--signal-reference-rgb), 0.08),
+      0 0 18px rgba(var(--signal-reference-rgb), 0.42);
+    animation: mcp-packet-trace 7s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes mcp-packet-trace {
+  0%,
+  12% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  18% {
+    opacity: 0.94;
+  }
+
+  74% {
+    opacity: 0.94;
+  }
+
+  88%,
+  100% {
+    opacity: 0;
+    transform: translateX(calc(min(100vw, 80rem) - 3rem));
+  }
+}
