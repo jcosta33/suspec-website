@@ -1,0 +1,49 @@
+@media (max-width: 40rem) {
+  .palette-specimen-grid {
+    gap: 0.75rem;
+  }
+
+  .palette-specimen {
+    padding: 0.86rem 0.9rem 0.92rem;
+  }
+
+  .palette-specimen-swatch {
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+
+  .palette-specimen-relationship {
+    margin-top: 0.24rem;
+    font-size: 0.6rem;
+    line-height: 1.25;
+  }
+
+  .palette-specimen-family {
+    min-height: 1.3rem;
+    margin-top: 0.34rem;
+    font-size: 0.52rem;
+  }
+
+  .palette-specimen > p {
+    margin-top: 0.72rem;
+    font-size: 0.82rem;
+    line-height: 1.48;
+  }
+
+  .palette-specimen dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.58rem 0.7rem;
+    margin-top: 0.72rem;
+    padding-top: 0.72rem;
+  }
+
+  .palette-specimen dl > div:nth-child(n + 3) {
+    display: none;
+  }
+
+  .palette-specimen-hex {
+    min-height: 1.55rem;
+    margin-top: 0.72rem;
+    font-size: 0.64rem;
+  }
+}

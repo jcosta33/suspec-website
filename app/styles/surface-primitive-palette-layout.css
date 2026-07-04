@@ -1,0 +1,39 @@
+
+/* Palette specimens — one visible rulebook for semantic color use. */
+.palette-specimen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1rem;
+}
+
+.palette-grammar-note {
+  display: grid;
+  gap: 0.45rem;
+  max-width: 52rem;
+  border: 1px solid rgba(var(--signal-reference-rgb), 0.24);
+  border-left-color: rgba(var(--signal-reference-rgb), 0.66);
+  border-radius: var(--radius-panel);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--signal-reference-rgb), 0.035) 0 1px,
+      transparent 1px 14px
+    ),
+    rgba(10, 7, 5, 0.34);
+  padding: 0.9rem 1rem;
+}
+
+.palette-grammar-note span {
+  color: var(--signal-reference);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.palette-grammar-note p {
+  color: var(--color-concrete-300);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
