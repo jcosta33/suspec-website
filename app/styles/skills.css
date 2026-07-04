@@ -596,11 +596,11 @@
 }
 
 .writing-skill-page .page-hero {
-  max-width: 50rem !important;
+  max-width: 50rem;
 }
 
 .writing-skill-page .hero-trace {
-  margin-top: 1.15rem !important;
+  margin-top: 1.15rem;
 }
 
 .writing-skill-page .section-register {
@@ -675,12 +675,12 @@
 }
 
 .writing-skill-page .skill-anatomy-step {
-  min-height: 8.55rem !important;
+  min-height: 8.55rem;
 }
 
 .writing-skill-page .skill-anatomy-step > a {
-  min-height: 8.55rem !important;
-  padding: 1.08rem 1.1rem !important;
+  min-height: 8.55rem;
+  padding: 1.08rem 1.1rem;
 }
 
 .writing-skill-page .skill-anatomy-label {
@@ -748,11 +748,11 @@
   }
 
   .writing-skill-page .page-hero {
-    max-width: 20.5rem !important;
+    max-width: 20.5rem;
   }
 
   .writing-skill-page .hero-trace {
-    margin-top: 0.95rem !important;
+    margin-top: 0.95rem;
   }
 
   .writing-skill-page .section-register {
@@ -794,8 +794,8 @@
   }
 
   .writing-skill-page .skill-anatomy-step > a {
-    min-height: 0 !important;
-    padding: 0.76rem 0.72rem !important;
+    min-height: 0;
+    padding: 0.76rem 0.72rem;
   }
 
   .skill-anatomy-step > a > span:first-child {
