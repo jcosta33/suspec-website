@@ -8,7 +8,7 @@ const norm = (p: string) => p.replace(/\/+$/, "");
 
 // Client component: the layout (server) computes `nav` and passes it down so node:fs stays server-side;
 // here we light up the active page from the pathname. Collapsed groups auto-open when they hold it.
-// The mobile collapse is a PURE-CSS disclosure (a visually-hidden checkbox + label, see docs.css) —
+// The mobile collapse is a PURE-CSS disclosure (a visually-hidden checkbox + label, see docs-shell.css) —
 // no JS toggles the open state, so the collapsed mobile state is the initial render and there is no
 // post-hydration layout shift. On desktop (and with no JS/CSS) the nav is simply always shown.
 export function DocsNav({ nav }: { nav: NavSection[] }) {

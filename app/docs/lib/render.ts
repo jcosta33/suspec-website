@@ -321,7 +321,7 @@ const rehypeLabelTableCells: Plugin<[], HastRoot> = () => (tree) => {
   });
 };
 
-// Wide code blocks and table shells scroll horizontally inside overflow-x:auto boxes (docs.css).
+// Wide code blocks and table shells scroll horizontally inside overflow-x:auto boxes (docs-article.css).
 // A scrollable region that isn't keyboard-focusable can't be scrolled without a mouse (axe
 // `scrollable-region-focusable`). Make every <pre>/table shell a tab stop so keyboard users reach it.
 const rehypeFocusableScrollables: Plugin<[], HastRoot> = () => (tree) => {

@@ -73,7 +73,7 @@ export function SearchBox() {
 
     // A deep-linked search (?q=) must load now so it can run on arrival; otherwise defer the ~131KB
     // Pagefind UI off the critical path until the browser is idle. The .docs-search min-height
-    // (docs.css) reserves the input's space, so the deferred mount causes no layout shift.
+    // docs-shell.css reserves the input's space, so the deferred mount causes no layout shift.
     if (new URLSearchParams(window.location.search).get("q")) {
       load();
       return;

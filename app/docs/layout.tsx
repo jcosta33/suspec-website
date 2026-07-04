@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
-import "./docs.css";
+import "./docs-shell.css";
+import "./docs-article.css";
+import "./docs-index.css";
+import "./docs-footer.css";
+import "./docs-responsive.css";
 import { buildNav } from "./lib/canon";
 import { DocsNav } from "./components/DocsNav";
 import { SearchBox } from "./components/SearchBox";
