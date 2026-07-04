@@ -1,0 +1,35 @@
+.panel-raised:is(a, button):hover > .surface-engraving,
+.panel-raised:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-engraving,
+.panel-raised:focus-within > .surface-engraving {
+  opacity: 0.54;
+}
+
+.panel-raised:is(a, button):hover > .surface-glint,
+.panel-raised:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-glint,
+.panel-raised:focus-within > .surface-glint {
+  opacity: 0.5;
+}
+
+.panel-raised.home-hero-preview:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-engraving,
+.panel-raised.home-hero-preview:hover > .surface-engraving,
+.panel-raised.home-hero-preview:focus-within > .surface-engraving {
+  opacity: 0.5;
+}
+
+.panel-raised.home-hero-preview:has(
+    :is(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"]))
+  ):hover
+  > .surface-glint,
+.panel-raised.home-hero-preview:hover > .surface-glint,
+.panel-raised.home-hero-preview:focus-within > .surface-glint {
+  opacity: 0.42;
+}

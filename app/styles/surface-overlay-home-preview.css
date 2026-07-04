@@ -1,0 +1,33 @@
+.home-hero-preview:is(:hover, :focus-within),
+.home-hero-preview
+  :is(.rounded-panel, .terminal-window, .paper-artifact, .home-step-rail-item),
+.home-hero-preview
+  :is(
+    .rounded-panel,
+    .terminal-window,
+    .paper-artifact,
+    .home-step-rail-item
+  ):is(:hover, :focus-within) {
+  translate: 0 0 !important;
+  transform: none !important;
+  scale: 1 !important;
+}
+
+.home-hero-preview .paper-artifact {
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.home-hero-preview .terminal-window:is(:hover, :focus-within) {
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.08),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.home-hero-preview .paper-artifact:is(:hover, :focus-within) {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(8, 9, 11, 0.08),
+    0 12px 28px rgba(0, 0, 0, 0.28);
+}

@@ -1,0 +1,83 @@
+
+.surface-glint {
+  border-radius: inherit;
+  mix-blend-mode: screen;
+  opacity: 0.32;
+  background:
+    linear-gradient(
+      122deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(var(--plate-rgb), 0.058) 46%,
+      rgba(240, 226, 204, 0.026) 50%,
+      transparent 58%,
+      transparent 100%
+    ),
+    radial-gradient(
+      70% 60% at 18% 0%,
+      rgba(var(--plate-rgb), 0.052),
+      transparent 58%
+    );
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.surface-engraving {
+  border-radius: inherit;
+  opacity: 0.4;
+  background:
+    linear-gradient(90deg, rgba(var(--plate-rgb), 0.1), transparent 22%) left
+      top / 1px 100% no-repeat,
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 27px,
+      rgba(240, 226, 204, 0.012) 27px,
+      rgba(240, 226, 204, 0.012) 28px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 31px,
+      rgba(240, 226, 204, 0.009) 31px,
+      rgba(240, 226, 204, 0.009) 32px
+    );
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.surface-engraving::before,
+.surface-engraving::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.surface-engraving::before {
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--plate-rgb), 0.26),
+    rgba(var(--plate-rgb), 0.07),
+    transparent
+  );
+  opacity: 0.42;
+}
+
+.surface-engraving::after {
+  right: 1rem;
+  bottom: 1rem;
+  width: 2.6rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+     rgba(var(--plate-rgb), 0.26)
+   );
+  opacity: 0.34;
+}
