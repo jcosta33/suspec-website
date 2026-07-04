@@ -1,10 +1,10 @@
 @media (max-width: 40rem) {
   .docs-prose .docs-index-list a {
-    display: grid !important;
+    display: grid;
     grid-template-columns: 0.28rem 1.25rem minmax(0, 1fr);
     align-items: center;
-    column-gap: 0.5rem !important;
-    padding-right: 1.75rem !important;
+    column-gap: 0.5rem;
+    padding-right: 1.75rem;
   }
 
   .docs-prose .docs-index-list a::before {
