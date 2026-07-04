@@ -1,0 +1,32 @@
+.loop-ledger-copy {
+  max-width: 44rem;
+  padding-left: 0.42rem;
+}
+
+.loop-ledger-kicker {
+  margin: 0 0 0.34rem;
+  color: var(--signal-reference);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.loop-ledger-copy h2 {
+  margin: 0;
+  color: var(--color-concrete-100);
+  font-family: var(--font-heading), ui-monospace, monospace;
+  font-size: clamp(1.2rem, 2.1vw, 1.55rem);
+  font-weight: var(--font-weight-title-compact);
+  line-height: 1.12;
+}
+
+.loop-ledger-copy p:last-child {
+  max-width: 42rem;
+  margin-top: 0.54rem;
+  color: var(--color-concrete-300);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}

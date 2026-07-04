@@ -1,0 +1,56 @@
+.loop-ledger-panel {
+  position: relative;
+  display: grid;
+  gap: clamp(1rem, 1.8vw, 1.35rem);
+  overflow: hidden;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border-color: rgba(var(--signal-core-rgb), 0.2);
+  border-left-color: rgba(var(--signal-reference-rgb), 0.34);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.052), transparent 50%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.9rem,
+      rgba(var(--signal-core-rgb), 0.018) 1.9rem calc(1.9rem + 1px)
+    ),
+    radial-gradient(90% 120% at 0% 0%, rgba(var(--signal-core-rgb), 0.055), transparent 64%),
+    var(--color-panel-raised);
+}
+
+.loop-ledger-panel::before,
+.loop-ledger-panel::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.loop-ledger-panel::before {
+  inset: 0.7rem auto 0.7rem 0.72rem;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--signal-reference-rgb), 0.58),
+    rgba(var(--signal-core-rgb), 0.26),
+    transparent
+  );
+  opacity: 0.78;
+}
+
+.loop-ledger-panel::after {
+  top: 0.78rem;
+  right: 0.9rem;
+  width: min(18rem, 42%);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--signal-reference-rgb), 0.32),
+    rgba(var(--signal-core-rgb), 0.28)
+  );
+  opacity: 0.72;
+}
+
+.loop-ledger-panel > * {
+  position: relative;
+  z-index: 1;
+}
