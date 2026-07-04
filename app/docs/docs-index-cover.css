@@ -1,0 +1,432 @@
+/* Docs index landing */
+.docs-prose section:not(.docs-index-section) {
+  margin: 1.5rem 0;
+}
+
+.docs-index-cover {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  overflow: clip;
+  margin-bottom: 1.1rem;
+  padding: 1rem 1rem 1rem 1.25rem;
+  border: 1px solid rgba(var(--signal-reference-rgb), 0.3);
+  border-radius: var(--radius-panel);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(var(--signal-core-rgb), 0.78) 0 3px,
+      rgba(var(--signal-reference-rgb), 0.34) 3px 4px,
+      transparent 4px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(var(--signal-reference-rgb), 0.08) 1px,
+      transparent 1px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 1.45rem,
+      rgba(var(--signal-reference-rgb), 0.04) 1.45rem calc(1.45rem + 1px)
+    ),
+    radial-gradient(
+      90% 100% at 0% 0%,
+      rgba(var(--signal-reference-rgb), 0.11),
+      transparent 58%
+    ),
+    linear-gradient(180deg, rgba(28, 23, 17, 0.72), rgba(14, 11, 8, 0.72));
+  background-size:
+    auto,
+    36px 100%,
+    auto,
+    auto,
+    auto;
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.42),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.22),
+    0 18px 42px rgba(0, 0, 0, 0.18);
+}
+
+.docs-index-cover::before,
+.docs-index-cover::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.docs-index-cover::before {
+  inset: 0.78rem;
+  border-radius: calc(var(--radius-panel) - 3px);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.5), transparent 72%)
+      left top / 4.2rem 1px no-repeat,
+    linear-gradient(180deg, rgba(var(--signal-core-rgb), 0.5), transparent 72%)
+      left top / 1px 3rem no-repeat,
+    linear-gradient(270deg, rgba(var(--signal-reference-rgb), 0.36), transparent 72%)
+      right bottom / 4.2rem 1px no-repeat,
+    linear-gradient(0deg, rgba(var(--signal-reference-rgb), 0.36), transparent 72%)
+      right bottom / 1px 3rem no-repeat;
+  opacity: 0.72;
+}
+
+.docs-index-cover::after {
+  top: 0;
+  bottom: 0;
+  left: 0.78rem;
+  width: 0.55rem;
+  border-inline: 1px solid rgba(var(--signal-core-rgb), 0.16);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--signal-core-rgb), 0.2) 0 1px,
+      transparent 1px 0.78rem
+    ),
+    linear-gradient(180deg, transparent, rgba(var(--signal-core-rgb), 0.28), transparent);
+  opacity: 0.72;
+}
+
+.docs-index-cover > * {
+  position: relative;
+  z-index: 1;
+}
+
+.docs-index-cover-copy {
+  position: relative;
+  min-width: 0;
+  padding-left: 0.9rem;
+}
+
+.docs-index-cover-copy::before {
+  content: "";
+  position: absolute;
+  top: 0.12rem;
+  bottom: 0.18rem;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--signal-reference-rgb), 0.76),
+    rgba(var(--signal-core-rgb), 0.52),
+    transparent
+  );
+  opacity: 0.78;
+}
+
+.docs-index-prose .docs-index-kicker {
+  margin: 0 0 0.35rem;
+  color: var(--signal-reference);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.docs-index-cover h1 {
+  margin-bottom: 0.45rem;
+  font-size: clamp(2.25rem, 4.2vw, 3rem);
+  line-height: 1.08;
+}
+
+.docs-index-prose .docs-index-lede {
+  max-width: 45rem;
+  margin: 0;
+}
+
+.docs-reading-path {
+  position: relative;
+  display: grid;
+  gap: clamp(0.95rem, 1.8vw, 1.25rem);
+  overflow: hidden;
+  margin: 0 0 clamp(1.25rem, 2vw, 1.75rem);
+  padding: clamp(0.95rem, 1.7vw, 1.18rem);
+  border: 1px solid rgba(var(--signal-reference-rgb), 0.2);
+  border-left-color: rgba(var(--signal-core-rgb), 0.36);
+  border-radius: var(--radius-panel);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.055), transparent 46%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.65rem,
+      rgba(var(--signal-reference-rgb), 0.018) 1.65rem calc(1.65rem + 1px)
+    ),
+    radial-gradient(80% 110% at 0% 0%, rgba(var(--signal-reference-rgb), 0.055), transparent 64%),
+    rgba(18, 14, 10, 0.58);
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.042),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.34);
+}
+
+.docs-reading-path::before,
+.docs-reading-path::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.docs-reading-path::before {
+  inset: 0.62rem auto 0.62rem 0.62rem;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--signal-core-rgb), 0.5),
+    rgba(var(--signal-reference-rgb), 0.18),
+    transparent
+  );
+}
+
+.docs-reading-path::after {
+  top: 0.72rem;
+  right: 0.72rem;
+  width: min(16rem, 42%);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--signal-reference-rgb), 0.3),
+    rgba(var(--signal-core-rgb), 0.28)
+  );
+  opacity: 0.72;
+}
+
+.docs-reading-path > * {
+  position: relative;
+  z-index: 1;
+}
+
+.docs-reading-path-copy {
+  max-width: 46rem;
+  padding-left: 0.45rem;
+}
+
+.docs-index-prose .docs-reading-path-kicker {
+  margin: 0 0 0.28rem;
+  color: var(--signal-reference);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.docs-reading-path h2 {
+  margin: 0;
+  border: 0;
+  color: var(--color-concrete-100);
+  font-family: var(--font-heading), ui-monospace, monospace;
+  font-size: clamp(1.18rem, 2.1vw, 1.48rem);
+  font-weight: var(--font-weight-title-compact);
+  line-height: 1.12;
+}
+
+.docs-reading-path-copy p:last-child {
+  max-width: 42rem;
+  margin: 0.5rem 0 0;
+  color: var(--color-concrete-400);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.docs-index-prose .docs-reading-path-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.62rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.docs-reading-path-item {
+  --reading-path-signal: var(--signal-core);
+  --reading-path-rgb: var(--signal-core-rgb);
+  margin: 0;
+}
+
+.docs-reading-path-item-reference {
+  --reading-path-signal: var(--signal-reference);
+  --reading-path-rgb: var(--signal-reference-rgb);
+}
+
+.docs-prose .docs-reading-path-item a {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.72rem;
+  min-height: 4.6rem;
+  align-items: start;
+  padding: 0.78rem 0.82rem;
+  border: 1px solid rgba(var(--reading-path-rgb), 0.11);
+  border-left-color: rgba(var(--reading-path-rgb), 0.34);
+  border-radius: calc(var(--radius-panel) - 1px);
+  background:
+    linear-gradient(90deg, rgba(var(--reading-path-rgb), 0.032), transparent 58%),
+    rgba(10, 8, 6, 0.22);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    color 160ms ease;
+}
+
+.docs-prose .docs-reading-path-item a:hover,
+.docs-prose .docs-reading-path-item a:focus-visible {
+  border-color: rgba(var(--reading-path-rgb), 0.28);
+  border-left-color: rgba(var(--reading-path-rgb), 0.64);
+  box-shadow:
+    inset 1px 0 0 rgba(var(--reading-path-rgb), 0.22),
+    0 0 0 1px rgba(var(--reading-path-rgb), 0.04);
+}
+
+.docs-prose .docs-reading-path-item a:focus-visible {
+  outline: 2px solid var(--reading-path-signal);
+  outline-offset: 3px;
+}
+
+.docs-reading-path-index {
+  color: var(--reading-path-signal);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+.docs-reading-path-label,
+.docs-reading-path-detail {
+  display: block;
+  line-height: 1.35;
+}
+
+.docs-reading-path-label {
+  color: var(--color-concrete-100);
+  font-family: var(--font-heading), ui-monospace, monospace;
+  font-size: 0.98rem;
+  font-weight: var(--font-weight-title-compact);
+}
+
+.docs-reading-path-detail {
+  margin-top: 0.34rem;
+  color: var(--color-concrete-400);
+  font-size: 0.84rem;
+}
+
+.docs-prose .docs-reading-path-item a:hover .docs-reading-path-label,
+.docs-prose .docs-reading-path-item a:focus-visible .docs-reading-path-label {
+  color: var(--reading-path-signal);
+}
+
+@media (min-width: 54rem) {
+  .docs-reading-path {
+    grid-template-columns: minmax(13rem, 0.42fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .docs-reading-path-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .docs-prose .docs-reading-path-item a {
+    height: 100%;
+  }
+}
+
+@media (min-width: 46rem) and (max-width: 53.99rem) {
+  .docs-reading-path {
+    grid-template-columns: minmax(12rem, 0.36fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 0.86rem;
+    margin-bottom: 1.1rem;
+    padding: 0.82rem 0.9rem;
+  }
+
+  .docs-reading-path-copy {
+    align-self: center;
+    padding-left: 0.34rem;
+  }
+
+  .docs-reading-path-copy p:last-child {
+    margin-top: 0.38rem;
+    font-size: 0.84rem;
+    line-height: 1.4;
+  }
+
+  .docs-reading-path-list {
+    gap: 0.42rem;
+  }
+
+  .docs-prose .docs-reading-path-item a {
+    min-height: 3.25rem;
+    align-items: center;
+    gap: 0.54rem;
+    padding: 0.46rem 0.62rem;
+  }
+
+  .docs-reading-path-detail {
+    margin-top: 0.14rem;
+    font-size: 0.76rem;
+    line-height: 1.28;
+  }
+}
+
+@media (max-width: 40rem) {
+  .docs-reading-path {
+    gap: 0.52rem;
+    margin-bottom: 0.95rem;
+    padding: 0.62rem 0.68rem;
+  }
+
+  .docs-reading-path::before {
+    top: 0.55rem;
+    bottom: 0.55rem;
+    left: 0.55rem;
+  }
+
+  .docs-reading-path::after {
+    display: none;
+  }
+
+  .docs-reading-path-copy {
+    padding-left: 0.38rem;
+  }
+
+  .docs-reading-path h2 {
+    font-size: 1.05rem;
+  }
+
+  .docs-reading-path-copy p:last-child {
+    margin-top: 0.28rem;
+    font-size: 0.78rem;
+    line-height: 1.32;
+  }
+
+  .docs-reading-path-list {
+    gap: 0.34rem;
+  }
+
+  .docs-prose .docs-reading-path-item a {
+    min-height: 3.18rem;
+    align-items: center;
+    gap: 0.44rem;
+    padding: 0.42rem 0.54rem;
+  }
+
+  .docs-reading-path-index {
+    font-size: 0.62rem;
+    line-height: 1.45;
+  }
+
+  .docs-reading-path-label {
+    font-size: 0.84rem;
+    line-height: 1.22;
+  }
+
+  .docs-reading-path-detail {
+    margin-top: 0.12rem;
+    font-size: 0.72rem;
+    line-height: 1.24;
+  }
+}
