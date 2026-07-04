@@ -1,0 +1,68 @@
+.colophon-provenance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(var(--signal-muted-rgb), 0.18);
+  border-radius: calc(var(--radius-panel) - 2px);
+  background: rgba(var(--signal-muted-rgb), 0.12);
+}
+
+.colophon-provenance-grid > div {
+  min-width: 0;
+  background:
+    linear-gradient(90deg, rgba(var(--signal-muted-rgb), 0.06), transparent 58%),
+    var(--signal-pattern-muted),
+    rgba(10, 7, 5, 0.32);
+  padding: 0.58rem 0.7rem;
+}
+
+.colophon-provenance-grid dt {
+  color: var(--signal-muted);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.colophon-provenance-grid dd {
+  margin-top: 0.18rem;
+  color: var(--color-concrete-200);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.colophon-trace-card {
+  isolation: isolate;
+  min-height: 13.25rem;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(216, 138, 36, 0.34) 0,
+      rgba(216, 138, 36, 0.34) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      70% 58% at 16% 0%,
+      rgba(240, 184, 92, 0.07),
+      transparent 62%
+    ),
+    radial-gradient(
+      80% 80% at 100% 100%,
+      rgba(0, 0, 0, 0.2),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(232, 222, 203, 0.045) 0%,
+      transparent 38%
+    );
+}
+
+.colophon-trace-grid {
+  margin-top: 0.1rem;
+}
