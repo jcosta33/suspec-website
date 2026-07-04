@@ -31,7 +31,6 @@ export function PageNav({
     <a
       key={item.href}
       href={item.href}
-      aria-label={`Jump to ${item.label} section`}
       data-color-role={item.signal}
       className={`agent-page-nav-link agent-page-nav-link-${item.signal} focus-ring group`}
     >

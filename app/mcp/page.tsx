@@ -375,9 +375,9 @@ export default function McpPage() {
               href="/docs/10-integrations/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Read the integrations documentation (opens in new tab)"
             >
               docs/10-integrations.md
+              <span className="sr-only"> (opens in new tab)</span>
             </TextLink>
           </p>
         </div>
@@ -411,7 +411,6 @@ export default function McpPage() {
                   <a
                     href={item.href}
                     className="mcp-adapter-step-link focus-ring group block h-full p-5 transition-colors duration-150 hover:bg-panel sm:p-6"
-                    aria-label={`Jump to ${item.label} step (${item.channel}): ${item.detail}`}
                   >
                     <div className="mcp-adapter-heading flex items-center gap-3">
                       <HexBadge color={item.signal} className="h-10 w-10 shrink-0">
@@ -726,11 +725,12 @@ export default function McpPage() {
               href="https://github.com/jcosta33/suspec-mcp"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Open suspec-mcp on GitHub (opens in new tab)"
               className="w-fit gap-2 text-base font-semibold"
               touchTarget
             >
-              GitHub <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              GitHub
+              <span className="sr-only"> (opens in new tab)</span>{" "}
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </TextLink>
             <TextLink
               href="/cli/"
@@ -743,11 +743,11 @@ export default function McpPage() {
               href="/docs/10-integrations/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Read the integration notes docs (opens in new tab)"
               className="w-fit gap-2 text-base font-semibold"
               touchTarget
             >
               Integration notes{" "}
+              <span className="sr-only">(opens in new tab)</span>
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </TextLink>
           </div>
