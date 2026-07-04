@@ -1,0 +1,124 @@
+/* Lamp utilities — small role-colored signal lights. */
+.pilot-lamp {
+  --lamp-signal: var(--color-line-bright);
+  --lamp-rgb: 91, 73, 55;
+  --lamp-highlight: rgba(240, 226, 204, 0.4);
+  position: relative;
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  border: 2px solid var(--color-line);
+  background:
+    radial-gradient(
+      circle at 35% 35%,
+      var(--lamp-highlight),
+      transparent 42%
+    ),
+    var(--lamp-signal);
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(var(--lamp-rgb), 0.28),
+    0 0 2px var(--lamp-signal);
+}
+
+.pilot-lamp-core,
+.pilot-lamp-amber {
+  --lamp-signal: var(--signal-core);
+  --lamp-rgb: var(--signal-core-rgb);
+  --lamp-highlight: rgba(255, 248, 224, 0.7);
+}
+
+.pilot-lamp-evidence {
+  --lamp-signal: var(--signal-evidence);
+  --lamp-rgb: var(--signal-evidence-rgb);
+  --lamp-highlight: rgba(244, 250, 225, 0.68);
+}
+
+.pilot-lamp-green {
+  --lamp-signal: var(--signal-greenfield);
+  --lamp-rgb: var(--signal-greenfield-rgb);
+  --lamp-highlight: rgba(226, 250, 233, 0.66);
+}
+
+.pilot-lamp-greenfield {
+  --lamp-signal: var(--signal-greenfield);
+  --lamp-rgb: var(--signal-greenfield-rgb);
+  --lamp-highlight: rgba(226, 250, 233, 0.66);
+}
+
+.pilot-lamp-brownfield {
+  --lamp-signal: var(--signal-brownfield);
+  --lamp-rgb: var(--signal-brownfield-rgb);
+  --lamp-highlight: rgba(251, 224, 204, 0.66);
+}
+
+.pilot-lamp-reference,
+.pilot-lamp-olive {
+  --lamp-signal: var(--signal-reference);
+  --lamp-rgb: var(--signal-reference-rgb);
+  --lamp-highlight: rgba(222, 250, 244, 0.66);
+}
+
+.pilot-lamp-change {
+  --lamp-signal: var(--signal-change);
+  --lamp-rgb: var(--signal-change-rgb);
+  --lamp-highlight: rgba(255, 236, 230, 0.7);
+}
+
+.pilot-lamp-red {
+  --lamp-signal: var(--color-pwr-red);
+  --lamp-rgb: 210, 98, 78;
+  --lamp-highlight: rgba(255, 234, 226, 0.72);
+}
+
+.pilot-lamp-off {
+  --lamp-signal: var(--color-line);
+  --lamp-rgb: 70, 57, 44;
+  --lamp-highlight: rgba(240, 226, 204, 0.12);
+  background:
+    radial-gradient(
+      circle at 35% 35%,
+      rgba(240, 226, 204, 0.12),
+      transparent 40%
+    ),
+    var(--color-line);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-window .terminal-toolbar .pilot-lamp-change {
+  --lamp-signal: var(--signal-change);
+  --lamp-rgb: var(--signal-change-rgb);
+  --lamp-highlight: rgba(255, 236, 230, 0.7);
+}
+
+.terminal-window .terminal-toolbar .pilot-lamp-red {
+  --lamp-signal: var(--color-pwr-red);
+  --lamp-rgb: 210, 98, 78;
+  --lamp-highlight: rgba(255, 234, 226, 0.72);
+}
+
+.terminal-window .terminal-toolbar .pilot-lamp-core,
+.terminal-window .terminal-toolbar .pilot-lamp-amber {
+  --lamp-signal: var(--signal-core);
+  --lamp-rgb: var(--signal-core-rgb);
+  --lamp-highlight: rgba(255, 248, 224, 0.7);
+}
+
+.terminal-window .terminal-toolbar .pilot-lamp-evidence {
+  --lamp-signal: var(--signal-evidence);
+  --lamp-rgb: var(--signal-evidence-rgb);
+  --lamp-highlight: rgba(244, 250, 225, 0.68);
+}
+
+.terminal-window .terminal-toolbar .pilot-lamp-green {
+  --lamp-signal: var(--signal-greenfield);
+  --lamp-rgb: var(--signal-greenfield-rgb);
+  --lamp-highlight: rgba(226, 250, 233, 0.66);
+}
+
+/* Engraved / stamped label text */
+.engraved {
+  color: var(--color-concrete-300);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
+}
