@@ -1,0 +1,17 @@
+
+@media (prefers-reduced-motion: reduce) {
+  .docs-article-html h2,
+  .docs-index-section,
+  .docs-index-section::after,
+  .docs-prose .docs-index-list a,
+  .docs-prose .docs-index-list a::after {
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+  }
+}
+
+.docs-prose .docs-index-section-compact p a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+}

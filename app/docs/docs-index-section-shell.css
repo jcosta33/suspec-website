@@ -1,0 +1,206 @@
+.docs-index-top,
+.docs-index-stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 45.99rem) {
+  .docs-index-grid,
+  .docs-index-top,
+  .docs-index-stack {
+    gap: 0.95rem;
+  }
+}
+
+.docs-index-section {
+  --docs-index-signal: var(--signal-core);
+  --docs-index-rgb: var(--signal-core-rgb);
+  --docs-index-pattern: var(--signal-pattern-core);
+  position: relative;
+  scroll-margin-top: 6rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1.22rem;
+  border: 1px solid rgba(var(--docs-index-rgb), 0.14);
+  border-radius: var(--radius-panel);
+  background:
+    linear-gradient(90deg, rgba(var(--docs-index-rgb), 0.012), transparent 42%),
+    linear-gradient(0deg, rgba(var(--docs-index-rgb), 0.014) 1px, transparent 1px),
+    var(--signal-pattern-muted),
+    rgba(18, 14, 10, 0.62);
+  background-size:
+    auto,
+    100% 1.55rem,
+    auto,
+    auto;
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.045),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.docs-index-section::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0.38rem;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent, rgba(var(--docs-index-rgb), 0.2), transparent),
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--docs-index-rgb), 0.08) 0 1px,
+      transparent 1px 0.55rem
+    );
+  opacity: 0.48;
+}
+
+.docs-index-section-core,
+.docs-index-section-primary {
+  --docs-index-signal: var(--signal-core);
+  --docs-index-rgb: var(--signal-core-rgb);
+  --docs-index-pattern:
+    radial-gradient(
+      80% 72% at 16% 0%,
+      rgba(var(--docs-index-rgb), 0.05),
+      transparent 62%
+    ),
+    var(--signal-pattern-core);
+}
+
+.docs-index-section-greenfield {
+  --docs-index-signal: var(--signal-greenfield);
+  --docs-index-rgb: var(--signal-greenfield-rgb);
+  --docs-index-pattern:
+    var(--signal-pattern-greenfield),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 23px,
+      rgba(var(--docs-index-rgb), 0.022) 23px 24px
+    );
+}
+
+.docs-index-section-change {
+  --docs-index-signal: var(--signal-change);
+  --docs-index-rgb: var(--signal-change-rgb);
+  --docs-index-pattern:
+    repeating-linear-gradient(
+      135deg,
+      rgba(var(--docs-index-rgb), 0.026) 0 1px,
+      transparent 1px 13px
+    ),
+    linear-gradient(180deg, rgba(var(--docs-index-rgb), 0.018), transparent 48%);
+}
+
+.docs-index-section-reference {
+  --docs-index-signal: var(--signal-reference);
+  --docs-index-rgb: var(--signal-reference-rgb);
+  --docs-index-pattern:
+    var(--signal-pattern-reference),
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--docs-index-rgb), 0.012) 0 1px,
+      transparent 1px 28px
+    );
+}
+
+.docs-index-section-muted,
+.docs-index-section-examples,
+.docs-index-section-adrs {
+  --docs-index-signal: var(--signal-muted);
+  --docs-index-rgb: var(--signal-muted-rgb);
+  --docs-index-pattern:
+    var(--signal-pattern-muted),
+    linear-gradient(180deg, rgba(var(--docs-index-rgb), 0.016), transparent 52%);
+}
+
+.docs-index-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      122deg,
+      transparent 0%,
+      transparent 38%,
+      rgba(var(--docs-index-rgb), 0.012) 48%,
+      transparent 60%,
+      transparent 100%
+    ),
+    linear-gradient(90deg, rgba(var(--docs-index-rgb), 0.28), transparent 72%)
+      left 0.62rem top 0.62rem / 3.2rem 1px no-repeat,
+    linear-gradient(180deg, rgba(var(--docs-index-rgb), 0.28), transparent 72%)
+      left 0.62rem top 0.62rem / 1px 2.2rem no-repeat,
+    linear-gradient(270deg, rgba(var(--docs-index-rgb), 0.16), transparent 72%)
+      right 0.62rem bottom 0.62rem / 3.2rem 1px no-repeat,
+    linear-gradient(0deg, rgba(var(--docs-index-rgb), 0.16), transparent 72%)
+      right 0.62rem bottom 0.62rem / 1px 2.2rem no-repeat,
+    radial-gradient(
+      70% 60% at 16% 0%,
+      rgba(240, 226, 204, 0.045),
+      transparent 60%
+    );
+  opacity: 0.34;
+  transition: opacity 180ms ease;
+}
+
+.docs-index-section:hover::after,
+.docs-index-section:focus-within::after {
+  opacity: 0.42;
+}
+
+.docs-index-section:hover,
+.docs-index-section:focus-within {
+  border-color: rgba(var(--docs-index-rgb), 0.3);
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.065),
+    0 0 0 1px rgba(var(--docs-index-rgb), 0.055);
+}
+
+.docs-index-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 46rem) {
+  .docs-index-grid:not(.docs-index-grid-balanced) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .docs-index-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .docs-index-top > .docs-index-section,
+  .docs-index-stack {
+    height: 100%;
+  }
+
+  .docs-index-stack {
+    align-content: stretch;
+    gap: 1rem;
+  }
+
+  .docs-index-section-primary {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+  }
+
+  .docs-index-section-primary .docs-index-list {
+    flex: 1;
+    align-content: start;
+  }
+
+  .docs-index-section-wide {
+    grid-column: 1 / -1;
+  }
+
+}
