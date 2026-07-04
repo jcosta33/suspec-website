@@ -1,0 +1,29 @@
+@media (min-width: 40rem) and (max-width: 57.99rem) {
+  .overview-answer-panel {
+    gap: clamp(0.9rem, 1.9vw, 1.12rem);
+  }
+
+  .overview-answer-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.58rem;
+  }
+
+  .overview-answer-fact {
+    display: grid;
+    grid-template-columns: minmax(4.6rem, 0.34fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 0.62rem;
+    padding: 0.68rem 0.72rem;
+  }
+
+  .overview-answer-fact dt {
+    padding-top: 0.14rem;
+    font-size: 0.6rem;
+  }
+
+  .overview-answer-fact dd {
+    margin-top: 0;
+    font-size: 0.84rem;
+    line-height: 1.38;
+  }
+}
