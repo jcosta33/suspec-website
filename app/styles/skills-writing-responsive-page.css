@@ -1,0 +1,21 @@
+@media (max-width: 40rem) {
+  .writing-skill-page {
+    row-gap: 2.35rem;
+  }
+
+  .writing-skill-page > .ambient-header {
+    margin-bottom: -0.25rem;
+  }
+
+  .writing-skill-page .page-hero {
+    max-width: 20.5rem;
+  }
+
+  .writing-skill-page .hero-trace {
+    margin-top: 0.95rem;
+  }
+
+  .writing-skill-page .section-register {
+    padding-top: 2.72rem;
+  }
+}

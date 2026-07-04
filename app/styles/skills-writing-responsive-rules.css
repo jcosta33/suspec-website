@@ -1,0 +1,52 @@
+@media (max-width: 40rem) {
+  #rules {
+    gap: 1.35rem;
+  }
+
+  .skill-body-rule-list {
+    gap: 0;
+    overflow: hidden;
+    border: 1px solid rgba(var(--signal-reference-rgb), 0.24);
+    border-radius: var(--radius-panel);
+    background:
+      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.055), transparent 48%),
+      rgba(10, 7, 5, 0.2);
+  }
+
+  .skill-body-rule-list > li:not(:last-child) {
+    border-bottom: 1px solid rgba(var(--signal-reference-rgb), 0.2);
+  }
+
+  .skill-body-rule-card {
+    border: 0;
+    border-radius: 0;
+    padding: 0.74rem 0.8rem;
+    box-shadow: inset 2px 0 0 rgba(var(--signal-reference-rgb), 0.2);
+  }
+
+  .skill-body-rule-card > div:last-child {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 0 0.68rem;
+  }
+
+  .skill-body-rule-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0;
+  }
+
+  .skill-body-rule-card h3 {
+    margin-top: 0.05rem;
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+
+  .skill-body-rule-card p {
+    grid-column: 2;
+    margin-top: 0.12rem;
+    font-size: 0.78rem;
+    line-height: 1.32;
+  }
+}
