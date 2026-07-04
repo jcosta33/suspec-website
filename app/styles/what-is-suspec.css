@@ -152,7 +152,7 @@
 
 .overview-section-nav-inline {
   width: 100%;
-  max-width: none !important;
+  max-width: none;
 }
 
 .overview-section-nav-inline .section-jump-nav {
@@ -443,7 +443,7 @@
   }
 
   .overview-summary-grid .overview-terminal-shell {
-    order: 1 !important;
+    order: 1;
   }
 
   .overview-terminal-shell {
@@ -455,11 +455,11 @@
   }
 
   .overview-summary-grid .overview-paper-artifact {
-    order: 2 !important;
+    order: 2;
   }
 
   .overview-paper-artifact {
-    padding: 0.92rem 1rem !important;
+    padding: 0.92rem 1rem;
   }
 
   .overview-paper-artifact > div:last-child {
@@ -540,19 +540,19 @@
   }
 
   .overview-not-list {
-    margin-top: 1rem !important;
+    margin-top: 1rem;
   }
 
   #boundaries .panel-inset {
-    padding: 1rem !important;
+    padding: 1rem;
   }
 
   #boundaries .panel-inset .section-kicker + .font-heading {
-    margin-top: 0.62rem !important;
+    margin-top: 0.62rem;
   }
 
   #boundaries .panel-inset ul:not(.overview-is-list) {
-    margin-top: 0.92rem !important;
+    margin-top: 0.92rem;
   }
 
   #boundaries .panel-inset ul:not(.overview-is-list) li {
@@ -564,7 +564,7 @@
   }
 
   .overview-next-card {
-    padding: 1rem !important;
+    padding: 1rem;
   }
 
   .overview-next-content {
@@ -975,8 +975,8 @@
 
 @media (min-width: 64rem) {
   .overview-relation-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 0 !important;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
     overflow: hidden;
     border: 1px solid rgba(var(--signal-reference-rgb), 0.22);
     border-radius: var(--radius-panel);
@@ -1186,7 +1186,7 @@
 
   .overview-failure-card > .relative > p {
     grid-column: 2;
-    margin-top: 0 !important;
+    margin-top: 0;
     font-size: 0.82rem;
     line-height: 1.42;
   }
