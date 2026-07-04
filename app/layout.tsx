@@ -31,6 +31,7 @@ import "./styles/art-direction-home.css";
 import "./styles/art-direction-products.css";
 import "./styles/art-direction-docs.css";
 import "./styles/art-direction-mobile.css";
+import "./styles/reduced-motion.css";
 import { Shell } from "./components/Shell";
 import { JsonLd } from "./components/JsonLd";
 import { canonicalAlternates } from "./seo";

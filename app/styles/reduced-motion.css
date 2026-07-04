@@ -1,0 +1,31 @@
+/* Loaded last so late art-direction files cannot reintroduce motion for reduced-motion users. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse,
+  .animate-pulse-slow,
+  .animate-blink,
+  .animate-scanline,
+  .animate-rotate-slow,
+  .pilot-lamp-pulse,
+  .terminal-title-caret {
+    animation: none;
+  }
+
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  .toggle:active,
+  .panel-raised.group:hover,
+  .panel-raised.group:focus-within,
+  .panel-raised:hover > .surface-engraving,
+  .panel-raised:focus-within > .surface-engraving,
+  .panel-raised:hover > .surface-glint,
+  .panel-raised:focus-within > .surface-glint,
+  .terminal-window:hover,
+  .terminal-window:focus-within,
+  .paper-artifact:hover,
+  .paper-artifact:focus-within,
+  .group:hover .catalog-row-badge,
+  .group:focus-within .catalog-row-badge {
+    transform: none !important;
+  }
+}
