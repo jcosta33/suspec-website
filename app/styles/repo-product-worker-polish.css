@@ -1,0 +1,108 @@
+.repo-product-page .agent-roster-icon,
+.repo-product-page .agent-worker-card .catalog-row-badge,
+.skills-page .skill-guide-row-badge {
+  margin-top: 0.08rem !important;
+}
+
+.repo-product-page .agent-worker-list > li,
+.skills-page .skill-guide-list > li {
+  display: grid;
+}
+
+.repo-product-page .agent-worker-card,
+.skills-page .skill-guide-row.catalog-row {
+  height: 100%;
+}
+
+.repo-product-page .agent-worker-card {
+  padding: 0 !important;
+}
+
+.repo-product-page .agent-worker-card .catalog-row,
+.skills-page .skill-guide-row.catalog-row {
+  min-height: 6.35rem !important;
+  padding-block: 0.9rem !important;
+}
+
+.repo-product-page .agent-worker-card .catalog-row {
+  min-height: 4.7rem !important;
+  padding: 0.92rem 1.05rem !important;
+}
+
+.repo-product-page .agent-worker-card .catalog-row > div:first-child > div:last-child,
+.skills-page .skill-guide-row.catalog-row > div:first-child > div:last-child {
+  display: grid;
+  align-content: start;
+  grid-template-rows: auto auto 1fr;
+  row-gap: 0.3rem;
+}
+
+.repo-product-page .agent-worker-card .catalog-row-copy,
+.skills-page .skill-guide-row .catalog-row-copy {
+  align-self: start;
+  margin-top: 0 !important;
+}
+
+.skills-page .skill-guide-row-file {
+  overflow-wrap: anywhere;
+}
+
+.repo-product-page .agent-worker-card .catalog-row-title,
+.skills-page .skill-guide-row .catalog-row-title {
+  align-self: start;
+  line-height: 1.24;
+}
+
+.repo-product-page .agent-worker-card .catalog-row {
+  display: grid !important;
+  grid-template-columns: 3.05rem minmax(0, 1fr) auto;
+  align-items: start !important;
+  gap: 0.9rem !important;
+}
+
+.repo-product-page .agent-worker-card .catalog-row > div:first-child {
+  display: contents;
+}
+
+.repo-product-page .agent-worker-card .catalog-row-badge {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+}
+
+.repo-product-page .agent-worker-card .catalog-row > div:first-child > div:last-child {
+  grid-column: 2;
+}
+
+.repo-product-page .agent-worker-card .agent-worker-body {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 0.34rem;
+}
+
+.repo-product-page .agent-worker-card .agent-worker-file {
+  overflow-wrap: anywhere;
+}
+
+.repo-product-page .agent-worker-card .catalog-row-link-icon {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  opacity: 0.56;
+}
+
+.repo-product-page .agent-worker-card .catalog-row:is(:hover, :focus-within) .catalog-row-link-icon {
+  opacity: 1;
+}
+
+.skills-page .skill-guide-list {
+  align-items: stretch;
+}
+
+.skills-page .skill-guide-row.catalog-row {
+  grid-template-columns: 3.15rem minmax(0, 1fr) auto !important;
+  padding-inline: 0.95rem 2.35rem !important;
+}
+
+.skills-page .skill-guide-row-badge {
+  align-self: start;
+}

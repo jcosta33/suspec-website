@@ -1,0 +1,48 @@
+
+.site-main-frame .repo-product-page.flex.flex-col {
+  row-gap: clamp(1.1rem, 1.8vw, 1.65rem) !important;
+}
+
+.repo-product-page > .page-nav-wrap,
+.repo-product-page > nav.page-nav-wrap {
+  width: min(100%, 72rem);
+  margin-bottom: clamp(0.92rem, 1.36vw, 1.24rem) !important;
+}
+
+@media (min-width: 64rem) {
+  .repo-product-page > .page-nav-wrap,
+  .repo-product-page > nav.page-nav-wrap {
+    max-width: min(72rem, calc(100% - 4rem)) !important;
+  }
+}
+
+.repo-product-page > .ambient-header + .page-nav-wrap {
+  margin-top: clamp(0.18rem, 0.5vw, 0.46rem) !important;
+}
+
+.skills-page > .manifest-pair {
+  margin-top: clamp(1.85rem, 2.65vw, 2.35rem) !important;
+}
+
+.repo-product-page > .page-nav-wrap + .section-register {
+  margin-top: clamp(0.82rem, 1.24vw, 1.12rem) !important;
+}
+
+.repo-product-page > .section-register + .section-register {
+  margin-top: clamp(0.82rem, 1.3vw, 1.18rem);
+}
+
+.repo-product-page > .section-register:not(.ambient-header) {
+  padding-top: var(--rhythm-register-gap);
+}
+
+.overview-section-nav-shell {
+  width: min(100%, 64rem);
+}
+
+@media (min-width: 64rem) {
+  .overview-section-nav-shell {
+    max-width: min(64rem, calc(100% - 4rem)) !important;
+  }
+}
+

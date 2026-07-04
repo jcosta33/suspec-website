@@ -15,9 +15,9 @@ component TypeScript.
 | `app/styles/site-chrome.css` | Header/nav chrome, scroll-revealed top bar, mobile menu states. |
 | `app/styles/site-surfaces.css`, `app/styles/surface-primitives.css`, `app/styles/artifact-surfaces.css` | Reusable panels, terminals, paper artifacts, buttons, badges, lamps, tactile surface primitives. |
 | `app/styles/sections.css`, `app/styles/route-heroes.css`, `app/styles/process-strips.css` | Shared route rhythm, section headings, route heroes, process rails. |
-| `app/styles/home.css`, `app/styles/get-started.css`, `app/styles/get-started-choices.css`, `app/styles/what-is-suspec.css`, `app/styles/loop.css`, `app/styles/cli.css`, `app/styles/mcp.css`, `app/styles/skills.css`, `app/styles/repo-product-*.css`, `app/styles/colophon.css`, `app/styles/footer.css` | Route and product-page styling. Product shared CSS is split into manifest, navigation, roster, and worker-card families. |
+| `app/styles/home.css`, `app/styles/get-started.css`, `app/styles/get-started-choices.css`, `app/styles/what-is-suspec.css`, `app/styles/loop.css`, `app/styles/cli.css`, `app/styles/mcp.css`, `app/styles/skills.css`, `app/styles/repo-product-*.css`, `app/styles/colophon.css`, `app/styles/footer.css` | Route and product-page styling. Product shared CSS is split into manifest, navigation, roster, worker-card, and late product-polish families. |
 | `app/styles/motion-primitives.css`, `app/styles/motion-surfaces.css`, `app/styles/reduced-motion.css` | Cursor/background motion, hover-safe transforms, reduced-motion clamp. `reduced-motion.css` stays last. |
-| `app/styles/art-direction-home.css`, `app/styles/art-direction-products.css`, `app/styles/art-direction-docs.css`, `app/styles/art-direction-mobile.css` | Late visual tuning from the redesign. These contain most overrides and should shrink over time. |
+| `app/styles/art-direction-home.css`, `app/styles/art-direction-docs.css`, `app/styles/art-direction-mobile.css` | Late visual tuning from the redesign. These contain most overrides and should shrink over time. Product tuning now lives in `repo-product-*-polish.css` files at the same cascade point. |
 | `app/docs/docs-shell.css`, `app/docs/docs-article.css`, `app/docs/docs-index.css`, `app/docs/docs-footer.css`, `app/docs/docs-responsive.css` | Docs shell, rendered markdown, index, footer, and docs-specific responsive fixes. |
 
 `app/art-direction-pass.css` no longer exists; its work is split into the four
@@ -73,7 +73,7 @@ component TypeScript.
 | --- | --- | --- | --- |
 | 1 | Add CSS inventory guardrails and this map. | PG-CSS-001 through PG-CSS-005. | `npm run audit:css`, `npm run lint`, `npx tsc --noEmit`, `npm run build`, `npm run audit:site`. |
 | 2 | Split `repo-products.css` into manifest, navigation, agent roster, and worker-card files without changing selectors. | Product page layout, package colors, nav behavior. | `npm run audit:css`, `npm run audit:site`; visual spot-check `/skills`, `/agents`, `/cli`, `/mcp`. |
-| 3 | Fold stable `art-direction-products.css` rules into the owning product files and delete duplicated late overrides. | Product page spacing and mobile fit. | `npm run audit:css`, `npm run audit:site`; screenshot product pages at mobile/tablet/desktop. |
+| 3 | Fold stable `art-direction-products.css` rules into owning late product-polish files, preserving cascade before merging them earlier. | Product page spacing and mobile fit. | `npm run audit:css`, `npm run audit:site`; screenshot product pages at mobile/tablet/desktop. |
 | 4 | Fold stable `art-direction-home.css` and `art-direction-docs.css` rules into home/docs owners. | Home first viewport, docs search/nav alignment, docs quote/code tone. | `npm run audit:site`; screenshot `/`, `/docs`, one short doc, one long doc. |
 | 5 | Reduce `!important` in mobile overrides only after the owning selector order is clear. | Mobile no-overflow and reduced-motion behavior. | `npm run audit:css`, `npm run audit:site`, representative keyboard/a11y checks. |
 

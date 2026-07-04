@@ -1,0 +1,69 @@
+.repo-product-page .agent-roster-cell {
+  min-height: clamp(11.65rem, 13.6vw, 12.35rem) !important;
+  padding: clamp(1.16rem, 1.48vw, 1.34rem) !important;
+}
+
+.repo-product-page .agent-roster-cell > div {
+  grid-template-columns: 3.25rem minmax(0, 1fr) !important;
+  gap: clamp(0.9rem, 1.12vw, 1rem) !important;
+}
+
+.repo-product-page .agent-roster-cell-body {
+  min-height: 100%;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows:
+    0.92rem
+    minmax(1.62rem, auto)
+    minmax(1.22rem, auto)
+    minmax(3.1rem, auto);
+  row-gap: 0.48rem;
+}
+
+.repo-product-page .agent-roster-cell-title,
+.repo-product-page .agent-roster-file,
+.repo-product-page .agent-roster-use {
+  margin-block: 0 !important;
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.repo-product-page p.agent-roster-file.mt-2 {
+  margin-block-start: 0 !important;
+  margin-top: 0 !important;
+}
+
+.repo-product-page .agent-roster-use {
+  align-self: start;
+  max-width: 32rem;
+}
+
+.repo-product-page .agent-roster-cell-body > div:first-child p {
+  grid-row: 1;
+}
+
+.repo-product-page .agent-roster-cell-body .motion-nudge-x {
+  grid-row: 1;
+  align-self: start;
+  margin-top: 0.05rem;
+}
+
+.repo-product-page .agent-roster-cell-title {
+  grid-row: 2;
+  align-self: center;
+  max-width: 16rem;
+  line-height: 1.18;
+}
+
+.repo-product-page .agent-roster-file {
+  grid-row: 3;
+  align-self: start;
+  line-height: 1.28;
+}
+
+.repo-product-page .agent-roster-use {
+  grid-row: 4;
+  line-height: 1.46;
+}
+

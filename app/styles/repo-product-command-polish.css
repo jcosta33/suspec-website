@@ -1,0 +1,178 @@
+.repo-product-page :where(.cli-command-catalog, .mcp-adapter-panel, .skill-guide-catalog) {
+  background:
+    radial-gradient(92% 64% at 50% 0%, rgba(240, 226, 204, 0.028), transparent 62%),
+    linear-gradient(180deg, rgba(240, 226, 204, 0.02), transparent 36%),
+    var(--color-panel-raised);
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.052),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.42),
+    0 20px 56px rgba(0, 0, 0, 0.18);
+}
+
+.cli-command-catalog-header,
+.skill-guide-catalog-header,
+.mcp-adapter-header {
+  min-height: 3.25rem;
+  padding-block: 0.9rem;
+}
+
+.cli-command-section {
+  padding: clamp(1.12rem, 1.58vw, 1.36rem);
+}
+
+.cli-command-section-heading {
+  margin-bottom: clamp(0.92rem, 1.18vw, 1.08rem);
+  padding-bottom: clamp(0.78rem, 1vw, 0.92rem);
+}
+
+.cli-command-list {
+  gap: 0.64rem;
+}
+
+.cli-command-row.catalog-row {
+  min-height: 6.1rem;
+  padding-block: 0.95rem;
+}
+
+@media (min-width: 48rem) {
+  .cli-command-section {
+    display: grid;
+    grid-template-columns: minmax(11.5rem, 0.28fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: clamp(1.05rem, 2vw, 1.5rem);
+    padding: clamp(1.18rem, 1.65vw, 1.55rem) clamp(1rem, 1.75vw, 1.45rem);
+  }
+
+  .cli-command-section-heading {
+    align-content: start;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.82rem;
+    min-height: 100%;
+    margin: 0;
+    padding: 0 clamp(0.92rem, 1.35vw, 1.18rem) 0 0;
+    border-bottom: 0;
+    border-right: 1px solid rgba(var(--cli-section-rgb), 0.16);
+  }
+
+  .cli-command-section-heading::before {
+    inset: 0 -1px 0 auto;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(
+      180deg,
+      rgba(var(--cli-section-rgb), 0.48),
+      rgba(var(--cli-section-rgb), 0.12) 36%,
+      transparent 78%
+    );
+  }
+
+  .cli-command-section-heading h3 {
+    max-width: 12rem;
+    font-size: clamp(1.05rem, 1.2vw, 1.18rem);
+    line-height: 1.14;
+  }
+
+  .cli-command-family-tag {
+    margin-top: auto;
+  }
+
+  .cli-command-list {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20.5rem), 1fr));
+    gap: clamp(0.58rem, 0.85vw, 0.72rem);
+  }
+
+  .cli-command-row.catalog-row {
+    min-height: 5.45rem;
+    padding: 0.82rem 7.15rem 0.82rem 0.86rem;
+  }
+}
+
+@media (min-width: 40.01rem) and (max-width: 63.99rem) {
+  .cli-command-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .cli-command-rail .cli-command-step:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .cli-command-rail .cli-command-step:last-child .cli-command-link {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.9rem 1rem;
+  }
+
+  .cli-command-rail .cli-command-step:last-child .cli-command-heading {
+    grid-column: 1 / -1;
+  }
+
+  .cli-command-rail .cli-command-step:last-child .cli-command-code,
+  .cli-command-rail .cli-command-step:last-child .cli-command-detail {
+    margin-top: 0;
+  }
+
+  .mcp-adapter-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .mcp-adapter-rail .mcp-adapter-step:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .mcp-adapter-step-link {
+    min-height: 5.45rem !important;
+    padding: 0.74rem 0.84rem !important;
+  }
+
+  .mcp-adapter-rail .mcp-adapter-step:last-child .mcp-adapter-step-link {
+    min-height: 4.65rem !important;
+  }
+
+  .mcp-adapter-rail .mcp-adapter-step:last-child .mcp-adapter-detail {
+    max-width: 36rem;
+  }
+}
+
+.mcp-adapter-rail,
+.mcp-guardrail-grid,
+.cli-command-legend {
+  gap: clamp(0.64rem, 1vw, 0.86rem);
+}
+
+@media (min-width: 64rem) {
+  .mcp-adapter-heading {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start !important;
+    gap: 0.62rem !important;
+  }
+
+  .mcp-adapter-heading > .min-w-0 {
+    min-width: 0;
+  }
+
+  .mcp-adapter-title,
+  .mcp-adapter-meta {
+    overflow-wrap: anywhere;
+  }
+
+  .mcp-adapter-detail {
+    max-width: 12rem;
+  }
+}
+
+.mcp-fact-card > .relative,
+.mcp-guardrail-card > .relative {
+  gap: clamp(0.9rem, 1.25vw, 1.12rem);
+}
+
+.repo-product-page .terminal-window {
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.52),
+    0 18px 46px rgba(0, 0, 0, 0.18);
+}
+
