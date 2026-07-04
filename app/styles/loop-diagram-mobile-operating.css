@@ -1,0 +1,67 @@
+@media (max-width: 40rem) {
+  .loop-seal-section {
+    gap: 1.2rem;
+    padding-top: 2.15rem;
+  }
+
+  section[data-register="02 / operating steps"] {
+    gap: 2.25rem;
+  }
+
+  .loop-operating-step {
+    gap: 1rem;
+  }
+
+  .loop-operating-copy {
+    padding: 0.9rem;
+  }
+
+  .loop-operating-title-row {
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .loop-operating-optional {
+    flex-basis: 100%;
+    margin-left: 1.7rem;
+    margin-top: 0.08rem;
+    font-size: 0.54rem;
+    letter-spacing: 0.12em;
+    line-height: 1;
+  }
+
+  .panel-raised.loop-operating-terminal {
+    padding: 0.35rem;
+  }
+
+  .loop-operating-terminal .terminal-toolbar {
+    gap: 0.45rem;
+    padding: 0.52rem 0.58rem;
+  }
+
+  .loop-operating-terminal .terminal-lamp-row {
+    gap: 0.48rem;
+  }
+
+  .loop-operating-terminal .pilot-lamp {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  .loop-operating-terminal .pilot-lamp + span {
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+  }
+
+  .loop-operating-terminal .copy-button {
+    min-height: 2.75rem;
+    padding-inline: 0.75rem;
+  }
+
+  .loop-operating-terminal .terminal-content {
+    max-height: 18rem;
+    padding: 0.85rem;
+    font-size: 0.74rem;
+    line-height: 1.45;
+  }
+}

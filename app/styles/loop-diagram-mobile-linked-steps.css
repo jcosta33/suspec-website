@@ -1,0 +1,37 @@
+@media (max-width: 40rem) {
+  .loop-step-grid-linked {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.52rem;
+  }
+
+  .loop-step-card {
+    min-height: auto;
+  }
+
+  .loop-step-grid-linked > li {
+    min-width: 0;
+  }
+
+  .loop-step-card-linked {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 0.42rem;
+    min-height: 3.9rem;
+    padding: 0.72rem 0.68rem 0.76rem;
+  }
+
+  .loop-step-card-linked .loop-step-label {
+    font-size: 0.92rem;
+    line-height: 1.12;
+  }
+
+  .loop-step-card-linked .loop-step-icon {
+    width: 0.98rem;
+    height: 0.98rem;
+  }
+
+  .loop-step-card-linked p {
+    display: none;
+  }
+}

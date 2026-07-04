@@ -1,0 +1,14 @@
+/* Loop diagram — keep the seal panel readable on narrow screens. */
+.loop-diagram,
+.loop-diagram-summary,
+.loop-diagram-copy,
+.loop-step-grid,
+.loop-step-grid > li {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.loop-diagram-copy p,
+.loop-step-card p {
+  overflow-wrap: anywhere;
+}
