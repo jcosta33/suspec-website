@@ -1,0 +1,111 @@
+/* ---------- Prose ---------- */
+.docs-prose {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 48rem;
+  position: relative;
+  isolation: isolate;
+  font-size: 1.0625rem;
+  line-height: 1.74;
+  color: var(--color-concrete-300);
+  scroll-margin-top: 5.5rem;
+}
+
+.docs-prose:focus {
+  outline: 2px solid rgba(var(--signal-core-rgb), 0.4);
+  outline-offset: 0.55rem;
+  border-radius: var(--radius-panel);
+}
+
+@media (min-width: 64rem) {
+  .docs-prose::before,
+  .docs-prose::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .docs-prose::before {
+    inset: -1.45rem -1.2rem -2.15rem;
+    border: 1px solid rgba(var(--signal-reference-rgb), 0.08);
+    border-left-color: rgba(var(--signal-reference-rgb), 0.24);
+    border-radius: var(--radius-panel);
+    background:
+      linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.026) 1px, transparent 1px),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0 1.52rem,
+        rgba(var(--signal-muted-rgb), 0.025) 1.52rem calc(1.52rem + 1px)
+      ),
+      radial-gradient(
+        100% 72% at 0% 0%,
+        rgba(var(--signal-reference-rgb), 0.055),
+        transparent 62%
+      ),
+      linear-gradient(180deg, rgba(18, 14, 10, 0.18), rgba(10, 7, 5, 0.1));
+    background-size:
+      36px 100%,
+      auto,
+      auto,
+      auto;
+    box-shadow:
+      inset 3px 0 0 rgba(var(--signal-reference-rgb), 0.055),
+      inset 0 1px 0 rgba(240, 226, 204, 0.025);
+  }
+
+  .docs-prose::after {
+    top: -0.8rem;
+    bottom: -1.25rem;
+    left: -0.58rem;
+    width: 0.28rem;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgba(var(--signal-core-rgb), 0.16) 0 1px,
+        transparent 1px 0.72rem
+      ),
+      linear-gradient(
+        180deg,
+        transparent,
+        rgba(var(--signal-reference-rgb), 0.24),
+        transparent
+      );
+    opacity: 0.7;
+  }
+}
+
+@media (max-width: 64rem) {
+  .docs-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 5rem;
+  }
+
+  .docs-layout:has(.docs-index-prose) {
+    gap: 1rem;
+    padding-top: 5.25rem;
+  }
+
+  .docs-layout > aside {
+    position: static;
+    width: 100%;
+    max-height: none;
+    flex: none;
+    overflow: visible;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .docs-search {
+    min-height: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .docs-prose {
+    width: 100%;
+    max-width: 100%;
+  }
+}
