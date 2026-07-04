@@ -16,8 +16,9 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
         <DocsNav nav={nav} />
       </aside>
       {/* The page renders its own `.docs-prose` (a <div>, not <main> — the Shell owns the single
-          <main id="main-content">; it carries data-pagefind-body to scope the search index to article
-          content) plus, for long docs, a `.docs-toc` rail — both as flex children of .docs-layout. */}
+          <main id="main-content">). The docs index/article elements carry data-pagefind-body so
+          search indexes the manual body without the nav rail. Long docs also render a `.docs-toc`
+          rail; both surfaces are flex children of .docs-layout. */}
       {children}
     </div>
   );

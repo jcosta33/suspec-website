@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import {
   ArrowLeft,
   ArrowRight,
@@ -13,11 +14,19 @@ import { PaperArtifact } from "./components/PaperArtifact";
 import { PilotLamp } from "./components/PilotLamp";
 import { signalRoles, type SignalRole } from "./components/signalStyles";
 
-export const metadata = {
-  title: "Page not found — recovery routes — Suspec",
-  description:
-    "The requested Suspec page was not found. Use the docs index, workflow page, or setup guide to recover a useful route.",
+const title = "Page not found — recovery routes — Suspec";
+const description =
+  "The requested Suspec page was not found. Use the docs index, workflow page, or setup guide to recover a useful route.";
+
+export const metadata: Metadata = {
+  title,
+  description,
   robots: "noindex",
+  openGraph: {
+    title,
+    description,
+    url: "/404/",
+  },
 };
 
 const recoveryRoutes = [
