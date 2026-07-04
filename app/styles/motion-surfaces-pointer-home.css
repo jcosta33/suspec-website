@@ -1,0 +1,38 @@
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .home-hero-section {
+    perspective: clamp(300px, 34vw, 620px);
+    perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
+    transform-style: preserve-3d;
+  }
+
+  .home-hero-section::before {
+    transform:
+      translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 0)
+      rotateX(var(--background-header-after-rotate-x))
+      rotateY(var(--background-header-after-rotate-y))
+      translateZ(58px);
+    transform-origin: 50% 52%;
+    transition:
+      transform 92ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 160ms ease-out;
+    will-change: transform;
+  }
+
+  .home-hero-seal-field {
+    perspective: clamp(300px, 34vw, 620px);
+    perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
+    transform-style: preserve-3d;
+  }
+
+  .home-hero-seal-field svg {
+    transform:
+      translate3d(var(--background-hero-shift-x), var(--background-hero-shift-y), 0)
+      rotateX(var(--background-hero-motif-rotate-x))
+      rotateY(var(--background-hero-motif-rotate-y))
+      translateZ(46px)
+      scale(1.015);
+    transform-origin: 50% 50%;
+    transition: transform 92ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+  }
+}

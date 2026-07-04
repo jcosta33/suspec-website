@@ -1,0 +1,36 @@
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .docs-index-cover,
+  .docs-article-header {
+    perspective: clamp(300px, 34vw, 560px);
+    perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
+    transform-style: preserve-3d;
+  }
+
+  .docs-index-cover::before,
+  .docs-article-header::before {
+    transform:
+      translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 52px)
+      rotateX(var(--background-header-after-rotate-x))
+      rotateY(var(--background-header-after-rotate-y))
+      rotateZ(calc(var(--background-plane-normal-x) * -0.08deg));
+    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transition:
+      transform 74ms ease-out,
+      opacity 160ms ease-out;
+    will-change: transform;
+  }
+
+  .docs-index-cover::after,
+  .docs-article-header::after {
+    transform:
+      translate3d(var(--background-plane-drift-x), var(--background-plane-drift-y), 40px)
+      rotateX(var(--background-header-after-rotate-x))
+      rotateY(var(--background-header-after-rotate-y))
+      rotateZ(calc(var(--background-plane-normal-x) * -0.07deg));
+    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transition:
+      transform 74ms ease-out,
+      opacity 160ms ease-out;
+    will-change: transform;
+  }
+}
