@@ -1,0 +1,26 @@
+
+.mobile-menu-toggle {
+  border-color: transparent;
+  background: transparent;
+}
+
+.site-header[data-nav-state="opaque"] .mobile-menu-toggle,
+.mobile-menu-toggle[aria-expanded="true"] {
+  border-color: var(--color-panel-border);
+  background: var(--color-panel-raised);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu-toggle-icon-close {
+  display: none;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .mobile-menu-toggle-icon-open {
+  display: none;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .mobile-menu-toggle-icon-close {
+  display: block;
+}
