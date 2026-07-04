@@ -1,0 +1,9 @@
+.docs-prose hr {
+  border: 0;
+  border-top: 1px solid var(--color-panel-border);
+  margin: 2.5rem 0;
+}
+.docs-prose img {
+  max-width: 100%;
+  border-radius: var(--radius-panel);
+}

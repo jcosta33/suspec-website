@@ -1,0 +1,232 @@
+/* Tables — bordered panel with an engraved header */
+.docs-table-scroll {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  position: relative;
+  scrollbar-color: rgba(var(--signal-muted-rgb), 0.34) rgba(10, 7, 5, 0.38);
+  scrollbar-width: thin;
+  border: 1px solid var(--color-panel-border);
+  border-radius: var(--radius-panel);
+}
+.docs-table-scroll:focus-visible {
+  outline: 2px solid var(--color-suspec-yellow);
+  outline-offset: 2px;
+}
+.docs-prose table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: min(42rem, 100%);
+  font-size: 0.9rem;
+  margin: 0;
+}
+@media (max-width: 48rem) {
+  .docs-table-scroll {
+    margin: 1.15rem 0;
+    overflow-x: visible;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .docs-table-scroll::after {
+    display: none;
+  }
+
+  .docs-prose table {
+    display: block;
+    min-width: 100%;
+    font-size: 0.86rem;
+  }
+
+  .docs-prose thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .docs-prose tbody {
+    display: grid;
+    gap: 0.42rem;
+  }
+
+  .docs-prose tr {
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--color-panel-border);
+    border-radius: var(--radius-panel);
+    background: rgba(32, 25, 18, 0.72);
+  }
+
+  .docs-prose td {
+    display: grid;
+    gap: 0.12rem;
+    border: 0;
+    padding: 0.42rem 0.6rem;
+    overflow-wrap: anywhere;
+  }
+
+  .docs-prose td + td {
+    border-top: 1px solid rgba(70, 57, 44, 0.72);
+  }
+
+  .docs-prose tr:has(> td:nth-child(2):last-child) {
+    display: grid;
+    grid-template-columns: minmax(6.75rem, 0.34fr) minmax(0, 1fr);
+  }
+
+  .docs-prose tr:has(> td:nth-child(2):last-child) td + td {
+    border-top: 0;
+    border-left: 1px solid rgba(70, 57, 44, 0.72);
+  }
+
+  .docs-prose tr:has(> td[data-label="Term"]):has(
+      > td[data-label="Meaning"]
+    ) {
+    grid-template-columns: minmax(8rem, 0.42fr) minmax(0, 1fr);
+  }
+
+  .docs-prose tr:has(> td:first-child > code:only-child):has(
+      > td:nth-child(3):last-child
+    ) {
+    display: grid;
+    grid-template-columns: minmax(6.75rem, 0.34fr) minmax(5.75rem, 0.29fr) minmax(0, 1fr);
+  }
+
+  .docs-prose tr:has(> td:first-child > code:only-child):has(
+      > td:nth-child(3):last-child
+    )
+    td
+    + td {
+    border-top: 0;
+    border-left: 1px solid rgba(70, 57, 44, 0.72);
+  }
+
+  .docs-prose td > code:only-child {
+    justify-self: start;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .docs-prose tr:has(> td:first-child > code:only-child):has(
+      > td:nth-child(3):last-child
+    )
+    td:nth-child(-n + 2)
+    > code:only-child {
+    white-space: nowrap;
+  }
+
+  .docs-prose tr:has(> td[data-label="ID"]):has(
+      > td[data-label="Severity"]
+    ) {
+    display: grid;
+    grid-template-columns: minmax(4.25rem, 0.2fr) minmax(0, 1fr) minmax(6.75rem, 0.32fr);
+  }
+
+  .docs-prose tr:has(> td[data-label="ID"]):has(
+      > td[data-label="Severity"]
+    )
+    td {
+    border-top: 0;
+  }
+
+  .docs-prose tr:has(> td[data-label="ID"]):has(
+      > td[data-label="Severity"]
+    )
+    td:nth-child(2),
+  .docs-prose tr:has(> td[data-label="ID"]):has(
+      > td[data-label="Severity"]
+    )
+    td:nth-child(4) {
+    border-left: 1px solid rgba(70, 57, 44, 0.72);
+  }
+
+  .docs-prose tr:has(> td[data-label="ID"]):has(
+      > td[data-label="Severity"]
+    )
+    td:nth-child(3) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    border-top: 1px solid rgba(70, 57, 44, 0.72);
+  }
+
+  .docs-prose tr:has(> td[data-label="ID"]):has(
+      > td[data-label="Severity"]
+    )
+    td:nth-child(4) {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .docs-prose td::before {
+    content: attr(data-label);
+    font-family: var(--font-mono), monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+  }
+
+  .docs-prose td[data-label=""]::before {
+    display: none;
+  }
+}
+.docs-prose thead {
+  background: var(--color-panel-raised);
+}
+.docs-prose th {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-aluminium);
+  text-align: left;
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+.docs-prose th,
+.docs-prose td {
+  border: 1px solid var(--color-panel-border);
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.docs-prose td a {
+  display: inline-flex;
+  min-height: 2rem;
+  min-width: 2.75rem;
+  align-items: center;
+}
+.docs-prose tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.018);
+}
+
+@media (min-width: 48.001rem) {
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    th:first-child,
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    td[data-label="ID"],
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    th:last-child,
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    td[data-label="Severity"] {
+    width: 1%;
+    overflow-wrap: normal;
+    white-space: nowrap;
+  }
+
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    th:nth-child(2),
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    td[data-label="Name"] {
+    width: 9.5rem;
+  }
+
+  .docs-prose table:has(td[data-label="ID"]):has(td[data-label="Severity"])
+    td[data-label="ID"] {
+    font-variant-numeric: tabular-nums;
+  }
+}
