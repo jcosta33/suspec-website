@@ -1,0 +1,88 @@
+.process-strip > :is(li, a, div) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: rgba(28, 22, 16, 0.96);
+  background-image:
+    linear-gradient(90deg, rgba(var(--process-rgb), 0.0008), transparent 34%),
+    linear-gradient(90deg, rgba(var(--process-rgb), 0.004) 0 1px, transparent 1px),
+    var(--signal-pattern-muted);
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.process-strip > :is(li, a, div)::before,
+.process-strip > :is(li, a, div)::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.process-strip > :is(li, a, div)::before {
+  inset: 0;
+  opacity: 0;
+  background:
+    linear-gradient(
+      112deg,
+      transparent 0%,
+      rgba(var(--process-rgb), 0.003) 42%,
+      rgba(var(--process-rgb), 0.005) 50%,
+      rgba(var(--process-rgb), 0.003) 58%,
+      transparent 100%
+    ),
+    radial-gradient(
+      75% 70% at 18% 0%,
+      rgba(240, 226, 204, 0.055),
+      transparent 62%
+    );
+  transition:
+    opacity 180ms ease;
+}
+
+.process-strip > :is(li, a, div)::after {
+  left: 1rem;
+  right: 1rem;
+  top: 0;
+  height: 1px;
+  opacity: 0.56;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--process-rgb), 0.028),
+    rgba(var(--process-rgb), 0.01),
+    transparent
+  );
+}
+
+.process-strip > :is(li, a, div) > * {
+  position: relative;
+  z-index: 1;
+}
+
+.process-strip
+  > :is(li, a, div)
+  :is(.text-suspec-yellow, .text-olive, .text-brass, .clip-hex, .motion-nudge-x, .motion-nudge-x-centered) {
+  color: color-mix(in oklab, var(--process-signal) 54%, var(--color-concrete-200));
+}
+
+.process-strip .hex-badge {
+  background:
+    linear-gradient(180deg, rgba(240, 226, 204, 0.06), transparent 46%),
+    radial-gradient(
+      86% 76% at 50% 0%,
+      rgba(var(--process-rgb), 0.026),
+      transparent 64%
+    ),
+    rgba(26, 21, 16, 0.98);
+}
+
+.process-strip .hex-badge-rail {
+  opacity: 0.34;
+  box-shadow: 0 0 3px currentColor;
+}
+
+.process-strip .hex-badge > span:last-child {
+  filter: drop-shadow(0 0 1px currentColor);
+}
