@@ -1,0 +1,50 @@
+.setup-route-panel {
+  border-color: rgba(var(--signal-core-rgb), 0.26);
+}
+
+.get-started-page {
+  row-gap: clamp(2.8rem, 4vw, 4rem);
+}
+
+.get-started-page > .ambient-header {
+  margin-bottom: -0.28rem;
+}
+
+.get-started-page .page-hero {
+  max-width: 50rem;
+}
+
+.get-started-page .hero-trace {
+  margin-top: 1.12rem;
+}
+
+.get-started-page .setup-route-panel {
+  max-width: 72rem;
+  margin-inline: auto;
+  background:
+    linear-gradient(180deg, rgba(240, 226, 204, 0.018), transparent 38%),
+    linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.02), transparent 44%),
+    var(--color-panel-raised);
+}
+
+.get-started-page .setup-path-strip > li > a {
+  min-height: 5.4rem;
+  padding: 0.78rem 0.9rem;
+}
+
+.get-started-page .setup-path-strip .kit-icon {
+  height: 1.9rem;
+  width: 1.9rem;
+}
+
+.get-started-page .setup-path-strip h2 {
+  font-size: 0.98rem;
+  line-height: 1.18;
+}
+
+.get-started-page .setup-path-strip p.mt-3 {
+  margin-top: 0.36rem;
+  color: var(--color-concrete-400);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}

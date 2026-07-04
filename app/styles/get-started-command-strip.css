@@ -1,0 +1,49 @@
+.setup-command-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.72rem;
+  border-bottom: 1px solid rgba(var(--signal-core-rgb), 0.18);
+  padding: 0.72rem 1rem;
+  background:
+    linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.04), transparent 58%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.55rem,
+      rgba(var(--signal-reference-rgb), 0.018) 1.55rem calc(1.55rem + 1px)
+    ),
+    rgba(7, 5, 3, 0.32);
+}
+
+.setup-command-copy {
+  min-width: 0;
+}
+
+.setup-command-label {
+  display: block;
+  margin-bottom: 0.28rem;
+  color: var(--signal-core);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  font-weight: 760;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.setup-command-copy code {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--color-concrete-100);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: clamp(0.78rem, 1.1vw, 0.9rem);
+  line-height: 1.35;
+}
+
+.setup-command-button {
+  min-height: 2.75rem;
+  align-self: center;
+  border-color: rgba(var(--signal-core-rgb), 0.28);
+  color: var(--color-concrete-200);
+}
