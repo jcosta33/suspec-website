@@ -76,7 +76,7 @@
 
 .section-intro > .section-kicker + .font-heading,
 .section-intro > .section-kicker + :where(h1, h2, h3) {
-  margin-top: var(--rhythm-kicker-title) !important;
+  margin-top: var(--rhythm-kicker-title);
 }
 
 .section-register > :where(div, header):first-child
@@ -85,18 +85,18 @@
   font-family: var(--font-title), var(--font-mono), ui-monospace, monospace;
   font-weight: var(--font-weight-title);
   line-height: 1.05;
-  margin-top: var(--rhythm-kicker-title) !important;
+  margin-top: var(--rhythm-kicker-title);
 }
 
 .section-intro > .font-heading + :where(p, .section-prose-stack),
 .section-intro > :where(h1, h2, h3) + :where(p, .section-prose-stack) {
-  margin-top: var(--rhythm-title-body) !important;
+  margin-top: var(--rhythm-title-body);
 }
 
 .section-register > :where(div, header):first-child
   :where(.font-heading, h1, h2, h3)
   + :where(p, .section-prose-stack) {
-  margin-top: var(--rhythm-title-body) !important;
+  margin-top: var(--rhythm-title-body);
 }
 
 .section-intro > :where(p, .section-prose-stack) + :where(p, ul, ol, div),
@@ -126,14 +126,14 @@
 }
 
 .section-register :where(.section-kicker + .font-heading) {
-  margin-top: var(--rhythm-kicker-title) !important;
+  margin-top: var(--rhythm-kicker-title);
 }
 
 .section-register .section-kicker + .font-heading {
   font-family: var(--font-title), var(--font-mono), ui-monospace, monospace;
   font-weight: var(--font-weight-title);
   line-height: 1.05;
-  margin-top: var(--rhythm-kicker-title) !important;
+  margin-top: var(--rhythm-kicker-title);
 }
 
 .section-register
@@ -144,13 +144,13 @@
 }
 
 .section-register :where(.font-heading + p) {
-  margin-top: var(--rhythm-title-body) !important;
+  margin-top: var(--rhythm-title-body);
   max-width: min(100%, 68ch);
   line-height: 1.68;
 }
 
 .section-register .font-heading + p {
-  margin-top: var(--rhythm-title-body) !important;
+  margin-top: var(--rhythm-title-body);
 }
 
 @media (min-width: 48rem) {
@@ -560,8 +560,8 @@
 
   .kitchen-specimen-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem !important;
-    background: transparent !important;
+    gap: 0.5rem;
+    background: transparent;
     padding: 0.5rem;
   }
 
