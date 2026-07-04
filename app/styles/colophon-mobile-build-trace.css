@@ -1,0 +1,82 @@
+@media (max-width: 40rem) {
+  .colophon-build-trace {
+    margin-top: 0.1rem;
+    padding: 0.75rem 0.7rem;
+  }
+
+  .colophon-build-trace-inner {
+    gap: 0.64rem;
+  }
+
+  .colophon-build-trace ol {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .colophon-build-trace ol::before {
+    display: none;
+  }
+
+  .colophon-build-trace li {
+    min-width: 0;
+    min-height: 3.05rem;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: end;
+    align-items: end;
+    gap: 0.28rem;
+    overflow: hidden;
+    border: 1px solid rgba(216, 138, 36, 0.18);
+    border-left-color: rgba(216, 138, 36, 0.42);
+    border-radius: calc(var(--radius-control) - 4px);
+    background:
+      linear-gradient(90deg, rgba(216, 138, 36, 0.07), transparent 58%),
+      repeating-linear-gradient(
+        90deg,
+        rgba(var(--signal-muted-rgb), 0.028) 0 1px,
+        transparent 1px 0.8rem
+      ),
+      rgba(10, 7, 5, 0.32);
+    padding: 0.45rem 0.5rem 0.44rem;
+    text-align: left;
+  }
+
+  .colophon-build-trace li:last-child {
+    grid-column: 1 / -1;
+    min-height: 2.65rem;
+  }
+
+  .colophon-build-trace-copy {
+    background: transparent;
+    margin-top: 0;
+    border-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+    min-width: 0;
+  }
+
+  .colophon-build-trace-title {
+    font-size: 0.64rem;
+    letter-spacing: 0.07em;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .colophon-build-trace-detail {
+    font-size: 0.54rem;
+    letter-spacing: 0.055em;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .colophon-build-trace-dot {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.48rem;
+    width: 0.34rem;
+    height: 0.34rem;
+    opacity: 0.82;
+  }
+}
