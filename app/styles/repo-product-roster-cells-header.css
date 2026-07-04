@@ -1,0 +1,34 @@
+.agent-roster-header {
+  display: flex;
+  min-height: 8.25rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.25rem;
+  border-bottom: 1px solid rgba(var(--roster-rgb), 0.16);
+  background:
+    linear-gradient(90deg, rgba(var(--roster-rgb), 0.035), transparent 42%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.35rem,
+      rgba(var(--roster-rgb), 0.016) 1.35rem calc(1.35rem + 1px)
+    ),
+    radial-gradient(
+      70% 80% at 12% 0%,
+      rgba(var(--roster-rgb), 0.034),
+      transparent 64%
+    ),
+    rgba(36, 29, 21, 0.82);
+  padding: 1.25rem;
+}
+
+.repo-product-page .agent-roster-cells {
+  gap: 0.55rem;
+  padding: 0.75rem;
+  background:
+    radial-gradient(
+      90% 75% at 45% 0%,
+      rgba(var(--roster-rgb), 0.045),
+      transparent 62%
+    ),
+    rgba(10, 7, 5, 0.22);
+}

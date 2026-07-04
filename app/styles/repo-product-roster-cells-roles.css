@@ -1,0 +1,48 @@
+.agent-roster-cell-core {
+  --cell-signal: var(--signal-core);
+  --cell-rgb: var(--signal-core-rgb);
+  --cell-pattern: var(--signal-pattern-core);
+  --cell-mark: var(--signal-mark-core);
+}
+
+.agent-roster-cell-evidence {
+  --cell-signal: var(--signal-evidence);
+  --cell-rgb: var(--signal-evidence-rgb);
+  --cell-pattern: var(--signal-pattern-evidence);
+  --cell-mark: var(--signal-mark-evidence);
+}
+
+.agent-roster-cell-greenfield {
+  --cell-signal: var(--signal-greenfield);
+  --cell-rgb: var(--signal-greenfield-rgb);
+  --cell-pattern: var(--signal-pattern-greenfield);
+  --cell-mark: var(--signal-mark-greenfield);
+}
+
+.agent-roster-cell-brownfield {
+  --cell-signal: var(--signal-brownfield);
+  --cell-rgb: var(--signal-brownfield-rgb);
+  --cell-pattern: var(--signal-pattern-brownfield);
+  --cell-mark: var(--signal-mark-brownfield);
+}
+
+.agent-roster-cell-change {
+  --cell-signal: var(--signal-change);
+  --cell-rgb: var(--signal-change-rgb);
+  --cell-pattern: var(--signal-pattern-change);
+  --cell-mark: var(--signal-mark-change);
+}
+
+.agent-roster-cell-reference {
+  --cell-signal: var(--signal-reference);
+  --cell-rgb: var(--signal-reference-rgb);
+  --cell-pattern: var(--signal-pattern-reference);
+  --cell-mark: var(--signal-mark-reference);
+}
+
+.agent-roster-cell-muted {
+  --cell-signal: var(--signal-muted);
+  --cell-rgb: var(--signal-muted-rgb);
+  --cell-pattern: var(--signal-pattern-muted);
+  --cell-mark: var(--signal-mark-muted);
+}
