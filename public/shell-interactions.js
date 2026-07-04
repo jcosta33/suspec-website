@@ -109,8 +109,6 @@
     }
 
     document.addEventListener("click", (event) => {
-      if (root.dataset.shellReact === "ready") return;
-
       const target = event.target;
       if (!(target instanceof Element)) return;
       const button = target.closest("button.copy-button[data-copy-text]");
