@@ -1,0 +1,43 @@
+@media (max-width: 48rem) {
+  .docs-prose tr:has(> td[data-label="ID"]):has(
+      > td[data-label="Severity"]
+    ) {
+    display: grid;
+    grid-template-columns: minmax(4.25rem, 0.2fr) minmax(0, 1fr) minmax(6.75rem, 0.32fr);
+  }
+
+  .docs-prose tr:has(> td[data-label="ID"]):has(
+      > td[data-label="Severity"]
+    )
+    td {
+    border-top: 0;
+  }
+
+  .docs-prose tr:has(> td[data-label="ID"]):has(
+      > td[data-label="Severity"]
+    )
+    td:nth-child(2),
+  .docs-prose tr:has(> td[data-label="ID"]):has(
+      > td[data-label="Severity"]
+    )
+    td:nth-child(4) {
+    border-left: 1px solid rgba(70, 57, 44, 0.72);
+  }
+
+  .docs-prose tr:has(> td[data-label="ID"]):has(
+      > td[data-label="Severity"]
+    )
+    td:nth-child(3) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    border-top: 1px solid rgba(70, 57, 44, 0.72);
+  }
+
+  .docs-prose tr:has(> td[data-label="ID"]):has(
+      > td[data-label="Severity"]
+    )
+    td:nth-child(4) {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}

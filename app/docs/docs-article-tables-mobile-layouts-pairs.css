@@ -1,0 +1,17 @@
+@media (max-width: 48rem) {
+  .docs-prose tr:has(> td:nth-child(2):last-child) {
+    display: grid;
+    grid-template-columns: minmax(6.75rem, 0.34fr) minmax(0, 1fr);
+  }
+
+  .docs-prose tr:has(> td:nth-child(2):last-child) td + td {
+    border-top: 0;
+    border-left: 1px solid rgba(70, 57, 44, 0.72);
+  }
+
+  .docs-prose tr:has(> td[data-label="Term"]):has(
+      > td[data-label="Meaning"]
+    ) {
+    grid-template-columns: minmax(8rem, 0.42fr) minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,31 @@
+@media (max-width: 48rem) {
+  .docs-prose tr:has(> td:first-child > code:only-child):has(
+      > td:nth-child(3):last-child
+    ) {
+    display: grid;
+    grid-template-columns: minmax(6.75rem, 0.34fr) minmax(5.75rem, 0.29fr) minmax(0, 1fr);
+  }
+
+  .docs-prose tr:has(> td:first-child > code:only-child):has(
+      > td:nth-child(3):last-child
+    )
+    td
+    + td {
+    border-top: 0;
+    border-left: 1px solid rgba(70, 57, 44, 0.72);
+  }
+
+  .docs-prose td > code:only-child {
+    justify-self: start;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .docs-prose tr:has(> td:first-child > code:only-child):has(
+      > td:nth-child(3):last-child
+    )
+    td:nth-child(-n + 2)
+    > code:only-child {
+    white-space: nowrap;
+  }
+}

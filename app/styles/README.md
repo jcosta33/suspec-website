@@ -26,6 +26,10 @@ component TypeScript.
 live in `docs-shell-nav-mobile-toggle.css`; expanded panel styles live in
 `docs-shell-nav-mobile-panel.css`.
 
+`app/docs/docs-article-tables-mobile-layouts.css` is a manifest: pair rows,
+code-heavy rows, and finding/severity rows live in separate mobile layout files
+so generated docs table exceptions stay reviewable.
+
 `app/styles/cli-surface-mobile.css` and
 `app/styles/cli-command-catalog-mobile.css` are mobile manifests: header/section
 rules stay separate from command rail and catalog row rules.
