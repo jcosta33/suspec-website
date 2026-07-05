@@ -1,0 +1,6 @@
+.section-register {
+  --section-register-signal: var(--signal-muted);
+  --section-register-rgb: var(--signal-muted-rgb);
+  position: relative;
+  padding-top: var(--rhythm-register-gap);
+}
