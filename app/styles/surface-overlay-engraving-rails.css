@@ -1,0 +1,34 @@
+
+.surface-engraving::before,
+.surface-engraving::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.surface-engraving::before {
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--plate-rgb), 0.26),
+    rgba(var(--plate-rgb), 0.07),
+    transparent
+  );
+  opacity: 0.42;
+}
+
+.surface-engraving::after {
+  right: 1rem;
+  bottom: 1rem;
+  width: 2.6rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+     rgba(var(--plate-rgb), 0.26)
+   );
+  opacity: 0.34;
+}

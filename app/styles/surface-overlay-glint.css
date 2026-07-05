@@ -1,0 +1,24 @@
+
+.surface-glint {
+  border-radius: inherit;
+  mix-blend-mode: screen;
+  opacity: 0.32;
+  background:
+    linear-gradient(
+      122deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(var(--plate-rgb), 0.058) 46%,
+      rgba(240, 226, 204, 0.026) 50%,
+      transparent 58%,
+      transparent 100%
+    ),
+    radial-gradient(
+      70% 60% at 18% 0%,
+      rgba(var(--plate-rgb), 0.052),
+      transparent 58%
+    );
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}

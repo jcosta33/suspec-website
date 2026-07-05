@@ -1,0 +1,25 @@
+
+.surface-engraving {
+  border-radius: inherit;
+  opacity: 0.4;
+  background:
+    linear-gradient(90deg, rgba(var(--plate-rgb), 0.1), transparent 22%) left
+      top / 1px 100% no-repeat,
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 27px,
+      rgba(240, 226, 204, 0.012) 27px,
+      rgba(240, 226, 204, 0.012) 28px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 31px,
+      rgba(240, 226, 204, 0.009) 31px,
+      rgba(240, 226, 204, 0.009) 32px
+    );
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
