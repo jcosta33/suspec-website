@@ -1,0 +1,63 @@
+.badge-signal {
+  --badge-signal: var(--signal-core);
+  --badge-rgb: var(--signal-core-rgb);
+  --badge-pattern: var(--signal-pattern-core);
+  --badge-mark: var(--signal-mark-core);
+  border-color: rgba(var(--badge-rgb), 0.62);
+  background:
+    linear-gradient(180deg, rgba(var(--badge-rgb), 0.1), transparent 70%),
+    var(--badge-mark),
+    var(--badge-pattern),
+    var(--color-panel-raised);
+  color: var(--badge-signal);
+  box-shadow: inset 0 0 8px rgba(var(--badge-rgb), 0.15);
+}
+
+.badge-signal-core {
+  --badge-signal: var(--signal-core);
+  --badge-rgb: var(--signal-core-rgb);
+  --badge-pattern: var(--signal-pattern-core);
+  --badge-mark: var(--signal-mark-core);
+}
+
+.badge-signal-evidence {
+  --badge-signal: var(--signal-evidence);
+  --badge-rgb: var(--signal-evidence-rgb);
+  --badge-pattern: var(--signal-pattern-evidence);
+  --badge-mark: var(--signal-mark-evidence);
+}
+
+.badge-signal-greenfield {
+  --badge-signal: var(--signal-greenfield);
+  --badge-rgb: var(--signal-greenfield-rgb);
+  --badge-pattern: var(--signal-pattern-greenfield);
+  --badge-mark: var(--signal-mark-greenfield);
+}
+
+.badge-signal-brownfield {
+  --badge-signal: var(--signal-brownfield);
+  --badge-rgb: var(--signal-brownfield-rgb);
+  --badge-pattern: var(--signal-pattern-brownfield);
+  --badge-mark: var(--signal-mark-brownfield);
+}
+
+.badge-signal-change {
+  --badge-signal: var(--signal-change);
+  --badge-rgb: var(--signal-change-rgb);
+  --badge-pattern: var(--signal-pattern-change);
+  --badge-mark: var(--signal-mark-change);
+}
+
+.badge-signal-reference {
+  --badge-signal: var(--signal-reference);
+  --badge-rgb: var(--signal-reference-rgb);
+  --badge-pattern: var(--signal-pattern-reference);
+  --badge-mark: var(--signal-mark-reference);
+}
+
+.badge-signal-muted {
+  --badge-signal: var(--color-concrete-400);
+  --badge-rgb: var(--signal-muted-rgb);
+  --badge-pattern: var(--signal-pattern-muted);
+  --badge-mark: var(--signal-mark-muted);
+}

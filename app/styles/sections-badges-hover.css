@@ -1,0 +1,34 @@
+.hover-border-signal-core:hover,
+.hover-border-signal-core:focus-within {
+  border-color: rgba(var(--signal-core-rgb), 0.52);
+}
+
+.hover-border-signal-evidence:hover,
+.hover-border-signal-evidence:focus-within {
+  border-color: rgba(var(--signal-evidence-rgb), 0.52);
+}
+
+.hover-border-signal-greenfield:hover,
+.hover-border-signal-greenfield:focus-within {
+  border-color: rgba(var(--signal-greenfield-rgb), 0.52);
+}
+
+.hover-border-signal-brownfield:hover,
+.hover-border-signal-brownfield:focus-within {
+  border-color: rgba(var(--signal-brownfield-rgb), 0.52);
+}
+
+.hover-border-signal-change:hover,
+.hover-border-signal-change:focus-within {
+  border-color: rgba(var(--signal-change-rgb), 0.52);
+}
+
+.hover-border-signal-reference:hover,
+.hover-border-signal-reference:focus-within {
+  border-color: rgba(var(--signal-reference-rgb), 0.52);
+}
+
+.hover-border-signal-muted:hover,
+.hover-border-signal-muted:focus-within {
+  border-color: rgba(var(--signal-muted-rgb), 0.46);
+}
