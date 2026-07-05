@@ -1,0 +1,50 @@
+@media (max-width: 40rem) {
+  .repo-product-page .agent-roster-cell {
+    min-height: 7.05rem;
+    padding: 0.7rem 0.74rem;
+  }
+
+  .repo-product-page .agent-roster-cell > div {
+    grid-template-columns: 1.74rem minmax(0, 1fr);
+    gap: 0.58rem;
+  }
+
+  .repo-product-page .agent-roster-cell-body {
+    grid-template-rows: auto auto auto auto;
+    row-gap: 0.24rem;
+  }
+
+  .repo-product-page .agent-roster-icon {
+    height: 1.58rem;
+    width: 1.58rem;
+  }
+
+  .repo-product-page .agent-roster-icon svg {
+    height: 0.76rem;
+    width: 0.76rem;
+  }
+
+  .repo-product-page .agent-roster-cell-body > div:first-child p {
+    font-size: 0.58rem;
+    line-height: 1.1;
+  }
+
+  .repo-product-page .agent-roster-cell-title {
+    font-size: 1rem;
+    line-height: 1.12;
+  }
+
+  .repo-product-page .agent-roster-file {
+    font-size: 0.66rem;
+    line-height: 1.18;
+  }
+
+  .repo-product-page .agent-roster-use {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 0.74rem;
+    line-height: 1.3;
+  }
+}
