@@ -47,7 +47,7 @@ const SKILLS_REPOSITORY = "https://github.com/jcosta33/suspec-skills";
 const STARTER_KIT_REPOSITORY = "https://github.com/jcosta33/suspec-starter-kit";
 const SKILLS_PAGE_URL = `${SITE_URL}/skills/`;
 const skillsDescription =
-  "Two tiers of agent guides: the framework-free suspec-skills catalog and the Suspec-coupled kit that ships in suspec-starter-kit.";
+  "Agent guide index for suspec-skills and the Suspec-coupled starter kit.";
 const skillsTitle = "suspec-skills — agent guide catalog for Suspec";
 
 export const metadata: Metadata = {
@@ -244,15 +244,15 @@ const skillRoutes = [
 const selectionRules = [
   {
     label: "Catalog",
-    text: "Any repo; framework-free method.",
+    text: "General methods; no Suspec workspace required.",
   },
   {
     label: "Kit",
-    text: "Suspec repo; loop and artifact context.",
+    text: "Loop guides for specs, tasks, reviews, findings.",
   },
   {
     label: "Gate",
-    text: "Read first; pin shared installs; commands in AGENTS.md.",
+    text: "Pin shared installs; keep repo commands in AGENTS.md.",
   },
 ] as const;
 
@@ -321,8 +321,8 @@ export default function SkillsPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Framework-free agent disciplines, plus Suspec-coupled kit files for
-            the loop. Install the catalog anywhere; load only the guide in scope.
+            General agent disciplines live in suspec-skills. Loop guides ship
+            with the starter kit; load only the guide in scope.
           </p>
           <HeroTrace
             ariaLabel="Skill guide trace"
@@ -385,8 +385,8 @@ export default function SkillsPage() {
             />
           </div>
           <p className="repo-manifest-note">
-            Use the catalog for general agent discipline; use the kit only when
-            the repo already speaks Suspec. Skills advise; review still decides.
+            Catalog guides are framework-free; kit guides assume Suspec
+            artifacts. Skills advise; review still decides.
           </p>
         </Card>
       </Section>
@@ -460,7 +460,7 @@ export default function SkillsPage() {
           </TerminalWindow>
         </Panel>
         <p className="section-after-panel-note">
-          Install the framework-free catalog anywhere. Suspec kit files stay in{" "}
+          Adds the general catalog. Loop-specific kit files stay in{" "}
           <TextLink
             href="https://github.com/jcosta33/suspec-starter-kit"
             target="_blank"
@@ -469,7 +469,7 @@ export default function SkillsPage() {
           >
             suspec-starter-kit
           </TextLink>
-          . Put repo-specific commands in{" "}
+          . Put repo commands in{" "}
           <code className="text-suspec-yellow">AGENTS.md</code>. The{" "}
           <TextLink
             href="/docs/reference/agent-guides/"
@@ -496,8 +496,9 @@ export default function SkillsPage() {
           </div>
           <Heading>Market and review methods</Heading>
           <p className="text-concrete-400">
-            Framework-free catalog methods for judgment, evidence, market research, security, and
-            debugging. Installed with <code className="text-suspec-yellow">npx skills</code>.
+            General methods for judgment, evidence, market research, security,
+            and debugging. Install with{" "}
+            <code className="text-suspec-yellow">npx skills</code>.
           </p>
           <div className="flex flex-wrap gap-2">
             <Badge variant="draft">markdown only</Badge>
@@ -527,9 +528,8 @@ export default function SkillsPage() {
           </div>
           <Heading>Working disciplines</Heading>
           <p className="text-concrete-400">
-            The catalog&apos;s everyday methods: map a codebase, plan a change,
-            ship a PR, keep output terse, stabilize a flaky test. Also
-            framework-free.
+            Everyday methods for exploration, planning, PRs, concise output,
+            and flaky tests.
           </p>
         </div>
         <SkillCatalog
@@ -556,8 +556,9 @@ export default function SkillsPage() {
           <Heading>The Suspec kit</Heading>
           <div className="section-prose-stack">
             <p>
-              These guides operate Suspec artifacts: specs, optional task
-              packets, review packets, and findings. They ship in{" "}
+              Kit guides assume Suspec artifacts: specs, task packets, reviews,
+              and findings. They ship under{" "}
+              <code className="text-suspec-yellow">.agents/skills/</code> in{" "}
               <TextLink
                 href="https://github.com/jcosta33/suspec-starter-kit"
                 target="_blank"
@@ -565,9 +566,8 @@ export default function SkillsPage() {
                 aria-label="Open suspec-starter-kit on GitHub (opens in new tab)"
               >
                 suspec-starter-kit
-              </TextLink>{" "}
-              under <code className="text-suspec-yellow">.agents/skills/</code>;
-              they are not framework-free catalog entries.
+              </TextLink>
+              , not in the general catalog.
             </p>
           </div>
         </div>
@@ -619,8 +619,8 @@ export default function SkillsPage() {
           </div>
           <Heading className="mt-3">Why there is no runtime</Heading>
           <p className="mt-4 text-concrete-400">
-            Review the guide before installing and pin to a commit when you use
-            it in a team repo. For scaffolding and checks, use{" "}
+            Read before installing; pin shared guides to a commit. For
+            scaffolding and checks, use{" "}
             <TextLink href="/cli/">suspec-cli</TextLink>.
           </p>
           <p className="mt-6">
