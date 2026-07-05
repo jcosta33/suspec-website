@@ -1,0 +1,20 @@
+@media (max-width: 40rem) {
+  .agent-delegation-contract {
+    gap: 0.46rem;
+  }
+
+  .agent-delegation-contract > div {
+    grid-template-columns: minmax(3.9rem, auto) minmax(0, 1fr);
+    gap: 0.58rem;
+    padding-bottom: 0.42rem;
+  }
+
+  .agent-delegation-contract dt {
+    font-size: 0.62rem;
+  }
+
+  .agent-delegation-contract dd {
+    font-size: 0.7rem;
+    line-height: 1.38;
+  }
+}

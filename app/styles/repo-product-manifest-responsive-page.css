@@ -1,0 +1,24 @@
+@media (max-width: 40rem) {
+  .repo-product-page {
+    gap: 3rem;
+  }
+
+  .manifest-pair {
+    gap: 0.8rem;
+  }
+
+  .manifest-pair .paper-artifact {
+    padding: 1rem;
+  }
+
+  .manifest-pair .paper-artifact > div:first-child {
+    gap: 0.65rem;
+    padding-bottom: 0.68rem;
+  }
+
+  .manifest-pair .paper-artifact > div:last-child {
+    margin-top: 0.72rem;
+    font-size: 0.8rem;
+    line-height: 1.65;
+  }
+}
