@@ -31,9 +31,12 @@ The site is statically exported to `dist/`.
 ```bash
 npm run lint
 npx tsc --noEmit
-npx linkinator dist/ --skip "^(https://github.com|https://suspecframework.dev)"
-npx axe http://localhost:3000 --exit
+npm run audit:goal
 ```
+
+`audit:goal` builds the static export, then runs copy, CSS/palette,
+link, route-matrix/SEO, screenshot, accessibility, SSR, and performance
+guards.
 
 ## Deployment
 

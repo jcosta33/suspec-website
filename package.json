@@ -20,6 +20,7 @@
     "audit:a11y": "npm run audit:axe && npm run audit:keyboard && npm run audit:contrast",
     "audit:ssr": "node scripts/audit-ssr.mjs",
     "audit:perf": "node scripts/audit-performance.mjs",
+    "audit:goal": "npm run build && npm run audit:copy && npm run audit:css && npm run audit:links && npm run audit:site && npm run audit:visual && npm run audit:a11y && npm run audit:ssr && npm run audit:perf",
     "start": "next start",
     "lint": "eslint"
   },
