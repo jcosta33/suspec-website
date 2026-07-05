@@ -1,0 +1,44 @@
+
+@supports (animation-timeline: scroll()) {
+  .site-header {
+    animation: site-header-scroll-reveal linear both;
+    animation-range: 0 5rem;
+    animation-timeline: scroll(root block);
+  }
+
+  .site-header::after {
+    animation: site-header-progress linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@keyframes site-header-scroll-reveal {
+  0% {
+    background-color: transparent;
+    border-bottom-color: transparent;
+    box-shadow: none;
+  }
+
+  18%,
+  100% {
+    background-color: var(--color-footer);
+    border-bottom-color: var(--color-panel-border);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  }
+}
+
+@keyframes site-header-progress {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  6% {
+    opacity: 0.78;
+  }
+
+  100% {
+    opacity: 0.78;
+    transform: scaleX(1);
+  }
+}
