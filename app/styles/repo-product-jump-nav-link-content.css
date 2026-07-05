@@ -1,0 +1,29 @@
+.agent-page-nav-index,
+.section-jump-nav-index {
+  flex: 0 0 auto;
+  color: var(--agent-nav-signal);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.agent-page-nav-label,
+.section-jump-nav-label {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow-wrap: normal;
+  word-break: normal;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.agent-page-nav-link > svg,
+.section-jump-nav-link > svg {
+  flex: 0 0 auto;
+  color: var(--agent-nav-signal);
+  opacity: 0.5;
+}
