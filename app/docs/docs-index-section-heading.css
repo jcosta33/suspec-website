@@ -1,0 +1,22 @@
+
+.docs-index-section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.86rem;
+  padding: 0 0.15rem 0.64rem;
+  border-bottom: 1px solid rgba(var(--docs-index-rgb), 0.2);
+  background: linear-gradient(
+      90deg,
+      rgba(var(--docs-index-rgb), 0.055),
+      transparent 58%
+    )
+    left bottom / 100% 1px no-repeat;
+}
+
+.docs-index-section-heading h2 {
+  margin: 0;
+  border: 0;
+  color: var(--docs-index-signal);
+}

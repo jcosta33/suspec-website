@@ -1,0 +1,19 @@
+
+.docs-index-section-compact p {
+  margin-bottom: 0;
+}
+
+.docs-index-prose .docs-index-section-intro {
+  max-width: 36rem;
+  margin: 0.05rem 0 1rem;
+  color: var(--color-concrete-400);
+  font-size: 0.91rem;
+  line-height: 1.5;
+}
+
+.docs-index-prose .docs-index-list {
+  display: grid;
+  gap: 0.58rem 1rem;
+  padding-left: 0;
+  list-style: none;
+}
