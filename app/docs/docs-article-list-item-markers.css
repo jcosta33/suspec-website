@@ -1,0 +1,33 @@
+.docs-article-html > ul > li::before,
+.docs-ledger-section > ul > li::before {
+  content: "";
+  position: absolute;
+  top: 0.94rem;
+  left: 0.72rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border: 1px solid rgba(var(--signal-reference-rgb), 0.8);
+  border-radius: 999px;
+  background: rgba(var(--signal-reference-rgb), 0.22);
+  box-shadow: 0 0 10px rgba(var(--signal-reference-rgb), 0.18);
+}
+.docs-article-html > ol > li::before,
+.docs-ledger-section > ol > li::before {
+  content: counter(docs-list-item, decimal-leading-zero);
+  position: absolute;
+  top: 0.48rem;
+  left: 0.4rem;
+  display: inline-flex;
+  min-width: 1.42rem;
+  min-height: 1.24rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(var(--signal-reference-rgb), 0.34);
+  border-radius: calc(var(--radius-control) - 4px);
+  color: var(--signal-reference);
+  background: rgba(10, 7, 5, 0.34);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}

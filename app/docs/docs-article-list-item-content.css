@@ -1,0 +1,14 @@
+.docs-article-html > :is(ul, ol) > li > :first-child,
+.docs-ledger-section > :is(ul, ol) > li > :first-child {
+  margin-top: 0;
+}
+.docs-article-html > :is(ul, ol) > li > :last-child,
+.docs-ledger-section > :is(ul, ol) > li > :last-child {
+  margin-bottom: 0;
+}
+.docs-prose li a {
+  display: inline-flex;
+  min-height: 2rem;
+  min-width: 2.75rem;
+  align-items: center;
+}
