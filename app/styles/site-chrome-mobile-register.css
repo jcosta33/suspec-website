@@ -1,0 +1,30 @@
+
+.mobile-menu-shell {
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.78rem;
+  min-height: calc(100dvh - 4rem);
+  padding-top: 1rem;
+  padding-bottom: 1.15rem;
+}
+
+.mobile-menu-register {
+  display: flex;
+  min-height: 1.7rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(var(--signal-muted-rgb), 0.24);
+  color: var(--color-concrete-500);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.mobile-menu-register span:first-child {
+  color: var(--signal-core);
+}
