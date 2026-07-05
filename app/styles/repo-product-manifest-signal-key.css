@@ -1,0 +1,26 @@
+.repo-product-page .signal-key-item {
+  border-color: rgba(var(--signal-muted-rgb), 0.16);
+  background:
+    linear-gradient(90deg, rgba(var(--key-rgb), 0.001), transparent 40%),
+    var(--signal-pattern-muted),
+    rgba(23, 18, 13, 0.82);
+  box-shadow:
+    inset 2px 0 0 rgba(var(--key-rgb), 0.038),
+    inset 0 1px 0 rgba(240, 226, 204, 0.052);
+}
+
+.repo-product-page .signal-key-swatch {
+  border-color: rgba(var(--key-rgb), 0.12);
+  background:
+    linear-gradient(180deg, rgba(var(--key-rgb), 0.022), transparent 68%),
+    rgba(10, 7, 5, 0.48);
+}
+
+.repo-product-page .signal-key-lamp {
+  filter: saturate(0.86);
+  opacity: 0.62;
+}
+
+.repo-product-page .signal-key-label {
+  color: color-mix(in oklab, var(--key-signal) 44%, var(--color-concrete-200));
+}
