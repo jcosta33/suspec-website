@@ -1,0 +1,40 @@
+
+.catalog-row .catalog-row-title {
+  color: color-mix(in oklab, var(--catalog-signal) 60%, var(--color-concrete-100));
+  transition:
+    color 160ms ease,
+    text-shadow 160ms ease;
+}
+
+.catalog-row-copy {
+  color: var(--color-concrete-300);
+  transition: color 160ms ease;
+}
+
+.catalog-row-badge {
+  transition:
+    filter 160ms ease;
+}
+
+.group:hover .catalog-row::before,
+.group:focus-within .catalog-row::before,
+.catalog-row:hover::before,
+.catalog-row:focus-visible::before {
+  opacity: 0.62;
+}
+
+.group:hover .catalog-row-title,
+.group:focus-within .catalog-row-title {
+  color: color-mix(in oklab, var(--catalog-signal) 82%, var(--color-concrete-100));
+  text-shadow: 0 0 8px var(--catalog-signal-soft);
+}
+
+.group:hover .catalog-row-copy,
+.group:focus-within .catalog-row-copy {
+  color: var(--color-concrete-200);
+}
+
+.group:hover .catalog-row-badge,
+.group:focus-within .catalog-row-badge {
+  filter: saturate(1.04) brightness(1.02);
+}

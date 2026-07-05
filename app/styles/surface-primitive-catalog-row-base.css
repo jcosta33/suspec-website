@@ -1,0 +1,33 @@
+
+.catalog-row {
+  --catalog-signal: var(--signal-core);
+  --catalog-rgb: var(--signal-core-rgb);
+  --catalog-signal-soft: rgba(var(--catalog-rgb), 0.2);
+  --catalog-mark: var(--signal-mark-core);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+  position: relative;
+  min-height: 3.5rem;
+  padding-left: 1rem;
+  border-radius: calc(var(--radius-panel) - 2px);
+  background-image: var(--catalog-pattern);
+}
+
+.catalog-row::before {
+  content: "";
+  position: absolute;
+  top: 0.1rem;
+  bottom: 0.1rem;
+  left: 0;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--catalog-signal),
+    transparent
+  );
+  opacity: 0.42;
+  transition: opacity 160ms ease;
+}

@@ -1,0 +1,55 @@
+
+.catalog-row-reference,
+.catalog-row-olive {
+  --catalog-signal: var(--signal-reference);
+  --catalog-rgb: var(--signal-reference-rgb);
+  --catalog-mark: var(--signal-mark-reference);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-core {
+  --catalog-signal: var(--signal-core);
+  --catalog-rgb: var(--signal-core-rgb);
+  --catalog-mark: var(--signal-mark-core);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.014), transparent 54%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-change {
+  --catalog-signal: var(--signal-change);
+  --catalog-rgb: var(--signal-change-rgb);
+  --catalog-mark: var(--signal-mark-change);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-evidence {
+  --catalog-signal: var(--signal-evidence);
+  --catalog-rgb: var(--signal-evidence-rgb);
+  --catalog-mark: var(--signal-mark-evidence);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-greenfield {
+  --catalog-signal: var(--signal-greenfield);
+  --catalog-rgb: var(--signal-greenfield-rgb);
+  --catalog-mark: var(--signal-mark-greenfield);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
+
+.catalog-row-brownfield {
+  --catalog-signal: var(--signal-brownfield);
+  --catalog-rgb: var(--signal-brownfield-rgb);
+  --catalog-mark: var(--signal-mark-brownfield);
+  --catalog-pattern:
+    linear-gradient(90deg, rgba(var(--catalog-rgb), 0.01), transparent 52%),
+    var(--signal-pattern-muted);
+}
