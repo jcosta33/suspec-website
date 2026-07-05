@@ -1,0 +1,12 @@
+
+.docs-article-html :where(p, li) a:hover,
+.docs-article-html :where(p, li) a:focus-visible {
+  color: var(--color-suspec-yellow);
+  background-size: 100% 2px;
+  text-shadow: 0 0 16px rgba(var(--signal-core-rgb), 0.14);
+}
+
+.docs-article-html :where(p, li) a:hover::before,
+.docs-article-html :where(p, li) a:focus-visible::before {
+  opacity: 1;
+}
