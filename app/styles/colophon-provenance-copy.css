@@ -1,0 +1,19 @@
+
+.colophon-provenance-grid dt {
+  color: var(--signal-muted);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.colophon-provenance-grid dd {
+  margin-top: 0.18rem;
+  color: var(--color-concrete-200);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}

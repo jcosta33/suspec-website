@@ -1,0 +1,18 @@
+.colophon-provenance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(var(--signal-muted-rgb), 0.18);
+  border-radius: calc(var(--radius-panel) - 2px);
+  background: rgba(var(--signal-muted-rgb), 0.12);
+}
+
+.colophon-provenance-grid > div {
+  min-width: 0;
+  background:
+    linear-gradient(90deg, rgba(var(--signal-muted-rgb), 0.06), transparent 58%),
+    var(--signal-pattern-muted),
+    rgba(10, 7, 5, 0.32);
+  padding: 0.58rem 0.7rem;
+}

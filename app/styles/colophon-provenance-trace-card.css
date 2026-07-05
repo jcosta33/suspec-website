@@ -1,0 +1,31 @@
+
+.colophon-trace-card {
+  isolation: isolate;
+  min-height: 13.25rem;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(216, 138, 36, 0.34) 0,
+      rgba(216, 138, 36, 0.34) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      70% 58% at 16% 0%,
+      rgba(240, 184, 92, 0.07),
+      transparent 62%
+    ),
+    radial-gradient(
+      80% 80% at 100% 100%,
+      rgba(0, 0, 0, 0.2),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(232, 222, 203, 0.045) 0%,
+      transparent 38%
+    );
+}
+
+.colophon-trace-grid {
+  margin-top: 0.1rem;
+}
