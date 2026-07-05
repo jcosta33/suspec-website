@@ -1,0 +1,20 @@
+.home-hero-preview {
+  position: relative;
+  contain: layout;
+  overflow-anchor: none;
+  translate: 0 0;
+  scale: 1;
+  transform: none;
+  margin-top: 1.25rem;
+  margin-bottom: clamp(2.5rem, 4vw, 4rem);
+  max-height: none;
+  overflow: visible;
+}
+
+.panel-raised.home-hero-preview {
+  box-shadow:
+    0 -1px 0 rgba(var(--signal-core-rgb), 0.18),
+    0 -18px 54px rgba(var(--signal-core-rgb), 0.045),
+    0 18px 44px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(240, 226, 204, 0.08);
+}

@@ -1,0 +1,27 @@
+
+.home-hero-run-card {
+  contain: layout;
+  overflow-anchor: none;
+  transition: none;
+}
+
+.home-hero-run-card,
+.home-hero-run-card
+  :is(.rounded-panel, .terminal-window, .home-step-rail-item),
+.home-hero-run-card
+  :is(.rounded-panel, .terminal-window, .home-step-rail-item):is(
+    :hover,
+    :focus-visible,
+    :focus-within
+  ) {
+  translate: 0 0 !important;
+  transform: none !important;
+  scale: 1 !important;
+}
+
+.home-hero-preview,
+.home-hero-preview *,
+.home-hero-run-card,
+.home-hero-run-card * {
+  overflow-anchor: none;
+}
