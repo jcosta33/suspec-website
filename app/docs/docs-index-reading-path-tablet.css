@@ -1,0 +1,37 @@
+@media (min-width: 46rem) and (max-width: 53.99rem) {
+  .docs-reading-path {
+    grid-template-columns: minmax(12rem, 0.36fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 0.86rem;
+    margin-bottom: 1.1rem;
+    padding: 0.82rem 0.9rem;
+  }
+
+  .docs-reading-path-copy {
+    align-self: center;
+    padding-left: 0.34rem;
+  }
+
+  .docs-reading-path-copy p:last-child {
+    margin-top: 0.38rem;
+    font-size: 0.84rem;
+    line-height: 1.4;
+  }
+
+  .docs-reading-path-list {
+    gap: 0.42rem;
+  }
+
+  .docs-prose .docs-reading-path-item a {
+    min-height: 3.25rem;
+    align-items: center;
+    gap: 0.54rem;
+    padding: 0.46rem 0.62rem;
+  }
+
+  .docs-reading-path-detail {
+    margin-top: 0.14rem;
+    font-size: 0.76rem;
+    line-height: 1.28;
+  }
+}
