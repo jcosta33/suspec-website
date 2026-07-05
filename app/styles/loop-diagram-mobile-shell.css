@@ -1,0 +1,14 @@
+@media (max-width: 40rem) {
+  .loop-diagram {
+    gap: 1.25rem;
+  }
+
+  .loop-diagram-summary {
+    gap: 0.95rem;
+    padding: 1rem;
+  }
+
+  .loop-diagram-seal {
+    max-width: min(13.75rem, 86%);
+  }
+}

@@ -1,7 +1,7 @@
 
 .docs-code-copy {
-  inline-size: 4.1rem;
-  min-height: 2.75rem;
+  inline-size: 3.75rem;
+  min-height: 2.5rem;
   border: 1px solid rgba(var(--signal-reference-rgb), 0.24);
   border-radius: calc(var(--radius-control) - 4px);
   background:
@@ -13,13 +13,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 0.45rem;
+  padding: 0 0.38rem;
   color: var(--color-concrete-300);
   cursor: pointer;
   font-family: var(--font-mono), monospace;
-  font-size: 0.58rem;
+  font-size: 0.56rem;
   font-weight: 760;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   line-height: 1;
   box-shadow:
     inset 0 1px 0 rgba(240, 226, 204, 0.052),
@@ -29,12 +29,12 @@
 
 @media (max-width: 48rem) {
   .docs-code-toolbar {
-    min-height: 2.75rem;
-    padding: 0.36rem 0.42rem 0.36rem 0.62rem;
+    min-height: 2.5rem;
+    padding: 0.3rem 0.36rem 0.3rem 0.58rem;
   }
 
   .docs-code-copy {
-    inline-size: 3.85rem;
-    min-height: 2.75rem;
+    inline-size: 3.55rem;
+    min-height: 2.5rem;
   }
 }

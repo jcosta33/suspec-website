@@ -60,7 +60,7 @@ export function DocsCodeCopy() {
 
       await copyText(text);
       button.dataset.copied = "true";
-      button.textContent = "COPIED";
+      button.textContent = "DONE";
 
       const timeout = window.setTimeout(() => reset(button), 1600);
       timeouts.set(button, timeout);

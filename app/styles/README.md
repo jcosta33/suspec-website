@@ -45,6 +45,11 @@ same late cascade point.
 jump-nav compaction and linked loop-card density live in separate late-polish
 files at the same cascade point.
 
+`app/styles/loop-diagram-mobile.css` is a mobile manifest: loop diagram base,
+operating terminal, shell/seal sizing, compact step cards, and linked-step
+rules live in separate files so the loop page and writing-page reuse stay
+reviewable.
+
 `app/styles/mcp-adapter-mobile-rail.css` is a mobile manifest: rail frame, step
 shell, and step content rules live in separate files before the later MCP polish
 layer applies tighter mobile density.
