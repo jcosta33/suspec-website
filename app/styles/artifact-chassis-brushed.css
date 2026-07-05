@@ -1,0 +1,16 @@
+/* Fine vertical engraving tooth — manuscript ruling meets machine plate. */
+.brushed-metal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(232, 222, 203, 0.025) 2px,
+    rgba(232, 222, 203, 0.025) 3px
+  );
+  opacity: 0.48;
+}

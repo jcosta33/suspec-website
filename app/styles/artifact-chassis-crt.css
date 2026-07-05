@@ -1,0 +1,24 @@
+.crt-screen {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(240, 184, 92, 0.035),
+      transparent 5.5rem
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(240, 226, 204, 0.014) 0,
+      rgba(240, 226, 204, 0.014) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    radial-gradient(
+      90% 70% at 50% 0%,
+      rgba(216, 138, 36, 0.055),
+      transparent 66%
+    ),
+    #080604;
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.035),
+    inset 0 0 54px rgba(0, 0, 0, 0.42);
+}

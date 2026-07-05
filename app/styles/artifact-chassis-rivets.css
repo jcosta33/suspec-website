@@ -1,0 +1,29 @@
+/* Binding bosses — small fasteners like a bolted archival plate. */
+.rivet-row {
+  position: relative;
+}
+
+.rivet-row::before,
+.rivet-row::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8px;
+  pointer-events: none;
+  background-image: radial-gradient(
+    circle at center,
+    var(--color-brass) 1.4px,
+    transparent 2.2px
+  );
+  background-size: 26px 8px;
+  opacity: 0.42;
+}
+
+.rivet-row::before {
+  top: 4px;
+}
+
+.rivet-row::after {
+  bottom: 4px;
+}
