@@ -1,0 +1,8 @@
+
+.docs-prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}

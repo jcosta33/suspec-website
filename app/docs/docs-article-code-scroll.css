@@ -1,0 +1,32 @@
+.docs-prose pre::-webkit-scrollbar,
+.docs-table-scroll::-webkit-scrollbar {
+  height: 0.18rem;
+}
+.docs-prose pre::-webkit-scrollbar-track,
+.docs-table-scroll::-webkit-scrollbar-track {
+  background: rgba(10, 7, 5, 0.32);
+  border-radius: 999px;
+}
+.docs-prose pre::-webkit-scrollbar-thumb,
+.docs-table-scroll::-webkit-scrollbar-thumb {
+  background: rgba(var(--signal-muted-rgb), 0.26);
+  border-radius: 999px;
+}
+.docs-prose pre::after,
+.docs-table-scroll::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 2rem;
+  pointer-events: none;
+  border-radius: 0 var(--radius-panel) var(--radius-panel) 0;
+  background: linear-gradient(
+    90deg,
+    rgba(8, 6, 4, 0),
+    rgba(8, 6, 4, 0.84)
+  );
+}
+
+.docs-prose .docs-code-shell pre::after {
+  border-radius: 0 0 var(--radius-panel) 0;
+}
