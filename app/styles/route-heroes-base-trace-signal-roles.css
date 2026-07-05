@@ -1,0 +1,41 @@
+.hero-trace-item-core {
+  --trace-signal: var(--signal-core);
+  --trace-rgb: var(--signal-core-rgb);
+  --trace-pattern: var(--signal-pattern-core);
+}
+
+.hero-trace-item-evidence {
+  --trace-signal: var(--signal-reference);
+  --trace-rgb: var(--signal-reference-rgb);
+  --trace-pattern: var(--signal-pattern-reference);
+}
+
+.hero-trace-item-greenfield {
+  --trace-signal: var(--signal-reference);
+  --trace-rgb: var(--signal-reference-rgb);
+  --trace-pattern: var(--signal-pattern-reference);
+}
+
+.hero-trace-item-brownfield {
+  --trace-signal: var(--signal-muted);
+  --trace-rgb: var(--signal-muted-rgb);
+  --trace-pattern: var(--signal-pattern-muted);
+}
+
+.hero-trace-item-change {
+  --trace-signal: var(--signal-muted);
+  --trace-rgb: var(--signal-muted-rgb);
+  --trace-pattern: var(--signal-pattern-muted);
+}
+
+.hero-trace-item-reference {
+  --trace-signal: var(--signal-reference);
+  --trace-rgb: var(--signal-reference-rgb);
+  --trace-pattern: var(--signal-pattern-reference);
+}
+
+.hero-trace-item-muted {
+  --trace-signal: var(--signal-muted);
+  --trace-rgb: var(--signal-muted-rgb);
+  --trace-pattern: var(--signal-pattern-muted);
+}
