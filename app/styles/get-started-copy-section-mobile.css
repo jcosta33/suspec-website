@@ -1,0 +1,24 @@
+
+@media (max-width: 40rem) {
+  .copy-section {
+    gap: clamp(1rem, 4vw, 1.25rem);
+  }
+
+  .copy-section-manifest {
+    padding: 1rem;
+  }
+
+  .copy-section-support {
+    gap: 0.82rem;
+  }
+
+  .copy-section-support .paper-artifact {
+    padding: 1rem;
+  }
+
+  .copy-section-note {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+}

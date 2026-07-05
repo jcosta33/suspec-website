@@ -1,0 +1,27 @@
+
+@media (min-width: 64rem) {
+  .copy-section-left {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.15rem, 1.55vw, 1.35rem);
+  }
+
+  .copy-section-support-desktop {
+    display: flex;
+  }
+
+  .copy-section-support-mobile {
+    display: none;
+  }
+
+  .copy-section-manifest {
+    grid-column: 2;
+  }
+
+  .copy-section-heading,
+  .copy-section-manifest,
+  .copy-section-support {
+    order: 0;
+  }
+}

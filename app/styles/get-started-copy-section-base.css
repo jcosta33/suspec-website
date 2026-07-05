@@ -1,0 +1,25 @@
+.copy-section-left {
+  display: contents;
+}
+
+.copy-section-heading,
+.copy-section-support,
+.copy-section-manifest {
+  min-width: 0;
+}
+
+.copy-section-heading {
+  order: 1;
+}
+
+.copy-section-manifest {
+  order: 3;
+}
+
+.copy-section-support {
+  order: 2;
+}
+
+.copy-section-support-desktop {
+  display: none;
+}
