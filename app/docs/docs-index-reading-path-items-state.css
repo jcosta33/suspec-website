@@ -1,0 +1,5 @@
+
+.docs-prose .docs-reading-path-item a:hover .docs-reading-path-label,
+.docs-prose .docs-reading-path-item a:focus-visible .docs-reading-path-label {
+  color: var(--reading-path-signal);
+}

@@ -1,0 +1,28 @@
+
+.docs-reading-path-index {
+  color: var(--reading-path-signal);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+.docs-reading-path-label,
+.docs-reading-path-detail {
+  display: block;
+  line-height: 1.35;
+}
+
+.docs-reading-path-label {
+  color: var(--color-concrete-100);
+  font-family: var(--font-heading), ui-monospace, monospace;
+  font-size: 0.98rem;
+  font-weight: var(--font-weight-title-compact);
+}
+
+.docs-reading-path-detail {
+  margin-top: 0.34rem;
+  color: var(--color-concrete-400);
+  font-size: 0.84rem;
+}

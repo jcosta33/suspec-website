@@ -1,0 +1,10 @@
+.docs-reading-path-item {
+  --reading-path-signal: var(--signal-core);
+  --reading-path-rgb: var(--signal-core-rgb);
+  margin: 0;
+}
+
+.docs-reading-path-item-reference {
+  --reading-path-signal: var(--signal-reference);
+  --reading-path-rgb: var(--signal-reference-rgb);
+}
