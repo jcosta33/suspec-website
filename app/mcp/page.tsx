@@ -366,10 +366,10 @@ export default function McpPage() {
           </div>
           <Heading>Client asks, records answer</Heading>
           <p className="text-concrete-400">
-            suspec-mcp is a local stdio bridge. It adapts the CLI&apos;s{" "}
-            <code>--json</code> contract for MCP clients and reconciles
-            workspace records. It does not decide correctness, and it does not
-            become a hosted service or a review authority.
+            suspec-mcp adapts the CLI&apos;s <code>--json</code> contract for
+            MCP clients and reconciles workspace records. It does not decide
+            correctness and does not become a hosted service or a review
+            authority.
           </p>
           <p className="text-sm text-concrete-400">
             Source:{" "}
