@@ -1,0 +1,20 @@
+
+.copy-button-label-stack {
+  align-items: center;
+}
+
+.copy-button-icon {
+  grid-area: 1 / 1;
+}
+
+.copy-button-icon-check {
+  display: none;
+}
+
+.copy-button[data-copied="true"] .copy-button-icon-copy {
+  display: none;
+}
+
+.copy-button[data-copied="true"] .copy-button-icon-check {
+  display: block;
+}

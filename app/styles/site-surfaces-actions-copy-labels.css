@@ -1,0 +1,19 @@
+
+.copy-button-label-full.copy-button-label-stack {
+  display: inline-grid;
+}
+
+.copy-button-label-compact.copy-button-label-stack {
+  display: none;
+}
+
+.copy-button-label-current,
+.copy-button-label-sizer {
+  grid-area: 1 / 1;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.copy-button-label-sizer {
+  visibility: hidden;
+}
