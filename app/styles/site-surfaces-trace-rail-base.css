@@ -1,0 +1,5 @@
+
+.trace-rail {
+  --trace-progress: 0%;
+  display: none;
+}

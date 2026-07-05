@@ -1,0 +1,6 @@
+@media (prefers-reduced-motion: reduce) {
+  .trace-rail,
+  .trace-rail-fill {
+    transition: none !important;
+  }
+}
