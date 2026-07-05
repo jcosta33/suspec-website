@@ -1,0 +1,27 @@
+
+.docs-code-toolbar {
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border: 1px solid rgba(var(--signal-reference-rgb), 0.3);
+  border-bottom: 0;
+  border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.09), transparent 48%),
+    var(--signal-pattern-reference),
+    rgba(10, 7, 5, 0.86);
+  padding: 0.36rem 0.48rem 0.36rem 0.75rem;
+  box-shadow: inset 0 1px 0 rgba(240, 226, 204, 0.045);
+}
+
+.docs-code-label {
+  color: var(--signal-reference);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.64rem;
+  font-weight: 760;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  text-transform: uppercase;
+}
