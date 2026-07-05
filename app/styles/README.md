@@ -33,6 +33,10 @@ rules stay separate from command rail and catalog row rules.
 `app/styles/footer-responsive-mobile.css` is a mobile manifest: frame/register,
 identity, nav, and proof-list rules live in separate footer mobile files.
 
+`app/styles/mobile-repo-nav-polish.css` is a mobile manifest: shared product
+route nav compaction and MCP-specific nav offsets live in separate files at the
+same late cascade point.
+
 `app/styles/repo-product-manifest-responsive.css` is a mobile manifest:
 page/paper rhythm, manifest card stats, and delegation-contract rules live in
 separate responsive files so product-package mobile tuning stays reviewable.
