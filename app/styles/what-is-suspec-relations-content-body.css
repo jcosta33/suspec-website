@@ -1,0 +1,44 @@
+.relation-card-body {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1.1rem;
+}
+
+.relation-card-body div {
+  min-width: 0;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(var(--relation-rgb), 0.24);
+}
+
+.relation-card-body dt {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--relation-signal);
+}
+
+.relation-card-body dd {
+  margin-top: 0.28rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-concrete-300);
+}
+
+.relation-card-body div:first-child dd {
+  color: var(--color-concrete-400);
+}
+
+.relation-card-body div:nth-child(2) {
+  border-top-color: rgba(var(--signal-core-rgb), 0.2);
+}
+
+.relation-card-body div:nth-child(2) dt {
+  color: var(--signal-core);
+}
+
+.relation-card-body div:nth-child(2) dd {
+  color: var(--color-concrete-100);
+  font-weight: 650;
+}

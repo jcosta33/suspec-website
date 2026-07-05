@@ -1,0 +1,55 @@
+.relation-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.9rem;
+}
+
+.relation-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.relation-card-index {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  color: var(--relation-signal);
+  opacity: 0.78;
+}
+
+.relation-card-role {
+  display: inline-flex;
+  min-height: 1.25rem;
+  align-items: center;
+  border: 1px solid rgba(var(--relation-rgb), 0.28);
+  border-radius: calc(var(--radius-control) - 5px);
+  padding: 0.08rem 0.34rem 0.06rem;
+  background:
+    linear-gradient(180deg, rgba(var(--relation-rgb), 0.085), transparent 72%),
+    rgba(10, 7, 5, 0.2);
+  color: var(--relation-signal);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.56rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.relation-card-title {
+  margin-top: 0.15rem;
+  font-family: var(--font-heading), var(--font-sans), sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--color-concrete-100);
+}
+
+.relation-card-examples {
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--color-concrete-500);
+}
