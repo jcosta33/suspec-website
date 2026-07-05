@@ -1,0 +1,32 @@
+@media (max-width: 40rem) {
+  .paper-artifact {
+    padding: 1.05rem;
+  }
+
+  .paper-artifact-header {
+    gap: 0.65rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .paper-artifact-title {
+    font-size: 0.8rem;
+    line-height: 1.24;
+  }
+
+  .paper-artifact-meta {
+    margin-top: 0.32rem;
+    font-size: 0.68rem;
+    line-height: 1.42;
+  }
+
+  .paper-stamp {
+    font-size: 0.62rem;
+    padding: 0.22rem 0.34rem;
+  }
+
+  .paper-artifact-body {
+    margin-top: 0.9rem;
+    font-size: 0.8125rem;
+    line-height: 1.78;
+  }
+}
