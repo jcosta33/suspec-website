@@ -1,0 +1,29 @@
+.loop-operating-step {
+  --loop-operating-signal: var(--signal-core);
+  --loop-operating-rgb: var(--signal-core-rgb);
+  --loop-operating-pattern: var(--signal-pattern-core);
+}
+
+.loop-operating-step-core {
+  --loop-operating-signal: var(--signal-core);
+  --loop-operating-rgb: var(--signal-core-rgb);
+  --loop-operating-pattern: var(--signal-pattern-core);
+}
+
+.loop-operating-step-evidence {
+  --loop-operating-signal: var(--signal-evidence);
+  --loop-operating-rgb: var(--signal-evidence-rgb);
+  --loop-operating-pattern: var(--signal-pattern-evidence);
+}
+
+.loop-operating-step-reference {
+  --loop-operating-signal: var(--signal-reference);
+  --loop-operating-rgb: var(--signal-reference-rgb);
+  --loop-operating-pattern: var(--signal-pattern-reference);
+}
+
+.loop-operating-step-change {
+  --loop-operating-signal: var(--signal-change);
+  --loop-operating-rgb: var(--signal-change-rgb);
+  --loop-operating-pattern: var(--signal-pattern-change);
+}

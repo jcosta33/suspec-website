@@ -1,0 +1,36 @@
+@media (min-width: 64rem) {
+  .loop-operating-copy {
+    min-height: 9.5rem;
+  }
+
+  .loop-operating-step::after {
+    content: "";
+    position: absolute;
+    top: 2.25rem;
+    left: calc(50% - 1rem);
+    z-index: 1;
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      rgba(var(--loop-operating-rgb), 0.74),
+      rgba(var(--loop-operating-rgb), 0.24)
+    );
+    box-shadow: 0 0 14px rgba(var(--loop-operating-rgb), 0.12);
+  }
+
+  .loop-operating-step::before {
+    content: "";
+    position: absolute;
+    top: 2.25rem;
+    left: calc(50% - 1.16rem);
+    z-index: 2;
+    width: 0.32rem;
+    height: 0.32rem;
+    border: 1px solid rgba(var(--loop-operating-rgb), 0.66);
+    border-radius: 999px;
+    background: var(--color-panel-recessed);
+    transform: translateY(-50%);
+  }
+}
