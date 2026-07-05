@@ -1,0 +1,56 @@
+@media (max-width: 40rem) {
+  #read-only-workers,
+  #bounded-authoring {
+    gap: 1.65rem;
+  }
+
+  .agent-worker-list {
+    gap: 0.45rem;
+  }
+
+  .agent-worker-card {
+    padding: 0.78rem 0.82rem;
+  }
+
+  .agent-worker-card .catalog-row {
+    align-items: center;
+    background-image: linear-gradient(
+      90deg,
+      rgba(var(--catalog-rgb), 0.075),
+      transparent 58%
+    );
+    background-color: rgba(10, 7, 5, 0.16);
+    gap: 0.65rem;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+  }
+
+  .agent-worker-card .catalog-row > div:first-child {
+    display: contents;
+  }
+
+  .agent-worker-card .catalog-row-badge {
+    height: 1.95rem;
+    width: 1.95rem;
+  }
+
+  .agent-worker-card .catalog-row-badge svg {
+    height: 0.88rem;
+    width: 0.88rem;
+  }
+
+  .agent-worker-card .catalog-row-title {
+    font-size: 0.74rem;
+    line-height: 1.2;
+  }
+
+  .agent-worker-card .catalog-row-copy {
+    margin-top: 0.24rem;
+    font-size: 0.73rem;
+    line-height: 1.4;
+  }
+
+  .agent-worker-card .catalog-row + svg,
+  .agent-worker-card .catalog-row > svg {
+    display: none;
+  }
+}

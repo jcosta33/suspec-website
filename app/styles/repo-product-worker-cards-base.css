@@ -1,0 +1,50 @@
+.agent-worker-list {
+  gap: 0.75rem;
+}
+
+.agent-worker-card {
+  padding: 1rem 1.1rem;
+}
+
+.agent-worker-card .catalog-row {
+  min-height: 0;
+}
+
+.agent-worker-card .catalog-row {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.85rem;
+  padding-left: 0;
+}
+
+.agent-worker-card .catalog-row > div:first-child {
+  display: contents;
+}
+
+.agent-worker-card .catalog-row-badge {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  margin-top: 0;
+}
+
+.agent-worker-card .catalog-row > div:first-child > div:last-child {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.agent-worker-card .catalog-row > svg {
+  grid-column: 3;
+  grid-row: 1;
+  margin-top: 0.12rem;
+}
+
+.agent-worker-card .catalog-row-title {
+  line-height: 1.25;
+}
+
+.agent-worker-card .catalog-row-copy {
+  margin-top: 0.48rem;
+  max-width: 54ch;
+  line-height: 1.55;
+}
