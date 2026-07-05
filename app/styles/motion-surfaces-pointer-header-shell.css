@@ -1,0 +1,57 @@
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .ambient-header {
+    perspective: clamp(360px, 38vw, 680px);
+    perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
+    transform-style: preserve-3d;
+  }
+
+  .ambient-header .page-hero {
+    transform-style: preserve-3d;
+  }
+
+  .ambient-header::before {
+    animation: ambient-calibration-breathe-pointer 8s ease-in-out infinite alternate;
+    width: min(78rem, 118vw);
+    height: clamp(9.25rem, 15vw, 12.5rem);
+    transform:
+      translate3d(calc(-50% + var(--background-header-shift-x)), var(--background-header-shift-y), 0)
+      rotateX(var(--background-header-before-rotate-x))
+      rotateY(var(--background-header-before-rotate-y))
+      rotateZ(calc(var(--background-plane-normal-x) * -0.16deg))
+      translateZ(70px)
+      scale(1.16);
+    background-position:
+       calc(50% + var(--background-header-shift-soft-x)) calc(50% + var(--background-header-shift-soft-y)),
+        calc(50% + var(--background-header-shift-soft-x)) 0,
+       calc(50% + var(--background-header-shift-soft-x)) calc(50% + var(--background-header-shift-soft-y)),
+       center;
+    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transition:
+      transform 84ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 160ms ease-out;
+    will-change: transform;
+  }
+
+  .ambient-header::after {
+    animation: ambient-rule-breathe 7s ease-in-out infinite;
+    transform:
+      translate3d(calc(-50% + var(--background-header-shift-soft-x)), var(--background-header-shift-soft-y), 0)
+      rotateX(var(--background-header-after-rotate-x))
+      rotateY(var(--background-header-after-rotate-y))
+      rotateZ(calc(var(--background-plane-normal-x) * -0.14deg))
+      translateZ(64px)
+      scale(1.18);
+    background-position:
+       calc(0% + var(--background-header-shift-soft-x)) 50%,
+       calc(100% + var(--background-header-shift-soft-x)) 50%,
+       calc(50% + var(--background-header-shift-soft-x)) center;
+    transform-origin: var(--background-header-origin-x) var(--background-header-origin-y);
+    backface-visibility: hidden;
+    transition:
+      transform 84ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 160ms ease-out;
+    will-change: transform;
+  }
+}
