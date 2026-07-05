@@ -1,0 +1,32 @@
+@media (min-width: 64rem) {
+  .overview-relation-grid .relation-card-head {
+    min-width: 0;
+  }
+
+  .overview-relation-grid .relation-card-title {
+    margin-top: 0.28rem;
+    font-size: 0.98rem;
+  }
+
+  .overview-relation-grid .relation-card-examples {
+    max-width: 18rem;
+  }
+
+  .overview-relation-grid .relation-card-body {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(0.85rem, 1.35vw, 1.25rem);
+    margin-top: 0;
+  }
+
+  .overview-relation-grid .relation-card-body div {
+    min-height: 100%;
+    padding: 0 0 0 0.9rem;
+    border-top: 0;
+    border-left: 1px solid rgba(var(--relation-rgb), 0.18);
+  }
+
+  .overview-relation-grid .relation-card-body div:nth-child(2) {
+    border-top: 0;
+    border-left-color: rgba(var(--signal-core-rgb), 0.2);
+  }
+}

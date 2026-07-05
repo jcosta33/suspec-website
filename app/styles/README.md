@@ -77,6 +77,10 @@ reviewable.
 mobile overview boundary-list, boundary-panel, and next-card density rules live
 in separate files.
 
+`app/styles/what-is-suspec-relations-desktop.css` is a desktop manifest: the
+relations ledger shell, card surface treatment, and content layout live in
+separate files so the overview section can change without broad selector moves.
+
 `app/art-direction-pass.css` and the later `app/styles/art-direction-*.css`
 files no longer exist; their work is split into `*-polish.css` files by route
 family.
