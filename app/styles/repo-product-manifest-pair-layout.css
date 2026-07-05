@@ -1,0 +1,11 @@
+/* Repo manifest — opening readout for suspec-agents and suspec-skills. */
+.manifest-pair {
+  align-items: stretch;
+}
+
+@media (min-width: 64rem) {
+  .manifest-pair {
+    grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
+    gap: 1.25rem;
+  }
+}
