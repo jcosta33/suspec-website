@@ -1,0 +1,21 @@
+/* ---------- Sidebar ---------- */
+.docs-layout > aside {
+  flex: 0 0 15rem;
+  position: sticky;
+  top: 5rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.055) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(15, 11, 8, 0.62), rgba(10, 7, 5, 0.42));
+  background-size:
+    32px 100%,
+    auto;
+  border: 1px solid rgba(70, 57, 44, 0.56);
+  border-left-color: rgba(var(--signal-reference-rgb), 0.46);
+  border-radius: var(--radius-panel);
+  box-shadow:
+    inset 1px 0 0 rgba(var(--signal-reference-rgb), 0.12),
+    inset 0 1px 0 rgba(240, 226, 204, 0.03);
+  padding: 0.9rem 0.8rem;
+}

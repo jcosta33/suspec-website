@@ -1,0 +1,31 @@
+.docs-nav-group {
+  margin-bottom: 1.65rem;
+}
+.docs-nav-group > .docs-nav-title,
+.docs-nav-group > summary {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-concrete-400);
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(var(--signal-reference-rgb), 0.22);
+}
+.docs-nav-group > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.docs-nav-group > summary::after {
+  content: "+";
+  color: var(--color-panel-edge);
+  font-size: 0.9rem;
+}
+.docs-nav-group[open] > summary::after {
+  content: "−";
+}
