@@ -1,0 +1,60 @@
+
+@media (max-width: 639px) {
+  .mcp-guardrail-grid {
+    gap: 0.625rem;
+  }
+
+  .mcp-guardrail-card {
+    padding: 0.95rem 1rem;
+  }
+
+  .mcp-guardrail-card > .relative {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: start;
+    column-gap: 0.72rem;
+    row-gap: 0.2rem;
+  }
+
+  .mcp-guardrail-card > .relative > div:first-child {
+    display: contents;
+  }
+
+  .mcp-guardrail-card .hex-badge {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    height: 2rem;
+    width: 2rem;
+    margin-top: 0.08rem;
+  }
+
+  .mcp-guardrail-card .hex-badge :is(svg) {
+    height: 0.95rem;
+    width: 0.95rem;
+  }
+
+  .mcp-guardrail-title {
+    grid-column: 2;
+    grid-row: 1;
+    padding-top: 0.1rem;
+    font-size: 0.78rem;
+    line-height: 1.2;
+  }
+
+  .mcp-guardrail-stamp {
+    grid-column: 3;
+    grid-row: 1;
+    min-height: 1.35rem;
+    padding: 0.05rem 0.38rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
+  .mcp-guardrail-card p {
+    grid-column: 2 / 4;
+    grid-row: 2;
+    margin-top: 0;
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+}

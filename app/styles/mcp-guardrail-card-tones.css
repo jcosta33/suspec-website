@@ -1,0 +1,18 @@
+
+.mcp-guardrail-card-reference {
+  --guardrail-signal: var(--signal-reference);
+  --guardrail-rgb: var(--signal-reference-rgb);
+  --guardrail-pattern: var(--signal-pattern-reference);
+}
+
+.mcp-guardrail-card-change {
+  --guardrail-signal: var(--signal-change);
+  --guardrail-rgb: var(--signal-change-rgb);
+  --guardrail-pattern: var(--signal-pattern-change);
+}
+
+.mcp-guardrail-card-muted {
+  --guardrail-signal: var(--signal-muted);
+  --guardrail-rgb: var(--signal-muted-rgb);
+  --guardrail-pattern: var(--signal-pattern-muted);
+}

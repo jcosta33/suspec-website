@@ -1,0 +1,21 @@
+.mcp-guardrail-card {
+  --guardrail-signal: var(--signal-reference);
+  --guardrail-rgb: var(--signal-reference-rgb);
+  --guardrail-pattern: var(--signal-pattern-reference);
+  --plate-signal: var(--guardrail-signal);
+  --plate-rgb: var(--guardrail-rgb);
+  border-color: rgba(var(--guardrail-rgb), 0.16);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(var(--guardrail-rgb), 0.036) 0,
+      rgba(var(--guardrail-rgb), 0.036) 2px,
+      transparent 2px
+    ),
+    var(--signal-pattern-muted),
+    radial-gradient(
+      74% 68% at 16% 0%,
+      rgba(var(--guardrail-rgb), 0.026),
+      transparent 66%
+    );
+}
