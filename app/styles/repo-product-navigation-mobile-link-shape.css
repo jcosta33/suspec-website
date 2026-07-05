@@ -1,0 +1,45 @@
+@media (max-width: 40rem) {
+  .agent-page-nav-link,
+  .section-jump-nav-link {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    min-height: 2.75rem;
+    min-width: 6.35rem;
+    gap: 0.4rem;
+    border: 1px solid rgba(70, 57, 44, 0.38);
+    border-left-color: rgba(var(--agent-nav-rgb), 0.34);
+    border-radius: calc(var(--radius-control) - 2px);
+    background:
+      linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.014), transparent 46%),
+      linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.12) 0 1px, transparent 1px),
+      var(--signal-pattern-muted),
+      rgba(18, 14, 10, 0.44);
+    box-shadow:
+      inset 1px 0 0 rgba(var(--agent-nav-rgb), 0.12),
+      inset 0 1px 0 rgba(240, 226, 204, 0.025);
+    padding: 0.46rem 0.56rem;
+  }
+
+  .agent-page-nav-link {
+    min-height: 2.75rem;
+    min-width: 6.05rem;
+    width: auto;
+    border-color: rgba(70, 57, 44, 0.2);
+    border-left-color: rgba(var(--agent-nav-rgb), 0.26);
+    border-radius: calc(var(--radius-control) - 4px);
+    background:
+      linear-gradient(90deg, rgba(var(--agent-nav-rgb), 0.01), transparent 48%),
+      rgba(18, 14, 10, 0.2);
+    box-shadow: inset 1px 0 0 rgba(var(--agent-nav-rgb), 0.08);
+    padding: 0.38rem 0.52rem;
+  }
+
+  .repo-product-page .agent-page-nav-link {
+    flex: initial;
+    min-height: 2.85rem;
+    min-width: 0;
+    width: auto;
+    scroll-snap-align: none;
+    padding: 0.4rem 0.56rem;
+  }
+}

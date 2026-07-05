@@ -1,0 +1,24 @@
+@media (max-width: 40rem) {
+  .agent-page-nav-label,
+  .section-jump-nav-label {
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .agent-page-nav-label {
+    font-size: 0.72rem;
+  }
+
+  .repo-product-page .agent-page-nav-label {
+    font-size: 0.76rem;
+  }
+
+  .agent-page-nav-link > svg,
+  .section-jump-nav-link > svg {
+    display: none;
+  }
+
+  .section-jump-nav {
+    margin-top: 0;
+  }
+}
