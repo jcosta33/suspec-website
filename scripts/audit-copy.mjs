@@ -33,6 +33,8 @@ const bannedPatterns = [
   { label: "corporate filler", pattern: /\b(?:seamless|seamlessly|synergy|best-in-class)\b/i },
   { label: "overdramatic ritual copy", pattern: /\b(?:six gates|one trace|sacred|oracle|summon|spell|sigil)\b/i },
   { label: "vague AI positioning", pattern: /\b(?:ai-powered|autonomous agent platform)\b/i },
+  { label: "hand-holdy developer explainer", pattern: /\bA (?:skill|worker|spec|task|CLI|MCP|guide) is\b/i },
+  { label: "soft hype adjective", pattern: /\b(?:powerful|robust|effortless|easy-to-use)\b/i },
 ];
 
 const claimPatterns = [
@@ -87,7 +89,22 @@ function scanRoute(route, text) {
   return failures;
 }
 
-async function collectRouteText(cdp, baseUrl, route) {
+function duplicateHeadingFailures(headings) {
+  const seen = new Map();
+  for (const heading of headings) {
+    const key = heading.text.toLowerCase();
+    if (!key) continue;
+    const entries = seen.get(key) ?? [];
+    entries.push(heading.level);
+    seen.set(key, entries);
+  }
+
+  return [...seen.entries()]
+    .filter(([, levels]) => levels.length > 1)
+    .map(([text, levels]) => `duplicate visible heading "${text}" (${levels.join(", ")})`);
+}
+
+async function collectRouteContent(cdp, baseUrl, route) {
   cdp.exceptions = [];
   await cdp.send("Emulation.setDeviceMetricsOverride", {
     width: 1280,
@@ -102,7 +119,18 @@ async function collectRouteText(cdp, baseUrl, route) {
   await wait(route.startsWith("/docs") ? 1800 : 1000);
   return cdp.eval(`(() => {
     const main = document.querySelector('main');
-    return (main?.innerText || main?.textContent || '').replace(/\\s+/g, ' ').trim();
+    const isVisible = (el) => {
+      const rect = el.getBoundingClientRect();
+      const style = getComputedStyle(el);
+      return rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden';
+    };
+    const clean = (value) => (value || '').replace(/\\s+/g, ' ').trim();
+    return {
+      text: clean(main?.innerText || main?.textContent || ''),
+      headings: [...document.querySelectorAll('main h1, main h2, main h3')]
+        .filter(isVisible)
+        .map((el) => ({ level: el.tagName.toLowerCase(), text: clean(el.textContent) })),
+    };
   })()`);
 }
 
@@ -119,8 +147,12 @@ try {
   const { cdp, close } = await openCdp(chrome);
   const summaries = [];
   for (const route of routes) {
-    const text = normalize(await collectRouteText(cdp, baseUrl, route));
-    const failures = scanRoute(route, text);
+    const content = await collectRouteContent(cdp, baseUrl, route);
+    const text = normalize(content.text);
+    const failures = [
+      ...scanRoute(route, text),
+      ...duplicateHeadingFailures(content.headings),
+    ];
     summaries.push({ route, chars: text.length });
     if (failures.length || cdp.exceptions.length) {
       exitCode = 1;
