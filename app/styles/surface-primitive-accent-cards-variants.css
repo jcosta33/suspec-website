@@ -1,0 +1,52 @@
+.accent-card-core,
+.accent-card-aurum {
+  --accent-signal: var(--signal-core);
+  --accent-rgb: var(--signal-core-rgb);
+  --accent-pattern: var(--signal-pattern-core);
+  --accent-mark: var(--signal-mark-core);
+}
+
+.accent-card-evidence,
+.accent-card-phosphor,
+.accent-card-olive {
+  --accent-signal: var(--signal-evidence);
+  --accent-rgb: var(--signal-evidence-rgb);
+  --accent-pattern: var(--signal-pattern-evidence);
+  --accent-mark: var(--signal-mark-evidence);
+}
+
+.accent-card-greenfield {
+  --accent-signal: var(--signal-greenfield);
+  --accent-rgb: var(--signal-greenfield-rgb);
+  --accent-pattern: var(--signal-pattern-greenfield);
+  --accent-mark: var(--signal-mark-greenfield);
+}
+
+.accent-card-brownfield {
+  --accent-signal: var(--signal-brownfield);
+  --accent-rgb: var(--signal-brownfield-rgb);
+  --accent-pattern: var(--signal-pattern-brownfield);
+  --accent-mark: var(--signal-mark-brownfield);
+}
+
+.accent-card-change,
+.accent-card-rubedo {
+  --accent-signal: var(--signal-change);
+  --accent-rgb: var(--signal-change-rgb);
+  --accent-pattern: var(--signal-pattern-change);
+  --accent-mark: var(--signal-mark-change);
+}
+
+.accent-card-reference {
+  --accent-signal: var(--signal-reference);
+  --accent-rgb: var(--signal-reference-rgb);
+  --accent-pattern: var(--signal-pattern-reference);
+  --accent-mark: var(--signal-mark-reference);
+}
+
+.accent-card-muted {
+  --accent-signal: var(--signal-muted);
+  --accent-rgb: var(--signal-muted-rgb);
+  --accent-pattern: var(--signal-pattern-muted);
+  --accent-mark: var(--signal-mark-muted);
+}
