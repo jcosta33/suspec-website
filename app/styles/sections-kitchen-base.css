@@ -47,6 +47,7 @@
 }
 
 .kitchen-specimen-index {
+  color: var(--color-gold-bright);
   line-height: 1;
 }
 
@@ -62,4 +63,9 @@
 .kitchen-specimen-links {
   border-top: 1px solid rgba(88, 72, 52, 0.62);
   padding-top: 0.76rem;
+}
+
+.kitchen-specimen-links a {
+  color: var(--color-gold-bright);
+  text-decoration-color: rgba(240, 184, 92, 0.54);
 }
