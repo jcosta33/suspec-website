@@ -1,0 +1,26 @@
+
+.process-strip
+  > :is(li, a, div)
+  :is(.text-suspec-yellow, .text-olive, .text-brass, .clip-hex, .motion-nudge-x, .motion-nudge-x-centered) {
+  color: color-mix(in oklab, var(--process-signal) 54%, var(--color-concrete-200));
+}
+
+.process-strip .hex-badge {
+  background:
+    linear-gradient(180deg, rgba(240, 226, 204, 0.06), transparent 46%),
+    radial-gradient(
+      86% 76% at 50% 0%,
+      rgba(var(--process-rgb), 0.026),
+      transparent 64%
+    ),
+    rgba(26, 21, 16, 0.98);
+}
+
+.process-strip .hex-badge-rail {
+  opacity: 0.34;
+  box-shadow: 0 0 3px currentColor;
+}
+
+.process-strip .hex-badge > span:last-child {
+  filter: drop-shadow(0 0 1px currentColor);
+}

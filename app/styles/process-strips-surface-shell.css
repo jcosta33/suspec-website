@@ -1,0 +1,14 @@
+.process-strip > :is(li, a, div) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: rgba(28, 22, 16, 0.96);
+  background-image:
+    linear-gradient(90deg, rgba(var(--process-rgb), 0.0008), transparent 34%),
+    linear-gradient(90deg, rgba(var(--process-rgb), 0.004) 0 1px, transparent 1px),
+    var(--signal-pattern-muted);
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
