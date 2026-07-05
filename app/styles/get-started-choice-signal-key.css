@@ -1,0 +1,8 @@
+.setup-choice-signal-key {
+  margin-top: 1.35rem;
+  max-width: 40rem;
+}
+
+.setup-choice-signal-key .signal-key-item {
+  flex-basis: 18rem;
+}

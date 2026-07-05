@@ -1,0 +1,18 @@
+
+.kit-icon {
+  --kit-signal: var(--signal-core);
+  --kit-rgb: var(--signal-core-rgb);
+  --kit-pattern: var(--signal-pattern-core);
+  --kit-mark: var(--signal-mark-core);
+  color: var(--kit-signal);
+  border-color: rgba(var(--kit-rgb), 0.34);
+  background:
+    radial-gradient(
+      80% 80% at 50% 0%,
+      rgba(var(--kit-rgb), 0.18),
+      transparent 58%
+    ),
+    var(--kit-mark),
+    var(--kit-pattern),
+    var(--color-panel-raised);
+}
