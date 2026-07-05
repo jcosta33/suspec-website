@@ -57,6 +57,10 @@ separate responsive files so product-package mobile tuning stays reviewable.
 mark tokens live in separate files so semantic color/pattern changes stay
 reviewable.
 
+`app/styles/what-is-suspec-overview-mobile-boundaries.css` is a manifest:
+mobile overview boundary-list, boundary-panel, and next-card density rules live
+in separate files.
+
 `app/art-direction-pass.css` and the later `app/styles/art-direction-*.css`
 files no longer exist; their work is split into `*-polish.css` files by route
 family.

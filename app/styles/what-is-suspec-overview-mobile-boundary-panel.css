@@ -1,0 +1,21 @@
+@media (max-width: 40rem) {
+  #boundaries .panel-inset {
+    padding: 1rem;
+  }
+
+  #boundaries .panel-inset .section-kicker + .font-heading {
+    margin-top: 0.62rem;
+  }
+
+  #boundaries .panel-inset ul:not(.overview-is-list) {
+    margin-top: 0.92rem;
+  }
+
+  #boundaries .panel-inset ul:not(.overview-is-list) li {
+    align-items: center;
+    gap: 0.58rem;
+    padding-block: 0.58rem;
+    font-size: 0.9rem;
+    line-height: 1.32;
+  }
+}

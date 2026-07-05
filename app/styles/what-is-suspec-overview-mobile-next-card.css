@@ -1,0 +1,24 @@
+@media (max-width: 40rem) {
+  .overview-next-card {
+    padding: 1rem;
+  }
+
+  .overview-next-content {
+    gap: 1.25rem;
+  }
+
+  .overview-next-source {
+    padding-top: 0.78rem;
+  }
+
+  .overview-next-nav {
+    border-top: 1px solid rgba(var(--signal-core-rgb), 0.18);
+    border-left: 0;
+    padding-top: 0.95rem;
+    padding-left: 0;
+  }
+
+  .overview-next-links {
+    margin-top: 0.55rem;
+  }
+}
