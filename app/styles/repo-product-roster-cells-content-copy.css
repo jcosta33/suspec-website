@@ -1,0 +1,19 @@
+
+.agent-roster-cell-title {
+  grid-column: 1 / -1;
+  margin-top: 0.78rem;
+  line-height: 1.18;
+}
+
+.agent-roster-file {
+  grid-column: 1 / -1;
+  margin-top: 0.72rem;
+  line-height: 1.35;
+}
+
+.agent-roster-use {
+  grid-column: 1 / -1;
+  margin-top: 0.9rem;
+  max-width: 30rem;
+  line-height: 1.58;
+}
