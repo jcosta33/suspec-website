@@ -1,0 +1,21 @@
+
+.skill-anatomy-rail {
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.16), transparent 22%),
+    var(--color-panel-border);
+}
+
+.skill-anatomy-step {
+  min-height: 9.4rem;
+  background-image:
+    radial-gradient(
+      70% 64% at 18% 0%,
+      rgba(var(--signal-reference-rgb), 0.075),
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(240, 226, 204, 0.025),
+      transparent 44%
+    );
+}

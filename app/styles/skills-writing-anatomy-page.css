@@ -1,0 +1,18 @@
+
+.writing-skill-page .skill-anatomy-step {
+  min-height: 8.55rem;
+}
+
+.writing-skill-page .skill-anatomy-step > a {
+  min-height: 8.55rem;
+  padding: 1.08rem 1.1rem;
+}
+
+.writing-skill-page .skill-anatomy-label {
+  font-size: 1.08rem;
+  line-height: 1.16;
+}
+
+.writing-skill-page .skill-anatomy-copy {
+  max-width: 16rem;
+}

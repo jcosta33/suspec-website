@@ -1,0 +1,10 @@
+.skill-anatomy-panel {
+  border-color: rgba(var(--signal-reference-rgb), 0.34);
+  background:
+    radial-gradient(
+      80% 80% at 50% 0%,
+      rgba(var(--signal-reference-rgb), 0.075),
+      transparent 62%
+    ),
+    var(--color-panel-raised);
+}
