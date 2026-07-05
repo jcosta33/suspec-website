@@ -8,6 +8,7 @@
     "prebuild": "node scripts/ensure-canon.mjs",
     "build": "next build",
     "postbuild": "pagefind --site dist --output-subdir pagefind && node scripts/gen-llms-full.mjs",
+    "audit:copy": "node scripts/audit-copy.mjs",
     "audit:css": "node scripts/audit-css.mjs",
     "audit:site": "node scripts/audit-site.mjs",
     "audit:axe": "node scripts/audit-axe.mjs",
