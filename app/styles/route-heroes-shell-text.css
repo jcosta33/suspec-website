@@ -1,0 +1,36 @@
+.page-hero > p {
+  max-width: min(100%, 42rem);
+  overflow-wrap: break-word;
+}
+
+.page-hero .page-hero-eyebrow {
+  margin-bottom: var(--rhythm-hero-eyebrow-title);
+}
+
+.page-hero-title {
+  margin: 0;
+}
+
+@media (max-width: 40rem) {
+  .home-hero-section .page-hero-title {
+    max-inline-size: min(100%, 18rem);
+    margin-inline: auto;
+    font-size: clamp(2rem, 8.2vw, 2.35rem);
+    line-height: 1.08;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+    word-break: normal;
+  }
+}
+
+.page-hero-datum + p {
+  margin-top: clamp(0.82rem, 1.08vw, 1.05rem);
+}
+
+.page-hero > p + p {
+  margin-top: clamp(0.72rem, 0.95vw, 0.92rem);
+}
+
+.page-hero .hero-badge-row {
+  margin-top: clamp(1.85rem, 2.4vw, 2.28rem);
+}

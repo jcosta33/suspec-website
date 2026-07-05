@@ -1,0 +1,23 @@
+.page-hero {
+  --hero-signal: var(--signal-core);
+  --hero-rgb: var(--signal-core-rgb);
+  --hero-pattern: linear-gradient(180deg, transparent, transparent);
+  --hero-mark: var(--signal-mark-core);
+  --hero-motif-opacity-min: 0.5;
+  --hero-motif-opacity-max: 0.64;
+  position: relative;
+  isolation: isolate;
+}
+
+.page-hero > :not(.page-hero-motif) {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero::before,
+.page-hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
