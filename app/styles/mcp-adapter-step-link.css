@@ -1,0 +1,47 @@
+
+.mcp-adapter-step {
+  background-image:
+    radial-gradient(
+      70% 64% at 18% 0%,
+      rgba(var(--process-rgb), 0.024),
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(240, 226, 204, 0.025),
+      transparent 44%
+    );
+}
+
+.mcp-adapter-step-link {
+  position: relative;
+  min-height: 7.1rem;
+  padding: 0.875rem;
+}
+
+@media (min-width: 40rem) {
+  .mcp-adapter-step-link {
+    padding: 0.95rem;
+  }
+}
+
+.mcp-adapter-step-link p {
+  margin-top: 0.55rem;
+}
+
+.mcp-adapter-step-link::before {
+  content: "";
+  position: absolute;
+  inset: 1rem auto 1rem 0;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(var(--process-rgb), 0.54),
+    transparent
+  );
+  box-shadow: 0 0 10px rgba(var(--process-rgb), 0.12);
+  opacity: 0.6;
+  pointer-events: none;
+}

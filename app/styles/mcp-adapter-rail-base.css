@@ -1,0 +1,12 @@
+.mcp-adapter-rail {
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.1), transparent 22%),
+    var(--color-panel-border);
+}
+
+.mcp-adapter-rail::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
