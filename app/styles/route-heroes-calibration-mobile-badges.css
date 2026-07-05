@@ -1,0 +1,12 @@
+@media (max-width: 40rem) {
+  .hero-badge-row {
+    gap: 0.45rem;
+    max-width: min(100%, 22rem);
+    margin-inline: auto;
+  }
+
+  .hero-badge-row > span {
+    flex: 0 1 auto;
+    max-width: 100%;
+  }
+}

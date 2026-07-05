@@ -1,0 +1,56 @@
+@media (max-width: 40rem) {
+  .page-hero:is(
+      .page-hero-package-agents,
+      .page-hero-package-skills,
+      .page-hero-package-cli,
+      .page-hero-package-mcp
+    )
+    .page-hero-motif {
+    top: -0.75rem;
+    height: 10rem;
+  }
+
+  .page-hero:is(
+      .page-hero-package-agents,
+      .page-hero-package-skills,
+      .page-hero-package-cli,
+      .page-hero-package-mcp
+    )
+    .page-hero-eyebrow {
+    margin-bottom: 1.7rem;
+  }
+
+  .page-hero:is(
+      .page-hero-package-agents,
+      .page-hero-package-skills,
+      .page-hero-package-cli,
+      .page-hero-package-mcp
+    )
+    > p {
+    margin-top: 1.25rem;
+    max-width: 17.4rem;
+    font-size: 1.04rem;
+    line-height: 1.48;
+  }
+
+  .page-hero:is(
+      .page-hero-package-agents,
+      .page-hero-package-skills,
+      .page-hero-package-cli,
+      .page-hero-package-mcp
+    )
+    > p
+    + p {
+    margin-top: 0.72rem;
+  }
+
+  .page-hero:is(
+      .page-hero-package-agents,
+      .page-hero-package-skills,
+      .page-hero-package-cli,
+      .page-hero-package-mcp
+    )
+    .hero-trace {
+    margin-top: 0.78rem;
+  }
+}

@@ -1,0 +1,18 @@
+@media (max-width: 40rem) {
+  .page-hero.page-hero-package-skills > p {
+    max-width: 18.4rem;
+    font-size: 0.98rem;
+    line-height: 1.4;
+  }
+
+  .page-hero.page-hero-package-skills > p + p {
+    margin-top: 0.72rem;
+    max-width: 18.2rem;
+    font-size: 0.9rem;
+    line-height: 1.36;
+  }
+
+  .page-hero.page-hero-package-skills .hero-trace {
+    margin-top: 0.66rem;
+  }
+}
