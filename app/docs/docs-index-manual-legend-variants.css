@@ -1,0 +1,24 @@
+.docs-index-legend-core {
+  --legend-signal: var(--signal-core);
+  --legend-rgb: var(--signal-core-rgb);
+}
+
+.docs-index-legend-greenfield {
+  --legend-signal: var(--signal-greenfield);
+  --legend-rgb: var(--signal-greenfield-rgb);
+}
+
+.docs-index-legend-change {
+  --legend-signal: var(--signal-change);
+  --legend-rgb: var(--signal-change-rgb);
+}
+
+.docs-index-legend-reference {
+  --legend-signal: var(--signal-reference);
+  --legend-rgb: var(--signal-reference-rgb);
+}
+
+.docs-index-legend-muted {
+  --legend-signal: var(--signal-muted);
+  --legend-rgb: var(--signal-muted-rgb);
+}

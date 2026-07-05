@@ -1,0 +1,42 @@
+.docs-index-legend {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 0.16rem 0.56rem;
+  margin: 0.1rem 0 0;
+  border-top: 1px solid rgba(var(--signal-reference-rgb), 0.18);
+  padding: 0.42rem 0 0.3rem;
+  list-style: none;
+}
+
+.docs-index-legend-item {
+  --legend-signal: var(--signal-muted);
+  --legend-rgb: var(--signal-muted-rgb);
+  display: grid;
+  min-height: 2.75rem;
+  align-content: center;
+  gap: 0.16rem;
+  border: 0;
+  border-left: 2px solid rgba(var(--legend-rgb), 0.56);
+  border-radius: 0;
+  background:
+    linear-gradient(90deg, rgba(var(--legend-rgb), 0.07), transparent 74%),
+    transparent;
+  padding: 0.28rem 0.46rem;
+  box-shadow: none;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.docs-prose .docs-index-legend-item {
+  margin: 0;
+  overflow-wrap: normal;
+}
+
+.docs-index-legend-item:hover,
+.docs-index-legend-item:focus-within {
+  border-left-color: rgba(var(--legend-rgb), 0.82);
+  background-color: rgba(var(--legend-rgb), 0.035);
+}
