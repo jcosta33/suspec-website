@@ -80,8 +80,8 @@ const mcpInstallCommands = [
 
 const guardrails = [
   {
-    title: "No board, no result",
-    text: "It writes no board and no review result. Safe-write tools only scaffold fresh artifacts.",
+    title: "Read/scaffold only",
+    text: "No board writes, no review result. Safe-write tools scaffold fresh artifacts only.",
     stamp: "scope",
     icon: ShieldCheck,
     signal: "reference",
@@ -335,12 +335,13 @@ export default function McpPage() {
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Local stdio access to Suspec status, checks, artifacts, and review
-            data. Records stay local; review decisions stay with the repo.
+            data. It reads and reconciles workspace records; review policy stays
+            in the repo.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
             <Badge variant="ready">v0.2 surface</Badge>
-            <Badge variant="draft">no board</Badge>
-            <Badge signal="muted">repo decides</Badge>
+            <Badge variant="draft">local stdio</Badge>
+            <Badge signal="muted">read + reconcile</Badge>
           </div>
         </PageHero>
       </Section>
@@ -366,9 +367,9 @@ export default function McpPage() {
           <Heading>Client asks, records answer</Heading>
           <p className="text-concrete-400">
             suspec-mcp is a local stdio bridge. It adapts the CLI&apos;s{" "}
-            <code>--json</code> contract for MCP clients. Boundary: it does not
-            decide correctness and does not become a hosted service or a review
-            authority.
+            <code>--json</code> contract for MCP clients and reconciles
+            workspace records. It does not decide correctness, and it does not
+            become a hosted service or a review authority.
           </p>
           <p className="text-sm text-concrete-400">
             Source:{" "}
