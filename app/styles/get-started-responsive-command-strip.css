@@ -1,0 +1,21 @@
+@media (max-width: 40rem) {
+  .setup-command-strip {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.58rem;
+    padding: 0.68rem 0.78rem;
+  }
+
+  .setup-command-label {
+    margin-bottom: 0.24rem;
+    font-size: 0.52rem;
+  }
+
+  .setup-command-copy code {
+    font-size: 0.72rem;
+  }
+
+  .setup-command-button {
+    width: fit-content;
+    min-height: 2.5rem;
+  }
+}

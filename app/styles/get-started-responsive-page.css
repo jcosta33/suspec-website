@@ -1,0 +1,17 @@
+@media (max-width: 40rem) {
+  .get-started-page {
+    row-gap: 2.35rem;
+  }
+
+  .get-started-page > .ambient-header {
+    margin-bottom: -0.18rem;
+  }
+
+  .get-started-page .page-hero {
+    max-width: 20.5rem;
+  }
+
+  .get-started-page .hero-trace {
+    margin-top: 0.95rem;
+  }
+}
