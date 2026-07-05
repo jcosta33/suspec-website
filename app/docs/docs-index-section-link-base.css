@@ -1,0 +1,33 @@
+
+.docs-index-list li {
+  margin: 0;
+}
+
+.docs-prose .docs-index-list a {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 2.85rem;
+  align-items: center;
+  gap: 0.66rem;
+  width: 100%;
+  border: 1px solid rgba(var(--docs-index-rgb), 0.055);
+  border-left-color: rgba(var(--docs-index-rgb), 0.16);
+  border-bottom-color: rgba(var(--docs-index-rgb), 0.12);
+  border-radius: calc(var(--radius-panel) - 2px);
+  background:
+    linear-gradient(90deg, rgba(var(--docs-index-rgb), 0.018), transparent 42%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.4rem,
+      rgba(var(--docs-index-rgb), 0.012) 1.4rem calc(1.4rem + 1px)
+    );
+  padding: 0.36rem 0.56rem;
+  color: var(--color-concrete-200);
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    border-color 0.12s,
+    color 0.12s,
+    box-shadow 0.12s;
+}

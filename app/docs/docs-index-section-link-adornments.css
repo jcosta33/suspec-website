@@ -1,0 +1,27 @@
+.docs-prose .docs-index-list a::before {
+  content: "";
+  width: 0.22rem;
+  height: 0.22rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--docs-index-signal);
+  box-shadow: 0 0 8px rgba(var(--docs-index-rgb), 0.2);
+  opacity: 0.42;
+}
+
+.docs-prose .docs-index-list a::after {
+  content: "";
+  position: absolute;
+  right: 0.35rem;
+  top: 50%;
+  width: 0.44rem;
+  height: 0.44rem;
+  pointer-events: none;
+  border-right: 1px solid var(--docs-index-signal);
+  border-bottom: 1px solid var(--docs-index-signal);
+  opacity: 0.32;
+  transform: translateY(-50%) rotate(-45deg);
+  transition:
+    opacity 0.12s,
+    right 0.12s;
+}
