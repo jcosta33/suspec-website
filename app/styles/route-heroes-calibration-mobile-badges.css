@@ -2,6 +2,7 @@
   .hero-badge-row {
     gap: 0.45rem;
     max-width: min(100%, 22rem);
+    margin-top: 1.24rem;
     margin-inline: auto;
   }
 

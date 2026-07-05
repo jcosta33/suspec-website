@@ -283,6 +283,7 @@
     );
     if (!canAnimate.matches) return;
 
+    const motionGain = 0.5;
     let frame = 0;
     let targetX = 0;
     let targetY = 0;
@@ -349,8 +350,8 @@
     window.addEventListener(
       "pointermove",
       (event) => {
-        targetX = (event.clientX / window.innerWidth - 0.5);
-        targetY = (event.clientY / window.innerHeight - 0.5);
+        targetX = (event.clientX / window.innerWidth - 0.5) * motionGain;
+        targetY = (event.clientY / window.innerHeight - 0.5) * motionGain;
         request();
       },
       { passive: true },
