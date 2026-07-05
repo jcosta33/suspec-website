@@ -1,0 +1,56 @@
+
+.agent-lane-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.95rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(var(--signal-reference-rgb), 0.16);
+}
+
+.agent-lane-summary-link {
+  --lane-signal: var(--signal-reference);
+  --lane-rgb: var(--signal-reference-rgb);
+  display: grid;
+  min-height: 6.4rem;
+  align-content: start;
+  gap: 0.38rem;
+  border: 1px solid rgba(var(--lane-rgb), 0.18);
+  border-left-color: rgba(var(--lane-rgb), 0.42);
+  border-radius: calc(var(--radius-panel) - 4px);
+  background:
+    linear-gradient(90deg, rgba(var(--lane-rgb), 0.045), transparent 64%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.3rem,
+      rgba(var(--lane-rgb), 0.012) 1.3rem calc(1.3rem + 1px)
+    ),
+    rgba(10, 7, 5, 0.24);
+  padding: 0.72rem 0.78rem;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+.agent-lane-summary-link-core {
+  --lane-signal: var(--signal-core);
+  --lane-rgb: var(--signal-core-rgb);
+}
+
+.agent-lane-summary-link:hover,
+.agent-lane-summary-link:focus-visible {
+  border-color: rgba(var(--lane-rgb), 0.32);
+  box-shadow:
+    inset 2px 0 0 rgba(var(--lane-rgb), 0.16),
+    0 0 0 1px rgba(var(--lane-rgb), 0.04);
+}
+
+.agent-lane-summary-link > span:first-child {
+  display: flex;
+  min-width: 0;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.65rem;
+}

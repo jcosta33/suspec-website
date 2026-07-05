@@ -1,0 +1,37 @@
+
+.agent-lane-summary-title,
+.agent-lane-summary-count,
+.agent-lane-summary-files {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.agent-lane-summary-title {
+  color: var(--lane-signal);
+  font-size: 0.74rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.agent-lane-summary-count {
+  color: var(--color-concrete-500);
+  font-size: 0.6rem;
+  font-weight: 720;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.agent-lane-summary-files {
+  color: color-mix(in oklab, var(--lane-signal) 72%, var(--color-concrete-200));
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+
+.agent-lane-summary-copy {
+  color: var(--color-concrete-400);
+  font-size: 0.78rem;
+  line-height: 1.42;
+}

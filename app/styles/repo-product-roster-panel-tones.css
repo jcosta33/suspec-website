@@ -1,0 +1,21 @@
+
+.agent-roster-panel-evidence {
+  --roster-signal: var(--signal-evidence);
+  --roster-rgb: var(--signal-evidence-rgb);
+  --roster-pattern: var(--signal-pattern-evidence);
+  --roster-mark: var(--signal-mark-evidence);
+}
+
+.agent-roster-panel-change {
+  --roster-signal: var(--signal-change);
+  --roster-rgb: var(--signal-change-rgb);
+  --roster-pattern: var(--signal-pattern-change);
+  --roster-mark: var(--signal-mark-change);
+}
+
+.agent-roster-panel-reference {
+  --roster-signal: var(--signal-reference);
+  --roster-rgb: var(--signal-reference-rgb);
+  --roster-pattern: var(--signal-pattern-reference);
+  --roster-mark: var(--signal-mark-reference);
+}

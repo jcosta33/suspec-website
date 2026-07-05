@@ -1,0 +1,16 @@
+.agent-roster-panel {
+  --roster-signal: var(--signal-core);
+  --roster-rgb: var(--signal-core-rgb);
+  --roster-pattern: var(--signal-pattern-core);
+  --roster-mark: var(--signal-mark-core);
+  border-color: rgba(var(--roster-rgb), 0.22);
+  background:
+    linear-gradient(180deg, rgba(240, 226, 204, 0.018), transparent 34%),
+    linear-gradient(90deg, rgba(var(--roster-rgb), 0.018), transparent 35%),
+    var(--signal-mark-muted),
+    var(--signal-pattern-muted),
+    rgba(31, 25, 18, 0.98);
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.052),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.42);
+}
