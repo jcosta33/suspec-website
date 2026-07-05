@@ -1,0 +1,27 @@
+@media (max-width: 40rem) {
+  .cli-command-catalog-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.22rem;
+  }
+
+  .cli-command-section {
+    padding: 0.76rem 0.85rem;
+  }
+
+  .cli-command-section-heading {
+    margin-bottom: 0.56rem;
+    padding-bottom: 0.56rem;
+  }
+
+  .cli-command-section-heading h3 {
+    font-size: 1.04rem;
+    line-height: 1.18;
+  }
+
+  .cli-command-family-tag {
+    min-height: 1.45rem;
+    padding: 0.12rem 0.42rem;
+    font-size: 0.58rem;
+  }
+}
