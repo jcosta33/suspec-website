@@ -6,8 +6,9 @@ const CSS_ROOTS = ["app/globals.css", "app/styles", "app/docs"];
 const LAYOUT_IMPORTS = ["app/layout.tsx", "app/docs/layout.tsx"];
 const BUDGETS = {
   totalLines: 22_000,
-  fileLines: 1_800,
-  important: 500,
+  fileLines: 140,
+  globalsLines: 40,
+  important: 40,
 };
 
 function rel(file) {
@@ -96,8 +97,18 @@ for (const item of summaries) {
 if (important > BUDGETS.important) {
   failures.push(`!important budget exceeded: ${important} > ${BUDGETS.important}`);
 }
+const globals = summaries.find((item) => item.file === "app/globals.css");
+if (globals && globals.lines > BUDGETS.globalsLines) {
+  failures.push(`app/globals.css exceeds line budget: ${globals.lines} > ${BUDGETS.globalsLines}`);
+}
 if (fs.existsSync(path.join(ROOT, "app/art-direction-pass.css"))) {
   failures.push("stale app/art-direction-pass.css exists; late tuning now lives in app/styles/*-polish.css");
+}
+const staleArtDirection = summaries
+  .map((item) => item.file)
+  .filter((file) => /^app\/styles\/art-direction-.*\.css$/.test(file));
+if (staleArtDirection.length > 0) {
+  failures.push(`stale art-direction css files: ${staleArtDirection.join(", ")}`);
 }
 if (layoutImports.at(-1) !== "app/styles/reduced-motion.css") {
   failures.push("app/styles/reduced-motion.css must remain the final root layout CSS import");

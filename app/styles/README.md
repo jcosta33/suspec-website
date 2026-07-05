@@ -44,14 +44,15 @@ family.
 | PG-CSS-002 | Docs route keeps docs-specific CSS out of non-docs pages. | `app/docs/layout.tsx` imports `./docs.css`; `app/docs/docs.css` imports docs-only CSS. |
 | PG-CSS-003 | Generated pages remain static/crawlable while CSS is global. | Verify with `npm run build`. |
 | PG-CSS-004 | Route matrix has no horizontal overflow, obvious terminal overflow, missing metadata, or reduced-motion regression. | Verify with `npm run audit:site`. |
-| PG-CSS-005 | CSS growth stays bounded while refactoring proceeds. | Verify with `npm run audit:css`. |
+| PG-CSS-005 | CSS growth stays bounded while refactoring proceeds: root globals stay tiny, individual CSS files stay small, stale `art-direction-*` files do not return, and `!important` stays exceptional. | Verify with `npm run audit:css`. |
 
 ## Risks And Unknowns
 
 - `route-heroes.css`, `docs-article.css`, and `what-is-suspec.css` are still
   large enough that unrelated concerns are easy to mix.
-- mobile polish files still use many `!important` declarations because the old
-  mobile art-direction layer was added as a late tuning pass.
+- The remaining `!important` declarations are concentrated in hover stability,
+  reduced-motion clamps, and copy-button feedback. Keep that count small; do not
+  use `!important` for ordinary spacing or color fixes.
 - Several route files still combine Tailwind utilities with named global
   classes, so moving a selector requires checking JSX call sites.
 - CSS Modules could reduce global leakage, but renaming all selectors at once
