@@ -1,0 +1,31 @@
+
+.setup-choice-facts {
+  display: grid;
+  gap: 0;
+  margin-top: auto;
+  border-top: 1px solid rgba(var(--choice-rgb), 0.24);
+}
+
+.setup-choice-facts div {
+  display: grid;
+  grid-template-columns: minmax(4.75rem, 0.34fr) minmax(0, 1fr);
+  gap: 0.85rem;
+  padding: 0.78rem 0;
+  border-bottom: 1px solid rgba(var(--choice-rgb), 0.18);
+}
+
+.setup-choice-facts dt {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--choice-signal);
+}
+
+.setup-choice-facts dd {
+  min-width: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-concrete-300);
+}

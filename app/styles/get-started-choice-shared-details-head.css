@@ -1,0 +1,24 @@
+.setup-choice-index {
+  display: inline-flex;
+  min-height: 1.8rem;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid rgba(var(--choice-rgb), 0.4);
+  border-radius: var(--radius-control);
+  padding: 0 0.55rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--choice-signal);
+  background:
+    linear-gradient(180deg, rgba(var(--choice-rgb), 0.08), transparent),
+    rgba(14, 11, 8, 0.5);
+}
+
+.setup-choice-head {
+  position: relative;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(var(--choice-rgb), 0.28);
+}

@@ -1,0 +1,20 @@
+
+.setup-choice-command {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(var(--choice-rgb), 0.3);
+  border-radius: var(--radius-control);
+  padding: 0.72rem 0.78rem;
+  color: var(--color-concrete-200);
+  background:
+    linear-gradient(90deg, rgba(var(--choice-rgb), 0.12), transparent 36%),
+    var(--choice-pattern),
+    rgba(10, 7, 5, 0.42);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
