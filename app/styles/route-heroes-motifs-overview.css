@@ -1,0 +1,13 @@
+
+.page-hero-motif-overview .page-hero-motif {
+  background:
+    linear-gradient(90deg, transparent, rgba(var(--hero-rgb), 0.14), transparent)
+      center 48% / 72% 1px no-repeat,
+    linear-gradient(180deg, transparent 20%, rgba(var(--hero-rgb), 0.1) 20% 21%, transparent 21% 72%, rgba(var(--hero-rgb), 0.08) 72% 73%, transparent 73%),
+    var(--hero-mark),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 1.3rem,
+      rgba(var(--hero-rgb), 0.04) 1.3rem calc(1.3rem + 1px)
+    );
+}

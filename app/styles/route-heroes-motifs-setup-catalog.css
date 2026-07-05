@@ -1,0 +1,38 @@
+
+.page-hero-motif-setup .page-hero-motif {
+  --hero-motif-opacity-min: 0.5;
+  --hero-motif-opacity-max: 0.64;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0 37%,
+      rgba(var(--hero-rgb), 0.16) 37% calc(37% + 1px),
+      transparent calc(37% + 1px) 63%,
+      rgba(var(--hero-rgb), 0.12) 63% calc(63% + 1px),
+      transparent calc(63% + 1px)
+    ),
+    radial-gradient(circle at 31% 58%, rgba(var(--hero-rgb), 0.18) 0 2px, transparent 2.5px),
+    radial-gradient(circle at 69% 42%, rgba(var(--hero-rgb), 0.18) 0 2px, transparent 2.5px),
+    var(--hero-mark),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.45rem,
+      rgba(var(--hero-rgb), 0.042) 1.45rem calc(1.45rem + 1px)
+    );
+}
+
+.page-hero-motif-catalog .page-hero-motif {
+  background:
+    linear-gradient(90deg, rgba(var(--hero-rgb), 0.12) 0 1px, transparent 1px)
+      22% 0 / 1px 100% no-repeat,
+    linear-gradient(90deg, rgba(var(--hero-rgb), 0.1) 0 1px, transparent 1px)
+      78% 0 / 1px 100% no-repeat,
+    linear-gradient(90deg, transparent, rgba(var(--hero-rgb), 0.13), transparent)
+      center 50% / 78% 1px no-repeat,
+    var(--hero-mark),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 1rem,
+      rgba(var(--hero-rgb), 0.042) 1rem calc(1rem + 1px)
+    );
+}

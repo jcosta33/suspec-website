@@ -1,0 +1,35 @@
+.page-hero-motif-loop .page-hero-motif {
+  --hero-motif-opacity-min: 0.52;
+  --hero-motif-opacity-max: 0.68;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      transparent 0 33%,
+      rgba(var(--hero-rgb), 0.17) 33.4% 34%,
+      transparent 34.4% 48%,
+      rgba(var(--hero-rgb), 0.12) 48.3% 49%,
+      transparent 49.4%
+    ),
+    conic-gradient(
+      from 30deg at 50% 50%,
+      transparent 0 8deg,
+      rgba(var(--hero-rgb), 0.12) 8deg 9deg,
+      transparent 9deg 60deg,
+      rgba(var(--hero-rgb), 0.12) 60deg 61deg,
+      transparent 61deg 120deg,
+      rgba(var(--hero-rgb), 0.12) 120deg 121deg,
+      transparent 121deg 180deg,
+      rgba(var(--hero-rgb), 0.12) 180deg 181deg,
+      transparent 181deg 240deg,
+      rgba(var(--hero-rgb), 0.12) 240deg 241deg,
+      transparent 241deg 300deg,
+      rgba(var(--hero-rgb), 0.12) 300deg 301deg,
+      transparent 301deg
+    ),
+    var(--hero-mark),
+    radial-gradient(
+      ellipse at 50% 48%,
+      rgba(var(--hero-rgb), 0.08),
+      transparent 64%
+    );
+}
