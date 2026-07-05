@@ -1,0 +1,21 @@
+.docs-prose blockquote p {
+  margin: 0.35rem 0;
+}
+.docs-prose blockquote p:first-child {
+  margin-top: 0;
+}
+.docs-prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+.docs-prose blockquote strong {
+  color: var(--color-concrete-100);
+  font-weight: 700;
+}
+.docs-prose blockquote a {
+  color: var(--color-gold-bright);
+  text-decoration-color: rgba(240, 184, 92, 0.5);
+}
+.docs-prose blockquote a:hover {
+  color: var(--color-suspec-yellow);
+  text-decoration-color: var(--color-suspec-yellow);
+}

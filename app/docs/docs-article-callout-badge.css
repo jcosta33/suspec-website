@@ -1,0 +1,19 @@
+.docs-prose blockquote::before {
+  content: "note";
+  display: inline-flex;
+  width: fit-content;
+  min-height: 1.35rem;
+  align-items: center;
+  margin: 0 0 0.45rem;
+  border: 1px solid rgba(var(--signal-core-rgb), 0.34);
+  border-radius: calc(var(--radius-control) - 3px);
+  padding: 0 0.42rem;
+  color: var(--signal-core);
+  background: rgba(var(--signal-core-rgb), 0.08);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
