@@ -1,0 +1,23 @@
+
+.docs-search-fallback-icon {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  border: 2px solid var(--color-concrete-200);
+  border-radius: 999px;
+  opacity: 0.88;
+}
+
+.docs-search-fallback-icon::after {
+  content: "";
+  position: absolute;
+  right: -0.32rem;
+  bottom: -0.22rem;
+  width: 0.48rem;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--color-concrete-200);
+  transform: rotate(45deg);
+  transform-origin: left center;
+}

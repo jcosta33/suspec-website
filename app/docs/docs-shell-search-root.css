@@ -1,0 +1,20 @@
+/* ---------- Search (Pagefind UI, themed via its CSS variables) ---------- */
+.docs-search {
+  --pagefind-ui-scale: 0.8;
+  --pagefind-ui-primary: var(--color-suspec-yellow);
+  --pagefind-ui-text: var(--color-concrete-100);
+  --pagefind-ui-background: var(--color-panel-recessed);
+  --pagefind-ui-border: var(--color-panel-border);
+  --pagefind-ui-tag: var(--color-panel-raised);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: var(--radius-panel);
+  --pagefind-ui-font: var(--font-sans), sans-serif;
+  margin-bottom: 1.25rem;
+  /* Reserve the input's height so the Pagefind UI mounting (an empty 0-height div → ~51px input)
+     doesn't shift the nav/article down — the last residual CLS source on docs pages. */
+  min-height: 3rem;
+}
+
+.docs-search:has(.pagefind-ui) .docs-search-fallback {
+  display: none;
+}

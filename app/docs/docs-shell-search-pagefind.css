@@ -1,0 +1,9 @@
+
+/* Pagefind ships its placeholder at opacity:0.2 (~1.8:1 — fails AA). Lift it to a legible cue. */
+.docs-search input::placeholder {
+  opacity: 1;
+  color: var(--color-concrete-400);
+}
+.docs-search .pagefind-ui__search-clear {
+  min-width: 2.75rem;
+}
