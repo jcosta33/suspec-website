@@ -1,0 +1,23 @@
+.loop-step-index,
+.loop-step-icon {
+  color: var(--loop-step-signal);
+}
+
+.loop-step-label {
+  color: var(--color-concrete-100);
+  text-shadow: none;
+  transition: color 150ms ease;
+}
+
+.loop-step-card:hover .loop-step-label,
+.loop-step-card:focus-visible .loop-step-label {
+  color: var(--color-concrete-100);
+}
+
+.loop-step-card-linked {
+  min-height: 10.75rem;
+}
+
+.loop-step-card-linked .loop-step-label {
+  font-size: 1rem;
+}

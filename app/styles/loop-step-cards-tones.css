@@ -1,0 +1,35 @@
+.loop-step-card-workflow,
+.loop-step-card-core {
+  --loop-step-signal: var(--signal-core);
+  --loop-step-rgb: var(--signal-core-rgb);
+  --loop-step-pattern: var(--signal-pattern-muted);
+  --loop-step-mark: var(--signal-mark-muted);
+}
+
+.loop-step-card-evidence {
+  --loop-step-signal: var(--signal-evidence);
+  --loop-step-rgb: var(--signal-evidence-rgb);
+  --loop-step-pattern: var(--signal-pattern-evidence);
+  --loop-step-mark: var(--signal-mark-evidence);
+}
+
+.loop-step-card-reference {
+  --loop-step-signal: var(--signal-reference);
+  --loop-step-rgb: var(--signal-reference-rgb);
+  --loop-step-pattern: var(--signal-pattern-reference);
+  --loop-step-mark: var(--signal-mark-reference);
+}
+
+.loop-step-card-change {
+  --loop-step-signal: var(--signal-change);
+  --loop-step-rgb: var(--signal-change-rgb);
+  --loop-step-pattern: var(--signal-pattern-change);
+  --loop-step-mark: var(--signal-mark-change);
+}
+
+.loop-diagram .loop-step-card {
+  --loop-step-signal: var(--signal-core);
+  --loop-step-rgb: var(--signal-core-rgb);
+  --loop-step-pattern: var(--signal-pattern-muted);
+  --loop-step-mark: var(--signal-mark-muted);
+}

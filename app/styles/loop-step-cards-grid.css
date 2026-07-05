@@ -1,0 +1,20 @@
+.seal-ticks {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+}
+
+.loop-step-grid-linked {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 42rem) {
+  .loop-step-grid-linked {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .loop-step-grid-linked {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
