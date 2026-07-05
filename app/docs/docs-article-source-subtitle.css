@@ -1,0 +1,10 @@
+
+/* The "*Works today …*" subtitle each canon page opens with */
+.docs-prose h1 + p em,
+.docs-article-html > p:first-child em {
+  font-style: normal;
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--color-brass);
+  letter-spacing: 0.02em;
+}

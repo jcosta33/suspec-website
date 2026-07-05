@@ -1,0 +1,41 @@
+
+.docs-source-path {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.24rem 0.36rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.docs-source-label {
+  color: var(--color-concrete-400);
+}
+
+.docs-prose .docs-source-note a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  margin-block: -0.38rem;
+  border-radius: calc(var(--radius-control) - 4px);
+  padding: 0.18rem 0.5rem;
+  color: var(--color-concrete-200);
+  text-decoration-color: rgba(var(--signal-core-rgb), 0.48);
+  overflow-wrap: anywhere;
+}
+.docs-prose .docs-source-note a:hover {
+  color: var(--color-gold-bright);
+  text-decoration-color: var(--color-gold-bright);
+}
+.docs-source-note .paper-stamp {
+  width: fit-content;
+  color: var(--docs-source-signal);
+  border-color: rgba(var(--docs-source-rgb), 0.54);
+  background: rgba(var(--docs-source-rgb), 0.08);
+  transform: none;
+}
+.docs-source-date {
+  color: var(--color-concrete-400);
+  font-size: 0.68rem;
+  justify-self: end;
+}
