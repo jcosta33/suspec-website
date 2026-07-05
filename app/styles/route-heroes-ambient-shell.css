@@ -8,6 +8,7 @@
   isolation: isolate;
   overflow: clip;
   padding-top: var(--rhythm-hero-nav-clearance);
+  padding-bottom: var(--rhythm-hero-content-gap);
 }
 
 .home-hero-section .ambient-header {

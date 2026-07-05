@@ -15,7 +15,7 @@
 }
 
 .repo-product-page > .ambient-header + .page-nav-wrap {
-  margin-top: clamp(-0.55rem, -0.48vw, -0.28rem);
+  margin-top: clamp(0.12rem, 0.34vw, 0.36rem);
 }
 
 .repo-product-page > .page-nav-wrap + .section-register {
@@ -39,7 +39,7 @@
 
 .site-main-frame > .flex.flex-col > .ambient-header + .writing-page-nav,
 .site-main-frame > .flex.flex-col > .ambient-header + .writing-page-nav-stack {
-  margin-top: clamp(-1.55rem, -1.18vw, -0.95rem);
+  margin-top: clamp(0.28rem, 0.72vw, 0.62rem);
 }
 
 .writing-page-nav + .section-register,

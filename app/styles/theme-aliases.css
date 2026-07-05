@@ -48,6 +48,7 @@
   --rhythm-title-body: clamp(1.02rem, 1.38vw, 1.28rem);
   --rhythm-register-gap: clamp(2.42rem, 3.05vw, 2.9rem);
   --rhythm-hero-nav-clearance: clamp(5.15rem, 6.4vw, 5.85rem);
+  --rhythm-hero-content-gap: clamp(1.35rem, 2.15vw, 1.72rem);
   --rhythm-hero-eyebrow-title: clamp(2.1rem, 2.72vw, 2.62rem);
   --rhythm-after-page-nav: clamp(0.95rem, 1.45vw, 1.28rem);
   --rhythm-page-nav-to-register: clamp(0.88rem, 1.38vw, 1.18rem);

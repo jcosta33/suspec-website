@@ -224,6 +224,26 @@ async function auditRoute(cdp, baseUrl, route, viewport) {
       const rect = el.getBoundingClientRect();
       return { text: text(el), width: rect.width, top: rect.top };
     });
+    const navRect = document.querySelector('.site-header')?.getBoundingClientRect();
+    const pageHero = document.querySelector('.page-hero');
+    const heroRect = pageHero?.getBoundingClientRect();
+    const nextVisibleAfterHero = pageHero
+      ? [...document.querySelectorAll('main section, main article, main nav, main > div')]
+          .filter(isVisible)
+          .find((el) => {
+            const rect = el.getBoundingClientRect();
+            return !el.contains(pageHero) && el !== pageHero && rect.top > heroRect.bottom - 4;
+          })
+      : null;
+    const nextVisibleAfterHeroRect = nextVisibleAfterHero?.getBoundingClientRect();
+    const rhythm = pageHero && h1s[0] && navRect && heroRect
+      ? {
+          gapNavH1: Math.round(h1s[0].top - navRect.bottom),
+          gapHeroNext: nextVisibleAfterHeroRect
+            ? Math.round(nextVisibleAfterHeroRect.top - heroRect.bottom)
+            : null,
+        }
+      : null;
     const copyButtons = [...document.querySelectorAll('button, [role="button"]')]
       .filter(isVisible)
       .filter((el) => /copy/i.test(text(el) + ' ' + (el.getAttribute('aria-label') || '')))
@@ -295,6 +315,7 @@ async function auditRoute(cdp, baseUrl, route, viewport) {
       ogTitle: head('meta[property="og:title"]'),
       ogDescription: head('meta[property="og:description"]'),
       h1s,
+      rhythm,
       mainTextLength: text(document.querySelector('main')).length,
       pageOverflow,
       headingsTooWide,
@@ -321,6 +342,15 @@ async function auditRoute(cdp, baseUrl, route, viewport) {
   if (report.mainTextLength < 300) failures.push("main content too thin");
   if (report.pageOverflow) failures.push("body horizontal overflow");
   if (report.headingsTooWide.length) failures.push("H1 overflows viewport");
+  if (report.rhythm?.gapNavH1 < 56) failures.push("hero heading too close to fixed nav");
+  if (
+    route !== "/" &&
+    report.rhythm &&
+    report.rhythm.gapHeroNext !== null &&
+    report.rhythm.gapHeroNext < 40
+  ) {
+    failures.push("hero content too close to following section");
+  }
   if (report.badCopyButtons.length) failures.push("bad copy button target/cursor");
   if (viewport.mobile && report.smallControls.length) failures.push("small mobile control target");
   if (report.wideBlocks.length) failures.push("unscrollable code/terminal overflow");
