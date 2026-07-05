@@ -1,0 +1,23 @@
+/* Lamp utilities — small role-colored signal lights. */
+.pilot-lamp {
+  --lamp-signal: var(--color-line-bright);
+  --lamp-rgb: 91, 73, 55;
+  --lamp-highlight: rgba(240, 226, 204, 0.4);
+  position: relative;
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  border: 2px solid var(--color-line);
+  background:
+    radial-gradient(
+      circle at 35% 35%,
+      var(--lamp-highlight),
+      transparent 42%
+    ),
+    var(--lamp-signal);
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(var(--lamp-rgb), 0.28),
+    0 0 2px var(--lamp-signal);
+}

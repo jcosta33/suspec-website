@@ -1,0 +1,6 @@
+
+/* Engraved / stamped label text */
+.engraved {
+  color: var(--color-concrete-300);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
+}

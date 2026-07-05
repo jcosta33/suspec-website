@@ -1,0 +1,31 @@
+
+.terminal-window .terminal-toolbar .pilot-lamp-change {
+  --lamp-signal: var(--signal-change);
+  --lamp-rgb: var(--signal-change-rgb);
+  --lamp-highlight: rgba(255, 236, 230, 0.7);
+}
+
+.terminal-window .terminal-toolbar .pilot-lamp-red {
+  --lamp-signal: var(--color-pwr-red);
+  --lamp-rgb: 210, 98, 78;
+  --lamp-highlight: rgba(255, 234, 226, 0.72);
+}
+
+.terminal-window .terminal-toolbar .pilot-lamp-core,
+.terminal-window .terminal-toolbar .pilot-lamp-amber {
+  --lamp-signal: var(--signal-core);
+  --lamp-rgb: var(--signal-core-rgb);
+  --lamp-highlight: rgba(255, 248, 224, 0.7);
+}
+
+.terminal-window .terminal-toolbar .pilot-lamp-evidence {
+  --lamp-signal: var(--signal-evidence);
+  --lamp-rgb: var(--signal-evidence-rgb);
+  --lamp-highlight: rgba(244, 250, 225, 0.68);
+}
+
+.terminal-window .terminal-toolbar .pilot-lamp-green {
+  --lamp-signal: var(--signal-greenfield);
+  --lamp-rgb: var(--signal-greenfield-rgb);
+  --lamp-highlight: rgba(226, 250, 233, 0.66);
+}
