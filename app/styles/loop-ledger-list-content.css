@@ -1,0 +1,48 @@
+.loop-ledger-number {
+  color: var(--signal-core);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+}
+
+.loop-ledger-body,
+.loop-ledger-title,
+.loop-ledger-meta {
+  display: block;
+  min-width: 0;
+}
+
+.loop-ledger-title {
+  color: var(--color-concrete-100);
+  font-family: var(--font-heading), ui-monospace, monospace;
+  font-size: 0.96rem;
+  font-weight: var(--font-weight-title-compact);
+  line-height: 1.25;
+}
+
+.loop-ledger-status {
+  margin-left: 0.42rem;
+  color: var(--color-brass);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.52rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.loop-ledger-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.22rem 0.42rem;
+  margin-top: 0.38rem;
+  color: var(--color-concrete-400);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.loop-ledger-item a:hover .loop-ledger-title,
+.loop-ledger-item a:focus-visible .loop-ledger-title {
+  color: var(--signal-core);
+}

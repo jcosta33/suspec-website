@@ -1,0 +1,12 @@
+.loop-ledger-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.58rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.loop-ledger-item {
+  margin: 0;
+}
