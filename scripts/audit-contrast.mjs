@@ -51,6 +51,16 @@ async function loadRoute(cdp, baseUrl, route, viewport) {
   await cdp.send("Page.navigate", { url: `${baseUrl}${route}` });
   await waitForRouteReady(cdp, new URL(route, baseUrl).pathname);
   await wait(route.startsWith("/docs") ? 1800 : 1000);
+  await cdp.eval(`(() => {
+    if (window.__contrastClickGuardInstalled) return;
+    window.__contrastClickGuardInstalled = true;
+    for (const eventName of ['click', 'auxclick']) {
+      document.addEventListener(eventName, (event) => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }, true);
+    }
+  })()`);
 }
 
 async function collectNormalSamples(cdp) {
@@ -95,6 +105,24 @@ async function collectInteractiveSamples(cdp, viewport) {
     });
     await wait(40);
     samples.push(...(await cdp.eval(elementContrastSampler(index, "hover"))));
+
+    await cdp.send("Input.dispatchMouseEvent", {
+      type: "mousePressed",
+      x: point.x,
+      y: point.y,
+      button: "left",
+      clickCount: 1,
+    });
+    await wait(40);
+    samples.push(...(await cdp.eval(elementContrastSampler(index, "active"))));
+    await cdp.send("Input.dispatchMouseEvent", {
+      type: "mouseReleased",
+      x: 1,
+      y: 1,
+      button: "left",
+      clickCount: 1,
+    });
+    await wait(20);
   }
   return samples;
 }
