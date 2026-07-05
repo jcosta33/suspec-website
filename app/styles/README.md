@@ -45,6 +45,7 @@ family.
 | PG-CSS-003 | Generated pages remain static/crawlable while CSS is global. | Verify with `npm run build`. |
 | PG-CSS-004 | Route matrix has no horizontal overflow, obvious terminal overflow, missing metadata, or reduced-motion regression. | Verify with `npm run audit:site`. |
 | PG-CSS-005 | CSS growth stays bounded while refactoring proceeds: root globals stay tiny, individual CSS files stay small, stale `art-direction-*` files do not return, and `!important` stays exceptional. | Verify with `npm run audit:css`. |
+| PG-CSS-006 | Palette use stays semantic: raw colors stay in token/icon files, package accents stay scoped to package identity, and Tailwind named hue utilities do not bypass signal roles. | Verify with `npm run audit:palette` or the `npm run audit:css` aggregate. |
 
 ## Risks And Unknowns
 
@@ -75,7 +76,7 @@ family.
 
 | Wave | Change | Preserves | Verify with |
 | --- | --- | --- | --- |
-| 1 | Add CSS inventory guardrails and this map. | PG-CSS-001 through PG-CSS-005. | `npm run audit:css`, `npm run lint`, `npx tsc --noEmit`, `npm run build`, `npm run audit:site`. |
+| 1 | Add CSS inventory and palette guardrails plus this map. | PG-CSS-001 through PG-CSS-006. | `npm run audit:css`, `npm run lint`, `npx tsc --noEmit`, `npm run build`, `npm run audit:site`. |
 | 2 | Split `repo-products.css` into manifest, navigation, agent roster, and worker-card files without changing selectors. | Product page layout, package colors, nav behavior. | `npm run audit:css`, `npm run audit:site`; visual spot-check `/skills`, `/agents`, `/cli`, `/mcp`. |
 | 3 | Fold stable `art-direction-products.css` rules into owning late product-polish files, preserving cascade before merging them earlier. | Product page spacing and mobile fit. | `npm run audit:css`, `npm run audit:site`; screenshot product pages at mobile/tablet/desktop. |
 | 4 | Fold stable `art-direction-home.css` and `art-direction-docs.css` rules into owning late home/docs polish files, preserving cascade before merging them earlier. | Home first viewport, docs search/nav alignment, docs quote/code tone. | `npm run audit:css`, `npm run audit:site`; screenshot `/`, `/docs`, one short doc, one long doc. |
