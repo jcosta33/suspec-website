@@ -1,0 +1,42 @@
+@media (max-width: 40rem) {
+  .get-started-page .setup-command-strip {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem;
+    padding: 0.48rem 0.68rem 0.5rem;
+  }
+
+  .get-started-page .setup-command-label {
+    margin-bottom: 0.18rem;
+    font-size: 0.48rem;
+  }
+
+  .get-started-page .setup-command-copy code {
+    font-size: 0.66rem;
+    line-height: 1.28;
+  }
+
+  .get-started-page .setup-command-button {
+    min-height: 2.75rem;
+    padding: 0.48rem 0.58rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.07em;
+  }
+
+  .get-started-page
+    .setup-command-button[data-compact-label="true"]
+    .copy-button-label-full {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .get-started-page
+    .setup-command-button[data-compact-label="true"]
+    .copy-button-label-compact {
+    display: inline-grid;
+  }
+}

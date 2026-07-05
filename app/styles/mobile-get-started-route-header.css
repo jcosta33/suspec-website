@@ -1,0 +1,25 @@
+@media (max-width: 40rem) {
+  .get-started-page .setup-route-header {
+    gap: 0.42rem;
+    padding: 0.56rem 0.68rem 0.52rem;
+  }
+
+  .get-started-page .setup-route-kicker {
+    font-size: 0.52rem;
+  }
+
+  .get-started-page .setup-route-title {
+    margin-top: 0.16rem;
+    font-size: 0.86rem;
+  }
+
+  .get-started-page .setup-route-meta {
+    gap: 0.18rem;
+  }
+
+  .get-started-page .setup-route-meta span {
+    min-height: 1.24rem;
+    padding-inline: 0.28rem;
+    font-size: 0.46rem;
+  }
+}
