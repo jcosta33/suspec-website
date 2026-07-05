@@ -1,0 +1,22 @@
+@theme inline {
+  --signal-mark-core: radial-gradient(
+      circle at calc(100% - 1.15rem) 1.15rem,
+      rgba(var(--signal-core-rgb), 0.34) 0 1.45px,
+      transparent 2.25px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(var(--signal-core-rgb), 0.16) 0 2px,
+      transparent 2px
+    );
+  --signal-mark-evidence: radial-gradient(
+      circle at calc(100% - 1.2rem) 1.2rem,
+      rgba(var(--signal-evidence-rgb), 0.38) 0 1.35px,
+      transparent 2.15px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 0.9rem,
+      rgba(var(--signal-evidence-rgb), 0.07) 0.9rem calc(0.9rem + 1px)
+    );
+}

@@ -53,6 +53,10 @@ layer applies tighter mobile density.
 page/paper rhythm, manifest card stats, and delegation-contract rules live in
 separate responsive files so product-package mobile tuning stays reviewable.
 
+`app/styles/theme-signal-marks.css` is a manifest: record, work, and reference
+mark tokens live in separate files so semantic color/pattern changes stay
+reviewable.
+
 `app/art-direction-pass.css` and the later `app/styles/art-direction-*.css`
 files no longer exist; their work is split into `*-polish.css` files by route
 family.

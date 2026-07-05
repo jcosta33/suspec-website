@@ -1,0 +1,48 @@
+@theme inline {
+  --signal-mark-greenfield: radial-gradient(
+      circle at 1.2rem 1.2rem,
+      rgba(var(--signal-greenfield-rgb), 0.4) 0 1.55px,
+      transparent 2.35px
+    ),
+    radial-gradient(
+      circle at calc(100% - 1.45rem) calc(100% - 1.45rem),
+      rgba(var(--signal-greenfield-rgb), 0.26) 0 1.2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 1.45rem calc(100% - 1.45rem),
+      rgba(var(--signal-greenfield-rgb), 0.2) 0 1px,
+      transparent 1.8px
+    );
+  --signal-mark-brownfield: linear-gradient(
+      135deg,
+      transparent 0 calc(100% - 2.1rem),
+      rgba(var(--signal-brownfield-rgb), 0.2) calc(100% - 2.1rem)
+        calc(100% - 2rem),
+      transparent calc(100% - 2rem)
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0 calc(100% - 3.2rem),
+      rgba(var(--signal-brownfield-rgb), 0.14) calc(100% - 3.2rem)
+        calc(100% - 3.1rem),
+      transparent calc(100% - 3.1rem)
+    ),
+    radial-gradient(
+      circle at 1.2rem calc(100% - 1.2rem),
+      rgba(var(--signal-brownfield-rgb), 0.3) 0 1.35px,
+      transparent 2.15px
+    );
+  --signal-mark-change: linear-gradient(
+      135deg,
+      transparent 0 calc(100% - 1.9rem),
+      rgba(var(--signal-change-rgb), 0.21) calc(100% - 1.9rem)
+        calc(100% - 1.75rem),
+      transparent calc(100% - 1.75rem)
+    ),
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 1.2rem,
+      rgba(var(--signal-change-rgb), 0.064) 1.2rem calc(1.2rem + 1px)
+    );
+}
