@@ -1,0 +1,19 @@
+.terminal-title-label > span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.terminal-title-label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.45rem;
+  width: 0.18rem;
+  height: 0.74rem;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  background: var(--signal-core);
+  box-shadow: 0 0 8px rgba(var(--signal-core-rgb), 0.42);
+}

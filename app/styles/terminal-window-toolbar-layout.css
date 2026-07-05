@@ -1,0 +1,14 @@
+.terminal-toolbar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(0.7rem, 1.4vw, 1.1rem);
+}
+
+.terminal-toolbar:has(.copy-button) {
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.terminal-lamp-row {
+  min-width: 0;
+}
