@@ -33,6 +33,23 @@ const viewports = [
   { name: "mobile", width: 390, height: 844, mobile: true, dpr: 2 },
 ];
 
+const hoverStabilitySelector = [
+  ".home-hero-run-card",
+  ".home-step-rail-item",
+  ".terminal-window",
+  ".panel-raised",
+  ".paper-artifact",
+  ".loop-step-card",
+  ".setup-choice-card",
+  ".cli-command-link",
+  ".catalog-row",
+  ".agent-worker-card",
+  ".mcp-adapter-step-link",
+  ".process-strip > *",
+  ".docs-index-section",
+  ".docs-pager-link",
+].join(",");
+
 const expectedStructuredTypes = new Map([
   ["/", ["SoftwareApplication", "FAQPage"]],
   ["/what-is-suspec/", ["AboutPage"]],
@@ -49,6 +66,147 @@ const expectedStructuredTypes = new Map([
   ["/colophon/", ["WebPage", "SoftwareSourceCode"]],
   ["/kitchen-sink/", []],
 ]);
+
+function isIdentityTransform(value) {
+  return (
+    !value ||
+    value === "none" ||
+    value === "matrix(1, 0, 0, 1, 0, 0)" ||
+    value === "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)"
+  );
+}
+
+function isIdentityLonghand(value, identity) {
+  return !value || value === "none" || value === identity;
+}
+
+function rectDelta(before, after) {
+  return Math.max(
+    Math.abs(before.left - after.left),
+    Math.abs(before.top - after.top),
+    Math.abs(before.width - after.width),
+    Math.abs(before.height - after.height),
+  );
+}
+
+async function auditHoverStability(cdp, viewport) {
+  await cdp.send("Input.dispatchMouseEvent", {
+    type: "mouseMoved",
+    x: viewport.width - 2,
+    y: 2,
+  });
+  await wait(40);
+
+  const targets = await cdp.eval(`(() => {
+    const selector = ${JSON.stringify(hoverStabilitySelector)};
+    const isVisible = (el) => {
+      const style = getComputedStyle(el);
+      const rect = el.getBoundingClientRect();
+      return (
+        style.visibility !== 'hidden' &&
+        style.display !== 'none' &&
+        rect.width > 8 &&
+        rect.height > 8 &&
+        rect.bottom > 0 &&
+        rect.right > 0 &&
+        rect.top < innerHeight &&
+        rect.left < innerWidth
+      );
+    };
+    return [...document.querySelectorAll(selector)]
+      .filter(isVisible)
+      .slice(0, 12)
+      .map((el, index) => {
+        const id = \`hover-audit-\${index}\`;
+        el.setAttribute('data-hover-audit-id', id);
+        const rect = el.getBoundingClientRect();
+        return {
+          id,
+          label: (el.textContent || el.getAttribute('aria-label') || el.className || el.tagName)
+            .replace(/\\s+/g, ' ')
+            .trim()
+            .slice(0, 90),
+          x: Math.min(Math.max(rect.left + rect.width / 2, 1), innerWidth - 2),
+          y: Math.min(Math.max(rect.top + rect.height / 2, 1), innerHeight - 2),
+        };
+      });
+  })()`);
+
+  const probes = [];
+  for (const target of targets) {
+    const before = await cdp.eval(`(() => {
+      const el = document.querySelector('[data-hover-audit-id="${target.id}"]');
+      if (!el) return null;
+      const rect = el.getBoundingClientRect();
+      const style = getComputedStyle(el);
+      return {
+        rect: {
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height,
+        },
+        transform: style.transform,
+        translate: style.translate,
+        scale: style.scale,
+      };
+    })()`);
+
+    await cdp.send("Input.dispatchMouseEvent", {
+      type: "mouseMoved",
+      x: target.x,
+      y: target.y,
+    });
+    await wait(80);
+
+    const after = await cdp.eval(`(() => {
+      const el = document.querySelector('[data-hover-audit-id="${target.id}"]');
+      if (!el) return null;
+      const rect = el.getBoundingClientRect();
+      const style = getComputedStyle(el);
+      return {
+        rect: {
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height,
+        },
+        transform: style.transform,
+        translate: style.translate,
+        scale: style.scale,
+      };
+    })()`);
+
+    await cdp.send("Input.dispatchMouseEvent", {
+      type: "mouseMoved",
+      x: viewport.width - 2,
+      y: 2,
+    });
+    await wait(30);
+
+    if (!before || !after) continue;
+
+    const delta = rectDelta(before.rect, after.rect);
+    const transformed =
+      !isIdentityTransform(after.transform) ||
+      !isIdentityLonghand(after.translate, "0px") ||
+      !isIdentityLonghand(after.scale, "1");
+
+    probes.push({
+      label: target.label,
+      delta: Math.round(delta * 100) / 100,
+      transform: after.transform,
+      translate: after.translate,
+      scale: after.scale,
+      pass: delta <= 0.75 && !transformed,
+    });
+  }
+
+  return {
+    checked: probes.length,
+    failures: probes.filter((probe) => !probe.pass).slice(0, 8),
+  };
+}
 
 function visibleControlSelector() {
   return [
@@ -332,6 +490,8 @@ async function auditRoute(cdp, baseUrl, route, viewport) {
       jsonLdScripts,
     };
   })()`);
+  const hoverStability = await auditHoverStability(cdp, viewport);
+  report.hoverStability = hoverStability;
 
   const failures = [];
   if (report.h1s.length !== 1) failures.push(`h1 count ${report.h1s.length}`);
@@ -359,6 +519,7 @@ async function auditRoute(cdp, baseUrl, route, viewport) {
   if (report.unnamedControls.length) failures.push("interactive controls missing accessible name");
   if (report.targetBlankMissingRel.length) failures.push("target blank links missing noopener/noreferrer");
   if (report.duplicateIds.length) failures.push("duplicate ids");
+  if (hoverStability.failures.length) failures.push("hover moves surface");
   if (report.canonicalPath !== new URL(route, baseUrl).pathname) failures.push("canonical path does not match route");
   if (cdp.exceptions.length) failures.push(`runtime exceptions ${cdp.exceptions.length}`);
 
@@ -602,6 +763,7 @@ try {
           unnamedControls: result.report.unnamedControls,
           targetBlankMissingRel: result.report.targetBlankMissingRel,
           duplicateIds: result.report.duplicateIds,
+          hoverStability: result.report.hoverStability,
           exceptions: result.exceptions,
         };
         console.log(`  details ${JSON.stringify(details)}`);
