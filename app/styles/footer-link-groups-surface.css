@@ -1,0 +1,32 @@
+
+.site-footer-link-group {
+  --footer-group-signal: var(--signal-muted);
+  --footer-group-rgb: var(--signal-muted-rgb);
+  --footer-group-pattern: var(--signal-pattern-muted);
+  min-width: 0;
+  border: 1px solid rgba(var(--footer-group-rgb), 0.16);
+  border-radius: var(--radius-panel);
+  background:
+    linear-gradient(90deg, rgba(var(--footer-group-rgb), 0.045), transparent 52%),
+    var(--footer-group-pattern);
+  padding: 0.82rem 0.92rem;
+  box-shadow: inset 1px 0 0 rgba(var(--footer-group-rgb), 0.16);
+}
+
+.site-footer-link-group-core {
+  --footer-group-signal: var(--signal-core);
+  --footer-group-rgb: var(--signal-core-rgb);
+  --footer-group-pattern: var(--signal-pattern-core);
+}
+
+.site-footer-link-group-reference {
+  --footer-group-signal: var(--signal-reference);
+  --footer-group-rgb: var(--signal-reference-rgb);
+  --footer-group-pattern: var(--signal-pattern-reference);
+}
+
+.site-footer-link-group-muted {
+  --footer-group-signal: var(--signal-muted);
+  --footer-group-rgb: var(--signal-muted-rgb);
+  --footer-group-pattern: var(--signal-pattern-muted);
+}
