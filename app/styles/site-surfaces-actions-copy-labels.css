@@ -7,6 +7,14 @@
   display: none;
 }
 
+.copy-button[data-compact-label="true"] .copy-button-label-full {
+  display: none;
+}
+
+.copy-button[data-compact-label="true"] .copy-button-label-compact {
+  display: inline-grid;
+}
+
 .copy-button-label-current,
 .copy-button-label-sizer {
   grid-area: 1 / 1;

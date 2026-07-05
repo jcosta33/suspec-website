@@ -44,7 +44,8 @@ export function TerminalWindow({
           {copyText && (
             <CopyButton
               text={copyText}
-              label={copyLabel}
+              label="Copy"
+              ariaLabel={copyLabel ?? "Copy terminal contents"}
               compactLabel={copyCompactLabel}
             />
           )}

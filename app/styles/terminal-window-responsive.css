@@ -24,30 +24,16 @@
   }
 
   .terminal-toolbar .copy-button {
-    min-height: 2.75rem;
+    min-height: 2.5rem;
     gap: 0.38rem;
-    padding: 0.42rem 0.56rem;
-    font-size: 0.58rem;
+    padding: 0.34rem 0.48rem;
+    font-size: 0.56rem;
     letter-spacing: 0.06em;
   }
 
   .terminal-toolbar .copy-button svg {
-    width: 0.78rem;
-    height: 0.78rem;
-  }
-
-  .terminal-toolbar .copy-button[data-compact-label="true"] .copy-button-label-full {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-
-  .terminal-toolbar .copy-button[data-compact-label="true"] .copy-button-label-compact {
-    display: inline-grid;
+    width: 0.75rem;
+    height: 0.75rem;
   }
 
   .terminal-toolbar:has(.copy-button) {
@@ -71,7 +57,7 @@
 
   .terminal-toolbar:has(.copy-button) .copy-button {
     width: auto;
-    min-height: 2.75rem;
+    min-height: 2.5rem;
     justify-content: center;
     grid-column: auto;
   }

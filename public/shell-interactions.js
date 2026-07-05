@@ -183,13 +183,18 @@
     function setButtonState(button, copied) {
       const label = button.getAttribute("data-copy-label") || "Copy";
       const compactLabel = button.getAttribute("data-copy-compact-label") || label;
+      const ariaLabel = button.getAttribute("data-copy-aria-label") || label;
+      const compactSuccessLabel =
+        button.getAttribute("data-copy-compact-success-label") || "Copied";
       button.setAttribute("data-copied", copied ? "true" : "false");
-      button.setAttribute("aria-label", copied ? "Copied" : label);
+      button.setAttribute("aria-label", copied ? "Copied" : ariaLabel);
       button
         .querySelectorAll(".copy-button-label-current")
         .forEach((currentLabel, index) => {
           currentLabel.textContent = copied
-            ? "Copied"
+            ? index === 0
+              ? "Copied"
+              : compactSuccessLabel
             : index === 0
               ? label
               : compactLabel;

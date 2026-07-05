@@ -151,18 +151,18 @@ const tools = [
 }>;
 
 const toolDescriptions = {
-  suspec_get_status: "Reads the current Suspec workspace status.",
-  suspec_list: "Lists Suspec workspace artifacts.",
-  suspec_check_workspace: "Reports workspace-level configuration and integrity checks.",
-  suspec_check_file: "Checks one Suspec artifact file.",
-  suspec_get_task: "Reads one task packet.",
-  suspec_get_spec: "Reads one spec artifact.",
-  suspec_get_review: "Reads one review packet.",
-  suspec_get_checks: "Reads the applicable check set.",
-  suspec_reconcile: "Compares records and reports workspace gaps.",
-  suspec_scaffold_spec: "Scaffolds a fresh spec artifact without issuing a verdict.",
-  suspec_split_task: "Scaffolds task packets from a spec without deciding correctness.",
-  suspec_scaffold_finding: "Scaffolds a fresh finding artifact without issuing a verdict.",
+  suspec_get_status: "Current workspace status.",
+  suspec_list: "Workspace artifact list.",
+  suspec_check_workspace: "Workspace configuration and integrity checks.",
+  suspec_check_file: "One artifact check.",
+  suspec_get_task: "One task packet.",
+  suspec_get_spec: "One spec artifact.",
+  suspec_get_review: "One review packet.",
+  suspec_get_checks: "Applicable check set.",
+  suspec_reconcile: "Record comparison and workspace gaps.",
+  suspec_scaffold_spec: "Fresh spec artifact; no verdict.",
+  suspec_split_task: "Task packets from a spec; no correctness decision.",
+  suspec_scaffold_finding: "Fresh finding artifact; no verdict.",
 } as const;
 
 const mcpToolCatalogItems = tools.flatMap((group) =>
@@ -309,7 +309,7 @@ function CopyableIdentifier({
       <CopyButton
         text={value}
         label={`Copy ${value} ${kind}`}
-        compactLabel="copy"
+        compactLabel="Copy"
         className="mcp-identifier-copy"
       />
     </li>
@@ -334,9 +334,9 @@ export default function McpPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Local stdio access to Suspec status, checks, artifacts, and review
-            data. It reads and reconciles workspace records; review policy stays
-            in the repo.
+            Local stdio bridge for Suspec status, checks, artifacts, and review
+            data. It reads records, reconciles gaps, and leaves review policy in
+            the repo.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
             <Badge variant="ready">v0.2 surface</Badge>
@@ -364,10 +364,10 @@ export default function McpPage() {
             <Cable className="h-4 w-4" aria-hidden="true" />
             <span>local bridge</span>
           </div>
-          <Heading>Client asks, records answer</Heading>
+          <Heading>Local clients, local records</Heading>
           <p className="text-concrete-400">
             suspec-mcp adapts the CLI&apos;s <code>--json</code> contract for
-            MCP clients and reconciles workspace records. It does not decide
+            MCP clients. It can reconcile workspace records; it does not decide
             correctness and does not become a hosted service or a review
             authority.
           </p>
@@ -591,7 +591,7 @@ export default function McpPage() {
           <Heading className="mt-3">Context the client can ask for</Heading>
           <p className="mt-4 text-concrete-400">
             Resources expose the board, checks, and selected artifacts. Prompts
-            give clients a Suspec-shaped starting point.
+            start clients with the right review context.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <div className="mcp-fact-list tool-list-card tool-list-card-reference rounded-panel border bg-panel p-4">

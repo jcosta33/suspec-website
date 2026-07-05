@@ -1,6 +1,7 @@
 import { Check, Clipboard } from "lucide-react";
 
 export interface CopyButtonProps {
+  ariaLabel?: string;
   text: string;
   label?: string;
   compactLabel?: string;
@@ -8,11 +9,14 @@ export interface CopyButtonProps {
 }
 
 export function CopyButton({
+  ariaLabel,
   text,
   label = "Copy",
   compactLabel,
   className = "",
 }: CopyButtonProps) {
+  const compactSuccessLabel = compactLabel ? "Done" : "Copied";
+
   return (
     <button
       type="button"
@@ -20,12 +24,14 @@ export function CopyButton({
       data-copy-text={text}
       data-copy-label={label}
       data-copy-compact-label={compactLabel}
+      data-copy-aria-label={ariaLabel ?? label}
+      data-copy-compact-success-label={compactSuccessLabel}
       data-compact-label={compactLabel ? "true" : "false"}
-      className={`copy-button focus-ring rounded-control inline-flex min-h-11 items-center gap-1.5 border border-panel-border bg-panel-recessed/80 px-3 py-2 font-mono text-[0.68rem] font-bold uppercase tracking-[0.08em] text-concrete-300 transition-[background-color,border-color,color,box-shadow] ${className}`}
-      aria-label={label}
+      className={`copy-button focus-ring rounded-control inline-flex min-h-10 items-center gap-1.5 border border-panel-border bg-panel-recessed/80 px-2.5 py-1.5 font-mono text-[0.62rem] font-bold uppercase tracking-[0.07em] text-concrete-300 transition-[background-color,border-color,color,box-shadow] ${className}`}
+      aria-label={ariaLabel ?? label}
     >
-      <Clipboard className="copy-button-icon copy-button-icon-copy h-3.5 w-3.5" aria-hidden="true" />
-      <Check className="copy-button-icon copy-button-icon-check h-3.5 w-3.5" aria-hidden="true" />
+      <Clipboard className="copy-button-icon copy-button-icon-copy h-3 w-3" aria-hidden="true" />
+      <Check className="copy-button-icon copy-button-icon-check h-3 w-3" aria-hidden="true" />
       <span
         className="copy-button-label-full copy-button-label-stack"
         aria-live="polite"
@@ -48,7 +54,7 @@ export function CopyButton({
             {compactLabel}
           </span>
           <span className="copy-button-label-sizer" aria-hidden="true">
-            Copied
+            {compactSuccessLabel}
           </span>
         </span>
       )}
