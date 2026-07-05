@@ -1,0 +1,38 @@
+@media (max-width: 40rem) {
+  .cli-command-link {
+    display: flex;
+    min-height: 3.55rem;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.54rem 0.6rem;
+  }
+
+  .cli-command-step:last-child .cli-command-link {
+    min-height: 3.55rem;
+    padding-block: 0.54rem;
+  }
+
+  .cli-command-heading {
+    align-items: center;
+    gap: 0.42rem;
+    width: 100%;
+  }
+
+  .cli-command-heading .hex-badge {
+    height: 1.28rem;
+    width: 1.28rem;
+  }
+
+  .cli-command-heading > div {
+    display: block;
+    min-width: 0;
+  }
+
+  .cli-command-heading > svg {
+    display: block;
+    margin-left: auto;
+    width: 0.72rem;
+    height: 0.72rem;
+    opacity: 0.58;
+  }
+}

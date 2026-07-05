@@ -1,0 +1,28 @@
+@media (max-width: 40rem) {
+  .cli-command-heading p {
+    font-size: 0.54rem;
+    line-height: 1.2;
+  }
+
+  .cli-command-title {
+    margin-top: 0.04rem;
+    font-size: 0.78rem;
+    line-height: 1.15;
+  }
+
+  .cli-command-code {
+    display: block;
+    width: 100%;
+    margin-top: 0.32rem;
+    overflow: hidden;
+    color: var(--color-concrete-500);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.56rem;
+    line-height: 1.25;
+  }
+
+  .cli-command-detail {
+    display: none;
+  }
+}
