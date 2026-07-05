@@ -1,0 +1,26 @@
+.skill-guide-row.catalog-row:hover,
+.skill-guide-row.catalog-row:focus-visible {
+  border-color: rgba(var(--catalog-rgb), 0.26);
+  box-shadow:
+    inset 1px 0 0 rgba(var(--catalog-rgb), 0.32),
+    inset 0 1px 0 rgba(240, 226, 204, 0.04),
+    0 0 0 1px rgba(var(--catalog-rgb), 0.04);
+}
+
+.skill-guide-row-arrow {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.78rem;
+  margin-top: 0;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  color: var(--color-concrete-500);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.skill-guide-row.catalog-row:hover .skill-guide-row-arrow,
+.skill-guide-row.catalog-row:focus-visible .skill-guide-row-arrow {
+  opacity: 1;
+}

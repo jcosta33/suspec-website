@@ -1,0 +1,21 @@
+.skill-guide-list {
+  counter-reset: skill-guide;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0.95rem;
+  list-style: none;
+  background:
+    radial-gradient(
+      88% 72% at 48% 0%,
+      rgba(var(--skill-guide-rgb), 0.045),
+      transparent 62%
+    ),
+    rgba(10, 7, 5, 0.18);
+}
+
+.skill-guide-list > li {
+  counter-increment: skill-guide;
+  min-width: 0;
+}
