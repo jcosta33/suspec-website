@@ -33,7 +33,7 @@ const SITE_URL = "https://suspecframework.dev";
 const MCP_REPOSITORY = "https://github.com/jcosta33/suspec-mcp";
 const MCP_PAGE_URL = `${SITE_URL}/mcp/`;
 const mcpDescription =
-  "suspec-mcp is a local stdio MCP adapter that exposes Suspec workspace status, checks, artifacts, and review data without writing verdicts.";
+  "suspec-mcp is a local stdio MCP adapter for Suspec workspace status, checks, artifacts, and review data.";
 const mcpTitle = "suspec-mcp — local MCP adapter for Suspec";
 
 export const metadata: Metadata = {
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         url: "/og-mcp.png",
         width: 1200,
         height: 630,
-        alt: "suspec-mcp — a verdict-free MCP bridge for Suspec workspaces",
+        alt: "suspec-mcp — a local MCP bridge for Suspec workspaces",
       },
     ],
   },
@@ -321,7 +321,7 @@ export default function McpPage() {
     <div className="repo-product-page mcp-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
       <Section className="ambient-header">
         <PageHero
-          eyebrow="mcp server / verdict-free adapter"
+          eyebrow="mcp server / local workspace adapter"
           className="page-hero-package-mcp"
           motif="bridge"
           tone="reference"
@@ -335,12 +335,12 @@ export default function McpPage() {
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Local stdio access to Suspec status, checks, artifacts, and review
-            data. It exposes records; it does not decide correctness.
+            data. Records stay local; review decisions stay with the repo.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
             <Badge variant="ready">v0.2 surface</Badge>
             <Badge variant="draft">no board</Badge>
-            <Badge signal="muted">no verdict</Badge>
+            <Badge signal="muted">repo decides</Badge>
           </div>
         </PageHero>
       </Section>
@@ -366,8 +366,9 @@ export default function McpPage() {
           <Heading>Client asks, records answer</Heading>
           <p className="text-concrete-400">
             suspec-mcp is a local stdio bridge. It adapts the CLI&apos;s{" "}
-            <code>--json</code> contract for MCP clients; it does not become a
-            hosted service or a review authority.
+            <code>--json</code> contract for MCP clients. Boundary: it does not
+            decide correctness and does not become a hosted service or a review
+            authority.
           </p>
           <p className="text-sm text-concrete-400">
             Source:{" "}
@@ -503,11 +504,11 @@ export default function McpPage() {
             <DroneIcon className="h-4 w-4" />
             <span>guardrails.ts</span>
           </div>
-          <Heading className="mt-3">What it does not do</Heading>
+          <Heading className="mt-3">Boundaries</Heading>
           <p className="mt-4 text-concrete-400">
-            It does not run an agent loop, write a board or a review result, or
-            decide whether code is done. Safe-write tools only scaffold fresh
-            artifacts; they issue no verdict.
+            suspec-mcp stays on the read/scaffold side: no agent loop, no board
+            writes, no review result, and no correctness decision. Safe-write
+            tools create fresh artifacts only.
           </p>
         </div>
         <ul className="mcp-guardrail-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -764,7 +765,7 @@ export default function McpPage() {
           "stdio adapter",
           "workspace facts",
           "review data",
-          "no verdict",
+          "local bridge",
         ]}
         catalogItems={mcpToolCatalogItems}
       />
