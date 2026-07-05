@@ -1,0 +1,39 @@
+
+.docs-article-html h3 {
+  position: relative;
+  padding-left: 0.9rem;
+  text-wrap: balance;
+}
+
+.docs-article-html h3::before {
+  content: "";
+  position: absolute;
+  top: 0.18rem;
+  bottom: 0.18rem;
+  left: 0;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(var(--signal-reference-rgb), 0.68),
+    transparent
+  );
+}
+
+.docs-article-html h4 {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.docs-article-html h4::before {
+  content: "";
+  width: 0.36rem;
+  height: 0.36rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--signal-muted);
+  box-shadow: 0 0 10px rgba(var(--signal-muted-rgb), 0.28);
+}

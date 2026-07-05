@@ -1,0 +1,34 @@
+.docs-article-html h2:hover {
+  border-color: rgba(var(--docs-section-rgb), 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(var(--docs-section-rgb), 0.06);
+}
+
+.docs-article-html h2::before {
+  content: counter(docs-section, decimal-leading-zero);
+  display: inline-flex;
+  width: 1.74rem;
+  height: 1.38rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0;
+  border: 1px solid rgba(var(--docs-section-rgb), 0.38);
+  border-radius: calc(var(--radius-control) - 3px);
+  background:
+    linear-gradient(180deg, rgba(var(--docs-section-rgb), 0.1), transparent),
+    rgba(10, 7, 5, 0.34);
+  color: var(--docs-section-signal);
+  font-size: 0.68rem;
+  transform: none;
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.045),
+    0 0 12px rgba(var(--docs-section-rgb), 0.065);
+}
+
+.docs-article-html h2.docs-numbered-heading::before {
+  content: none;
+  display: none;
+}
