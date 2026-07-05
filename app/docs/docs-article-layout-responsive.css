@@ -1,0 +1,34 @@
+@media (max-width: 64rem) {
+  .docs-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 5rem;
+  }
+
+  .docs-layout:has(.docs-index-prose) {
+    gap: 1rem;
+    padding-top: 5.25rem;
+  }
+
+  .docs-layout > aside {
+    position: static;
+    width: 100%;
+    max-height: none;
+    flex: none;
+    overflow: visible;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .docs-search {
+    min-height: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .docs-prose {
+    width: 100%;
+    max-width: 100%;
+  }
+}

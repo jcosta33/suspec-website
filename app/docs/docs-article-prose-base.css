@@ -1,0 +1,18 @@
+/* ---------- Prose ---------- */
+.docs-prose {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 48rem;
+  position: relative;
+  isolation: isolate;
+  font-size: 1.0625rem;
+  line-height: 1.74;
+  color: var(--color-concrete-300);
+  scroll-margin-top: 5.5rem;
+}
+
+.docs-prose:focus {
+  outline: 2px solid rgba(var(--signal-core-rgb), 0.4);
+  outline-offset: 0.55rem;
+  border-radius: var(--radius-panel);
+}
