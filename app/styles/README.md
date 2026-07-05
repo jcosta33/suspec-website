@@ -41,6 +41,10 @@ identity, nav, and proof-list rules live in separate footer mobile files.
 route nav compaction and MCP-specific nav offsets live in separate files at the
 same late cascade point.
 
+`app/styles/mobile-writing-loop-polish.css` is a mobile manifest: writing-page
+jump-nav compaction and linked loop-card density live in separate late-polish
+files at the same cascade point.
+
 `app/styles/mcp-adapter-mobile-rail.css` is a mobile manifest: rail frame, step
 shell, and step content rules live in separate files before the later MCP polish
 layer applies tighter mobile density.

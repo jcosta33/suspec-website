@@ -1,0 +1,22 @@
+@media (max-width: 40rem) {
+  .loop-diagram .loop-step-card-linked {
+    min-height: 7rem;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding: 0.82rem 0.82rem 0.88rem;
+  }
+
+  .loop-diagram .loop-step-card-linked p {
+    display: block;
+    margin-top: 0;
+    max-width: 31rem;
+    font-size: 0.78rem;
+    line-height: 1.42;
+    color: var(--color-concrete-400);
+  }
+
+  .loop-diagram .loop-step-card-linked .loop-step-optional {
+    flex-basis: auto;
+    margin-left: 0.32rem;
+  }
+}
