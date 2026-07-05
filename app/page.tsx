@@ -37,7 +37,7 @@ const softwareApp = {
   softwareVersion: "0.1.0",
   url: "https://suspecframework.dev",
   description:
-    "Suspec is a plain-markdown workflow for specs, tasks, reviews, findings, and evidence when teams use coding agents.",
+    "A plain-markdown workflow for specs, tasks, reviews, findings, and evidence when teams use coding agents.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   publisher: { "@id": "https://suspecframework.dev/#organization" },
 };

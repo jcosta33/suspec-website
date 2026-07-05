@@ -33,6 +33,23 @@ const viewports = [
   { name: "mobile", width: 390, height: 844, mobile: true, dpr: 2 },
 ];
 
+const expectedStructuredTypes = new Map([
+  ["/", ["SoftwareApplication", "FAQPage"]],
+  ["/what-is-suspec/", ["AboutPage"]],
+  ["/the-loop/", ["WebPage", "ItemList"]],
+  ["/get-started/", ["WebPage", "HowTo"]],
+  ["/skills/", ["CollectionPage", "ItemList"]],
+  ["/skills/writing/", ["TechArticle", "ItemList"]],
+  ["/agents/", ["CollectionPage", "ItemList"]],
+  ["/cli/", ["CollectionPage", "ItemList"]],
+  ["/mcp/", ["CollectionPage", "ItemList"]],
+  ["/docs/", ["CollectionPage", "ItemList"]],
+  ["/docs/01-what-is-suspec/", ["BreadcrumbList", "TechArticle"]],
+  ["/docs/reference/advanced-lifecycle/", ["BreadcrumbList", "TechArticle"]],
+  ["/colophon/", ["WebPage", "SoftwareSourceCode"]],
+  ["/kitchen-sink/", []],
+]);
+
 function visibleControlSelector() {
   return [
     "button",
@@ -71,6 +88,124 @@ async function auditRoute(cdp, baseUrl, route, viewport) {
     };
     const text = (el) => (el?.textContent || '').replace(/\\s+/g, ' ').trim();
     const head = (selector, attr = 'content') => document.querySelector(selector)?.getAttribute(attr) || '';
+    const normalizeClaim = (value) =>
+      (value || '')
+        .toLowerCase()
+        .replace(/https?:\\/\\/[^\\s]+/g, ' ')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .replace(/\\s+/g, ' ')
+        .trim();
+    const visibleText = normalizeClaim([
+      document.title,
+      head('meta[name="description"]'),
+      text(document.body),
+    ].join(' '));
+    const jsonLdItemsFor = (value, depth = 0) => {
+      if (!value || depth > 6) return [];
+      if (Array.isArray(value)) return value.flatMap((item) => jsonLdItemsFor(item, depth + 1));
+      if (typeof value !== 'object') return [];
+      const item = value;
+      const ownType = item['@type'];
+      const record = {
+        type: Array.isArray(ownType) ? ownType : ownType ? [ownType] : [],
+        name: typeof item.name === 'string' ? item.name : '',
+        headline: typeof item.headline === 'string' ? item.headline : '',
+        description: typeof item.description === 'string' ? item.description : '',
+        url: typeof item.url === 'string' ? item.url : '',
+        id: typeof item['@id'] === 'string' ? item['@id'] : '',
+        depth,
+      };
+      const nestedKeys = [
+        '@graph',
+        'acceptedAnswer',
+        'about',
+        'author',
+        'hasPart',
+        'item',
+        'itemListElement',
+        'mainEntity',
+        'potentialAction',
+        'publisher',
+        'step',
+        'supply',
+        'tool',
+      ];
+      return [
+        record,
+        ...nestedKeys.flatMap((key) => jsonLdItemsFor(item[key], depth + 1)),
+      ];
+    };
+    const claimVisible = (value, field) => {
+      const normalized = normalizeClaim(value);
+      if (!normalized || normalized.length < 3 || visibleText.includes(normalized)) return true;
+      if (field === 'description') return false;
+      const tokens = normalized
+        .split(' ')
+        .filter((token) => token.length > 2 && !['and', 'for', 'the', 'with'].includes(token));
+      if (!tokens.length) return true;
+      const visibleTokens = tokens.filter((token) => visibleText.includes(token));
+      return visibleTokens.length / tokens.length >= 0.8;
+    };
+    const shouldCheckStructuredClaim = (item, field) => {
+      const types = new Set(item.type);
+      if (types.has('Organization') || types.has('WebSite')) return false;
+      if (field === 'description' && item.depth > 1) return false;
+      if (field === 'description' && (
+        types.has('CreativeWork') ||
+        types.has('HowToStep') ||
+        types.has('HowToSupply') ||
+        types.has('HowToTool') ||
+        types.has('ItemList') ||
+        types.has('ListItem') ||
+        types.has('WebPageElement')
+      )) return false;
+      if (field === 'name' && (
+        types.has('HowToStep') ||
+        types.has('HowToSupply') ||
+        types.has('HowToTool') ||
+        types.has('ItemList') ||
+        types.has('ListItem')
+      )) return false;
+      return true;
+    };
+    const jsonLdScripts = [...document.querySelectorAll('script[type="application/ld+json"]')]
+      .map((script, index) => {
+        try {
+          const parsed = JSON.parse(script.textContent || '{}');
+          const items = jsonLdItemsFor(parsed).filter(
+            (item) =>
+              item.type.length ||
+              item.name ||
+              item.headline ||
+              item.description ||
+              item.url ||
+              item.id,
+          );
+          const missingVisibleClaims = items
+            .flatMap((item) =>
+              ['name', 'headline', 'description'].flatMap((field) => {
+                const value = item[field];
+                if (!value || !shouldCheckStructuredClaim(item, field) || claimVisible(value, field)) return [];
+                return [{
+                  type: item.type.join(',') || 'unknown',
+                  field,
+                  value: value.slice(0, 120),
+                }];
+              }),
+            )
+            .slice(0, 8);
+          return {
+            index,
+            ok: true,
+            itemCount: items.length,
+            types: [...new Set(items.flatMap((item) => item.type))].sort(),
+            urls: [...new Set(items.flatMap((item) => [item.url, item.id]).filter(Boolean))].slice(0, 80),
+            missingVisibleClaims,
+          };
+        } catch (error) {
+          return { index, ok: false, error: error.message, itemCount: 0, types: [], urls: [], missingVisibleClaims: [] };
+        }
+      });
     const labelledByText = (el) =>
       (el.getAttribute('aria-labelledby') || '')
         .split(/\\s+/)
@@ -173,6 +308,7 @@ async function auditRoute(cdp, baseUrl, route, viewport) {
       targetBlankMissingRel,
       duplicateIds: duplicateIds.slice(0, 8),
       canonicalPath,
+      jsonLdScripts,
     };
   })()`);
 
@@ -358,6 +494,55 @@ function auditRouteMetadata(results) {
   return { failures, routes: routeRecords.length };
 }
 
+function auditStructuredData(results) {
+  const failures = [];
+  const byRoute = new Map();
+  for (const result of results) {
+    const items = byRoute.get(result.route) ?? [];
+    items.push(result.report.jsonLdScripts);
+    byRoute.set(result.route, items);
+  }
+
+  let scriptCount = 0;
+  let itemCount = 0;
+  for (const [route, viewportScripts] of byRoute) {
+    const scripts = viewportScripts[0] ?? [];
+    scriptCount += scripts.length;
+    itemCount += scripts.reduce((sum, script) => sum + script.itemCount, 0);
+
+    if (scripts.length < 1) failures.push(`${route} missing JSON-LD`);
+    for (const script of scripts) {
+      if (!script.ok) failures.push(`${route} JSON-LD script ${script.index} parse error: ${script.error}`);
+      for (const miss of script.missingVisibleClaims) {
+        failures.push(`${route} JSON-LD ${miss.type} ${miss.field} not visible: ${miss.value}`);
+      }
+      for (const url of script.urls) {
+        if (/localhost|127\\.0\\.0\\.1|0\\.0\\.0\\.0/.test(url)) {
+          failures.push(`${route} JSON-LD leaks local URL: ${url}`);
+        }
+        if (/^https?:/.test(url) && !url.startsWith("https://suspecframework.dev") && !url.startsWith("https://github.com/")) {
+          failures.push(`${route} JSON-LD external URL not allowlisted: ${url}`);
+        }
+      }
+    }
+
+    const typeSets = viewportScripts.map((scriptsForViewport) =>
+      scriptsForViewport.flatMap((script) => script.types).sort().join("|"),
+    );
+    if (new Set(typeSets).size !== 1) failures.push(`${route} inconsistent JSON-LD types across viewports`);
+
+    const types = new Set(scripts.flatMap((script) => script.types));
+    for (const globalType of ["Organization", "WebSite"]) {
+      if (!types.has(globalType)) failures.push(`${route} missing global JSON-LD type ${globalType}`);
+    }
+    for (const expectedType of expectedStructuredTypes.get(route) ?? []) {
+      if (!types.has(expectedType)) failures.push(`${route} missing JSON-LD type ${expectedType}`);
+    }
+  }
+
+  return { failures, routes: byRoute.size, scripts: scriptCount, items: itemCount };
+}
+
 assertDistBuilt("audit-site");
 const server = createStaticDistServer();
 const port = await listen(server);
@@ -400,6 +585,20 @@ try {
     console.log(`FAIL route-metadata ${JSON.stringify(metadata)}`);
   } else {
     console.log(`PASS route-metadata ${JSON.stringify({ routes: metadata.routes })}`);
+  }
+
+  const structuredData = auditStructuredData(results);
+  if (structuredData.failures.length) {
+    exitCode = 1;
+    console.log(`FAIL structured-data ${JSON.stringify(structuredData)}`);
+  } else {
+    console.log(
+      `PASS structured-data ${JSON.stringify({
+        routes: structuredData.routes,
+        scripts: structuredData.scripts,
+        items: structuredData.items,
+      })}`,
+    );
   }
 
   const reducedMotion = await auditReducedMotion(cdp, baseUrl);
