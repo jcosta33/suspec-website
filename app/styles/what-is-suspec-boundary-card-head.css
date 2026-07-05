@@ -1,0 +1,35 @@
+
+.boundary-step-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.boundary-step-icon {
+  width: 2.7rem;
+  height: 2.7rem;
+}
+
+.boundary-step-index {
+  display: block;
+  color: var(--boundary-signal);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+}
+
+.boundary-step-title {
+  margin-top: 0.18rem;
+  color: var(--color-concrete-100);
+  font-family: var(--font-heading), var(--font-sans), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.boundary-step-lamp {
+  margin-left: auto;
+}

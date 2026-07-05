@@ -1,0 +1,11 @@
+
+.boundary-step-copy {
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(var(--boundary-rgb), 0.24);
+  padding-top: 0.9rem;
+  color: var(--color-concrete-300);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
