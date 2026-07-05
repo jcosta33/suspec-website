@@ -170,6 +170,18 @@ async function auditRoute(cdp, baseUrl, route, viewport) {
     };
     const text = (el) => (el?.textContent || '').replace(/\\s+/g, ' ').trim();
     const head = (selector, attr = 'content') => document.querySelector(selector)?.getAttribute(attr) || '';
+    const labelledByText = (el) =>
+      (el.getAttribute('aria-labelledby') || '')
+        .split(/\\s+/)
+        .map((id) => text(document.getElementById(id)))
+        .filter(Boolean)
+        .join(' ');
+    const controlName = (el) => {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
+        return text(el.labels?.[0]) || el.getAttribute('aria-label') || labelledByText(el) || el.getAttribute('placeholder') || el.getAttribute('title') || '';
+      }
+      return text(el) || el.getAttribute('aria-label') || labelledByText(el) || el.getAttribute('title') || el.querySelector('img[alt]')?.getAttribute('alt') || '';
+    };
     const html = document.documentElement;
     const width = html.clientWidth;
     const h1s = [...document.querySelectorAll('h1')].filter(isVisible).map((el) => {
@@ -218,6 +230,27 @@ async function auditRoute(cdp, baseUrl, route, viewport) {
     const badCopyButtons = copyButtons.filter((item) => item.cursor !== 'pointer' || item.width < 40 || item.height < 40);
     const anchorsWithoutHref = [...document.querySelectorAll('a')].filter((el) => !el.getAttribute('href')).length;
     const nestedInteractive = [...document.querySelectorAll('a button, button a')].length;
+    const unnamedControls = [...document.querySelectorAll(controlSelector)]
+      .filter(isVisible)
+      .filter((el) => !controlName(el))
+      .map((el) => el.outerHTML.slice(0, 120))
+      .slice(0, 8);
+    const targetBlankMissingRel = [...document.querySelectorAll('a[target="_blank"]')]
+      .filter((el) => {
+        const rel = (el.getAttribute('rel') || '').toLowerCase();
+        return !rel.includes('noopener') || !rel.includes('noreferrer');
+      })
+      .map((el) => text(el) || el.getAttribute('aria-label') || el.getAttribute('href'))
+      .slice(0, 8);
+    const seenIds = new Set();
+    const duplicateIds = [];
+    for (const el of document.querySelectorAll('[id]')) {
+      const id = el.id;
+      if (!id) continue;
+      if (seenIds.has(id) && !duplicateIds.includes(id)) duplicateIds.push(id);
+      seenIds.add(id);
+    }
+    const canonicalPath = head('link[rel="canonical"]', 'href') ? new URL(head('link[rel="canonical"]', 'href'), location.origin).pathname : '';
     return {
       url: location.pathname,
       title: document.title.trim(),
@@ -235,6 +268,10 @@ async function auditRoute(cdp, baseUrl, route, viewport) {
       wideBlocks,
       anchorsWithoutHref,
       nestedInteractive,
+      unnamedControls,
+      targetBlankMissingRel,
+      duplicateIds: duplicateIds.slice(0, 8),
+      canonicalPath,
     };
   })()`);
 
@@ -252,6 +289,10 @@ async function auditRoute(cdp, baseUrl, route, viewport) {
   if (report.wideBlocks.length) failures.push("unscrollable code/terminal overflow");
   if (report.anchorsWithoutHref) failures.push(`anchors without href ${report.anchorsWithoutHref}`);
   if (report.nestedInteractive) failures.push(`nested interactive ${report.nestedInteractive}`);
+  if (report.unnamedControls.length) failures.push("interactive controls missing accessible name");
+  if (report.targetBlankMissingRel.length) failures.push("target blank links missing noopener/noreferrer");
+  if (report.duplicateIds.length) failures.push("duplicate ids");
+  if (report.canonicalPath !== new URL(route, baseUrl).pathname) failures.push("canonical path does not match route");
   if (cdp.exceptions.length) failures.push(`runtime exceptions ${cdp.exceptions.length}`);
 
   return { route, viewport: viewport.name, failures, report, exceptions: cdp.exceptions };
@@ -374,6 +415,48 @@ async function auditSeoArtifacts(baseUrl) {
   };
 }
 
+function auditRouteMetadata(results) {
+  const failures = [];
+  const byRoute = new Map();
+  for (const result of results) {
+    const items = byRoute.get(result.route) ?? [];
+    items.push(result.report);
+    byRoute.set(result.route, items);
+  }
+
+  const routeRecords = [];
+  for (const [route, reports] of byRoute) {
+    const [first] = reports;
+    for (const key of ["title", "description", "canonical", "ogTitle", "ogDescription"]) {
+      const variants = new Set(reports.map((report) => report[key]).filter(Boolean));
+      if (variants.size !== 1) failures.push(`${route} inconsistent ${key} across viewports`);
+    }
+    routeRecords.push({
+      route,
+      title: first.title,
+      description: first.description,
+    });
+  }
+
+  for (const key of ["title", "description"]) {
+    const seen = new Map();
+    for (const record of routeRecords) {
+      const value = record[key];
+      if (!value) continue;
+      const routesWithValue = seen.get(value) ?? [];
+      routesWithValue.push(record.route);
+      seen.set(value, routesWithValue);
+    }
+    for (const [value, routesWithValue] of seen) {
+      if (routesWithValue.length > 1) {
+        failures.push(`duplicate ${key} "${value}" on ${routesWithValue.join(", ")}`);
+      }
+    }
+  }
+
+  return { failures, routes: routeRecords.length };
+}
+
 assertDistBuilt("audit-site");
 const server = createStaticDistServer();
 const port = await listen(server);
@@ -400,11 +483,22 @@ try {
           badCopyButtons: result.report.badCopyButtons,
           smallControls: result.report.smallControls,
           wideBlocks: result.report.wideBlocks,
+          unnamedControls: result.report.unnamedControls,
+          targetBlankMissingRel: result.report.targetBlankMissingRel,
+          duplicateIds: result.report.duplicateIds,
           exceptions: result.exceptions,
         };
         console.log(`  details ${JSON.stringify(details)}`);
       }
     }
+  }
+
+  const metadata = auditRouteMetadata(results);
+  if (metadata.failures.length) {
+    exitCode = 1;
+    console.log(`FAIL route-metadata ${JSON.stringify(metadata)}`);
+  } else {
+    console.log(`PASS route-metadata ${JSON.stringify({ routes: metadata.routes })}`);
   }
 
   const reducedMotion = await auditReducedMotion(cdp, baseUrl);
