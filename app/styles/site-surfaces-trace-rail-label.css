@@ -1,0 +1,22 @@
+
+@media (min-width: 80rem) {
+  .trace-rail-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(var(--signal-muted-rgb), 0.16);
+    border-radius: calc(var(--radius-control) - 5px);
+    background:
+      linear-gradient(90deg, rgba(var(--signal-muted-rgb), 0.035), transparent 62%),
+      rgba(10, 7, 5, 0.34);
+    color: color-mix(in oklab, var(--signal-muted) 46%, var(--color-concrete-400));
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.52rem;
+    font-weight: 750;
+    letter-spacing: 0.11em;
+    line-height: 1;
+    padding: 0.34rem 0.22rem;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+}
