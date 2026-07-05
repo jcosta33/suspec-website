@@ -1,0 +1,23 @@
+@media (max-width: 40rem) {
+  .agent-roster-header {
+    min-height: 0;
+    gap: 0.9rem;
+    padding: 0.86rem 0.9rem;
+  }
+
+  .agent-roster-header h2 {
+    margin-top: 0.38rem;
+    font-size: 1.08rem;
+    line-height: 1.16;
+  }
+
+  .agent-roster-header p:not(:first-child) {
+    display: -webkit-box;
+    margin-top: 0.42rem;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+}

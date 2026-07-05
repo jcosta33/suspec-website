@@ -1,0 +1,27 @@
+@media (max-width: 40rem) {
+  .agent-lane-summary {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.48rem;
+    margin-top: 0.74rem;
+    padding-top: 0.7rem;
+  }
+
+  .agent-lane-summary-link {
+    min-height: 0;
+    gap: 0.28rem;
+    padding: 0.58rem 0.62rem;
+  }
+
+  .agent-lane-summary-title {
+    font-size: 0.66rem;
+  }
+
+  .agent-lane-summary-files {
+    font-size: 0.62rem;
+  }
+
+  .agent-lane-summary-copy {
+    font-size: 0.72rem;
+    line-height: 1.34;
+  }
+}
