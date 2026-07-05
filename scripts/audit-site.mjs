@@ -37,6 +37,25 @@ function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+async function waitForRouteReady(cdp, expectedPath, timeoutMs = 5000) {
+  const started = Date.now();
+  while (Date.now() - started < timeoutMs) {
+    try {
+      const ready = await cdp.eval(`(() => ({
+        path: location.pathname,
+        state: document.readyState,
+        hasMain: Boolean(document.querySelector('main')),
+      }))()`);
+      if (ready.path === expectedPath && ready.state === "complete" && ready.hasMain) {
+        return;
+      }
+    } catch {
+      // Navigation can briefly destroy the execution context; keep polling.
+    }
+    await wait(100);
+  }
+}
+
 function visibleControlSelector() {
   return [
     "button",
@@ -139,6 +158,7 @@ async function auditRoute(cdp, baseUrl, route, viewport) {
   await cdp.send("Emulation.setTouchEmulationEnabled", { enabled: viewport.mobile });
   await cdp.send("Emulation.setEmulatedMedia", { features: [] });
   await cdp.send("Page.navigate", { url: `${baseUrl}${route}` });
+  await waitForRouteReady(cdp, new URL(route, baseUrl).pathname);
   await wait(route.startsWith("/docs") ? 1800 : 1000);
 
   const report = await cdp.eval(`(() => {

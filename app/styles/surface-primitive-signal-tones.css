@@ -1,0 +1,60 @@
+.signal-surface-core {
+  --surface-signal: var(--signal-core);
+  --surface-rgb: var(--signal-core-rgb);
+  --surface-pattern: var(--signal-pattern-core);
+  --surface-mark: var(--signal-mark-core);
+  border-top-color: rgba(var(--signal-core-rgb), 0.3);
+}
+
+.signal-surface-evidence {
+  --surface-signal: var(--signal-evidence);
+  --surface-rgb: var(--signal-evidence-rgb);
+  --surface-pattern: var(--signal-pattern-evidence);
+  --surface-mark: var(--signal-mark-evidence);
+  border-left-color: rgba(var(--signal-evidence-rgb), 0.3);
+  border-top-color: rgba(var(--signal-evidence-rgb), 0.18);
+}
+
+.signal-surface-greenfield {
+  --surface-signal: var(--signal-greenfield);
+  --surface-rgb: var(--signal-greenfield-rgb);
+  --surface-pattern: var(--signal-pattern-greenfield);
+  --surface-mark: var(--signal-mark-greenfield);
+  border-left-color: rgba(var(--signal-greenfield-rgb), 0.32);
+  border-right-color: rgba(var(--signal-greenfield-rgb), 0.1);
+}
+
+.signal-surface-brownfield {
+  --surface-signal: var(--signal-brownfield);
+  --surface-rgb: var(--signal-brownfield-rgb);
+  --surface-pattern: var(--signal-pattern-brownfield);
+  --surface-mark: var(--signal-mark-brownfield);
+  border-left-color: rgba(var(--signal-brownfield-rgb), 0.34);
+  border-bottom-color: rgba(var(--signal-brownfield-rgb), 0.16);
+}
+
+.signal-surface-change {
+  --surface-signal: var(--signal-change);
+  --surface-rgb: var(--signal-change-rgb);
+  --surface-pattern: var(--signal-pattern-change);
+  --surface-mark: var(--signal-mark-change);
+  border-left-color: rgba(var(--signal-change-rgb), 0.3);
+  border-bottom-color: rgba(var(--signal-change-rgb), 0.18);
+}
+
+.signal-surface-reference {
+  --surface-signal: var(--signal-reference);
+  --surface-rgb: var(--signal-reference-rgb);
+  --surface-pattern: var(--signal-pattern-reference);
+  --surface-mark: var(--signal-mark-reference);
+  border-left-color: rgba(var(--signal-reference-rgb), 0.3);
+  border-top-color: rgba(var(--signal-reference-rgb), 0.14);
+}
+
+.signal-surface-muted {
+  --surface-signal: var(--signal-muted);
+  --surface-rgb: var(--signal-muted-rgb);
+  --surface-pattern: var(--signal-pattern-muted);
+  --surface-mark: var(--signal-mark-muted);
+  border-left-color: rgba(var(--signal-muted-rgb), 0.22);
+}
