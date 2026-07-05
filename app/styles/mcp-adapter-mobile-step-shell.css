@@ -1,0 +1,20 @@
+@media (max-width: 40rem) {
+  .mcp-adapter-step {
+    border: 1px solid rgba(var(--package-mcp-rgb), 0.16);
+    border-left-color: rgba(var(--package-mcp-rgb), 0.3);
+    border-radius: calc(var(--radius-panel) - 2px);
+    background-color: rgba(24, 19, 14, 0.92);
+  }
+
+  .mcp-adapter-step-link {
+    display: block;
+    min-height: 0;
+    padding: 0.72rem 0.82rem 0.76rem;
+  }
+
+  .mcp-adapter-step-link::before {
+    inset: 0.7rem auto 0.7rem 0;
+    width: 3px;
+    opacity: 0.54;
+  }
+}

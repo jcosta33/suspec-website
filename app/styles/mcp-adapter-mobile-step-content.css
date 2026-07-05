@@ -1,0 +1,47 @@
+@media (max-width: 40rem) {
+  .mcp-adapter-heading {
+    width: 100%;
+    align-items: center;
+    gap: 0.72rem;
+  }
+
+  .mcp-adapter-heading > .motion-nudge-x {
+    display: none;
+  }
+
+  .mcp-adapter-heading .hex-badge {
+    position: relative;
+    z-index: 3;
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .mcp-adapter-heading .hex-badge :is(svg) {
+    height: 0.9rem;
+    width: 0.9rem;
+  }
+
+  .mcp-adapter-step-link .mcp-adapter-meta {
+    margin-top: 0;
+    font-size: 0.58rem;
+    line-height: 1.2;
+  }
+
+  .mcp-adapter-title {
+    margin-top: 0.04rem;
+    font-size: 0.98rem;
+    line-height: 1.15;
+  }
+
+  .mcp-adapter-detail {
+    display: -webkit-box;
+    margin-top: 0.38rem;
+    margin-left: calc(2rem + 0.72rem);
+    max-width: none;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 0.76rem;
+    line-height: 1.38;
+  }
+}

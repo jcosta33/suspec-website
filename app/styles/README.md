@@ -37,6 +37,10 @@ identity, nav, and proof-list rules live in separate footer mobile files.
 route nav compaction and MCP-specific nav offsets live in separate files at the
 same late cascade point.
 
+`app/styles/mcp-adapter-mobile-rail.css` is a mobile manifest: rail frame, step
+shell, and step content rules live in separate files before the later MCP polish
+layer applies tighter mobile density.
+
 `app/styles/repo-product-manifest-responsive.css` is a mobile manifest:
 page/paper rhythm, manifest card stats, and delegation-contract rules live in
 separate responsive files so product-package mobile tuning stays reviewable.
