@@ -11,6 +11,8 @@
     "audit:css": "node scripts/audit-css.mjs",
     "audit:site": "node scripts/audit-site.mjs",
     "audit:axe": "node scripts/audit-axe.mjs",
+    "audit:keyboard": "node scripts/audit-keyboard.mjs",
+    "audit:a11y": "npm run audit:axe && npm run audit:keyboard",
     "audit:perf": "node scripts/audit-performance.mjs",
     "start": "next start",
     "lint": "eslint"

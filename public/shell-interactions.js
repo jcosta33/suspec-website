@@ -128,6 +128,18 @@
     });
 
     document.addEventListener("keydown", (event) => {
+      const target = event.target;
+      const toggle =
+        target instanceof Element
+          ? target.closest('[aria-controls="mobile-menu"]')
+          : null;
+      if (toggle && (event.key === "Enter" || event.key === " ")) {
+        event.preventDefault();
+        if (menuOpen()) closeMenu(true);
+        else openMenu();
+        return;
+      }
+
       if (!menuOpen()) return;
       const { menu } = currentMenu();
       if (!menu) return;
