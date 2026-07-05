@@ -1,0 +1,34 @@
+@media (max-width: 40rem) {
+  .process-strip {
+    gap: 0.55rem;
+    background-color: transparent;
+  }
+
+  .process-strip > :is(li, a, div) {
+    border: 1px solid rgba(var(--process-rgb), 0.16);
+    border-radius: var(--radius-panel);
+  }
+
+  .process-strip > :is(li, a, div)::after {
+    top: 0.45rem;
+    opacity: 0.38;
+  }
+
+  .setup-path-strip,
+  .cli-command-rail {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 0.05rem 0.05rem 0.35rem;
+    scroll-padding-inline: 0.05rem;
+    scroll-snap-type: x proximity;
+    scrollbar-color: rgba(var(--signal-muted-rgb), 0.34) transparent;
+    scrollbar-width: thin;
+  }
+
+  .setup-path-strip > li,
+  .cli-command-rail > li {
+    scroll-snap-align: start;
+  }
+}

@@ -1,0 +1,49 @@
+@media (max-width: 40rem) {
+  .setup-path-strip {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.52rem;
+    overflow: visible;
+    padding: 0.58rem 0.62rem 0.72rem;
+    scrollbar-width: none;
+  }
+
+  .setup-path-strip > li {
+    min-width: 0;
+  }
+
+  .setup-path-strip > li:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .setup-path-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .setup-path-strip > li > a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 3.35rem;
+    padding: 0.6rem 0.68rem;
+  }
+
+  .setup-path-strip > li > a > div {
+    align-items: center;
+    gap: 0.52rem;
+  }
+
+  .setup-path-strip .kit-icon {
+    width: 1.55rem;
+    height: 1.55rem;
+  }
+
+  .setup-path-strip h2 {
+    font-size: 0.78rem;
+    line-height: 1.12;
+  }
+
+  .setup-path-strip p.mt-3 {
+    display: none;
+  }
+}

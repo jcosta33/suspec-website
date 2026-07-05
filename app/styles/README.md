@@ -34,6 +34,9 @@ so generated docs table exceptions stay reviewable.
 `app/styles/cli-command-catalog-mobile.css` are mobile manifests: header/section
 rules stay separate from command rail and catalog row rules.
 
+`app/styles/process-strips-responsive.css` is a mobile manifest: shared mobile
+process-strip rail behavior loads before the get-started setup-path override.
+
 `app/styles/footer-responsive-mobile.css` is a mobile manifest: frame/register,
 identity, nav, and proof-list rules live in separate footer mobile files.
 
