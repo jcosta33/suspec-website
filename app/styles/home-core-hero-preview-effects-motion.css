@@ -1,0 +1,10 @@
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-hero-section::before {
+    animation: home-bay-calibration 12s ease-in-out infinite alternate;
+  }
+
+  .home-hero-preview > div:first-child::after {
+    animation: home-bay-glint 9s ease-in-out infinite;
+  }
+}
