@@ -1,0 +1,20 @@
+@media (prefers-reduced-motion: no-preference) {
+  section.bg-section-band::before {
+    animation: section-band-ruler 16s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes section-band-ruler {
+  from {
+    background-position:
+      0 50%,
+      0 50%;
+    opacity: 0.38;
+  }
+  to {
+    background-position:
+      0 50%,
+      1.64rem 50%;
+    opacity: 0.54;
+  }
+}
