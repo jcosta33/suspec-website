@@ -1,0 +1,12 @@
+
+/* Homepage review rail — one connected signal path instead of another loose card row. */
+.review-signal-rail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+  position: relative;
+  isolation: isolate;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

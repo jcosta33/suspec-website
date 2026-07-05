@@ -1,0 +1,22 @@
+
+.review-signal-rail::before {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  right: 1.25rem;
+  left: 1.25rem;
+  z-index: -1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--signal-muted-rgb), 0),
+    rgba(var(--signal-muted-rgb), 0.22) 14%,
+    rgba(var(--signal-core-rgb), 0.26) 50%,
+    rgba(var(--signal-muted-rgb), 0.22) 86%,
+    rgba(var(--signal-muted-rgb), 0)
+  );
+  box-shadow:
+    0 0 10px rgba(var(--signal-muted-rgb), 0.03),
+    0 0 12px rgba(var(--signal-core-rgb), 0.03);
+  opacity: 0.5;
+}

@@ -1,0 +1,36 @@
+
+.review-signal-node-reference {
+  --review-node-signal: var(--signal-reference);
+  --review-node-rgb: var(--signal-reference-rgb);
+  --review-node-pattern: var(--signal-pattern-reference);
+}
+
+.review-signal-node-change {
+  --review-node-signal: var(--signal-change);
+  --review-node-rgb: var(--signal-change-rgb);
+  --review-node-pattern: var(--signal-pattern-change);
+}
+
+.review-signal-node-evidence {
+  --review-node-signal: var(--signal-evidence);
+  --review-node-rgb: var(--signal-evidence-rgb);
+  --review-node-pattern: var(--signal-pattern-evidence);
+}
+
+.review-signal-node-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 1.55rem;
+}
+
+.review-signal-node:hover {
+  border-color: rgba(var(--signal-muted-rgb), 0.3);
+  border-left-color: rgba(var(--review-node-rgb), 0.56);
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.07),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(var(--review-node-rgb), 0.035),
+    0 12px 24px rgba(0, 0, 0, 0.18);
+}
