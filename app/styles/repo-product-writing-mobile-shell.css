@@ -1,0 +1,51 @@
+@media (max-width: 40rem) {
+  .writing-page-nav {
+    position: relative;
+    isolation: isolate;
+    margin-top: -1rem;
+    margin-bottom: 0.58rem;
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  .writing-page-nav + .section-register {
+    margin-top: 0.48rem;
+  }
+
+  .writing-page-nav-stack .writing-page-nav {
+    margin-bottom: 0.62rem;
+  }
+
+  .writing-related-records {
+    gap: 0.58rem;
+    padding: 0.68rem 0.72rem 0.72rem;
+  }
+
+  .writing-related-records::before {
+    top: 0.62rem;
+    right: 0.68rem;
+  }
+
+  .writing-related-records-kicker {
+    margin-bottom: 0.22rem;
+    font-size: 0.62rem;
+  }
+
+  .writing-related-records-copy {
+    font-size: 0.82rem;
+    line-height: 1.38;
+  }
+
+  .writing-related-records-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.42rem;
+  }
+
+  .writing-related-records-links a {
+    width: 100%;
+    justify-content: flex-start;
+    font-size: 0.78rem;
+    line-height: 1.2;
+  }
+}
