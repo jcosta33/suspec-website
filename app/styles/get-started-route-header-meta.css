@@ -1,0 +1,23 @@
+.setup-route-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.setup-route-meta span {
+  display: inline-flex;
+  min-height: 1.55rem;
+  align-items: center;
+  border: 1px solid rgba(var(--signal-reference-rgb), 0.22);
+  border-radius: calc(var(--radius-control) - 4px);
+  padding: 0 0.5rem;
+  background: rgba(7, 5, 3, 0.28);
+  color: var(--color-concrete-300);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  font-weight: 720;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
