@@ -1,0 +1,17 @@
+
+.home-hero-seal-field {
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 4.45rem,
+    #000 7.25rem,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 4.45rem,
+    #000 7.25rem,
+    #000 100%
+  );
+}

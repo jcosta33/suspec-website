@@ -1,0 +1,10 @@
+
+.home-hero-section::after {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 17rem;
+  background:
+    linear-gradient(180deg, transparent, rgba(17, 14, 12, 0.2) 22%, var(--color-background) 100%),
+    radial-gradient(70% 80% at 50% 100%, rgba(var(--signal-core-rgb), 0.09), transparent 68%);
+}
