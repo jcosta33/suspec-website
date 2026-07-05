@@ -1,0 +1,58 @@
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .site-background-plane::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        78% 58% at
+          50%
+          18%,
+        rgba(var(--signal-core-rgb), 0.036),
+        transparent 66%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(240, 226, 204, 0.012),
+        transparent 28%,
+        rgba(0, 0, 0, 0.1) 100%
+      );
+    opacity: 0.36;
+  }
+
+  .site-background-plane::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(
+          rgba(var(--signal-core-rgb), 0.032) 1px,
+          transparent 1px
+        )
+        50% 0% / 96px 96px,
+      linear-gradient(
+          90deg,
+          rgba(var(--signal-reference-rgb), 0.024) 1px,
+          transparent 1px
+        )
+        50% 0% / 96px 96px,
+      linear-gradient(
+        115deg,
+        transparent 0 38%,
+        rgba(240, 226, 204, 0.018) 48%,
+        transparent 58% 100%
+      );
+    opacity: 0.34;
+    mix-blend-mode: screen;
+    mask-image: radial-gradient(92% 76% at 50% 36%, #000 0 54%, transparent 100%);
+  }
+
+  .site-main-frame,
+  .site-footer {
+    position: relative;
+    z-index: 1;
+  }
+}

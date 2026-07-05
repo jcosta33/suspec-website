@@ -1,0 +1,15 @@
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .site-background-perspective {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    overflow: clip;
+    pointer-events: none;
+    perspective: clamp(380px, 42vw, 760px);
+    perspective-origin: var(--background-plane-perspective-x) var(--background-plane-perspective-y);
+    transform-style: preserve-3d;
+    contain: layout style paint;
+  }
+}
