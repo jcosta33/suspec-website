@@ -1,0 +1,24 @@
+@media (max-width: 64rem) {
+  /* lg — matches the global nav's mobile switch */
+  .docs-layout {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-top: clamp(5.25rem, 15vw, 6rem);
+  }
+  .docs-layout > aside {
+    position: static;
+    flex-basis: auto;
+    max-height: none;
+    width: 100%;
+  }
+  .docs-prose {
+    max-width: none;
+    /* Without this the flex child shrink-wraps its widest <pre>/<table> and runs the whole prose
+       column off a phone viewport; pin it to the track so wide blocks scroll inside their own
+       overflow-x:auto boxes instead. */
+    width: 100%;
+  }
+  .docs-source-note {
+    font-size: 0.75rem;
+  }
+}
