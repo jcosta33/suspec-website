@@ -1,0 +1,20 @@
+.docs-prose h1 {
+  font-family: var(--font-title), var(--font-mono), ui-monospace, monospace;
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  font-weight: var(--font-weight-title);
+  margin: 0 0 1.05rem;
+  letter-spacing: 0;
+  font-variation-settings:
+    "SOFT" 46,
+    "WONK" 1,
+    "opsz" 72;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+.docs-prose h1.docs-article-title-long {
+  font-size: clamp(1.65rem, 2.8vw, 2.05rem);
+}
+.docs-prose h1.docs-article-title-xlong {
+  font-size: clamp(1.35rem, 2.2vw, 1.72rem);
+  line-height: 1.14;
+}

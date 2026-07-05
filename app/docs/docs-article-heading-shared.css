@@ -1,0 +1,14 @@
+
+.docs-prose h1,
+.docs-prose h2,
+.docs-prose h3,
+.docs-prose h4 {
+  font-family: var(--font-heading), sans-serif;
+  color: var(--color-concrete-100);
+  line-height: 1.25;
+  scroll-margin-top: 5rem;
+  font-variation-settings:
+    "SOFT" 36,
+    "WONK" 0,
+    "opsz" 26;
+}
