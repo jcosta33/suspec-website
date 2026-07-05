@@ -1,0 +1,22 @@
+@media (min-width: 48rem) {
+  .writing-related-records {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .writing-related-records-links {
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 40.01rem) and (max-width: 63.99rem) {
+  .writing-page-nav .section-jump-nav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .writing-page-nav .section-jump-nav {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}

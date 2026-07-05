@@ -1,0 +1,48 @@
+/* Agent roster — first-pass worker file map, denser than generic cards. */
+.repo-product-page {
+  row-gap: clamp(0.34rem, 0.64vw, 0.58rem);
+  padding-top: clamp(2.05rem, 2.78vw, 2.45rem);
+}
+
+.repo-product-page > .page-nav-wrap {
+  margin-top: 0;
+  margin-bottom: clamp(0.46rem, 0.82vw, 0.78rem);
+}
+
+.repo-product-page > nav.page-nav-wrap {
+  margin-top: 0;
+  margin-bottom: clamp(0.46rem, 0.82vw, 0.78rem);
+}
+
+.repo-product-page > .ambient-header + .page-nav-wrap {
+  margin-top: clamp(-0.55rem, -0.48vw, -0.28rem);
+}
+
+.repo-product-page > .page-nav-wrap + .section-register {
+  margin-top: clamp(0.32rem, 0.64vw, 0.62rem);
+}
+
+.writing-page-nav {
+  margin-top: clamp(0.24rem, 0.62vw, 0.52rem);
+  margin-bottom: clamp(0.58rem, 1vw, 0.92rem);
+}
+
+.writing-page-nav-stack {
+  margin-top: clamp(0.24rem, 0.62vw, 0.52rem);
+  margin-bottom: clamp(0.58rem, 1vw, 0.92rem);
+}
+
+.writing-page-nav-stack .writing-page-nav {
+  margin-top: 0;
+  margin-bottom: clamp(1rem, 1.42vw, 1.28rem);
+}
+
+.site-main-frame > .flex.flex-col > .ambient-header + .writing-page-nav,
+.site-main-frame > .flex.flex-col > .ambient-header + .writing-page-nav-stack {
+  margin-top: clamp(-1.55rem, -1.18vw, -0.95rem);
+}
+
+.writing-page-nav + .section-register,
+.writing-page-nav-stack + .section-register {
+  margin-top: clamp(0.42rem, 0.78vw, 0.72rem);
+}

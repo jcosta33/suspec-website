@@ -1,0 +1,68 @@
+.writing-related-records {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 0.72rem;
+  overflow: hidden;
+  border: 1px solid rgba(70, 57, 44, 0.38);
+  border-left-color: rgba(var(--signal-reference-rgb), 0.36);
+  border-radius: var(--radius-control);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.032), transparent 58%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.55rem,
+      rgba(var(--signal-muted-rgb), 0.018) 1.55rem calc(1.55rem + 1px)
+    ),
+    rgba(14, 10, 7, 0.54);
+  padding: clamp(0.78rem, 1.22vw, 1rem) clamp(0.82rem, 1.34vw, 1.08rem);
+  box-shadow:
+    inset 1px 0 0 rgba(var(--signal-reference-rgb), 0.14),
+    inset 0 1px 0 rgba(240, 226, 204, 0.035);
+}
+
+.writing-related-records::before {
+  content: "";
+  position: absolute;
+  top: 0.72rem;
+  right: 0.78rem;
+  width: 0.22rem;
+  height: 0.22rem;
+  border-radius: 999px;
+  background: var(--signal-reference);
+  box-shadow: 0 0 8px rgba(var(--signal-reference-rgb), 0.24);
+  opacity: 0.48;
+  pointer-events: none;
+}
+
+.writing-related-records-kicker {
+  margin: 0 0 0.3rem;
+  color: var(--signal-reference);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.writing-related-records-copy {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--color-concrete-400);
+  font-size: 0.9rem;
+  line-height: 1.46;
+}
+
+.writing-related-records-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.writing-related-records-links a {
+  font-size: 0.92rem;
+}
