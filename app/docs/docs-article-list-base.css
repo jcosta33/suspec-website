@@ -1,0 +1,10 @@
+
+/* Lists */
+.docs-prose ul,
+.docs-prose ol {
+  padding-left: 1.35rem;
+  margin: 0.9rem 0;
+}
+.docs-prose li::marker {
+  color: var(--color-brass);
+}
