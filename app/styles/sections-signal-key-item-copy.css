@@ -1,0 +1,22 @@
+
+.signal-key-copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.16rem;
+  line-height: 1.15;
+}
+
+.signal-key-label {
+  color: color-mix(in oklab, var(--key-signal) 44%, var(--color-concrete-200));
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.66rem;
+  font-weight: 760;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.signal-key-detail {
+  color: var(--color-concrete-300);
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}

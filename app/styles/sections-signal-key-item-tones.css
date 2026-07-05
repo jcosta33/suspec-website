@@ -1,0 +1,49 @@
+
+.signal-key-item-core {
+  --key-signal: var(--signal-core);
+  --key-rgb: var(--signal-core-rgb);
+  --key-pattern: var(--signal-pattern-core);
+  --key-mark: var(--signal-mark-core);
+}
+
+.signal-key-item-evidence {
+  --key-signal: var(--signal-evidence);
+  --key-rgb: var(--signal-evidence-rgb);
+  --key-pattern: var(--signal-pattern-evidence);
+  --key-mark: var(--signal-mark-evidence);
+}
+
+.signal-key-item-greenfield {
+  --key-signal: var(--signal-greenfield);
+  --key-rgb: var(--signal-greenfield-rgb);
+  --key-pattern: var(--signal-pattern-greenfield);
+  --key-mark: var(--signal-mark-greenfield);
+}
+
+.signal-key-item-brownfield {
+  --key-signal: var(--signal-brownfield);
+  --key-rgb: var(--signal-brownfield-rgb);
+  --key-pattern: var(--signal-pattern-brownfield);
+  --key-mark: var(--signal-mark-brownfield);
+}
+
+.signal-key-item-change {
+  --key-signal: var(--signal-change);
+  --key-rgb: var(--signal-change-rgb);
+  --key-pattern: var(--signal-pattern-change);
+  --key-mark: var(--signal-mark-change);
+}
+
+.signal-key-item-reference {
+  --key-signal: var(--signal-reference);
+  --key-rgb: var(--signal-reference-rgb);
+  --key-pattern: var(--signal-pattern-reference);
+  --key-mark: var(--signal-mark-reference);
+}
+
+.signal-key-item-muted {
+  --key-signal: var(--signal-muted);
+  --key-rgb: var(--signal-muted-rgb);
+  --key-pattern: var(--signal-pattern-muted);
+  --key-mark: var(--signal-mark-muted);
+}
