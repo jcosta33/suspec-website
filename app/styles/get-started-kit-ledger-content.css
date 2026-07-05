@@ -1,0 +1,40 @@
+
+.kit-ledger-index {
+  padding-top: 0.1rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  color: var(--color-brass);
+  opacity: 0.82;
+}
+
+.kit-ledger-icon {
+  margin-top: 0.1rem;
+  color: var(--color-suspec-yellow);
+  filter: drop-shadow(0 0 8px rgba(216, 138, 36, 0.28));
+}
+
+.kit-ledger-title {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-concrete-100);
+  overflow-wrap: anywhere;
+}
+
+.kit-ledger-role {
+  margin-top: 0.2rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-brass);
+}
+
+.kit-ledger-copy {
+  margin-top: 0.45rem;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--color-concrete-300);
+}
