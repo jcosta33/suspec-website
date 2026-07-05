@@ -1,0 +1,24 @@
+/* Overview summary — command evidence first, manuscript record second. */
+.overview-summary-grid {
+  align-items: stretch;
+  gap: clamp(0.72rem, 1.4vw, 1rem);
+}
+
+.overview-answer-panel {
+  position: relative;
+  display: grid;
+  gap: clamp(1rem, 1.8vw, 1.35rem);
+  overflow: hidden;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border-color: rgba(var(--signal-reference-rgb), 0.2);
+  border-left-color: rgba(var(--signal-core-rgb), 0.38);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.052), transparent 46%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.8rem,
+      rgba(var(--signal-reference-rgb), 0.018) 1.8rem calc(1.8rem + 1px)
+    ),
+    radial-gradient(84% 130% at 0% 0%, rgba(var(--signal-reference-rgb), 0.06), transparent 62%),
+    var(--color-panel-raised);
+}

@@ -1,0 +1,37 @@
+.overview-answer-panel::before,
+.overview-answer-panel::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.overview-answer-panel::before {
+  inset: 0.7rem auto 0.7rem 0.72rem;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--signal-core-rgb), 0.58),
+    rgba(var(--signal-reference-rgb), 0.2),
+    transparent
+  );
+  opacity: 0.75;
+}
+
+.overview-answer-panel::after {
+  top: 0.78rem;
+  right: 0.9rem;
+  width: min(18rem, 44%);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--signal-reference-rgb), 0.36),
+    rgba(var(--signal-core-rgb), 0.28)
+  );
+  opacity: 0.7;
+}
+
+.overview-answer-panel > * {
+  position: relative;
+  z-index: 1;
+}

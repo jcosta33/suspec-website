@@ -1,0 +1,32 @@
+.overview-answer-copy {
+  max-width: 48rem;
+  padding-left: 0.42rem;
+}
+
+.overview-answer-kicker {
+  margin: 0 0 0.34rem;
+  color: var(--signal-reference);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.overview-answer-copy h2 {
+  margin: 0;
+  color: var(--color-concrete-100);
+  font-family: var(--font-heading), ui-monospace, monospace;
+  font-size: clamp(1.25rem, 2.15vw, 1.55rem);
+  font-weight: var(--font-weight-title-compact);
+  line-height: 1.12;
+}
+
+.overview-answer-copy p:last-child {
+  max-width: 43rem;
+  margin-top: 0.54rem;
+  color: var(--color-concrete-300);
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
