@@ -1,0 +1,42 @@
+.home-step-rail-item {
+  --step-signal: var(--signal-core);
+  --step-rgb: var(--signal-core-rgb);
+  --step-pattern: var(--signal-pattern-core);
+  --step-mark: var(--signal-mark-core);
+  position: relative;
+  min-height: 2.75rem;
+  border-color: rgba(var(--step-rgb), 0.24);
+  background-image:
+    linear-gradient(90deg, rgba(var(--step-rgb), 0.06), transparent 52%),
+    var(--step-mark),
+    var(--step-pattern),
+    linear-gradient(180deg, rgba(240, 226, 204, 0.02), transparent 44%);
+  box-shadow: inset 0 1px 0 rgba(240, 226, 204, 0.035);
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.home-step-rail-item:hover,
+.home-step-rail-item:focus-visible {
+  border-color: rgba(var(--step-rgb), 0.56);
+  box-shadow:
+    inset 0 1px 0 rgba(240, 226, 204, 0.055),
+    0 0 0 1px rgba(var(--step-rgb), 0.08);
+}
+
+.home-step-rail-item:hover span:nth-child(2),
+.home-step-rail-item:focus-visible span:nth-child(2) {
+  color: var(--step-signal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-step-rail-item {
+    transition: none;
+  }
+
+  .home-step-rail-item:hover,
+  .home-step-rail-item:focus-visible {
+    transform: none;
+  }
+}

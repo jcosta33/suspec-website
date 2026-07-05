@@ -1,0 +1,35 @@
+.home-step-rail-item-workflow,
+.home-step-rail-item-core {
+  --step-signal: var(--signal-core);
+  --step-rgb: var(--signal-core-rgb);
+  --step-pattern: var(--signal-pattern-core);
+  --step-mark: var(--signal-mark-core);
+}
+
+.home-step-rail-item-evidence {
+  --step-signal: var(--signal-evidence);
+  --step-rgb: var(--signal-evidence-rgb);
+  --step-pattern: var(--signal-pattern-evidence);
+  --step-mark: var(--signal-mark-evidence);
+}
+
+.home-step-rail-item-change {
+  --step-signal: var(--signal-change);
+  --step-rgb: var(--signal-change-rgb);
+  --step-pattern: var(--signal-pattern-change);
+  --step-mark: var(--signal-mark-change);
+}
+
+.home-step-rail-item-reference {
+  --step-signal: var(--signal-reference);
+  --step-rgb: var(--signal-reference-rgb);
+  --step-pattern: var(--signal-pattern-reference);
+  --step-mark: var(--signal-mark-reference);
+}
+
+.home-step-rail-item-muted {
+  --step-signal: var(--signal-muted);
+  --step-rgb: var(--signal-muted-rgb);
+  --step-pattern: var(--signal-pattern-muted);
+  --step-mark: var(--signal-mark-muted);
+}
