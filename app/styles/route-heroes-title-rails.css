@@ -1,0 +1,31 @@
+.page-hero-title {
+  position: relative;
+  text-shadow: 0 0 28px rgba(var(--hero-rgb), 0.08);
+}
+
+.page-hero-title::before,
+.page-hero-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  display: none;
+  width: clamp(1.5rem, 8vw, 4rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--hero-rgb), 0.34));
+}
+
+.page-hero-title::before {
+  right: calc(100% + 1.5rem);
+}
+
+.page-hero-title::after {
+  left: calc(100% + 1.5rem);
+  transform: scaleX(-1);
+}
+
+@media (min-width: 54rem) {
+  .page-hero-title::before,
+  .page-hero-title::after {
+    display: block;
+  }
+}

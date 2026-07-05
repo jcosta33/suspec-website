@@ -1,0 +1,62 @@
+.page-hero-datum {
+  display: grid;
+  grid-template-columns: minmax(1.8rem, 1fr) auto minmax(1.8rem, 1fr);
+  align-items: center;
+  gap: 0.55rem;
+  width: min(22rem, 62vw);
+  height: 0.6rem;
+  margin: 0.48rem auto 0;
+  color: var(--hero-signal);
+  opacity: 0.82;
+}
+
+.page-hero-datum::before,
+.page-hero-datum::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--hero-rgb), 0.76)
+  );
+}
+
+.page-hero-datum::after {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--hero-rgb), 0.76),
+    transparent
+  );
+}
+
+.page-hero-datum span {
+  width: 0.28rem;
+  height: 0.28rem;
+  border-radius: 9999px;
+  background: currentColor;
+  box-shadow: 0 0 10px rgba(var(--hero-rgb), 0.5);
+}
+
+.page-hero-datum span:nth-child(2) {
+  width: 0.38rem;
+  height: 0.38rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-hero-datum span:nth-child(2) {
+    animation: hero-datum-pulse 4.8s ease-in-out infinite;
+  }
+}
+
+@keyframes hero-datum-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
