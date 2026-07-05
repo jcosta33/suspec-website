@@ -332,10 +332,11 @@ function AgentInstallSection() {
         </TerminalWindow>
       </Panel>
       <p className="section-after-panel-note">
-        These are Claude Code agents in{" "}
-        <code className="text-suspec-yellow">.claude/agents/</code>.{" "}
-        <code className="text-suspec-yellow">npx skills</code> installs the{" "}
-        <TextLink href="/skills/">skills catalog</TextLink>, not these.
+        Role files go under{" "}
+        <code className="text-suspec-yellow">.claude/agents</code>.{" "}
+        The <TextLink href="/skills/">skills catalog</TextLink> uses{" "}
+        <code className="text-suspec-yellow">npx skills</code>; worker files
+        stay separate.
       </p>
     </Section>
   );

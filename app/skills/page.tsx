@@ -460,8 +460,7 @@ export default function SkillsPage() {
           </TerminalWindow>
         </Panel>
         <p className="section-after-panel-note">
-          This installs the framework-free catalog into any repo. The Suspec kit
-          ships separately in{" "}
+          Install the framework-free catalog anywhere. Suspec kit files stay in{" "}
           <TextLink
             href="https://github.com/jcosta33/suspec-starter-kit"
             target="_blank"
@@ -470,8 +469,8 @@ export default function SkillsPage() {
           >
             suspec-starter-kit
           </TextLink>
-          . Keep repo-specific commands in{" "}
-          <code className="text-suspec-yellow">AGENTS.md</code>; the{" "}
+          . Put repo-specific commands in{" "}
+          <code className="text-suspec-yellow">AGENTS.md</code>. The{" "}
           <TextLink
             href="/docs/reference/agent-guides/"
             target="_blank"
@@ -480,7 +479,7 @@ export default function SkillsPage() {
           >
             agent guide docs
           </TextLink>{" "}
-          cover the policy surface.
+          cover policy.
         </p>
       </Section>
 
