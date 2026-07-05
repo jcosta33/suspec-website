@@ -1,0 +1,33 @@
+
+.ambient-header:has(.page-hero-package-skills) {
+  --ambient-signal: var(--package-skills);
+  --ambient-rgb: var(--package-skills-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-evidence);
+}
+
+.ambient-header:has(.page-hero-package-agents) {
+  --ambient-signal: var(--package-agents);
+  --ambient-rgb: var(--package-agents-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-reference);
+}
+
+.ambient-header:has(.page-hero-package-cli) {
+  --ambient-signal: var(--package-cli);
+  --ambient-rgb: var(--package-cli-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: var(--signal-pattern-change);
+}
+
+.ambient-header:has(.page-hero-package-mcp) {
+  --ambient-signal: var(--package-mcp);
+  --ambient-rgb: var(--package-mcp-rgb);
+  --ambient-secondary-rgb: var(--signal-core-rgb);
+  --ambient-pattern: repeating-linear-gradient(
+      0deg,
+      rgba(var(--ambient-rgb), 0.014) 0 1px,
+      transparent 1px 14px
+    ),
+    linear-gradient(180deg, rgba(var(--ambient-rgb), 0.012), transparent 44%);
+}

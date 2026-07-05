@@ -1,0 +1,7 @@
+
+.ambient-header:has(.page-hero-tone-muted) {
+  --ambient-signal: var(--signal-muted);
+  --ambient-rgb: var(--signal-muted-rgb);
+  --ambient-secondary-rgb: var(--signal-reference-rgb);
+  --ambient-pattern: var(--signal-pattern-muted);
+}
