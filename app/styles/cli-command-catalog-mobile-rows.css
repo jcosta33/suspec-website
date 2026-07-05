@@ -47,8 +47,8 @@
 
   .cli-command-copy {
     min-height: 2.5rem;
-    min-width: 3.75rem;
-    padding: 0.24rem 0.34rem;
+    min-width: 3.1rem;
+    padding: 0.2rem 0.32rem;
   }
 
   .cli-command-copy[data-compact-label="true"] .copy-button-label-compact {

@@ -27,7 +27,7 @@ export function CopyButton({
       data-copy-aria-label={ariaLabel ?? label}
       data-copy-compact-success-label={compactSuccessLabel}
       data-compact-label={compactLabel ? "true" : "false"}
-      className={`copy-button focus-ring rounded-control inline-flex min-h-10 items-center gap-1.5 border border-panel-border bg-panel-recessed/80 px-2.5 py-1.5 font-mono text-[0.62rem] font-bold uppercase tracking-[0.07em] text-concrete-300 transition-[background-color,border-color,color,box-shadow] ${className}`}
+      className={`copy-button focus-ring rounded-control inline-flex min-h-10 items-center gap-1 border border-panel-border bg-panel-recessed/80 px-2 py-1 font-mono text-[0.58rem] font-bold uppercase tracking-[0.07em] text-concrete-300 transition-[background-color,border-color,color,box-shadow] ${className}`}
       aria-label={ariaLabel ?? label}
     >
       <Clipboard className="copy-button-icon copy-button-icon-copy h-3 w-3" aria-hidden="true" />

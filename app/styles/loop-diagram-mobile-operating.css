@@ -54,8 +54,8 @@
   }
 
   .loop-operating-terminal .copy-button {
-    min-height: 2.75rem;
-    padding-inline: 0.75rem;
+    min-height: 2.5rem;
+    padding-inline: 0.5rem;
   }
 
   .loop-operating-terminal .terminal-content {

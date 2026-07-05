@@ -33,7 +33,7 @@ const SITE_URL = "https://suspecframework.dev";
 const MCP_REPOSITORY = "https://github.com/jcosta33/suspec-mcp";
 const MCP_PAGE_URL = `${SITE_URL}/mcp/`;
 const mcpDescription =
-  "suspec-mcp is a local stdio MCP adapter for Suspec workspace status, checks, artifacts, and review data.";
+  "suspec-mcp exposes Suspec workspace status, checks, artifacts, and review data to MCP clients over local stdio.";
 const mcpTitle = "suspec-mcp — local MCP adapter for Suspec";
 
 export const metadata: Metadata = {
@@ -335,7 +335,7 @@ export default function McpPage() {
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Local stdio bridge for Suspec status, checks, artifacts, and review
-            data. It reads records, reconciles gaps, and leaves review policy in
+            data. It exposes records to MCP clients and leaves review policy in
             the repo.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
@@ -367,9 +367,9 @@ export default function McpPage() {
           <Heading>Local clients, local records</Heading>
           <p className="text-concrete-400">
             suspec-mcp adapts the CLI&apos;s <code>--json</code> contract for
-            MCP clients. It can reconcile workspace records; it does not decide
-            correctness and does not become a hosted service or a review
-            authority.
+            MCP clients. It reads and reconciles workspace records over local
+            stdio. It does not decide correctness; it does not become a hosted
+            service or a review authority.
           </p>
           <p className="text-sm text-concrete-400">
             Source:{" "}
