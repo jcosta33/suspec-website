@@ -1,0 +1,40 @@
+.docs-prose .docs-bridge {
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.85rem;
+  padding: 0.72rem 0.9rem;
+  border: 1px solid rgba(var(--signal-reference-rgb), 0.2);
+  border-left: 2px solid rgba(var(--signal-reference-rgb), 0.62);
+  border-radius: 0 var(--radius-panel) var(--radius-panel) 0;
+  background:
+    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.055) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(26, 21, 16, 0.56), rgba(16, 13, 10, 0.48));
+  background-size:
+    34px 100%,
+    auto;
+  font-size: 0.86rem;
+  color: var(--color-concrete-300);
+  box-shadow: inset 0 1px 0 rgba(240, 226, 204, 0.028);
+}
+.docs-prose .docs-bridge p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+}
+.docs-bridge-label {
+  color: var(--signal-reference);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.docs-prose .docs-bridge a {
+  display: inline-flex;
+  min-height: 1.6rem;
+  align-items: center;
+  color: var(--color-suspec-yellow);
+  text-decoration-color: rgba(var(--signal-core-rgb), 0.6);
+}
