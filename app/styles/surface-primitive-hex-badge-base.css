@@ -1,0 +1,22 @@
+/* Hexagonal clip — the seal cell */
+.clip-hex {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hex-badge {
+  --hex-signal: var(--signal-core);
+  --hex-rgb: var(--signal-core-rgb);
+  --hex-pattern: var(--signal-pattern-core);
+  --hex-mark: var(--signal-mark-core);
+  color: var(--hex-signal);
+  background:
+    linear-gradient(180deg, rgba(240, 226, 204, 0.08), transparent 46%),
+    var(--hex-mark),
+    var(--hex-pattern),
+    radial-gradient(
+      86% 76% at 50% 0%,
+      rgba(var(--hex-rgb), 0.13),
+      transparent 64%
+    ),
+    var(--color-panel-raised);
+}

@@ -1,0 +1,19 @@
+
+.hex-badge-rail {
+  position: absolute;
+  top: 28%;
+  bottom: 28%;
+  width: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  opacity: 0.78;
+}
+
+.hex-badge-rail-left {
+  left: 2px;
+}
+
+.hex-badge-rail-right {
+  right: 2px;
+}
