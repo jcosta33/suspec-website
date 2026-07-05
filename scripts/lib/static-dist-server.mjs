@@ -63,7 +63,8 @@ function serveFile(req, res, { gzip }) {
     ? requested
     : path.join(distDir, pathname, "index.html");
 
-  if (!fs.existsSync(file) || !fs.statSync(file).isFile()) {
+  const stat = statFile(file);
+  if (!stat?.isFile()) {
     res.writeHead(404);
     res.end("Not found");
     return;
@@ -77,6 +78,21 @@ function serveFile(req, res, { gzip }) {
     ...(shouldGzip ? { "content-encoding": "gzip" } : {}),
   });
   const stream = fs.createReadStream(file);
+  stream.on("error", () => {
+    if (res.headersSent) res.destroy();
+    else {
+      res.writeHead(404);
+      res.end("Not found");
+    }
+  });
   if (shouldGzip) stream.pipe(zlib.createGzip()).pipe(res);
   else stream.pipe(res);
+}
+
+function statFile(file) {
+  try {
+    return fs.statSync(file);
+  } catch {
+    return null;
+  }
 }

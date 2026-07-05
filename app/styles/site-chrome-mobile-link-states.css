@@ -1,0 +1,19 @@
+.mobile-menu-link:hover,
+.mobile-menu-link:focus-visible,
+.mobile-menu-link[aria-current="page"] {
+  color: var(--mobile-menu-signal);
+}
+
+.mobile-menu-link:hover::before,
+.mobile-menu-link:focus-visible::before,
+.mobile-menu-link[aria-current="page"]::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu-link::before {
+    transition: none;
+    transform: none;
+  }
+}

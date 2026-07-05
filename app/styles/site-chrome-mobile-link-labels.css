@@ -1,0 +1,28 @@
+.mobile-menu-link > span {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.mobile-menu-link-main {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.mobile-menu-link-index {
+  display: inline-flex;
+  min-width: 1.55rem;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  border-right: 1px solid rgba(var(--mobile-menu-rgb), 0.22);
+  color: var(--mobile-menu-signal);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.65rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  margin-right: 0.22rem;
+  opacity: 0.9;
+  padding-right: 0.55rem;
+}
