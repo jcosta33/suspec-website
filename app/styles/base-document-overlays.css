@@ -1,0 +1,36 @@
+/* Archival tooth — barely visible paper grain over the dark instrument shell. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image:
+    radial-gradient(1px 1px at 18px 22px, rgba(232, 222, 203, 0.1), transparent),
+    radial-gradient(1px 1px at 76px 92px, rgba(232, 222, 203, 0.06), transparent),
+    radial-gradient(1px 1px at 142px 44px, rgba(216, 138, 36, 0.055), transparent),
+    radial-gradient(1px 1px at 210px 132px, rgba(232, 222, 203, 0.06), transparent);
+  background-repeat: repeat;
+  background-size: 240px 190px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body::before {
+    animation: archival-tooth-drift 36s linear infinite;
+  }
+}
+
+/* Edge vignette — deepens the chassis toward the frame. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 92% 72% at 50% 30%,
+    transparent 56%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}

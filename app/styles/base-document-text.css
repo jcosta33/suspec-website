@@ -1,0 +1,51 @@
+@supports (text-wrap: balance) {
+  :where(h1, h2, h3, .font-heading, .page-hero-title) {
+    text-wrap: balance;
+  }
+}
+
+@supports (text-wrap: pretty) {
+  :where(p, li, dd) {
+    text-wrap: pretty;
+  }
+
+  :where(
+      .terminal-window,
+      .terminal-content,
+      .site-header,
+      .mobile-menu-panel,
+      .site-footer-proof,
+      .docs-sidebar,
+      .docs-index-list
+    )
+    :where(p, li, dd) {
+    text-wrap: wrap;
+  }
+}
+
+h1.font-heading,
+h2.font-heading,
+h3.font-heading,
+h4.font-heading,
+h5.font-heading,
+h6.font-heading,
+.page-hero-title {
+  font-weight: var(--font-weight-title);
+}
+
+.paper-artifact .paper-artifact-title,
+.loop-step-card .loop-step-label,
+.catalog-row .catalog-row-title,
+.feature-accent-title,
+.agent-roster-cell-title,
+.mcp-guardrail-title,
+.kit-ledger-title,
+.setup-route-title,
+.setup-choice-title,
+.skill-anatomy-label,
+.boundary-step-title,
+.relation-card-title,
+.colophon-build-trace-title,
+.site-footer-link-title {
+  font-weight: var(--font-weight-title-compact);
+}
