@@ -1,0 +1,61 @@
+@media (max-width: 639px) {
+  #failure-modes {
+    gap: 1.65rem;
+  }
+
+  .overview-failure-grid {
+    gap: 0.7rem;
+  }
+
+  .overview-failure-card {
+    padding: 0.95rem 1rem;
+  }
+
+  .overview-failure-card > .relative {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    column-gap: 0.72rem;
+    row-gap: 0.22rem;
+  }
+
+  .overview-failure-card > .relative > div:first-child {
+    display: contents;
+  }
+
+  .overview-failure-card .hex-badge {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    height: 2.05rem;
+    width: 2.05rem;
+    margin-top: 0.08rem;
+  }
+
+  .overview-failure-card .hex-badge svg {
+    height: 0.95rem;
+    width: 0.95rem;
+  }
+
+  .overview-failure-card > .relative > div:first-child > div:not(.hex-badge) {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .overview-failure-card h3 {
+    font-size: 0.96rem;
+    line-height: 1.2;
+  }
+
+  .overview-failure-card > .relative > p {
+    grid-column: 2;
+    margin-top: 0;
+    font-size: 0.82rem;
+    line-height: 1.42;
+  }
+
+  .overview-failure-card > .relative > p:nth-of-type(2) {
+    color: var(--color-concrete-100);
+    font-size: 0.8rem;
+  }
+}
