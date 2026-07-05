@@ -1,0 +1,26 @@
+@media (max-width: 40rem) {
+  .cli-command-reference {
+    --section-flow-gap: 1.2rem;
+  }
+
+  .cli-command-legend {
+    grid-template-columns: 1fr;
+    gap: 0.42rem;
+  }
+
+  .cli-command-legend-item {
+    min-height: 0;
+    padding: 0.5rem 0.58rem;
+  }
+
+  .cli-command-legend-item span:first-child {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+
+  .cli-command-legend-item span:last-child {
+    display: block;
+    font-size: 0.72rem;
+    line-height: 1.32;
+  }
+}

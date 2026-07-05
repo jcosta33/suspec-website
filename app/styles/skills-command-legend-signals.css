@@ -1,0 +1,19 @@
+.cli-command-legend-core {
+  --cli-legend-signal: var(--signal-core);
+  --cli-legend-rgb: var(--signal-core-rgb);
+}
+
+.cli-command-legend-evidence {
+  --cli-legend-signal: var(--signal-evidence);
+  --cli-legend-rgb: var(--signal-evidence-rgb);
+}
+
+.cli-command-legend-change {
+  --cli-legend-signal: var(--signal-change);
+  --cli-legend-rgb: var(--signal-change-rgb);
+}
+
+.cli-command-legend-reference {
+  --cli-legend-signal: var(--signal-reference);
+  --cli-legend-rgb: var(--signal-reference-rgb);
+}
