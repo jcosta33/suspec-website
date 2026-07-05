@@ -12,6 +12,7 @@ SUSPEC_COMPREHENSIVE_REPORT.md
 !.yarn/releases
 !.yarn/versions
 /coverage
+/.audit/
 /.next/
 /.next-dev/
 /out/
