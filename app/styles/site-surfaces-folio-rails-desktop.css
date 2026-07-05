@@ -1,0 +1,74 @@
+@media (min-width: 86rem) {
+  .folio-rail {
+    position: fixed;
+    top: 7.25rem;
+    bottom: 4rem;
+    z-index: 0;
+    display: block;
+    width: 1px;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        180deg,
+        transparent,
+        rgba(216, 138, 36, 0.075) 18%,
+        rgba(216, 138, 36, 0.075) 82%,
+        transparent
+      );
+    opacity: 0.42;
+  }
+
+  .folio-rail::before,
+  .folio-rail::after {
+    content: "";
+    position: absolute;
+    left: -0.25rem;
+    width: 0.5rem;
+    height: 1px;
+    background: rgba(216, 138, 36, 0.18);
+  }
+
+  .folio-rail::before {
+    top: 13%;
+  }
+
+  .folio-rail::after {
+    bottom: 13%;
+  }
+
+  .folio-rail span {
+    position: absolute;
+    top: 50%;
+    display: inline-flex;
+    color: rgba(240, 226, 204, 0.22);
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+  }
+
+  .folio-rail span::before {
+    content: attr(data-label);
+  }
+
+  .folio-rail-left {
+    left: max(1.35rem, calc((100vw - 92rem) / 2));
+  }
+
+  .folio-rail-left span {
+    left: 0.7rem;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .folio-rail-right {
+    right: max(1.35rem, calc((100vw - 92rem) / 2));
+  }
+
+  .folio-rail-right span {
+    right: 0.7rem;
+    transform: translateY(-50%);
+  }
+}

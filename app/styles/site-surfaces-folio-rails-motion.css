@@ -1,0 +1,16 @@
+@keyframes archival-tooth-drift {
+  from {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+  to {
+    background-position:
+      240px 190px,
+      -240px 190px,
+      120px -95px,
+      -120px -95px;
+  }
+}
