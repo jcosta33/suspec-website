@@ -1,0 +1,6 @@
+.loop-step-card {
+  --loop-step-signal: var(--signal-core);
+  --loop-step-rgb: var(--signal-core-rgb);
+  --loop-step-pattern: var(--signal-pattern-muted);
+  --loop-step-mark: var(--signal-mark-muted);
+}
