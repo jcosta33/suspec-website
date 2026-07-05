@@ -30,6 +30,9 @@ live in `docs-shell-nav-mobile-toggle.css`; expanded panel styles live in
 `app/styles/cli-command-catalog-mobile.css` are mobile manifests: header/section
 rules stay separate from command rail and catalog row rules.
 
+`app/styles/footer-responsive-mobile.css` is a mobile manifest: frame/register,
+identity, nav, and proof-list rules live in separate footer mobile files.
+
 `app/art-direction-pass.css` and the later `app/styles/art-direction-*.css`
 files no longer exist; their work is split into `*-polish.css` files by route
 family.

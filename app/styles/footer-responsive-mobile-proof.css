@@ -1,0 +1,14 @@
+@media (max-width: 40rem) {
+  .site-footer-proof {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.38rem;
+    min-height: 0;
+    padding: 0.72rem 0.82rem;
+  }
+
+  .site-footer-proof li {
+    min-height: 1.45rem;
+    white-space: normal;
+  }
+}

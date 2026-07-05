@@ -1,0 +1,32 @@
+@media (max-width: 40rem) {
+  .site-footer-grid {
+    gap: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .site-footer-register {
+    grid-template-columns: auto minmax(1rem, 1fr) auto;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .site-footer-register span:first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .site-footer-register::before {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .site-footer-register span:nth-child(2) {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .site-footer-register span:nth-child(3) {
+    display: none;
+  }
+}
