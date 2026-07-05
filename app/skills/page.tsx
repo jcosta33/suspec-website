@@ -471,7 +471,16 @@ export default function SkillsPage() {
             suspec-starter-kit
           </TextLink>
           . Keep repo-specific commands in{" "}
-          <code className="text-suspec-yellow">AGENTS.md</code>.
+          <code className="text-suspec-yellow">AGENTS.md</code>; the{" "}
+          <TextLink
+            href="/docs/reference/agent-guides/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Read the agent guide docs (opens in new tab)"
+          >
+            agent guide docs
+          </TextLink>{" "}
+          cover the policy surface.
         </p>
       </Section>
 
