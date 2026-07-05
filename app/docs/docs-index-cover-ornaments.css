@@ -1,0 +1,43 @@
+
+.docs-index-cover::before,
+.docs-index-cover::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.docs-index-cover::before {
+  inset: 0.78rem;
+  border-radius: calc(var(--radius-panel) - 3px);
+  background:
+    linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.5), transparent 72%)
+      left top / 4.2rem 1px no-repeat,
+    linear-gradient(180deg, rgba(var(--signal-core-rgb), 0.5), transparent 72%)
+      left top / 1px 3rem no-repeat,
+    linear-gradient(270deg, rgba(var(--signal-reference-rgb), 0.36), transparent 72%)
+      right bottom / 4.2rem 1px no-repeat,
+    linear-gradient(0deg, rgba(var(--signal-reference-rgb), 0.36), transparent 72%)
+      right bottom / 1px 3rem no-repeat;
+  opacity: 0.72;
+}
+
+.docs-index-cover::after {
+  top: 0;
+  bottom: 0;
+  left: 0.78rem;
+  width: 0.55rem;
+  border-inline: 1px solid rgba(var(--signal-core-rgb), 0.16);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--signal-core-rgb), 0.2) 0 1px,
+      transparent 1px 0.78rem
+    ),
+    linear-gradient(180deg, transparent, rgba(var(--signal-core-rgb), 0.28), transparent);
+  opacity: 0.72;
+}
+
+.docs-index-cover > * {
+  position: relative;
+  z-index: 1;
+}

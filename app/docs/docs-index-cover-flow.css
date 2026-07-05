@@ -1,0 +1,4 @@
+/* Docs index landing */
+.docs-prose section:not(.docs-index-section) {
+  margin: 1.5rem 0;
+}

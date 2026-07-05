@@ -1,0 +1,22 @@
+
+.docs-index-cover-copy {
+  position: relative;
+  min-width: 0;
+  padding-left: 0.9rem;
+}
+
+.docs-index-cover-copy::before {
+  content: "";
+  position: absolute;
+  top: 0.12rem;
+  bottom: 0.18rem;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--signal-reference-rgb), 0.76),
+    rgba(var(--signal-core-rgb), 0.52),
+    transparent
+  );
+  opacity: 0.78;
+}

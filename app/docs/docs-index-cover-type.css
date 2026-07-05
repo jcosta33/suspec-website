@@ -1,0 +1,22 @@
+
+.docs-index-prose .docs-index-kicker {
+  margin: 0 0 0.35rem;
+  color: var(--signal-reference);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.docs-index-cover h1 {
+  margin-bottom: 0.45rem;
+  font-size: clamp(2.25rem, 4.2vw, 3rem);
+  line-height: 1.08;
+}
+
+.docs-index-prose .docs-index-lede {
+  max-width: 45rem;
+  margin: 0;
+}
