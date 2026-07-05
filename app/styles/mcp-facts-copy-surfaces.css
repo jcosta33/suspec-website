@@ -1,0 +1,26 @@
+.mcp-fact-card {
+  --plate-signal: var(--signal-reference);
+  --plate-rgb: var(--signal-reference-rgb);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--signal-reference-rgb), 0.025) 0 1px,
+      transparent 1px 15px
+    ),
+    radial-gradient(
+      84% 72% at 16% 0%,
+      rgba(var(--signal-reference-rgb), 0.08),
+      transparent 64%
+    );
+}
+
+.mcp-fact-list {
+  min-width: 0;
+  background-image:
+    linear-gradient(90deg, rgba(var(--tool-rgb), 0.1), transparent 44%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--tool-rgb), 0.028) 0 1px,
+      transparent 1px 1.1rem
+    );
+}

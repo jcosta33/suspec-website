@@ -1,0 +1,26 @@
+
+.mcp-identifier-copy {
+  min-width: 4.5rem;
+  padding-inline: 0.64rem;
+  border-color: rgba(var(--tool-rgb), 0.22);
+  color: var(--color-concrete-400);
+}
+
+.mcp-identifier-copy:hover {
+  border-color: rgba(var(--tool-rgb), 0.52);
+  color: var(--tool-signal);
+}
+
+.mcp-identifier-copy[data-compact-label="true"] .copy-button-label-full {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.mcp-identifier-copy[data-compact-label="true"] .copy-button-label-compact {
+  display: inline-grid;
+}
