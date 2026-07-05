@@ -283,7 +283,7 @@
     );
     if (!canAnimate.matches) return;
 
-    const motionGain = 0.25;
+    const motionGain = 0.125;
     let frame = 0;
     let targetX = 0;
     let targetY = 0;

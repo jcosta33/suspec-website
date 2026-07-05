@@ -12,7 +12,7 @@
     border-radius: 0;
     background: transparent;
     box-shadow: none;
-    padding: 0.62rem 4.25rem 0.66rem 0.1rem;
+    padding: 0.62rem 4.9rem 0.66rem 0.1rem;
   }
 
   .cli-command-list > li:last-child .cli-command-row.catalog-row {
@@ -47,12 +47,12 @@
 
   .cli-command-copy {
     min-height: 2.75rem;
-    min-width: 2.75rem;
-    padding: 0.54rem;
+    min-width: 4.25rem;
+    padding: 0.28rem 0.42rem;
   }
 
   .cli-command-copy[data-compact-label="true"] .copy-button-label-compact {
-    display: none;
+    display: inline-grid;
   }
 
   .cli-command-row-lamp {

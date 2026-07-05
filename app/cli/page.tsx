@@ -568,7 +568,7 @@ export default function CliPage() {
                               <CopyButton
                                 text={`suspec ${c.cmd}`}
                                 label={`Copy suspec ${c.cmd} command`}
-                                compactLabel="cmd"
+                                compactLabel="Copy"
                                 className="cli-command-copy"
                               />
                               <PilotLamp
