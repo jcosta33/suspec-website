@@ -1,0 +1,39 @@
+
+/* Scrollbars — keep the night silky-smooth even when content scrolls
+   (docs sidebar, code blocks, tables, terminal bodies). Tokens only. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-night-well);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--color-line-bright),
+    var(--color-line)
+  );
+  border-radius: var(--radius-panel);
+  border: 2px solid var(--color-night-well);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    var(--color-gold-deep),
+    var(--color-line-bright)
+  );
+}
+::-webkit-scrollbar-corner {
+  background: var(--color-night-well);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-bright) var(--color-night-well);
+}
+
+/* Branded text selection — gilt on night */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-night);
+}

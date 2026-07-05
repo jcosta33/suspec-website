@@ -1,0 +1,48 @@
+/* Gilt rule — a thin illuminated top accent */
+.gilt-trim {
+  position: relative;
+}
+
+.gilt-trim::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(216, 138, 36, 0.16) 12%,
+    var(--color-gold) 50%,
+    rgba(216, 138, 36, 0.16) 88%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* A standalone gilt divider: hairline rule with a centred lozenge — for
+   sectioning, the title-page flourish. */
+.gilt-rule {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(216, 138, 36, 0.55) 30%,
+    rgba(216, 138, 36, 0.55) 70%,
+    transparent
+  );
+}
+
+.gilt-rule::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--color-gold);
+  box-shadow: 0 0 8px rgba(216, 138, 36, 0.62);
+}
