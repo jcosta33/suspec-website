@@ -1,0 +1,58 @@
+.not-found-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.not-found-shell::before {
+  content: "";
+  position: absolute;
+  inset: 4rem max(0rem, calc((100% - 78rem) / 2)) auto;
+  z-index: -1;
+  height: min(22rem, 42vw);
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent, rgba(var(--signal-core-rgb), 0.12), transparent)
+      center 50% / 72% 1px no-repeat,
+    radial-gradient(
+      ellipse at 50% 52%,
+      rgba(var(--signal-change-rgb), 0.065),
+      transparent 62%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.65rem,
+      rgba(var(--signal-muted-rgb), 0.028) 1.65rem calc(1.65rem + 1px)
+    );
+  opacity: 0.9;
+}
+
+.not-found-shell::after {
+  content: "";
+  position: absolute;
+  top: clamp(17rem, 27vw, 22.5rem);
+  left: max(1.5rem, calc((100% - 78rem) / 2 + 1.5rem));
+  right: max(1.5rem, calc((100% - 78rem) / 2 + 1.5rem));
+  z-index: -1;
+  height: 1.9rem;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(var(--signal-change-rgb), 0.54) 0 2px, transparent 2.6px)
+      0 50% / 1.3rem 1.3rem no-repeat,
+    radial-gradient(circle, rgba(var(--signal-reference-rgb), 0.44) 0 2px, transparent 2.6px)
+      100% 50% / 1.3rem 1.3rem no-repeat,
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(var(--signal-change-rgb), 0.34) 18%,
+        rgba(var(--signal-core-rgb), 0.2) 50%,
+        rgba(var(--signal-reference-rgb), 0.3) 82%,
+        transparent
+      )
+      center / 100% 1px no-repeat,
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.12rem,
+      rgba(var(--signal-muted-rgb), 0.18) 1.12rem calc(1.12rem + 1px)
+    );
+  opacity: 0.62;
+}

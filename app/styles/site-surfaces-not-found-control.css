@@ -1,0 +1,32 @@
+.not-found-control {
+  position: relative;
+  overflow: hidden;
+  background-image:
+    linear-gradient(90deg, rgba(var(--signal-change-rgb), 0.06), transparent 42%),
+    linear-gradient(90deg, rgba(var(--signal-change-rgb), 0.22) 0 2px, transparent 2px),
+    var(--signal-pattern-muted);
+}
+
+.not-found-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(var(--signal-muted-rgb), 0.2);
+  color: var(--color-concrete-400);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  padding-bottom: 0.78rem;
+  text-transform: uppercase;
+}
+
+.not-found-status-row span:first-child {
+  color: var(--signal-change);
+}
+
+.not-found-artifact {
+  transform: rotate(-0.15deg);
+}
