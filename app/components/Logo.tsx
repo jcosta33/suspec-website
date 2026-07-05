@@ -22,11 +22,11 @@ export function Logo({ className = "" }: { className?: string }) {
 
   return (
     <span
-      className={`inline-flex items-center gap-2 align-middle font-title text-xl font-semibold leading-none tracking-[0] ${className}`}
+      className={`inline-flex items-center align-middle leading-none ${className}`}
     >
       <svg
         viewBox="0 0 32 32"
-        className="h-[1.18em] w-[1.18em] shrink-0"
+        className="h-[1.55em] w-[1.55em] shrink-0"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
@@ -93,7 +93,6 @@ export function Logo({ className = "" }: { className?: string }) {
         {/* center hub */}
         <circle cx="16" cy="16" r="1.82" fill="#d88a24" />
       </svg>
-      <span className="text-[1.1em] font-semibold leading-[0.92]">Suspec</span>
     </span>
   );
 }

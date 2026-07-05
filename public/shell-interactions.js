@@ -349,8 +349,8 @@
     window.addEventListener(
       "pointermove",
       (event) => {
-        targetX = (event.clientX / window.innerWidth - 0.5) * 2;
-        targetY = (event.clientY / window.innerHeight - 0.5) * 2;
+        targetX = (event.clientX / window.innerWidth - 0.5);
+        targetY = (event.clientY / window.innerHeight - 0.5);
         request();
       },
       { passive: true },

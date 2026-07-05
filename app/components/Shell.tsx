@@ -148,7 +148,7 @@ export function Shell({ children }: { children: ReactNode }) {
             className="focus-ring inline-flex min-h-11 items-center rounded-sm"
             aria-label="Suspec home"
           >
-            <Logo className="text-xl text-concrete-100" />
+            <Logo className="text-2xl text-concrete-100" />
           </Link>
 
           <nav
@@ -271,7 +271,7 @@ export function Shell({ children }: { children: ReactNode }) {
               aria-label="Suspec home"
               className="focus-ring inline-flex min-h-11 w-fit items-center rounded-sm"
             >
-              <Logo className="text-xl text-concrete-100" />
+              <Logo className="text-2xl text-concrete-100" />
             </Link>
             <p className="text-sm text-concrete-400">
               Built with Suspec. Keep the evidence; make the call yourself.
