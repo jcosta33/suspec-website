@@ -1,0 +1,55 @@
+
+.signal-stat-core {
+  --stat-signal: var(--signal-core);
+  --stat-rgb: var(--signal-core-rgb);
+  --stat-pattern: var(--signal-pattern-core);
+  --stat-mark: var(--signal-mark-core);
+  border-top-color: rgba(var(--signal-core-rgb), 0.28);
+}
+
+.signal-stat-evidence {
+  --stat-signal: var(--signal-evidence);
+  --stat-rgb: var(--signal-evidence-rgb);
+  --stat-pattern: var(--signal-pattern-evidence);
+  --stat-mark: var(--signal-mark-evidence);
+  border-top-color: rgba(var(--signal-evidence-rgb), 0.26);
+}
+
+.signal-stat-greenfield {
+  --stat-signal: var(--signal-greenfield);
+  --stat-rgb: var(--signal-greenfield-rgb);
+  --stat-pattern: var(--signal-pattern-greenfield);
+  --stat-mark: var(--signal-mark-greenfield);
+  border-left-color: rgba(var(--signal-greenfield-rgb), 0.4);
+}
+
+.signal-stat-brownfield {
+  --stat-signal: var(--signal-brownfield);
+  --stat-rgb: var(--signal-brownfield-rgb);
+  --stat-pattern: var(--signal-pattern-brownfield);
+  --stat-mark: var(--signal-mark-brownfield);
+  border-left-color: rgba(var(--signal-brownfield-rgb), 0.4);
+}
+
+.signal-stat-change {
+  --stat-signal: var(--signal-change);
+  --stat-rgb: var(--signal-change-rgb);
+  --stat-pattern: var(--signal-pattern-change);
+  --stat-mark: var(--signal-mark-change);
+  border-bottom-color: rgba(var(--signal-change-rgb), 0.18);
+}
+
+.signal-stat-reference {
+  --stat-signal: var(--signal-reference);
+  --stat-rgb: var(--signal-reference-rgb);
+  --stat-pattern: var(--signal-pattern-reference);
+  --stat-mark: var(--signal-mark-reference);
+  border-top-color: rgba(var(--signal-reference-rgb), 0.24);
+}
+
+.signal-stat-muted {
+  --stat-signal: var(--signal-muted);
+  --stat-rgb: var(--signal-muted-rgb);
+  --stat-pattern: var(--signal-pattern-muted);
+  --stat-mark: var(--signal-mark-muted);
+}

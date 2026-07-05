@@ -1,0 +1,33 @@
+
+/* Signal stats — compact role-coloured readouts for summary panels. */
+.signal-stat {
+  --stat-signal: var(--signal-core);
+  --stat-rgb: var(--signal-core-rgb);
+  --stat-pattern: var(--signal-pattern-core);
+  --stat-mark: var(--signal-mark-core);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(var(--stat-rgb), 0.13);
+  border-radius: calc(var(--radius-control) - 2px);
+  background:
+    linear-gradient(90deg, rgba(var(--stat-rgb), 0.026), transparent 58%),
+    var(--signal-pattern-muted),
+    rgba(10, 7, 5, 0.16);
+  padding: 0.85rem 0.9rem;
+  box-shadow: inset 0 1px 0 rgba(240, 226, 204, 0.035);
+}
+
+.signal-stat::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(var(--stat-rgb), 0.44),
+    transparent
+  );
+  opacity: 0.56;
+}
