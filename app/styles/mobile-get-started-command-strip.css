@@ -16,27 +16,8 @@
   }
 
   .get-started-page .setup-command-button {
-    min-height: 2.75rem;
-    padding: 0.48rem 0.58rem;
-    font-size: 0.6rem;
-    letter-spacing: 0.07em;
-  }
-
-  .get-started-page
-    .setup-command-button[data-compact-label="true"]
-    .copy-button-label-full {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-
-  .get-started-page
-    .setup-command-button[data-compact-label="true"]
-    .copy-button-label-compact {
-    display: inline-grid;
+    min-height: 2.5rem;
+    padding: 0.26rem 0.42rem;
+    font-size: 0.52rem;
   }
 }

@@ -16,21 +16,4 @@
     display: none;
   }
 
-  .home-hero-run-card
-    .copy-button[data-compact-label="true"]
-    .copy-button-label-full {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-
-  .home-hero-run-card
-    .copy-button[data-compact-label="true"]
-    .copy-button-label-compact {
-    display: inline-grid;
-  }
 }
