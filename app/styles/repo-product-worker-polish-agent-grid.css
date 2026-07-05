@@ -1,0 +1,40 @@
+.repo-product-page .agent-worker-card .catalog-row {
+  display: grid;
+  grid-template-columns: 3.05rem minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.9rem;
+}
+
+.repo-product-page .agent-worker-card .catalog-row > div:first-child {
+  display: contents;
+}
+
+.repo-product-page .agent-worker-card .catalog-row-badge {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+}
+
+.repo-product-page .agent-worker-card .catalog-row > div:first-child > div:last-child {
+  grid-column: 2;
+}
+
+.repo-product-page .agent-worker-card .agent-worker-body {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 0.34rem;
+}
+
+.repo-product-page .agent-worker-card .agent-worker-file {
+  overflow-wrap: anywhere;
+}
+
+.repo-product-page .agent-worker-card .catalog-row-link-icon {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  opacity: 0.56;
+}
+
+.repo-product-page .agent-worker-card .catalog-row:is(:hover, :focus-within) .catalog-row-link-icon {
+  opacity: 1;
+}
