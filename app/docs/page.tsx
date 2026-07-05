@@ -172,7 +172,7 @@ export default function DocsIndex() {
       <header className="docs-index-cover">
         <div className="docs-index-cover-copy">
           <p className="docs-index-kicker" data-pagefind-ignore>
-            canon / manual index
+            manual / reference index
           </p>
           <h1 id="docs-index-title">Suspec docs</h1>
           <p className="docs-index-lede">
@@ -182,7 +182,7 @@ export default function DocsIndex() {
           </p>
         </div>
         <div className="docs-index-manual" aria-label="Documentation metadata">
-          <p className="docs-index-manual-label">canon manual</p>
+          <p className="docs-index-manual-label">manual index</p>
           <ul className="docs-index-legend" aria-label="Documentation paths">
             {docsLegend.map((item) => (
               <li
@@ -209,7 +209,7 @@ export default function DocsIndex() {
           <h2 id="docs-reading-path-title">Read this first</h2>
           <p>
             Three pages cover the model, one pass through the loop, and the
-            review contract. The full canon stays below.
+            review contract. The full reference stays below.
           </p>
         </div>
         <ol className="docs-reading-path-list">
