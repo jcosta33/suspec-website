@@ -567,8 +567,8 @@ export default function CliPage() {
                             <div className="cli-command-row-actions">
                               <CopyButton
                                 text={`suspec ${c.cmd}`}
-                                label={`Copy suspec ${c.cmd} command`}
-                                compactLabel="Copy"
+                                label="Copy"
+                                ariaLabel={`Copy suspec ${c.cmd} command`}
                                 className="cli-command-copy"
                               />
                               <PilotLamp
