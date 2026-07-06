@@ -1,0 +1,12 @@
+.kitchen-specimen-panel {
+  overflow: hidden;
+}
+
+.kitchen-specimen-layout {
+  display: grid;
+  min-width: 0;
+}
+
+.kitchen-specimen-strip {
+  min-width: 0;
+}

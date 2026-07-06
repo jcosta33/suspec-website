@@ -1,0 +1,27 @@
+.kitchen-specimen-group {
+  display: grid;
+  min-width: 0;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.76rem;
+}
+
+.kitchen-specimen-group-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+.kitchen-specimen-index {
+  color: var(--color-gold-bright);
+  line-height: 1;
+}
+
+.kitchen-specimen-label {
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  line-height: 1.12;
+}
+
+.kitchen-specimen-note {
+  max-width: 17rem;
+}

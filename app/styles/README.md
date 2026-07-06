@@ -64,6 +64,10 @@ rail shell, tick marks, vertical labels, and left/right placement live in
 separate files so the decorative folio rails stay easy to tune without touching
 their viewport gate.
 
+`app/styles/sections-kitchen-base.css` is a shared kitchen specimen manifest:
+panel shell, intro copy, repeated group rhythm, and link treatment live in
+separate files before mobile and desktop overrides apply.
+
 `app/styles/skills-category-rail-mobile.css` is a mobile manifest: category
 rail compaction and skills guide-row density live in separate files while
 preserving the small-screen skills cascade point.
