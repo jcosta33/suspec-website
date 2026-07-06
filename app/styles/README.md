@@ -22,9 +22,10 @@ component TypeScript.
 | `app/docs/docs.css` | Docs CSS manifest imported by `app/docs/layout.tsx`; keeps docs-only cascade in one place. |
 | `app/docs/docs-shell.css`, `app/docs/docs-shell-*.css`, `app/docs/docs-article.css`, `app/docs/docs-article-*.css`, `app/docs/docs-article-heading-*.css`, `app/docs/docs-index.css`, `app/docs/docs-index-*.css`, `app/docs/docs-footer.css`, `app/docs/docs-responsive.css`, `app/docs/docs-responsive-*.css`, `app/styles/docs-index-polish.css`, `app/styles/mobile-docs-index-polish.css` | Docs shell, rendered markdown, article heading/text/code/table/media subfamilies, index subfamilies, footer, docs-specific responsive fixes, and late docs-index polish imported only under the docs layout manifest. |
 
-`app/docs/docs-shell-nav-mobile.css` is a manifest: mobile nav trigger styles
-live in `docs-shell-nav-mobile-toggle.css`; expanded panel styles live in
-`docs-shell-nav-mobile-panel.css`.
+`app/docs/docs-shell-nav-mobile.css` is a manifest: the invisible checkbox
+target lives in `docs-shell-nav-mobile-toggle.css`; the visible disclosure
+summary lives in `docs-shell-nav-mobile-summary.css`; expanded panel styles live
+in `docs-shell-nav-mobile-panel.css`.
 
 `app/docs/docs-article-tables-mobile-layouts.css` is a manifest: pair rows,
 code-heavy rows, and finding/severity rows live in separate mobile layout files
