@@ -74,6 +74,10 @@ layer applies tighter mobile density.
 shell spacing, list grid, item chrome, and copy/dot density rules live in
 separate files so the colophon record remains easy to adjust.
 
+`app/styles/colophon-mobile-shell.css` is a mobile manifest: section rhythm,
+terminal density, and paper artifact sizing live in separate files before the
+build-trace and trace-card mobile layers apply.
+
 `app/styles/repo-product-manifest-responsive.css` is a mobile manifest:
 page/paper rhythm, manifest card stats, and delegation-contract rules live in
 separate responsive files so product-package mobile tuning stays reviewable.

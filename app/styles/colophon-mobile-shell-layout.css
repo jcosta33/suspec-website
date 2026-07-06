@@ -1,0 +1,7 @@
+@media (max-width: 40rem) {
+  .colophon-section {
+    row-gap: 1.15rem;
+    padding-top: 2.35rem;
+    padding-bottom: 0;
+  }
+}

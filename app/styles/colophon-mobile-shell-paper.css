@@ -1,0 +1,18 @@
+@media (max-width: 40rem) {
+  .colophon-paper {
+    min-height: 0;
+    margin-top: 0;
+    padding: 1rem;
+  }
+
+  .colophon-paper > div:first-child {
+    gap: 0.75rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .colophon-paper > div:last-child {
+    margin-top: 0.95rem;
+    font-size: 0.8125rem;
+    line-height: 1.55;
+  }
+}
