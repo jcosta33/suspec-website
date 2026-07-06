@@ -55,6 +55,10 @@ pseudo-element cleanup live in separate files before link styling applies.
 rail compaction and skills guide-row density live in separate files while
 preserving the small-screen skills cascade point.
 
+`app/styles/skills-writing-responsive-anatomy.css` is a mobile manifest:
+anatomy header compaction, rail/step shell, media sizing, and text-density
+rules live in separate files for the writing-skill anatomy strip.
+
 `app/styles/what-is-suspec-mobile-relations.css` is a mobile manifest: relation
 grid framing, compact card header, and definition-list body density live in
 separate files for the overview relation stack.

@@ -1,0 +1,21 @@
+@media (max-width: 40rem) {
+  .skill-anatomy-rail {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+  }
+
+  .skill-anatomy-step {
+    min-height: 0;
+  }
+
+  .skill-anatomy-step > a {
+    min-height: 0;
+    padding: 0.78rem 0.74rem;
+  }
+
+  .writing-skill-page .skill-anatomy-step > a {
+    min-height: 0;
+    padding: 0.76rem 0.72rem;
+  }
+}

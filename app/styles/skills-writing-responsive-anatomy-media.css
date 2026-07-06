@@ -1,0 +1,10 @@
+@media (max-width: 40rem) {
+  .skill-anatomy-step > a > span:first-child {
+    align-items: center;
+  }
+
+  .skill-anatomy-step > a > span:first-child svg {
+    width: 0.82rem;
+    height: 0.82rem;
+  }
+}

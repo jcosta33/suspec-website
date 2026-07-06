@@ -1,0 +1,20 @@
+@media (max-width: 40rem) {
+  .skill-anatomy-header {
+    align-items: center;
+    flex-direction: row;
+    gap: 0.65rem;
+    padding: 0.68rem 0.82rem;
+  }
+
+  .skill-anatomy-header h2,
+  .skill-anatomy-header span {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+  }
+
+  .skill-anatomy-header span {
+    max-width: 11rem;
+    text-align: right;
+  }
+}
