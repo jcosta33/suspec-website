@@ -1,0 +1,22 @@
+@media (max-width: 40rem) {
+  .skills-page .skill-guide-list {
+    gap: 0.38rem;
+    padding: 0.52rem;
+  }
+
+  .skills-page .skill-guide-row.catalog-row {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: 0 0.65rem;
+    min-height: auto;
+    padding: 0.64rem 2rem 0.64rem 0.68rem;
+  }
+
+  .skills-page .skill-guide-row-arrow {
+    display: none;
+  }
+
+  .skills-page .skill-guide-row .catalog-row-copy {
+    margin-top: 0.24rem;
+    max-width: none;
+  }
+}
