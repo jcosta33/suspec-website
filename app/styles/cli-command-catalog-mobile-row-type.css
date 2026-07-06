@@ -1,0 +1,12 @@
+@media (max-width: 40rem) {
+  .cli-command-row .catalog-row-title {
+    font-size: 0.76rem;
+    line-height: 1.22;
+  }
+
+  .cli-command-row .catalog-row-copy {
+    margin-top: 0.26rem;
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+}

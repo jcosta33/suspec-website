@@ -39,6 +39,10 @@ so generated docs table exceptions stay reviewable.
 `app/styles/cli-command-catalog-mobile.css` are mobile manifests: header/section
 rules stay separate from command rail and catalog row rules.
 
+`app/styles/cli-command-catalog-mobile-rows.css` is a mobile manifest: command
+row surface, list framing, copy/lamp actions, and text density live in separate
+files so terminal command alignment stays reviewable.
+
 `app/styles/cli-surface-mobile-command-rail.css` is a mobile manifest: rail
 shell layout, link framing, and text-density rules live in separate files so
 the compact CLI navigation stays reviewable without selector churn.

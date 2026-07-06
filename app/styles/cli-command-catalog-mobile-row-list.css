@@ -1,0 +1,11 @@
+@media (max-width: 40rem) {
+  .cli-command-list {
+    gap: 0;
+    border-top: 1px solid rgba(var(--cli-section-rgb), 0.18);
+    border-bottom: 1px solid rgba(var(--cli-section-rgb), 0.18);
+  }
+
+  .cli-command-list > li:last-child .cli-command-row.catalog-row {
+    border-bottom: 0;
+  }
+}
