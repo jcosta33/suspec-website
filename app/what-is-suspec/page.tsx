@@ -156,7 +156,7 @@ const overviewArtifactChain = [
   "Spec",
   "Task",
   "Review",
-  "Finding",
+  "Findings",
 ] as const;
 
 const overviewAnswerFacts = [
@@ -348,7 +348,7 @@ export default function WhatIsSuspecPage() {
               { label: "Spec", signal: "core" },
               { label: "Task", signal: "core" },
               { label: "Review", signal: "evidence" },
-              { label: "Finding", signal: "reference" },
+              { label: "Findings", signal: "reference" },
             ]}
           />
         </PageHero>
