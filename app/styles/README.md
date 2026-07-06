@@ -55,6 +55,10 @@ pseudo-element cleanup live in separate files before link styling applies.
 jump-nav base chrome and decorative rail pseudo-elements live in separate files
 before link state and package signal rules apply.
 
+`app/styles/repo-product-jump-nav-link-state.css` is a shared product manifest:
+muted non-active links, active first-link chrome, dot markers, and hover/focus
+states live in separate files so package navigation colors stay reviewable.
+
 `app/styles/skills-category-rail-mobile.css` is a mobile manifest: category
 rail compaction and skills guide-row density live in separate files while
 preserving the small-screen skills cascade point.

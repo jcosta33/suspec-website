@@ -1,0 +1,14 @@
+.agent-page-nav-link::before,
+.section-jump-nav-link::before {
+  content: "";
+  position: absolute;
+  top: 0.58rem;
+  right: 0.58rem;
+  width: 0.18rem;
+  height: 0.18rem;
+  border-radius: 999px;
+  background: var(--agent-nav-signal);
+  box-shadow: 0 0 8px rgba(var(--agent-nav-rgb), 0.24);
+  opacity: 0.38;
+  pointer-events: none;
+}

@@ -1,0 +1,4 @@
+.agent-page-nav-link:not(:first-child),
+.section-jump-nav-link:not(:first-child) {
+  color: var(--color-concrete-300);
+}
