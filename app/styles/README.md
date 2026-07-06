@@ -78,6 +78,10 @@ separate files so the colophon record remains easy to adjust.
 terminal density, and paper artifact sizing live in separate files before the
 build-trace and trace-card mobile layers apply.
 
+`app/styles/motion-primitives.css` is a manifest: keyframes and the utility
+classes that attach them stay separate from the cursor/background surface motion
+files. `reduced-motion.css` remains the final clamp.
+
 `app/styles/repo-product-manifest-responsive.css` is a mobile manifest:
 page/paper rhythm, manifest card stats, and delegation-contract rules live in
 separate responsive files so product-package mobile tuning stays reviewable.
