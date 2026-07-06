@@ -28,7 +28,7 @@ import {
 
 const SITE_URL = "https://suspecframework.dev";
 const overviewDescription =
-  "A markdown workflow for turning requests into scoped agent work, review evidence, and saved findings.";
+  "A markdown workflow for scoping agent work, reviewing evidence, and saving findings.";
 const overviewTitle = "What is Suspec? — specs, evidence, review";
 
 export const metadata: Metadata = {
@@ -338,8 +338,7 @@ export default function WhatIsSuspecPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            A markdown workflow for turning requests into scoped agent work,
-            review evidence, and saved findings.
+            {overviewDescription}
           </p>
           <HeroTrace
             ariaLabel="Suspec artifact chain"
