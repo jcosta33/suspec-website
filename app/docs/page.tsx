@@ -55,13 +55,13 @@ const readingPath = [
   {
     label: "Walk one loop",
     href: "/docs/tutorial/README/",
-    detail: "Pull through Close on a small change before adapting the workflow.",
+    detail: "Run one small change through the loop before adapting it.",
     role: "core",
   },
   {
     label: "Check the records",
     href: "/docs/reference/checks/",
-    detail: "Use checks and artifact formats when a packet needs inspection.",
+    detail: "Use checks and artifact formats when evidence needs review.",
     role: "reference",
   },
 ] as const satisfies Array<{
@@ -176,8 +176,8 @@ export default function DocsIndex() {
           </p>
           <h1 id="docs-index-title">Suspec docs</h1>
           <p className="docs-index-lede">
-            Start with the numbered pages. Use the tutorial for one pass; keep
-            reference pages nearby for formats, checks, glossary, and ADRs.
+            Start with the numbered pages; run the tutorial once; keep the
+            reference nearby for formats, checks, glossary, and ADRs.
           </p>
         </div>
         <div className="docs-index-manual" aria-label="Documentation metadata">
@@ -207,8 +207,8 @@ export default function DocsIndex() {
           </p>
           <h2 id="docs-reading-path-title">Read this first</h2>
           <p>
-            Three pages cover the model, a single loop, and the review checks.
-            The full reference stays below.
+            Read these three before the full reference: model, one loop, and
+            review checks.
           </p>
         </div>
         <ol className="docs-reading-path-list">
