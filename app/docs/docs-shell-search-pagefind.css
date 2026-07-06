@@ -1,5 +1,7 @@
 
-/* Pagefind ships its placeholder at opacity:0.2 (~1.8:1 — fails AA). Lift it to a legible cue. */
+/* Pagefind ships its placeholder at opacity:0.2. Keep the cue legible after
+   the runtime Pagefind stylesheet mounts later in the document. */
+.docs-search .pagefind-ui .pagefind-ui__form .pagefind-ui__search-input::placeholder,
 .docs-search input::placeholder {
   opacity: 1;
   color: var(--color-concrete-400);
