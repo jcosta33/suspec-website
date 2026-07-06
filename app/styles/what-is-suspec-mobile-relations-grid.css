@@ -1,0 +1,13 @@
+@media (max-width: 639px) {
+  .overview-relation-grid {
+    gap: 0;
+    overflow: hidden;
+    border: 1px solid rgba(var(--signal-reference-rgb), 0.24);
+    border-radius: var(--radius-panel);
+    background: rgba(10, 7, 5, 0.18);
+  }
+
+  .overview-relation-grid > li:not(:last-child) .relation-card {
+    border-bottom: 1px solid rgba(var(--relation-rgb), 0.22);
+  }
+}

@@ -1,0 +1,25 @@
+@media (max-width: 639px) {
+  .relation-card-body {
+    gap: 0.34rem;
+    margin-top: 0.48rem;
+  }
+
+  .relation-card-body div {
+    display: grid;
+    grid-template-columns: minmax(3.45rem, 0.3fr) 1fr;
+    align-items: start;
+    gap: 0.5rem;
+    padding-top: 0.34rem;
+  }
+
+  .relation-card-body dt {
+    font-size: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .relation-card-body dd {
+    margin-top: 0;
+    font-size: 0.72rem;
+    line-height: 1.34;
+  }
+}

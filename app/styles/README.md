@@ -43,6 +43,10 @@ the compact CLI navigation stays reviewable without selector churn.
 shared scroll fallback, package-page grid, overview section grid, and rail
 pseudo-element cleanup live in separate files before link styling applies.
 
+`app/styles/what-is-suspec-mobile-relations.css` is a mobile manifest: relation
+grid framing, compact card header, and definition-list body density live in
+separate files for the overview relation stack.
+
 `app/styles/process-strips-responsive.css` is a mobile manifest: shared mobile
 process-strip rail behavior loads before the get-started setup-path override.
 

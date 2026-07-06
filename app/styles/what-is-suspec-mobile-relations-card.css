@@ -1,0 +1,38 @@
+@media (max-width: 639px) {
+  .relation-card {
+    border-width: 0;
+    border-radius: 0;
+    padding: 0.68rem 0.76rem 0.74rem;
+    box-shadow: inset 2px 0 0 rgba(var(--relation-rgb), 0.2);
+  }
+
+  .relation-card-head {
+    align-items: flex-start;
+    gap: 0.58rem;
+  }
+
+  .relation-card-meta {
+    gap: 0.28rem;
+  }
+
+  .relation-card-role {
+    min-height: 0.98rem;
+    border-radius: calc(var(--radius-control) - 6px);
+    padding-inline: 0.28rem;
+    font-size: 0.48rem;
+  }
+
+  .relation-card-title {
+    margin-top: 0.1rem;
+    font-size: 0.86rem;
+    line-height: 1.24;
+  }
+
+  .relation-card-head .pilot-lamp {
+    display: none;
+  }
+
+  .relation-card-examples {
+    display: none;
+  }
+}
