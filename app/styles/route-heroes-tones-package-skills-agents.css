@@ -1,0 +1,15 @@
+.page-hero.page-hero-package-skills {
+  --hero-signal: var(--package-skills);
+  --hero-rgb: var(--package-skills-rgb);
+  --hero-pattern: var(--signal-pattern-evidence);
+  --hero-mark: var(--signal-mark-evidence);
+}
+
+.page-hero.page-hero-package-agents {
+  --hero-signal: var(--package-agents);
+  --hero-rgb: var(--package-agents-rgb);
+  --hero-motif-opacity-min: 0.38;
+  --hero-motif-opacity-max: 0.5;
+  --hero-pattern: var(--signal-pattern-reference);
+  --hero-mark: var(--signal-mark-reference);
+}

@@ -39,6 +39,10 @@ so generated docs table exceptions stay reviewable.
 boss styling, top-corner placement, and bottom-corner placement live in separate
 files while panels and cards keep the same `screw-corners` utility contract.
 
+`app/styles/route-heroes-tones-packages.css` is a package-tone manifest:
+skills/agents and CLI/MCP hero variables live in separate files so package
+accent calibration stays reviewable without moving the shared hero cascade.
+
 `app/styles/cli-surface-mobile.css` and
 `app/styles/cli-command-catalog-mobile.css` are mobile manifests: header/section
 rules stay separate from command rail and catalog row rules.
