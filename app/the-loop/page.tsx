@@ -258,8 +258,8 @@ export default function TheLoopPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Six steps for moving agent work from request to review — the spec is
-            the unit; Pull, Task, and the formal review are optional.
+            Move agent work from request to review. The spec is the unit; Pull,
+            Task, and formal review are optional.
           </p>
           <HeroTrace
             ariaLabel="Suspec loop trace"
@@ -279,10 +279,10 @@ export default function TheLoopPage() {
         <div className="loop-ledger-panel panel-raised lg:col-span-2">
           <div className="loop-ledger-copy">
             <p className="loop-ledger-kicker">loop ledger</p>
-            <h2>Six steps, six handoffs</h2>
+            <h2>Records between steps</h2>
             <p>
-              Each step either creates a record or checks one. The next step
-              should be able to continue without reading the chat transcript.
+              Each step creates or checks a record. The next step gets enough
+              context to continue without the chat transcript.
             </p>
           </div>
           <ol className="loop-ledger-list" aria-label="Suspec loop handoffs">
