@@ -1,0 +1,11 @@
+@media (max-width: 48rem) {
+  .home-hero-preview .terminal-window {
+    margin-top: 0.65rem;
+  }
+
+  .home-hero-preview .terminal-content {
+    padding: 0.72rem;
+    font-size: 0.68rem;
+    line-height: 1.45;
+  }
+}

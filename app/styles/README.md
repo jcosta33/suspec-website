@@ -77,6 +77,10 @@ identity, nav, and proof-list rules live in separate footer mobile files.
 setup path strip, route header, and command-strip rules live in separate files
 at the same cascade point.
 
+`app/styles/home-core-mobile-preview.css` is a mobile manifest: preview shell,
+run-card density, step rail, and terminal text rules live in separate files
+inside the core homepage mobile layer.
+
 `app/styles/home-hero-mobile-polish.css` is a late mobile manifest: hero rhythm,
 preview-card density, tablet proof-strip fit, and short-viewport rules live in
 separate files while preserving the home hero cascade point.

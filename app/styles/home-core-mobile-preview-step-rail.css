@@ -1,0 +1,22 @@
+@media (max-width: 48rem) {
+  .home-hero-preview ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.38rem;
+  }
+
+  .home-step-rail-item {
+    gap: 0.35rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.58rem;
+  }
+
+  .home-step-rail-item span:nth-child(2) {
+    font-size: 0.72rem;
+  }
+
+  .home-step-rail-item .pilot-lamp {
+    width: 12px;
+    height: 12px;
+    border-width: 1px;
+  }
+}

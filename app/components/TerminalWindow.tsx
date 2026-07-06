@@ -47,6 +47,7 @@ export function TerminalWindow({
               label="Copy"
               ariaLabel={copyLabel ?? "Copy terminal contents"}
               compactLabel={copyCompactLabel}
+              className="terminal-copy-button"
             />
           )}
         </div>
