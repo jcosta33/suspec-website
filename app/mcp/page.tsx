@@ -366,9 +366,8 @@ export default function McpPage() {
           <Heading>Local clients, local records</Heading>
           <p className="text-concrete-400">
             suspec-mcp adapts the CLI&apos;s <code>--json</code> contract for
-            MCP clients. It reads and reconciles workspace records over local
-            stdio. It does not decide correctness; it does not become a hosted
-            service or a review authority.
+            MCP clients over local stdio. It reads and reconciles workspace
+            records; review policy stays in your repo.
           </p>
           <p className="text-sm text-concrete-400">
             Source:{" "}

@@ -54,7 +54,14 @@ const boundaryRequirements = new Map([
     ],
   ],
   ["/cli/", [/reports facts; people decide/i, /no verdicts/i]],
-  ["/mcp/", [/does not decide correctness/i, /not become a hosted service or a review authority/i]],
+  [
+    "/mcp/",
+    [
+      /local stdio/i,
+      /reads and reconciles workspace records/i,
+      /review policy stays in (?:your|the) repo/i,
+    ],
+  ],
   ["/agents/", [/return evidence, not verdicts/i, /human or team rule decides/i]],
   ["/skills/", [/skills advise; review still decides/i, /framework-free/i]],
 ]);
