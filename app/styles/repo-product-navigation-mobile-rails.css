@@ -1,0 +1,8 @@
+@media (max-width: 40rem) {
+  .agent-page-nav::before,
+  .agent-page-nav::after,
+  .section-jump-nav::before,
+  .section-jump-nav::after {
+    display: none;
+  }
+}

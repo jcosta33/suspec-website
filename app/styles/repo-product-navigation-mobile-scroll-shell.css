@@ -1,0 +1,28 @@
+@media (max-width: 40rem) {
+  .agent-page-nav,
+  .section-jump-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.45rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    margin-inline: 0;
+    padding: 0.05rem 1.8rem 0.22rem 0;
+    scroll-padding-inline: 0.1rem 1.8rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .agent-page-nav {
+    gap: 0.38rem;
+  }
+
+  .agent-page-nav::-webkit-scrollbar,
+  .section-jump-nav::-webkit-scrollbar {
+    display: none;
+  }
+}
