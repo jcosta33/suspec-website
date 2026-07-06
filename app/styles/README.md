@@ -65,6 +65,10 @@ reviewable.
 shell, and step content rules live in separate files before the later MCP polish
 layer applies tighter mobile density.
 
+`app/styles/colophon-mobile-build-trace.css` is a mobile manifest: build-trace
+shell spacing, list grid, item chrome, and copy/dot density rules live in
+separate files so the colophon record remains easy to adjust.
+
 `app/styles/repo-product-manifest-responsive.css` is a mobile manifest:
 page/paper rhythm, manifest card stats, and delegation-contract rules live in
 separate responsive files so product-package mobile tuning stays reviewable.

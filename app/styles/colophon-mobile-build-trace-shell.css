@@ -1,0 +1,10 @@
+@media (max-width: 40rem) {
+  .colophon-build-trace {
+    margin-top: 0.1rem;
+    padding: 0.75rem 0.7rem;
+  }
+
+  .colophon-build-trace-inner {
+    gap: 0.64rem;
+  }
+}

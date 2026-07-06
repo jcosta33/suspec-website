@@ -1,0 +1,33 @@
+@media (max-width: 40rem) {
+  .colophon-build-trace-copy {
+    background: transparent;
+    margin-top: 0;
+    border-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+    min-width: 0;
+  }
+
+  .colophon-build-trace-title {
+    font-size: 0.64rem;
+    letter-spacing: 0.07em;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .colophon-build-trace-detail {
+    font-size: 0.54rem;
+    letter-spacing: 0.055em;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .colophon-build-trace-dot {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.48rem;
+    width: 0.34rem;
+    height: 0.34rem;
+    opacity: 0.82;
+  }
+}

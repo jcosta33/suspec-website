@@ -1,0 +1,29 @@
+@media (max-width: 40rem) {
+  .colophon-build-trace li {
+    min-width: 0;
+    min-height: 3.05rem;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: end;
+    align-items: end;
+    gap: 0.28rem;
+    overflow: hidden;
+    border: 1px solid rgba(216, 138, 36, 0.18);
+    border-left-color: rgba(216, 138, 36, 0.42);
+    border-radius: calc(var(--radius-control) - 4px);
+    background:
+      linear-gradient(90deg, rgba(216, 138, 36, 0.07), transparent 58%),
+      repeating-linear-gradient(
+        90deg,
+        rgba(var(--signal-muted-rgb), 0.028) 0 1px,
+        transparent 1px 0.8rem
+      ),
+      rgba(10, 7, 5, 0.32);
+    padding: 0.45rem 0.5rem 0.44rem;
+    text-align: left;
+  }
+
+  .colophon-build-trace li:last-child {
+    grid-column: 1 / -1;
+    min-height: 2.65rem;
+  }
+}
