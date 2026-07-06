@@ -176,9 +176,8 @@ export default function DocsIndex() {
           </p>
           <h1 id="docs-index-title">Suspec docs</h1>
           <p className="docs-index-lede">
-            Start with the numbered pages, use the tutorial for one loop, and
-            keep the reference pages nearby for artifact formats, checks,
-            glossary terms, and ADRs.
+            Start with the numbered pages. Use the tutorial for one pass; keep
+            reference pages nearby for formats, checks, glossary, and ADRs.
           </p>
         </div>
         <div className="docs-index-manual" aria-label="Documentation metadata">
@@ -208,8 +207,8 @@ export default function DocsIndex() {
           </p>
           <h2 id="docs-reading-path-title">Read this first</h2>
           <p>
-            Three pages cover the model, one pass through the loop, and the
-            review checks. The full reference stays below.
+            Three pages cover the model, a single loop, and the review checks.
+            The full reference stays below.
           </p>
         </div>
         <ol className="docs-reading-path-list">
