@@ -598,7 +598,7 @@ export default function WhatIsSuspecPage() {
             Common failure modes
           </Heading>
           <p className="mt-4 text-concrete-400">
-            These are the places chat-only agent work tends to lose the plot.
+            These are the places chat-only agent work tends to drop context.
             Suspec makes the missing record visible before review has to
             reconstruct the run from chat.
           </p>
@@ -641,8 +641,8 @@ export default function WhatIsSuspecPage() {
           <div className="overview-next-copy">
             <Heading>See how it actually runs</Heading>
             <p className="mt-2 text-concrete-400">
-              Six steps, each producing a file the next one reads. That is the
-              framework: no runtime, no automatic decision.
+              The loop is plain: each step leaves a file the next step reads.
+              No runtime; no automatic decision.
             </p>
             <p className="overview-next-source mt-4 text-sm text-concrete-400">
               Source:{" "}
