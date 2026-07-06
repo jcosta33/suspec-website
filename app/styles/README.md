@@ -35,6 +35,10 @@ the reduced-motion clamp remains in the root final import.
 code-heavy rows, and finding/severity rows live in separate mobile layout files
 so generated docs table exceptions stay reviewable.
 
+`app/styles/artifact-chassis-screws.css` is a hardware manifest: shared screw
+boss styling, top-corner placement, and bottom-corner placement live in separate
+files while panels and cards keep the same `screw-corners` utility contract.
+
 `app/styles/cli-surface-mobile.css` and
 `app/styles/cli-command-catalog-mobile.css` are mobile manifests: header/section
 rules stay separate from command rail and catalog row rules.

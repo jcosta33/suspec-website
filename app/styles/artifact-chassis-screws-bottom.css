@@ -1,0 +1,9 @@
+.screw-corners-bottom::before {
+  bottom: 8px;
+  left: 8px;
+}
+
+.screw-corners-bottom::after {
+  bottom: 8px;
+  right: 8px;
+}
