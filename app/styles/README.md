@@ -48,6 +48,10 @@ identity, nav, and proof-list rules live in separate footer mobile files.
 setup path strip, route header, and command-strip rules live in separate files
 at the same cascade point.
 
+`app/styles/home-hero-mobile-polish.css` is a late mobile manifest: hero rhythm,
+preview-card density, tablet proof-strip fit, and short-viewport rules live in
+separate files while preserving the home hero cascade point.
+
 `app/styles/mobile-repo-nav-polish.css` is a mobile manifest: shared product
 route nav compaction and MCP-specific nav offsets live in separate files at the
 same late cascade point.

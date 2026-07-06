@@ -1,0 +1,9 @@
+@media (min-width: 48.0625rem) and (max-height: 50rem) {
+  .home-hero-section {
+    padding-bottom: 0.45rem;
+  }
+
+  .home-hero-proof-strip {
+    display: none;
+  }
+}

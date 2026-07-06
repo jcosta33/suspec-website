@@ -1,0 +1,34 @@
+@media (max-width: 48rem) {
+  .home-hero-preview {
+    margin-top: 0.54rem;
+    margin-bottom: 0;
+    padding: 0.3rem;
+  }
+
+  .home-hero-run-card {
+    padding: 0.54rem;
+  }
+
+  .home-hero-run-card > div:first-child {
+    margin-bottom: 0.34rem;
+  }
+
+  .home-step-rail-item {
+    min-height: 2.75rem;
+    padding-block: 0.5rem;
+  }
+
+  .home-hero-preview .terminal-window {
+    margin-top: 0.38rem;
+  }
+
+  .home-hero-preview .terminal-toolbar {
+    min-height: 2.36rem;
+    padding-block: 0.26rem;
+  }
+
+  .home-hero-preview .terminal-content {
+    max-height: 4.35rem;
+    padding: 0.48rem 0.58rem;
+  }
+}

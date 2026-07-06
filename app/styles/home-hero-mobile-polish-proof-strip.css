@@ -1,0 +1,17 @@
+@media (min-width: 40.0625rem) and (max-width: 48rem) {
+  .home-hero-proof-strip {
+    width: min(100%, 34rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.48rem;
+  }
+
+  .home-hero-proof {
+    justify-content: center;
+    min-height: 2.3rem;
+    padding-inline: 0.58rem;
+  }
+
+  .home-hero-proof > div {
+    min-width: 0;
+  }
+}
