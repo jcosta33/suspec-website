@@ -26,8 +26,8 @@
   .terminal-toolbar .copy-button {
     min-height: 2.5rem;
     gap: 0.22rem;
-    padding: 0.18rem 0.36rem;
-    font-size: 0.5rem;
+    padding: 0.12rem 0.3rem;
+    font-size: 0.48rem;
     letter-spacing: 0.06em;
   }
 

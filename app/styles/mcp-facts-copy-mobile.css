@@ -44,7 +44,7 @@
   }
 
   .mcp-identifier-copy {
-    min-width: 3.75rem;
-    padding-inline: 0.5rem;
+    min-width: 2.75rem;
+    padding-inline: 0.36rem;
   }
 }
