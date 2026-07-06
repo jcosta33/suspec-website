@@ -1,0 +1,43 @@
+.agent-page-nav::before,
+.section-jump-nav::before,
+.agent-page-nav::after,
+.section-jump-nav::after {
+  content: "";
+  position: absolute;
+  right: 0.72rem;
+  left: 0.72rem;
+  z-index: -1;
+  height: 1px;
+  pointer-events: none;
+}
+
+.agent-page-nav::before,
+.section-jump-nav::before {
+  top: 0.42rem;
+  background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(var(--signal-reference-rgb), 0.22),
+        rgba(var(--signal-core-rgb), 0.2),
+        transparent
+      )
+      center / 100% 1px no-repeat,
+    repeating-linear-gradient(
+        90deg,
+        rgba(var(--signal-muted-rgb), 0.14) 0 1px,
+        transparent 1px 1.35rem
+      )
+      center / 100% 0.34rem no-repeat;
+}
+
+.agent-page-nav::after,
+.section-jump-nav::after {
+  bottom: 0.42rem;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--signal-muted-rgb), 0.14),
+    transparent
+  );
+}

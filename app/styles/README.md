@@ -51,6 +51,10 @@ the compact CLI navigation stays reviewable without selector churn.
 shared scroll fallback, package-page grid, overview section grid, and rail
 pseudo-element cleanup live in separate files before link styling applies.
 
+`app/styles/repo-product-jump-nav-shell.css` is a shared product manifest:
+jump-nav base chrome and decorative rail pseudo-elements live in separate files
+before link state and package signal rules apply.
+
 `app/styles/skills-category-rail-mobile.css` is a mobile manifest: category
 rail compaction and skills guide-row density live in separate files while
 preserving the small-screen skills cascade point.
