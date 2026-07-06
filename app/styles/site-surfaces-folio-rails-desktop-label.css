@@ -1,0 +1,19 @@
+@media (min-width: 86rem) {
+  .folio-rail span {
+    position: absolute;
+    top: 50%;
+    display: inline-flex;
+    color: rgba(240, 226, 204, 0.22);
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+  }
+
+  .folio-rail span::before {
+    content: attr(data-label);
+  }
+}

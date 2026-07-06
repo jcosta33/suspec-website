@@ -1,0 +1,20 @@
+@media (min-width: 86rem) {
+  .folio-rail {
+    position: fixed;
+    top: 7.25rem;
+    bottom: 4rem;
+    z-index: 0;
+    display: block;
+    width: 1px;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        180deg,
+        transparent,
+        rgba(216, 138, 36, 0.075) 18%,
+        rgba(216, 138, 36, 0.075) 82%,
+        transparent
+      );
+    opacity: 0.42;
+  }
+}

@@ -59,6 +59,11 @@ before link state and package signal rules apply.
 muted non-active links, active first-link chrome, dot markers, and hover/focus
 states live in separate files so package navigation colors stay reviewable.
 
+`app/styles/site-surfaces-folio-rails-desktop.css` is a desktop manifest: fixed
+rail shell, tick marks, vertical labels, and left/right placement live in
+separate files so the decorative folio rails stay easy to tune without touching
+their viewport gate.
+
 `app/styles/skills-category-rail-mobile.css` is a mobile manifest: category
 rail compaction and skills guide-row density live in separate files while
 preserving the small-screen skills cascade point.

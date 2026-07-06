@@ -1,0 +1,19 @@
+@media (min-width: 86rem) {
+  .folio-rail-left {
+    left: max(1.35rem, calc((100vw - 92rem) / 2));
+  }
+
+  .folio-rail-left span {
+    left: 0.7rem;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .folio-rail-right {
+    right: max(1.35rem, calc((100vw - 92rem) / 2));
+  }
+
+  .folio-rail-right span {
+    right: 0.7rem;
+    transform: translateY(-50%);
+  }
+}
