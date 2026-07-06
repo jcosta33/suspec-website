@@ -27,6 +27,10 @@ target lives in `docs-shell-nav-mobile-toggle.css`; the visible disclosure
 summary lives in `docs-shell-nav-mobile-summary.css`; expanded panel styles live
 in `docs-shell-nav-mobile-panel.css`.
 
+`app/docs/docs-responsive-motion.css` is a docs-only motion manifest: index
+cover perspective and article-header perspective live in separate files while
+the reduced-motion clamp remains in the root final import.
+
 `app/docs/docs-article-tables-mobile-layouts.css` is a manifest: pair rows,
 code-heavy rows, and finding/severity rows live in separate mobile layout files
 so generated docs table exceptions stay reviewable.

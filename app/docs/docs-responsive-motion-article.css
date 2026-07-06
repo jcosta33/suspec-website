@@ -1,0 +1,35 @@
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .docs-article-header {
+    perspective: clamp(500px, 46vw, 820px);
+    perspective-origin: var(--background-header-perspective-x) var(--background-header-perspective-y);
+    transform-style: preserve-3d;
+    background-position:
+      0 0,
+      center,
+      center;
+  }
+
+  .docs-article-header::before {
+    transform:
+      translate3d(var(--background-header-shift-x), var(--background-header-shift-y), 0)
+      rotateX(var(--background-header-before-rotate-x))
+      rotateY(var(--background-header-before-rotate-y))
+      translateZ(18px)
+      scale(1.06);
+    transform-origin: 50% 52%;
+    transition: transform 86ms ease-out;
+    will-change: transform;
+  }
+
+  .docs-article-header::after {
+    transform:
+      translate3d(var(--background-header-shift-soft-x), var(--background-header-shift-soft-y), 0)
+      rotateX(var(--background-header-after-rotate-x))
+      rotateY(var(--background-header-after-rotate-y))
+      translateZ(14px)
+      scale(1.04);
+    transform-origin: 50% 52%;
+    transition: transform 86ms ease-out;
+    will-change: transform;
+  }
+}
