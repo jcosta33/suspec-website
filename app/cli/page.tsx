@@ -568,6 +568,7 @@ export default function CliPage() {
                               <CopyButton
                                 text={`suspec ${c.cmd}`}
                                 label="Copy"
+                                compactLabel="Copy"
                                 ariaLabel={`Copy suspec ${c.cmd} command`}
                                 className="cli-command-copy"
                               />
