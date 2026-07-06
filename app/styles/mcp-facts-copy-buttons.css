@@ -1,7 +1,7 @@
 
 .mcp-identifier-copy {
-  min-width: 3.25rem;
-  padding-inline: 0.5rem;
+  min-width: 2.9rem;
+  padding-inline: 0.42rem;
   border-color: rgba(var(--tool-rgb), 0.22);
   color: var(--color-concrete-400);
 }

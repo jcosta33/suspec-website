@@ -1,6 +1,6 @@
 
 .docs-code-copy {
-  inline-size: 3.15rem;
+  inline-size: 2.85rem;
   min-height: 2.5rem;
   border: 1px solid rgba(var(--signal-reference-rgb), 0.24);
   border-radius: calc(var(--radius-control) - 4px);
@@ -13,11 +13,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 0.38rem;
+  padding: 0 0.32rem;
   color: var(--color-concrete-300);
   cursor: pointer;
   font-family: var(--font-mono), monospace;
-  font-size: 0.54rem;
+  font-size: 0.52rem;
   font-weight: 760;
   letter-spacing: 0.08em;
   line-height: 1;
@@ -34,7 +34,7 @@
   }
 
   .docs-code-copy {
-    inline-size: 3.15rem;
+    inline-size: 2.85rem;
     min-height: 2.5rem;
   }
 }

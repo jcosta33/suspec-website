@@ -373,7 +373,7 @@ const rehypeWrapCodeBlocks: Plugin<[], HastRoot> = () => (tree) => {
                 ariaLabel: "Copy code sample",
                 dataDocsCodeCopy: "true",
               },
-              children: [{ type: "text", value: "COPY" }],
+              children: [{ type: "text", value: "Copy" }],
             },
           ],
         },

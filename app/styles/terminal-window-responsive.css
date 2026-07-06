@@ -25,15 +25,15 @@
 
   .terminal-toolbar .copy-button {
     min-height: 2.5rem;
-    gap: 0.38rem;
-    padding: 0.25rem 0.44rem;
-    font-size: 0.56rem;
+    gap: 0.32rem;
+    padding: 0.2rem 0.38rem;
+    font-size: 0.52rem;
     letter-spacing: 0.06em;
   }
 
   .terminal-toolbar .copy-button svg {
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 0.68rem;
+    height: 0.68rem;
   }
 
   .terminal-toolbar:has(.copy-button) {
