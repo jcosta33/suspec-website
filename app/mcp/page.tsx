@@ -33,7 +33,7 @@ const SITE_URL = "https://suspecframework.dev";
 const MCP_REPOSITORY = "https://github.com/jcosta33/suspec-mcp";
 const MCP_PAGE_URL = `${SITE_URL}/mcp/`;
 const mcpDescription =
-  "suspec-mcp exposes Suspec workspace status, checks, artifacts, and review data to MCP clients over local stdio.";
+  "suspec-mcp exposes Suspec workspace records over local stdio; review policy stays in the repo.";
 const mcpTitle = "suspec-mcp — local MCP adapter for Suspec";
 
 export const metadata: Metadata = {
@@ -334,9 +334,8 @@ export default function McpPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Local stdio bridge for Suspec status, checks, artifacts, and review
-            data. It exposes records to MCP clients and leaves review policy in
-            the repo.
+            Local stdio bridge to Suspec records: status, checks, artifacts,
+            review data. Review policy stays in the repo.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
             <Badge variant="ready">v0.2 surface</Badge>
