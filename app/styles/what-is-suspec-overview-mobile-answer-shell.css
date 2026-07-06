@@ -1,0 +1,20 @@
+@media (max-width: 40rem) {
+  .overview-summary-grid {
+    gap: 0.68rem;
+  }
+
+  .overview-answer-panel {
+    gap: 0.58rem;
+    padding: 0.76rem 0.78rem;
+  }
+
+  .overview-answer-panel::before {
+    top: 0.58rem;
+    bottom: 0.58rem;
+    left: 0.58rem;
+  }
+
+  .overview-answer-panel::after {
+    display: none;
+  }
+}

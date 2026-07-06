@@ -1,0 +1,15 @@
+@media (max-width: 40rem) {
+  .overview-answer-copy {
+    padding-left: 0.42rem;
+  }
+
+  .overview-answer-copy h2 {
+    font-size: 1.1rem;
+  }
+
+  .overview-answer-copy p:last-child {
+    margin-top: 0.36rem;
+    font-size: 0.84rem;
+    line-height: 1.36;
+  }
+}

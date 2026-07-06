@@ -138,6 +138,10 @@ separate files so semantic surface texture stays tied to meaning.
 mobile overview boundary-list, boundary-panel, and next-card density rules live
 in separate files.
 
+`app/styles/what-is-suspec-overview-mobile-answer.css` is a mobile manifest:
+summary rhythm, answer copy density, and fact-list layout live in separate
+files so the overview answer panel stays reviewable.
+
 `app/styles/what-is-suspec-relations-desktop.css` is a desktop manifest: the
 relations ledger shell, card surface treatment, and content layout live in
 separate files so the overview section can change without broad selector moves.
