@@ -5,7 +5,6 @@ import { PilotLamp } from "./PilotLamp";
 export interface TerminalWindowProps {
   children: ReactNode;
   className?: string;
-  copyCompactLabel?: string;
   copyLabel?: string;
   copyText?: string;
   contentClassName?: string;
@@ -16,7 +15,6 @@ export interface TerminalWindowProps {
 export function TerminalWindow({
   children,
   className = "",
-  copyCompactLabel = "Copy",
   copyLabel,
   copyText,
   contentClassName = "",
@@ -46,7 +44,7 @@ export function TerminalWindow({
               text={copyText}
               label="Copy"
               ariaLabel={copyLabel ?? "Copy terminal contents"}
-              compactLabel={copyCompactLabel}
+              compactLabel="Copy"
               className="terminal-copy-button"
             />
           )}
