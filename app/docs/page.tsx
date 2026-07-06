@@ -59,7 +59,7 @@ const readingPath = [
     role: "core",
   },
   {
-    label: "Review the proof",
+    label: "Check the records",
     href: "/docs/reference/checks/",
     detail: "Use checks and artifact formats when a packet needs inspection.",
     role: "reference",
@@ -209,7 +209,7 @@ export default function DocsIndex() {
           <h2 id="docs-reading-path-title">Read this first</h2>
           <p>
             Three pages cover the model, one pass through the loop, and the
-            review contract. The full reference stays below.
+            review checks. The full reference stays below.
           </p>
         </div>
         <ol className="docs-reading-path-list">
