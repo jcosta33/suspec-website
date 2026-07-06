@@ -1,0 +1,5 @@
+@media (max-width: 40rem) {
+  .loop-step-card:not(.loop-step-card-linked) p {
+    display: none;
+  }
+}

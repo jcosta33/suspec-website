@@ -1,0 +1,9 @@
+@media (max-width: 40rem) {
+  .loop-step-grid {
+    gap: 0.85rem;
+  }
+
+  .loop-step-card > div:nth-child(2) {
+    flex-wrap: wrap;
+  }
+}

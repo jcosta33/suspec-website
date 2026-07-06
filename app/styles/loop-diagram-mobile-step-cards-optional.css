@@ -1,0 +1,10 @@
+@media (max-width: 40rem) {
+  .loop-step-card .loop-step-optional {
+    flex-basis: 100%;
+    margin-left: 1.33rem;
+    margin-top: 0.08rem;
+    font-size: 0.52rem;
+    letter-spacing: 0.11em;
+    line-height: 1;
+  }
+}

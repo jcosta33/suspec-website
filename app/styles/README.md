@@ -86,6 +86,10 @@ operating terminal, shell/seal sizing, compact step cards, and linked-step
 rules live in separate files so the loop page and writing-page reuse stay
 reviewable.
 
+`app/styles/loop-diagram-mobile-step-cards.css` is a mobile manifest: shared
+step-card wrapping, compact unlinked-card density, optional-label treatment,
+and mobile body hiding live in separate files.
+
 `app/styles/mcp-adapter-mobile-rail.css` is a mobile manifest: rail frame, step
 shell, and step content rules live in separate files before the later MCP polish
 layer applies tighter mobile density.
