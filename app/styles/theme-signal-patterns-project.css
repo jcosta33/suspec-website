@@ -1,0 +1,33 @@
+@theme inline {
+  --signal-pattern-greenfield: repeating-linear-gradient(
+      90deg,
+      rgba(var(--signal-greenfield-rgb), 0.07) 0 1px,
+      transparent 1px 13px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 2.2rem,
+      rgba(var(--signal-greenfield-rgb), 0.035) 2.2rem calc(2.2rem + 1px)
+    );
+  --signal-pattern-brownfield: repeating-linear-gradient(
+      -24deg,
+      rgba(var(--signal-brownfield-rgb), 0.075) 0 1px,
+      transparent 1px 13px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.65rem,
+      rgba(var(--signal-brownfield-rgb), 0.028) 1.65rem calc(1.65rem + 1px)
+    );
+  --signal-pattern-change: repeating-linear-gradient(
+      135deg,
+      rgba(var(--signal-change-rgb), 0.068) 0 1px,
+      transparent 1px 12px
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0 64%,
+      rgba(var(--signal-change-rgb), 0.055) 64% 66%,
+      transparent 66%
+    );
+}

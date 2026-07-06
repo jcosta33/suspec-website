@@ -98,6 +98,10 @@ separate responsive files so product-package mobile tuning stays reviewable.
 mark tokens live in separate files so semantic color/pattern changes stay
 reviewable.
 
+`app/styles/theme-signal-patterns.css` is a manifest: record/evidence,
+greenfield/brownfield/change, and reference/muted pattern tokens live in
+separate files so semantic surface texture stays tied to meaning.
+
 `app/styles/what-is-suspec-overview-mobile-boundaries.css` is a manifest:
 mobile overview boundary-list, boundary-panel, and next-card density rules live
 in separate files.

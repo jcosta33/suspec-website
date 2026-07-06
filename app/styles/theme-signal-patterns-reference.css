@@ -1,0 +1,22 @@
+@theme inline {
+  --signal-pattern-reference: repeating-linear-gradient(
+      0deg,
+      rgba(var(--signal-reference-rgb), 0.058) 0 1px,
+      transparent 1px 15px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--signal-reference-rgb), 0.04),
+      transparent 42%
+    );
+  --signal-pattern-muted: repeating-linear-gradient(
+      90deg,
+      transparent 0 0.72rem,
+      rgba(var(--signal-muted-rgb), 0.044) 0.72rem calc(0.72rem + 1px)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 3.6rem,
+      rgba(var(--signal-muted-rgb), 0.085) 3.6rem calc(3.6rem + 1px)
+    );
+}

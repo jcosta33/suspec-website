@@ -1,0 +1,23 @@
+@theme inline {
+  /* Role patterns: hue + mark travel together, so color does not become decoration. */
+  --signal-pattern-core: linear-gradient(
+      90deg,
+      rgba(var(--signal-core-rgb), 0.12) 0 2px,
+      transparent 2px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--signal-core-rgb), 0.045),
+      transparent 58%
+    );
+  --signal-pattern-evidence: radial-gradient(
+      circle at 0.7rem 0.7rem,
+      rgba(var(--signal-evidence-rgb), 0.32) 0 1px,
+      transparent 1.8px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 1.28rem,
+      rgba(var(--signal-evidence-rgb), 0.05) 1.28rem calc(1.28rem + 1px)
+    );
+}
