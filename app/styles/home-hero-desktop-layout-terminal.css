@@ -1,0 +1,16 @@
+@media (min-width: 48.0625rem) {
+  .home-hero-run-card .terminal-window {
+    margin-top: 0.56rem;
+  }
+
+  .home-hero-run-card .terminal-toolbar {
+    padding-block: 0.45rem;
+  }
+
+  .home-hero-run-card .terminal-content {
+    max-height: 8.9rem;
+    padding: 0.78rem 0.95rem;
+    font-size: 0.76rem;
+    line-height: 1.45;
+  }
+}

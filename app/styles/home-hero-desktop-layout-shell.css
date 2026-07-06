@@ -1,0 +1,9 @@
+@media (min-width: 48.0625rem) {
+  .home-hero-section {
+    padding-bottom: clamp(1.35rem, 2.25vw, 2.25rem);
+  }
+
+  .home-hero-section .ambient-header {
+    padding-top: clamp(4.35rem, 5vw, 4.85rem);
+  }
+}

@@ -98,6 +98,10 @@ inside the core homepage mobile layer.
 preview-card density, tablet proof-strip fit, and short-viewport rules live in
 separate files while preserving the home hero cascade point.
 
+`app/styles/home-hero-desktop-layout.css` is a desktop manifest: shell rhythm,
+proof strip, preview grid, run-card density, and terminal density live in
+separate files before short-viewport and narrow-width overrides apply.
+
 `app/styles/mobile-repo-nav-polish.css` is a mobile manifest: shared product
 route nav compaction and MCP-specific nav offsets live in separate files at the
 same late cascade point.

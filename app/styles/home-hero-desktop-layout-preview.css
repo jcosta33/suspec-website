@@ -1,0 +1,11 @@
+@media (min-width: 48.0625rem) {
+  .home-hero-preview {
+    margin-top: clamp(0.62rem, 0.88vw, 0.82rem);
+    margin-bottom: clamp(0.6rem, 1vw, 0.95rem);
+    padding: 0.6rem;
+  }
+
+  .home-hero-preview > .relative > .grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.92fr);
+  }
+}

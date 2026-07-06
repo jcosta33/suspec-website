@@ -1,0 +1,14 @@
+@media (min-width: 48.0625rem) {
+  .home-hero-run-card {
+    padding: 0.74rem;
+  }
+
+  .home-hero-run-card > div:first-child {
+    margin-bottom: 0.68rem;
+  }
+
+  .home-hero-run-card .home-step-rail-item {
+    min-height: 2.75rem;
+    padding-block: 0.5rem;
+  }
+}
