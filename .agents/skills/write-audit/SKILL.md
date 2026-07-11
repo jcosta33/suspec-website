@@ -7,15 +7,15 @@ description: >-
   code audit, tech-debt survey, cleanup or benchmark report, or a quality assessment of existing
   code — including deepening a prior audit. Never assert intended behavior, prescribe a fix,
   write requirements, or leave an observation without file:line or pasted-output evidence. Skip
-  when writing a forward-looking spec (write-spec), diagnosing one defect (write-bug-report), or
-  surveying open options (write-research).
+  when writing a forward-looking spec, diagnosing one defect to its root cause, or surveying
+  open options against external sources.
 ---
 
 # Writing an audit
 
 An audit makes a code area legible so the work on it can be planned. It records what is true
 **today**, grounds each claim in evidence, names the risk that state carries — and stops there.
-Use the template at `advanced/audit.md`; do not reinvent its sections.
+An audit has these sections: **Scope · Observations · Risks · Open questions / unverified areas · Candidate requirements**. Do not reinvent them.
 
 Audits fail in two directions: they drift into prescription (telling the reader what to build —
 a spec's job), or they stay vague (impressions and TODO-scrapes nobody can act on). The rules
@@ -45,8 +45,8 @@ next reader navigate straight to it; an ungrounded claim is an opinion wearing a
 ### 3. Run the dynamic checks; do not trust static reading
 
 Concurrency, lifecycle, resource cleanup — reading the source does not prove these. Run the
-project's test or check commands (the Commands table in the workspace `AGENTS.md`; if a command
-is missing, ask — never guess) and paste the output. The highest-value findings are properties
+project's test or check commands (the Commands table in the repo's `AGENTS.md`; if a command
+is missing, ask, because a guessed command silently audits the wrong thing) and paste the output. The highest-value findings are properties
 that _look_ held in the source but are not held at runtime.
 
 ### 4. Grep for callers across the whole codebase
@@ -71,9 +71,10 @@ is a Blocker. When a call is contestable, record the reasoning inline so a revie
 
 ### 7. Recommend requirements in prose — never write them
 
-The template's candidate-requirements section describes, in plain prose, what a future spec
+The audit's candidate-requirements section (no template ships for audits — the section shape is
+this guide) describes, in plain prose, what a future spec
 should require. Write what the spec should carry, not how to change the code. Do not write
-AC items or SOL blocks (`advanced/sol-reference.md`) — a requirement acquires force only when someone
+AC items or SOL blocks (see write-spec's "structured (SOL) form") — a requirement acquires force only when someone
 lifts it into a spec, and an audit that writes requirements lets an observation be read as an
 approved decision nobody made.
 
@@ -92,6 +93,22 @@ hidden across two audits.
   each until it cites an observable, or cut it.
 - Code edits. An audit session is read-only on source; it produces a document.
 
+## Gotchas
+
+- **Prescribing a fix instead of recording present state.** An observation reads "extract this
+  into a helper" or "switch to a connection pool" — that is a spec's decision wearing an
+  observation's clothes. The reader lifts it into a plan as if the choice were already made and
+  approved, when all the audit was licensed to say is what the code does today and what risk that
+  carries.
+- **Asserting a structural claim without grepping it.** You write "this handler has no other
+  callers" or "the retry path is dead" from reading one file, never running the cross-module
+  search. A single uncited structural claim that turns out wrong discredits every finding around
+  it, and the live caller you missed is exactly the one the next change breaks.
+- **Ranking findings flat instead of by impact.** Every observation lands at the same weight, or
+  severity tracks how alarming a finding felt rather than its blast radius. The reader cannot tell
+  the one Blocker that lets unsafe work proceed from the cosmetic Minor beside it, and triages the
+  wrong thing first.
+
 ## Before you finish
 
 Walk the draft once as its harshest reviewer; fix what you find before delivering:
@@ -103,5 +120,5 @@ Walk the draft once as its harshest reviewer; fix what you find before deliverin
 - [ ] Dynamic claims were run, not read — the output is pasted, not paraphrased.
 - [ ] No fix, no intended behavior, no requirement anywhere; recommendations are prose only.
 - [ ] The scope section matches what you actually examined.
-- [ ] Anything durable you learned along the way is noted as a finding candidate for the
-      workspace's `findings/`.
+- [ ] Anything durable you learned along the way is noted as a finding candidate. Findings ride
+      the review packet; durable ones become native memories (see save-findings).

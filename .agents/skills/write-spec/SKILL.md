@@ -15,10 +15,23 @@ description: >-
 
 A spec is the contract between whoever wants the change and whoever builds it.
 Done well, an implementer can build from it with no follow-up questions, and a
-reviewer can check every requirement against evidence. Start from
-`templates/spec.md`; this guide is how to fill it, not a restatement of it.
-Everything below is a convention plus a review checklist — nothing in the kit
-enforces it.
+reviewer can check every requirement against evidence. A spec has these sections, in
+order: **Intent · Non-goals · Requirements · Open questions · Affected areas · Dropped
+from sources (when needed) · Execution** — an append-only run record, one dated entry
+per change-cycle. Frontmatter carries `type: spec`, `id: SPEC-<name>`, `title`,
+`status`, `owner`, and `sources` (the intake, PRD, or ticket this spec traces to); each
+requirement is an `AC-NNN` with a `Verify with:` line. This guide is how to fill that
+shape, not a restatement of it. This skill is how the spec gets created — writing it
+well is the job; check it with `suspec check <path>`.
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
+Everything below is a convention plus a review checklist — nothing enforces it at edit
+time.
 
 ## Rules
 
@@ -37,34 +50,47 @@ enforces it.
    too vague: reword it to the concrete observable.
 4. **Order requirements by importance.** Agents weight earlier instructions
    more — put the requirement you would block a merge over first.
-5. **Survey before inventing.** Read what the codebase and workspace already
-   have before specifying a new interface, pattern, or boundary. Record what
+5. **Survey before inventing.** Read what the codebase, its ADRs, and its
+   open issues already have before specifying a new interface, pattern, or boundary. Record what
    you consulted; if you reuse a pattern, name it; if you introduce one, say
    why the existing ones do not fit. _Why: memory is not a survey — recall
    misses the helper added last week, and the duplication surfaces only when
    implementation collides with it._
 6. **Record structural decisions with their alternatives.** When the spec
    commits a real choice — a boundary, a data flow, a compatibility stance —
-   note what was considered and rejected, in `decisions/` (an ADR) for anything
+   note what was considered and rejected — as an ADR in the repo's decision
+   ledger for anything
    with reach beyond this spec, or under `## Dropped from sources` when it is a
    cut. _Why: a decision without alternatives is incomplete — the reader cannot
    tell whether the others were weighed or overlooked._
-7. **Halt on ambiguity — never guess.** Any unresolved behavioral decision goes
-   under `## Open questions`, not into an AC. A spec with open questions is not
-   `status: ready`. _Why: a guess written as a requirement commits a decision
-   nobody made._ Either get the answer, or make the call explicitly, record it
-   in the spec, and close the question.
+7. **Halt on ambiguity — frame a decision, never guess.** Any unresolved
+   behavioral decision goes under `## Open questions` as **options + a
+   recommendation** (the decision in one line; 2–4 options with the case
+   FOR/AGAINST; your recommended option + a brief why; what it blocks) — not into
+   an AC, and not as a bare question. Where your runner supports it, ask the owner
+   and proceed on the answer; otherwise leave the decision for them. A spec with a
+   blocking open question is not `status: ready`. _Why: a guess written as a
+   requirement commits a decision nobody made; a bare question makes the owner do
+   the framing — options + a lean lets them just choose._ Either get the answer, or
+   make the call explicitly, record it, and resolve it.
 8. **Fill `## Dropped from sources`.** What the ticket or PRD asked for that
    this spec deliberately leaves out, and why. Be specific enough to challenge:
    "dropped: implementation details" is a category, not a record — "dropped:
    the CSV export option (only JSON consumers exist)" is. _Why: a silent drop
    looks like an oversight; a recorded drop is a decision someone can
    challenge._
-9. **Non-goals are load-bearing.** Say what this spec deliberately does not
-   change — it bounds the task and protects the reviewer from scope drift.
+9. **Non-goals are load-bearing — write them in three parts.** The prohibition, the
+   positive alternative (what to do instead), and the escape hatch (blocked by the
+   boundary? stop and ask). _Why: a bare "do not" is easy for an agent to walk past
+   alone; pairing it with a positive alternative and a stop option keeps it
+   actionable._ Non-goals bound the task and protect the reviewer from scope drift.
 10. **Need stricter structure?** Any spec can switch its requirements to
-   structured (SOL) form: add `format: sol` to the frontmatter, per the note in
-   `templates/spec.md`. Use it for high-risk work; plain form is the default.
+   structured (SOL) form: add `format: sol` to the frontmatter. SOL blocks are
+   bare-header lines like `REQ AC-001:` drawn from a fixed set of block
+   keywords (`REQ`, `CONSTRAINT`, `INVARIANT`, `INTERFACE`, `QUESTION`) and
+   modal keywords (`MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, `MAY`) — full
+   grammar in [`references/sol-grammar.md`](./references/sol-grammar.md).
+   Use it for high-risk work; plain form is the default.
 
 ## When NOT to write a spec
 
@@ -90,6 +116,25 @@ when:
 | Editing code "to check the design works"             | The spec session changes the spec and nothing else                                                                                 |
 | Speccing a two-line cleanup                          | A task packet alone; say so                                                                                                        |
 
+## Gotchas
+
+- **Smuggled an implementation mechanism into a requirement.** An AC reads "must
+  cache results in Redis" — but Redis is a mechanism, not the requirement. The
+  real requirement (a latency bound, a persistence behavior) is now hidden, and
+  the implementer is over-constrained. State the observable behavior; if a
+  mechanism is genuinely load-bearing, make it its own requirement with the reason
+  attached.
+- **Left an AC with no `Verify with:` line.** It is the highest-value line in the
+  file — the review packet is built from these lines, so an AC without one reviews
+  as a wish nobody can check. If you can't say how to verify it, the AC is too
+  vague: reword it to the concrete observable, or cut it.
+- **Guessed past an ambiguity instead of recording an open question.** You hit an
+  undecided behavior and wrote in "the obvious default" to keep moving. That
+  commits a decision nobody made, buried in an AC where no reviewer will flag it
+  as unresolved. Put it under `## Open questions` as options + a recommendation,
+  or get the answer and record the call — and the spec is not `status: ready`
+  while a blocking question is open.
+
 ## Self-review gate
 
 Before handing the spec on, check each — fix, don't rationalize:
@@ -107,3 +152,10 @@ Before handing the spec on, check each — fix, don't rationalize:
 - [ ] You can point at what you surveyed before any new pattern you introduced.
 - [ ] `git status` (pasted) shows only spec documents changed — the spec
       session touched no code.
+
+## Bundled resources
+
+- [`references/sol-grammar.md`](./references/sol-grammar.md) — the full SOL grammar for rule 10:
+  block types (`REQ`, `CONSTRAINT`, `INVARIANT`, `INTERFACE`, `QUESTION`), strength words, `VERIFY
+  BY` syntax, and metadata clauses. Load it when a spec sets `format: sol` — not needed for plain
+  form.

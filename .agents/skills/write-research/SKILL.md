@@ -7,17 +7,17 @@ description: >-
   comparison, an evidence survey, or a recommendation feeding a later decision. Never present
   opinion as a finding, cite a blog without its primary source, fabricate or leave a claim
   unmarked when you could not verify it, settle an open question by asserting a choice, or write
-  requirements. Skip when writing a spec (write-spec), recording the present state of code
-  (write-audit), or diagnosing a defect (write-bug-report) — research is their upstream input,
-  not a substitute.
+  requirements. Skip when writing a spec, recording the present state of code, diagnosing a
+  defect, or sizing markets / mapping competitors / synthesizing customer evidence — research
+  is their upstream input, not a substitute.
 ---
 
 # Writing a research note
 
 A research note answers one decision-informing question by mapping the options and the evidence,
 then stops. Its job is to leave the decision space well-mapped, not to close it: the decision is
-made later, when someone lifts the findings into a spec or an ADR. Use the template at
-`advanced/research.md`; do not reinvent its sections.
+made later, when someone lifts the findings into a spec or an ADR. A research note has these sections:
+**Question · Findings (R-NNN) · Open questions · Recommendation**; do not reinvent them.
 
 The discipline is evidentiary: cite or omit. A claim that cannot survive a citation falls out of
 the document. These rules are conventions backed by review — nothing in this repository enforces
@@ -26,9 +26,9 @@ them automatically.
 ## The Researcher stance
 
 Investigate one question in depth against primary sources. Keep observation distinct from claim,
-keep your confidence honest, and refuse to let the inquiry harden into a decision. For market,
-customer, competitor, or UX-pattern breadth research, also load `market-research` from the
-suspec-skills catalog; it carries the traceable evidence synthesis rules that breadth work needs.
+keep your confidence honest, and refuse to let the inquiry harden into a decision. This guide is for
+**depth** on one question; market, customer, competitor, or UX-pattern **breadth** research is a
+different job — survey many sources, triangulate, grade confidence — and not this note.
 
 ## Rules
 
@@ -53,6 +53,13 @@ citation's authority is its source's authority; if you cite a blog, find and cit
 based on. Survey at least three independent sources — a floor, not a target; the goal is
 coverage of the option space, and a recommendation grounded in one source is a single point of
 failure.
+
+**When the question turns on empirical or scientific evidence** — study results, effect sizes,
+benchmark numbers, or "X is faster/safer/better" claims — open
+[`references/research-methodology.md`](./references/research-methodology.md) and grade each source
+by it before you cite: the source-tier ladder, the downgrade checks (small N, indirect setting,
+vendor-funded, single unreplicated result), and the predatory-/untrustworthy-venue screen. Carry
+the result into the finding's confidence (rule 4) with the reason it was downgraded.
 
 ### 4. Record each finding as R-NNN with its confidence
 
@@ -97,12 +104,27 @@ the reader back the question they came with.
 
 ## What does not belong
 
-- Requirements in any form: no AC items, no SOL blocks (`advanced/sol-reference.md`) — those belong in
-  the spec someone writes _from_ this note.
+- Requirements in any form: no AC items, no SOL blocks (see write-spec's
+  "structured (SOL) form") — those belong in the spec someone writes _from_ this note.
 - Opinion or "best practice" with no cited primary source.
 - A decision. Findings survey; they do not conclude.
 - Sources you did not actually consult.
 - Code edits — a research session is read-only on source; it produces a document.
+
+## Gotchas
+
+- **Presenting an opinion as a finding.** An R-NNN entry asserts "library X is the better fit"
+  with an evidence field that just restates the claim, no source, command, or recorded output
+  behind it. It looks like a finding because it has an id, but an id does not make it checkable;
+  the spec that later cites R-007 inherits a hunch dressed as established fact.
+- **Citing a blog without its primary source.** A finding rests on a vendor post or a
+  conference-talk recap, and the underlying RFC, paper, or benchmark it summarizes is never run
+  down or cited. A citation only carries the authority of its source — quote the secondary piece
+  and you inherit its spin, its missing caveats, and any number it got wrong in the retelling.
+- **Settling the open question instead of surfacing options.** The note quietly picks a winner —
+  "we should use X" in the body, or an Open question resolved by assertion — when its job was to
+  map the decision space and hand it over intact. The person who owns the decision never sees the
+  alternatives were live, and a choice nobody deliberated arrives looking already made.
 
 ## Before you finish
 
@@ -113,3 +135,12 @@ the reader back the question they came with.
 - [ ] Product-behavior claims were exercised, with output recorded.
 - [ ] Open questions are listed, not silently settled.
 - [ ] The recommendation names the findings it rests on — or names the open question blocking one.
+- [ ] For empirical/scientific claims, each source was graded against the methodology reference and the rejected ones are recorded.
+
+## Bundled resources
+
+- [`references/research-methodology.md`](./references/research-methodology.md) — how to grade
+  evidence when a question turns on empirical or scientific claims: the source-tier ladder
+  (OCEBM-adapted), the downgrade/upgrade checks (GRADE-adapted), the predatory-/untrustworthy-venue
+  screen, keeping observation distinct from claim, and the auditable Rejected trail. Load it at
+  rule 3 when the evidence is empirical — not needed for a plain API/feature comparison.

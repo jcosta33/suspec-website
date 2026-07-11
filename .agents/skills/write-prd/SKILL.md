@@ -4,7 +4,7 @@ type: agent-guide
 description: >-
   Write a PRD — the durable record of product intent a spec is later written from:
   the problem, who it affects, the outcomes that define success, and what is
-  deliberately out of scope. Use when new product behavior needs its "why" written
+  deliberately out of scope. ALWAYS apply when new product behavior needs its "why" written
   down before anyone drafts requirements. Never write requirements, strength words,
   or solution mechanisms into a PRD. Skip when the intent is already clear enough
   to spec directly — then write the spec.
@@ -16,7 +16,7 @@ A PRD records **what outcome is wanted and why**. The spec written from it recor
 system must do. Keeping the two apart gives every future requirement a single, citable origin:
 six months on, "why does this requirement exist?" has a file to point at instead of a memory.
 
-Copy the template at `advanced/prd.md` and fill it — this guide is how to fill it well.
+A PRD has these sections: **Problem · Users · Goals · Non-goals · Success metrics · Release constraints · Linked evidence** (walked below). Fill them — this guide is how to fill them well.
 
 ## The one boundary
 
@@ -54,9 +54,16 @@ under load" — the spec decides what "fast" means and the design decides how.
 
 ## Where it lives
 
-In the workspace, a PRD sits in the feature's folder — `specs/<feature>/prd.md` — beside the
-spec it will feed. Its frontmatter `type: prd` is what distinguishes it; the spec that follows
-names the PRD in its `sources:`.
+A PRD lives beside the spec it will feed — a flat file next to the spec artifact.
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
+Its frontmatter `type: prd` is what distinguishes it; the spec that follows names the PRD
+in its `sources:`.
 
 ## Common mistakes
 
@@ -70,6 +77,19 @@ names the PRD in its `sources:`.
   that belongs in the spec, decided there with everything else.
 - Treating the PRD as the spec — agents don't build from PRDs. A PRD acquires force only when
   someone writes the spec from it.
+
+## Gotchas
+
+- **Wrote a requirement into the PRD.** A goal phrased "the system must validate the token" is
+  a requirement wearing a goal's clothes — it reads as an approved contract nobody approved, and
+  the spec author inherits a decision instead of making one. The PRD holds the outcome ("invalid
+  sessions never reach checkout"); the spec mints the requirement.
+- **Wrote a strength word.** A single must / should / may anywhere in Goals or Problem turns
+  intent into obligation. This slips in constantly — nothing checks it for you; re-read
+  every goal as "is this a result or a rule?"
+- **Wrote the solution mechanism.** "Cache sessions in Redis" names a fix nobody weighed against
+  alternatives and pre-commits every reader to it. A PRD is the *why*, not the *what*: state the
+  outcome ("session lookups stay fast under load") and let the design choose the mechanism.
 
 ## Before you finish
 
@@ -86,7 +106,5 @@ eventual spec is who benefits.
 
 ## Next
 
-When the intent is settled, write the spec from it (the `write-spec` guide in `.agents/skills/`,
-template at `templates/spec.md`) and list this PRD in the
-spec's `sources:`. If the _approach_ is still contested, an RFC comes between the two — see
-`../write-rfc/SKILL.md`.
+When the intent is settled, write the spec from it (the `write-spec` skill) and list this PRD in the
+spec's `sources:`. If the _approach_ is still contested, an RFC comes between the two.

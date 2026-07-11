@@ -7,15 +7,15 @@ description: >-
   to report, diagnose, or root-cause a bug, regression, or unexpected behavior, even an
   intermittent one. Never write the fix, conflate symptom with cause, write new requirements, or
   finish without the verbatim failing reproduction pasted. Skip when fixing the defect (that is
-  its own task), recording the present state of an area (write-audit), or writing a spec.
+  its own task), recording the present state of a whole area, or writing a spec.
 ---
 
 # Writing a bug report
 
 A bug report is a defect record, not a remedy: symptom, reproduction, root cause, and the
 requirement the defect violates. The fix is a separate, later task — and the fixer must be able
-to patch from the report alone, with zero re-investigation. Use the template at `advanced/bug.md`; do
-not reinvent its sections. These rules are conventions backed by review — nothing in this
+to patch from the report alone, with zero re-investigation. A bug report has these sections:
+**Symptom · Reproduction · Root cause · Affected requirements**; do not reinvent them. These rules are conventions backed by review — nothing in this
 repository enforces them automatically.
 
 ## The stance
@@ -30,7 +30,7 @@ combined "diagnose-and-fix" instinct short-circuits diagnosis at the first fit.
 ### 1. Reproduce before you explain
 
 A bug is a hypothesis until reproduced. Run the reproduction (the test command from the
-workspace `AGENTS.md` Commands table, or the run command for a runtime defect — if the command
+repo's `AGENTS.md` Commands table, or the run command for a runtime defect — if the command
 is missing, ask, never guess) and confirm the symptom fires before writing a word about cause.
 If you cannot reproduce, say so and investigate the discrepancy (versions, seeds, fixtures,
 data, clock, OS) — do not speculate about a cause from a symptom you never saw fire.
@@ -101,6 +101,21 @@ tried). A claim without pasted output counts as unverified.
 - "Should reproduce" or "in theory" — either it reproduces (paste it) or it is marked
   `[unable to reproduce]` with an explanation.
 - Source edits. A bug-report session changes no code; the working-tree status proves it.
+
+## Gotchas
+
+- **Wrote the fix instead of diagnosing.** The combined "diagnose-and-fix" instinct short-circuits
+  diagnosis at the first plausible cause and ships a patch nobody verified against a reproduction.
+  A bug report ends at the root cause and the named regression test; "the function should return X"
+  is the fix task's job, not yours.
+- **Conflated symptom with root cause.** "Returns null" is where the defect surfaced, not where it
+  lives. Stated as a symptom, the cause recurs through a different path the moment the same state is
+  hit again. The root cause is file:line + what state meets what input + which caller mishandles
+  the result — anything less hands the fixer a re-investigation, not a diagnosis.
+- **Finished without the verbatim failing reproduction.** "Should reproduce" or a paraphrased
+  output is an unverified claim — the fixer re-runs exactly what you paste, and if it isn't the
+  exact command and exact fenced output with a determinism note, they isolate the bug you already
+  isolated. No paste, not finished.
 
 ## Before you finish
 
