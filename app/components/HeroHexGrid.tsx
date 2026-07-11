@@ -1,4 +1,4 @@
-// Six-step seal field — concentric instrument rings, a turning degree ring, and
+// Six-node seal field — concentric instrument rings, a turning degree ring, and
 // the six-node loop dial with its durable spine (the inscribed triangle the
 // three alternate nodes form) drawn through it. Kept as HeroHexGrid for the
 // existing import surface.
@@ -60,7 +60,7 @@ export function HeroHexGrid({ className = "" }: { className?: string }) {
           })}
         </g>
 
-        {/* the six-step loop dial */}
+        {/* the six-node loop dial */}
         <polygon
           points={LOOP_POINTS.map((p) => `${p.x},${p.y}`).join(" ")}
           stroke={GOLD}

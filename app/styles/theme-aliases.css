@@ -8,7 +8,7 @@
   /* Palette grammar:
      - core: Suspec identity, primary loop, CTAs, active nav, current step
      - evidence: verified output, review/pass states, proof-oriented sections
-     - greenfield: new repos, starter-kit setup, and first-run tutorial paths
+     - greenfield: new repos, first-install setup, and first-run tutorial paths
      - brownfield: existing-project adoption, migration, and repo-history paths
      - change: attention states, defects, and explicit change records
      - reference: docs, ledgers, command catalogs, source metadata

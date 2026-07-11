@@ -1,18 +1,20 @@
 import { useId } from "react";
 
-// The mark synthesizes the two shapes of the method: the six-step loop is the
-// hexagon; the durable spine (Spec · Run · Close) is the equilateral triangle its
-// three alternate vertices form. It is read out of the hexagon, not added. The
-// spine triangle points DOWN — its apex is Run, its base spans Spec and Close —
-// because the optional first step (Pull) sits at the top vertex, outside it. The
-// three optional steps (Pull · Task · Review) are the quiet nodes between.
+// The mark synthesizes the two shapes of the method: the loop — intent, spec,
+// implement, review, check, findings — is the hexagon; the artifact spine
+// (Spec · Review · Findings, what the loop leaves behind) is the equilateral
+// triangle its three alternate vertices form. It is read out of the hexagon,
+// not added. The spine triangle points DOWN — its apex is Review, where the
+// loop bottoms out at reconciliation — because intent, the loop's entry, sits
+// at the top vertex, outside it. The three actions between the artifacts
+// (Intent · Implement · Check) are the quiet nodes.
 const HEX: ReadonlyArray<readonly [number, number]> = [
-  [16, 4.2], // 0 — top: Pull (optional)
+  [16, 4.2], // 0 — top: Intent (action)
   [26.22, 10.1], // 1 — Spec (spine)
-  [26.22, 21.9], // 2 — Task (optional)
-  [16, 27.8], // 3 — Run (spine, apex)
-  [5.78, 21.9], // 4 — Review (optional)
-  [5.78, 10.1], // 5 — Close (spine)
+  [26.22, 21.9], // 2 — Implement (action)
+  [16, 27.8], // 3 — Review (spine, apex)
+  [5.78, 21.9], // 4 — Check (action)
+  [5.78, 10.1], // 5 — Findings (spine)
 ];
 const SPINE = [HEX[1], HEX[3], HEX[5]] as const;
 const OPTIONAL = [HEX[0], HEX[2], HEX[4]] as const;
@@ -65,7 +67,7 @@ export function Logo({ className = "" }: { className?: string }) {
           strokeLinejoin="round"
         />
 
-        {/* the three optional steps — quiet nodes between the spine */}
+        {/* the three actions — quiet nodes between the spine */}
         {OPTIONAL.map(([x, y]) => (
           <circle
             key={`opt-${x}-${y}`}

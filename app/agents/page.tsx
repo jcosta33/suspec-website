@@ -36,7 +36,7 @@ const SITE_URL = "https://suspecframework.dev";
 const AGENTS_REPOSITORY = "https://github.com/jcosta33/suspec-agents";
 const AGENTS_PAGE_URL = `${SITE_URL}/agents/`;
 const agentsDescription =
-  "suspec-agents provides Claude Code worker files for Suspec review, challenge, research, spec, audit, and docs roles; workers return evidence, not verdicts.";
+  "suspec-agents provides optional Claude Code worker files for Suspec review, challenge, research, spec, audit, and docs roles; workers return evidence, not verdicts.";
 const agentsTitle = "suspec-agents — Claude Code workers for Suspec";
 
 export const metadata: Metadata = {
@@ -76,12 +76,12 @@ const readOnly = [
   {
     agent: "suspec-reviewer",
     icon: Scale,
-    use: "review a finished task or PR, or re-run Verify items in proof-first mode",
+    use: "review a finished task or PR against its spec — re-run Verify, draft the packet, issue no verdict; proof-first mode pastes the evidence only",
   },
   {
     agent: "suspec-challenger",
     icon: Swords,
-    use: "pressure-test a proposal before build work starts",
+    use: "pressure-test a not-yet-built proposal — assumptions, the steelmanned alternative, external evidence",
   },
 ];
 
@@ -89,22 +89,22 @@ const authoring = [
   {
     agent: "suspec-spec-author",
     icon: PenTool,
-    use: "draft a spec from an intake note",
+    use: "draft a spec from an intake note — every requirement gets a Verify with: line, no smuggled implementation",
   },
   {
     agent: "suspec-researcher",
     icon: Microscope,
-    use: "research one question and write a note",
+    use: "investigate one question against primary sources and write a note — committing to no decision",
   },
   {
     agent: "suspec-auditor",
     icon: FileSearch,
-    use: "audit a code area with file:line findings",
+    use: "record a code area's present state with file:line evidence — observation, not prescription",
   },
   {
     agent: "suspec-documentarian",
     icon: ScrollText,
-    use: "draft human-facing docs",
+    use: "draft human-facing docs in one Diátaxis frame, every example run as written",
   },
 ];
 
@@ -120,20 +120,20 @@ const rosterGroups = [
         file: "suspec-reviewer",
         icon: Scale,
         signal: "evidence",
-        use: "Review a finished task or PR, or re-run Verify items in proof-first mode.",
+        use: "Review a finished task or PR against its spec — re-run Verify, draft the packet, no verdict.",
       },
       {
         label: "Challenge",
         file: "suspec-challenger",
         icon: Swords,
         signal: "muted",
-        use: "Pressure-test a proposal before build work starts.",
+        use: "Pressure-test a not-yet-built proposal before anyone commits to it.",
       },
     ],
   },
   {
     title: "Bounded-authoring lane",
-    note: "Draft one named artifact. Review still decides what it means.",
+    note: "Draft one named artifact. The verdict on it stays human.",
     tone: "write one artifact",
     signal: "muted",
     items: [
@@ -142,28 +142,28 @@ const rosterGroups = [
         file: "suspec-spec-author",
         icon: PenTool,
         signal: "core",
-        use: "Draft a spec from an intake note.",
+        use: "Draft a spec from an intake note — verifiable requirements, no smuggled implementation.",
       },
       {
         label: "Research",
         file: "suspec-researcher",
         icon: Microscope,
         signal: "reference",
-        use: "Research one question and write a note.",
+        use: "Investigate one question against primary sources — a note, no decision.",
       },
       {
         label: "Audit",
         file: "suspec-auditor",
         icon: FileSearch,
         signal: "evidence",
-        use: "Audit a code area with file:line findings.",
+        use: "Record an area's present state with file:line evidence — no prescriptions.",
       },
       {
         label: "Docs",
         file: "suspec-documentarian",
         icon: ScrollText,
         signal: "reference",
-        use: "Draft human-facing docs.",
+        use: "Draft human-facing docs — one frame, every example run as written.",
       },
     ],
   },
@@ -197,9 +197,9 @@ const laneSummary = [
     label: "Bounded authoring",
     count: "4 roles",
     files: "spec · research · audit · docs",
-    text: "Draft one named artifact; review still decides.",
+    text: "Draft one named artifact; the verdict stays human.",
     ariaLabel:
-      "Bounded authoring lane: four roles, spec, research, audit, and docs. Draft one named artifact; review still decides.",
+      "Bounded authoring lane: four roles, spec, research, audit, and docs. Draft one named artifact; the verdict stays human.",
     signal: "core",
   },
 ] as const satisfies Array<{
@@ -215,7 +215,8 @@ const laneSummary = [
 const delegationContract = [
   {
     label: "Input",
-    value: "Task, spec, PR, or focused question.",
+    value:
+      "The spec — plus the task packet when work is split — handed by explicit full path. Nothing is discovered or inferred.",
   },
   {
     label: "Scope",
@@ -223,11 +224,11 @@ const delegationContract = [
   },
   {
     label: "Output",
-    value: "Evidence, draft text, or notes that a reviewer can inspect.",
+    value: "Evidence, a draft artifact, or a review packet a human can inspect.",
   },
   {
     label: "Gate",
-    value: "A human or team rule decides what passes.",
+    value: "A human owns the verdict. The worker never issues one.",
   },
 ] as const;
 
@@ -361,7 +362,8 @@ export default function AgentsPage() {
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Claude Code role files for review, challenge, research, spec, audit,
-            and docs work. They return evidence, not verdicts.
+            and docs work. They return evidence, not verdicts — and they are
+            optional: the methodology ships in the skills and runs without them.
           </p>
           <HeroTrace
             ariaLabel="Agent role trace"
@@ -565,6 +567,14 @@ export default function AgentsPage() {
             These drop Edit/Write from the tool list. The guard narrows shell
             writes. It is not a sandbox.
           </p>
+          <p className="mt-4 text-concrete-400">
+            A reviewer never reviews its own implementation, and its packet has
+            a deterministic floor:{" "}
+            <code className="text-suspec-yellow">
+              suspec check &lt;review&gt; --spec &lt;spec&gt;
+            </code>{" "}
+            reconciles the facts a packet cannot fake.
+          </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Badge variant="draft">review required</Badge>
             <Badge variant="unverified">toolable limits</Badge>
@@ -729,8 +739,9 @@ export default function AgentsPage() {
             When role files help
           </Heading>
           <p className="mt-4 text-concrete-400">
-            Use built-ins for quick passes. Use role files when the review needs
-            a repeatable scope, tool list, or delegation trace.
+            Use built-ins for quick passes. Reach for these when a fresh,
+            isolated context per role, a scoped tool list, or the delegation
+            trace earns its keep.
           </p>
           <p className="mt-6">
             <TextLink
@@ -759,10 +770,10 @@ export default function AgentsPage() {
           </div>
           <Heading className="mt-3">Claude Code first</Heading>
           <p className="mt-4 text-concrete-400">
-            <code className="text-suspec-yellow">
-              suspec agents emit --codex
-            </code>{" "}
-            generates Codex agent files from the same definitions.
+            The repo commits{" "}
+            <code className="text-suspec-yellow">.codex/</code> projections of
+            the same definitions for Codex — maintained by hand, each header
+            naming its source file.
           </p>
           <p className="mt-4 text-concrete-400">
             Tool scoping and hooks are specific to Claude Code. Other runners

@@ -23,10 +23,9 @@ const siteGraph = {
       name: "Suspec",
       url: SITE_URL,
       description:
-        "Suspec is a plain-markdown workflow for specs, tasks, reviews, findings, and evidence when teams use coding agents.",
+        "Suspec is an opinionated methodology for working with coding agents — shipped as a globally installed skill family, backed by a deterministic checker.",
       sameAs: [
         "https://github.com/jcosta33/suspec",
-        "https://github.com/jcosta33/suspec-starter-kit",
         "https://github.com/jcosta33/suspec-skills",
         "https://github.com/jcosta33/suspec-agents",
         "https://github.com/jcosta33/suspec-cli",
@@ -69,9 +68,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://suspecframework.dev"),
-  title: "Suspec — spec and review workflow",
+  title: "Suspec — spec and review discipline, shipped as skills",
   description:
-    "Suspec is a plain-markdown workflow for specs, tasks, reviews, findings, and evidence when teams use coding agents.",
+    "Suspec is an opinionated methodology for working with coding agents — shipped as a globally installed skill family, backed by a deterministic checker.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -89,7 +88,7 @@ export const metadata: Metadata = {
         url: "/og-home.png",
         width: 1200,
         height: 630,
-        alt: "Suspec — spec and review workflow",
+        alt: "Suspec — spec and review discipline, shipped as skills",
       },
     ],
   },

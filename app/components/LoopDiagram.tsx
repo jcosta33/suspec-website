@@ -4,7 +4,7 @@ import {
   ListChecks,
   Terminal,
   ScanEye,
-  GitMerge,
+  BookMarked,
   RotateCcw,
 } from "lucide-react";
 import { SignalPulse } from "./SignalPulse";
@@ -12,48 +12,47 @@ import { SignalPulse } from "./SignalPulse";
 const steps = [
   {
     number: "01",
-    label: "Pull",
+    label: "Intent",
     icon: Inbox,
     optional: true,
     description:
-      "Point the spec's sources at the origin, or capture the raw request verbatim in an intake file first.",
+      "Capture the raw request verbatim before it gets paraphrased away. Most passes skip straight to the spec.",
   },
   {
     number: "02",
     label: "Spec",
     icon: FileText,
     description:
-      "State the requirements one per id, each with the check that verifies it. The spec is the unit.",
+      "State intent as verifiable requirements, one per id, each with a Verify with: line. A trivial fix gets one inline line, no file.",
   },
   {
     number: "03",
-    label: "Task",
-    icon: ListChecks,
-    optional: true,
+    label: "Implement",
+    icon: Terminal,
     description:
-      "When one spec splits into parallel slices, hand each agent a bounded packet. Most work needs none.",
+      "Your agent writes the code, runs every verify command, and pastes the real output beside each requirement.",
   },
   {
     number: "04",
-    label: "Run",
-    icon: Terminal,
+    label: "Review",
+    icon: ScanEye,
     description:
-      "The worker implements the spec, runs every check, and pastes the real output beside each requirement.",
+      "An independent reviewer — never the implementer — reconciles the evidence against the spec. Empty evidence is Unverified, never Pass.",
   },
   {
     number: "05",
-    label: "Review",
-    icon: ScanEye,
+    label: "Check",
+    icon: ListChecks,
     optional: true,
     description:
-      "A non-implementer checks the evidence per requirement; the full review packet is reserved for substantial changes.",
+      "Optional reinforcement: suspec check reports the facts a lazy review cannot fake. Exit codes are the API; it never renders a verdict.",
   },
   {
     number: "06",
-    label: "Close",
-    icon: GitMerge,
+    label: "Findings",
+    icon: BookMarked,
     description:
-      "Merge, record the decision, save any durable finding, and update the board. Close feeds the next pull.",
+      "Keep what the pass taught. Durable lessons become native harness memories, decisions become ADRs, behavior becomes tests.",
   },
 ] as const;
 
@@ -68,7 +67,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
     };
   });
   const sealPath = sealPoints.map((point) => `${point.x},${point.y}`).join(" ");
-  // The durable spine — Spec (02), Run (04), Close (06) — the inscribed triangle.
+  // The durable spine — Spec (02), Review (04), Findings (06) — the inscribed triangle.
   const spineSeal = [sealPoints[1], sealPoints[3], sealPoints[5]]
     .map((point) => `${point.x},${point.y}`)
     .join(" ");
@@ -90,7 +89,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
           <svg
             viewBox="0 0 100 100"
             className="h-full w-full"
-            aria-label="Suspec loop seal: the Spec-Run-Close spine inscribed in the six-step hexagon"
+            aria-label="Suspec loop seal: the Spec-Review-Findings spine inscribed in the six-step hexagon"
             role="img"
           >
             <circle
@@ -152,8 +151,9 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
               strokeLinejoin="round"
             />
             <circle cx="50" cy="50" r="2.2" fill="var(--color-aurum)" />
-            {sealPoints.map((point) => {
-              const isSpine = !("optional" in point && point.optional);
+            {sealPoints.map((point, index) => {
+              // Spine vertices: Spec (02), Review (04), Findings (06) — indices 1, 3, 5.
+              const isSpine = index % 2 === 1;
 
               return (
                 <g key={point.label} opacity={isSpine ? 1 : 0.48}>
@@ -187,7 +187,8 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
           </h2>
           <p className="mt-3 max-w-full text-sm leading-relaxed text-concrete-400 sm:max-w-2xl">
             Six steps around the hexagon; the inscribed triangle is the spine —
-            Spec, Run, Close. Each pass leaves a file the next step can use.
+            Spec, Review, Findings. What a pass leaves behind: intent stated,
+            evidence reconciled, lessons kept.
           </p>
         </div>
       </div>
@@ -259,7 +260,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
       </ol>
       <p className="flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-widest text-concrete-100">
         <RotateCcw className="h-4 w-4" aria-hidden="true" />
-        Close feeds the next Pull — the loop closes
+        Findings feed the next spec — the loop closes
       </p>
     </div>
   );

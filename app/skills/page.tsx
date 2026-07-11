@@ -4,23 +4,34 @@ import {
   Bug,
   ClipboardCheck,
   Compass,
+  FileCheck,
   FileCode,
+  FileText,
   Files,
+  FlaskConical,
   FolderSearch,
+  Gauge,
   GitPullRequest,
   Glasses,
   Hammer,
   Layers,
+  Lightbulb,
+  Lock,
+  Map,
   Puzzle,
+  RefreshCw,
   Rocket,
+  Route,
   Save,
   Scale,
   ScanSearch,
+  Shield,
   ShieldCheck,
   Split,
   Swords,
   Target,
   Terminal,
+  TrendingUp,
   Zap,
 } from "lucide-react";
 import { Section } from "../components/Section";
@@ -44,11 +55,11 @@ import { canonicalAlternates } from "../seo";
 
 const SITE_URL = "https://suspecframework.dev";
 const SKILLS_REPOSITORY = "https://github.com/jcosta33/suspec-skills";
-const STARTER_KIT_REPOSITORY = "https://github.com/jcosta33/suspec-starter-kit";
+const SKILLS_CLI = "https://github.com/vercel-labs/skills";
 const SKILLS_PAGE_URL = `${SITE_URL}/skills/`;
 const skillsDescription =
-  "Agent guide index for suspec-skills and the Suspec-coupled starter kit.";
-const skillsTitle = "suspec-skills — agent guide catalog for Suspec";
+  "The Suspec methodology as a globally installed skill family, plus universal engineering disciplines. Plain markdown, any agent.";
+const skillsTitle = "suspec-skills — the Suspec methodology as skills";
 
 export const metadata: Metadata = {
   title: skillsTitle,
@@ -72,62 +83,154 @@ export const metadata: Metadata = {
   alternates: canonicalAlternates("/skills/"),
 };
 
-const catalogInstallCommand = "npx skills add jcosta33/suspec-skills";
+const catalogInstallCommand = "npx skills add jcosta33/suspec-skills -g";
+const singleSkillInstallCommand =
+  "npx skills add jcosta33/suspec-skills --skill revolver-review -g";
 
-// Tier 1 — the universal catalog (suspec-skills). Framework-free disciplines and
-// methods, installable into any repo via `npx skills` with zero Suspec knowledge.
+// Every skill row links into the catalog repo.
 const catalogRepo = `${SKILLS_REPOSITORY}/tree/main/skills`;
 
-// Market / review methods in the catalog.
-const methods = [
+// Group 1a — the Suspec methodology: the six skills that run the loop.
+const loopSkills = [
   {
-    skill: "adversarial-review",
-    icon: Swords,
-    use: "review another agent's work refute-by-default",
+    skill: "write-spec",
+    icon: FileText,
+    use: "turn intent into verifiable requirements, one Verify line per AC",
   },
   {
-    skill: "persona-challenger",
-    icon: Scale,
-    use: "pressure-test a proposal before build work starts",
+    skill: "spec-check",
+    icon: ClipboardCheck,
+    use: "check a spec against the checks contract before work is cut",
   },
   {
-    skill: "market-research",
-    icon: FolderSearch,
-    use: "synthesize market and UX-pattern evidence",
+    skill: "split-work",
+    icon: Split,
+    use: "cut task packets that cover every requirement exactly once",
   },
   {
-    skill: "empirical-proof",
+    skill: "implement-task",
+    icon: Terminal,
+    use: "implement a task packet in scope, real output pasted",
+  },
+  {
+    skill: "review-output",
     icon: ShieldCheck,
-    use: "back completion claims with pasted output",
+    use: "review finished work against its spec, refute by default",
   },
   {
-    skill: "security-review",
-    icon: ScanSearch,
-    use: "audit a change for security exposure",
-  },
-  {
-    skill: "debugging",
-    icon: Bug,
-    use: "find a defect's root cause from runtime evidence",
+    skill: "save-findings",
+    icon: Save,
+    use: "keep what a run taught as native harness memories",
   },
 ];
 
-// Working disciplines in the catalog — the everyday methods.
-const disciplines = [
+// Group 1b — the Suspec methodology: the other typed artifacts, plus
+// per-kind implementation depth.
+const artifactSkills = [
   {
-    skill: "codebase-exploration",
-    icon: Compass,
-    use: "map an unfamiliar codebase before changing it",
+    skill: "write-prd",
+    icon: Lightbulb,
+    use: "capture the product problem before any spec exists",
   },
   {
-    skill: "planning-spec",
-    icon: Target,
-    use: "plan a non-trivial change before fanning out",
+    skill: "write-rfc",
+    icon: Scale,
+    use: "argue a contested approach, decision request included",
   },
   {
-    skill: "git-pr",
-    icon: GitPullRequest,
-    use: "ship a change end to end as a clean PR",
+    skill: "write-research",
+    icon: FolderSearch,
+    use: "build an evidence base for one open question",
+  },
+  {
+    skill: "write-audit",
+    icon: ScanSearch,
+    use: "record the present state of a code area, no prescriptions",
+  },
+  {
+    skill: "write-inventory",
+    icon: Map,
+    use: "map what exists before a rewrite or migration",
+  },
+  {
+    skill: "write-change-plan",
+    icon: Route,
+    use: "plan a structural transformation with waves and rollback",
+  },
+  {
+    skill: "write-bug-report",
+    icon: Bug,
+    use: "diagnose a defect to root cause, reproduction pasted",
+  },
+  {
+    skill: "write-feature",
+    icon: Rocket,
+    use: "add net-new capability, patterns surveyed first",
+  },
+  {
+    skill: "write-fix",
+    icon: Hammer,
+    use: "repair a diagnosed defect with a minimal change",
+  },
+  {
+    skill: "write-refactor",
+    icon: Layers,
+    use: "restructure without behavior change, equivalence proven",
+  },
+  {
+    skill: "write-rewrite",
+    icon: FileCode,
+    use: "replace an implementation wholesale, delta table driven",
+  },
+  {
+    skill: "write-migration",
+    icon: Files,
+    use: "move callers across a boundary with a rollback path",
+  },
+  {
+    skill: "write-performance",
+    icon: Gauge,
+    use: "chase a measured target, baseline pasted first",
+  },
+  {
+    skill: "write-testing",
+    icon: FlaskConical,
+    use: "author tests that are proven able to fail",
+  },
+  {
+    skill: "write-documentation",
+    icon: Glasses,
+    use: "write human-facing docs, every example run",
+  },
+];
+
+// Group 2 — universal disciplines. Framework-free; each stands alone in
+// any repo with zero Suspec knowledge.
+const universalSkills = [
+  {
+    skill: "persona-challenger",
+    icon: Swords,
+    use: "pressure-test a proposal before it is built",
+  },
+  {
+    skill: "market-research",
+    icon: TrendingUp,
+    use: "synthesize market and UX-pattern evidence, confidence graded",
+  },
+  {
+    skill: "bulletproof",
+    icon: Shield,
+    use: "harden an important claim or plan before it ships",
+  },
+  {
+    skill: "revolver-review",
+    icon: RefreshCw,
+    use: "rotate adversarial stances until a change reviews clean",
+  },
+  {
+    skill: "empirical-proof",
+    icon: FileCheck,
+    use: "bind every completion claim to pasted output",
   },
   {
     skill: "concise-output",
@@ -137,143 +240,95 @@ const disciplines = [
   {
     skill: "fix-flaky-test",
     icon: Puzzle,
-    use: "stabilize an intermittent test",
-  },
-];
-
-// Tier 2 — the Suspec kit (ships in suspec-starter-kit/.agents/skills/). Every
-// skill that operates a Suspec concept; not installable framework-free.
-const kitRepo =
-  `${STARTER_KIT_REPOSITORY}/tree/main/.agents/skills`;
-
-const kitSkills = [
-  {
-    skill: "implement-task",
-    icon: Terminal,
-    use: "implement a Suspec spec or task packet",
+    use: "fix the cause of an intermittent test, not the assertion",
   },
   {
-    skill: "review-output",
-    icon: ShieldCheck,
-    use: "build the review packet for a finished run",
+    skill: "codebase-exploration",
+    icon: Compass,
+    use: "map an unfamiliar codebase before changing it",
   },
   {
-    skill: "spec-check",
-    icon: ClipboardCheck,
-    use: "check a spec against the core checks",
-  },
-  {
-    skill: "split-work",
-    icon: Split,
-    use: "split a spec into non-colliding task packets",
-  },
-  {
-    skill: "save-findings",
-    icon: Save,
-    use: "save what a run taught as findings",
-  },
-  {
-    skill: "write-feature",
-    icon: Rocket,
-    use: "add new behavior",
-  },
-  {
-    skill: "write-fix",
+    skill: "debugging",
     icon: Bug,
-    use: "fix a reproduced defect",
+    use: "find a defect's root cause from runtime evidence",
   },
   {
-    skill: "write-refactor",
-    icon: Layers,
-    use: "restructure without changing behavior",
+    skill: "security-review",
+    icon: Lock,
+    use: "review a risk-bearing change by data flow, not string-matching",
   },
   {
-    skill: "write-rewrite",
-    icon: FileCode,
-    use: "rewrite with a recorded behavior change",
+    skill: "git-pr",
+    icon: GitPullRequest,
+    use: "ship a change end to end as a clean PR",
   },
   {
-    skill: "write-migration",
-    icon: Files,
-    use: "move from one API to another",
-  },
-  {
-    skill: "write-performance",
-    icon: Zap,
-    use: "improve a measured bottleneck",
-  },
-  {
-    skill: "write-testing",
+    skill: "planning-spec",
     icon: Target,
-    use: "add focused tests",
-  },
-  {
-    skill: "write-documentation",
-    icon: Glasses,
-    use: "write human-facing docs",
+    use: "plan a non-trivial change and get a human go first",
   },
 ];
 
 const skillRoutes = [
   {
-    label: "Review catalog",
-    href: "#review-guides",
-    tag: "method guides",
-    icon: ShieldCheck,
-    text: "Judgment, evidence, market research, security, and debugging methods.",
-    signal: "evidence",
-  },
-  {
-    label: "Method catalog",
-    href: "#change-guides",
-    tag: "work guides",
-    icon: Hammer,
-    text: "Exploration, planning, PRs, concision, and flaky tests.",
+    label: "The core loop",
+    href: "#loop-skills",
+    tag: "methodology",
+    icon: Target,
+    text: "Spec, check, split, implement, review, findings — the six skills that run the loop.",
     signal: "core",
   },
   {
-    label: "Suspec-coupled kit",
-    href: "#kit-skills",
-    tag: "loop guides",
-    icon: Puzzle,
-    text: "Loop-specific guides that ship with suspec-starter-kit.",
+    label: "Artifacts & depth",
+    href: "#artifact-skills",
+    tag: "methodology",
+    icon: FileText,
+    text: "Authoring the other typed artifacts, plus per-kind implementation depth.",
     signal: "reference",
+  },
+  {
+    label: "Universal disciplines",
+    href: "#universal-skills",
+    tag: "framework-free",
+    icon: ShieldCheck,
+    text: "Review methods, evidence disciplines, and code-lifecycle fundamentals for any repo.",
+    signal: "evidence",
   },
 ] as const;
 
 const selectionRules = [
   {
-    label: "Catalog",
-    text: "General methods; no Suspec workspace required.",
+    label: "Global",
+    text: "Methodology + universal disciplines. One -g install, every repo.",
   },
   {
-    label: "Kit",
-    text: "Loop guides for specs, tasks, reviews, findings.",
+    label: "Repo",
+    text: ".agents/skills/ carries only repo-specific guides.",
   },
   {
-    label: "Gate",
-    text: "Pin shared installs; keep repo commands in AGENTS.md.",
+    label: "Overlap",
+    text: "None. The two tiers never ship the same guide.",
   },
 ] as const;
 
 const skillCatalogItems = [
-  ...methods.map((item) => ({
+  ...loopSkills.map((item) => ({
     name: item.skill,
     description: item.use,
     url: `${catalogRepo}/${item.skill}`,
-    category: "Framework-free review catalog",
+    category: "Suspec methodology — the core loop",
   })),
-  ...disciplines.map((item) => ({
+  ...artifactSkills.map((item) => ({
     name: item.skill,
     description: item.use,
     url: `${catalogRepo}/${item.skill}`,
-    category: "Framework-free method catalog",
+    category: "Suspec methodology — artifacts and depth",
   })),
-  ...kitSkills.map((item) => ({
+  ...universalSkills.map((item) => ({
     name: item.skill,
     description: item.use,
-    url: `${kitRepo}/${item.skill}`,
-    category: "Suspec-coupled starter kit",
+    url: `${catalogRepo}/${item.skill}`,
+    category: "Universal disciplines",
   })),
 ];
 
@@ -281,14 +336,14 @@ const skillsPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "@id": `${SKILLS_PAGE_URL}#webpage`,
-  name: "suspec-skills agent guide catalog",
+  name: "suspec-skills catalog",
   url: SKILLS_PAGE_URL,
   description: skillsDescription,
   isPartOf: { "@id": `${SITE_URL}/#website` },
   about: { "@id": `${SKILLS_PAGE_URL}#source-code` },
   mainEntity: {
     "@type": "ItemList",
-    name: "suspec-skills guide catalog",
+    name: "suspec-skills catalog",
     itemListElement: skillCatalogItems.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -308,7 +363,7 @@ export default function SkillsPage() {
     <div className="repo-product-page skills-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
       <Section className="ambient-header">
         <PageHero
-          eyebrow="tool index / agent guides"
+          eyebrow="skill catalog / the methodology, installed"
           className="page-hero-package-skills"
           motif="catalog"
           tone="evidence"
@@ -321,16 +376,17 @@ export default function SkillsPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            General agent disciplines live in suspec-skills. Loop guides ship
-            with the starter kit; load only the guide in scope.
+            Suspec ships as a skill family: the full methodology plus universal
+            engineering disciplines, in plain markdown. One global install and
+            every repo has the loop — your repos take nothing.
           </p>
           <HeroTrace
-            ariaLabel="Skill guide trace"
+            ariaLabel="Skill catalog trace"
             items={[
-              { label: "Source", signal: "reference" },
               { label: "Install", signal: "core" },
               { label: "Load", signal: "reference" },
-              { label: "Run", signal: "reference" },
+              { label: "Act", signal: "reference" },
+              { label: "Prove", signal: "reference" },
             ]}
           />
         </PageHero>
@@ -342,11 +398,11 @@ export default function SkillsPage() {
         registerTone="reference"
         className="manifest-pair grid gap-5 lg:grid-cols-[minmax(16rem,0.68fr)_minmax(0,1.32fr)] lg:items-start"
       >
-        <h2 className="sr-only">Skill selection index</h2>
+        <h2 className="sr-only">Skill placement index</h2>
         <PaperArtifact
           label="index"
-          title="selection rule"
-          meta="catalog -> repo policy -> kit"
+          title="placement rule"
+          meta="global tier -> repo tier, never both"
           className="manifest-paper-fit lg:self-start"
         >
           <dl className="agent-delegation-contract skill-selection-contract">
@@ -367,26 +423,27 @@ export default function SkillsPage() {
           <div className="repo-manifest-grid">
             <SignalStat
               label="install"
-              value="npx skills"
+              value="npx skills -g"
               signal="evidence"
               valueClassName="font-mono text-sm uppercase text-concrete-300"
             />
             <SignalStat
-              label="kit"
-              value="starter-kit"
+              label="catalog"
+              value="33 skills"
               signal="core"
               valueClassName="font-mono text-sm uppercase text-concrete-300"
             />
             <SignalStat
-              label="policy"
+              label="commands"
               value="AGENTS.md"
               signal="reference"
               valueClassName="font-mono text-sm text-concrete-300"
             />
           </div>
           <p className="repo-manifest-note">
-            Catalog guides are framework-free; kit guides assume Suspec
-            artifacts. Skills advise; review still decides.
+            Skills name abstract command slots — cmdTest, cmdLint — and your
+            repo&apos;s AGENTS.md supplies the implementations. An empty slot
+            means ask; a skill never invents a command.
           </p>
         </Card>
       </Section>
@@ -449,28 +506,40 @@ export default function SkillsPage() {
         <h2 className="sr-only">Install suspec-skills</h2>
         <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
           <DroneIcon className="h-4 w-4" />
-          <span>skills add</span>
+          <span>skills add -g</span>
         </div>
         <Panel brushed className="p-2">
           <TerminalWindow title="terminal" copyText={catalogInstallCommand}>
+            <p className="text-concrete-500">
+              # the whole catalog, at user level — available in every repo
+            </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}npx skills add{" "}
-              jcosta33/suspec-skills
+              <span className="text-suspec-yellow">$</span>{" "}
+              {catalogInstallCommand}
+            </p>
+            <p className="mt-3 text-concrete-500"># or a single skill</p>
+            <p className="text-concrete-100">
+              <span className="text-suspec-yellow">$</span>{" "}
+              {singleSkillInstallCommand}
             </p>
           </TerminalWindow>
         </Panel>
         <p className="section-after-panel-note">
-          Adds the general catalog. Loop-specific kit files stay in{" "}
+          The{" "}
           <TextLink
-            href="https://github.com/jcosta33/suspec-starter-kit"
+            href={SKILLS_CLI}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open suspec-starter-kit on GitHub (opens in new tab)"
+            aria-label="Open the Vercel skills CLI on GitHub (opens in new tab)"
           >
-            suspec-starter-kit
-          </TextLink>
-          . Put repo commands in{" "}
-          <code className="text-suspec-yellow">AGENTS.md</code>. The{" "}
+            Vercel skills CLI
+          </TextLink>{" "}
+          installs into Claude Code, Cursor, Codex, OpenCode, and Gemini CLI.
+          No CLI? Copy the skill folders to{" "}
+          <code className="text-suspec-yellow">~/.agents/skills/</code> and{" "}
+          <code className="text-suspec-yellow">~/.claude/skills/</code>. Repo
+          commands stay in{" "}
+          <code className="text-suspec-yellow">AGENTS.md</code>; the{" "}
           <TextLink
             href="/docs/reference/agent-guides/"
             target="_blank"
@@ -479,26 +548,27 @@ export default function SkillsPage() {
           >
             agent guide docs
           </TextLink>{" "}
-          cover policy.
+          cover placement.
         </p>
       </Section>
 
       <Section
-        id="review-guides"
-        register="04 / review catalog"
-        registerTone="evidence"
+        id="loop-skills"
+        register="04 / methodology · loop"
+        registerTone="core"
         className="section-flow scroll-mt-28"
       >
         <div className="section-intro">
-          <div className="section-kicker section-kicker-evidence">
-            <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-            <span>method files</span>
+          <div className="section-kicker section-kicker-core">
+            <Target className="h-4 w-4" aria-hidden="true" />
+            <span>the core loop</span>
           </div>
-          <Heading>Market and review methods</Heading>
+          <Heading>The Suspec methodology</Heading>
           <p className="text-concrete-400">
-            General methods for judgment, evidence, market research, security,
-            and debugging. Install with{" "}
-            <code className="text-suspec-yellow">npx skills</code>.
+            The six skills that run the loop: intent to spec, spec to
+            implementation, implementation to a reviewed result, result to
+            findings worth keeping. Install globally — the methodology travels
+            with you, not with any one repo.
           </p>
           <div className="flex flex-wrap gap-2">
             <Badge variant="draft">markdown only</Badge>
@@ -506,79 +576,70 @@ export default function SkillsPage() {
           </div>
         </div>
         <SkillCatalog
-          tone="evidence"
-          skills={methods}
-          repo={catalogRepo}
-          headerLabel="suspec-skills catalog"
-          guidesLabel="guides"
-          sourcePath="skills"
-        />
-      </Section>
-
-      <Section
-        id="change-guides"
-        register="05 / catalog methods"
-        registerTone="core"
-        className="section-flow scroll-mt-28"
-      >
-        <div className="section-intro">
-          <div className="section-kicker section-kicker-core">
-            <Hammer className="h-4 w-4" aria-hidden="true" />
-            <span>change discipline</span>
-          </div>
-          <Heading>Working disciplines</Heading>
-          <p className="text-concrete-400">
-            Everyday methods for exploration, planning, PRs, concise output,
-            and flaky tests.
-          </p>
-        </div>
-        <SkillCatalog
           tone="core"
-          skills={disciplines}
+          skills={loopSkills}
           repo={catalogRepo}
           headerLabel="suspec-skills catalog"
-          guidesLabel="guides"
+          guidesLabel="skills"
           sourcePath="skills"
         />
       </Section>
 
       <Section
-        id="kit-skills"
-        register="06 / kit · suspec-coupled"
+        id="artifact-skills"
+        register="05 / methodology · artifacts"
         registerTone="reference"
         className="section-flow scroll-mt-28"
       >
         <div className="section-intro">
           <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
-            <Puzzle className="h-4 w-4" aria-hidden="true" />
-            <span>kit · suspec-coupled</span>
+            <FileText className="h-4 w-4" aria-hidden="true" />
+            <span>artifacts &amp; depth</span>
           </div>
-          <Heading>The Suspec kit</Heading>
-          <div className="section-prose-stack">
-            <p>
-              Kit guides assume Suspec artifacts: specs, task packets, reviews,
-              and findings. They ship under{" "}
-              <code className="text-suspec-yellow">.agents/skills/</code> in{" "}
-              <TextLink
-                href="https://github.com/jcosta33/suspec-starter-kit"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open suspec-starter-kit on GitHub (opens in new tab)"
-              >
-                suspec-starter-kit
-              </TextLink>
-              , not in the general catalog.
-            </p>
-          </div>
+          <Heading>Artifacts and implementation depth</Heading>
+          <p className="text-concrete-400">
+            Authoring skills for the other typed artifacts — PRDs, RFCs,
+            research notes, audits, inventories, change plans, bug reports —
+            plus per-kind execution discipline for the implementing agent.
+            Artifacts live beside your agent&apos;s own native artifacts and are
+            named by explicit path; durable value becomes native memories.
+          </p>
         </div>
         <SkillCatalog
           tone="reference"
-          skills={kitSkills}
-          repo={kitRepo}
-          headerLabel="suspec-starter-kit/.agents/skills"
-          guidesLabel="guides"
-          sourcePath=".agents/skills"
-          toned={false}
+          skills={artifactSkills}
+          repo={catalogRepo}
+          headerLabel="suspec-skills catalog"
+          guidesLabel="skills"
+          sourcePath="skills"
+        />
+      </Section>
+
+      <Section
+        id="universal-skills"
+        register="06 / universal disciplines"
+        registerTone="evidence"
+        className="section-flow scroll-mt-28"
+      >
+        <div className="section-intro">
+          <div className="section-kicker section-kicker-evidence">
+            <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+            <span>framework-free</span>
+          </div>
+          <Heading>Disciplines for any repo</Heading>
+          <p className="text-concrete-400">
+            Review methods, evidence disciplines, and code-lifecycle
+            fundamentals. Framework-free — each stands alone in any repo with
+            zero Suspec knowledge, and they install in the same global tier.
+          </p>
+        </div>
+        <SkillCatalog
+          tone="evidence"
+          skills={universalSkills}
+          repo={catalogRepo}
+          headerLabel="suspec-skills catalog"
+          guidesLabel="skills"
+          sourcePath="skills"
         />
       </Section>
 
@@ -599,8 +660,9 @@ export default function SkillsPage() {
           </div>
           <Heading className="mt-3">How to write a Suspec skill</Heading>
           <p className="mt-4 text-concrete-400">
-            Use a clear description, a self-contained body, visible output, and
-            the AGENTS.md command contract.
+            One SKILL.md per folder: a trigger description that decides when it
+            loads, numbered working rules, references one hop away, and the
+            AGENTS.md command contract.
           </p>
           <p className="mt-6">
             <TextLink
@@ -619,13 +681,14 @@ export default function SkillsPage() {
           </div>
           <Heading className="mt-3">Why there is no runtime</Heading>
           <p className="mt-4 text-concrete-400">
-            Read before installing; pin shared guides to a commit. For
-            scaffolding and checks, use{" "}
-            <TextLink href="/cli/">suspec-cli</TextLink>.
+            Skills are instructions your agent follows. Everything here is
+            plain markdown — no scripts, no network calls, no executables. Read
+            before installing; pin to a commit. The optional deterministic
+            checker is <TextLink href="/cli/">suspec-cli</TextLink>.
           </p>
           <p className="mt-6">
             <TextLink
-              href="https://github.com/jcosta33/suspec-skills"
+              href={SKILLS_REPOSITORY}
               target="_blank"
               rel="noopener noreferrer"
               touchTarget
@@ -643,11 +706,11 @@ export default function SkillsPage() {
         path="/skills/"
         repository={SKILLS_REPOSITORY}
         keywords={[
-          "agent guides",
+          "agent skills",
           "npx skills",
-          "suspec-starter-kit",
-          "review guides",
-          "implementation guides",
+          "Suspec methodology",
+          "universal disciplines",
+          "review skills",
         ]}
         catalogItems={skillCatalogItems}
       />

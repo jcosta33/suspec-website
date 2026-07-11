@@ -5,8 +5,8 @@ import {
   CheckCircle,
   ExternalLink,
   FileText,
-  GitBranch,
   ListChecks,
+  Scale,
   ScanEye,
   Shield,
   Terminal,
@@ -37,19 +37,19 @@ const softwareApp = {
   softwareVersion: "0.1.0",
   url: "https://suspecframework.dev",
   description:
-    "A plain-markdown workflow for specs, tasks, reviews, findings, and evidence when teams use coding agents.",
+    "An opinionated methodology for working with coding agents, shipped as plain-markdown skills: specs, reviews, findings, and evidence beside your agent's native artifacts.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   publisher: { "@id": "https://suspecframework.dev/#organization" },
 };
 
 export const metadata: Metadata = {
-  title: "Suspec — spec and review workflow",
+  title: "Suspec — spec and review skills for coding agents",
   description:
-    "A plain-markdown workflow for specs, tasks, reviews, findings, and evidence when teams use coding agents.",
+    "An opinionated methodology for working with coding agents, shipped as plain-markdown skills: specs, reviews, findings, and evidence beside your agent's native artifacts.",
   openGraph: {
-    title: "Suspec — spec and review workflow",
+    title: "Suspec — spec and review skills for coding agents",
     description:
-      "A plain-markdown workflow for specs, tasks, reviews, findings, and evidence when teams use coding agents.",
+      "An opinionated methodology for working with coding agents, shipped as plain-markdown skills: specs, reviews, findings, and evidence beside your agent's native artifacts.",
     type: "website",
     url: "/",
     siteName: "Suspec",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
         url: "/og-home.png",
         width: 1200,
         height: 630,
-        alt: "Suspec — spec and review workflow",
+        alt: "Suspec — spec and review skills for coding agents",
       },
     ],
   },
@@ -67,33 +67,35 @@ export const metadata: Metadata = {
 };
 
 const loopSteps = [
-  { label: "Pull", href: "/the-loop/#pull" },
+  { label: "Intent", href: "/the-loop/#intent" },
   { label: "Spec", href: "/the-loop/#spec" },
-  { label: "Task", href: "/the-loop/#task" },
-  { label: "Run", href: "/the-loop/#run" },
+  { label: "Implement", href: "/the-loop/#implement" },
   { label: "Review", href: "/the-loop/#review" },
-  { label: "Close", href: "/the-loop/#close" },
+  { label: "Check", href: "/the-loop/#check" },
+  { label: "Findings", href: "/the-loop/#findings" },
 ] as const satisfies Array<{
   label: string;
   href: string;
 }>;
 
-const heroReviewCommand = "suspec review TASK-auth-refresh";
+const heroInstallCommand = "npx skills add jcosta33/suspec-skills -g";
+
+const heroCheckCommand = "suspec check review.md --spec spec.md";
 
 const heroProofs = [
   {
     label: "Plain markdown",
-    text: "Readable in any repo.",
+    text: "No format lock-in. Readable anywhere.",
     signal: "reference",
   },
   {
     label: "Any agent",
-    text: "Bring the tool you already use.",
+    text: "One global install; your repos take nothing.",
     signal: "muted",
   },
   {
     label: "Human review",
-    text: "Checks provide evidence, not verdicts.",
+    text: "The check reports facts, never verdicts.",
     signal: "evidence",
   },
 ] as const satisfies Array<{
@@ -106,28 +108,28 @@ const failureModes = [
   {
     code: "INTAKE",
     title: "Vague tickets",
-    text: "Keep the request. Turn it into checkable requirements.",
+    text: "Capture the request verbatim. Turn it into verifiable requirements.",
     accent: "reference",
     lamp: "reference",
   },
   {
     code: "SCOPE",
     title: "Agent drift",
-    text: "Name the files, limits, and checks before the run starts.",
+    text: "The spec names the requirements and non-goals before the agent starts.",
     accent: "change",
     lamp: "change",
   },
   {
     code: "EVIDENCE",
     title: "Unbacked completion",
-    text: "A Pass needs output, a CI link, or a named observation.",
+    text: "“Tests passed” without output is not evidence. Empty evidence reads Unverified.",
     accent: "evidence",
     lamp: "evidence",
   },
   {
-    code: "LEDGER",
-    title: "Lost findings",
-    text: "Save useful lessons so later tasks can reuse them.",
+    code: "FINDINGS",
+    title: "Lost lessons",
+    text: "Durable findings become native harness memories the next pass can use.",
     accent: "reference",
     lamp: "reference",
   },
@@ -144,28 +146,28 @@ const features = [
     icon: FileText,
     title: "Spec-first",
     label: "spec",
-    text: "Write the contract. Hand the agent bounded scope.",
+    text: "State intent as requirements, each with a Verify with: line.",
     accent: "core",
   },
   {
     icon: ScanEye,
-    title: "Review by exception",
+    title: "Independent review",
     label: "review",
-    text: "Show evidence per requirement. Escalate the gaps.",
+    text: "Evidence reconciled per requirement. The reviewer is never the implementer.",
     accent: "evidence",
   },
   {
-    icon: GitBranch,
-    title: "Worktree discipline",
-    label: "branch",
-    text: "One bounded change, one branch, one diff to inspect.",
+    icon: Scale,
+    title: "Proportional rigor",
+    label: "rigor",
+    text: "A trivial fix gets a one-line inline spec — no file at all.",
     accent: "muted",
   },
   {
     icon: Shield,
-    title: "Honesty framework",
-    label: "limits",
-    text: "Mark what is convention, checklist, toolable, or enforced.",
+    title: "Honesty floor",
+    label: "check",
+    text: "An optional deterministic check reports facts a lazy review cannot fake.",
     accent: "reference",
   },
 ] as const;
@@ -173,19 +175,23 @@ const features = [
 const faqs = [
   {
     q: "Is Suspec an agent?",
-    a: "No. Your coding tool writes code. Suspec structures the work around it.",
+    a: "No. Your coding tool writes the code. Suspec is a skill family that shapes the work around it.",
   },
   {
     q: "Does Suspec decide whether code ships?",
-    a: "No. Checks produce evidence. Review decides what it means.",
+    a: "No. suspec check reports facts. The human owns the review result — Pass, Fail, Unverified, or Blocked.",
   },
   {
     q: "Do I need the CLI?",
-    a: "No. Suspec works as markdown. The CLI handles setup and checks.",
+    a: "No. Suspec works as plain markdown, and every step keeps a by-hand path. suspec check is optional reinforcement — the honesty floor.",
+  },
+  {
+    q: "Where do the artifacts live?",
+    a: "Beside your agent's native artifacts, in a folder named after the repo being worked on. Every step names them by explicit path; they are never committed to your repo.",
   },
   {
     q: "Why the seal?",
-    a: "The six points are the six steps: Pull, Spec, Task, Run, Review, Close.",
+    a: "The six points are the six steps: Intent, Spec, Implement, Review, Check, Findings. The inscribed triangle is what a pass leaves behind: Spec, Review, Findings.",
   },
 ];
 
@@ -256,16 +262,17 @@ export default function HomePage() {
         <HeroHexGrid />
         <Section className="ambient-header relative z-10">
           <PageHero
-            eyebrow="workflow / six steps"
+            eyebrow="methodology / shipped as skills"
             motif="loop"
             titleSize="default"
             title="Show, not tell."
           >
             <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-100">
-              Structured agent work, checked at every step.
+              An opinionated methodology for coding agents, shipped as skills.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
-              Define the work, run agents, verify outputs, keep the evidence.
+              State the intent, reconcile the evidence, keep the findings.
+              Your agent writes the code.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button asChild className="w-full max-w-72 sm:w-auto sm:max-w-none">
@@ -288,6 +295,12 @@ export default function HomePage() {
                 <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
               </ActionLink>
             </div>
+            <p className="mx-auto mt-6 flex max-w-2xl flex-wrap items-center justify-center gap-2 font-mono text-sm text-concrete-100">
+              <span className="text-signal-core" aria-hidden="true">
+                $
+              </span>
+              <code className="break-all">{heroInstallCommand}</code>
+            </p>
             <HeroProofStrip />
           </PageHero>
 
@@ -300,39 +313,41 @@ export default function HomePage() {
                       loop preview
                     </p>
                     <h2 className="mt-1 font-heading text-xl font-bold text-concrete-100 sm:text-2xl">
-                      One run, six records.
+                      One pass, nothing on faith.
                     </h2>
                   </div>
                   <Badge variant="ready">ready</Badge>
                 </div>
                 <StepRail />
                 <TerminalWindow
-                  title="suspec status"
-                  copyText={heroReviewCommand}
+                  title="suspec check"
+                  copyText={heroCheckCommand}
                   copyLabel="Copy command"
                   className="mt-4"
                 >
-                  <p className="text-concrete-500"># current run</p>
+                  <p className="text-concrete-500"># the honesty floor</p>
                   <p>
-                    <span className="text-signal-core">$</span> suspec review
-                    <wbr /> TASK-auth-refresh
+                    <span className="text-signal-core">$</span> suspec check
+                    <wbr /> review.md --spec spec.md
                   </p>
-                  <p className="mt-2 text-signal-evidence">
-                    PASS AC-001 — output pasted
+                  <p className="mt-2 text-signal-change">
+                    C016 pass-needs-evidence — AC-002 marked Pass, evidence
+                    cell empty
                   </p>
-                  <p className="hidden text-signal-change md:block">
-                    UNVERIFIED AC-002 — manual resize pending
+                  <p className="hidden text-signal-evidence md:block">
+                    C012 coverage — all in-scope requirements have coverage
+                    rows
                   </p>
                   <p className="hidden text-concrete-400 md:block">
-                    HUMAN ATTENTION — retry.ts changed outside scope
+                    exit 2 — blocking. Facts only; the result stays yours.
                   </p>
                 </TerminalWindow>
               </div>
 
               <PaperArtifact
                 label="review"
-                title="REVIEW-auth-refresh"
-                meta="review packet / example"
+                title="review.md"
+                meta="~/.claude/projects/acme-api/ · review packet"
                 className="home-hero-artifact"
               >
                 <p>
@@ -345,10 +360,10 @@ export default function HomePage() {
                   AC-002 <span className="paper-stamp ml-2">unverified</span>
                 </p>
                 <p className="text-pencil">
-                  Evidence missing. Human attention required before merge.
+                  Evidence cell empty. Unverified, never Pass.
                 </p>
                 <p className="mt-4 border-t border-ink/20 pt-3 text-pencil">
-                  No evidence, no Pass.
+                  No evidence, no Pass. The human owns the result.
                 </p>
               </PaperArtifact>
             </div>
@@ -370,8 +385,8 @@ export default function HomePage() {
               Make review visible.
             </h2>
             <p className="mt-4 text-concrete-400">
-              A useful run leaves a trail: request, scope, checks, evidence,
-              and findings.
+              A useful pass leaves a trail: intent, scope, verify commands,
+              evidence, and findings.
             </p>
           </div>
           <ol className="review-signal-rail" aria-label="Review signal path">
@@ -409,11 +424,11 @@ export default function HomePage() {
           <div className="max-w-2xl">
             <Eyebrow>workflow / six steps</Eyebrow>
             <h2 className="mt-4 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
-              The loop is the product.
+              The least structure that changes execution.
             </h2>
             <p className="mt-4 text-concrete-400">
-              Pull, Spec, Task, Run, Review, Close. Each step writes or checks a
-              record.
+              Intent, Spec, Implement, Review, Check, Findings. Two of the six
+              are optional — most changes stop at a one-line inline spec.
             </p>
           </div>
           <LoopDiagram />
@@ -428,20 +443,21 @@ export default function HomePage() {
         >
           <div>
             <Eyebrow icon={<CheckCircle className="h-4 w-4" aria-hidden="true" />}>
-              review packet / example
+              spec / example
             </Eyebrow>
             <h2 className="mt-4 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
               Put evidence next to the claim.
             </h2>
             <p className="mt-4 text-concrete-400">
-              Specs and reviews are working records. Keep commands, notes, and
-              results in the same place.
+              Specs and reviews are transient working files, handed around by
+              explicit path. Commands, evidence, and results stay in the same
+              place; code stays king.
             </p>
           </div>
           <PaperArtifact
             label="spec"
-            title="SPEC-auth-refresh"
-            meta="spec example / acceptance criterion"
+            title="spec.md"
+            meta="~/.claude/projects/acme-api/ · acceptance criterion"
           >
             <p>AC-003 — Expired refresh token redirects to login</p>
             <p className="mt-3 text-pencil">
@@ -450,7 +466,9 @@ export default function HomePage() {
             </p>
             <p className="mt-3">
               Verify with:{" "}
-              <span className="font-semibold">auth-refresh-expired.test</span>
+              <span className="font-semibold">
+                npm test -- auth-refresh-expired
+              </span>
             </p>
           </PaperArtifact>
         </Section>
@@ -468,8 +486,9 @@ export default function HomePage() {
               What Suspec adds.
             </h2>
             <p className="mt-4 text-concrete-400">
-              A few records and boundaries around the agent: spec, review,
-              branch, and explicit limits.
+              A few working files beside your agent&apos;s native artifacts — the
+              spec, the optional task split, the review packet, the findings —
+              named by explicit path, never committed to your repo.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -545,8 +564,8 @@ export default function HomePage() {
             Start with one spec.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-concrete-400">
-            Copy the kit, write one contract, run one bounded change, review
-            the evidence.
+            Install the skills globally, write one spec, implement one bounded
+            change, review the evidence. Trivial fixes need one inline line.
           </p>
           <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Button asChild className="w-full sm:w-auto">
@@ -556,13 +575,13 @@ export default function HomePage() {
               </Link>
             </Button>
             <ActionLink
-              href="https://github.com/jcosta33/suspec-starter-kit"
+              href="https://github.com/jcosta33/suspec-skills"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Copy the kit from GitHub (opens in new tab)"
+              aria-label="View the skills catalog on GitHub (opens in new tab)"
               className="w-full sm:w-auto"
             >
-              Copy the kit
+              View the skills catalog
             </ActionLink>
           </div>
         </Section>

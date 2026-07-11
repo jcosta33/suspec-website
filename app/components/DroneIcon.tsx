@@ -8,11 +8,11 @@ const points = [
   [6, 21],
   [6, 11],
 ];
-// The durable spine (Spec · Run · Close) — the downward triangle the alternate
-// vertices form; its apex is Run, and the optional first step sits at the top.
+// The artifact spine (Spec · Review · Findings) — the downward triangle the alternate
+// vertices form; its apex is Review, and intent, the entry, sits at the top.
 const spine = [points[1], points[3], points[5]];
 
-// The loop mark: the six-step hexagon with its spine triangle inscribed. Echoes the
+// The loop mark: the six-node loop hexagon with its spine triangle inscribed. Echoes the
 // wordmark Logo; used inline as a section glyph. Strokes inherit currentColor.
 export function DroneIcon({ className = "", style }: { className?: string; style?: CSSProperties }) {
   return (

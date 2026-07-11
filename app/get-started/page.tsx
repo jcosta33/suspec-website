@@ -4,10 +4,9 @@ import {
   ArrowRight,
   BookOpen,
   ClipboardList,
+  Download,
   FileText,
-  FolderPlus,
-  FolderTree,
-  LayoutTemplate,
+  PenLine,
   ScrollText,
   Terminal,
   Wrench,
@@ -22,21 +21,15 @@ import { PaperArtifact } from "../components/PaperArtifact";
 import { TextLink } from "../components/TextLink";
 import { PageHero } from "../components/PageHero";
 import { HeroTrace } from "../components/HeroTrace";
-import { PilotLamp } from "../components/PilotLamp";
-import { SignalKey } from "../components/SignalKey";
-import { CopyButton } from "../components/CopyButton";
 import { JsonLd } from "../components/JsonLd";
-import {
-  setupPathSignalKey,
-  signalRoles,
-  type SignalRole,
-} from "../components/signalStyles";
+import { signalRoles, type SignalRole } from "../components/signalStyles";
+import { CopyButton } from "../components/CopyButton";
 import { canonicalAlternates } from "../seo";
 
 const SITE_URL = "https://suspecframework.dev";
 const getStartedDescription =
-  "Set up Suspec with the starter kit, adopt it in an existing repo, and add the optional CLI only when you need scaffolding or checks.";
-const getStartedTitle = "Get started with Suspec — starter kit and CLI";
+  "Adopt Suspec with one global skills install — nothing lands in your repo. Add the optional CLI for the deterministic checks, then run the loop once on a small change.";
+const getStartedTitle = "Get started with Suspec — one install";
 
 export const metadata: Metadata = {
   title: getStartedTitle,
@@ -53,14 +46,16 @@ export const metadata: Metadata = {
         url: "/og-get-started.png",
         width: 1200,
         height: 630,
-        alt: "Get started with Suspec — a new repo or an existing project",
+        alt: "Get started with Suspec — one install, nothing lands in your repo",
       },
     ],
   },
   alternates: canonicalAlternates("/get-started/"),
 };
 
-const cliInitCommands = [
+const skillsInstallCommand = "npx skills add jcosta33/suspec-skills -g";
+
+const cliInstallCommands = [
   "HOST=github.com/jcosta33",
   "PKG=suspec-cli",
   "SRC=$HOST/$PKG.git",
@@ -69,11 +64,9 @@ const cliInitCommands = [
   "npm install",
   "npm run build",
   "npm link",
-  "suspec init",
-  "suspec check",
+  "suspec check ./spec.md",
 ].join("\n");
 
-const manualCopyCommand = "cp -R path/to/suspec-starter-kit/. <project>-works/";
 const getStartedUrl = `${SITE_URL}/get-started/`;
 
 function getStartedSectionUrl(href: string) {
@@ -100,56 +93,51 @@ function KitIcon({
   );
 }
 
-const kitContents = [
+const loopSteps = [
   {
-    name: "AGENTS.md",
-    role: "local contract",
-    text: "The file your agent reads before work starts.",
+    name: "Spec",
+    role: "intent stated",
+    text: "Author it through the skill: requirements with AC-NNN ids, a Verify with: line each, non-goals. Place it beside your native artifacts and carry the full path forward.",
     icon: ScrollText,
   },
   {
-    name: "Core guides",
-    role: "working method",
-    text: "Write specs, run tasks, review output, save findings.",
-    icon: BookOpen,
+    name: "Lint",
+    role: "optional check",
+    text: "suspec check <spec-path> — exit 0 clean, 1 warning, 2 blocking.",
+    icon: Terminal,
   },
   {
-    name: "Templates",
-    role: "record shapes",
-    text: "Intake, spec, task, review, finding, status, inventory, change plan, ADR.",
-    icon: LayoutTemplate,
+    name: "Implement",
+    role: "evidence in",
+    text: "Your agent works from the spec by path, runs every verify command, and pastes real output.",
+    icon: Wrench,
   },
   {
-    name: "Flow folders",
-    role: "workspace map",
-    text: "Specs, tasks, reviews, findings, and related folders.",
-    icon: FolderTree,
-  },
-  {
-    name: "status.md",
-    role: "active board",
-    text: "A small workboard for active items.",
+    name: "Review",
+    role: "independent eyes",
+    text: "A reviewer who didn't write the code builds the packet, then: suspec check <review-path> --spec <spec-path>.",
     icon: ClipboardList,
   },
   {
-    name: "decisions/",
-    role: "local ADRs",
-    text: "Decision records for choices that should survive chat.",
-    icon: FileText,
+    name: "Keep",
+    role: "what survives",
+    text: "A durable lesson becomes a native harness memory, a decision an ADR, a defect an issue.",
+    icon: BookOpen,
   },
 ];
 
-function StarterKitContentsNote({ className = "" }: { className?: string }) {
+function SpecPlacementNote({ className = "" }: { className?: string }) {
   return (
     <div className={`copy-section-support flex flex-col gap-4 ${className}`}>
       <PaperArtifact
         label="note"
-        title="starter kit contents"
-        meta="workspace / committed artifacts"
+        title="where the spec lives"
+        meta="beside your native artifacts / by explicit path"
       >
         <p>
-          Local rules, record templates, flow folders, and the board. Copy once;
-          keep the edits in repo.
+          The same place your harness keeps its plans, notes, and memories, in
+          a folder named after the repo. You choose the exact spot; every
+          later step names the file by its full path.
         </p>
       </PaperArtifact>
       <p className="copy-section-note text-concrete-400">
@@ -169,39 +157,39 @@ function StarterKitContentsNote({ className = "" }: { className?: string }) {
 
 const setupPath = [
   {
-    label: "New repo",
-    text: "Use the starter kit template.",
-    icon: FolderPlus,
-    href: "#choose",
-    signal: "greenfield",
-  },
-  {
-    label: "Existing project",
-    text: "Add Suspec beside existing code.",
-    icon: FolderTree,
-    href: "#choose",
-    signal: "brownfield",
-  },
-  {
-    label: "Copy",
-    text: "Commit rules, templates, and board.",
-    icon: LayoutTemplate,
-    href: "#copy",
+    label: "Install",
+    text: "One global command. The skills carry the whole methodology.",
+    icon: Download,
+    href: "#install",
     signal: "core",
   },
   {
-    label: "Check",
-    text: "Run CLI checks for review or CI.",
+    label: "CLI",
+    text: "Optional: suspec check from source, exit codes 0/1/2.",
     icon: Terminal,
-    href: "#check",
+    href: "#cli",
+    signal: "evidence",
+  },
+  {
+    label: "First change",
+    text: "Start small and run the loop once.",
+    icon: ClipboardList,
+    href: "#first-change",
     signal: "core",
   },
   {
-    label: "Work",
-    text: "Keep specs, reviews, and evidence.",
-    icon: ClipboardList,
-    href: "#work",
-    signal: "core",
+    label: "By hand",
+    text: "Every step keeps a no-CLI path.",
+    icon: PenLine,
+    href: "#by-hand",
+    signal: "reference",
+  },
+  {
+    label: "Committed",
+    text: "Nothing, by Suspec's hand.",
+    icon: FileText,
+    href: "#committed",
+    signal: "muted",
   },
 ] as const satisfies Array<{
   label: string;
@@ -212,10 +200,10 @@ const setupPath = [
 }>;
 
 const setupHeroTrace = [
-  { label: "Choose", signal: "reference" },
-  { label: "Copy", signal: "core" },
-  { label: "Check", signal: "core" },
-  { label: "Work", signal: "reference" },
+  { label: "Install", signal: "core" },
+  { label: "Check", signal: "evidence" },
+  { label: "Loop", signal: "core" },
+  { label: "Keep", signal: "reference" },
 ] as const satisfies Array<{
   label: string;
   signal: SignalRole;
@@ -223,24 +211,24 @@ const setupHeroTrace = [
 
 const setupHowToSteps = [
   {
-    name: "Choose a setup path",
-    text: "Use the starter kit for a new repo, or add Suspec beside an existing codebase.",
-    href: "#choose",
+    name: "Install the skill family",
+    text: `Run ${skillsInstallCommand}. That is a complete install: the skills carry the methodology and the artifact shapes, and nothing lands in your repo.`,
+    href: "#install",
   },
   {
-    name: "Copy local workspace files",
-    text: `Copy the starter kit into the workspace with ${manualCopyCommand}.`,
-    href: "#copy",
+    name: "Optionally install the CLI",
+    text: "Install suspec-cli from source (github.com/jcosta33/suspec-cli) for the deterministic checks: suspec check <path>, exit codes 0 clean, 1 warning, 2 blocking.",
+    href: "#cli",
   },
   {
-    name: "Run optional CLI checks",
-    text: "Install suspec-cli from source when you want scaffolding or local checks, then run suspec init and suspec check.",
-    href: "#check",
+    name: "Run the loop once",
+    text: "Author a spec beside your native artifacts and carry its full path, lint it, implement with pasted output, and have an independent reviewer check the review packet against the spec.",
+    href: "#first-change",
   },
   {
-    name: "Add task-specific guides",
-    text: "Start with the starter kit, then add Suspec skills or agents only when the next change needs them.",
-    href: "#work",
+    name: "Keep what mattered",
+    text: "A durable lesson becomes a native harness memory, a decision becomes an ADR, a defect becomes an issue — and Suspec commits nothing to your repo.",
+    href: "#committed",
   },
 ] as const;
 
@@ -267,14 +255,14 @@ export default function GetStartedPage() {
       },
       {
         "@type": "HowTo",
-        name: "Set up a Suspec workspace",
+        name: "Adopt Suspec",
         description: getStartedDescription,
         tool: [
-          { "@type": "HowToTool", name: "suspec-starter-kit" },
+          { "@type": "HowToTool", name: "suspec-skills" },
           { "@type": "HowToTool", name: "suspec-cli", description: "Optional" },
         ],
         supply: [
-          { "@type": "HowToSupply", name: "A new or existing Git repository" },
+          { "@type": "HowToSupply", name: "A coding agent harness that loads skills" },
         ],
         step: setupHowToSteps.map((step, index) => ({
           "@type": "HowToStep",
@@ -291,14 +279,14 @@ export default function GetStartedPage() {
     <div className="get-started-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
       <Section className="ambient-header">
         <PageHero
-          eyebrow="setup / first workspace"
+          eyebrow="setup / one install"
           motif="setup"
           title="Get started"
           tone="core"
         >
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-concrete-400 sm:text-xl">
-            Start with the starter kit. Add the CLI only when you want
-            scaffolding or a check.
+            Adopting is one install. Nothing lands in your repo. The optional
+            CLI adds the deterministic checks.
           </p>
           <HeroTrace
             ariaLabel="Suspec setup path trace"
@@ -312,24 +300,24 @@ export default function GetStartedPage() {
           <div className="setup-route-header">
             <div className="min-w-0">
               <p className="setup-route-kicker">setup route</p>
-              <p className="setup-route-title">Starter kit → local records</p>
+              <p className="setup-route-title">One install → the loop</p>
             </div>
             <div className="setup-route-meta" aria-label="Setup notes">
-              <span>plain files</span>
+              <span>plain markdown</span>
               <span>optional cli</span>
-              <span>local rules</span>
+              <span>any agent</span>
             </div>
           </div>
           <div
             className="setup-command-strip"
-            aria-label="Manual starter kit copy command"
+            aria-label="Suspec skills install command"
           >
             <div className="setup-command-copy">
-              <span className="setup-command-label">manual copy</span>
-              <code>{manualCopyCommand}</code>
+              <span className="setup-command-label">one install</span>
+              <code>{skillsInstallCommand}</code>
             </div>
             <CopyButton
-              text={manualCopyCommand}
+              text={skillsInstallCommand}
               label="Copy command"
               compactLabel="Copy"
               className="setup-command-button"
@@ -337,7 +325,7 @@ export default function GetStartedPage() {
           </div>
           <ol
             className="setup-path-strip process-strip process-strip-signal-muted grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
-            aria-label="Suspec setup paths and next steps"
+            aria-label="Suspec setup steps"
           >
             {setupPath.map((step, index) => {
               const Icon = step.icon;
@@ -383,79 +371,74 @@ export default function GetStartedPage() {
       </Section>
 
       <Section
-        id="choose"
-        register="02 / new or existing"
+        id="install"
+        register="02 / the install"
         registerTone="muted"
         className="reveal grid scroll-mt-28 gap-6 md:grid-cols-2"
       >
         <div className="md:col-span-2">
           <div className={`section-kicker ${signalRoles.muted.sectionKicker}`}>
-            <FolderTree className="h-4 w-4" aria-hidden="true" />
-            <span>choose a path</span>
+            <Download className="h-4 w-4" aria-hidden="true" />
+            <span>one command, everywhere</span>
           </div>
-          <Heading className="mt-3">Pick a setup path</Heading>
+          <Heading className="mt-3">Install the skill family</Heading>
           <p className="mt-4 max-w-2xl leading-relaxed text-concrete-400">
-            Greenfield is for a new workspace. Brownfield is for a repo that
-            already has history.
+            That is a complete install. The skills carry the methodology —
+            authoring specs, splitting work, implementing, reviewing, saving
+            findings — and the artifact shapes. Updating is the same command,
+            re-run: one place, every repo at once.
           </p>
-          <SignalKey
-            ariaLabel="Setup path color roles"
-            items={setupPathSignalKey}
-            className="setup-choice-signal-key"
-          />
         </div>
         <Card
-          signal="greenfield"
-          href="https://github.com/jcosta33/suspec-starter-kit"
+          signal="core"
+          href="https://github.com/jcosta33/suspec-skills"
           target="_blank"
           rel="noopener noreferrer"
-          ariaLabel="Use the starter kit on GitHub (opens in new tab)"
+          ariaLabel="Browse the suspec-skills catalog on GitHub (opens in new tab)"
           screws
-          className="setup-choice-card setup-choice-card-greenfield h-full"
+          className="setup-choice-card h-full"
           contentClassName="flex h-full flex-col gap-5"
         >
           <div className="setup-choice-head flex items-start justify-between gap-4">
             <div className="flex min-w-0 items-start gap-4">
-              <KitIcon signal="greenfield">
-                <FolderPlus className="h-6 w-6" aria-hidden="true" />
+              <KitIcon signal="core">
+                <Download className="h-6 w-6" aria-hidden="true" />
               </KitIcon>
               <div className="min-w-0">
                 <p
-                  className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles.greenfield.text}`}
+                  className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles.core.text}`}
                 >
-                  greenfield / starter kit
+                  universal / global install
                 </p>
                 <Heading
                   as="h3"
                   size="xl"
                   className="setup-choice-title mt-2"
                 >
-                  New repo
+                  Universal skills
                 </Heading>
               </div>
             </div>
-            <span className="setup-choice-index">
-              <PilotLamp color="greenfield" className="scale-75" />
-              Path 01
-            </span>
+            <span className="setup-choice-index">Tier 01</span>
           </div>
           <p className="text-concrete-400">
-            Template repo with flow folders, templates, and guides already in
-            place.
+            The Suspec skills live at the user level and work in any repo.
+            Plain markdown; a capable harness plus the skills is the whole
+            product.
           </p>
           <dl className="setup-choice-facts">
             <div>
-              <dt>Best for</dt>
-              <dd>Greenfield workspace.</dd>
+              <dt>Installs</dt>
+              <dd>Once, globally, for every repo.</dd>
             </div>
             <div>
-              <dt>Creates</dt>
-              <dd>Templates, local rules, and a board.</dd>
+              <dt>Lands in your repo</dt>
+              <dd>Nothing.</dd>
             </div>
           </dl>
-          <code className="setup-choice-command">GitHub template</code>
+          <code className="setup-choice-command">{skillsInstallCommand}</code>
           <span className="setup-choice-action inline-flex min-h-11 w-fit items-center gap-2 text-sm font-semibold underline underline-offset-4 transition-colors">
-            Use the starter kit{" "}
+            Browse the catalog{" "}
             <ArrowRight
               className="motion-nudge-x h-4 w-4"
               aria-hidden="true"
@@ -464,56 +447,52 @@ export default function GetStartedPage() {
         </Card>
 
         <Card
-          signal="brownfield"
-          href="/docs/ADOPTING/"
-          target="_blank"
-          rel="noopener noreferrer"
-          ariaLabel="Read the adopting guide (opens in new tab)"
+          signal="reference"
+          href="/skills/"
+          ariaLabel="Read about the skill tiers"
           screws
-          className="setup-choice-card setup-choice-card-brownfield h-full"
+          className="setup-choice-card h-full"
           contentClassName="flex h-full flex-col gap-5"
         >
           <div className="setup-choice-head flex items-start justify-between gap-4">
             <div className="flex min-w-0 items-start gap-4">
-              <KitIcon signal="brownfield">
-                <FolderTree className="h-6 w-6" aria-hidden="true" />
+              <KitIcon signal="reference">
+                <ScrollText className="h-6 w-6" aria-hidden="true" />
               </KitIcon>
               <div className="min-w-0">
                 <p
-                  className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles.brownfield.text}`}
+                  className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles.reference.text}`}
                 >
-                  brownfield / adoption
+                  repo-specific / stays put
                 </p>
                 <Heading
                   as="h3"
                   size="xl"
                   className="setup-choice-title mt-2"
                 >
-                  Existing project
+                  Repo guides
                 </Heading>
               </div>
             </div>
-            <span className="setup-choice-index">
-              <PilotLamp color="brownfield" className="scale-75" />
-              Path 02
-            </span>
+            <span className="setup-choice-index">Tier 02</span>
           </div>
           <p className="text-concrete-400">
-            Keep the app structure; add only the Suspec workspace files.
+            Your commands, your conventions — committed in the repo they
+            describe, as they already are. The two tiers never overlap.
           </p>
           <dl className="setup-choice-facts">
             <div>
-              <dt>Best for</dt>
-              <dd>Brownfield adoption.</dd>
+              <dt>Owns</dt>
+              <dd>Project-specific guidance only.</dd>
             </div>
             <div>
-              <dt>Adds</dt>
-              <dd>Suspec records beside the code.</dd>
+              <dt>From Suspec</dt>
+              <dd>Nothing to copy in.</dd>
             </div>
           </dl>
-          <code className="setup-choice-command">{manualCopyCommand}</code>
+          <code className="setup-choice-command">your repo, your rules</code>
           <span className="setup-choice-action inline-flex min-h-11 w-fit items-center gap-2 text-sm font-semibold underline underline-offset-4 transition-colors">
-            Read the adopting guide{" "}
+            See the skills{" "}
             <ArrowRight
               className="motion-nudge-x h-4 w-4"
               aria-hidden="true"
@@ -523,67 +502,24 @@ export default function GetStartedPage() {
       </Section>
 
       <Section
-        id="copy"
-        register="03 / kit contents"
-        registerTone="reference"
-        className="copy-section grid scroll-mt-28 gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start"
-      >
-        <div className="copy-section-left">
-          <div className="copy-section-heading">
-            <Heading>Starter kit contents</Heading>
-          </div>
-          <StarterKitContentsNote className="copy-section-support-desktop" />
-        </div>
-
-        <Card
-          screws
-          className="copy-section-manifest h-full"
-          contentClassName="copy-section-manifest-body space-y-4 sm:space-y-5"
-        >
-          <div className="section-kicker section-kicker-reference">
-            <FolderTree className="h-4 w-4" aria-hidden="true" />
-            <span>manifest — copied files</span>
-          </div>
-          <ul className="kit-ledger">
-            {kitContents.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <li key={item.name} className="kit-ledger-item">
-                  <div className="kit-ledger-index" aria-hidden="true">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
-                  <Icon className="kit-ledger-icon h-4 w-4" aria-hidden="true" />
-                  <div className="min-w-0">
-                    <h3 className="kit-ledger-title">{item.name}</h3>
-                    <p className="kit-ledger-role">{item.role}</p>
-                    <p className="kit-ledger-copy">{item.text}</p>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </Card>
-        <StarterKitContentsNote className="copy-section-support-mobile" />
-      </Section>
-
-      <Section
-        id="check"
-        register="04 / cli option"
+        id="cli"
+        register="03 / cli option"
         registerTone="core"
         className="flex scroll-mt-28 flex-col gap-6"
       >
         <div className="section-kicker section-kicker-core">
           <Terminal className="h-4 w-4" aria-hidden="true" />
-          <span>or scaffold it with the cli</span>
+          <span>optional — the deterministic checks</span>
         </div>
-        <Heading>Command-line setup</Heading>
+        <Heading>The optional CLI</Heading>
         <p className="max-w-2xl text-concrete-400">
-          <code className="text-suspec-yellow">suspec init</code> scaffolds the
-          same workspace into a new or existing repo. It refuses to overwrite
-          existing files. Install it from source for now.
+          <code className="text-suspec-yellow">suspec check &lt;path&gt;</code>{" "}
+          reads exactly the files you hand it, reports facts, and never renders
+          a review result. Exit codes are the API: 0 clean, 1 warning, 2
+          blocking. It is not on npm yet — install it from source.
         </p>
         <Panel brushed className="p-2">
-          <TerminalWindow title="terminal" copyText={cliInitCommands}>
+          <TerminalWindow title="terminal" copyText={cliInstallCommands}>
             <p className="text-concrete-500">
               # install the CLI from source
             </p>
@@ -612,18 +548,12 @@ export default function GetStartedPage() {
               <span className="text-suspec-yellow">$</span>{" "}npm link
             </p>
             <p className="mt-2 text-concrete-500">
-              # then, in a new or existing repo
+              # then, on any artifact you name by path
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}suspec init{" "}
+              <span className="text-suspec-yellow">$</span>{" "}suspec check ./spec.md{" "}
               <span className="text-concrete-500">
-                # scaffold the workspace, conflict-safe
-              </span>
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}suspec check{" "}
-              <span className="text-concrete-500">
-                # confirm it is well-formed; exit 0/1/2
+                # facts only; exit 0/1/2
               </span>
             </p>
           </TerminalWindow>
@@ -635,20 +565,123 @@ export default function GetStartedPage() {
       </Section>
 
       <Section
-        id="work"
-        register="05 / next"
+        id="first-change"
+        register="04 / first useful change"
+        registerTone="reference"
+        className="copy-section grid scroll-mt-28 gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start"
+      >
+        <div className="copy-section-left">
+          <div className="copy-section-heading">
+            <Heading>First useful change</Heading>
+            <p className="mt-4 leading-relaxed text-concrete-400">
+              Start small and run the whole loop once. The loop is proportioned
+              to feature-sized work — a trivial fix earns a one-line inline
+              spec and no files at all; the{" "}
+              <TextLink href="/docs/examples/bug-fix/">
+                bug-fix example
+              </TextLink>{" "}
+              shows that shorter path. A hands-on walkthrough lives in{" "}
+              <TextLink href="/docs/tutorial/README/">the tutorial</TextLink>.
+            </p>
+          </div>
+          <SpecPlacementNote className="copy-section-support-desktop" />
+        </div>
+
+        <Card
+          screws
+          className="copy-section-manifest h-full"
+          contentClassName="copy-section-manifest-body space-y-4 sm:space-y-5"
+        >
+          <div className="section-kicker section-kicker-reference">
+            <ClipboardList className="h-4 w-4" aria-hidden="true" />
+            <span>the loop, once through</span>
+          </div>
+          <ul className="kit-ledger">
+            {loopSteps.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <li key={item.name} className="kit-ledger-item">
+                  <div className="kit-ledger-index" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </div>
+                  <Icon className="kit-ledger-icon h-4 w-4" aria-hidden="true" />
+                  <div className="min-w-0">
+                    <h3 className="kit-ledger-title">{item.name}</h3>
+                    <p className="kit-ledger-role">{item.role}</p>
+                    <p className="kit-ledger-copy">{item.text}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </Card>
+        <SpecPlacementNote className="copy-section-support-mobile" />
+      </Section>
+
+      <Section
+        id="by-hand"
+        register="05 / by hand"
+        registerTone="muted"
+        className="flex scroll-mt-28 flex-col gap-6"
+      >
+        <div className={`section-kicker ${signalRoles.muted.sectionKicker}`}>
+          <PenLine className="h-4 w-4" aria-hidden="true" />
+          <span>no cli required</span>
+        </div>
+        <Heading>By hand — no CLI</Heading>
+        <p className="max-w-2xl leading-relaxed text-concrete-400">
+          Every step keeps a by-hand path; the CLI accelerates the checking,
+          nothing else.
+        </p>
+        <Panel brushed screws className="p-6 sm:p-8">
+          <ol className="flex max-w-2xl flex-col gap-4 text-concrete-400">
+            <li className="leading-relaxed">
+              <span className="font-semibold text-concrete-100">
+                Write the spec yourself
+              </span>{" "}
+              — the shape is documented in{" "}
+              <TextLink href="/docs/reference/artifact-formats/">
+                artifact formats
+              </TextLink>
+              : status, requirements with ids, a Verify with: line each. Place
+              it beside your native artifacts, as above.
+            </li>
+            <li className="leading-relaxed">
+              <span className="font-semibold text-concrete-100">
+                Run each Verify with: command yourself
+              </span>{" "}
+              and paste the real output into the spec&apos;s Execution section.
+            </li>
+            <li className="leading-relaxed">
+              <span className="font-semibold text-concrete-100">
+                Review by checklist
+              </span>{" "}
+              — one coverage row per requirement; empty evidence is Unverified,
+              never Pass; exceptions routed to a human. Without the CLI the
+              floor is yours to hold.
+            </li>
+          </ol>
+        </Panel>
+      </Section>
+
+      <Section
+        id="committed"
+        register="06 / what gets committed"
         registerTone="reference"
         className="grid scroll-mt-28 gap-6 md:grid-cols-2"
       >
         <div className="md:col-span-2">
           <div className="section-kicker section-kicker-reference">
-            <Wrench className="h-4 w-4" aria-hidden="true" />
-            <span>next moves</span>
+            <FileText className="h-4 w-4" aria-hidden="true" />
+            <span>what gets committed</span>
           </div>
-          <Heading className="mt-3">Add only what the task needs</Heading>
+          <Heading className="mt-3">Nothing, by Suspec&apos;s hand</Heading>
           <p className="mt-4 max-w-2xl leading-relaxed text-concrete-400">
-            The starter kit is enough to begin. Add skills or worker files when
-            the next change needs a narrower role.
+            Your repo takes the code, the tests, and whatever your
+            project&apos;s own governance already commits — ADRs, agent guides,
+            the PRs themselves. Specs, task packets, and review packets stay
+            beside your native artifacts, outside the repo, unless the
+            project&apos;s own governance says otherwise.
           </p>
         </div>
         <Card
@@ -666,7 +699,8 @@ export default function GetStartedPage() {
                 Skills
               </Heading>
               <p className="mt-2 text-concrete-400">
-                Optional guides for review, fixes, features, and docs.
+                The full catalog: the methodology skills plus the universal
+                disciplines they lean on.
               </p>
             </div>
           </div>
@@ -690,7 +724,8 @@ export default function GetStartedPage() {
                 Agents
               </Heading>
               <p className="mt-2 text-concrete-400">
-                Worker definitions for review, exploration, or authoring.
+                Optional Claude Code worker definitions — reviewer, auditor,
+                spec author, and friends — for developers who delegate.
               </p>
             </div>
           </div>

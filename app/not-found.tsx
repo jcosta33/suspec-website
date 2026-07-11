@@ -50,7 +50,7 @@ const recoveryRoutes = [
     href: "/get-started/",
     label: "Get started",
     path: "/get-started",
-    text: "Set up a workspace.",
+    text: "Install the skills.",
     icon: ArrowRight,
     signal: "core",
   },

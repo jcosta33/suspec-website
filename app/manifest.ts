@@ -6,10 +6,10 @@ export const dynamic = "force-static";
 // matches the current chrome; the icon paths are the build-generated app/icon + app/apple-icon.
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Suspec — spec and review workflow",
+    name: "Suspec — spec and review discipline, shipped as skills",
     short_name: "Suspec",
     description:
-      "A plain-markdown workflow for specs, tasks, reviews, findings, and evidence when teams use coding agents.",
+      "An opinionated methodology for working with coding agents — shipped as a globally installed skill family, backed by a deterministic checker.",
     start_url: "/",
     display: "standalone",
     theme_color: "#110e0c",

@@ -33,8 +33,8 @@ const SITE_URL = "https://suspecframework.dev";
 const MCP_REPOSITORY = "https://github.com/jcosta33/suspec-mcp";
 const MCP_PAGE_URL = `${SITE_URL}/mcp/`;
 const mcpDescription =
-  "suspec-mcp exposes Suspec workspace records over local stdio; review policy stays in the repo.";
-const mcpTitle = "suspec-mcp — local MCP adapter for Suspec";
+  "suspec-mcp brings the suspec check surface to shell-less MCP clients: exactly two tools that shell out to suspec check --json and relay the facts under a no-verdict envelope.";
+const mcpTitle = "suspec-mcp — the check surface over MCP";
 
 export const metadata: Metadata = {
   title: mcpTitle,
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         url: "/og-mcp.png",
         width: 1200,
         height: 630,
-        alt: "suspec-mcp — a local MCP bridge for Suspec workspaces",
+        alt: "suspec-mcp — the suspec check surface for shell-less MCP clients",
       },
     ],
   },
@@ -62,7 +62,7 @@ const mcpConfigSnippet = `{
   "mcpServers": {
     "suspec": {
       "command": "suspec-mcp",
-      "args": ["--workspace", "/path/to/workspace"]
+      "args": ["--workspace", "/absolute/path/to/your/repo"]
     }
   }
 }`;
@@ -80,29 +80,29 @@ const mcpInstallCommands = [
 
 const guardrails = [
   {
-    title: "Read/scaffold only",
-    text: "No board writes, no review result. Safe-write tools scaffold fresh artifacts only.",
+    title: "Two tools, no more",
+    text: "suspec_check_file and suspec_get_checks. An agent that can run shell commands doesn't need this server at all.",
     stamp: "scope",
     icon: ShieldCheck,
     signal: "reference",
   },
   {
     title: "No verdict",
-    text: "It reports facts. Review owns Pass, Fail, Unverified, or Blocked.",
+    text: "ok means the CLI ran and returned parseable output — not that the artifact is clean. Pass, Fail, Unverified, Blocked stay human.",
     stamp: "defer",
     icon: MessagesSquare,
     signal: "muted",
   },
   {
     title: "Root-confined",
-    text: "Paths stay inside the configured workspace root.",
+    text: "Every path — the artifact and both companions — must resolve inside the bound root. Traversal, escapes, and out-of-root symlinks are rejected.",
     stamp: "bound",
     icon: FolderLock,
     signal: "muted",
   },
   {
-    title: "CLI contract only",
-    text: "It calls the CLI JSON surface.",
+    title: "Thin, hardened adapter",
+    text: "Fixed argv, allow-listed flags, read-only. Every call shells out to suspec check --json and relays the CLI's own facts.",
     stamp: "json",
     icon: Braces,
     signal: "reference",
@@ -117,32 +117,14 @@ const guardrails = [
 
 const tools = [
   {
-    group: "read",
+    group: "check",
+    signal: "evidence",
+    items: ["suspec_check_file"],
+  },
+  {
+    group: "contract",
     signal: "reference",
-    items: [
-      "suspec_get_status",
-      "suspec_list",
-      "suspec_check_workspace",
-      "suspec_check_file",
-      "suspec_get_task",
-      "suspec_get_spec",
-      "suspec_get_review",
-      "suspec_get_checks",
-    ],
-  },
-  {
-    group: "reconcile",
-    signal: "evidence",
-    items: ["suspec_reconcile"],
-  },
-  {
-    group: "safe-write",
-    signal: "evidence",
-    items: [
-      "suspec_scaffold_spec",
-      "suspec_split_task",
-      "suspec_scaffold_finding",
-    ],
+    items: ["suspec_get_checks"],
   },
 ] as const satisfies Array<{
   group: string;
@@ -151,18 +133,10 @@ const tools = [
 }>;
 
 const toolDescriptions = {
-  suspec_get_status: "Current workspace status.",
-  suspec_list: "Workspace artifact list.",
-  suspec_check_workspace: "Workspace configuration and integrity checks.",
-  suspec_check_file: "One artifact check.",
-  suspec_get_task: "One task packet.",
-  suspec_get_spec: "One spec artifact.",
-  suspec_get_review: "One review packet.",
-  suspec_get_checks: "Applicable check set.",
-  suspec_reconcile: "Record comparison and workspace gaps.",
-  suspec_scaffold_spec: "Fresh spec artifact; no verdict.",
-  suspec_split_task: "Task packets from a spec; no correctness decision.",
-  suspec_scaffold_finding: "Fresh finding artifact; no verdict.",
+  suspec_check_file:
+    "Run the checks over one artifact — kind read from its own frontmatter type:. A review takes its companions explicitly: spec always, task exactly when the review names one.",
+  suspec_get_checks:
+    "The checks contract the CLI holds artifacts to: the contract version plus every check's id, name, and severity.",
 } as const;
 
 const mcpToolCatalogItems = tools.flatMap((group) =>
@@ -200,29 +174,38 @@ const mcpPageJsonLd = {
   },
 };
 
-const resources = [
-  "suspec://workspace",
-  "suspec://status",
-  "suspec://checks",
-  "suspec://tasks/{id}",
-  "suspec://specs/{id}",
-  "suspec://reviews/{id}",
-  "suspec://findings/{id}",
-];
+const resources = ["suspec://checks"];
 
-const prompts = [
-  "suspec_task_briefing",
-  "suspec_before_done",
-  "suspec_review_assistant",
-  "suspec_evidence_rule",
-  "suspec_finding_candidate",
-];
+const envelope = [
+  {
+    field: "ok",
+    meaning:
+      "Runnability, not a result: the CLI ran and returned a parseable payload. A check that found blocking diagnostics is still ok: true.",
+  },
+  {
+    field: "source",
+    meaning:
+      "Provenance: the exact CLI command run and its exit code — 0 clean · 1 warning · 2 blocking.",
+  },
+  {
+    field: "data",
+    meaning:
+      "The CLI's --json facts, verbatim or a targeted slice: level, diagnostics, locations.",
+  },
+  {
+    field: "noVerdictIssued",
+    meaning: "Always true. On every result.",
+  },
+] as const satisfies Array<{
+  field: string;
+  meaning: string;
+}>;
 
 const bridgeFlow = [
   {
     label: "Client",
     channel: "host",
-    detail: "Claude Desktop, Cursor, or another MCP host.",
+    detail: "Claude Desktop, Cursor, or anything that speaks MCP without a shell.",
     icon: MessagesSquare,
     href: "#mcp-config",
     signal: "reference",
@@ -238,23 +221,23 @@ const bridgeFlow = [
   {
     label: "suspec-mcp",
     channel: "adapter",
-    detail: "Verdict-free adapter around the workspace.",
+    detail: "A thin, hardened adapter: fixed argv, allow-listed flags, no-verdict envelope.",
     icon: Boxes,
     href: "#guardrails",
     signal: "reference",
   },
   {
-    label: "CLI JSON",
-    channel: "json",
-    detail: "Commands return structured facts.",
+    label: "suspec check --json",
+    channel: "facts",
+    detail: "The CLI records the facts: check ids, severity, exit code.",
     icon: Terminal,
     href: "#mcp-tools",
     signal: "reference",
   },
   {
-    label: "Workspace",
-    channel: "records",
-    detail: "Markdown artifacts stay the source of truth.",
+    label: "Artifacts",
+    channel: "files",
+    detail: "Exactly the files you name, by explicit path. Read-only.",
     icon: FileJson,
     href: "#source",
     signal: "reference",
@@ -264,17 +247,17 @@ const bridgeFlow = [
 const bridgeContracts = [
   {
     label: "Host",
-    value: "An MCP-capable client asks for workspace context.",
+    value: "A shell-less MCP client asks for a check.",
     signal: "reference",
   },
   {
     label: "Adapter",
-    value: "suspec-mcp calls the public CLI JSON surface.",
+    value: "suspec-mcp shells out to suspec check --json.",
     signal: "core",
   },
   {
-    label: "Records",
-    value: "Markdown artifacts stay the source of truth.",
+    label: "Facts",
+    value: "Diagnostics, severity, exit code — relayed verbatim, never a verdict.",
     signal: "muted",
   },
 ] as const satisfies Array<{
@@ -286,7 +269,7 @@ const bridgeContracts = [
 const mcpPageNav = [
   { label: "Bridge", href: "#bridge", signal: "muted" },
   { label: "Config", href: "#mcp-config", signal: "reference" },
-  { label: "Limits", href: "#guardrails", signal: "muted" },
+  { label: "Boundaries", href: "#guardrails", signal: "muted" },
   { label: "Tools", href: "#mcp-tools", signal: "evidence" },
   { label: "Install", href: "#install", signal: "core" },
   { label: "Source", href: "#source", signal: "reference" },
@@ -301,7 +284,7 @@ function CopyableIdentifier({
   kind,
 }: {
   value: string;
-  kind: "MCP tool" | "MCP resource URI" | "MCP prompt";
+  kind: "MCP tool" | "MCP resource URI";
 }) {
   return (
     <li className="mcp-copy-row">
@@ -321,7 +304,7 @@ export default function McpPage() {
     <div className="repo-product-page mcp-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
       <Section className="ambient-header">
         <PageHero
-          eyebrow="mcp server / local workspace adapter"
+          eyebrow="mcp server / the check surface, shell-less"
           className="page-hero-package-mcp"
           motif="bridge"
           tone="reference"
@@ -334,13 +317,15 @@ export default function McpPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Local stdio bridge to Suspec records: status, checks, artifacts,
-            review data. Review policy stays in the repo.
+            The same <code>suspec check</code> surface for runners without a
+            shell — Claude Desktop, Cursor, anything that speaks MCP. Exactly
+            two tools, a no-verdict envelope, and no capability an agent with
+            a terminal doesn&apos;t already have.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
-            <Badge variant="ready">v0.2 surface</Badge>
+            <Badge variant="ready">Exactly two tools</Badge>
             <Badge variant="draft">local stdio</Badge>
-            <Badge signal="muted">read + reconcile</Badge>
+            <Badge signal="muted">no verdict</Badge>
           </div>
         </PageHero>
       </Section>
@@ -363,20 +348,23 @@ export default function McpPage() {
             <Cable className="h-4 w-4" aria-hidden="true" />
             <span>local bridge</span>
           </div>
-          <Heading>Local clients, local records</Heading>
+          <Heading>Shell-less clients, same checks</Heading>
           <p className="text-concrete-400">
-            suspec-mcp adapts the CLI&apos;s <code>--json</code> contract for
-            MCP clients over local stdio. It reads and reconciles workspace
-            records; review policy stays in your repo.
+            The honesty floor is a set of deterministic checks a reviewer
+            cannot fake. A terminal agent runs{" "}
+            <TextLink href="/cli/">suspec check</TextLink> directly; a
+            shell-less client can&apos;t. suspec-mcp is that client&apos;s way
+            to run the same checks against the same files, with the same
+            results — over local stdio, adding nothing of its own.
           </p>
           <p className="text-sm text-concrete-400">
             Source:{" "}
             <TextLink
-              href="/docs/10-integrations/"
+              href="/docs/reference/cli/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              docs/10-integrations.md
+              docs/reference/cli.md
               <span className="sr-only"> (opens in new tab)</span>
             </TextLink>
           </p>
@@ -471,7 +459,7 @@ export default function McpPage() {
             </p>
             <p className="pl-12">
               &quot;args&quot;: [&quot;--workspace&quot;,
-              &quot;/path/to/workspace&quot;]
+              &quot;/absolute/path/to/your/repo&quot;]
             </p>
             <p className="pl-8">{"}"}</p>
             <p className="pl-4">{"}"}</p>
@@ -481,20 +469,21 @@ export default function McpPage() {
 
         <PaperArtifact
           label="note"
-          title="package boundary"
-          meta="adapter package / cli stays small"
+          title="no extra capability"
+          meta="thin adapter / the cli stays the surface"
         >
           <p>
-            suspec-mcp adapts the CLI&apos;s public{" "}
-            <span className="font-semibold">--json</span> contract. The SDK
-            lives here so suspec-cli can stay small.
+            suspec-mcp adds nothing of its own. It adapts{" "}
+            <span className="font-semibold">suspec check --json</span> for
+            clients that cannot shell out — an agent with a terminal runs the
+            CLI directly and never needs this.
           </p>
         </PaperArtifact>
       </Section>
 
       <Section
         id="guardrails"
-        register="03 / limits"
+        register="03 / boundaries"
         registerTone="muted"
         className="section-flow scroll-mt-28"
       >
@@ -505,9 +494,9 @@ export default function McpPage() {
           </div>
           <Heading className="mt-3">Boundaries</Heading>
           <p className="mt-4 text-concrete-400">
-            suspec-mcp stays on the read/scaffold side: no agent loop, no board
-            writes, no review result, and no correctness decision. Safe-write
-            tools create fresh artifacts only.
+            The server treats every client input as hostile and every result
+            as facts-only: two tools, one verb reaching the CLI, no writes,
+            and no review result — ever.
           </p>
         </div>
         <ul className="mcp-guardrail-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -549,18 +538,17 @@ export default function McpPage() {
             <Cable className="h-4 w-4" aria-hidden="true" />
             <span>tools</span>
           </div>
-          <Heading className="mt-3">MCP tools</Heading>
+          <Heading className="mt-3">Exactly two tools</Heading>
           <p className="mt-4 text-concrete-400">
-            Read and reconcile calls, plus a verdict-free safe-write tier that
-            scaffolds fresh artifacts. Each maps to a CLI JSON command.
+            One runs the checks over an artifact; one prints the contract the
+            checks come from. Both shell out to{" "}
+            <code>suspec check --json</code> and relay the CLI&apos;s facts.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {tools.map((group) => (
               <div
                 key={group.group}
-                className={`mcp-fact-list tool-list-card tool-list-card-${group.signal} rounded-panel border bg-panel p-4 ${
-                  group.group === "read" ? "sm:col-span-2" : ""
-                }`}
+                className={`mcp-fact-list tool-list-card tool-list-card-${group.signal} rounded-panel border bg-panel p-4 sm:col-span-2`}
               >
                 <p
                   className={`font-mono text-xs uppercase tracking-wide ${signalRoles[group.signal].text}`}
@@ -576,23 +564,50 @@ export default function McpPage() {
                     />
                   ))}
                 </ul>
+                <p className="mt-3 text-sm leading-relaxed text-concrete-400">
+                  {group.items
+                    .map((item) => toolDescriptions[item])
+                    .join(" ")}
+                </p>
               </div>
             ))}
           </div>
+          <p className="mt-6 text-sm leading-relaxed text-concrete-400">
+            For a review, <code>spec</code> is always required and{" "}
+            <code>task</code> exactly when the review&apos;s frontmatter names
+            a <code>task:</code>. A missing companion surfaces the CLI&apos;s
+            own blocking refusal — never a silently shallower check.
+          </p>
         </Card>
 
         <Card signal="reference" screws className="mcp-fact-card border-panel-border">
           <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
             <FileJson className="h-4 w-4" aria-hidden="true" />
-            <span>resources + prompts</span>
+            <span>envelope + resource</span>
           </div>
-          <Heading className="mt-3">Context the client can ask for</Heading>
+          <Heading className="mt-3">The no-verdict envelope</Heading>
           <p className="mt-4 text-concrete-400">
-            Resources expose the board, checks, and selected artifacts. Prompts
-            start clients with the right review context.
+            Every result rides the same structure. <code>ok</code> means the
+            CLI ran — whether the artifact is clean lives in the facts, and
+            the server never adds a Pass or Fail of its own.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            <div className="mcp-fact-list tool-list-card tool-list-card-reference rounded-panel border bg-panel p-4">
+            <div className="mcp-fact-list tool-list-card tool-list-card-core rounded-panel border bg-panel p-4 sm:col-span-2">
+              <p className="font-mono text-xs uppercase tracking-wide text-signal-core">
+                envelope
+              </p>
+              <ul className="mt-3 space-y-3">
+                {envelope.map((item) => (
+                  <li key={item.field}>
+                    <code className="mcp-copy-code">{item.field}</code>
+                    <p className="mt-1 text-sm leading-relaxed text-concrete-400">
+                      {item.meaning}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mcp-fact-list tool-list-card tool-list-card-reference rounded-panel border bg-panel p-4 sm:col-span-2">
               <p className="font-mono text-xs uppercase tracking-wide text-signal-reference">
                 resources
               </p>
@@ -605,20 +620,10 @@ export default function McpPage() {
                   />
                 ))}
               </ul>
-            </div>
-            <div className="mcp-fact-list tool-list-card tool-list-card-core rounded-panel border bg-panel p-4">
-              <p className="font-mono text-xs uppercase tracking-wide text-signal-core">
-                prompts
+              <p className="mt-3 text-sm leading-relaxed text-concrete-400">
+                The checks contract as a fixed resource — the same payload as{" "}
+                <code>suspec_get_checks</code>.
               </p>
-              <ul className="mcp-copy-list mt-3">
-                {prompts.map((item) => (
-                  <CopyableIdentifier
-                    key={item}
-                    value={item}
-                    kind="MCP prompt"
-                  />
-                ))}
-              </ul>
             </div>
           </div>
         </Card>
@@ -637,7 +642,8 @@ export default function McpPage() {
           </div>
           <Heading className="mt-3">Install from source for now</Heading>
           <p className="mt-4 text-concrete-400">
-            The package exposes a <code>suspec-mcp</code> binary. It expects the{" "}
+            The package exposes a <code>suspec-mcp</code> binary. It expects
+            the{" "}
             <TextLink
               href="/cli/"
             >
@@ -716,8 +722,8 @@ export default function McpPage() {
             </div>
             <Heading className="mt-3">Read the adapter code</Heading>
             <p className="mt-2 max-w-2xl text-concrete-400">
-              Source, issues, and tests live on GitHub. The integration notes
-              explain where MCP fits in the Suspec workflow.
+              Source, issues, and tests live on GitHub. The CLI reference
+              covers the check surface this server adapts.
             </p>
           </div>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -740,13 +746,13 @@ export default function McpPage() {
               See the CLI <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </TextLink>
             <TextLink
-              href="/docs/10-integrations/"
+              href="/docs/reference/cli/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-fit gap-2 text-base font-semibold"
               touchTarget
             >
-              Integration notes{" "}
+              CLI reference notes{" "}
               <span className="sr-only">(opens in new tab)</span>
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </TextLink>
@@ -762,9 +768,9 @@ export default function McpPage() {
         keywords={[
           "MCP server",
           "stdio adapter",
-          "workspace facts",
-          "review data",
-          "local bridge",
+          "deterministic checks",
+          "no-verdict envelope",
+          "suspec check",
         ]}
         catalogItems={mcpToolCatalogItems}
       />

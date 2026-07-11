@@ -52,10 +52,10 @@ export const metadata: Metadata = {
 };
 
 const descriptionRules = [
-  "Start with the work type: implement, review, audit, research, write.",
-  "Name the task shape that admits the skill.",
-  "Name the boundaries and skip cases.",
-  "Keep repo facts out of the description.",
+  "Start with the WHAT verb and its object: implement, review, audit, write.",
+  "Say ALWAYS apply this skill when — and name the triggers, even implicit ones.",
+  "Block the bypass: the shortcut the agent would take without the skill.",
+  "End with the skip clause: the task types this skill must not load for.",
 ];
 
 const skillFolderLayout = [
@@ -81,12 +81,12 @@ const bodyRules = [
   {
     icon: ListOrdered,
     title: "Use numbered rules",
-    text: "Make the checkpoints explicit enough to audit later.",
+    text: "Make the checkpoints explicit enough to audit later. Target ~200 lines; hard cap 500.",
   },
   {
     icon: Shield,
     title: "Keep it self-contained",
-    text: "Avoid hidden dependencies on another installed guide.",
+    text: "Skills install individually. A skill cannot assume any sibling is in context — no cross-skill references.",
   },
   {
     icon: CheckCircle,
@@ -96,12 +96,12 @@ const bodyRules = [
 ];
 
 const outOfScope = [
-  "stack-specific engineering advice",
-  "internal product runbooks",
-  "automation scripts",
-  "always-on instructions",
-  "shared core skills that every other skill imports",
-  "business logic that belongs in the consuming repo",
+  "engineering-domain knowledge (auth patterns, caching, runbooks)",
+  "stack- or vendor-specific skills",
+  "internal product docs",
+  "automation, scripts, or CI in the catalog",
+  "core or loader skills that other skills depend on",
+  "skills designed to always load",
 ];
 
 const skillAnatomy = [
@@ -561,10 +561,11 @@ export default function WritingSkillsPage() {
               </div>
               <Heading className="mt-3">Read the source</Heading>
               <p className="mt-4 max-w-2xl text-concrete-400">
-                The same file shape is used in both tiers. Framework-free examples
-                live in the suspec-skills catalog; the{" "}
-                <code className="text-suspec-yellow">write-*</code> family used
-                above (write-feature, write-fix, ...) lives in the Suspec kit.
+                Every skill in the catalog uses this shape — the methodology
+                family (write-spec, implement-task, review-output, and the rest
+                of the <code className="text-suspec-yellow">write-*</code> set)
+                and the universal disciplines alike. The docs directory records
+                the evidence behind each structural choice.
               </p>
             </div>
             <ul className="space-y-3 md:min-w-56">
@@ -596,14 +597,14 @@ export default function WritingSkillsPage() {
               </li>
               <li>
                 <TextLink
-                  href="https://github.com/jcosta33/suspec-starter-kit/tree/main/.agents/skills"
+                  href="https://github.com/jcosta33/suspec-skills/blob/main/docs/sources.md"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Open kit skills on GitHub (opens in new tab)"
+                  aria-label="Open the sources bibliography on GitHub (opens in new tab)"
                   className="gap-2"
                   touchTarget
                 >
-                  kit skills (write-*){" "}
+                  sources bibliography{" "}
                   <ExternalLink className="h-4 w-4" aria-hidden="true" />
                 </TextLink>
               </li>

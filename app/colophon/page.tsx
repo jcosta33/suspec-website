@@ -68,7 +68,7 @@ const trace = [
   {
     label: "WORKFLOW",
     title: "Same loop",
-    text: "Design decisions, specs, tasks, reviews, and findings live in this repo.",
+    text: "Spec'd, implemented with pasted evidence, and independently reviewed — the same loop the docs describe.",
     href: "/the-loop/",
     cta: "Follow the loop",
     signal: "core",
@@ -199,8 +199,9 @@ export default function ColophonPage() {
           className="colophon-paper"
         >
           <p>
-            The website is a Next.js export. Specs, tasks, review notes, and
-            findings live with the source.
+            The website is a Next.js export. Specs, review packets, and
+            findings stay beside the maintainer&apos;s own native artifacts;
+            the repo takes the code and the decisions worth keeping.
           </p>
           <p className="mt-4">
             <Link

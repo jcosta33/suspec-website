@@ -5,7 +5,8 @@ import {
   ListChecks,
   Terminal,
   ScanEye,
-  GitMerge,
+  NotebookPen,
+  Split,
   ArrowRight,
 } from "lucide-react";
 import { Section } from "../components/Section";
@@ -25,10 +26,10 @@ import { signalRoles, type SignalRole } from "../components/signalStyles";
 import { canonicalAlternates } from "../seo";
 
 const SITE_URL = "https://suspecframework.dev";
-const stepIcons = [Inbox, FileText, ListChecks, Terminal, ScanEye, GitMerge];
+const stepIcons = [Inbox, FileText, Terminal, ScanEye, ListChecks, NotebookPen];
 const loopDescription =
-  "Learn the Suspec loop: write a spec, hand off bounded task work, review evidence, and save findings without letting agents approve themselves.";
-const loopTitle = "Suspec loop — spec, run, review, close";
+  "The Suspec loop: a one-line inline spec for trivial fixes, and intent → spec → implement → review → check → findings when the change earns a contract.";
+const loopTitle = "The Suspec loop — spec, implement, review, check";
 
 export const metadata: Metadata = {
   title: loopTitle,
@@ -45,37 +46,38 @@ export const metadata: Metadata = {
         url: "/og-the-loop.png",
         width: 1200,
         height: 630,
-        alt: "The Suspec loop — Pull, Spec, Task, Run, Review, Close",
+        alt: "The Suspec loop — Intent, Spec, Implement, Review, Check, Findings",
       },
     ],
   },
   alternates: canonicalAlternates("/the-loop/"),
 };
 
+const trivialPathLines = [
+  "Fix: expired refresh tokens must redirect to /login, not 500.",
+  "Verify with: pnpm test:run auth-refresh-expired-token",
+].join("\n");
+
 const steps = [
   {
     number: "01",
-    name: "Pull",
+    name: "Intent",
     signal: "core",
     optional: true,
-    output: "Intake note or source link",
+    output: "Source named, or an intake note",
     handoff: "Spec",
-    body: "Point the spec's sources at the origin — a ticket, an issue, or self. When you want the raw request kept verbatim, capture it as an intake file first. Intake is optional; the spec is the unit.",
+    body: "Name where the work came from — a ticket, a thread, your own idea. Capture the ask verbatim as an intake note only when you want the original preserved; otherwise the spec names its source directly (a URL, an issue, or self). How you entered the work never sets the ceremony level. The work does.",
     example: {
-      title: "intake/INTAKE-42.md",
+      title: "~/.claude/projects/acme-site/intake.md",
       lines: [
         {
           prompt: false,
-          text: "## INTAKE-42 — Add dark mode to marketing site",
+          text: "## Intake — Add dark mode to marketing site",
         },
         { prompt: false, text: "" },
         { prompt: false, text: "- Requested by: design" },
         { prompt: false, text: "- Scope: homepage and global shell only" },
         { prompt: false, text: "- Deadline: launch week" },
-        {
-          prompt: false,
-          text: "- Links: SPEC-design-system, CHANGE-website-launch",
-        },
       ],
     },
   },
@@ -83,11 +85,11 @@ const steps = [
     number: "02",
     name: "Spec",
     signal: "core",
-    output: "Requirements with checks",
-    handoff: "Task or Run",
-    body: "Write requirements one per ID. Add the check for each one.",
+    output: "Requirements with Verify with: lines",
+    handoff: "Implement",
+    body: "The authoring skill turns intent into a lean spec: requirements with AC-NNN ids and Verify with: lines, non-goals, open questions. Place the file beside your harness's own artifacts and carry its full path forward. Lint it: suspec check spec.md.",
     example: {
-      title: "specs/shell/spec.md",
+      title: "~/.claude/projects/acme-site/spec.md",
       lines: [
         {
           prompt: false,
@@ -115,34 +117,13 @@ const steps = [
   },
   {
     number: "03",
-    name: "Task",
+    name: "Implement",
     signal: "core",
-    optional: true,
-    output: "Bounded task packet",
-    handoff: "Run",
-    body: "Only when one spec splits into parallel slices — most work is one spec → one implementer, no task file. When you do split, hand each agent a bounded packet: scope, do-not-change, Verify commands.",
-    example: {
-      title: "tasks/TASK-shell.md",
-      lines: [
-        { prompt: false, text: "## TASK-shell" },
-        { prompt: false, text: "" },
-        { prompt: false, text: "Scope: implement Shell component per AC-003." },
-        { prompt: false, text: "Do not change: homepage content, analytics." },
-        { prompt: false, text: "Verify:" },
-        { prompt: false, text: "- npm run build passes" },
-        { prompt: false, text: "- grep finds 1 <nav> and 1 <footer> per page" },
-      ],
-    },
-  },
-  {
-    number: "04",
-    name: "Run",
-    signal: "core",
-    output: "Execution evidence",
+    output: "Real pasted output per requirement",
     handoff: "Review",
-    body: "Implement the spec (or the task, when split); paste real evidence per requirement.",
+    body: "The implementer — your agent, or you — works from the spec by explicit path, runs every verify command, and pastes real output into the spec's ## Execution section. 'Tests passed' without output is not evidence.",
     example: {
-      title: "specs/shell/spec.md",
+      title: "~/.claude/projects/acme-site/spec.md",
       lines: [
         { prompt: false, text: "## Execution" },
         { prompt: false, text: "" },
@@ -156,15 +137,14 @@ const steps = [
     },
   },
   {
-    number: "05",
+    number: "04",
     name: "Review",
     signal: "core",
-    optional: true,
-    output: "Review packet or notes",
-    handoff: "Close",
-    body: "A non-implementer checks evidence per requirement. The formal packet is optional for a small change you verified — the judgment isn't.",
+    output: "Review packet",
+    handoff: "Check",
+    body: "An independent reviewer — never the implementer — reconciles the result against the spec: one coverage row per scoped requirement, evidence per row, exceptions routed to human attention. On the trivial path this is the owner reading the pasted output, not a separate step.",
     example: {
-      title: "reviews/REVIEW-shell.md",
+      title: "~/.claude/projects/acme-site/review.md",
       lines: [
         {
           prompt: false,
@@ -186,26 +166,49 @@ const steps = [
     },
   },
   {
-    number: "06",
-    name: "Close",
+    number: "05",
+    name: "Check",
     signal: "core",
-    output: "Findings and board update",
-    handoff: "Next Pull",
-    body: "Merge, record any decision, save durable findings, and update the board.",
+    optional: true,
+    output: "Facts and exit codes",
+    handoff: "Findings",
+    body: "The deterministic floor: coverage complete, commands match, every Pass evidenced, references resolve. Exit codes: 0 clean, 1 warning, 2 blocking. The human owns the review result; the check owns the facts. Every step keeps a by-hand path — no step requires a tool.",
     example: {
-      title: "findings/FINDING-tailwind-v4-syntax.md",
+      title: "suspec check",
       lines: [
-        { prompt: false, text: "## FINDING-tailwind-v4-syntax" },
+        { prompt: true, text: "suspec check review.md --spec spec.md" },
+        {
+          prompt: false,
+          text: "C016 pass-needs-evidence: AC-007 is marked Pass with an",
+        },
+        { prompt: false, text: "empty evidence cell [blocking]" },
+        { prompt: false, text: "" },
+        { prompt: true, text: "echo $?" },
+        { prompt: false, text: "2" },
+      ],
+    },
+  },
+  {
+    number: "06",
+    name: "Findings",
+    signal: "core",
+    output: "Native harness memories",
+    handoff: "Next change",
+    body: "Ephemeral findings ride the review packet and die with it. A durable lesson becomes a native harness memory; a decision becomes an ADR; behavior becomes tests; the discussion lives on the PR. Artifacts are transient — code stays king.",
+    example: {
+      title: "CLAUDE.md (native memory)",
+      lines: [
+        { prompt: false, text: "## Lessons" },
         { prompt: false, text: "" },
         {
           prompt: false,
-          text: "When adding custom keyframes in Tailwind v4, use plain CSS",
+          text: "- Tailwind v4 custom keyframes: use plain CSS classes rather",
         },
         {
           prompt: false,
-          text: "classes rather than escaped utility prefixes to avoid PostCSS",
+          text: "  than escaped utility prefixes — PostCSS parse errors",
         },
-        { prompt: false, text: "parse errors." },
+        { prompt: false, text: "  otherwise." },
       ],
     },
   },
@@ -222,6 +225,53 @@ const steps = [
     lines: Array<{ prompt: boolean; text: string }>;
   };
 }>;
+
+const taskExample = {
+  title: "~/.claude/projects/acme-site/task-shell.md",
+  lines: [
+    { prompt: false, text: "## Task — shell slice" },
+    { prompt: false, text: "" },
+    { prompt: false, text: "Scope: implement Shell component per AC-003." },
+    { prompt: false, text: "Do not change: homepage content, analytics." },
+    { prompt: false, text: "Verify:" },
+    { prompt: false, text: "- npm run build passes" },
+    { prompt: false, text: "- grep finds 1 <nav> and 1 <footer> per page" },
+  ],
+};
+
+const commonPaths = [
+  {
+    work: "Trivial fix",
+    path: "one-line inline spec → implement → verify → done",
+  },
+  {
+    work: "Small feature",
+    path: "spec → implement → review → check",
+  },
+  {
+    work: "Bug fix against an existing spec",
+    path: "amend the spec → implement → review → check",
+  },
+  {
+    work: "Brownfield change",
+    path: "inventory → spec → implement → review → check",
+  },
+  {
+    work: "Migration or rewrite",
+    path: "inventory → spec → change plan → wave tasks → reviews",
+  },
+  {
+    work: "PR that already exists",
+    path: "write the acceptance bar as a spec → review against it",
+  },
+] as const;
+
+const dontSkip = [
+  "verification output — real, pasted, per requirement",
+  "independent review — a non-implementer judges it; the formal packet scales with risk",
+  "evidence for every Pass — empty evidence means Unverified, never Pass",
+  "a visible record of blocked or unverified work",
+] as const;
 
 export default function TheLoopPage() {
   const loopJsonLd = {
@@ -258,8 +308,8 @@ export default function TheLoopPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Move agent work from request to review. The spec is the unit; Pull,
-            Task, and formal review are optional.
+            Most changes need one line, not a file. When the diff earns a
+            contract: intent → spec → implement → review → check → findings.
           </p>
           <HeroTrace
             ariaLabel="Suspec loop trace"
@@ -272,7 +322,49 @@ export default function TheLoopPage() {
       </Section>
 
       <Section
-        register="01 / seal map"
+        id="trivial"
+        register="01 / the trivial path"
+        registerTone="evidence"
+        className="reveal grid gap-8 lg:grid-cols-2 lg:items-center"
+      >
+        <div>
+          <div className={`section-kicker ${signalRoles.evidence.sectionKicker}`}>
+            <Terminal className="h-4 w-4" aria-hidden="true" />
+            <span>the trivial path first</span>
+          </div>
+          <Heading className="mt-3">Most changes stop here</Heading>
+          <p className="mt-4 text-concrete-400">
+            For a trivial fix the whole spec is one line, stated inline — in
+            the conversation, not in a file. Implement, run the verify
+            command, paste the output. Done. No file, no packet, no check run.
+          </p>
+          <p className="mt-3 text-concrete-400">
+            Proportional rigor means the structure below exists for the work
+            that earns it — never as a toll on the work that doesn&apos;t.
+          </p>
+        </div>
+        <Panel brushed className="p-2">
+          <TerminalWindow
+            title="inline spec — the whole thing"
+            ariaLabel="A one-line inline spec"
+            copyText={trivialPathLines}
+          >
+            <p className="text-concrete-100">
+              Fix: expired refresh tokens must redirect to /login, not 500.
+            </p>
+            <p className="text-concrete-100">
+              Verify with: pnpm test:run auth-refresh-expired-token
+            </p>
+            <p className="mt-3 text-concrete-400">
+              Implement it, run the command, paste the real output. That is
+              the entire ceremony.
+            </p>
+          </TerminalWindow>
+        </Panel>
+      </Section>
+
+      <Section
+        register="02 / seal map"
         registerTone="core"
         className="loop-seal-section grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-start"
       >
@@ -281,8 +373,9 @@ export default function TheLoopPage() {
             <p className="loop-ledger-kicker">loop ledger</p>
             <h2>Records between steps</h2>
             <p>
-              Each step creates or checks a record. The next step gets enough
-              context to continue without the chat transcript.
+              Each step leaves an artifact the next step reads by explicit
+              full path — beside your harness&apos;s own artifacts, never
+              committed to the repo you work on.
             </p>
           </div>
           <ol className="loop-ledger-list" aria-label="Suspec loop handoffs">
@@ -312,13 +405,12 @@ export default function TheLoopPage() {
           <div className="order-2 lg:order-none">
             <PaperArtifact
               label="note"
-              title="loop points / core steps"
-              meta="Pull · Spec · (Task) · Run · Review · Close"
+              title="the spine"
+              meta="Spec · Review · Findings"
             >
               <p>
-                Each point creates or checks the record the next point needs.
-                Inventory and Change Plan appear for brownfield or structural
-                work.
+                What the loop leaves behind: intent stated, evidence
+                reconciled, lessons kept — as native harness memories.
               </p>
             </PaperArtifact>
           </div>
@@ -327,24 +419,26 @@ export default function TheLoopPage() {
             className="order-3 p-5 lg:order-none"
           >
             <p className="font-mono text-xs uppercase tracking-[0.12em] text-suspec-yellow">
-              prep records
+              optional layers
             </p>
             <ul className="mt-4 divide-y divide-panel-border/70 text-sm text-concrete-400">
               <li className="py-3 first:pt-0">
                 <span className="font-semibold text-concrete-100">
                   Inventory
                 </span>{" "}
-                maps what already exists.
+                maps existing code before brownfield work.
               </li>
               <li className="py-3">
                 <span className="font-semibold text-concrete-100">
-                  Change Plan
+                  Change plan
                 </span>{" "}
-                records what must survive.
+                records what must survive a migration or rewrite.
               </li>
               <li className="py-3 last:pb-0">
-                <span className="font-semibold text-concrete-100">Finding</span>{" "}
-                carries a reusable lesson forward.
+                <span className="font-semibold text-concrete-100">
+                  <a href="#task">Task</a>
+                </span>{" "}
+                — cut only when one spec splits into parallel slices.
               </li>
             </ul>
           </Panel>
@@ -357,7 +451,7 @@ export default function TheLoopPage() {
       <GiltBand height="sm" />
 
       <Section
-        register="02 / operating steps"
+        register="03 / operating steps"
         registerTone="core"
         className="section-flow section-flow-spacious"
       >
@@ -432,7 +526,135 @@ export default function TheLoopPage() {
         })}
       </Section>
 
-      <Section register="03 / start" registerTone="core">
+      <Section
+        register="04 / the optional split"
+        registerTone="core"
+        className="section-flow"
+      >
+        <article
+          id="task"
+          className="loop-operating-step loop-operating-step-core reveal relative grid scroll-mt-28 gap-8 lg:grid-cols-2 lg:items-start"
+        >
+          <div className="loop-operating-copy relative">
+            <div className="flex items-start gap-4">
+              <HexBadge color="core">
+                <Split
+                  className={`h-4 w-4 ${signalRoles.core.text}`}
+                  aria-hidden="true"
+                />
+              </HexBadge>
+              <div>
+                <div className="loop-operating-title-row flex items-center gap-2">
+                  <Heading>Task</Heading>
+                  <span className="loop-operating-optional font-mono text-[0.625rem] uppercase tracking-[0.16em] text-brass">
+                    optional
+                  </span>
+                </div>
+                <p className="mt-4 text-concrete-400">
+                  Cut only when one spec splits into parallel slices — the
+                  common 1:1 case has no task packet; the implementer works
+                  from the spec. When you do split, hand each agent a bounded
+                  packet by explicit path: scope, do-not-change, Verify
+                  commands. The review names the task it judged, and the
+                  check refuses a review whose task reference doesn&apos;t
+                  resolve.
+                </p>
+              </div>
+            </div>
+          </div>
+          <Panel
+            brushed
+            className="loop-operating-terminal loop-operating-terminal-core p-2"
+          >
+            <TerminalWindow
+              title={taskExample.title}
+              ariaLabel={`Task — ${taskExample.title}`}
+              copyText={taskExample.lines
+                .map((line) => `${line.prompt ? "$ " : ""}${line.text}`)
+                .join("\n")}
+            >
+              {taskExample.lines.map((line, i) => (
+                <p
+                  key={i}
+                  className={
+                    line.prompt ? "text-concrete-100" : "text-concrete-400"
+                  }
+                >
+                  {line.prompt && (
+                    <span className="text-suspec-yellow">$ </span>
+                  )}
+                  {line.text}
+                </p>
+              ))}
+            </TerminalWindow>
+          </Panel>
+        </article>
+      </Section>
+
+      <GiltBand height="sm" />
+
+      <Section
+        register="05 / common paths"
+        registerTone="reference"
+        className="reveal grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start"
+      >
+        <Panel variant="inset" className="p-5 sm:p-6">
+          <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
+            <ListChecks className="h-4 w-4" aria-hidden="true" />
+            <span>common paths</span>
+          </div>
+          <Heading className="mt-3">Match the ceremony to the risk</Heading>
+          <p className="mt-4 text-concrete-400">
+            Pick the row that fits the change; heavier forms stay reserved for
+            the change that earns them.
+          </p>
+          <div className="mt-6 overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-concrete-400">
+                  <th scope="col" className="pb-3 pr-4 font-bold">
+                    Work
+                  </th>
+                  <th scope="col" className="pb-3 font-bold">
+                    Path
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-panel-border/70">
+                {commonPaths.map((row) => (
+                  <tr key={row.work}>
+                    <th
+                      scope="row"
+                      className="py-3 pr-4 align-top font-semibold text-concrete-100"
+                    >
+                      {row.work}
+                    </th>
+                    <td className="py-3 align-top text-concrete-400">
+                      {row.path}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Panel>
+        <Panel variant="inset" className="p-5 sm:p-6">
+          <div className={`section-kicker ${signalRoles.change.sectionKicker}`}>
+            <ScanEye className="h-4 w-4" aria-hidden="true" />
+            <span>what not to skip</span>
+          </div>
+          <Heading className="mt-3">For code-changing work, keep</Heading>
+          <ul className="mt-5 divide-y divide-panel-border/70 text-sm text-concrete-400">
+            {dontSkip.map((item) => (
+              <li key={item} className="py-3 first:pt-0 last:pb-0">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Panel>
+      </Section>
+
+      <Section register="06 / start" registerTone="core">
         <Card
           signal="core"
           screws
@@ -441,8 +663,9 @@ export default function TheLoopPage() {
           <div>
             <Heading>Ready to run it?</Heading>
             <p className="mt-2 text-concrete-400">
-              Copy the starter kit and write one spec. The same loop handles
-              the next task.
+              Install the skills —{" "}
+              <code>npx skills add jcosta33/suspec-skills -g</code> — and
+              write one spec. The same loop handles the next change.
             </p>
             <p className="mt-4 text-sm text-concrete-400">
               Source:{" "}
@@ -461,7 +684,7 @@ export default function TheLoopPage() {
             className="shrink-0 gap-2 text-base font-semibold"
             touchTarget
           >
-            Set up your workspace{" "}
+            Get started{" "}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </TextLink>
         </Card>

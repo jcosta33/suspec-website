@@ -84,7 +84,7 @@ const specimenRegister = [
   },
 ];
 
-const terminalSpecimenCommand = "suspec status";
+const terminalSpecimenCommand = "suspec check ./spec.md";
 
 function PreviewSection({
   id,
@@ -419,11 +419,12 @@ export default function KitchenSinkPage() {
         registerTone="reference"
       >
         <CodeBlock>{`loop:
-  spec
-  -> task
-  -> run
+  intent
+  -> spec
+  -> implement
   -> review
-  -> close`}</CodeBlock>
+  -> check
+  -> findings`}</CodeBlock>
       </PreviewSection>
 
       <PreviewSection
@@ -439,7 +440,7 @@ export default function KitchenSinkPage() {
         >
           <p className="text-concrete-500"># CRT monitor panel</p>
           <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}suspec status
+              <span className="text-suspec-yellow">$</span>{" "}suspec check ./spec.md
           </p>
           <p className="mt-1 text-signal-evidence">✓ all systems nominal</p>
         </TerminalWindow>

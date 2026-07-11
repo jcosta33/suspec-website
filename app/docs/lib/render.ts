@@ -444,10 +444,10 @@ const contextualDescriptionSuffix = (title: string): string => {
     return "Covers how file-based tools, CLIs, and local workflows can read the records.";
   }
   if (/adopting/i.test(title)) {
-    return "Covers starter-kit setup, repo policy, and rollout boundaries.";
+    return "Covers the one-install setup, the optional checker, and repo policy.";
   }
   if (/examples/i.test(title)) {
-    return "Shows complete Pull, Spec, Task, Run, Review, and Close chains.";
+    return "Shows complete spec, implement, review, and check chains.";
   }
   if (/artifact formats/i.test(title)) {
     return "Covers frontmatter, markdown packet structure, and reviewable records.";

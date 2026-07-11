@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import {
   ArrowRight,
-  Blocks,
+  Braces,
   Bug,
-  GitBranch,
-  LayoutDashboard,
-  Plus,
+  FileCheck,
+  Link2,
+  ListChecks,
   ScanEye,
+  ShieldAlert,
   ShieldCheck,
   Terminal,
 } from "lucide-react";
@@ -32,8 +33,8 @@ const SITE_URL = "https://suspecframework.dev";
 const CLI_REPOSITORY = "https://github.com/jcosta33/suspec-cli";
 const CLI_PAGE_URL = `${SITE_URL}/cli/`;
 const cliDescription =
-  "suspec-cli scaffolds Suspec workspaces, runs checks, manages task worktrees, reviews evidence, and emits JSON without deciding correctness.";
-const cliTitle = "suspec-cli — setup, checks, review, JSON";
+  "suspec-cli is Suspec's honesty floor: a path-agnostic deterministic checker over the artifacts it is handed. Three invocations, --json on any, exit codes 0/1/2. Facts, never verdicts.";
+const cliTitle = "suspec-cli — the honesty floor";
 
 export const metadata: Metadata = {
   title: cliTitle,
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
         url: "/og-cli.png",
         width: 1200,
         height: 630,
-        alt: "suspec-cli command reference",
+        alt: "suspec-cli check surface reference",
       },
     ],
   },
@@ -66,156 +67,139 @@ const cliInstallCommands = [
   "npm install",
   "npm run build",
   "npm link",
-  "suspec --help",
+  "suspec check --contract",
 ].join("\n");
 
 const cliExampleCommands = [
-  "suspec check",
-  "suspec worktree create auth-refresh --task TASK-12",
-  "suspec review TASK-12",
-  "suspec status -i",
+  "suspec check ./spec.md",
+  "suspec check ./review.md --spec ./spec.md --task ./task.md",
+  "suspec check --contract --json",
 ].join("\n");
 
 const commands = [
   {
-    cmd: "init [dir]",
-    family: "Setup",
-    what: "Scaffold a Suspec workspace without overwriting existing files.",
-    icon: Blocks,
-  },
-  {
-    cmd: "update [--check|--write]",
-    family: "Setup",
-    what: "Check or refresh kit-owned files. Project work stays untouched.",
+    cmd: "check <artifact> [<artifact>...]",
+    family: "Artifacts",
+    what: "Lint specs and change plans by explicit path. Several at once is a batching convenience; the exit code is the max severity across files.",
     icon: ShieldCheck,
   },
   {
-    cmd: "check [file]",
-    family: "Check",
-    what: "Check one file or the workspace. Exit codes fit CI.",
-    icon: ShieldCheck,
-  },
-  {
-    cmd: "worktree",
-    family: "Run",
-    what: "Create, list, remove, or prune task worktrees.",
-    icon: GitBranch,
-  },
-  {
-    cmd: "status",
-    family: "Check",
-    what: "Print specs, tasks, reviews, and gaps. Use --json for scripts.",
-    icon: LayoutDashboard,
-  },
-  {
-    cmd: "review <task>",
+    cmd: "check <review> --spec <spec> [--task <task>]",
     family: "Review",
-    what: "Compare the task, run report, and git diff.",
+    what: "Reconcile a review packet against the spec it answers to — and the task packet, exactly when the review names one. Companions are explicit flags; nothing is discovered.",
     icon: ScanEye,
   },
   {
-    cmd: "new <task|spec>",
-    family: "Setup",
-    what: "Create a spec or cut a task packet from a spec.",
-    icon: Plus,
-  },
-  {
-    cmd: "pull <ref>",
-    family: "Setup",
-    what: "Snapshot an external ticket into intake/.",
-    icon: ArrowRight,
-  },
-  {
-    cmd: "promote <task>",
-    family: "Review",
-    what: "Draft a finding from a finished task.",
-    icon: Plus,
-  },
-  {
-    cmd: "run <task> --agent <name>",
-    family: "Run",
-    what: "Launch a prepared task with your configured agent.",
-    icon: Terminal,
-  },
-  {
-    cmd: "show <task|spec|review|checks>",
-    family: "JSON",
-    what: "Print parsed artifacts as JSON.",
-    icon: Blocks,
-  },
-  {
-    cmd: "agents emit --codex",
-    family: "Setup",
-    what: "Generate Codex agent files from Claude Code agent definitions.",
-    icon: Terminal,
+    cmd: "check --contract",
+    family: "Contract",
+    what: "Print the checks contract as JSON — the version plus every check's id, name, and severity. Contract 0.16.0 lives in the canon repo, at checks/checks.yaml.",
+    icon: Braces,
   },
 ];
 
-const principles = [
+const honestyFloor = [
   {
-    title: "One worktree per task",
-    icon: GitBranch,
-    text: "Keep parallel runs out of the main checkout.",
-    signal: "reference",
-  },
-  {
-    title: "Markdown is the source of truth",
-    icon: Terminal,
-    text: "The CLI reads Suspec files. The files stay canonical.",
-    signal: "reference",
-  },
-  {
-    title: "It reports checks, not decisions",
-    icon: ShieldCheck,
-    text: "Checks report facts. Review decides.",
+    title: "Coverage",
+    label: "C012",
+    icon: ListChecks,
+    text: "Every in-scope requirement has a coverage row in the review. Nothing gets dropped silently.",
     signal: "evidence",
+  },
+  {
+    title: "Command match",
+    label: "C013",
+    icon: Terminal,
+    text: "The recorded evidence ran the command the spec's Verify with: line named — not a friendlier one.",
+    signal: "evidence",
+  },
+  {
+    title: "Pass needs evidence",
+    label: "C016",
+    icon: ScanEye,
+    text: "A Pass with an empty evidence cell is a structural contradiction. Blocking.",
+    signal: "evidence",
+  },
+  {
+    title: "Reference resolves",
+    label: "C020",
+    icon: Link2,
+    text: "The review's task reference must resolve to the packet it is checked against. Blocking.",
+    signal: "evidence",
+  },
+  {
+    title: "Per-artifact lint",
+    label: "lint",
+    icon: FileCheck,
+    text: "Specs, change plans, and review packets each get their own kind's lint — kind read from the artifact's own type: frontmatter.",
+    signal: "reference",
+  },
+  {
+    title: "Missing companion blocks",
+    label: "exit 2",
+    icon: ShieldAlert,
+    text: "A review checked without a required --spec or --task is a blocking exit 2, naming the missing flag — never a silently shallower check.",
+    signal: "change",
   },
 ] as const satisfies Array<{
   title: string;
-  icon: typeof GitBranch;
+  label: string;
+  icon: typeof ListChecks;
   text: string;
   signal: SignalRole;
 }>;
 
-const commandFamilies = [
+const boundaries = [
   {
-    label: "Setup",
-    id: "setup-commands",
-    commands: "init · update · new · pull · agents emit",
-    detail: "Create or refresh kit-owned files.",
-    icon: Blocks,
-    signal: "reference",
+    title: "No resolution",
+    text: "It never finds files for you. Every path is given; nothing is discovered, listed, or inferred.",
   },
   {
-    label: "Check",
-    id: "check-commands",
-    commands: "check · status",
-    detail: "Report workspace facts and gaps.",
+    title: "No gate",
+    text: "It reports facts and exit codes. What blocks a merge is the human's decision.",
+  },
+  {
+    title: "No verdicts",
+    text: "Pass, Fail, Unverified, and Blocked are written by the reviewer. The checker verifies their shape and their binding to evidence — nothing more.",
+  },
+  {
+    title: "No execution",
+    text: "It never runs your verify commands, your tests, or any agent. It checks that recorded evidence matches what the spec named — not that the commands pass.",
+  },
+  {
+    title: "No writes",
+    text: "The filesystem is read-only to it. Nothing scaffolded, nothing seeded, nothing managed.",
+  },
+] as const satisfies Array<{
+  title: string;
+  text: string;
+}>;
+
+const commandFamilies = [
+  {
+    label: "Artifacts",
+    stripLabel: "Spec / change plan",
+    id: "artifact-check",
+    commands: "suspec check <artifact> [<artifact>...]",
+    detail: "Per-artifact lint over specs and change plans, by explicit path.",
     icon: ShieldCheck,
     signal: "reference",
   },
   {
     label: "Review",
-    id: "review-commands",
-    commands: "review · promote",
-    detail: "Compare evidence and draft findings.",
+    stripLabel: "Review packet",
+    id: "review-check",
+    commands: "suspec check <review> --spec <spec> [--task <task>]",
+    detail: "Reconcile a review packet's evidence against its companions.",
     icon: ScanEye,
     signal: "reference",
   },
   {
-    label: "Run",
-    id: "run-commands",
-    commands: "worktree · run",
-    detail: "Isolate task work and launch agents.",
-    icon: GitBranch,
-    signal: "reference",
-  },
-  {
-    label: "JSON",
-    id: "json-commands",
-    commands: "show",
-    detail: "Expose parsed artifacts for scripts.",
-    icon: LayoutDashboard,
+    label: "Contract",
+    stripLabel: "Contract JSON",
+    id: "contract-check",
+    commands: "suspec check --contract",
+    detail: "The checks contract itself, as JSON.",
+    icon: Braces,
     signal: "reference",
   },
 ] as const;
@@ -229,23 +213,23 @@ const commandFamilyHrefByLabel = Object.fromEntries(
 
 const cliCommandItems = commands.map((command) => ({
   name: `suspec ${command.cmd}`,
-  description: `${command.what} Family: ${command.family}.`,
+  description: `${command.what} Form: ${command.family}.`,
   url: commandFamilyHrefByLabel[command.family],
-  category: `${command.family} command`,
+  category: `${command.family} invocation`,
 }));
 
 const cliPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "@id": `${CLI_PAGE_URL}#webpage`,
-  name: "suspec-cli command reference",
+  name: "suspec check invocation reference",
   url: CLI_PAGE_URL,
   description: cliDescription,
   isPartOf: { "@id": `${SITE_URL}/#website` },
   about: { "@id": `${CLI_PAGE_URL}#source-code` },
   mainEntity: {
     "@type": "ItemList",
-    name: "suspec-cli commands",
+    name: "suspec check invocations",
     itemListElement: cliCommandItems.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -261,11 +245,11 @@ const cliPageJsonLd = {
 };
 
 const cliPageNav = [
-  { label: "Families", href: "#command-families", signal: "reference" },
+  { label: "Surface", href: "#the-surface", signal: "reference" },
   { label: "Install", href: "#install", signal: "core" },
-  { label: "Run loop", href: "#run-the-loop", signal: "core" },
-  { label: "Commands", href: "#commands", signal: "reference" },
-  { label: "Notes", href: "#design-notes", signal: "muted" },
+  { label: "Session", href: "#check-session", signal: "core" },
+  { label: "Invocations", href: "#commands", signal: "reference" },
+  { label: "Honesty floor", href: "#honesty-floor", signal: "evidence" },
   { label: "Source", href: "#source", signal: "reference" },
 ] as const satisfies Array<{
   label: string;
@@ -278,7 +262,7 @@ export default function CliPage() {
     <div className="repo-product-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
       <Section className="ambient-header">
         <PageHero
-          eyebrow="suspec-cli — reference implementation"
+          eyebrow="suspec-cli — optional reinforcement"
           className="page-hero-package-cli"
           motif="catalog"
           tone="reference"
@@ -291,12 +275,13 @@ export default function CliPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Optional CLI for setup, checks, task worktrees, evidence review,
-            and JSON output. It reports facts; people decide.
+            The skills are the product; this is the honesty floor. A
+            path-agnostic deterministic checker: it reads exactly the files it
+            is handed, reports facts, and exits. Never a verdict.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
-            <Badge variant="draft">Command surface settling</Badge>
-            <Badge variant="draft">No verdicts</Badge>
+            <Badge variant="draft">Optional — no step requires it</Badge>
+            <Badge variant="draft">Exit codes are the API</Badge>
           </div>
         </PageHero>
       </Section>
@@ -308,19 +293,19 @@ export default function CliPage() {
       />
 
       <Section
-        id="command-families"
-        register="01 / command families"
+        id="the-surface"
+        register="01 / the whole surface"
         registerTone="reference"
         className="scroll-mt-28 space-y-4"
       >
         <Panel brushed screws className="cli-surface-panel p-0">
           <div className="cli-surface-header">
-            <h2>Command families</h2>
-            <span>optional helper surface</span>
+            <h2>The whole surface</h2>
+            <span>three invocations · --json on any</span>
           </div>
           <ol
-            className="cli-command-rail package-process-strip package-process-strip-cli process-strip process-strip-signal-reference grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
-            aria-label="suspec-cli command families"
+            className="cli-command-rail package-process-strip package-process-strip-cli process-strip process-strip-signal-reference grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-3"
+            aria-label="suspec check invocation forms"
           >
             {commandFamilies.map((family, index) => {
               const Icon = family.icon;
@@ -332,7 +317,7 @@ export default function CliPage() {
                   <a
                     href={`#${family.id}`}
                     className="cli-command-link focus-ring group block h-full p-5 transition-colors duration-150 hover:bg-panel sm:p-6"
-                    aria-label={`Jump to ${family.label} commands: ${family.commands}. ${family.detail}`}
+                    aria-label={`Jump to the ${family.label} invocation: ${family.commands}. ${family.detail}`}
                   >
                     <div className="cli-command-heading flex items-center gap-3">
                       <HexBadge
@@ -348,7 +333,7 @@ export default function CliPage() {
                           {String(index + 1).padStart(2, "0")}
                         </p>
                         <h3 className="cli-command-title font-heading text-lg font-semibold text-concrete-100">
-                          {family.label}
+                          {family.stripLabel}
                         </h3>
                       </div>
                       <ArrowRight
@@ -367,6 +352,13 @@ export default function CliPage() {
               );
             })}
           </ol>
+          <p className="p-5 text-sm leading-relaxed text-concrete-400 sm:p-6">
+            There is no other command. No interactive mode, no dashboard, no
+            scaffolds — the exit code is the API:{" "}
+            <code className="text-suspec-yellow">0</code> clean ·{" "}
+            <code className="text-suspec-yellow">1</code> warning ·{" "}
+            <code className="text-suspec-yellow">2</code> blocking.
+          </p>
         </Panel>
       </Section>
 
@@ -379,7 +371,7 @@ export default function CliPage() {
         <h2 className="sr-only">Install suspec-cli</h2>
         <div className="section-kicker section-kicker-core">
           <DroneIcon className="h-4 w-4" />
-          <span>install</span>
+          <span>install — from source, not npm</span>
         </div>
         <Panel brushed className="p-2">
           <TerminalWindow
@@ -388,7 +380,7 @@ export default function CliPage() {
             copyText={cliInstallCommands}
           >
             <p className="text-concrete-500">
-              # source install for now
+              # not on npm — install from source
             </p>
             <p className="text-concrete-100">
               <span className="text-suspec-yellow">$</span>{" "}HOST=github.com/jcosta33
@@ -414,58 +406,72 @@ export default function CliPage() {
             <p className="text-concrete-100">
               <span className="text-suspec-yellow">$</span>{" "}npm link
             </p>
-            <p className="mt-2 text-concrete-500"># then run commands as</p>
+            <p className="mt-2 text-concrete-500">
+              # sanity check — prints checks contract 0.16.0
+            </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}suspec --help
+              <span className="text-suspec-yellow">$</span>{" "}suspec check
+              --contract
             </p>
           </TerminalWindow>
         </Panel>
       </Section>
 
       <Section
-        id="run-the-loop"
-        register="03 / run the loop"
+        id="check-session"
+        register="03 / a check session"
         registerTone="core"
         className="section-flow section-flow-tight scroll-mt-28"
       >
-        <h2 className="sr-only">Run the Suspec loop with the CLI</h2>
+        <h2 className="sr-only">A suspec check session, end to end</h2>
         <div className="section-kicker section-kicker-core">
           <DroneIcon className="h-4 w-4" />
-          <span>the-loop.sh — a task, end to end</span>
+          <span>session.sh — facts and exit codes</span>
         </div>
         <Panel brushed className="p-2">
           <TerminalWindow
             title="terminal"
-            ariaLabel="example session"
+            ariaLabel="example check session"
             copyText={cliExampleCommands}
           >
             <p className="text-concrete-500">
-              # scaffold a workspace first
+              # a spec, by explicit path — its own kind&apos;s lint
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}suspec check{" "}
+              <span className="text-suspec-yellow">$</span>{" "}suspec check
+              ./spec.md{" "}
+              <span className="text-concrete-500"># exit 0 — clean</span>
+            </p>
+            <p className="mt-2 text-concrete-500">
+              # a review packet, reconciled against its companions
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-suspec-yellow">$</span>{" "}suspec check
+              ./review.md --spec ./spec.md --task ./task.md
+            </p>
+            <p className="text-concrete-100">
+              C016 blocking — review.md: Pass on AC-003 with an empty evidence
+              cell
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-suspec-yellow">$</span>{" "}echo $?{" "}
+              <span className="text-concrete-500"># 2 — blocking</span>
+            </p>
+            <p className="mt-2 text-concrete-500">
+              # a required companion missing is never a shallower check
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-suspec-yellow">$</span>{" "}suspec check
+              ./review.md{" "}
               <span className="text-concrete-500">
-                # lint a spec or the whole workspace; exit 0/1/2
+                # blocking — a review requires --spec; exit 2
               </span>
             </p>
-            <p className="mt-1 text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}suspec worktree
-              create auth-refresh --task TASK-12{" "}
+            <p className="mt-2 text-concrete-100">
+              <span className="text-suspec-yellow">$</span>{" "}suspec check
+              --contract --json{" "}
               <span className="text-concrete-500">
-                # isolate the task on its own branch
-              </span>
-            </p>
-            <p className="mt-1 text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}suspec review
-              TASK-12{" "}
-              <span className="text-concrete-500">
-                # reconcile the finished run — diff vs report vs spec
-              </span>
-            </p>
-            <p className="mt-1 text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}suspec status -i{" "}
-              <span className="text-concrete-500">
-                # the board — specs, tasks, reviews, gaps
+                # the contract, for other tools
               </span>
             </p>
           </TerminalWindow>
@@ -474,23 +480,24 @@ export default function CliPage() {
 
       <Section
         id="commands"
-        register="04 / command reference"
+        register="04 / invocation reference"
         registerTone="reference"
         className="cli-command-reference section-flow section-flow-tight scroll-mt-28"
       >
         <div className="cli-command-reference-intro max-w-5xl">
           <div className="section-kicker section-kicker-reference">
             <Bug className="h-4 w-4" aria-hidden="true" />
-            <span>commands.md — public surface</span>
+            <span>the surface, invocation by invocation</span>
           </div>
-          <Heading className="mt-3">Commands</Heading>
+          <Heading className="mt-3">Invocations</Heading>
           <p className="mt-4 max-w-2xl text-concrete-400">
-            Start with <code className="text-suspec-yellow">suspec check</code>
-            {" "}
-            and <code className="text-suspec-yellow">suspec review</code>. Use the
-            rest when the workspace needs them.
+            The artifact&apos;s kind is read from its own{" "}
+            <code className="text-suspec-yellow">type:</code> frontmatter,
+            never from its filename or location. Every invocation takes{" "}
+            <code className="text-suspec-yellow">--json</code> — the same
+            facts, structured: check id, severity, message, location.
           </p>
-          <ul className="cli-command-legend mt-6" aria-label="Command family shortcuts">
+          <ul className="cli-command-legend mt-6" aria-label="Invocation shortcuts">
             {commandFamilies.map((family) => (
               <li
                 key={family.label}
@@ -499,7 +506,7 @@ export default function CliPage() {
                 <a
                   className="cli-command-legend-link focus-ring"
                   href={`#${family.id}`}
-                  aria-label={`${family.label} commands: ${family.detail}`}
+                  aria-label={`${family.label} invocation: ${family.detail}`}
                 >
                   <span>{family.label}</span>
                   <span>{family.detail}</span>
@@ -510,8 +517,8 @@ export default function CliPage() {
         </div>
         <Panel brushed screws className="cli-command-catalog p-0">
           <div className="cli-command-catalog-header">
-            <span>command catalog</span>
-            <span>public surface</span>
+            <span>invocation catalog</span>
+            <span>the entire surface</span>
           </div>
           <div className="cli-command-catalog-body">
             {commandFamilies.map((family) => {
@@ -535,10 +542,10 @@ export default function CliPage() {
                         id={`${family.id}-heading`}
                         className="mt-1 font-heading text-xl font-semibold text-concrete-100"
                       >
-                        {family.label} commands
+                        {family.label}
                       </h3>
                     </div>
-                    <span className="cli-command-family-tag">family</span>
+                    <span className="cli-command-family-tag">form</span>
                   </div>
                   <ul className="cli-command-list">
                     {familyCommands.map((c) => {
@@ -569,7 +576,7 @@ export default function CliPage() {
                                 text={`suspec ${c.cmd}`}
                                 label="Copy"
                                 compactLabel="Copy"
-                                ariaLabel={`Copy suspec ${c.cmd} command`}
+                                ariaLabel={`Copy suspec ${c.cmd} invocation`}
                                 className="cli-command-copy"
                               />
                               <PilotLamp
@@ -590,26 +597,26 @@ export default function CliPage() {
       </Section>
 
       <Section
-        id="design-notes"
-        register="05 / design notes"
+        id="honesty-floor"
+        register="05 / the honesty floor"
         registerTone="muted"
         className="section-flow scroll-mt-28"
       >
         <div className="max-w-2xl">
           <div className="section-kicker section-kicker-muted">
             <DroneIcon className="h-4 w-4" />
-            <span>design.md — why a CLI?</span>
+            <span>floor.md — why a checker?</span>
           </div>
           <Heading className="mt-3">
-            Why a CLI?
+            Facts a reviewer cannot fake
           </Heading>
           <p className="mt-4 text-concrete-400">
-            Suspec is plain files. The CLI handles repeatable chores around
-            those files.
+            What the checker earns its keep on: the facts a lazy or dishonest
+            reviewer cannot fake, at zero model cost.
           </p>
         </div>
         <ul className="grid gap-4 sm:grid-cols-3">
-          {principles.map((p) => {
+          {honestyFloor.map((p) => {
             const Icon = p.icon;
             return (
               <li key={p.title}>
@@ -624,7 +631,12 @@ export default function CliPage() {
                       >
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </HexBadge>
-                    <h3 className="catalog-row-title font-heading text-sm font-semibold uppercase tracking-wide text-concrete-100">
+                    <p
+                      className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles[p.signal].text}`}
+                    >
+                      {p.label}
+                    </p>
+                    <h3 className="catalog-row-title mt-1 font-heading text-sm font-semibold uppercase tracking-wide text-concrete-100">
                       {p.title}
                     </h3>
                     <p className="catalog-row-copy mt-2 text-sm leading-relaxed text-concrete-400">
@@ -636,6 +648,25 @@ export default function CliPage() {
             );
           })}
         </ul>
+        <Card screws className="border-panel-border">
+          <h3 className="font-heading text-sm font-semibold uppercase tracking-wide text-concrete-100">
+            What it does not do
+          </h3>
+          <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {boundaries.map((b) => (
+              <li key={b.title}>
+                <p
+                  className={`font-mono text-xs font-semibold uppercase tracking-wide ${signalRoles.muted.text}`}
+                >
+                  {b.title}
+                </p>
+                <p className="mt-1 text-sm leading-relaxed text-concrete-400">
+                  {b.text}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </Card>
       </Section>
 
       <Section
@@ -650,30 +681,30 @@ export default function CliPage() {
           contentClassName="flex h-full flex-col gap-6"
         >
           <div>
-            <Heading>Don&apos;t need the CLI yet?</Heading>
+            <Heading>Don&apos;t need the CLI at all?</Heading>
             <p className="mt-2 text-concrete-400">
-              Use the starter kit and write a spec. Add the CLI later when you
-              want scaffolding, checks, worktrees, or JSON output.
+              Correct — no step requires it. The skills are the product:
+              install them, work the loop by hand, and add the checker when
+              you want the floor held for free.
+            </p>
+            <p className="mt-4 font-mono text-sm text-suspec-yellow">
+              npx skills add jcosta33/suspec-skills -g
             </p>
           </div>
           <div className="mt-auto flex flex-col gap-3">
+            <TextLink
+              href="/skills/"
+              className="w-fit gap-2 text-base font-semibold"
+              touchTarget
+            >
+              Meet the skills <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </TextLink>
             <TextLink
               href="/get-started/"
               className="w-fit gap-2 text-base font-semibold"
               touchTarget
             >
               Get started <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </TextLink>
-            <TextLink
-              href="/docs/ADOPTING/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Read the adopting notes docs (opens in new tab)"
-              className="w-fit gap-2 text-base font-semibold"
-              touchTarget
-            >
-              Read the adopting notes{" "}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </TextLink>
           </div>
         </Card>
@@ -686,7 +717,17 @@ export default function CliPage() {
           <div>
             <Heading>Reference repository</Heading>
             <p className="mt-4 text-concrete-400">
-              Source, issues, and release notes live on GitHub.
+              Source, issues, and install notes live on GitHub. The checks
+              contract itself lives in the canon repo:{" "}
+              <TextLink
+                href="/docs/reference/checks/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                checks/checks.yaml
+                <span className="sr-only"> (opens in new tab)</span>
+              </TextLink>
+              .
             </p>
           </div>
           <div className="mt-auto space-y-4">
@@ -702,9 +743,9 @@ export default function CliPage() {
               </TextLink>
             </p>
             <p className="text-concrete-400">
-              Using an MCP client?{" "}
+              Running shell-less?{" "}
               <TextLink href="/mcp/">
-                suspec-mcp exposes the same facts (read + reconcile, no verdict)
+                suspec-mcp carries the same check surface over MCP
               </TextLink>
             </p>
           </div>
@@ -717,11 +758,11 @@ export default function CliPage() {
         path="/cli/"
         repository={CLI_REPOSITORY}
         keywords={[
-          "command line interface",
-          "workspace checks",
-          "task worktrees",
+          "deterministic checker",
+          "honesty floor",
+          "artifact checks",
+          "exit codes",
           "JSON output",
-          "board status",
         ]}
         catalogItems={cliCommandItems}
       />

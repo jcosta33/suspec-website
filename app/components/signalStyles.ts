@@ -1,7 +1,7 @@
 // Palette grammar:
 // core = Suspec identity / loop / primary action
 // evidence = proof / review / verified output, not generic "green means good"
-// greenfield = literal new-repo or starter-kit paths only
+// greenfield = literal new-repo or first-install paths only
 // brownfield = existing-project adoption and migration paths only
 // change = attention states, defects, blocked/unverified work, and explicit change records
 // reference = docs / manuals / command catalogs / ledgers / read-only rosters
@@ -16,7 +16,7 @@
 // A role is more than a color: use it for the text, lamp, rail, border, hatch,
 // mark, icon, command plate, and hover state. Package cyan and dusty violet are
 // identity accents only; terminal/status lamps stay semantic. Setup is not
-// automatically green: only new-workspace paths get greenfield; mixed setup
+// automatically green: only fresh-install paths get greenfield; mixed setup
 // surfaces use reference, core, or muted. If a
 // role appears on only one of those surfaces, the color will read as random
 // decoration instead of product meaning.
@@ -57,11 +57,11 @@ export const signalRoleMeta = {
     relationship: "fresh field green: HSL(123 32% 62%)",
     wheel: "+89° from core",
     tone: "fresh field green",
-    use: "Fresh workspace setup paths, starter kits, first-run tutorial paths, and new-repo choices.",
-    surface: "new-file icons, starter-kit cards, clean-start rails, and first-run command plates",
+    use: "Fresh install paths, first-run tutorial paths, and new-repo choices.",
+    surface: "new-file icons, install cards, clean-start rails, and first-run command plates",
     pattern: "upright field rows with sparse seed marks",
     avoid: "Do not use for existing-project adoption, review success, or generic positive emphasis.",
-    example: "New repo, starter kit, first-run tutorial.",
+    example: "New repo, first install, first-run tutorial.",
   },
   brownfield: {
     label: "brownfield",
@@ -198,7 +198,7 @@ export const signalKeyItemByRole = {
   greenfield: {
     label: "Greenfield",
     role: "greenfield",
-    detail: "new repo, starter kit, first run",
+    detail: "new repo, first install, first run",
   },
   brownfield: {
     label: "Brownfield",

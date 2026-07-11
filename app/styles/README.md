@@ -168,7 +168,7 @@ relations ledger shell, card surface treatment, and content layout live in
 separate files so the overview section can change without broad selector moves.
 
 `app/art-direction-pass.css` and the later `app/styles/art-direction-*.css`
-files no longer exist; their work is split into `*-polish.css` files by route
+files are absent by design; their work is split into `*-polish.css` files by route
 family.
 
 ## Current Interfaces

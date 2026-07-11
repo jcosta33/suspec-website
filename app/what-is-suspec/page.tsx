@@ -28,7 +28,7 @@ import {
 
 const SITE_URL = "https://suspecframework.dev";
 const overviewDescription =
-  "A markdown workflow for scoping agent work, reviewing evidence, and saving findings.";
+  "An opinionated methodology for working with coding agents, shipped as a globally installed skill family: lean specs, evidence-backed reviews, findings your harness remembers.";
 const overviewTitle = "What is Suspec? — specs, evidence, review";
 
 export const metadata: Metadata = {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
         url: "/og-what-is-suspec.png",
         width: 1200,
         height: 630,
-        alt: "What is Suspec? — a spec and review workflow",
+        alt: "What is Suspec? — a spec and review methodology shipped as skills",
       },
     ],
   },
@@ -54,29 +54,51 @@ export const metadata: Metadata = {
 };
 
 const isList = [
-  { label: "spec", text: "specs humans write and agents work from", icon: FileText },
-  { label: "task", text: "optional task packets for split work", icon: LayoutList },
+  {
+    label: "skills",
+    text: "a globally installed skill family — plain markdown, any agent",
+    icon: Layers,
+  },
+  {
+    label: "spec",
+    text: "lean specs sized to the work — down to one inline line, no file at all",
+    icon: FileText,
+  },
+  {
+    label: "task",
+    text: "optional task packets, cut only when one spec splits into parallel slices",
+    icon: LayoutList,
+  },
   {
     label: "review",
-    text: "review packets with evidence per requirement",
+    text: "review packets that reconcile evidence against the spec, requirement by requirement",
     icon: NotebookPen,
   },
   {
-    label: "finding",
-    text: "findings that carry lessons forward",
+    label: "check",
+    text: "a deterministic checker — suspec check — over any of these artifacts",
     icon: CheckCircle,
   },
-  { label: "template", text: "markdown templates", icon: Layers },
-  { label: "convention", text: "workspace conventions", icon: Workflow },
+  {
+    label: "finding",
+    text: "durable lessons saved as native harness memories",
+    icon: Workflow,
+  },
 ];
 
 const isNotList = [
   { label: "runtime", text: "an agent or agent runtime" },
+  {
+    label: "planner",
+    text: "a replacement for your harness's plan mode — it coexists with it",
+  },
   { label: "tracker", text: "a Jira/Linear replacement" },
-  { label: "generator", text: "a code generator" },
   { label: "gate", text: "a replacement for PRs and CI" },
   { label: "proof", text: "a formal verification system" },
-  { label: "verdict", text: "a correctness stamp" },
+  {
+    label: "verdict",
+    text: "a correctness certificate — the human owns the review result",
+  },
   { label: "shortcut", text: "permission to skip review" },
 ];
 
@@ -87,15 +109,15 @@ const adjacent = [
     signal: "muted",
     examples: "Claude Code, Cursor, Copilot, …",
     does: "write the code",
-    relation: "Suspec gives them scoped tasks and review records.",
+    relation: "Suspec shapes the work around it: spec, review, findings.",
   },
   {
-    product: "Spec-driven workflows",
-    role: "requirements",
+    product: "Native plan mode",
+    role: "planning",
     signal: "core",
-    examples: "",
-    does: "turn a written spec into an implementation",
-    relation: "Suspec keeps requirements tied to checks and evidence.",
+    examples: "your harness's own planner",
+    does: "sketch the approach inside a session",
+    relation: "Suspec coexists — never modifies, replaces, or races it.",
   },
   {
     product: "Issue trackers",
@@ -103,7 +125,7 @@ const adjacent = [
     signal: "reference",
     examples: "Jira, Linear, GitHub Issues",
     does: "hold the backlog and the conversation",
-    relation: "Tickets stay there. Suspec snapshots the work into files.",
+    relation: "Tickets stay there. The spec names its source directly.",
   },
   {
     product: "Docs portals",
@@ -119,7 +141,7 @@ const adjacent = [
     signal: "evidence",
     examples: "PRs, CI, review bots",
     does: "check the merge",
-    relation: "The review packet tells reviewers where to look.",
+    relation: "The review packet tells reviewers where to look; discussion lives on the PR.",
   },
   {
     product: "Refactoring tooling",
@@ -142,8 +164,10 @@ const overviewDiagnosticCommand = "cat docs/01-what-is-suspec.md";
 
 const overviewJumpLinks = [
   { label: "Boundaries", href: "#boundaries", signal: "muted" },
+  { label: "Honesty floor", href: "#honesty-floor", signal: "evidence" },
   { label: "Nearby tools", href: "#nearby-tools", signal: "reference" },
   { label: "Failure modes", href: "#failure-modes", signal: "change" },
+  { label: "Who shouldn't", href: "#who-should-not", signal: "muted" },
   { label: "The loop", href: "#next-step", signal: "core" },
 ] as const satisfies Array<{
   label: string;
@@ -151,33 +175,31 @@ const overviewJumpLinks = [
   signal: SignalRole;
 }>;
 
-const overviewArtifactChain = [
-  "Intake",
-  "Spec",
-  "Task",
-  "Review",
-  "Findings",
+const overviewRigorLadder = [
+  "Trivial fix — one inline line, zero files",
+  "Feature — a lean spec",
+  "Large work — the spec extends: inventory, change plan, tasks",
 ] as const;
 
 const overviewAnswerFacts = [
   {
     label: "For",
-    text: "Teams using coding agents on work that needs a reviewable trail.",
+    text: "Anyone pointing coding agents at work that needs a reviewable trail.",
     signal: "reference",
   },
   {
     label: "Use when",
-    text: "A request needs scoped requirements, bounded execution, and evidence.",
+    text: "The diff outgrows your attention, more than one person or agent touches the work, or someone must later reconstruct what was proven.",
     signal: "core",
   },
   {
     label: "Records",
-    text: "Specs, task packets, review packets, findings, and execution notes.",
+    text: "Lean specs, optional task packets, review packets, findings — transient files beside your harness's own artifacts.",
     signal: "evidence",
   },
   {
     label: "Does not",
-    text: "Run an agent, approve code, replace CI, or declare correctness.",
+    text: "Run an agent, replace plan mode, approve code, or declare correctness.",
     signal: "change",
   },
 ] as const satisfies Array<{
@@ -189,57 +211,87 @@ const overviewAnswerFacts = [
 const boundarySteps = [
   {
     label: "01",
-    title: "Tickets stay put",
-    text: "Backlog and conversation remain in Jira, Linear, or GitHub Issues.",
+    title: "Your agent writes the code",
+    text: "Claude Code, Cursor, whichever. Suspec never replaces it — or your harness's plan mode.",
     signal: "muted",
     icon: LayoutList,
   },
   {
     label: "02",
-    title: "Suspec records the run",
-    text: "Spec, task, review, and finding files keep the work inspectable.",
+    title: "Suspec shapes the work",
+    text: "Skills produce the spec, the optional task split, and the review packet — beside the harness's own artifacts, named by explicit path.",
     signal: "core",
     icon: NotebookPen,
   },
   {
     label: "03",
-    title: "Tools keep their jobs",
-    text: "Agents write code. PRs, CI, and reviewers decide what ships.",
+    title: "Durable value moves out",
+    text: "A decision becomes an ADR, behavior becomes tests, a lesson becomes a native memory, discussion lives on the PR.",
     signal: "muted",
     icon: Workflow,
   },
 ] as const;
 
+const honestyFloor = [
+  {
+    id: "C012",
+    name: "Coverage",
+    text: "Every in-scope requirement has a coverage row — nothing gets dropped silently.",
+  },
+  {
+    id: "C013",
+    name: "Command match",
+    text: "The recorded evidence ran the command the spec's Verify with: line actually named.",
+  },
+  {
+    id: "C016",
+    name: "Pass needs evidence",
+    text: "A Pass with an empty evidence cell is a structural contradiction — blocking.",
+  },
+  {
+    id: "C020",
+    name: "Reference resolves",
+    text: "The review's task reference resolves to the packet it is checked against — blocking.",
+  },
+] as const;
+
+const honestyFloorTerminalLines = [
+  "$ suspec check review.md --spec spec.md",
+  "C016 pass-needs-evidence: AC-007 is marked Pass with an empty evidence cell [blocking]",
+  "$ echo $?",
+  "2",
+].join("\n");
+
 const failureModes = [
   {
     mode: "Drift",
     looksLike: "the agent solves a problem, not the problem",
-    answer: "write scope and a Do not change list",
+    answer: "a lean spec with requirements and non-goals",
   },
   {
     mode: "Ambiguous input",
     looksLike: "the request hides missing requirements",
-    answer: "write one requirement per ID, with a check",
+    answer: "one requirement per AC id, each with a Verify with: line",
   },
   {
     mode: "Lost handoff",
     looksLike: "the plan lives only in chat",
-    answer: "handoff through a bounded spec, or a task packet when split",
+    answer: "handoff by explicit path — the spec, or a task packet when split",
   },
   {
     mode: "Hallucinated completion",
     looksLike: "'done,' but nothing was checked",
-    answer: "a Pass needs evidence",
+    answer: "a Pass needs evidence; an empty cell is Unverified, never Pass",
   },
   {
     mode: "No resumable trail",
     looksLike: "the session ends mid-stride; the next one starts from zero",
-    answer: "write a spec, record the run in its Execution, and a review packet",
+    answer: "the spec records the run; the review packet reconciles it",
   },
   {
     mode: "Repeated mistakes",
     looksLike: "the same class of bug returns every few sessions",
-    answer: "save findings at Close",
+    answer: "durable findings become native harness memories",
   },
 ];
 
@@ -306,6 +358,10 @@ export default function WhatIsSuspecPage() {
       },
       {
         "@type": "WebPageElement",
+        name: "The honesty floor",
+      },
+      {
+        "@type": "WebPageElement",
         name: "Where Suspec sits",
       },
       {
@@ -314,7 +370,7 @@ export default function WhatIsSuspecPage() {
       },
       {
         "@type": "WebPageElement",
-        name: "How Suspec differs from agent runtimes, issue trackers, CI, and review tools",
+        name: "Who should not use Suspec",
       },
       ...overviewAnswerFacts.map((fact) => ({
         "@type": "WebPageElement",
@@ -341,12 +397,13 @@ export default function WhatIsSuspecPage() {
             {overviewDescription}
           </p>
           <HeroTrace
-            ariaLabel="Suspec artifact chain"
+            ariaLabel="Suspec loop"
             items={[
-              { label: "Intake", signal: "reference" },
+              { label: "Intent", signal: "reference" },
               { label: "Spec", signal: "core" },
-              { label: "Task", signal: "core" },
+              { label: "Implement", signal: "core" },
               { label: "Review", signal: "evidence" },
+              { label: "Check", signal: "evidence" },
               { label: "Findings", signal: "reference" },
             ]}
           />
@@ -364,8 +421,11 @@ export default function WhatIsSuspecPage() {
             <p className="overview-answer-kicker">plain answer</p>
             <h2>What Suspec does</h2>
             <p>
-              Suspec is the record around agent work: the request, the scope,
-              the run, the evidence, and the lesson saved for next time.
+              Suspec is a set of skills your agent already knows how to run:
+              they structure the spec that states intent, the optional task
+              split, the review packet that reconciles evidence, and the
+              findings worth keeping. Your agent writes the code; Suspec
+              shapes the work around it.
             </p>
           </div>
           <dl className="overview-answer-list">
@@ -418,14 +478,14 @@ export default function WhatIsSuspecPage() {
               {overviewDiagnosticCommand}
             </p>
             <p className="mt-2 text-concrete-100">
-              Suspec turns requests into specs, specs into tasks, and task
-              output into review evidence.
+              Suspec turns intent into a spec, the spec into an implementation
+              contract, and the result into an evidence-backed review.
             </p>
             <div className={`overview-check-grid mt-3 ${signalRoles.evidence.text}`}>
               <p>agent does the typing</p>
-              <p>human makes the call</p>
-              <p>claims need evidence</p>
-              <p>plain markdown</p>
+              <p>human owns the review result</p>
+              <p>every Pass carries evidence</p>
+              <p>plain markdown, any agent</p>
             </div>
             <p className="mt-2 text-concrete-400">
               <span className="text-suspec-yellow">$</span> _
@@ -433,22 +493,21 @@ export default function WhatIsSuspecPage() {
           </TerminalWindow>
         </Panel>
         <PaperArtifact
-          label="example"
-          title="artifact chain"
-          meta="record sequence"
+          label="note"
+          title="proportional rigor"
+          meta="least structure that changes execution"
           className="overview-paper-artifact order-2"
         >
-          <ol className="overview-artifact-chain" aria-label="Artifact chain">
-            {overviewArtifactChain.map((step) => (
+          <ol className="overview-artifact-chain" aria-label="Proportional rigor ladder">
+            {overviewRigorLadder.map((step) => (
               <li key={step}>{step}</li>
             ))}
           </ol>
           <div className="overview-artifact-lines">
-            <p>Intent becomes a requirement.</p>
-            <p className="text-pencil">The task bounds what may change.</p>
-            <p>The run pastes evidence.</p>
-            <p className="text-pencil">The review routes exceptions.</p>
-            <p>The finding preserves what the next task should know.</p>
+            <p>Most changes stop at the inline path: state the fix in one line, implement, paste the output, done.</p>
+            <p className="text-pencil">A feature earns a lean spec: AC ids, Verify with: lines, non-goals.</p>
+            <p>Large work extends the spec rather than padding it.</p>
+            <p className="text-pencil">How the work arrived never sets the ceremony. The work does.</p>
           </div>
         </PaperArtifact>
       </Section>
@@ -523,8 +582,87 @@ export default function WhatIsSuspecPage() {
       </Section>
 
       <Section
+        id="honesty-floor"
+        register="03 / honesty floor"
+        registerTone="evidence"
+        className="section-flow"
+      >
+        <div className="max-w-2xl">
+          <div className={`section-kicker ${signalRoles.evidence.sectionKicker}`}>
+            <CheckCircle className="h-4 w-4" aria-hidden="true" />
+            <span>the honesty floor</span>
+          </div>
+          <Heading className="mt-3">
+            The claims a reviewer cannot fake
+          </Heading>
+          <p className="mt-4 text-concrete-400">
+            Review claims are where agent work goes wrong quietly. The
+            deterministic checker — <code>suspec check</code> — pins the
+            load-bearing facts at zero model cost: facts and exit codes
+            (0 clean, 1 warning, 2 blocking), no model in the loop, no review
+            result rendered. Every step also keeps a by-hand path; no step
+            requires a tool.
+          </p>
+        </div>
+        <div className="reveal grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <ul className="grid gap-6 sm:grid-cols-2">
+            {honestyFloor.map((check) => (
+              <li key={check.id}>
+                <Card
+                  signal="evidence"
+                  className={`group h-full border-panel-border ${signalRoles.evidence.hoverBorder}`}
+                >
+                  <div className="flex items-start gap-3">
+                    <HexBadge color="evidence">
+                      <CheckCircle className="h-5 w-5" aria-hidden="true" />
+                    </HexBadge>
+                    <div>
+                      <Heading as="h3" size="lg" className="mt-0.5">
+                        {check.name}
+                      </Heading>
+                      <p className={`font-mono text-[0.625rem] uppercase tracking-[0.16em] ${signalRoles.evidence.text}`}>
+                        {check.id}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm text-concrete-400">{check.text}</p>
+                </Card>
+              </li>
+            ))}
+          </ul>
+          <Panel brushed className="p-2">
+            <TerminalWindow
+              title="the floor in action"
+              ariaLabel="suspec check catching an unevidenced Pass"
+              copyText={honestyFloorTerminalLines}
+            >
+              <p className="text-concrete-100">
+                <span className="text-suspec-yellow">$ </span>
+                suspec check review.md --spec spec.md
+              </p>
+              <p className="text-concrete-400">
+                C016 pass-needs-evidence: AC-007 is marked Pass with an empty
+                evidence cell [blocking]
+              </p>
+              <p className="mt-2 text-concrete-100">
+                <span className="text-suspec-yellow">$ </span>
+                echo $?
+              </p>
+              <p className="text-concrete-400">2</p>
+              <p className="mt-3 text-concrete-400">
+                Plus per-artifact lint on specs, change plans, and review
+                packets. Add <span className="text-concrete-100">--task</span>{" "}
+                when the review names one; <span className="text-concrete-100">--json</span>{" "}
+                on every invocation.
+              </p>
+            </TerminalWindow>
+          </Panel>
+        </div>
+      </Section>
+
+      <Section
         id="nearby-tools"
-        register="03 / nearby tools"
+        register="04 / nearby tools"
         registerTone="reference"
         className="section-flow"
       >
@@ -535,7 +673,7 @@ export default function WhatIsSuspecPage() {
           </div>
           <Heading className="mt-3">Where Suspec sits</Heading>
           <p className="mt-4 text-concrete-400">
-            Suspec is the file layer between the request, the agent, and the
+            Suspec is the discipline between the request, the agent, and the
             review. The surrounding tools keep their jobs.
           </p>
         </div>
@@ -584,7 +722,7 @@ export default function WhatIsSuspecPage() {
 
       <Section
         id="failure-modes"
-        register="04 / failure modes"
+        register="05 / failure modes"
         registerTone="change"
         className="section-flow"
       >
@@ -630,7 +768,62 @@ export default function WhatIsSuspecPage() {
         </ul>
       </Section>
 
-      <Section id="next-step" register="05 / next step" registerTone="core">
+      <Section
+        id="who-should-not"
+        register="06 / straight talk"
+        registerTone="muted"
+        className="reveal grid gap-12 md:grid-cols-2"
+      >
+        <Panel
+          variant="inset"
+          className="h-full p-5 sm:p-6"
+        >
+          <div className={`section-kicker ${signalRoles.core.sectionKicker}`}>
+            <FileText className="h-4 w-4" aria-hidden="true" />
+            <span>code is king</span>
+          </div>
+          <Heading className="mt-3">Artifacts are transient</Heading>
+          <p className="mt-4 text-concrete-400">
+            Suspec artifacts are working files. They live beside your
+            harness&apos;s own artifacts — its plans, notes, and memories, in
+            a folder named after the repo being worked on — and they are never
+            committed to the repos you work on unless the project&apos;s own
+            governance says otherwise.
+          </p>
+          <p className="mt-3 text-concrete-400">
+            Nothing durable is supposed to live in them: a decision becomes an
+            ADR, behavior becomes tests, a lesson becomes a native harness
+            memory, the discussion lives on the PR. The durable record stays
+            in the layers that already own it.
+          </p>
+        </Panel>
+
+        <Panel
+          variant="inset"
+          className="h-full p-5 sm:p-6"
+        >
+          <div className={`section-kicker ${signalRoles.change.sectionKicker}`}>
+            <XCircle className="h-4 w-4" aria-hidden="true" />
+            <span>who should not use it</span>
+          </div>
+          <Heading className="mt-3">Maybe you don&apos;t need this</Heading>
+          <p className="mt-4 text-concrete-400">
+            If you work alone, in a codebase you know, on changes small enough
+            to read whole — native plan mode, an AGENTS.md, and your test
+            suite already cover most of this, at zero ceremony. On tractable,
+            clearly-specified work a capable agent tends to reach the same
+            result with or without the structure.
+          </p>
+          <p className="mt-3 text-concrete-400">
+            Suspec starts paying when the diff outgrows your attention, when
+            more than one person or agent touches the work, or when someone
+            must later reconstruct what was intended and what was proven.
+            Until one of those is true, don&apos;t adopt it.
+          </p>
+        </Panel>
+      </Section>
+
+      <Section id="next-step" register="07 / next step" registerTone="core">
         <Card
           signal="core"
           screws
@@ -640,8 +833,9 @@ export default function WhatIsSuspecPage() {
           <div className="overview-next-copy">
             <Heading>See how it actually runs</Heading>
             <p className="mt-2 text-concrete-400">
-              The loop is plain: each step leaves a file the next step reads.
-              No runtime; no automatic decision.
+              The loop is plain: intent, spec, implement, review, check,
+              findings. Each step leaves an artifact the next step reads by
+              explicit path. No runtime; no automatic decision.
             </p>
             <p className="overview-next-source mt-4 text-sm text-concrete-400">
               Source:{" "}
@@ -658,7 +852,7 @@ export default function WhatIsSuspecPage() {
           </div>
           <nav
             className="overview-next-nav md:min-w-64"
-            aria-label="What is Suspec next pages"
+            aria-label="Where to read next"
           >
             <p className="font-mono text-[0.68rem] font-bold uppercase tracking-[0.14em] text-signal-core">
               next records
@@ -676,7 +870,7 @@ export default function WhatIsSuspecPage() {
               </li>
               <li>
                 <TextLink href="/get-started/" className="gap-2" touchTarget>
-                  Set up a workspace
+                  Install the skills
                 </TextLink>
               </li>
               <li>
