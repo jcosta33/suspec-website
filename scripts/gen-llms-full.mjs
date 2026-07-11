@@ -9,6 +9,7 @@ const SIBLING_CANDIDATES = [
     ? path.resolve(process.env.SUSPEC_CANON_DIR)
     : null,
   path.join(process.cwd(), "..", "suspec", "docs"),
+  path.join(process.cwd(), "..", "corpus", "docs"), // local checkout of the canon under its working name
 ].filter(Boolean);
 const SIBLING = SIBLING_CANDIDATES.find((candidate) =>
   fs.existsSync(candidate),
