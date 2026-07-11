@@ -1,6 +1,6 @@
 # suspec-website
 
-The public marketing site for [Suspec](https://github.com/jcosta33/suspec), a lightweight spec and review workflow for teams using coding agents.
+The public marketing site for [Suspec](https://github.com/jcosta33/suspec), an opinionated methodology for working with coding agents — shipped as a globally installed skill family, backed by a deterministic checker.
 
 ## Stack
 

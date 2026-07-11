@@ -1,21 +1,24 @@
 # AGENTS.md — suspec-website (code repo)
 
 <!-- Keep this file short — agents read it on every task. This is the CODE repo;
-     the Suspec workspace (specs, tasks, reviews, findings, decisions, the board)
-     may live outside this public repo. -->
+     Suspec artifacts (specs, task packets, review packets) live outside this
+     public repo, beside the developer's native artifacts. -->
 
-## Suspec workspace
+## Suspec artifacts
 
-Site work may be governed by a private Suspec workspace outside this repository.
-Read the spec first; if you were given a task packet, follow that bounded slice.
-Do not implement behavior outside the spec or task scope. Record the run (the
-spec's `## Execution`, or the task's `## Run summary`) and update the workspace
-board when one is provided; do not create process records in this code repo.
+Site work may be governed by Suspec artifacts that live outside this repository,
+beside the developer's own native artifacts, named by explicit path. Read the
+spec you are given by the path you are given; if you were given a task packet,
+follow that bounded slice. Do not implement behavior outside the spec or task
+scope. Record the run in the artifact you were handed (the spec's `## Execution`,
+or the task's `## Run summary`); do not create process records in this code repo.
 
 ## The loop
 
-Pull → Spec → Run → Review → Close (+ Task when split, + Inventory / Change Plan for
-structural work). Agent guides live in the workspace's `.agents/skills/`.
+Intent → Spec → Implement → Review → Check → Findings (+ Task when one spec
+splits into parallel slices, + Inventory / Change Plan for structural work).
+The deterministic checker is `suspec check <path>`. Skills live in this repo's
+`.agents/skills/` (mirrored at `.claude/skills/`).
 
 ## Project facts
 
