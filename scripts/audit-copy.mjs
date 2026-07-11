@@ -19,7 +19,7 @@ const routes = [
   "/mcp/",
   "/docs/",
   "/docs/01-what-is-suspec/",
-  "/docs/reference/advanced-lifecycle/",
+  "/docs/reference/cli/",
   "/colophon/",
   "/kitchen-sink/",
 ];
@@ -35,6 +35,15 @@ const bannedPatterns = [
   { label: "vague AI positioning", pattern: /\b(?:ai-powered|autonomous agent platform)\b/i },
   { label: "hand-holdy developer explainer", pattern: /\bA (?:skill|worker|spec|task|CLI|MCP|guide) is\b/i },
   { label: "soft hype adjective", pattern: /\b(?:powerful|robust|effortless|easy-to-use)\b/i },
+  // The product is presented as originally designed — no transition narration.
+  { label: "retirement language", pattern: /\b(?:retired|superseded|previously|no longer|v2|v3)\b/i },
+  // The CLI surface is `suspec check` only; any other verb is a dead surface.
+  {
+    label: "dead CLI verb",
+    pattern:
+      /\bsuspec (?:init|work|done|show|next|new|write|fix|pull|worktree|status|review|launch|promote|stamp|gc|doctor)\b/i,
+  },
+  { label: "store/gate language", pattern: /\b(?:personal store|evidence gate|launch prompt|starter kit|workspace board)\b/i },
 ];
 
 const claimPatterns = [
@@ -48,22 +57,15 @@ const claimPatterns = [
 const boundaryRequirements = new Map([
   [
     "/what-is-suspec/",
-    [
-      /does not run an agent, approve code, replace ci, or declare correctness/i,
-      /record around agent work/i,
-    ],
+    [/coexists/i, /code (?:stays|is) king/i],
   ],
-  ["/cli/", [/reports facts; people decide/i, /no verdicts/i]],
+  ["/cli/", [/reports facts/i, /no verdicts/i]],
   [
     "/mcp/",
-    [
-      /local stdio/i,
-      /reads and reconciles workspace records/i,
-      /review policy stays in (?:your|the) repo/i,
-    ],
+    [/shell-less/i, /two tools/i, /no-verdict envelope/i],
   ],
-  ["/agents/", [/return evidence, not verdicts/i, /human or team rule decides/i]],
-  ["/skills/", [/skills advise; review still decides/i, /framework-free/i]],
+  ["/agents/", [/never reviews its own|no self-review|never the implementer/i, /no verdicts?/i]],
+  ["/skills/", [/framework-free/i, /npx skills add jcosta33\/suspec-skills -g/i]],
 ]);
 
 function normalize(text) {

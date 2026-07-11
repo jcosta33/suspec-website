@@ -17,7 +17,7 @@ const routes = [
   "/mcp/",
   "/docs/",
   "/docs/01-what-is-suspec/",
-  "/docs/reference/advanced-lifecycle/",
+  "/docs/reference/cli/",
   "/colophon/",
   "/kitchen-sink/",
 ];

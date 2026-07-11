@@ -188,7 +188,7 @@ async function auditDocsSearch(cdp, baseUrl) {
 async function auditCopyButtons(cdp, baseUrl) {
   await loadRoute(cdp, baseUrl, "/cli/", desktop);
   const cliSequence = await tabSequence(cdp, 90);
-  await loadRoute(cdp, baseUrl, "/docs/reference/advanced-lifecycle/", desktop, 1800);
+  await loadRoute(cdp, baseUrl, "/docs/reference/cli/", desktop, 1800);
   const docsCopy = await cdp.eval(`(() => {
     const el = document.querySelector('[data-docs-code-copy]');
     if (!el) return null;

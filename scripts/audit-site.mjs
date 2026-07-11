@@ -19,7 +19,7 @@ const routes = [
   "/mcp/",
   "/docs/",
   "/docs/01-what-is-suspec/",
-  "/docs/reference/advanced-lifecycle/",
+  "/docs/reference/cli/",
   "/colophon/",
   "/kitchen-sink/",
 ];
@@ -62,7 +62,7 @@ const expectedStructuredTypes = new Map([
   ["/mcp/", ["CollectionPage", "ItemList"]],
   ["/docs/", ["CollectionPage", "ItemList"]],
   ["/docs/01-what-is-suspec/", ["BreadcrumbList", "TechArticle"]],
-  ["/docs/reference/advanced-lifecycle/", ["BreadcrumbList", "TechArticle"]],
+  ["/docs/reference/cli/", ["BreadcrumbList", "TechArticle"]],
   ["/colophon/", ["WebPage", "SoftwareSourceCode"]],
   ["/kitchen-sink/", []],
 ]);
@@ -600,7 +600,7 @@ async function auditSeoArtifacts(baseUrl) {
 
   for (const route of [
     "/docs/01-what-is-suspec/",
-    "/docs/reference/advanced-lifecycle/",
+    "/docs/reference/cli/",
   ]) {
     const absoluteUrl = `https://suspecframework.dev${route}`;
     if (!sitemap.text.includes(`<loc>${absoluteUrl}</loc>`)) {
@@ -610,7 +610,7 @@ async function auditSeoArtifacts(baseUrl) {
 
   const llmsRequired = [
     "# Suspec",
-    "any agent, no runtime",
+    "any agent, and your repos take nothing",
     "https://suspecframework.dev/docs/",
     "https://suspecframework.dev/llms-full.txt",
     "https://suspecframework.dev/mcp/",
