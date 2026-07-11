@@ -8,11 +8,11 @@ const points = [
   [6, 21],
   [6, 11],
 ];
-// The artifact spine (Spec · Review · Findings) — the downward triangle the alternate
-// vertices form; its apex is Review, and intent, the entry, sits at the top.
-const spine = [points[1], points[3], points[5]];
+// The three keys (intent · review · findings) — the downward triangle the alternate
+// vertices form, read out of the hexagon; its apex sits where the loop bottoms out.
+const keys = [points[1], points[3], points[5]];
 
-// The loop mark: the six-node loop hexagon with its spine triangle inscribed. Echoes the
+// The loop mark: the six-node loop hexagon with the keys triangle inscribed. Echoes the
 // wordmark Logo; used inline as a section glyph. Strokes inherit currentColor.
 export function DroneIcon({ className = "", style }: { className?: string; style?: CSSProperties }) {
   return (
@@ -33,7 +33,7 @@ export function DroneIcon({ className = "", style }: { className?: string; style
         opacity="0.6"
       />
       <polygon
-        points={spine.map(([x, y]) => `${x},${y}`).join(" ")}
+        points={keys.map(([x, y]) => `${x},${y}`).join(" ")}
         fill="currentColor"
         fillOpacity="0.12"
         stroke="currentColor"

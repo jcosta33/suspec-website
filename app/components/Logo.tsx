@@ -1,23 +1,22 @@
 import { useId } from "react";
 
-// The mark synthesizes the two shapes of the method: the loop — intent, spec,
-// implement, review, check, findings — is the hexagon; the artifact spine
-// (Spec · Review · Findings, what the loop leaves behind) is the equilateral
-// triangle its three alternate vertices form. It is read out of the hexagon,
-// not added. The spine triangle points DOWN — its apex is Review, where the
-// loop bottoms out at reconciliation — because intent, the loop's entry, sits
-// at the top vertex, outside it. The three actions between the artifacts
-// (Intent · Implement · Check) are the quiet nodes.
+// The mark synthesizes the two shapes of the method: the hexagon is the full
+// six-step loop — intent, spec, implement, review, check, findings — and the
+// equilateral triangle its three alternate vertices form is the three keys —
+// intent · review · findings, the parts present on virtually every change.
+// The triangle is read out of the hexagon, not added; it points DOWN, its
+// apex where the loop bottoms out at reconciliation. The remaining three
+// vertices are the quiet nodes.
 const HEX: ReadonlyArray<readonly [number, number]> = [
-  [16, 4.2], // 0 — top: Intent (action)
-  [26.22, 10.1], // 1 — Spec (spine)
-  [26.22, 21.9], // 2 — Implement (action)
-  [16, 27.8], // 3 — Review (spine, apex)
-  [5.78, 21.9], // 4 — Check (action)
-  [5.78, 10.1], // 5 — Findings (spine)
+  [16, 4.2], // 0 — top vertex (quiet)
+  [26.22, 10.1], // 1 — triangle vertex
+  [26.22, 21.9], // 2 — quiet
+  [16, 27.8], // 3 — triangle vertex (apex)
+  [5.78, 21.9], // 4 — quiet
+  [5.78, 10.1], // 5 — triangle vertex
 ];
-const SPINE = [HEX[1], HEX[3], HEX[5]] as const;
-const OPTIONAL = [HEX[0], HEX[2], HEX[4]] as const;
+const KEYS = [HEX[1], HEX[3], HEX[5]] as const;
+const QUIET = [HEX[0], HEX[2], HEX[4]] as const;
 
 export function Logo({ className = "" }: { className?: string }) {
   const gradientId = `${useId().replaceAll(":", "")}-suspec-gilt`;
@@ -57,9 +56,9 @@ export function Logo({ className = "" }: { className?: string }) {
           opacity="0.52"
         />
 
-        {/* the spine — inscribed triangle, a filled core within the loop */}
+        {/* the keys — inscribed triangle, a filled core within the loop */}
         <polygon
-          points={SPINE.map(([x, y]) => `${x},${y}`).join(" ")}
+          points={KEYS.map(([x, y]) => `${x},${y}`).join(" ")}
           fill={`url(#${gradientId})`}
           fillOpacity="0.1"
           stroke={`url(#${gradientId})`}
@@ -67,10 +66,10 @@ export function Logo({ className = "" }: { className?: string }) {
           strokeLinejoin="round"
         />
 
-        {/* the three actions — quiet nodes between the spine */}
-        {OPTIONAL.map(([x, y]) => (
+        {/* the quiet nodes between the triangle's vertices */}
+        {QUIET.map(([x, y]) => (
           <circle
-            key={`opt-${x}-${y}`}
+            key={`quiet-${x}-${y}`}
             cx={x}
             cy={y}
             r="1.05"
@@ -81,10 +80,10 @@ export function Logo({ className = "" }: { className?: string }) {
           />
         ))}
 
-        {/* the spine vertices — filled */}
-        {SPINE.map(([x, y]) => (
+        {/* the triangle vertices — filled */}
+        {KEYS.map(([x, y]) => (
           <circle
-            key={`spine-${x}-${y}`}
+            key={`keys-${x}-${y}`}
             cx={x}
             cy={y}
             r="2.22"

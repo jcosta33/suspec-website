@@ -28,7 +28,7 @@ import { canonicalAlternates } from "../seo";
 const SITE_URL = "https://suspecframework.dev";
 const stepIcons = [Inbox, FileText, Terminal, ScanEye, ListChecks, NotebookPen];
 const loopDescription =
-  "The Suspec loop: a one-line inline spec for trivial fixes, and intent → spec → implement → review → check → findings when the change earns a contract.";
+  "The Suspec loop: three keys — intent, review, findings — on virtually every change, and the full intent → spec → implement → review → check → findings pass when the change earns a contract.";
 const loopTitle = "The Suspec loop — spec, implement, review, check";
 
 export const metadata: Metadata = {
@@ -63,10 +63,10 @@ const steps = [
     number: "01",
     name: "Intent",
     signal: "core",
-    optional: true,
+    part: "key",
     output: "Source named, or an intake note",
     handoff: "Spec",
-    body: "Name where the work came from — a ticket, a thread, your own idea. Capture the ask verbatim as an intake note only when you want the original preserved; otherwise the spec names its source directly (a URL, an issue, or self). How you entered the work never sets the ceremony level. The work does.",
+    body: "Every change starts here — often as one sentence folded inline. Name where the work came from — a ticket, a thread, your own idea. Capture the ask verbatim as an intake note only when you want the original preserved; otherwise the spec names its source directly (a URL, an issue, or self). How you entered the work never sets the ceremony level. The work does.",
     example: {
       title: "~/.claude/projects/acme-site/intake.md",
       lines: [
@@ -85,9 +85,10 @@ const steps = [
     number: "02",
     name: "Spec",
     signal: "core",
+    part: "scaffold",
     output: "Requirements with Verify with: lines",
     handoff: "Implement",
-    body: "The authoring skill turns intent into a lean spec: requirements with AC-NNN ids and Verify with: lines, non-goals, open questions. Place the file beside your harness's own artifacts and carry its full path forward. Lint it: suspec check spec.md.",
+    body: "The form intent graduates into when the work earns structure. The authoring skill turns intent into a lean spec: requirements with AC-NNN ids and Verify with: lines, non-goals, open questions. Place the file beside your harness's own artifacts and carry its full path forward. Lint it: suspec check spec.md.",
     example: {
       title: "~/.claude/projects/acme-site/spec.md",
       lines: [
@@ -140,6 +141,7 @@ const steps = [
     number: "04",
     name: "Review",
     signal: "core",
+    part: "key",
     output: "Review packet",
     handoff: "Check",
     body: "An independent reviewer — never the implementer — reconciles the result against the spec: one coverage row per scoped requirement, evidence per row, exceptions routed to human attention. On the trivial path this is the owner reading the pasted output, not a separate step.",
@@ -169,10 +171,10 @@ const steps = [
     number: "05",
     name: "Check",
     signal: "core",
-    optional: true,
+    part: "scaffold",
     output: "Facts and exit codes",
     handoff: "Findings",
-    body: "The deterministic floor: coverage complete, commands match, every Pass evidenced, references resolve. Exit codes: 0 clean, 1 warning, 2 blocking. The human owns the review result; the check owns the facts. Every step keeps a by-hand path — no step requires a tool.",
+    body: "The deterministic floor, pulled in when the work earns it: coverage complete, commands match, every Pass evidenced, references resolve. Exit codes: 0 clean, 1 warning, 2 blocking. The human owns the review result; the check owns the facts. Every step keeps a by-hand path — no step requires a tool.",
     example: {
       title: "suspec check",
       lines: [
@@ -192,6 +194,7 @@ const steps = [
     number: "06",
     name: "Findings",
     signal: "core",
+    part: "key",
     output: "Native harness memories",
     handoff: "Next change",
     body: "Ephemeral findings ride the review packet and die with it. A durable lesson becomes a native harness memory; a decision becomes an ADR; behavior becomes tests; the discussion lives on the PR. Artifacts are transient — code stays king.",
@@ -216,7 +219,7 @@ const steps = [
   number: string;
   name: string;
   signal: SignalRole;
-  optional?: boolean;
+  part?: "key" | "scaffold";
   output: string;
   handoff: string;
   body: string;
@@ -290,7 +293,13 @@ export default function TheLoopPage() {
         position: index + 1,
         name: step.name,
         url: `${SITE_URL}/the-loop/#${step.name.toLowerCase()}`,
-        description: `${step.output}; hands off to ${step.handoff}. ${step.optional ? "Optional step." : "Core step."}`,
+        description: `${step.output}; hands off to ${step.handoff}. ${
+          step.part === "key"
+            ? "One of the three keys — present on virtually every change."
+            : step.part === "scaffold"
+              ? "Scaffold — pulled in when the work earns it."
+              : "The work the loop serves."
+        }`,
       })),
     },
   };
@@ -310,6 +319,11 @@ export default function TheLoopPage() {
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Most changes need one line, not a file. When the diff earns a
             contract: intent → spec → implement → review → check → findings.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-concrete-400">
+            Three of the six are the keys — intent, review, findings — present
+            on virtually every change, at whatever weight it earns. The rest
+            is scaffold the work pulls in.
           </p>
           <HeroTrace
             ariaLabel="Suspec loop trace"
@@ -336,10 +350,11 @@ export default function TheLoopPage() {
           <p className="mt-4 text-concrete-400">
             For a trivial fix the whole spec is one line, stated inline — in
             the conversation, not in a file. Implement, run the verify
-            command, paste the output. Done. No file, no packet, no check run.
+            command, paste the output. Done. No file, no packet, no check run
+            — the keys at their lightest, zero scaffold.
           </p>
           <p className="mt-3 text-concrete-400">
-            Proportional rigor means the structure below exists for the work
+            Proportional rigor means the scaffold below exists for the work
             that earns it — never as a toll on the work that doesn&apos;t.
           </p>
         </div>
@@ -386,8 +401,8 @@ export default function TheLoopPage() {
                   <span className="loop-ledger-body">
                     <span className="loop-ledger-title">
                       {step.name}
-                      {step.optional ? (
-                        <span className="loop-ledger-status">optional</span>
+                      {step.part ? (
+                        <span className="loop-ledger-status">{step.part}</span>
                       ) : null}
                     </span>
                     <span className="loop-ledger-meta">
@@ -405,12 +420,13 @@ export default function TheLoopPage() {
           <div className="order-2 lg:order-none">
             <PaperArtifact
               label="note"
-              title="the spine"
-              meta="Spec · Review · Findings"
+              title="the keys"
+              meta="Intent · Review · Findings"
             >
               <p>
-                What the loop leaves behind: intent stated, evidence
-                reconciled, lessons kept — as native harness memories.
+                The parts on virtually every change, at whatever weight it
+                earns: intent stated, evidence reconciled, lessons kept — as
+                native harness memories.
               </p>
             </PaperArtifact>
           </div>
@@ -419,10 +435,20 @@ export default function TheLoopPage() {
             className="order-3 p-5 lg:order-none"
           >
             <p className="font-mono text-xs uppercase tracking-[0.12em] text-suspec-yellow">
-              optional layers
+              the scaffold
+            </p>
+            <p className="mt-3 text-sm text-concrete-400">
+              What Suspec erects around the keys when the work earns it —
+              never a station to pass through.
             </p>
             <ul className="mt-4 divide-y divide-panel-border/70 text-sm text-concrete-400">
               <li className="py-3 first:pt-0">
+                <span className="font-semibold text-concrete-100">
+                  <a href="#task">Task</a>
+                </span>{" "}
+                — cut only when one spec splits into parallel slices.
+              </li>
+              <li className="py-3">
                 <span className="font-semibold text-concrete-100">
                   Inventory
                 </span>{" "}
@@ -436,9 +462,10 @@ export default function TheLoopPage() {
               </li>
               <li className="py-3 last:pb-0">
                 <span className="font-semibold text-concrete-100">
-                  <a href="#task">Task</a>
+                  Checker
                 </span>{" "}
-                — cut only when one spec splits into parallel slices.
+                — <code>suspec check</code>, the deterministic floor under the
+                review.
               </li>
             </ul>
           </Panel>
@@ -485,9 +512,9 @@ export default function TheLoopPage() {
                         aria-hidden="true"
                       />
                       <Heading>{step.name}</Heading>
-                      {step.optional && (
+                      {step.part && (
                         <span className="loop-operating-optional font-mono text-[0.625rem] uppercase tracking-[0.16em] text-brass">
-                          optional
+                          {step.part}
                         </span>
                       )}
                     </div>
@@ -527,7 +554,7 @@ export default function TheLoopPage() {
       </Section>
 
       <Section
-        register="04 / the optional split"
+        register="04 / the task split"
         registerTone="core"
         className="section-flow"
       >
@@ -547,7 +574,7 @@ export default function TheLoopPage() {
                 <div className="loop-operating-title-row flex items-center gap-2">
                   <Heading>Task</Heading>
                   <span className="loop-operating-optional font-mono text-[0.625rem] uppercase tracking-[0.16em] text-brass">
-                    optional
+                    scaffold
                   </span>
                 </div>
                 <p className="mt-4 text-concrete-400">

@@ -14,16 +14,17 @@ const steps = [
     number: "01",
     label: "Intent",
     icon: Inbox,
-    optional: true,
+    part: "key",
     description:
-      "Capture the raw request verbatim before it gets paraphrased away. Most passes skip straight to the spec.",
+      "Every change starts here — often one sentence folded inline. Capture the ask verbatim only when the original is worth preserving.",
   },
   {
     number: "02",
     label: "Spec",
     icon: FileText,
+    part: "scaffold",
     description:
-      "State intent as verifiable requirements, one per id, each with a Verify with: line. A trivial fix gets one inline line, no file.",
+      "The form intent graduates into: verifiable requirements, one per id, each with a Verify with: line. A trivial fix gets one inline line, no file.",
   },
   {
     number: "03",
@@ -36,6 +37,7 @@ const steps = [
     number: "04",
     label: "Review",
     icon: ScanEye,
+    part: "key",
     description:
       "An independent reviewer — never the implementer — reconciles the evidence against the spec. Empty evidence is Unverified, never Pass.",
   },
@@ -43,14 +45,15 @@ const steps = [
     number: "05",
     label: "Check",
     icon: ListChecks,
-    optional: true,
+    part: "scaffold",
     description:
-      "Optional reinforcement: suspec check reports the facts a lazy review cannot fake. Exit codes are the API; it never renders a verdict.",
+      "Pulled in when the work earns it: suspec check reports the facts a lazy review cannot fake. Exit codes are the API; it never renders a verdict.",
   },
   {
     number: "06",
     label: "Findings",
     icon: BookMarked,
+    part: "key",
     description:
       "Keep what the pass taught. Durable lessons become native harness memories, decisions become ADRs, behavior becomes tests.",
   },
@@ -67,8 +70,9 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
     };
   });
   const sealPath = sealPoints.map((point) => `${point.x},${point.y}`).join(" ");
-  // The durable spine — Spec (02), Review (04), Findings (06) — the inscribed triangle.
-  const spineSeal = [sealPoints[1], sealPoints[3], sealPoints[5]]
+  // The inscribed triangle, read out of the hexagon's alternate vertices. It stands
+  // for the three keys — intent · review · findings.
+  const keysSeal = [sealPoints[1], sealPoints[3], sealPoints[5]]
     .map((point) => `${point.x},${point.y}`)
     .join(" ");
   const tickPoints = Array.from({ length: 12 }, (_, index) => {
@@ -89,7 +93,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
           <svg
             viewBox="0 0 100 100"
             className="h-full w-full"
-            aria-label="Suspec loop seal: the Spec-Review-Findings spine inscribed in the six-step hexagon"
+            aria-label="Suspec seal: the six-step loop hexagon with the inscribed triangle of the three keys — intent, review, findings"
             role="img"
           >
             <circle
@@ -143,7 +147,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
               />
             ))}
             <polygon
-              points={spineSeal}
+              points={keysSeal}
               fill="var(--color-aurum)"
               fillOpacity="0.09"
               stroke="var(--color-aurum)"
@@ -152,18 +156,18 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
             />
             <circle cx="50" cy="50" r="2.2" fill="var(--color-aurum)" />
             {sealPoints.map((point, index) => {
-              // Spine vertices: Spec (02), Review (04), Findings (06) — indices 1, 3, 5.
-              const isSpine = index % 2 === 1;
+              // The triangle's corners sit on the alternate vertices — indices 1, 3, 5.
+              const isTriangleVertex = index % 2 === 1;
 
               return (
-                <g key={point.label} opacity={isSpine ? 1 : 0.48}>
+                <g key={point.label} opacity={isTriangleVertex ? 1 : 0.48}>
                   <circle
                     cx={point.x}
                     cy={point.y}
-                    r={isSpine ? "4.2" : "3.8"}
+                    r={isTriangleVertex ? "4.2" : "3.8"}
                     fill="var(--color-night)"
                     stroke="var(--color-aurum)"
-                    strokeWidth={isSpine ? "1" : "0.68"}
+                    strokeWidth={isTriangleVertex ? "1" : "0.68"}
                   />
                   <text
                     x={point.x}
@@ -186,9 +190,10 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
             The loop at a glance.
           </h2>
           <p className="mt-3 max-w-full text-sm leading-relaxed text-concrete-400 sm:max-w-2xl">
-            Six steps around the hexagon; the inscribed triangle is the spine —
-            Spec, Review, Findings. What a pass leaves behind: intent stated,
-            evidence reconciled, lessons kept.
+            Six steps around the hexagon; the inscribed triangle is the three
+            keys — intent, review, findings: present on virtually every
+            change, at whatever weight it earns. Intent stated, evidence
+            reconciled, lessons kept.
           </p>
         </div>
       </div>
@@ -223,9 +228,9 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
                 <span className="loop-step-label font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
                   {step.label}
                 </span>
-                {"optional" in step && step.optional && (
+                {"part" in step && step.part && (
                   <span className="loop-step-optional font-mono text-[0.625rem] uppercase tracking-[0.16em] text-brass">
-                    optional
+                    {step.part}
                   </span>
                 )}
               </div>

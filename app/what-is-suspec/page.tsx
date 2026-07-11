@@ -66,7 +66,7 @@ const isList = [
   },
   {
     label: "task",
-    text: "optional task packets, cut only when one spec splits into parallel slices",
+    text: "task packets, cut only when one spec splits into parallel slices",
     icon: LayoutList,
   },
   {
@@ -176,9 +176,9 @@ const overviewJumpLinks = [
 }>;
 
 const overviewRigorLadder = [
-  "Trivial fix — one inline line, zero files",
+  "Trivial fix — keys only: one inline line, zero files",
   "Feature — a lean spec",
-  "Large work — the spec extends: inventory, change plan, tasks",
+  "Large work — more scaffold: inventory, change plan, tasks",
 ] as const;
 
 const overviewAnswerFacts = [
@@ -194,7 +194,7 @@ const overviewAnswerFacts = [
   },
   {
     label: "Records",
-    text: "Lean specs, optional task packets, review packets, findings — transient files beside your harness's own artifacts.",
+    text: "Lean specs, task packets when a spec splits, review packets, findings — transient files beside your harness's own artifacts.",
     signal: "evidence",
   },
   {
@@ -219,7 +219,7 @@ const boundarySteps = [
   {
     label: "02",
     title: "Suspec shapes the work",
-    text: "Skills produce the spec, the optional task split, and the review packet — beside the harness's own artifacts, named by explicit path.",
+    text: "Skills produce the spec, the task split when one spec fans out, and the review packet — beside the harness's own artifacts, named by explicit path.",
     signal: "core",
     icon: NotebookPen,
   },
@@ -422,10 +422,10 @@ export default function WhatIsSuspecPage() {
             <h2>What Suspec does</h2>
             <p>
               Suspec is a set of skills your agent already knows how to run:
-              they structure the spec that states intent, the optional task
-              split, the review packet that reconciles evidence, and the
-              findings worth keeping. Your agent writes the code; Suspec
-              shapes the work around it.
+              they structure the spec that states intent, the task split when
+              one spec fans out, the review packet that reconciles evidence,
+              and the findings worth keeping. Your agent writes the code;
+              Suspec shapes the work around it.
             </p>
           </div>
           <dl className="overview-answer-list">
@@ -504,9 +504,9 @@ export default function WhatIsSuspecPage() {
             ))}
           </ol>
           <div className="overview-artifact-lines">
-            <p>Most changes stop at the inline path: state the fix in one line, implement, paste the output, done.</p>
-            <p className="text-pencil">A feature earns a lean spec: AC ids, Verify with: lines, non-goals.</p>
-            <p>Large work extends the spec rather than padding it.</p>
+            <p>The keys — intent, review, findings — show up on virtually every change; the scaffold (spec, tasks, inventory, change plan, the checker) is what the work pulls in when it earns it.</p>
+            <p className="text-pencil">Most changes stop at the inline path: state the fix in one line, implement, paste the output, done.</p>
+            <p>A feature earns a lean spec: AC ids, Verify with: lines, non-goals. Large work extends the spec rather than padding it.</p>
             <p className="text-pencil">How the work arrived never sets the ceremony. The work does.</p>
           </div>
         </PaperArtifact>

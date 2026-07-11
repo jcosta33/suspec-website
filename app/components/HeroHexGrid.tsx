@@ -1,7 +1,7 @@
 // Six-node seal field — concentric instrument rings, a turning degree ring, and
-// the six-node loop dial with its durable spine (the inscribed triangle the
-// three alternate nodes form) drawn through it. Kept as HeroHexGrid for the
-// existing import surface.
+// the six-node loop dial with the keys triangle (intent · review · findings,
+// the inscribed triangle the three alternate nodes form) drawn through it.
+// Kept as HeroHexGrid for the existing import surface.
 const TICKS = Array.from({ length: 72 }, (_, i) => i);
 const GOLD = "#d88a24";
 const LOOP_POINTS = Array.from({ length: 6 }, (_, i) => {
@@ -10,10 +10,10 @@ const LOOP_POINTS = Array.from({ length: 6 }, (_, i) => {
   return {
     x: 300 + Math.cos(rad) * 210,
     y: 300 + Math.sin(rad) * 210,
-    spine: i % 2 === 0,
+    triangle: i % 2 === 0,
   };
 });
-const SPINE_POINTS = LOOP_POINTS.filter((p) => p.spine);
+const TRIANGLE_POINTS = LOOP_POINTS.filter((p) => p.triangle);
 
 export function HeroHexGrid({ className = "" }: { className?: string }) {
   return (
@@ -69,9 +69,9 @@ export function HeroHexGrid({ className = "" }: { className?: string }) {
           opacity="0.55"
         />
 
-        {/* the durable spine — inscribed triangle through the alternate nodes */}
+        {/* the keys triangle — inscribed through the alternate nodes */}
         <polygon
-          points={SPINE_POINTS.map((p) => `${p.x},${p.y}`).join(" ")}
+          points={TRIANGLE_POINTS.map((p) => `${p.x},${p.y}`).join(" ")}
           fill={GOLD}
           fillOpacity="0.09"
           stroke={GOLD}
@@ -80,8 +80,8 @@ export function HeroHexGrid({ className = "" }: { className?: string }) {
           opacity="1"
         />
 
-        {/* hub spokes to the spine */}
-        {SPINE_POINTS.map((p) => (
+        {/* hub spokes to the triangle */}
+        {TRIANGLE_POINTS.map((p) => (
           <line
             key={`spoke-${p.x}-${p.y}`}
             x1="300"
@@ -94,17 +94,17 @@ export function HeroHexGrid({ className = "" }: { className?: string }) {
           />
         ))}
 
-        {/* nodes — spine filled, optional hollow */}
+        {/* nodes — triangle vertices filled, the rest hollow */}
         {LOOP_POINTS.map((p) => (
           <circle
             key={`node-${p.x}-${p.y}`}
             cx={p.x}
             cy={p.y}
-            r={p.spine ? 7 : 5}
-            fill={p.spine ? GOLD : "none"}
+            r={p.triangle ? 7 : 5}
+            fill={p.triangle ? GOLD : "none"}
             stroke={GOLD}
             strokeWidth="1"
-            opacity={p.spine ? 0.95 : 0.62}
+            opacity={p.triangle ? 0.95 : 0.62}
           />
         ))}
 

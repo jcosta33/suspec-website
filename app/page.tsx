@@ -167,7 +167,7 @@ const features = [
     icon: Shield,
     title: "Honesty floor",
     label: "check",
-    text: "An optional deterministic check reports facts a lazy review cannot fake.",
+    text: "A deterministic check reports facts a lazy review cannot fake.",
     accent: "reference",
   },
 ] as const;
@@ -183,7 +183,7 @@ const faqs = [
   },
   {
     q: "Do I need the CLI?",
-    a: "No. Suspec works as plain markdown, and every step keeps a by-hand path. suspec check is optional reinforcement — the honesty floor.",
+    a: "No. Suspec works as plain markdown, and every step keeps a by-hand path. suspec check is scaffold — the honesty floor, pulled in when the work earns it.",
   },
   {
     q: "Where do the artifacts live?",
@@ -191,7 +191,7 @@ const faqs = [
   },
   {
     q: "Why the seal?",
-    a: "The six points are the six steps: Intent, Spec, Implement, Review, Check, Findings. The inscribed triangle is what a pass leaves behind: Spec, Review, Findings.",
+    a: "The six points are the six steps: Intent, Spec, Implement, Review, Check, Findings. The inscribed triangle is the three keys — intent, review, findings: the parts present on virtually every change.",
   },
 ];
 
@@ -427,8 +427,10 @@ export default function HomePage() {
               The least structure that changes execution.
             </h2>
             <p className="mt-4 text-concrete-400">
-              Intent, Spec, Implement, Review, Check, Findings. Two of the six
-              are optional — most changes stop at a one-line inline spec.
+              Intent, Spec, Implement, Review, Check, Findings. Three are the
+              keys — intent, review, findings, on virtually every change; the
+              rest is scaffold the work pulls in. Most changes stop at a
+              one-line inline spec.
             </p>
           </div>
           <LoopDiagram />
@@ -487,8 +489,9 @@ export default function HomePage() {
             </h2>
             <p className="mt-4 text-concrete-400">
               A few working files beside your agent&apos;s native artifacts — the
-              spec, the optional task split, the review packet, the findings —
-              named by explicit path, never committed to your repo.
+              spec, the task split when one spec fans out, the review packet,
+              the findings — named by explicit path, never committed to your
+              repo.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

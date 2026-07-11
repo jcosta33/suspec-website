@@ -12,6 +12,11 @@ Copy rules:
 - Present the product as originally designed — no transition narration.
 - The only CLI surface the site may show is `suspec check` (three invocations,
   exit codes 0/1/2, `--json`) and `suspec check --contract`.
+- Keys and scaffold, never mandatory/optional (ADR-0144): the keys — intent,
+  review, findings — are present on virtually every change; the spec, task
+  split, inventory, change plan, and checker are scaffold the work pulls in.
+  Seal semantics: hexagon = the six-step loop, inscribed triangle = the three
+  keys.
 
 ## Canonical sources
 
@@ -35,9 +40,9 @@ separate Suspec repos:
 
 | Page              | Source files                                                                             |
 | ----------------- | ---------------------------------------------------------------------------------------- |
-| `/`               | `suspec/README.md`, `suspec/docs/01-what-is-suspec.md`                                   |
-| `/what-is-suspec` | `suspec/docs/01-what-is-suspec.md`, `suspec/README.md`                                   |
-| `/the-loop`       | `suspec/docs/02-basic-workflow.md`, `suspec/docs/03-where-files-live.md`                 |
+| `/`               | `suspec/README.md`, `suspec/docs/01-what-is-suspec.md`, `suspec/docs/adrs/0144-keys-and-scaffold.md` |
+| `/what-is-suspec` | `suspec/docs/01-what-is-suspec.md`, `suspec/README.md`, `suspec/docs/adrs/0144-keys-and-scaffold.md` |
+| `/the-loop`       | `suspec/docs/02-basic-workflow.md`, `suspec/docs/03-where-files-live.md`, `suspec/docs/adrs/0144-keys-and-scaffold.md` |
 | `/get-started`    | `suspec/docs/ADOPTING.md`, `suspec/docs/tutorial/README.md`                              |
 | `/docs`           | generated from `suspec/docs/**`                                                          |
 | `/skills`         | `suspec-skills/README.md`, `suspec-skills/skills/**/SKILL.md`                            |
@@ -65,4 +70,6 @@ verify command, implement, paste the output.
 ## Last reviewed
 
 2026-07-11 — rewritten from the current canon (skills are the product; the CLI
-is `suspec check` only; artifacts live beside native artifacts).
+is `suspec check` only; artifacts live beside native artifacts). Same day:
+loop, home, and overview copy plus the seal semantics restated per ADR-0144
+(keys and scaffold).
