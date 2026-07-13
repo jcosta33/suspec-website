@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import {
-  Inbox,
-  FileText,
   ListChecks,
   Terminal,
   ScanEye,
-  NotebookPen,
   Split,
   ArrowRight,
 } from "lucide-react";
@@ -22,11 +19,11 @@ import { PaperArtifact } from "../components/PaperArtifact";
 import { LoopDiagram } from "../components/LoopDiagram";
 import { TextLink } from "../components/TextLink";
 import { JsonLd } from "../components/JsonLd";
-import { signalRoles, type SignalRole } from "../components/signalStyles";
+import { signalRoles } from "../components/signalStyles";
 import { canonicalAlternates } from "../seo";
+import { loopStepHref, loopSteps } from "./loopSteps";
 
 const SITE_URL = "https://suspecframework.dev";
-const stepIcons = [Inbox, FileText, Terminal, ScanEye, ListChecks, NotebookPen];
 const loopDescription =
   "The Suspec loop: three keys — intent, review, findings — on virtually every change, and the full intent → spec → implement → review → check → findings pass when the change earns a contract. Promotion is the explicit path for moving a selected record into project-owned permanence.";
 const loopTitle = "The Suspec loop — spec, implement, review, check";
@@ -58,177 +55,7 @@ const trivialPathLines = [
   "Verify with: pnpm test:run auth-refresh-expired-token",
 ].join("\n");
 
-const steps = [
-  {
-    number: "01",
-    name: "Intent",
-    signal: "core",
-    descriptor: "capture the ask",
-    output: "Source named, or an intake note",
-    handoff: "Spec",
-    body: "Every change starts here — often as one sentence folded inline. Name where the work came from — a ticket, a thread, your own idea. Capture the ask verbatim as an intake note only when you want the original preserved; otherwise the spec names its source directly (a URL, an issue, or self). How you entered the work never sets the ceremony level. The work does.",
-    example: {
-      title: "~/.claude/projects/acme-site/intake.md",
-      lines: [
-        {
-          prompt: false,
-          text: "## Intake — Add dark mode to marketing site",
-        },
-        { prompt: false, text: "" },
-        { prompt: false, text: "- Requested by: design" },
-        { prompt: false, text: "- Scope: homepage and global shell only" },
-        { prompt: false, text: "- Deadline: launch week" },
-      ],
-    },
-  },
-  {
-    number: "02",
-    name: "Spec",
-    signal: "core",
-    descriptor: "define requirements",
-    output: "Requirements with Verify with: lines",
-    handoff: "Implement",
-    body: "The form intent graduates into when the work earns structure. The authoring skill turns intent into a lean spec: requirements with AC-NNN ids and Verify with: lines, non-goals, open questions. Place the file beside your harness's own artifacts and carry its full path forward. Lint it: suspec check spec.md.",
-    example: {
-      title: "~/.claude/projects/acme-site/spec.md",
-      lines: [
-        {
-          prompt: false,
-          text: "### AC-003 — Global shell includes nav and footer",
-        },
-        { prompt: false, text: "" },
-        {
-          prompt: false,
-          text: "A Shell component renders on every route via app/layout.tsx.",
-        },
-        { prompt: false, text: "" },
-        {
-          prompt: false,
-          text: "- Nav: logo, links, mobile hamburger below lg.",
-        },
-        { prompt: false, text: "- Footer: copyright, links, colophon line." },
-        { prompt: false, text: "" },
-        {
-          prompt: false,
-          text: "Verify with: npm run build passes; every generated page contains",
-        },
-        { prompt: false, text: "exactly one <nav> and one <footer>." },
-      ],
-    },
-  },
-  {
-    number: "03",
-    name: "Implement",
-    signal: "core",
-    descriptor: "run the change",
-    output: "Real pasted output per requirement",
-    handoff: "Review",
-    body: "The implementer — your agent, or you — works from the spec by explicit path, runs every verify command, and pastes real output into the spec's ## Execution section. 'Tests passed' without output is not evidence.",
-    example: {
-      title: "~/.claude/projects/acme-site/spec.md",
-      lines: [
-        { prompt: false, text: "## Execution" },
-        { prompt: false, text: "" },
-        { prompt: true, text: "npm run build" },
-        { prompt: false, text: "✓ Compiled successfully" },
-        { prompt: false, text: "Route (app): /, /kitchen-sink" },
-        { prompt: false, text: "" },
-        { prompt: true, text: "grep -o '<nav>' out/index.html | wc -l" },
-        { prompt: false, text: "1" },
-      ],
-    },
-  },
-  {
-    number: "04",
-    name: "Review",
-    signal: "core",
-    descriptor: "compare evidence",
-    output: "Review packet",
-    handoff: "Check",
-    body: "An independent reviewer — never the implementer — reconciles the result against the spec: one coverage row per scoped requirement, evidence per row, exceptions routed to human attention. On the trivial path this is the owner reading the pasted output, not a separate step.",
-    example: {
-      title: "~/.claude/projects/acme-site/review.md",
-      lines: [
-        {
-          prompt: false,
-          text: "| AC    | Result      | Evidence                  |",
-        },
-        {
-          prompt: false,
-          text: "|-------|-------------|---------------------------|",
-        },
-        {
-          prompt: false,
-          text: "| AC-003| Pass        | 1 nav, 1 footer found     |",
-        },
-        {
-          prompt: false,
-          text: "| AC-009| Unverified  | manual resize pending     |",
-        },
-      ],
-    },
-  },
-  {
-    number: "05",
-    name: "Check",
-    signal: "core",
-    descriptor: "report facts",
-    output: "Facts and exit codes",
-    handoff: "Findings",
-    body: "The deterministic floor, pulled in when the work earns it: coverage complete, commands match, every Pass evidenced, references resolve. Exit codes: 0 clean, 1 warning, 2 blocking. The human owns the review result; the check owns the facts. Every step keeps a by-hand path — no step requires a tool.",
-    example: {
-      title: "suspec check",
-      lines: [
-        { prompt: true, text: "suspec check review.md --spec spec.md" },
-        {
-          prompt: false,
-          text: "C016 pass-needs-evidence: AC-007 is marked Pass with an",
-        },
-        { prompt: false, text: "empty evidence cell [blocking]" },
-        { prompt: false, text: "" },
-        { prompt: true, text: "echo $?" },
-        { prompt: false, text: "2" },
-      ],
-    },
-  },
-  {
-    number: "06",
-    name: "Findings",
-    signal: "core",
-    descriptor: "keep lessons",
-    output: "Memory, ADR, or promoted record",
-    handoff: "Next change",
-    body: "Ephemeral findings ride the review packet and die with it. A durable lesson becomes a native harness memory; a decision becomes an ADR; behavior becomes tests; the discussion lives on the PR. When a record needs a permanent project home, promote the selected artifact, repair its references, validate the destination, and choose whether to commit it. Artifacts are transient — code stays king.",
-    example: {
-      title: "CLAUDE.md (native memory)",
-      lines: [
-        { prompt: false, text: "## Lessons" },
-        { prompt: false, text: "" },
-        {
-          prompt: false,
-          text: "- Tailwind v4 custom keyframes: use plain CSS classes rather",
-        },
-        {
-          prompt: false,
-          text: "  than escaped utility prefixes — PostCSS parse errors",
-        },
-        { prompt: false, text: "  otherwise." },
-      ],
-    },
-  },
-] satisfies Array<{
-  number: string;
-  name: string;
-  signal: SignalRole;
-  descriptor: string;
-  output: string;
-  handoff: string;
-  body: string;
-  example: {
-    title: string;
-    lines: Array<{ prompt: boolean; text: string }>;
-  };
-}>;
+const steps = loopSteps;
 
 const taskExample = {
   title: "~/.claude/projects/acme-site/task-shell.md",
@@ -293,7 +120,7 @@ export default function TheLoopPage() {
         "@type": "ListItem",
         position: index + 1,
         name: step.name,
-        url: `${SITE_URL}/the-loop/#${step.name.toLowerCase()}`,
+        url: `${SITE_URL}${loopStepHref(step.slug)}`,
         description: `${step.output}; hands off to ${step.handoff}. ${step.descriptor}.`,
       })),
     },
@@ -392,7 +219,7 @@ export default function TheLoopPage() {
           <ol className="loop-ledger-list" aria-label="Suspec loop handoffs">
             {steps.map((step) => (
               <li key={step.name} className="loop-ledger-item">
-                <a href={`#${step.name.toLowerCase()}`}>
+                <a href={loopStepHref(step.slug)}>
                   <span className="loop-ledger-number">{step.number}</span>
                   <span className="loop-ledger-body">
                     <span className="loop-ledger-title">
@@ -491,7 +318,7 @@ export default function TheLoopPage() {
         className="section-flow section-flow-spacious"
       >
         {steps.map((step, index) => {
-          const Icon = stepIcons[index];
+          const Icon = step.icon;
           return (
             <article
               key={step.name}

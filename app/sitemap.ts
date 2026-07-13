@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { listDocs, docDates } from "./docs/lib/canon";
 import { skillDetails } from "./skills/skillData";
+import { loopSteps, loopStepHref } from "./the-loop/loopSteps";
 
 export const dynamic = "force-static";
 
@@ -29,6 +30,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE_URL}/skills/${skill.slug}/`,
     lastModified: now,
   }));
+  const loopStepEntries = loopSteps.map((step) => ({
+    url: `${BASE_URL}${loopStepHref(step.slug)}`,
+    lastModified: now,
+  }));
   // One <url> per docs page (trailingSlash: true). listDocs() returns [] when the canon is absent,
   // so the sitemap still builds — just without docs entries. lastModified is the doc's real git
   // author date (falls back to build time when history is unavailable) — a genuine freshness signal.
@@ -39,5 +44,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: docDates(slug)?.modified ?? now,
     })),
   ];
-  return [...marketingEntries, ...skillEntries, ...docEntries];
+  return [...marketingEntries, ...skillEntries, ...loopStepEntries, ...docEntries];
 }

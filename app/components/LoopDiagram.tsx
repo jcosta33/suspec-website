@@ -7,6 +7,7 @@ import {
   BookMarked,
   RotateCcw,
 } from "lucide-react";
+import Link from "next/link";
 import { SignalPulse } from "./SignalPulse";
 
 const steps = [
@@ -250,13 +251,13 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
           return (
             <li key={step.label}>
               {linkSteps ? (
-                <a
-                  href={`#${step.label.toLowerCase()}`}
-                  aria-label={`Jump to ${step.label} example`}
+                <Link
+                  href={`/the-loop/${step.label.toLowerCase()}/`}
+                  aria-label={`Read the ${step.label} step`}
                   className={cardClassName}
                 >
                   {content}
-                </a>
+                </Link>
               ) : (
                 <div className={cardClassName}>{content}</div>
               )}

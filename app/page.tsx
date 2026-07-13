@@ -67,12 +67,12 @@ export const metadata: Metadata = {
 };
 
 const loopSteps = [
-  { label: "Intent", href: "/the-loop/#intent" },
-  { label: "Spec", href: "/the-loop/#spec" },
-  { label: "Implement", href: "/the-loop/#implement" },
-  { label: "Review", href: "/the-loop/#review" },
-  { label: "Check", href: "/the-loop/#check" },
-  { label: "Findings", href: "/the-loop/#findings" },
+  { label: "Intent", href: "/the-loop/intent/" },
+  { label: "Spec", href: "/the-loop/spec/" },
+  { label: "Implement", href: "/the-loop/implement/" },
+  { label: "Review", href: "/the-loop/review/" },
+  { label: "Check", href: "/the-loop/check/" },
+  { label: "Findings", href: "/the-loop/findings/" },
 ] as const satisfies Array<{
   label: string;
   href: string;
