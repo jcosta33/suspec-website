@@ -91,11 +91,11 @@ export default async function LoopStepPage({
           </p>
           <HeroTrace
             ariaLabel={`${step.name} step path`}
-            items={[
-              { label: "Input", detail: step.descriptor, signal: "reference" },
-              { label: step.name, detail: "current step", signal: step.signal },
-              { label: "Output", detail: step.output, signal: "evidence" },
-            ]}
+             items={[
+               { label: "Input", signal: "reference" },
+               { label: step.name, signal: step.signal },
+               { label: "Output", signal: "evidence" },
+             ]}
           />
         </PageHero>
       </Section>
@@ -118,12 +118,6 @@ export default async function LoopStepPage({
             </div>
           </div>
           <p className="text-lg leading-relaxed text-concrete-300">{step.body}</p>
-          <Card screws contentClassName="space-y-2" signal={step.signal}>
-            <p className={`font-mono text-xs font-semibold uppercase tracking-[0.14em] ${signalRoles[step.signal].text}`}>
-              output
-            </p>
-            <p className="text-sm leading-relaxed text-concrete-300">{step.output}</p>
-          </Card>
         </div>
         <Panel brushed className="p-2">
           <TerminalWindow

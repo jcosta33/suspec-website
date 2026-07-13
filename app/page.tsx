@@ -300,7 +300,7 @@ export default function HomePage() {
               <span className="text-signal-core" aria-hidden="true">
                 $
               </span>
-              <code className="break-all">{heroInstallCommand}</code>
+              <code>{heroInstallCommand}</code>
             </p>
             <HeroProofStrip />
           </PageHero>

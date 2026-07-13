@@ -98,12 +98,41 @@ async function captureRoute(cdp, baseUrl, route, viewport) {
   const buffer = Buffer.from(result.data, "base64");
   const file = `${viewport.name}-${slug(route)}.jpg`;
   fs.writeFileSync(path.join(outputDir, file), buffer);
+
+  let fullPage;
+  if (viewport.name === "desktop") {
+    const { contentSize } = await cdp.send("Page.getLayoutMetrics");
+    const fullResult = await cdp.send("Page.captureScreenshot", {
+      format: "jpeg",
+      quality: 72,
+      fromSurface: true,
+      captureBeyondViewport: true,
+      clip: {
+        x: 0,
+        y: 0,
+        width: Math.ceil(contentSize.width),
+        height: Math.ceil(contentSize.height),
+        scale: 1,
+      },
+    });
+    const fullBuffer = Buffer.from(fullResult.data, "base64");
+    const fullFile = `desktop-full-${slug(route)}.jpg`;
+    fs.writeFileSync(path.join(outputDir, fullFile), fullBuffer);
+    fullPage = {
+      file: fullFile,
+      bytes: fullBuffer.length,
+      sha: sha256(fullBuffer),
+      height: Math.ceil(contentSize.height),
+    };
+  }
+
   return {
     route,
     viewport: viewport.name,
     file,
     bytes: buffer.length,
     sha: sha256(buffer),
+    fullPage,
     exceptions: cdp.exceptions,
   };
 }
@@ -129,6 +158,9 @@ try {
       manifest.push(item);
       const failures = [];
       if (item.bytes < minBytes) failures.push(`screenshot too small: ${item.bytes}`);
+      if (item.fullPage && item.fullPage.bytes < minBytes) {
+        failures.push(`full-page screenshot too small: ${item.fullPage.bytes}`);
+      }
       if (item.exceptions.length) failures.push(`runtime exceptions: ${item.exceptions.length}`);
       if (failures.length) {
         exitCode = 1;
@@ -138,6 +170,7 @@ try {
           file: item.file,
           bytes: item.bytes,
           sha: item.sha,
+          fullPage: item.fullPage,
         })}`);
       }
     }
@@ -146,7 +179,8 @@ try {
     path.join(outputDir, "manifest.json"),
     `${JSON.stringify({ generatedAt: new Date().toISOString(), items: manifest }, null, 2)}\n`,
   );
-  console.log(`[audit-visual] screenshots=${manifest.length} output=${outputDir}`);
+  const screenshotCount = manifest.length + manifest.filter((item) => item.fullPage).length;
+  console.log(`[audit-visual] screenshots=${screenshotCount} output=${outputDir}`);
   await close();
 } finally {
   await chrome.kill();
