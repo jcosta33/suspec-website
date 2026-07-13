@@ -19,8 +19,8 @@
 }
 
 .get-started-page .setup-route-panel {
-  max-width: 72rem;
-  margin-inline: auto;
+  width: 100%;
+  max-width: none;
   background:
     linear-gradient(180deg, rgba(240, 226, 204, 0.018), transparent 38%),
     linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.02), transparent 44%),

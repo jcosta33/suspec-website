@@ -1,7 +1,7 @@
 @media (max-width: 40rem) {
   .get-started-page .setup-route-header {
     gap: 0.42rem;
-    padding: 0.56rem 0.68rem 0.52rem;
+    padding: 0.75rem 1.35rem 0.65rem;
   }
 
   .get-started-page .setup-route-kicker {

@@ -6,7 +6,7 @@
   gap: 1.25rem;
   overflow: hidden;
   border-bottom: 1px solid rgba(var(--signal-core-rgb), 0.22);
-  padding: 0.82rem 1rem 0.78rem;
+  padding: 1rem 1.75rem 0.85rem;
   background:
     linear-gradient(90deg, rgba(var(--signal-core-rgb), 0.12), transparent 42%),
     repeating-linear-gradient(
