@@ -363,7 +363,7 @@ export default function GetStartedPage() {
               return (
                 <li
                   key={step.label}
-                  className={`${signalRoles[step.signal].processItem} bg-panel-raised/95 sm:last:col-span-2 lg:last:col-span-1`}
+                  className={`${signalRoles[step.signal].processItem} bg-panel-raised/95`}
                 >
                   <a
                     href={step.href}

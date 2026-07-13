@@ -12,10 +12,6 @@
     min-width: 0;
   }
 
-  .setup-path-strip > li:last-child {
-    grid-column: 1 / -1;
-  }
-
   .setup-path-strip::-webkit-scrollbar {
     display: none;
   }
