@@ -167,7 +167,7 @@ const overviewJumpLinks = [
   { label: "Honesty floor", href: "#honesty-floor", signal: "evidence" },
   { label: "Nearby tools", href: "#nearby-tools", signal: "reference" },
   { label: "Failure modes", href: "#failure-modes", signal: "change" },
-  { label: "Who shouldn't", href: "#who-should-not", signal: "muted" },
+  { label: "Specs are not src", href: "#specs-are-not-src", signal: "muted" },
   { label: "The loop", href: "#next-step", signal: "core" },
 ] as const satisfies Array<{
   label: string;
@@ -189,7 +189,7 @@ const overviewAnswerFacts = [
   },
   {
     label: "Use when",
-    text: "The diff outgrows your attention, or the work needs a later handoff.",
+    text: "Your agent needs a plan to follow and artifacts a human can review.",
     signal: "core",
   },
   {
@@ -370,7 +370,7 @@ export default function WhatIsSuspecPage() {
       },
       {
         "@type": "WebPageElement",
-        name: "Who should not use Suspec",
+        name: "Specs are not src",
       },
       ...overviewAnswerFacts.map((fact) => ({
         "@type": "WebPageElement",
@@ -767,7 +767,7 @@ export default function WhatIsSuspecPage() {
       </Section>
 
       <Section
-        id="who-should-not"
+        id="specs-are-not-src"
         register="06 / straight talk"
         registerTone="muted"
         className="reveal grid gap-12 md:grid-cols-2"
@@ -802,21 +802,20 @@ export default function WhatIsSuspecPage() {
         >
           <div className={`section-kicker ${signalRoles.change.sectionKicker}`}>
             <XCircle className="h-4 w-4" aria-hidden="true" />
-            <span>who should not use it</span>
+            <span>plan, don&apos;t compile</span>
           </div>
-          <Heading className="mt-3">Maybe you don&apos;t need this</Heading>
+          <Heading className="mt-3">Specs are not src</Heading>
           <p className="mt-4 text-concrete-400">
-            If you work alone, in a codebase you know, on changes small enough
-            to read whole — native plan mode, an AGENTS.md, and your test
-            suite already cover most of this, at zero ceremony. On tractable,
-            clearly-specified work a capable agent tends to reach the same
-            result with or without the structure.
+            Treating a spec as source code is a fantasy. LLMs are not
+            compilers: they interpret instructions, make choices, and
+            occasionally wander off with confidence.
           </p>
           <p className="mt-3 text-concrete-400">
-            Suspec starts paying when the diff outgrows your attention, when
-            more than one person or agent touches the work, or when someone
-            must later reconstruct what was intended and what was proven.
-            Until one of those is true, don&apos;t adopt it.
+            That does not make specs useless. A structured spec gives the
+            agent a plan to follow, gives reviewers something concrete to
+            inspect, and exposes findings that would otherwise dissolve into
+            chat. Promote the decisions, lessons, and tests that deserve to
+            stay.
           </p>
         </Panel>
       </Section>
