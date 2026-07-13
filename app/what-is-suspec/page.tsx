@@ -141,11 +141,11 @@ export default function WhatIsSuspecPage() {
         id="boundaries"
         register="01 / boundaries"
         registerTone="muted"
-        className="reveal grid gap-12 md:grid-cols-2"
+        className="reveal grid gap-12 md:grid-cols-2 md:items-start"
       >
         <Panel
           variant="inset"
-          className="overview-boundary-panel overview-boundary-panel-is h-full p-5 sm:p-6"
+          className="overview-boundary-panel overview-boundary-panel-is p-5 sm:p-6"
         >
           <div className={`section-kicker ${signalRoles.evidence.sectionKicker}`}>
             <CheckCircle className="h-4 w-4" aria-hidden="true" />
@@ -177,7 +177,7 @@ export default function WhatIsSuspecPage() {
 
         <Panel
           variant="inset"
-          className="overview-boundary-panel overview-boundary-panel-not h-full p-5 sm:p-6"
+          className="overview-boundary-panel overview-boundary-panel-not p-5 sm:p-6"
         >
           <div className={`section-kicker ${signalRoles.change.sectionKicker}`}>
             <XCircle className="h-4 w-4" aria-hidden="true" />
