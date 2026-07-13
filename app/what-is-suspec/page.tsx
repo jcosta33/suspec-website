@@ -184,22 +184,22 @@ const overviewRigorLadder = [
 const overviewAnswerFacts = [
   {
     label: "For",
-    text: "Anyone pointing coding agents at work that needs a reviewable trail.",
+    text: "Coding agents pointed at work that needs a reviewable trail.",
     signal: "reference",
   },
   {
     label: "Use when",
-    text: "The diff outgrows your attention, more than one person or agent touches the work, or someone must later reconstruct what was proven.",
+    text: "The diff outgrows your attention, or the work needs a later handoff.",
     signal: "core",
   },
   {
     label: "Records",
-    text: "Lean specs, task packets when a spec splits, review packets, findings — transient files beside your harness's own artifacts.",
+    text: "Specs, task packets, reviews, findings. Temporary files beside your harness.",
     signal: "evidence",
   },
   {
     label: "Does not",
-    text: "Run an agent, replace plan mode, approve code, or declare correctness.",
+    text: "Run agents, replace your tools, approve code, or certify correctness.",
     signal: "change",
   },
 ] as const satisfies Array<{
@@ -421,11 +421,8 @@ export default function WhatIsSuspecPage() {
             <p className="overview-answer-kicker">plain answer</p>
             <h2>What Suspec does</h2>
             <p>
-              Suspec is a set of skills your agent can run: they structure the
-              spec that states intent, task packets when work splits, the
-              review packet that reconciles evidence, and the findings worth
-              keeping. Your agent writes the code; Suspec shapes the work
-              around it.
+              Skills shape the spec, task split, review packet, and findings.
+              Your agent writes the code; Suspec keeps the work reviewable.
             </p>
           </div>
           <dl className="overview-answer-list">

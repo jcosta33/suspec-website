@@ -179,9 +179,9 @@ async function auditDocsSearch(cdp, baseUrl) {
   })()`);
   const failures = [];
   pushIf(failures, !input, "docs search input missing");
-  pushIf(failures, Boolean(input) && input.label !== "Search documentation", "docs search input not named");
+  pushIf(failures, Boolean(input) && input.label !== "Search the manual", "docs search input not named");
   pushIf(failures, Boolean(input) && !input.visible, "docs search input not visible");
-  pushIf(failures, !containsName(sequence, /Search documentation|Search docs/i), "docs search missing from tab order");
+  pushIf(failures, !containsName(sequence, /Search the manual/i), "docs search missing from tab order");
   return { label: "docs-search", failures, input, summary: summarizeSequence(sequence) };
 }
 

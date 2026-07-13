@@ -1,10 +1,16 @@
 @media (min-width: 58rem) {
   .overview-answer-panel {
-    grid-template-columns: minmax(15rem, 0.54fr) minmax(0, 1fr);
+    grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1.22fr);
     align-items: start;
   }
 
   .overview-answer-list {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .overview-section-nav-inline .section-jump-nav {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }

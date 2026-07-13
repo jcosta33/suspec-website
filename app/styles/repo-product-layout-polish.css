@@ -37,11 +37,11 @@
 }
 
 .overview-section-nav-shell {
-  width: min(100%, 64rem);
+  width: 100%;
 }
 
 @media (min-width: 64rem) {
   .overview-section-nav-shell {
-    max-width: min(64rem, calc(100% - 4rem));
+    max-width: none;
   }
 }
