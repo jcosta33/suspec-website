@@ -28,7 +28,7 @@ import { canonicalAlternates } from "../seo";
 const SITE_URL = "https://suspecframework.dev";
 const stepIcons = [Inbox, FileText, Terminal, ScanEye, ListChecks, NotebookPen];
 const loopDescription =
-  "The Suspec loop: three keys — intent, review, findings — on virtually every change, and the full intent → spec → implement → review → check → findings pass when the change earns a contract.";
+  "The Suspec loop: three keys — intent, review, findings — on virtually every change, and the full intent → spec → implement → review → check → findings pass when the change earns a contract. Promotion is the explicit path for moving a selected record into project-owned permanence.";
 const loopTitle = "The Suspec loop — spec, implement, review, check";
 
 export const metadata: Metadata = {
@@ -196,9 +196,9 @@ const steps = [
     name: "Findings",
     signal: "core",
     descriptor: "keep lessons",
-    output: "Native harness memories",
+    output: "Memory, ADR, or promoted record",
     handoff: "Next change",
-    body: "Ephemeral findings ride the review packet and die with it. A durable lesson becomes a native harness memory; a decision becomes an ADR; behavior becomes tests; the discussion lives on the PR. Artifacts are transient — code stays king.",
+    body: "Ephemeral findings ride the review packet and die with it. A durable lesson becomes a native harness memory; a decision becomes an ADR; behavior becomes tests; the discussion lives on the PR. When a record needs a permanent project home, promote the selected artifact, repair its references, validate the destination, and choose whether to commit it. Artifacts are transient — code stays king.",
     example: {
       title: "CLAUDE.md (native memory)",
       lines: [
@@ -384,8 +384,9 @@ export default function TheLoopPage() {
             <h2>Records between steps</h2>
             <p>
               When the work earns a record, the next step reads it by explicit
-              full path — beside your harness&apos;s own artifacts, never
-              committed to the repo you work on.
+              full path — beside your harness&apos;s own artifacts, not in the
+              repo by default. Promotion is the explicit path when a selected
+              record needs a project-owned home.
             </p>
           </div>
           <ol className="loop-ledger-list" aria-label="Suspec loop handoffs">
@@ -461,6 +462,20 @@ export default function TheLoopPage() {
                 review.
               </li>
             </ul>
+            <div className="mt-5 border-t border-panel-border/70 pt-5">
+              <p className="font-mono text-xs uppercase tracking-[0.12em] text-signal-reference">
+                promotion
+              </p>
+              <p className="mt-3 text-sm text-concrete-400">
+                Move a selected transient artifact into a project-owned home,
+                such as the repo; repair its references, validate the
+                destination, then make the commit choice. Suspec does not pick
+                the store or push for you.
+              </p>
+              <TextLink href="/skills/promote/" touchTarget={false} className="mt-3">
+                Read the promote skill
+              </TextLink>
+            </div>
           </Panel>
         </div>
         <div className="order-1 lg:order-none">
