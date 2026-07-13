@@ -32,39 +32,11 @@
   }
 
   .mcp-adapter-rail::before {
-    left: 2.2rem;
-    right: 2.2rem;
-    top: 50%;
-    z-index: 1;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(var(--signal-reference-rgb), 0.26) 8%,
-      rgba(var(--signal-reference-rgb), 0.34) 50%,
-      rgba(var(--signal-core-rgb), 0.2) 82%,
-      transparent
-    );
+    display: none;
   }
 
   .mcp-adapter-step-link {
-    min-height: 9.5rem;
+    min-height: 8.5rem;
     padding: 1.15rem 1.1rem;
-  }
-
-  .mcp-adapter-step:not(:last-child) .mcp-adapter-step-link::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 50%;
-    width: 0.72rem;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      rgba(var(--process-rgb), 0.08),
-      rgba(var(--process-rgb), 0.38)
-    );
-    transform: translateY(-50%);
-    pointer-events: none;
   }
 }

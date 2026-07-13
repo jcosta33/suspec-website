@@ -427,12 +427,6 @@ export default function McpPage() {
                     <p className="mcp-adapter-detail mt-3 text-sm leading-relaxed text-concrete-400">
                       {item.detail}
                     </p>
-                    {index < bridgeFlow.length - 1 ? (
-                      <ArrowRight
-                        className="motion-nudge-x-centered absolute right-4 top-1/2 hidden h-4 w-4 text-brass lg:block"
-                        aria-hidden="true"
-                      />
-                    ) : null}
                   </a>
                 </li>
               );

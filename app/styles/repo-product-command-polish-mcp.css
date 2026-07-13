@@ -6,8 +6,7 @@
 
 @media (min-width: 64rem) {
   .mcp-adapter-heading {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    display: flex;
     align-items: start;
     gap: 0.62rem;
   }
@@ -22,7 +21,7 @@
   }
 
   .mcp-adapter-detail {
-    max-width: 12rem;
+    max-width: none;
   }
 }
 
