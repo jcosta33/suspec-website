@@ -396,7 +396,7 @@ export default function GetStartedPage() {
           rel="noopener noreferrer"
           ariaLabel="Browse the suspec-skills catalog on GitHub (opens in new tab)"
           screws
-          className="setup-choice-card h-full md:col-span-2"
+          className="setup-choice-card h-full"
           contentClassName="flex h-full flex-col gap-5"
         >
           <div className="setup-choice-head flex items-start justify-between gap-4">
