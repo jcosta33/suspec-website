@@ -2,16 +2,16 @@
 @media (min-width: 64rem) {
   .mcp-bridge-overview {
     display: grid;
-    grid-template-columns: minmax(17rem, 0.34fr) minmax(0, 0.66fr);
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
-    gap: clamp(1.45rem, 2.4vw, 2rem);
+    gap: clamp(2.1rem, 3.4vw, 3rem);
   }
 
   .mcp-bridge-overview .section-intro {
     display: grid;
     gap: clamp(0.9rem, 1.3vw, 1.12rem);
-    max-width: none;
-    padding-top: clamp(0.35rem, 0.8vw, 0.65rem);
+    max-width: 48rem;
+    padding-top: 0;
   }
 
   .mcp-bridge-overview .section-intro > :where(.section-kicker, h2, p) {
@@ -41,6 +41,11 @@
       rgba(var(--signal-core-rgb), 0.2) 82%,
       transparent
     );
+  }
+
+  .mcp-adapter-step-link {
+    min-height: 9.5rem;
+    padding: 1.15rem 1.1rem;
   }
 
   .mcp-adapter-step:not(:last-child) .mcp-adapter-step-link::after {
