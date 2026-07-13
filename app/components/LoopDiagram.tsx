@@ -236,9 +236,11 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
                   </span>
                 )}
               </div>
-              <p className="text-sm leading-relaxed text-concrete-400">
-                {step.description}
-              </p>
+              {!linkSteps && (
+                <p className="text-sm leading-relaxed text-concrete-400">
+                  {step.description}
+                </p>
+              )}
               {showConnector && (
                 <div
                   className="loop-step-connector absolute -right-3 top-1/2 hidden h-1 w-6 -translate-y-1/2 xl:block"

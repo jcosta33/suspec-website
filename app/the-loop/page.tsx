@@ -203,37 +203,15 @@ export default function TheLoopPage() {
         registerTone="core"
         className="loop-seal-section grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-start"
       >
-        <div className="loop-ledger-panel panel-raised lg:col-span-2">
-          <div className="loop-ledger-copy">
-            <p className="loop-ledger-kicker">loop ledger</p>
-            <h2>Records between steps</h2>
-            <p>
-              When the work earns a record, the next step reads it by explicit
-              full path — beside your harness&apos;s own artifacts, not in the
-              repo by default. Promotion is the explicit path when a selected
-              record needs a project-owned home.
-            </p>
-          </div>
-          <ol className="loop-ledger-list" aria-label="Suspec loop handoffs">
-            {steps.map((step) => (
-              <li key={step.name} className="loop-ledger-item">
-                <a href={loopStepHref(step.slug)}>
-                  <span className="loop-ledger-number">{step.number}</span>
-                  <span className="loop-ledger-body">
-                    <span className="loop-ledger-title">
-                      {step.name}
-                      <span className="loop-ledger-status">{step.descriptor}</span>
-                    </span>
-                    <span className="loop-ledger-meta">
-                      <span>{step.output}</span>
-                      <span aria-hidden="true">→</span>
-                      <span>{step.handoff}</span>
-                    </span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ol>
+        <div className="max-w-3xl space-y-3 lg:col-span-2">
+          <p className="font-mono text-xs uppercase tracking-[0.12em] text-signal-reference">
+            loop ledger
+          </p>
+          <Heading>Records between steps</Heading>
+          <p className="text-concrete-400">
+            Records move by explicit path and stay beside your harness&apos;s
+            artifacts. Promote only the few that belong in the project.
+          </p>
         </div>
         <div className="contents lg:order-none lg:grid lg:content-start lg:gap-4">
           <div className="order-2 lg:order-none">
@@ -243,9 +221,8 @@ export default function TheLoopPage() {
               meta="Intent · Review · Findings"
             >
               <p>
-                The parts on virtually every change, at whatever weight it
-                earns: intent stated, evidence reconciled, lessons kept — as
-                native harness memories.
+                Intent states the work. Review reconciles the evidence.
+                Findings keep what survives.
               </p>
             </PaperArtifact>
           </div>
@@ -257,34 +234,26 @@ export default function TheLoopPage() {
               the scaffold
             </p>
             <p className="mt-3 text-sm text-concrete-400">
-              The scaffold around the keys when the work earns it — never a
-              station to pass through.
+              Use only what the work earns.
             </p>
             <ul className="mt-4 divide-y divide-panel-border/70 text-sm text-concrete-400">
               <li className="py-3 first:pt-0">
                 <span className="font-semibold text-concrete-100">
                   <a href="#task">Task</a>
                 </span>{" "}
-                — cut only when one spec splits into parallel slices.
+                — only when one spec splits.
               </li>
               <li className="py-3">
                 <span className="font-semibold text-concrete-100">
-                  Inventory
+                  Inventory / change plan
                 </span>{" "}
-                maps existing code before brownfield work.
-              </li>
-              <li className="py-3">
-                <span className="font-semibold text-concrete-100">
-                  Change plan
-                </span>{" "}
-                records what must survive a migration or rewrite.
+                — for brownfield or structural work.
               </li>
               <li className="py-3 last:pb-0">
                 <span className="font-semibold text-concrete-100">
                   Checker
                 </span>{" "}
-                — <code>suspec check</code>, the deterministic floor under the
-                review.
+                — facts and exit codes, never a verdict.
               </li>
             </ul>
             <div className="mt-5 border-t border-panel-border/70 pt-5">
@@ -292,10 +261,8 @@ export default function TheLoopPage() {
                 promotion
               </p>
               <p className="mt-3 text-sm text-concrete-400">
-                Move a selected transient artifact into a project-owned home,
-                such as the repo; repair its references, validate the
-                destination, then make the commit choice. Suspec does not pick
-                the store or push for you.
+                Move one useful transient record home. Repair references,
+                validate the destination, then choose whether to commit it.
               </p>
               <TextLink href="/skills/promote/" touchTarget={false} className="mt-3">
                 Read the promote skill
