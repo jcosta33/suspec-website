@@ -63,7 +63,7 @@ const steps = [
     number: "01",
     name: "Intent",
     signal: "core",
-    part: "key",
+    descriptor: "capture the ask",
     output: "Source named, or an intake note",
     handoff: "Spec",
     body: "Every change starts here — often as one sentence folded inline. Name where the work came from — a ticket, a thread, your own idea. Capture the ask verbatim as an intake note only when you want the original preserved; otherwise the spec names its source directly (a URL, an issue, or self). How you entered the work never sets the ceremony level. The work does.",
@@ -85,7 +85,7 @@ const steps = [
     number: "02",
     name: "Spec",
     signal: "core",
-    part: "scaffold",
+    descriptor: "define requirements",
     output: "Requirements with Verify with: lines",
     handoff: "Implement",
     body: "The form intent graduates into when the work earns structure. The authoring skill turns intent into a lean spec: requirements with AC-NNN ids and Verify with: lines, non-goals, open questions. Place the file beside your harness's own artifacts and carry its full path forward. Lint it: suspec check spec.md.",
@@ -120,6 +120,7 @@ const steps = [
     number: "03",
     name: "Implement",
     signal: "core",
+    descriptor: "run the change",
     output: "Real pasted output per requirement",
     handoff: "Review",
     body: "The implementer — your agent, or you — works from the spec by explicit path, runs every verify command, and pastes real output into the spec's ## Execution section. 'Tests passed' without output is not evidence.",
@@ -141,7 +142,7 @@ const steps = [
     number: "04",
     name: "Review",
     signal: "core",
-    part: "key",
+    descriptor: "compare evidence",
     output: "Review packet",
     handoff: "Check",
     body: "An independent reviewer — never the implementer — reconciles the result against the spec: one coverage row per scoped requirement, evidence per row, exceptions routed to human attention. On the trivial path this is the owner reading the pasted output, not a separate step.",
@@ -171,7 +172,7 @@ const steps = [
     number: "05",
     name: "Check",
     signal: "core",
-    part: "scaffold",
+    descriptor: "report facts",
     output: "Facts and exit codes",
     handoff: "Findings",
     body: "The deterministic floor, pulled in when the work earns it: coverage complete, commands match, every Pass evidenced, references resolve. Exit codes: 0 clean, 1 warning, 2 blocking. The human owns the review result; the check owns the facts. Every step keeps a by-hand path — no step requires a tool.",
@@ -194,7 +195,7 @@ const steps = [
     number: "06",
     name: "Findings",
     signal: "core",
-    part: "key",
+    descriptor: "keep lessons",
     output: "Native harness memories",
     handoff: "Next change",
     body: "Ephemeral findings ride the review packet and die with it. A durable lesson becomes a native harness memory; a decision becomes an ADR; behavior becomes tests; the discussion lives on the PR. Artifacts are transient — code stays king.",
@@ -219,7 +220,7 @@ const steps = [
   number: string;
   name: string;
   signal: SignalRole;
-  part?: "key" | "scaffold";
+  descriptor: string;
   output: string;
   handoff: string;
   body: string;
@@ -293,13 +294,7 @@ export default function TheLoopPage() {
         position: index + 1,
         name: step.name,
         url: `${SITE_URL}/the-loop/#${step.name.toLowerCase()}`,
-        description: `${step.output}; hands off to ${step.handoff}. ${
-          step.part === "key"
-            ? "One of the three keys — present on virtually every change."
-            : step.part === "scaffold"
-              ? "Scaffold — pulled in when the work earns it."
-              : "The work the loop serves."
-        }`,
+        description: `${step.output}; hands off to ${step.handoff}. ${step.descriptor}.`,
       })),
     },
   };
@@ -401,9 +396,7 @@ export default function TheLoopPage() {
                   <span className="loop-ledger-body">
                     <span className="loop-ledger-title">
                       {step.name}
-                      {step.part ? (
-                        <span className="loop-ledger-status">{step.part}</span>
-                      ) : null}
+                      <span className="loop-ledger-status">{step.descriptor}</span>
                     </span>
                     <span className="loop-ledger-meta">
                       <span>{step.output}</span>
@@ -512,9 +505,9 @@ export default function TheLoopPage() {
                         aria-hidden="true"
                       />
                       <Heading>{step.name}</Heading>
-                      {step.part && (
+                      {step.descriptor && (
                         <span className="loop-operating-optional font-mono text-[0.625rem] uppercase tracking-[0.16em] text-brass">
-                          {step.part}
+                          {step.descriptor}
                         </span>
                       )}
                     </div>

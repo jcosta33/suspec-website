@@ -14,7 +14,7 @@ const steps = [
     number: "01",
     label: "Intent",
     icon: Inbox,
-    part: "key",
+    descriptor: "capture the ask",
     description:
       "Every change starts here — often one sentence folded inline. Capture the ask verbatim only when the original is worth preserving.",
   },
@@ -22,7 +22,7 @@ const steps = [
     number: "02",
     label: "Spec",
     icon: FileText,
-    part: "scaffold",
+    descriptor: "define requirements",
     description:
       "The form intent graduates into: verifiable requirements, one per id, each with a Verify with: line. A trivial fix gets one inline line, no file.",
   },
@@ -30,6 +30,7 @@ const steps = [
     number: "03",
     label: "Implement",
     icon: Terminal,
+    descriptor: "run the change",
     description:
       "Your agent writes the code, runs every verify command, and pastes the real output beside each requirement.",
   },
@@ -37,7 +38,7 @@ const steps = [
     number: "04",
     label: "Review",
     icon: ScanEye,
-    part: "key",
+    descriptor: "compare evidence",
     description:
       "An independent reviewer — never the implementer — reconciles the evidence against the spec. Empty evidence is Unverified, never Pass.",
   },
@@ -45,7 +46,7 @@ const steps = [
     number: "05",
     label: "Check",
     icon: ListChecks,
-    part: "scaffold",
+    descriptor: "report facts",
     description:
       "Pulled in when the work earns it: suspec check reports the facts a lazy review cannot fake. Exit codes are the API; it never renders a verdict.",
   },
@@ -53,7 +54,7 @@ const steps = [
     number: "06",
     label: "Findings",
     icon: BookMarked,
-    part: "key",
+    descriptor: "keep lessons",
     description:
       "Keep what the pass taught. Durable lessons become native harness memories, decisions become ADRs, behavior becomes tests.",
   },
@@ -228,9 +229,9 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
                 <span className="loop-step-label font-heading text-lg font-bold uppercase tracking-tight text-concrete-100">
                   {step.label}
                 </span>
-                {"part" in step && step.part && (
+                {step.descriptor && (
                   <span className="loop-step-optional font-mono text-[0.625rem] uppercase tracking-[0.16em] text-brass">
-                    {step.part}
+                    {step.descriptor}
                   </span>
                 )}
               </div>
