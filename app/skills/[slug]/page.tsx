@@ -416,9 +416,7 @@ export default async function SkillDetailPage({
             <Heading className="mt-3">Load it when the task fits.</Heading>
           </div>
           <p className="text-concrete-400">
-            Skills are standalone Markdown. Install one or install the catalog;
-            repo-specific commands stay in the repo&apos;s AGENTS.md. Pick a
-            skill, do the work, move on.
+            Install one or the catalog. Keep repo commands in AGENTS.md.
           </p>
           <TextLink href="/skills/" className="w-fit gap-2" touchTarget>
             Back to the skills index <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -438,7 +436,7 @@ export default async function SkillDetailPage({
         <Card screws contentClassName="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-brass">source record</p>
-            <p className="mt-2 text-sm leading-relaxed text-concrete-400">Read the actual skill contract in the catalog repository.</p>
+            <p className="mt-2 text-sm leading-relaxed text-concrete-400">Full contract in the catalog.</p>
           </div>
           <TextLink
             href={skillSourceUrl(skill.slug)}

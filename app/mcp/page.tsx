@@ -80,28 +80,28 @@ const mcpInstallCommands = [
 const guardrails = [
   {
     title: "Two tools, no more",
-    text: "suspec_check and suspec_get_checks. A client that can run shell commands can use suspec check directly. This is the short route, not a new product.",
+    text: "suspec_check and suspec_get_checks. Shell-capable clients can use the CLI.",
     stamp: "scope",
     icon: ShieldCheck,
     signal: "reference",
   },
   {
     title: "No verdict",
-    text: "ok means the CLI ran and returned parseable output — not that the artifact is clean. Pass, Fail, Unverified, and Blocked stay human.",
+    text: "ok means the CLI returned parseable output. Verdicts stay human.",
     stamp: "defer",
     icon: MessagesSquare,
     signal: "muted",
   },
   {
     title: "Explicit paths",
-    text: "Primary artifacts and companions are absolute paths. The adapter resolves no repository root, workspace, tree, or artifact store.",
+    text: "Absolute paths only. No workspace or artifact discovery.",
     stamp: "paths",
     icon: FileJson,
     signal: "muted",
   },
   {
     title: "Thin, hardened adapter",
-    text: "Fixed argv, allow-listed flags, read-only. Every call shells out to suspec check --json and relays the CLI's own facts.",
+    text: "Fixed argv, allow-listed flags, read-only. Relays suspec check --json.",
     stamp: "json",
     icon: Braces,
     signal: "reference",
@@ -133,9 +133,9 @@ const tools = [
 
 const toolDescriptions = {
   suspec_check:
-    "Run the checks over ordered, non-empty absolute paths. A review takes its companions explicitly: spec always, task exactly when the review names one.",
+    "Check ordered absolute paths. Reviews name spec and optional task companions.",
   suspec_get_checks:
-    "The checks contract the CLI holds artifacts to: the contract version plus every check's id, name, and severity.",
+    "Return the contract version and each check's id, name, and severity.",
 } as const;
 
 const mcpToolCatalogItems = tools.flatMap((group) =>
@@ -316,10 +316,8 @@ export default function McpPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            The same <code>suspec check</code> surface for runners without a
-            shell — Claude Desktop, Cursor, anything that speaks MCP. Two
-            tools, a no-verdict envelope, and no capability a terminal agent
-            does not already have.
+            <code>suspec check</code> for shell-less MCP clients. Two tools,
+            local stdio, no verdict.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
             <Badge variant="ready">Exactly two tools</Badge>
@@ -353,13 +351,9 @@ export default function McpPage() {
           </div>
           <div className="mcp-bridge-intro-copy">
             <p className="text-concrete-400">
-              The honesty floor is a set of deterministic checks a reviewer
-              cannot fake. A terminal agent runs{" "}
-              <TextLink href="/cli/">suspec check</TextLink>{" "}directly; a
-              shell-less client can&apos;t. suspec-mcp is that client&apos;s way
-              to run the same checks against the same files, with the same
-              results — over local stdio, adding nothing of its own. It is an
-              adapter, not a second opinion.
+              Terminal clients run <TextLink href="/cli/">suspec check</TextLink>{" "}
+              directly. suspec-mcp gives shell-less clients the same checks
+              over local stdio. Adapter, not second opinion.
             </p>
             <p className="text-sm text-concrete-400">
               Source:{" "}

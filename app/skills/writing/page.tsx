@@ -198,9 +198,8 @@ export default function WritingSkillsPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Write the load boundary, operating rules, and source material. Keep
-            local commands and team policy in the consuming repo. The skill is
-            not the repo handbook.
+            Define the load boundary and operating rules. Keep repo policy in
+            the repo.
           </p>
           <HeroTrace
             ariaLabel="Skill file anatomy trace"
@@ -252,8 +251,7 @@ export default function WritingSkillsPage() {
               related records
             </p>
             <p className="writing-related-records-copy">
-              Use the catalog for install paths; use this manual when a team
-              needs to maintain a skill.
+              Catalog for installs. This manual for maintenance.
             </p>
           </div>
           <ul className="writing-related-records-links">

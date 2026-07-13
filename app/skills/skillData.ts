@@ -60,12 +60,9 @@ export const skillDetails: readonly SkillDetail[] = [
     tone: "evidence",
     icon: ShieldCheck,
     description: "Test unsupported claims with direct evidence.",
-    rationale:
-      "Use it when a claim matters enough to test instead of trusting plausible prose or a green check.",
-    output:
-      "An in-chat evidence table: Supported, Unsupported, Unverified, or Blocked, with proof for each row.",
-    boundary:
-      "It verifies a bounded claim set. It does not perform a broad risk review or issue acceptance.",
+    rationale: "Use it when a claim needs proof, not plausible prose or a green check.",
+    output: "In-chat evidence table: Supported, Unsupported, Unverified, or Blocked, with proof.",
+    boundary: "Verifies bounded claims; not a risk review or acceptance.",
     misuse: "Treating a plausible citation or green check as proof without inspecting it.",
     visual: "chat",
     visualLabels: ["bounded claim set", "inspect the evidence", "supported / unverified"],
@@ -85,13 +82,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "change",
     icon: Swords,
-    description: "Make the strongest case against an idea, design, claim, change, or plan.",
-    rationale:
-      "Use it when the strongest case against a proposal is more useful than another balanced summary.",
-    output:
-      "A focused in-chat rejection case that exposes assumptions, failure paths, and opportunity costs.",
-    boundary:
-      "Its advocacy is not evidence. Claims from the exercise need independent verification before use.",
+    description: "Make the strongest case against a proposal.",
+    rationale: "Use it when attack beats another balanced summary.",
+    output: "In-chat rejection case: assumptions, failure paths, opportunity costs.",
+    boundary: "Advocacy is not evidence. Verify every claim.",
     misuse: "Using the advocacy case as the final review instead of verifying its claims.",
     visual: "chat",
     visualLabels: ["target proposal", "failure paths", "rejection case"],
@@ -111,13 +105,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "muted",
     icon: Zap,
-    description: "Make supplied Markdown shorter, sharper, and harder to misread.",
-    rationale:
-      "Use it when repetition, soft framing, or ceremony is consuming attention without changing the work.",
-    output:
-      "A tighter version of the supplied Markdown with every fact, decision, command, warning, and proof still present once.",
-    boundary:
-      "It edits Markdown. It does not compress source code, invent missing facts, or remove load-bearing constraints.",
+    description: "Make Markdown shorter and harder to misread.",
+    rationale: "Use it when repetition or ceremony consumes attention.",
+    output: "Tighter Markdown; every fact, decision, command, warning, and proof remains once.",
+    boundary: "Markdown only. No invented facts or removed constraints.",
     misuse: "Cutting a constraint because it sounds repetitive.",
     visual: "before-after",
     example: {
@@ -136,13 +127,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "reference",
     icon: Search,
-    description: "Trace an unfamiliar or dangerous code path before changing or judging it.",
-    rationale:
-      "Use it when callers, state, effects, failure handling, or configuration remain unproven.",
-    output:
-      "A bounded flow from entry point to terminal effects, with every unresolved edge named.",
-    boundary:
-      "It traces one question to closure. It does not replace a broad audit or prescribe a redesign.",
+    description: "Trace a risky code path before changing it.",
+    rationale: "Use it when callers, state, effects, failures, or configuration remain unproven.",
+    output: "Bounded flow from entry point to effects, with unknown edges named.",
+    boundary: "Traces one question. It is not an audit or redesign.",
     misuse: "Expanding the trace into a broad architecture audit.",
     visual: "flow",
     visualLabels: ["entry point", "state + branches", "terminal effects"],
@@ -162,13 +150,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "core",
     icon: GitFork,
-    description: "Turn every consequential ambiguity into an explicit human choice.",
-    rationale:
-      "Use it when facts are exhausted but scope, authority, behavior, or tradeoffs still have multiple valid paths.",
-    output:
-      "A recommendation-first picker with at least three materially different options and their costs.",
-    boundary:
-      "It does not guess. Dependent work stops until the human selects an option.",
+    description: "Turn consequential ambiguity into a human choice.",
+    rationale: "Use it when facts end but several valid paths remain.",
+    output: "Recommendation-first picker with three real options and costs.",
+    boundary: "No guessing. Dependent work waits for selection.",
     misuse: "Offering cosmetic options or continuing dependent work before selection.",
     visual: "decision",
     example: {
@@ -187,13 +172,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "reference",
     icon: ArrowUpRight,
-    description: "Move a useful transient artifact into a project-owned home.",
-    rationale:
-      "Use it when a temporary record has durable value and needs a real home in the project.",
-    output:
-      "A moved document with repaired references, validated format, and an explicit commit choice.",
-    boundary:
-      "It promotes selected content into a project-owned destination. It does not invent a store or push implicitly.",
+    description: "Move a useful transient artifact into the project.",
+    rationale: "Use it when a temporary record deserves a permanent home.",
+    output: "Moved document, repaired references, validated format, explicit commit choice.",
+    boundary: "Uses a real project destination. Never invents a store or pushes implicitly.",
     misuse: "Promoting a transient note without repairing references or checking its destination.",
     visual: "flow",
     visualLabels: ["transient record", "repair + validate", "project home"],
@@ -213,13 +195,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "evidence",
     icon: BookOpen,
-    description: "Keep verified lessons after the work settles.",
-    rationale:
-      "Use it when a discovery, constraint, edge case, or pattern will matter to later work.",
-    output:
-      "One durable claim with evidence, scope, and boundaries in native memory or a project channel.",
-    boundary:
-      "It rejects weak or sensitive observations and adds no parallel Suspec memory store.",
+    description: "Keep verified lessons after the work.",
+    rationale: "Use it when a discovery will matter later.",
+    output: "One evidenced, scoped claim in native memory or a project channel.",
+    boundary: "Rejects weak or sensitive notes. Adds no Suspec memory store.",
     misuse: "Saving a hunch, secret, or narrow symptom as a general lesson.",
     visual: "memory",
     example: {
@@ -238,13 +217,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "core",
     icon: RefreshCw,
-    description: "Attack code, diffs, artifacts, plans, or systems from every relevant angle.",
-    rationale:
-      "Use it for broad adversarial coverage when each finding must be resolved before the next reviewer sees the target.",
-    output:
-      "A full sequential rotation of target-derived stances, fixes, proof, and refutations.",
-    boundary:
-      "It creates no artifact. It stops on an unresolved blocker or human decision instead of silently moving on.",
+    description: "Attack a target from every relevant angle.",
+    rationale: "Use it for broad adversarial coverage, resolving each finding before the next stance.",
+    output: "Sequential stances, fixes, proof, and refutations.",
+    boundary: "Creates no artifact. Stops on blockers or human decisions.",
     misuse: "Running every stance in parallel or moving on with an unresolved finding.",
     visual: "revolver",
     example: {
@@ -263,13 +239,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "reference",
     icon: ScanSearch,
-    description: "Record present code and expose its risk with exact evidence.",
-    rationale:
-      "Use it to record the current state and its risks before anyone prescribes a change.",
-    output:
-      "An evidence-bound audit with findings, firing conditions, blast radius, and unknowns.",
-    boundary:
-      "It observes and proves. It does not write a target state or prescribe the fix.",
+    description: "Record present code and its risks with evidence.",
+    rationale: "Use it before anyone prescribes a change.",
+    output: "Evidence-bound findings, firing conditions, blast radius, and unknowns.",
+    boundary: "Observes and proves. No target state or fix.",
     misuse: "Turning an observation into a prescribed fix.",
     visual: "artifact",
     visualLabels: ["observed state", "evidence + risk", "unknowns"],
@@ -290,13 +263,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "change",
     icon: Route,
-    description: "Plan structural change without losing the behavior that matters.",
-    rationale:
-      "Use it for migrations, rewrites, schema work, or other changes where preservation must be explicit.",
-    output:
-      "A staged transformation with preservation guarantees, verification per wave, cutover, and rollback.",
-    boundary:
-      "It plans the transformation. It does not replace the governing spec or implement the change.",
+    description: "Plan structural change without losing behavior.",
+    rationale: "Use it when migrations, rewrites, or schema work require explicit preservation.",
+    output: "Staged waves with preservation, verification, cutover, and rollback.",
+    boundary: "Plans transformation. It neither replaces the spec nor implements.",
     misuse: "Calling a list of implementation tasks a preservation plan.",
     visual: "artifact",
     visualLabels: ["preservation", "transformation waves", "cutover + rollback"],
@@ -316,13 +286,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "reference",
     icon: MapIcon,
-    description: "Map an unfamiliar or change-critical code area from evidence.",
-    rationale:
-      "Use it before brownfield work when modules, callers, tests, or coupling are not yet proven.",
-    output:
-      "A present-state map of structure, interfaces, tests, constraints, and unknowns.",
-    boundary:
-      "It maps reality without judgment or prescriptions. It is not a refactor plan.",
+    description: "Map an unfamiliar code area from evidence.",
+    rationale: "Use it before brownfield work when callers, tests, or coupling remain unproven.",
+    output: "Present-state structure, interfaces, tests, constraints, and unknowns.",
+    boundary: "Maps reality without judgment. Not a refactor plan.",
     misuse: "Treating the map as a recommendation or change plan.",
     visual: "artifact",
     visualLabels: ["modules + callers", "tests + constraints", "unknowns"],
@@ -342,13 +309,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "evidence",
     icon: FolderSearch,
-    description: "Research one decision until the evidence can carry it.",
-    rationale:
-      "Use it for one decision-informing question where sources, uncertainty, and counter-evidence matter.",
-    output:
-      "A source-qualified research note with findings, limitations, and unresolved uncertainty.",
-    boundary:
-      "It informs a decision without making the decision or manufacturing certainty.",
+    description: "Research one decision until evidence can carry it.",
+    rationale: "Use it when sources, uncertainty, and counter-evidence matter.",
+    output: "Sourced findings, limits, and unresolved uncertainty.",
+    boundary: "Informs the decision. Does not make it or fake certainty.",
     misuse: "Presenting a source gap as a decision.",
     visual: "artifact",
     visualLabels: ["question + sources", "findings + limits", "uncertainty"],
@@ -368,13 +332,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "evidence",
     icon: ClipboardCheck,
-    description: "Reconcile finished work against its governing Suspec spec or task.",
-    rationale:
-      "Use it when implementation evidence needs requirement-level reconciliation by an independent reviewer.",
-    output:
-      "A review packet with one coverage row per requirement, evidence, findings, and a human-owned decision.",
-    boundary:
-      "The reviewer assesses evidence; it cannot accept work or grant its own final authority.",
+    description: "Reconcile finished work against its spec or task.",
+    rationale: "Use it for independent, requirement-level evidence review.",
+    output: "Coverage rows, evidence, findings, and a human-owned decision.",
+    boundary: "Assesses evidence. Cannot accept its own work.",
     misuse: "Letting the reviewer grant acceptance or review its own implementation.",
     visual: "artifact",
     visualLabels: ["requirements", "evidence rows", "human decision"],
@@ -394,13 +355,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "core",
     icon: FileText,
-    description: "Turn decided intent into a verifiable Suspec spec.",
-    rationale:
-      "Use it when a non-trivial change needs a contract before implementation begins.",
-    output:
-      "A lean spec with intent, scoped requirements, stable AC ids, and a Verify with: line for each requirement.",
-    boundary:
-      "It captures decided intent. Unresolved choices keep the spec draft and block dependent work.",
+    description: "Turn decided intent into a verifiable spec.",
+    rationale: "Use it when non-trivial work needs a contract before implementation.",
+    output: "Intent, scoped AC ids, and one Verify with: line per requirement.",
+    boundary: "Unresolved choices keep the spec draft and block dependent work.",
     misuse: "Writing unresolved choices as settled requirements.",
     visual: "artifact",
     visualLabels: ["intent + scope", "AC ids + verification", "ready contract"],
@@ -420,13 +378,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "core",
     icon: ListChecks,
-    description: "Cut a ready Suspec spec into task packets that do not collide.",
-    rationale:
-      "Use it only when a spec has independently dispatchable slices or sequenced transformation waves.",
-    output:
-      "A bounded packet that preserves the source spec, assigns scope once, and carries its verify commands.",
-    boundary:
-      "Size alone does not justify a task. A task never replaces the governing spec.",
+    description: "Cut a ready spec into collision-free tasks.",
+    rationale: "Use it only for independent slices or sequenced waves.",
+    output: "Bounded packet with source spec, single-owner scope, and verify commands.",
+    boundary: "Size alone proves nothing. Tasks never replace the spec.",
     misuse: "Splitting work merely because it is large.",
     visual: "artifact",
     visualLabels: ["source spec", "owned slice", "verify commands"],
@@ -446,13 +401,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "core",
     icon: CheckCircle,
-    description: "Run exactly three fresh, serious passes over a narrow target.",
-    rationale:
-      "Use it for a focused high-consequence target that merits three independent views and current-state fixes between them.",
-    output:
-      "Three sequential passes, each seeing the addressed target, with supported defects fixed and verified before the next.",
-    boundary:
-      "It is not a general trace or broad audit. An unresolved defect blocks the next pass.",
+    description: "Run exactly three fresh passes over a narrow target.",
+    rationale: "Use it when one high-consequence target merits three independent views.",
+    output: "Three sequential passes with fixes and proof between them.",
+    boundary: "Not a trace or broad audit. Unresolved defects block the next pass.",
     misuse: "Using it as a broad audit or counting three shallow passes as independent.",
     visual: "passes",
     example: {

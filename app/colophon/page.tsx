@@ -149,7 +149,7 @@ export default function ColophonPage() {
           tone="core"
         >
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-concrete-400 sm:text-xl">
-            How this website is built, sourced, and shipped. Receipts included.
+            Build, sources, deployment.
           </p>
         </PageHero>
       </Section>
@@ -170,8 +170,7 @@ export default function ColophonPage() {
                   Build record
                 </h2>
                 <p className="mt-2 text-concrete-400">
-                  Built with Suspec. Drafted, reviewed, and merged through the
-                  same workflow. The site gets no special treatment.
+                  Built, reviewed, and merged with Suspec.
                 </p>
               </div>
               <dl className="grid gap-3">
@@ -199,9 +198,8 @@ export default function ColophonPage() {
           className="colophon-paper"
         >
           <p>
-            The website is a Next.js export. Specs, review packets, and
-            findings stay beside the maintainer&apos;s native artifacts; the repo
-            takes the code and the decisions worth keeping.
+            Next.js export. Working records stay outside the repo; code and
+            durable decisions stay in it.
           </p>
           <p className="mt-4">
             <Link

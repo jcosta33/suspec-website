@@ -40,7 +40,7 @@ export const loopSteps = [
     descriptor: "name the work",
     output: "Source named, or an intake note",
     handoff: "Spec",
-    body: "Name the work. It may be a ticket, thread, or your own idea. Keep the original wording only when it matters; otherwise the spec names the source directly. How the work arrived does not set the ceremony. The work does.",
+    body: "Name the work: ticket, thread, or idea. Preserve the original wording only when it matters. Arrival does not set the ceremony; the work does.",
     example: {
       title: "~/.claude/projects/acme-site/intake.md",
       lines: [
@@ -64,7 +64,7 @@ export const loopSteps = [
     descriptor: "set the bar",
     output: "Requirements with Verify with: lines",
     handoff: "Implement",
-    body: "Use a spec when the work earns one. Give requirements AC-NNN ids, a Verify with: line each, plus non-goals and open questions. Keep the file beside your harness's artifacts and carry its full path. Lint it with suspec check spec.md.",
+    body: "When needed, write AC-NNN requirements with a Verify with: line each. Add non-goals and open questions. Carry the full path. Check it with suspec check spec.md.",
     example: {
       title: "~/.claude/projects/acme-site/spec.md",
       lines: [
@@ -101,7 +101,7 @@ export const loopSteps = [
     descriptor: "do the work",
     output: "Real pasted output per requirement",
     handoff: "Review",
-    body: "You or your agent works from the spec by explicit path, runs every Verify with: command, and pastes real output into ## Execution. “Tests passed” without output is just a sentence wearing a lab coat.",
+    body: "Work from the spec path. Run every Verify with: command. Paste the output into ## Execution. “Tests passed” is not evidence.",
     example: {
       title: "~/.claude/projects/acme-site/spec.md",
       lines: [
@@ -125,7 +125,7 @@ export const loopSteps = [
     descriptor: "read the receipts",
     output: "Review packet",
     handoff: "Check",
-    body: "A reviewer who did not implement the change reconciles the result against the spec: one coverage row per requirement, evidence per row, exceptions sent to human attention. For a trivial fix, this is the owner reading the pasted output. No extra ceremony required.",
+    body: "A reviewer who did not implement reconciles each requirement with evidence. Exceptions go to a human. For trivial fixes, the owner reads the pasted output.",
     example: {
       title: "~/.claude/projects/acme-site/review.md",
       lines: [
@@ -157,7 +157,7 @@ export const loopSteps = [
     descriptor: "check the shape",
     output: "Facts and exit codes",
     handoff: "Findings",
-    body: "Use the deterministic floor when the work earns it: coverage complete, commands match, every Pass evidenced, references resolve. Exit codes are 0 clean, 1 warning, 2 blocking. The human owns the review result; the check reports facts. Every step has a by-hand path.",
+    body: "When useful, check coverage, commands, evidence, and references. Exit 0 is clean, 1 warning, 2 blocking. The check reports facts; humans decide.",
     example: {
       title: "suspec check",
       lines: [
@@ -182,7 +182,7 @@ export const loopSteps = [
     descriptor: "keep what lasts",
     output: "Memory, ADR, or promoted record",
     handoff: "Next change",
-    body: "Ephemeral findings leave with the review packet. A durable lesson becomes a native harness memory; a decision becomes an ADR; behavior becomes tests; discussion stays on the PR. If a record needs a permanent project home, promote it, repair references, validate the destination, and choose whether to commit it. Code stays king.",
+    body: "Discard the transient. Save durable lessons to native memory, decisions to ADRs, behavior to tests, and discussion to the PR. Promote records that need a project home.",
     example: {
       title: "CLAUDE.md (native memory)",
       lines: [

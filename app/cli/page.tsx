@@ -81,19 +81,19 @@ const commands = [
   {
     cmd: "check <path> [<path>...]",
     family: "Artifacts",
-    what: "Check explicitly named artifacts. Several at once is batching; the exit code is the highest severity across files.",
+    what: "Check named artifacts. Batches return the highest severity.",
     icon: ShieldCheck,
   },
   {
     cmd: "check <review> --spec <spec> [--task <task>]",
     family: "Review",
-    what: "Reconcile a review packet against its spec and, when named, its task packet. Companions are explicit flags; nothing is discovered for you.",
+    what: "Reconcile a review packet against explicit spec and task paths.",
     icon: ScanEye,
   },
   {
     cmd: "check --contract",
     family: "Contract",
-    what: "Print the checks contract as JSON: version plus every check's id, name, and severity. Contract 0.19.0 lives in the canon repo at checks/checks.yaml.",
+    what: "Print contract 0.19.0 as JSON: check id, name, and severity.",
     icon: Braces,
   },
 ];
@@ -103,42 +103,42 @@ const honestyFloor = [
     title: "Coverage",
     label: "C012",
     icon: ListChecks,
-    text: "Every in-scope requirement has a coverage row in the review. Nothing gets dropped silently.",
+    text: "Every in-scope requirement needs a coverage row.",
     signal: "evidence",
   },
   {
     title: "Command match",
     label: "C013",
     icon: Terminal,
-    text: "The recorded evidence ran the command the spec's Verify with: line named — not a friendlier one.",
+    text: "Evidence must match the spec's Verify with: command.",
     signal: "evidence",
   },
   {
     title: "Pass needs evidence",
     label: "C016",
     icon: ScanEye,
-    text: "A Pass with an empty evidence cell is a structural contradiction. Blocking.",
+    text: "Pass without evidence blocks.",
     signal: "evidence",
   },
   {
     title: "Reference resolves",
     label: "C020",
     icon: Link2,
-    text: "The review's task reference must resolve to the packet it is checked against. Blocking.",
+    text: "Task references must resolve.",
     signal: "evidence",
   },
   {
     title: "Per-artifact lint",
     label: "lint",
     icon: FileCheck,
-    text: "Specs, change plans, and review packets each get their own kind's lint — kind read from the artifact's own type: frontmatter.",
+    text: "Artifact type selects its lint rules.",
     signal: "reference",
   },
   {
     title: "Missing companion blocks",
     label: "exit 2",
     icon: ShieldAlert,
-    text: "A review checked without a required --spec or --task is a blocking exit 2, naming the missing flag — never a silently shallower check.",
+    text: "Missing --spec or --task blocks with exit 2.",
     signal: "change",
   },
 ] as const satisfies Array<{
@@ -152,23 +152,23 @@ const honestyFloor = [
 const boundaries = [
   {
     title: "No resolution",
-    text: "It never finds files for you. Give it every path; nothing is discovered, listed, or inferred.",
+    text: "Every path is explicit. No discovery.",
   },
   {
     title: "No gate",
-    text: "It reports facts and exit codes. What blocks a merge is the human's decision.",
+    text: "It reports facts. Humans gate merges.",
   },
   {
     title: "No verdicts",
-    text: "Pass, Fail, Unverified, and Blocked are written by the reviewer. The checker verifies their shape and their binding to evidence — nothing more.",
+    text: "Reviewers write verdicts. The checker validates their evidence binding.",
   },
   {
     title: "No execution",
-    text: "It never runs your Verify with: commands, tests, or agents. It checks that recorded evidence matches what the spec named — not that the commands pass.",
+    text: "It validates recorded evidence; it runs no tests or agents.",
   },
   {
     title: "No writes",
-    text: "The filesystem is read-only to it. Nothing scaffolded, nothing seeded, nothing managed.",
+    text: "Read-only. No scaffolds or managed state.",
   },
 ] as const satisfies Array<{
   title: string;
@@ -276,8 +276,7 @@ export default function CliPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            The methodology is the product; this is its honesty floor. It
-            reads exactly the files it is handed, reports facts, and exits. No
+            Deterministic checks over explicit files. Facts and exit codes, no
             verdict.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
@@ -354,8 +353,7 @@ export default function CliPage() {
             })}
           </ol>
           <p className="p-5 text-sm leading-relaxed text-concrete-400 sm:p-6">
-            There is no other command. No interactive mode, dashboard, or
-            scaffolding. The exit code is the API:{" "}
+            No interactive mode, dashboard, or scaffolding. Exit codes:{" "}
             <code className="text-suspec-yellow">0</code> clean ·{" "}
             <code className="text-suspec-yellow">1</code> warning ·{" "}
             <code className="text-suspec-yellow">2</code> blocking.

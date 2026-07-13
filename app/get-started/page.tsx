@@ -110,31 +110,31 @@ const loopSteps = [
   {
     name: "Spec",
     role: "intent stated",
-    text: "Write requirements with AC-NNN ids, a Verify with: line each, and non-goals. Keep the file beside your native artifacts and carry its full path forward.",
+    text: "Write AC-NNN requirements, verification commands, and non-goals. Carry the full path forward.",
     icon: ScrollText,
   },
   {
     name: "Lint",
     role: "optional check",
-    text: "suspec check <spec-path> — exit 0 clean, 1 warning, 2 blocking. It reports facts; it does not review the work.",
+    text: "suspec check <spec-path>: 0 clean, 1 warning, 2 blocking.",
     icon: Terminal,
   },
   {
     name: "Implement",
     role: "evidence in",
-    text: "Your agent works from the spec by path, runs every verify command, and pastes real output.",
+    text: "Run every verification command. Paste real output.",
     icon: Wrench,
   },
   {
     name: "Review",
     role: "independent eyes",
-    text: "A reviewer who did not write the code builds the packet, then runs suspec check <review-path> --spec <spec-path>.",
+    text: "An independent reviewer checks the packet against the spec.",
     icon: ClipboardList,
   },
   {
     name: "Keep",
     role: "what survives",
-    text: "A durable lesson becomes a native harness memory, a decision an ADR, a defect an issue.",
+    text: "Promote lessons to memory, decisions to ADRs, defects to issues.",
     icon: BookOpen,
   },
 ];
@@ -148,9 +148,8 @@ function SpecPlacementNote({ className = "" }: { className?: string }) {
         meta="beside your native artifacts / by explicit path"
       >
         <p>
-          The same place your harness keeps its plans, notes, and memories, in
-          a folder named after the repo. You choose the exact spot; every
-          later step names the file by its full path.
+          Beside your harness&apos;s plans and notes. You choose the location;
+          later steps use its full path.
         </p>
       </PaperArtifact>
       <p className="copy-section-note text-concrete-400">
@@ -171,42 +170,42 @@ function SpecPlacementNote({ className = "" }: { className?: string }) {
 const setupPath = [
   {
     label: "Install",
-    text: "One global command. The skills carry the method.",
+    text: "Install the method globally.",
     icon: Download,
     href: "#install",
     signal: "core",
   },
   {
     label: "CLI",
-    text: "Optional: suspec check from source, exit codes 0/1/2.",
+    text: "Optional deterministic checks.",
     icon: Terminal,
     href: "#cli",
     signal: "evidence",
   },
   {
     label: "MCP",
-    text: "Optional: the same check surface for shell-less clients.",
+    text: "Optional shell-less checks.",
     icon: Cable,
     href: "#mcp",
     signal: "reference",
   },
   {
     label: "First change",
-    text: "Start small. Run the loop once.",
+    text: "Run one small change.",
     icon: ClipboardList,
     href: "#first-change",
     signal: "core",
   },
   {
     label: "By hand",
-    text: "Every step has a no-CLI path.",
+    text: "No CLI required.",
     icon: PenLine,
     href: "#by-hand",
     signal: "reference",
   },
   {
     label: "Committed",
-    text: "Nothing, by Suspec's hand.",
+    text: "Nothing automatically.",
     icon: FileText,
     href: "#committed",
     signal: "muted",
@@ -315,8 +314,7 @@ export default function GetStartedPage() {
           tone="core"
         >
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-concrete-400 sm:text-xl">
-            One install. Nothing lands in your repo. The optional CLI adds
-            deterministic checks.
+            Install the method. Add deterministic checks only if useful.
           </p>
           <HeroTrace
             ariaLabel="Suspec setup path trace"
@@ -414,9 +412,8 @@ export default function GetStartedPage() {
           </div>
           <Heading className="mt-3">Install the skills</Heading>
           <p className="mt-4 max-w-2xl leading-relaxed text-concrete-400">
-            The skills implement the method: author records, review evidence,
-            handle decisions, and save durable lessons. Updating uses the same
-            command. No ceremony tax.
+            One command installs or updates the method. Nothing lands in the
+            repo.
           </p>
         </div>
         <Card
@@ -452,9 +449,7 @@ export default function GetStartedPage() {
             <span className="setup-choice-index">Tier 01</span>
           </div>
           <p className="text-concrete-400">
-            The Suspec skills live at the user level and work in any repo.
-            Plain Markdown, a capable harness, and the skills are the whole
-            product.
+            User-level Markdown skills. Any repo, any capable harness.
           </p>
           <dl className="setup-choice-facts">
             <div>

@@ -115,8 +115,8 @@ export default function SkillsPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Standalone Markdown skills that make the Suspec method usable in a
-            coding-agent harness. Install the part that matches the work.
+            Markdown skills for structured agent work. Load only what the task
+            needs.
           </p>
           <HeroTrace
             ariaLabel="Skill catalog path"
@@ -141,9 +141,9 @@ export default function SkillsPage() {
           title="placement rule"
           meta="method -> artifact author"
         >
-          <p>Install skills independently. The method still holds together.</p>
+          <p>Install independently. Use together.</p>
           <p className="mt-3 text-pencil">
-            Load the skill that matches the work; keep repo commands in
+            Keep repo commands in
             <span className="font-semibold"> AGENTS.md</span>.
           </p>
         </PaperArtifact>
@@ -160,9 +160,7 @@ export default function SkillsPage() {
                 The method is bigger than the install.
               </Heading>
               <p className="mt-2 text-concrete-400">
-                The skills carry the rules. The method is the system they
-                implement: proportional structure, evidence, human decisions,
-                and durable lessons. The files are the pieces, not the picture.
+                Skills carry the rules. Suspec supplies the method.
               </p>
             </div>
           </div>
@@ -206,8 +204,7 @@ export default function SkillsPage() {
           >
             skills CLI
           </TextLink>{" "}
-          installs into supported harnesses. The skills remain plain Markdown;
-          the method does not require a runtime.
+          installs plain Markdown into supported harnesses. No runtime.
         </p>
       </Section>
 
@@ -224,8 +221,7 @@ export default function SkillsPage() {
           </div>
           <Heading>Methods that sharpen the work.</Heading>
           <p className="text-concrete-400">
-            Each method has one job. Open a skill to see the rationale, output,
-            boundary, and working example. No mysticism required.
+            One job each. Open one for its contract and example.
           </p>
         </div>
         <SkillCatalog
@@ -250,9 +246,7 @@ export default function SkillsPage() {
           </div>
           <Heading>Skills for records that earn structure.</Heading>
           <p className="text-concrete-400">
-            These skills create the current Suspec artifact types. They add
-            structure when the change needs it, not because a process likes
-            paperwork.
+            These skills create Suspec artifacts when the work earns one.
           </p>
         </div>
         <SkillCatalog
@@ -274,8 +268,7 @@ export default function SkillsPage() {
               source record
             </p>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-concrete-400">
-              The catalog is maintained separately from the canon docs. Read the
-              source when you need the full skill contract.
+              Read the catalog for the full skill contracts.
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
