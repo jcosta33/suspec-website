@@ -85,3 +85,42 @@
 .skill-detail-visual-before-after > svg {
   color: var(--signal-core);
 }
+
+.skill-detail-visual-chat {
+  align-content: center;
+  justify-items: stretch;
+}
+
+.skill-chat-thread {
+  display: grid;
+  width: min(100%, 28rem);
+  gap: 0.75rem;
+}
+
+.skill-chat-message {
+  border: 1px solid var(--panel-border);
+  background: color-mix(in srgb, var(--panel) 72%, transparent);
+  padding: 0.85rem 1rem;
+}
+
+.skill-chat-message-result {
+  margin-inline-start: 2rem;
+  border-color: var(--signal-core);
+  background: color-mix(in srgb, var(--signal-core) 8%, var(--panel));
+}
+
+.skill-chat-message span {
+  display: block;
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skill-chat-message p {
+  margin: 0.45rem 0 0;
+  color: var(--concrete-400);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}

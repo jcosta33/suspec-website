@@ -163,6 +163,31 @@ function SkillDiagram({ visual, tone }: Pick<SkillDetail, "visual" | "tone">) {
     );
   }
 
+  if (visual === "chat") {
+    return (
+      <div
+        className="skill-detail-visual skill-detail-visual-chat"
+        role="img"
+        aria-label="An in-chat method result with no Suspec artifact emitted"
+      >
+        <div className="skill-chat-thread">
+          <div className="skill-chat-message skill-chat-message-prompt">
+            <span>request</span>
+            <p>Run the method on the supplied target.</p>
+          </div>
+          <div className="skill-chat-message skill-chat-message-result">
+            <span className={roleText}>result</span>
+            <p>Facts, boundaries, and the next useful action.</p>
+          </div>
+        </div>
+        <p className="skill-detail-visual-caption">
+          <span className={roleText}>in chat</span>
+          <span>no Suspec artifact</span>
+        </p>
+      </div>
+    );
+  }
+
   if (visual === "flow" || visual === "memory") {
     return (
       <div
@@ -241,6 +266,14 @@ export default async function SkillDetailPage({
 
   const installCommand = `npx skills add jcosta33/suspec-skills --skill ${skill.slug} -g`;
   const kindLabel = skill.kind === "artifact" ? "artifact author" : "universal method";
+  const workingShapeTitle =
+    skill.kind === "artifact"
+      ? "Use the smallest record that carries the work."
+      : "Keep the result in the conversation.";
+  const workingShapeCopy =
+    skill.kind === "artifact"
+      ? "The example is a shape, not a template. Keep the source evidence close to the claim and add structure only when it changes execution or review."
+      : "The example shows the kind of answer the method returns. It reports in chat; no Suspec artifact is emitted unless a separate artifact-author skill takes over.";
 
   return (
     <div className="repo-product-page skill-detail-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
@@ -333,11 +366,9 @@ export default async function SkillDetailPage({
               <GitBranch className="h-4 w-4" aria-hidden="true" />
               <span>working shape</span>
             </p>
-            <Heading className="mt-3">Use the smallest record that carries the work.</Heading>
+            <Heading className="mt-3">{workingShapeTitle}</Heading>
           </div>
-          <p className="text-concrete-400">
-            The example is a shape, not a template. Keep the source evidence close to the claim and add structure only when it changes execution or review.
-          </p>
+          <p className="text-concrete-400">{workingShapeCopy}</p>
           <Badge variant={skill.kind === "artifact" ? "ready" : "draft"}>
             {skillEffect(skill)}
           </Badge>

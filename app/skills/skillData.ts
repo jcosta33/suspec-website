@@ -23,6 +23,7 @@ export type SkillKind = "method" | "artifact";
 export type SkillVisual =
   | "artifact"
   | "before-after"
+  | "chat"
   | "decision"
   | "flow"
   | "memory"
@@ -61,11 +62,11 @@ export const skillDetails: readonly SkillDetail[] = [
     rationale:
       "Use it when a claim matters enough to test instead of trusting plausible prose or a green check.",
     output:
-      "One evidence table: Supported, Unsupported, Unverified, or Blocked, with the proof for each row.",
+      "An in-chat evidence table: Supported, Unsupported, Unverified, or Blocked, with the proof for each row.",
     boundary:
       "It verifies a bounded claim set. It does not perform a broad risk review or issue acceptance.",
     misuse: "Treating a plausible citation or green check as proof without inspecting it.",
-    visual: "artifact",
+    visual: "chat",
     example: {
       title: "claim-check.md",
       meta: "assessment / evidence",
@@ -86,11 +87,11 @@ export const skillDetails: readonly SkillDetail[] = [
     rationale:
       "Use it when the strongest case against a proposal is more useful than another balanced summary.",
     output:
-      "A focused rejection case that exposes assumptions, failure paths, and opportunity costs.",
+      "A focused in-chat rejection case that exposes assumptions, failure paths, and opportunity costs.",
     boundary:
       "Its advocacy is not evidence. Claims from the exercise need independent verification before use.",
     misuse: "Using the advocacy case as the final review instead of verifying its claims.",
-    visual: "artifact",
+    visual: "chat",
     example: {
       title: "advocacy note",
       meta: "not evidence / one-sided case",
@@ -111,7 +112,7 @@ export const skillDetails: readonly SkillDetail[] = [
     rationale:
       "Use it when repetition, soft framing, or ceremony is consuming attention without changing the work.",
     output:
-      "A shorter artifact with every fact, decision, command, warning, and proof still present once.",
+      "A tighter version of the supplied Markdown with every fact, decision, command, warning, and proof still present once.",
     boundary:
       "It edits Markdown. It does not compress source code, invent missing facts, or remove load-bearing constraints.",
     misuse: "Cutting a constraint because it sounds repetitive.",

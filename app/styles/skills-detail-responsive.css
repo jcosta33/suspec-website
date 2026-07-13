@@ -25,6 +25,10 @@
     width: 100%;
   }
 
+  .skill-chat-message-result {
+    margin-inline-start: 1rem;
+  }
+
   .skill-detail-visual-before-after > svg,
   .skill-detail-visual-flow > svg,
   .skill-detail-visual-memory > svg {
