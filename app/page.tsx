@@ -434,7 +434,7 @@ export default function HomePage() {
               inline line.
             </p>
           </div>
-          <LoopDiagram />
+          <LoopDiagram linkSteps />
         </Section>
       </section>
 

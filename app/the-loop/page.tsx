@@ -271,7 +271,7 @@ export default function TheLoopPage() {
           </Panel>
         </div>
         <div className="order-1 lg:order-none">
-          <LoopDiagram linkSteps />
+          <LoopDiagram linkSteps compact />
         </div>
       </Section>
 

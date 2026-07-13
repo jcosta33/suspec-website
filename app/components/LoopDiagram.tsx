@@ -61,7 +61,13 @@ const steps = [
   },
 ] as const;
 
-export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
+export function LoopDiagram({
+  linkSteps = false,
+  compact = false,
+}: {
+  linkSteps?: boolean;
+  compact?: boolean;
+}) {
   const sealPoints = steps.map((step, index) => {
     const angle = -90 + index * 60;
     const rad = (angle * Math.PI) / 180;
@@ -201,7 +207,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
       </div>
       <ol
         className={`loop-step-grid grid grid-cols-1 gap-5 md:grid-cols-2 ${
-          linkSteps ? "loop-step-grid-linked" : "xl:grid-cols-3"
+          compact ? "loop-step-grid-linked" : "xl:grid-cols-3"
         }`}
       >
         {steps.map((step, index) => {
@@ -209,7 +215,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
           const showConnector = index < steps.length - 1 && index % 3 !== 2;
           const cardClassName =
             `loop-step-card loop-step-card-workflow ${
-              linkSteps ? "loop-step-card-linked" : ""
+              compact ? "loop-step-card-linked" : ""
             } focus-ring hover-shadow-step group relative flex h-full min-h-[13rem] flex-col gap-3 p-4 panel-raised rivet-row transition-[border-color,box-shadow,background-color] duration-150`;
           const content = (
             <>
@@ -236,7 +242,7 @@ export function LoopDiagram({ linkSteps = false }: { linkSteps?: boolean }) {
                   </span>
                 )}
               </div>
-              {!linkSteps && (
+              {!compact && (
                 <p className="text-sm leading-relaxed text-concrete-400">
                   {step.description}
                 </p>
