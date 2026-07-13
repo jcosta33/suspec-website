@@ -3,6 +3,7 @@ html {
   scroll-padding-top: 5.5rem;
 }
 
+main [id],
 :target {
   scroll-margin-top: 5.5rem;
 }
