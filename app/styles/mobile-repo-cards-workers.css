@@ -1,29 +1,15 @@
 @media (max-width: 40rem) {
-  .repo-product-page .agent-worker-card .catalog-row,
-  .skills-page .skill-guide-row.catalog-row {
+  .repo-product-page .skill-guide-row.catalog-row {
     min-height: 5.25rem;
     padding-block: 0.82rem;
   }
 
-  .repo-product-page .agent-worker-card .catalog-row {
-    min-height: 6.15rem;
-    grid-template-columns: 2.6rem minmax(0, 1fr);
-    gap: 0.74rem;
-    padding: 0.78rem 0.82rem;
+  .repo-product-page .skill-guide-row.catalog-row {
+    align-items: start;
   }
 
-  .repo-product-page .agent-worker-card {
-    min-height: 9.25rem;
-  }
-
-  .repo-product-page .agent-worker-card .catalog-row > div:first-child > div:last-child,
-  .skills-page .skill-guide-row.catalog-row > div:first-child > div:last-child {
+  .repo-product-page .skill-guide-row.catalog-row > div:first-child > div:last-child {
     grid-template-rows: auto auto;
     row-gap: 0.34rem;
-  }
-
-  .repo-product-page .agent-worker-card .catalog-row,
-  .skills-page .skill-guide-row.catalog-row {
-    align-items: start;
   }
 }

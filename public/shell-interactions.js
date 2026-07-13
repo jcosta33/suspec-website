@@ -47,7 +47,6 @@
     if (path.startsWith("/what-is-suspec/")) return "Suspec / overview";
     if (path.startsWith("/the-loop/")) return "Suspec / loop";
     if (path.startsWith("/get-started/")) return "Suspec / setup";
-    if (path.startsWith("/agents/")) return "Suspec / agents";
     if (path.startsWith("/skills/")) return "Suspec / skills";
     if (path.startsWith("/cli/")) return "Suspec / cli";
     if (path.startsWith("/mcp/")) return "Suspec / mcp";

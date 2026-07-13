@@ -1,4 +1,5 @@
-import { ExternalLink, type LucideIcon } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, type LucideIcon } from "lucide-react";
 import { Panel } from "./Panel";
 import { HexBadge } from "./HexBadge";
 import { signalRoles, type SignalRole } from "./signalStyles";
@@ -12,8 +13,6 @@ export interface SkillCatalogItem {
 export interface SkillCatalogProps {
   tone: SignalRole;
   skills: ReadonlyArray<SkillCatalogItem>;
-  /** Base repo URL; each row links to `${repo}/${skill}`. */
-  repo: string;
   /** First header span — the source label. */
   headerLabel: string;
   /** Second header span — the catalog detail. */
@@ -30,7 +29,6 @@ export interface SkillCatalogProps {
 export function SkillCatalog({
   tone,
   skills,
-  repo,
   headerLabel,
   guidesLabel,
   sourcePath = "skills",
@@ -57,11 +55,9 @@ export function SkillCatalog({
           const Icon = s.icon;
           return (
             <li key={s.skill}>
-              <a
-                href={`${repo}/${s.skill}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${s.skill} SKILL.md on GitHub (opens in new tab)`}
+              <Link
+                href={`/skills/${s.skill}/`}
+                aria-label={`Read the ${s.skill} skill detail`}
                 className={`skill-guide-row catalog-row catalog-row-${tone} group focus-ring`}
               >
                 <div className="flex min-w-0 items-start gap-4">
@@ -87,11 +83,11 @@ export function SkillCatalog({
                     </p>
                   </div>
                 </div>
-                <ExternalLink
+                <ArrowRight
                   className="skill-guide-row-arrow"
                   aria-hidden="true"
                 />
-              </a>
+              </Link>
             </li>
           );
         })}

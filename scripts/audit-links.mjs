@@ -16,7 +16,6 @@ const mainDocsLinkRoutes = [
   "/get-started/",
   "/skills/",
   "/skills/writing/",
-  "/agents/",
   "/cli/",
   "/mcp/",
   "/colophon/",

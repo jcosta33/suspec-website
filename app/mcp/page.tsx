@@ -6,7 +6,6 @@ import {
   Cable,
   ExternalLink,
   FileJson,
-  FolderLock,
   MessagesSquare,
   ShieldCheck,
   Terminal,
@@ -61,8 +60,8 @@ export const metadata: Metadata = {
 const mcpConfigSnippet = `{
   "mcpServers": {
     "suspec": {
-      "command": "suspec-mcp",
-      "args": ["--workspace", "/absolute/path/to/your/repo"]
+      "command": "/absolute/path/to/suspec-mcp/bin/suspec-mcp.js",
+      "args": ["--suspec-bin", "/absolute/path/to/suspec-cli/bin/suspec.js"]
     }
   }
 }`;
@@ -73,15 +72,15 @@ const mcpInstallCommands = [
   "SRC=$HOST/$PKG.git",
   "git clone https://$SRC",
   'cd "$PKG"',
-  "pnpm install",
+  "corepack enable",
+  "pnpm install --frozen-lockfile",
   "pnpm build",
-  "npm link",
 ].join("\n");
 
 const guardrails = [
   {
     title: "Two tools, no more",
-    text: "suspec_check_file and suspec_get_checks. An agent that can run shell commands doesn't need this server at all.",
+    text: "suspec_check and suspec_get_checks. A client that can run shell commands can use suspec check directly.",
     stamp: "scope",
     icon: ShieldCheck,
     signal: "reference",
@@ -94,10 +93,10 @@ const guardrails = [
     signal: "muted",
   },
   {
-    title: "Root-confined",
-    text: "Every path — the artifact and both companions — must resolve inside the bound root. Traversal, escapes, and out-of-root symlinks are rejected.",
-    stamp: "bound",
-    icon: FolderLock,
+    title: "Explicit paths",
+    text: "Primary artifacts and companions are absolute paths. The adapter resolves no repository root, workspace, tree, or artifact store.",
+    stamp: "paths",
+    icon: FileJson,
     signal: "muted",
   },
   {
@@ -119,7 +118,7 @@ const tools = [
   {
     group: "check",
     signal: "evidence",
-    items: ["suspec_check_file"],
+    items: ["suspec_check"],
   },
   {
     group: "contract",
@@ -133,8 +132,8 @@ const tools = [
 }>;
 
 const toolDescriptions = {
-  suspec_check_file:
-    "Run the checks over one artifact — kind read from its own frontmatter type:. A review takes its companions explicitly: spec always, task exactly when the review names one.",
+  suspec_check:
+    "Run the checks over ordered, non-empty absolute paths. A review takes its companions explicitly: spec always, task exactly when the review names one.",
   suspec_get_checks:
     "The checks contract the CLI holds artifacts to: the contract version plus every check's id, name, and severity.",
 } as const;
@@ -326,6 +325,7 @@ export default function McpPage() {
             <Badge variant="ready">Exactly two tools</Badge>
             <Badge variant="draft">local stdio</Badge>
             <Badge signal="muted">no verdict</Badge>
+            <Badge signal="muted">checks contract 0.19.0</Badge>
           </div>
         </PageHero>
       </Section>
@@ -455,11 +455,11 @@ export default function McpPage() {
             <p className="pl-4">&quot;mcpServers&quot;: {"{"}</p>
             <p className="pl-8">&quot;suspec&quot;: {"{"}</p>
             <p className="pl-12">
-              &quot;command&quot;: &quot;suspec-mcp&quot;,
+              &quot;command&quot;: &quot;/absolute/path/to/suspec-mcp/bin/suspec-mcp.js&quot;,
             </p>
             <p className="pl-12">
-              &quot;args&quot;: [&quot;--workspace&quot;,
-              &quot;/absolute/path/to/your/repo&quot;]
+              &quot;args&quot;: [&quot;--suspec-bin&quot;,
+              &quot;/absolute/path/to/suspec-cli/bin/suspec.js&quot;]
             </p>
             <p className="pl-8">{"}"}</p>
             <p className="pl-4">{"}"}</p>
@@ -539,9 +539,9 @@ export default function McpPage() {
             <span>tools</span>
           </div>
           <Heading className="mt-3">Exactly two tools</Heading>
-          <p className="mt-4 text-concrete-400">
-            One runs the checks over an artifact; one prints the contract the
-            checks come from. Both shell out to{" "}
+            <p className="mt-4 text-concrete-400">
+              One runs the checks over explicit artifact paths; one prints the
+              contract they use. Both shell out to{" "}
             <code>suspec check --json</code> and relay the CLI&apos;s facts.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -586,8 +586,8 @@ export default function McpPage() {
             <span>envelope + resource</span>
           </div>
           <Heading className="mt-3">The no-verdict envelope</Heading>
-          <p className="mt-4 text-concrete-400">
-            Every result rides the same structure. <code>ok</code> means the
+            <p className="mt-4 text-concrete-400">
+              Every result uses the same structure. <code>ok</code> means the
             CLI ran — whether the artifact is clean lives in the facts, and
             the server never adds a Pass or Fail of its own.
           </p>
@@ -674,7 +674,7 @@ export default function McpPage() {
             copyText={mcpInstallCommands}
           >
             <p className="text-concrete-500">
-              # until a published build is available
+              # install from source; no published package yet
             </p>
             <p className="text-concrete-100">
               <span className="text-suspec-yellow">$</span>{" "}HOST=github.com/jcosta33
@@ -692,13 +692,13 @@ export default function McpPage() {
               <span className="text-suspec-yellow">$</span>{" "}cd &quot;$PKG&quot;
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}pnpm install
+              <span className="text-suspec-yellow">$</span>{" "}corepack enable
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-suspec-yellow">$</span>{" "}pnpm install --frozen-lockfile
             </p>
             <p className="text-concrete-100">
               <span className="text-suspec-yellow">$</span>{" "}pnpm build
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}npm link
             </p>
           </TerminalWindow>
         </Panel>

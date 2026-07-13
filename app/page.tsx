@@ -37,7 +37,7 @@ const softwareApp = {
   softwareVersion: "0.1.0",
   url: "https://suspecframework.dev",
   description:
-    "An opinionated methodology for working with coding agents, shipped as plain-markdown skills: specs, reviews, findings, and evidence beside your agent's native artifacts.",
+    "A methodology for structuring work with coding agents. Installable skills implement specs, reviews, findings, and evidence beside your agent's native artifacts.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   publisher: { "@id": "https://suspecframework.dev/#organization" },
 };
@@ -45,11 +45,11 @@ const softwareApp = {
 export const metadata: Metadata = {
   title: "Suspec — spec and review skills for coding agents",
   description:
-    "An opinionated methodology for working with coding agents, shipped as plain-markdown skills: specs, reviews, findings, and evidence beside your agent's native artifacts.",
+    "A methodology for structuring work with coding agents. Installable skills implement specs, reviews, findings, and evidence beside your agent's native artifacts.",
   openGraph: {
     title: "Suspec — spec and review skills for coding agents",
     description:
-      "An opinionated methodology for working with coding agents, shipped as plain-markdown skills: specs, reviews, findings, and evidence beside your agent's native artifacts.",
+      "A methodology for structuring work with coding agents. Installable skills implement specs, reviews, findings, and evidence beside your agent's native artifacts.",
     type: "website",
     url: "/",
     siteName: "Suspec",
@@ -78,7 +78,7 @@ const loopSteps = [
   href: string;
 }>;
 
-const heroInstallCommand = "npx skills add jcosta33/suspec-skills -g";
+const heroInstallCommand = "npx skills add jcosta33/suspec-skills -g -a codex";
 
 const heroCheckCommand = "suspec check review.md --spec spec.md";
 
@@ -175,7 +175,7 @@ const features = [
 const faqs = [
   {
     q: "Is Suspec an agent?",
-    a: "No. Your coding tool writes the code. Suspec is a skill family that shapes the work around it.",
+    a: "No. Your coding tool writes the code. Suspec is the methodology around that work; installable skills implement it.",
   },
   {
     q: "Does Suspec decide whether code ships?",
@@ -268,7 +268,7 @@ export default function HomePage() {
             title="Show, not tell."
           >
             <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-100">
-              An opinionated methodology for coding agents, shipped as skills.
+            A methodology for structuring work with coding agents; installable skills implement it.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
               State the intent, reconcile the evidence, keep the findings.

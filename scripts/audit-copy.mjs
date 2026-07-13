@@ -14,7 +14,14 @@ const routes = [
   "/get-started/",
   "/skills/",
   "/skills/writing/",
-  "/agents/",
+  "/skills/bulletproof/",
+  "/skills/disrespec/",
+  "/skills/fork-me/",
+  "/skills/promote/",
+  "/skills/revolver/",
+  "/skills/sus-spec/",
+  "/skills/sus-review/",
+  "/skills/triple-check/",
   "/cli/",
   "/mcp/",
   "/docs/",
@@ -64,8 +71,7 @@ const boundaryRequirements = new Map([
     "/mcp/",
     [/shell-less/i, /two tools/i, /no-verdict envelope/i],
   ],
-  ["/agents/", [/never reviews its own|no self-review|never the implementer/i, /no verdicts?/i]],
-  ["/skills/", [/framework-free/i, /npx skills add jcosta33\/suspec-skills -g/i]],
+  ["/skills/", [/standalone Markdown|plain Markdown/i, /npx skills add jcosta33\/suspec-skills -g -a codex/i]],
 ]);
 
 function normalize(text) {

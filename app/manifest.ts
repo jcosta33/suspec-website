@@ -9,7 +9,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Suspec — spec and review discipline, shipped as skills",
     short_name: "Suspec",
     description:
-      "An opinionated methodology for working with coding agents — shipped as a globally installed skill family, backed by a deterministic checker.",
+      "A methodology for structuring work with coding agents. Installable skills implement it; the optional CLI provides deterministic checks.",
     start_url: "/",
     display: "standalone",
     theme_color: "#110e0c",

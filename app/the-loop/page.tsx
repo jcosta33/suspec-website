@@ -388,7 +388,7 @@ export default function TheLoopPage() {
             <p className="loop-ledger-kicker">loop ledger</p>
             <h2>Records between steps</h2>
             <p>
-              Each step leaves an artifact the next step reads by explicit
+              When the work earns a record, the next step reads it by explicit
               full path — beside your harness&apos;s own artifacts, never
               committed to the repo you work on.
             </p>
@@ -691,7 +691,7 @@ export default function TheLoopPage() {
             <Heading>Ready to run it?</Heading>
             <p className="mt-2 text-concrete-400">
               Install the skills —{" "}
-              <code>npx skills add jcosta33/suspec-skills -g</code> — and
+              <code>npx skills add jcosta33/suspec-skills -g -a codex</code> — and
               write one spec. The same loop handles the next change.
             </p>
             <p className="mt-4 text-sm text-concrete-400">

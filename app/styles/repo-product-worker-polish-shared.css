@@ -1,35 +1,17 @@
-.repo-product-page .agent-roster-icon,
-.repo-product-page .agent-worker-card .catalog-row-badge,
 .skills-page .skill-guide-row-badge {
   margin-top: 0.08rem;
 }
 
-.repo-product-page .agent-worker-list > li,
 .skills-page .skill-guide-list > li {
   display: grid;
 }
 
-.repo-product-page .agent-worker-card,
 .skills-page .skill-guide-row.catalog-row {
   height: 100%;
-}
-
-.repo-product-page .agent-worker-card {
-  padding: 0;
-}
-
-.repo-product-page .agent-worker-card .catalog-row,
-.skills-page .skill-guide-row.catalog-row {
   min-height: 6.35rem;
   padding-block: 0.9rem;
 }
 
-.repo-product-page .agent-worker-card .catalog-row {
-  min-height: 4.7rem;
-  padding: 0.92rem 1.05rem;
-}
-
-.repo-product-page .agent-worker-card .catalog-row > div:first-child > div:last-child,
 .skills-page .skill-guide-row.catalog-row > div:first-child > div:last-child {
   display: grid;
   align-content: start;
@@ -37,7 +19,6 @@
   row-gap: 0.3rem;
 }
 
-.repo-product-page .agent-worker-card .catalog-row-copy,
 .skills-page .skill-guide-row .catalog-row-copy {
   align-self: start;
   margin-top: 0;
@@ -47,7 +28,6 @@
   overflow-wrap: anywhere;
 }
 
-.repo-product-page .agent-worker-card .catalog-row-title,
 .skills-page .skill-guide-row .catalog-row-title {
   align-self: start;
   line-height: 1.24;

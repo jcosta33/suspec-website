@@ -23,8 +23,8 @@ function buildLlmsFullText() {
   const slugs = userFacingDocSlugs();
   const header =
     `# Suspec - full documentation\n\n` +
-    `> Suspec is a lightweight spec-and-review workflow for teams shipping code with AI coding agents. ` +
-    `Plain markdown, any agent, no runtime. This file concatenates the user-facing documentation for ` +
+    `> Suspec is a methodology for structuring work with coding agents. ` +
+    `Plain Markdown, any capable harness, no runtime. This file concatenates the user-facing documentation for ` +
     `full-context ingestion by AI assistants.\n\n` +
     `Site: ${SITE_URL} - Canon: ${CANON_URL}\n\n---\n\n`;
 

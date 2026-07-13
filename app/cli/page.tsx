@@ -64,9 +64,10 @@ const cliInstallCommands = [
   "SRC=$HOST/$PKG.git",
   "git clone https://$SRC",
   'cd "$PKG"',
-  "npm install",
-  "npm run build",
-  "npm link",
+  "corepack enable",
+  "pnpm install --frozen-lockfile",
+  "pnpm build",
+  "pnpm link --global",
   "suspec check --contract",
 ].join("\n");
 
@@ -78,9 +79,9 @@ const cliExampleCommands = [
 
 const commands = [
   {
-    cmd: "check <artifact> [<artifact>...]",
+    cmd: "check <path> [<path>...]",
     family: "Artifacts",
-    what: "Lint specs and change plans by explicit path. Several at once is a batching convenience; the exit code is the max severity across files.",
+    what: "Check explicitly named artifacts. Several at once is a batching convenience; the exit code is the max severity across files.",
     icon: ShieldCheck,
   },
   {
@@ -92,7 +93,7 @@ const commands = [
   {
     cmd: "check --contract",
     family: "Contract",
-    what: "Print the checks contract as JSON — the version plus every check's id, name, and severity. Contract 0.16.0 lives in the canon repo, at checks/checks.yaml.",
+    what: "Print the checks contract as JSON — version plus every check's id, name, and severity. Contract 0.19.0 lives in the canon repo, at checks/checks.yaml.",
     icon: Braces,
   },
 ];
@@ -275,9 +276,9 @@ export default function CliPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            The skills are the product; this is the honesty floor. A
-            path-agnostic deterministic checker: it reads exactly the files it
-            is handed, reports facts, and exits. Never a verdict.
+            The methodology is the product; this is its honesty floor. A
+            deterministic checker reads exactly the files it is handed, reports
+            facts, and exits. Never a verdict.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
             <Badge variant="draft">Optional — no step requires it</Badge>
@@ -373,6 +374,9 @@ export default function CliPage() {
           <DroneIcon className="h-4 w-4" />
           <span>install — from source, not npm</span>
         </div>
+        <p className="text-sm leading-relaxed text-concrete-400">
+          Requires Node.js 22.6 or newer and pnpm 10.
+        </p>
         <Panel brushed className="p-2">
           <TerminalWindow
             title="terminal"
@@ -398,16 +402,19 @@ export default function CliPage() {
               <span className="text-suspec-yellow">$</span>{" "}cd &quot;$PKG&quot;
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}npm install
+              <span className="text-suspec-yellow">$</span>{" "}corepack enable
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}npm run build
+              <span className="text-suspec-yellow">$</span>{" "}pnpm install --frozen-lockfile
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}npm link
+              <span className="text-suspec-yellow">$</span>{" "}pnpm build
+            </p>
+            <p className="text-concrete-100">
+              <span className="text-suspec-yellow">$</span>{" "}pnpm link --global
             </p>
             <p className="mt-2 text-concrete-500">
-              # sanity check — prints checks contract 0.16.0
+              # sanity check — prints checks contract 0.19.0
             </p>
             <p className="text-concrete-100">
               <span className="text-suspec-yellow">$</span>{" "}suspec check
@@ -683,12 +690,12 @@ export default function CliPage() {
           <div>
             <Heading>Don&apos;t need the CLI at all?</Heading>
             <p className="mt-2 text-concrete-400">
-              Correct — no step requires it. The skills are the product:
-              install them, work the loop by hand, and add the checker when
-              you want the floor held for free.
+              Correct — no step requires it. Suspec is a methodology that works
+              by hand; install the skills, then add the checker when the work
+              earns a deterministic floor.
             </p>
             <p className="mt-4 font-mono text-sm text-suspec-yellow">
-              npx skills add jcosta33/suspec-skills -g
+              npx skills add jcosta33/suspec-skills -g -a codex
             </p>
           </div>
           <div className="mt-auto flex flex-col gap-3">

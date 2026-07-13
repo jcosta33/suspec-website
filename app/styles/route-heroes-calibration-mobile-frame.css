@@ -33,7 +33,6 @@
   }
 
   .page-hero:is(
-      .page-hero-package-agents,
       .page-hero-package-skills,
       .page-hero-package-cli,
       .page-hero-package-mcp

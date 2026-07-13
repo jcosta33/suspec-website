@@ -14,7 +14,9 @@ const routes = [
   "/get-started/",
   "/skills/",
   "/skills/writing/",
-  "/agents/",
+  "/skills/revolver/",
+  "/skills/fork-me/",
+  "/skills/sus-spec/",
   "/cli/",
   "/mcp/",
   "/docs/",
@@ -25,7 +27,7 @@ const routes = [
 ];
 
 const sitemapRoutes = routes.filter((route) => route !== "/kitchen-sink/");
-const agentResourceRoutes = ["/llms.txt", "/llms-full.txt"];
+const machineResourceRoutes = ["/llms.txt", "/llms-full.txt"];
 
 const viewports = [
   { name: "desktop", width: 1280, height: 900, mobile: false, dpr: 1 },
@@ -43,7 +45,6 @@ const hoverStabilitySelector = [
   ".setup-choice-card",
   ".cli-command-link",
   ".catalog-row",
-  ".agent-worker-card",
   ".mcp-adapter-step-link",
   ".process-strip > *",
   ".docs-index-section",
@@ -57,7 +58,9 @@ const expectedStructuredTypes = new Map([
   ["/get-started/", ["WebPage", "HowTo"]],
   ["/skills/", ["CollectionPage", "ItemList"]],
   ["/skills/writing/", ["TechArticle", "ItemList"]],
-  ["/agents/", ["CollectionPage", "ItemList"]],
+  ["/skills/revolver/", ["TechArticle"]],
+  ["/skills/fork-me/", ["TechArticle"]],
+  ["/skills/sus-spec/", ["TechArticle"]],
   ["/cli/", ["CollectionPage", "ItemList"]],
   ["/mcp/", ["CollectionPage", "ItemList"]],
   ["/docs/", ["CollectionPage", "ItemList"]],
@@ -591,7 +594,7 @@ async function auditSeoArtifacts(baseUrl) {
     failures.push("robots.txt missing sitemap directive");
   }
 
-  for (const route of [...sitemapRoutes, ...agentResourceRoutes]) {
+  for (const route of [...sitemapRoutes, ...machineResourceRoutes]) {
     const absoluteUrl = `https://suspecframework.dev${route}`;
     if (!sitemap.text.includes(`<loc>${absoluteUrl}</loc>`)) {
       failures.push(`sitemap missing ${absoluteUrl}`);
@@ -610,7 +613,8 @@ async function auditSeoArtifacts(baseUrl) {
 
   const llmsRequired = [
     "# Suspec",
-    "any agent, and your repos take nothing",
+    "any capable harness",
+    "your repos take nothing",
     "https://suspecframework.dev/docs/",
     "https://suspecframework.dev/llms-full.txt",
     "https://suspecframework.dev/mcp/",

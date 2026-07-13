@@ -1,0 +1,87 @@
+.skill-detail-visual-decision,
+.skill-detail-visual-passes {
+  align-content: center;
+}
+
+.skill-decision-root {
+  border: 1px solid var(--signal-core);
+  padding: 0.7rem 1rem;
+  color: var(--signal-core);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skill-decision-branches {
+  display: grid;
+  width: min(100%, 28rem);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.skill-decision-branch {
+  border-top: 1px solid var(--panel-border);
+  padding-top: 0.65rem;
+  color: var(--concrete-400);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.skill-decision-branch-recommended {
+  border-top-color: var(--signal-core);
+  color: var(--signal-core);
+}
+
+.skill-pass-row {
+  display: grid;
+  width: min(100%, 25rem);
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--panel-border);
+  padding: 0.75rem 0;
+  color: var(--concrete-300);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skill-pass-number,
+.skill-pass-state {
+  color: var(--brass);
+}
+
+.skill-detail-visual-before-after {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  text-align: left;
+}
+
+.skill-detail-visual-before-after > div {
+  min-width: 0;
+}
+
+.skill-detail-visual-before-after span,
+.skill-detail-visual-artifact span {
+  display: block;
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skill-detail-visual-before-after p {
+  margin: 0.55rem 0 0;
+  color: var(--concrete-400);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.skill-detail-visual-before-after > svg {
+  color: var(--signal-core);
+}

@@ -28,7 +28,7 @@ import {
 
 const SITE_URL = "https://suspecframework.dev";
 const overviewDescription =
-  "An opinionated methodology for working with coding agents, shipped as a globally installed skill family: lean specs, evidence-backed reviews, findings your harness remembers.";
+  "A methodology for structuring work with coding agents. Installable skills implement lean specs, evidence-backed reviews, and durable findings.";
 const overviewTitle = "What is Suspec? — specs, evidence, review";
 
 export const metadata: Metadata = {
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 const isList = [
   {
     label: "skills",
-    text: "a globally installed skill family — plain markdown, any agent",
+    text: "installable skills — plain Markdown, any capable harness",
     icon: Layers,
   },
   {
@@ -833,9 +833,9 @@ export default function WhatIsSuspecPage() {
           <div className="overview-next-copy">
             <Heading>See how it actually runs</Heading>
             <p className="mt-2 text-concrete-400">
-              The loop is plain: intent, spec, implement, review, check,
-              findings. Each step leaves an artifact the next step reads by
-              explicit path. No runtime; no automatic decision.
+            The loop is plain: intent, spec, implement, review, check,
+            findings. Records appear when the work earns them and travel by
+            explicit path. No runtime; no automatic decision.
             </p>
             <p className="overview-next-source mt-4 text-sm text-concrete-400">
               Source:{" "}

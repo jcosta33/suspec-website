@@ -8,7 +8,6 @@ const navLinks = [
   { label: "What is Suspec", href: "/what-is-suspec" },
   { label: "Loop", href: "/the-loop" },
   { label: "Skills", href: "/skills" },
-  { label: "Agents", href: "/agents" },
   { label: "CLI", href: "/cli" },
   { label: "MCP", href: "/mcp" },
   { label: "Get started", href: "/get-started" },
@@ -31,7 +30,6 @@ const mobileNavGroups = [
     tone: "reference",
     links: [
       { label: "Skills", href: "/skills" },
-      { label: "Agents", href: "/agents" },
       { label: "CLI", href: "/cli" },
       { label: "MCP", href: "/mcp" },
     ],
@@ -67,7 +65,6 @@ const footerGroups = [
     tone: "reference",
     links: [
       { label: "Skills", href: "/skills" },
-      { label: "Agents", href: "/agents" },
       { label: "CLI", href: "/cli" },
       { label: "MCP", href: "/mcp" },
     ],

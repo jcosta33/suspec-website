@@ -26,7 +26,7 @@ const rawHexAllowed = new Set([
 ]);
 
 const packageAccentAllowed = [
-  /^app\/(?:agents|cli|mcp|skills)\/page\.tsx$/,
+  /^app\/(?:cli|mcp|skills)\/page\.tsx$/,
   /^app\/styles\/base-runtime\.css$/,
   /^app\/styles\/mcp-/,
   /^app\/styles\/mobile-mcp-/,
@@ -39,14 +39,12 @@ const packageAccentAllowed = [
 
 const requiredPackageMappings = {
   skills: "var(--signal-evidence)",
-  agents: "var(--signal-reference)",
   cli: "var(--color-interface-blue)",
   mcp: "var(--color-neon-bridge)",
 };
 
 const requiredPackageRgbMappings = {
   skills: "var(--signal-evidence-rgb)",
-  agents: "var(--signal-reference-rgb)",
   cli: "127, 166, 217",
   mcp: "154, 131, 155",
 };
@@ -87,7 +85,7 @@ const rawHexPattern =
 const namedHueUtilityPattern =
   /\b(?:text|bg|border|from|via|to|ring|outline|decoration)-(?:red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|slate|zinc|neutral|stone)-\d{2,3}\b/g;
 const packageAccentPattern =
-  /(?:--package-(?:skills|agents|cli|mcp)(?:-rgb)?|var\(--package-(?:skills|agents|cli|mcp)(?:-rgb)?\)|page-hero-package-(?:skills|agents|cli|mcp)|--color-(?:interface-blue|neon-bridge)|var\(--color-(?:interface-blue|neon-bridge)\))/g;
+  /(?:--package-(?:skills|cli|mcp)(?:-rgb)?|var\(--package-(?:skills|cli|mcp)(?:-rgb)?\)|page-hero-package-(?:skills|cli|mcp)|--color-(?:interface-blue|neon-bridge)|var\(--color-(?:interface-blue|neon-bridge)\))/g;
 const complementPattern = /(?:--color-complement|var\(--color-complement\))/g;
 
 for (const file of files) {

@@ -1,0 +1,80 @@
+.skill-revolver-barrel,
+.skill-revolver-frame,
+.skill-revolver-grip {
+  position: absolute;
+  display: block;
+  border: 1px solid color-mix(in srgb, var(--signal-core) 64%, var(--panel-border));
+  background: color-mix(in srgb, var(--signal-core) 10%, var(--panel));
+}
+
+.skill-revolver-barrel {
+  top: 2.25rem;
+  left: 0;
+  width: 6.2rem;
+  height: 1.5rem;
+  border-right: 0;
+  clip-path: polygon(0 16%, 88% 16%, 100% 50%, 88% 84%, 0 84%);
+}
+
+.skill-revolver-frame {
+  top: 3rem;
+  left: 4.7rem;
+  width: 5rem;
+  height: 4.8rem;
+  border-radius: 1.1rem 1.8rem 1rem 1rem;
+  border-left-color: var(--signal-core);
+  transform: skewX(-10deg);
+}
+
+.skill-revolver-grip {
+  top: 6.3rem;
+  left: 7.7rem;
+  width: 2.2rem;
+  height: 4.1rem;
+  border-top: 0;
+  border-radius: 0 0 0.65rem 0.65rem;
+  transform: rotate(16deg);
+}
+
+.skill-revolver-cylinder {
+  position: absolute;
+  top: 1.5rem;
+  left: 8rem;
+  display: grid;
+  width: 8rem;
+  height: 8rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--signal-core) 64%, var(--panel-border));
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 0 28%, rgba(216, 138, 36, 0.08) 29% 31%, transparent 32%), var(--panel);
+  box-shadow: inset 0 0 0 0.45rem rgba(216, 138, 36, 0.05);
+}
+
+.skill-revolver-cylinder::after {
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 1px solid var(--signal-core);
+  border-radius: 50%;
+  background: var(--panel-raised);
+  content: "";
+}
+
+.skill-revolver-cylinder > span {
+  position: absolute;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid var(--signal-core);
+  border-radius: 50%;
+  color: var(--signal-core);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+}
+
+.skill-revolver-cylinder > span:nth-child(1) { top: 0.2rem; left: 3rem; }
+.skill-revolver-cylinder > span:nth-child(2) { top: 1.7rem; right: 0.4rem; left: auto; }
+.skill-revolver-cylinder > span:nth-child(3) { right: 0.4rem; bottom: 1.7rem; left: auto; }
+.skill-revolver-cylinder > span:nth-child(4) { bottom: 0.2rem; left: 3rem; }
+.skill-revolver-cylinder > span:nth-child(5) { bottom: 1.7rem; left: 0.4rem; }
+.skill-revolver-cylinder > span:nth-child(6) { top: 1.7rem; left: 0.4rem; }

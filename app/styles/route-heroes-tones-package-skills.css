@@ -1,0 +1,6 @@
+.page-hero.page-hero-package-skills {
+  --hero-signal: var(--package-skills);
+  --hero-rgb: var(--package-skills-rgb);
+  --hero-pattern: var(--signal-pattern-evidence);
+  --hero-mark: var(--signal-mark-evidence);
+}

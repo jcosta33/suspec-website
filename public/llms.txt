@@ -1,8 +1,8 @@
 # Suspec
 
-> Suspec is an opinionated methodology for working with coding agents — shipped as a globally installed skill family, backed by a deterministic checker. The skills structure the working artifacts around the code: the spec that states intent, the task split when one spec fans out, the review packet that reconciles evidence against the spec, the findings worth keeping. Plain markdown, any agent, and your repos take nothing.
+> Suspec is a methodology for structuring work with coding agents. Installable skills implement it; the optional CLI provides deterministic checks. The method keeps intent, review, and findings visible, then pulls in a spec, task, inventory, change plan, audit, or research record when the work earns one. Plain Markdown, any capable harness, and your repos take nothing.
 
-Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the agent's own native artifacts — the agent chooses the spot, every step names files by explicit full path, and nothing is committed to the adopter's repo. Durable lessons become native harness memories; decisions become ADRs; code stays king. The optional CLI (`suspec check`) is the honesty floor: deterministic checks a lazy or dishonest reviewer cannot fake — coverage complete, evidence commands match the spec, every Pass carries evidence, references resolve. Exit codes are the API: 0 clean, 1 warning, 2 blocking. It reports facts and never renders a review result; the human owns Pass/Fail. Three keys — intent, review, findings — are present on virtually every change, at whatever weight it earns; the rest (the spec, the task split, the inventory, the change plan, the checker) is scaffold the work pulls in when it earns it. Proportional rigor throughout: a trivial fix gets a one-line inline spec and no file; a feature gets a lean spec; no step exists for ceremony's sake, and every step keeps a by-hand path.
+Install: `npx skills add jcosta33/suspec-skills -g -a codex`. Artifacts live beside the agent's own native artifacts under `~/.agents/artifacts/<workspace>/`; callers pass each path explicitly, and nothing is committed to the adopter's repo by Suspec. Durable lessons become native harness memories; decisions become ADRs. The optional CLI (`suspec check`) reports deterministic facts: coverage, evidence binding, references, and artifact shape. Exit codes are the API: 0 clean, 1 warning, 2 blocking. It never renders a review result; the human owns acceptance, waivers, irreversible actions, and merge decisions.
 
 ## Start here
 
@@ -15,7 +15,7 @@ Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the a
 - [Running agents](https://suspecframework.dev/docs/07-running-agents/): Handing the spec — and the task, when split — by explicit path.
 - [Reviewing agent output](https://suspecframework.dev/docs/08-reviewing-output/): An independent reviewer reconciles evidence per requirement; empty evidence is Unverified, never Pass.
 - [Saving findings](https://suspecframework.dev/docs/09-saving-findings/): Durable lessons become native harness memories; ephemeral findings die with the packet.
-- [Integrations](https://suspecframework.dev/docs/10-integrations/): The CLI, the MCP server, agent catalogs, issue trackers, PRs and CI — all optional.
+- [Integrations](https://suspecframework.dev/docs/10-integrations/): The CLI, MCP, issue trackers, PRs, CI, and native agent practice — all optional.
 
 ## Tutorial
 
@@ -37,14 +37,13 @@ Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the a
 
 ## Packages
 
-- [suspec-skills](https://suspecframework.dev/skills/): The product — the methodology skill family plus universal disciplines, installed globally.
+- [suspec-skills](https://suspecframework.dev/skills/): Installable skills that implement the Suspec methodology, grouped into universal methods and artifact authors.
 - [suspec-skills writing guide](https://suspecframework.dev/skills/writing/): How Suspec skills are written, scoped, and reviewed.
 - [suspec-cli](https://suspecframework.dev/cli/): Optional reinforcement — `suspec check`, the deterministic honesty floor; exit codes 0/1/2.
-- [suspec-mcp](https://suspecframework.dev/mcp/): The same check surface for shell-less MCP runners — two tools, `suspec_check_file` and `suspec_get_checks`.
-- [suspec-agents](https://suspecframework.dev/agents/): Optional Claude Code worker definitions — reviewer, auditor, spec author, challenger, researcher, documentarian.
+- [suspec-mcp](https://suspecframework.dev/mcp/): The same check surface for shell-less MCP runners — `suspec_check`, `suspec_get_checks`, and `suspec://checks`.
 
 ## Source
 
 - [Canon on GitHub](https://github.com/jcosta33/suspec): The source repository for the docs, ADRs, and the checks contract.
-- [Skill catalog](https://github.com/jcosta33/suspec-skills): The installable skill family.
+- [Skill catalog](https://github.com/jcosta33/suspec-skills): The source for installable skills and their contracts.
 - [Website source](https://github.com/jcosta33/suspec-website): The public website repository.

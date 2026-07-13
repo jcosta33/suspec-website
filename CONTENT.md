@@ -9,7 +9,7 @@ Copy rules:
 - Link to detail instead of repeating it.
 - Do not make research claims without a source.
 - Keep install instructions in one canonical place when possible.
-- Present the product as originally designed — no transition narration.
+- Present the methodology directly — no transition narration.
 - The only CLI surface the site may show is `suspec check` (three invocations,
   exit codes 0/1/2, `--json`) and `suspec check --contract`.
 - Keys and scaffold, never mandatory/optional (ADR-0144): the keys — intent,
@@ -31,10 +31,9 @@ separate Suspec repos:
 - <https://github.com/jcosta33/suspec/blob/main/docs/ADOPTING.md>
 - <https://github.com/jcosta33/suspec/blob/main/docs/10-integrations.md>
 - <https://github.com/jcosta33/suspec/blob/main/docs/reference/cli.md>
-- <https://github.com/jcosta33/suspec-skills> (the product: the skill family)
+- <https://github.com/jcosta33/suspec-skills> (installable skills that implement the methodology)
 - <https://github.com/jcosta33/suspec-cli> (optional reinforcement: `suspec check`)
 - <https://github.com/jcosta33/suspec-mcp> (the check surface for shell-less runners)
-- <https://github.com/jcosta33/suspec-agents> (optional Claude Code worker definitions)
 
 ## Page source map
 
@@ -47,7 +46,6 @@ separate Suspec repos:
 | `/docs`           | generated from `suspec/docs/**`                                                          |
 | `/skills`         | `suspec-skills/README.md`, `suspec-skills/skills/**/SKILL.md`                            |
 | `/skills/writing` | `suspec-skills/README.md`, `suspec-skills/skills/**/SKILL.md`                            |
-| `/agents`         | `suspec-agents/README.md`, `suspec-agents/agents/*.md`                                   |
 | `/cli`            | `suspec/docs/reference/cli.md`, `suspec-cli/README.md`, `suspec/checks/checks.yaml`      |
 | `/mcp`            | `suspec-mcp/README.md`, `suspec/docs/10-integrations.md`                                 |
 | `/llms.txt`       | hand-authored site and docs index in `public/llms.txt`                                   |
@@ -69,7 +67,7 @@ verify command, implement, paste the output.
 
 ## Last reviewed
 
-2026-07-11 — rewritten from the current canon (skills are the product; the CLI
-is `suspec check` only; artifacts live beside native artifacts). Same day:
-loop, home, and overview copy plus the seal semantics restated per ADR-0144
-(keys and scaffold).
+2026-07-13 — checked against the current canon, suspec-skills, suspec-cli, and
+suspec-mcp. The methodology is the product; skills implement it, the CLI is
+`suspec check`, MCP exposes the same check surface, and artifacts live beside
+native artifacts. Deleted agents and starter-kit surfaces are absent.

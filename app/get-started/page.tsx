@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   alternates: canonicalAlternates("/get-started/"),
 };
 
-const skillsInstallCommand = "npx skills add jcosta33/suspec-skills -g";
+const skillsInstallCommand = "npx skills add jcosta33/suspec-skills -g -a codex";
 
 const cliInstallCommands = [
   "HOST=github.com/jcosta33",
@@ -61,9 +61,10 @@ const cliInstallCommands = [
   "SRC=$HOST/$PKG.git",
   "git clone https://$SRC",
   'cd "$PKG"',
-  "npm install",
-  "npm run build",
-  "npm link",
+  "corepack enable",
+  "pnpm install --frozen-lockfile",
+  "pnpm build",
+  "pnpm link --global",
   "suspec check ./spec.md",
 ].join("\n");
 
@@ -211,8 +212,8 @@ const setupHeroTrace = [
 
 const setupHowToSteps = [
   {
-    name: "Install the skill family",
-    text: `Run ${skillsInstallCommand}. That is a complete install: the skills carry the methodology and the artifact shapes, and nothing lands in your repo.`,
+    name: "Install the skills",
+    text: `Run ${skillsInstallCommand}. The skills implement the methodology and install outside the repo you are changing.`,
     href: "#install",
   },
   {
@@ -381,12 +382,11 @@ export default function GetStartedPage() {
             <Download className="h-4 w-4" aria-hidden="true" />
             <span>one command, everywhere</span>
           </div>
-          <Heading className="mt-3">Install the skill family</Heading>
+          <Heading className="mt-3">Install the skills</Heading>
           <p className="mt-4 max-w-2xl leading-relaxed text-concrete-400">
-            That is a complete install. The skills carry the methodology —
-            authoring specs, splitting work, implementing, reviewing, saving
-            findings — and the artifact shapes. Updating is the same command,
-            re-run: one place, every repo at once.
+            The skills implement the methodology: authoring records, reviewing
+            evidence, handling decisions, and saving durable lessons. Updating
+            uses the same command.
           </p>
         </div>
         <Card
@@ -396,7 +396,7 @@ export default function GetStartedPage() {
           rel="noopener noreferrer"
           ariaLabel="Browse the suspec-skills catalog on GitHub (opens in new tab)"
           screws
-          className="setup-choice-card h-full"
+          className="setup-choice-card h-full md:col-span-2"
           contentClassName="flex h-full flex-col gap-5"
         >
           <div className="setup-choice-head flex items-start justify-between gap-4">
@@ -709,30 +709,6 @@ export default function GetStartedPage() {
           </ActionLink>
         </Card>
 
-        <Card
-          signal="reference"
-          screws
-          className="h-full"
-          contentClassName="flex h-full flex-col gap-6"
-        >
-          <div className="flex items-start gap-4">
-            <KitIcon signal="reference">
-              <Terminal className="h-6 w-6" aria-hidden="true" />
-            </KitIcon>
-            <div>
-              <Heading as="h3" size="xl">
-                Agents
-              </Heading>
-              <p className="mt-2 text-concrete-400">
-                Optional Claude Code worker definitions — reviewer, auditor,
-                spec author, and friends — for developers who delegate.
-              </p>
-            </div>
-          </div>
-          <ActionLink href="/agents/" className="mt-auto w-fit">
-            Browse agents <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </ActionLink>
-        </Card>
       </Section>
       <JsonLd data={setupJsonLd} />
     </div>

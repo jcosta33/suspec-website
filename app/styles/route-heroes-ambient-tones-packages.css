@@ -6,13 +6,6 @@
   --ambient-pattern: var(--signal-pattern-evidence);
 }
 
-.ambient-header:has(.page-hero-package-agents) {
-  --ambient-signal: var(--package-agents);
-  --ambient-rgb: var(--package-agents-rgb);
-  --ambient-secondary-rgb: var(--signal-core-rgb);
-  --ambient-pattern: var(--signal-pattern-reference);
-}
-
 .ambient-header:has(.page-hero-package-cli) {
   --ambient-signal: var(--package-cli);
   --ambient-rgb: var(--package-cli-rgb);

@@ -26,7 +26,7 @@ import { canonicalAlternates } from "../../seo";
 
 const SITE_URL = "https://suspecframework.dev";
 const pageDescription =
-  "A short guide to writing Suspec skills: description, body, references, templates, and scope.";
+  "A short guide to writing installable Suspec skills: load boundary, rules, references, and scope.";
 const pageTitle = "Writing Suspec skills — structure and scope";
 
 export const metadata: Metadata = {
@@ -60,11 +60,11 @@ const descriptionRules = [
 
 const skillFolderLayout = [
   "# minimal",
-  "skills/write-feature/",
+  "skills/sus-spec/",
   "  SKILL.md",
   "",
   "# with one reference",
-  "skills/write-feature/",
+  "skills/sus-spec/",
   "  SKILL.md",
   "  references/",
   "    task-template.md",
@@ -72,8 +72,8 @@ const skillFolderLayout = [
 
 const skillFrontMatter = [
   "---",
-  "name: write-feature",
-  "description: Implement a feature from a spec. ALWAYS apply when the task adds behavior. Do not refactor in passing. Skip fixes, migrations, and test-only work.",
+  "name: sus-spec",
+  "description: Forge decided intent into a verifiable spec. ALWAYS apply when a non-trivial change needs a contract. Skip unresolved decisions and trivial inline work.",
   "---",
 ].join("\n");
 
@@ -81,7 +81,7 @@ const bodyRules = [
   {
     icon: ListOrdered,
     title: "Use numbered rules",
-    text: "Make the checkpoints explicit enough to audit later. Target ~200 lines; hard cap 500.",
+    text: "Make the checkpoints explicit enough to inspect later. Keep the body as short as the contract allows.",
   },
   {
     icon: Shield,
@@ -251,8 +251,8 @@ export default function WritingSkillsPage() {
               related records
             </p>
             <p className="writing-related-records-copy">
-              Use the catalog for install paths; use the manual when a team needs
-              routing rules.
+              Use the catalog for install paths; use this manual when a team
+              needs to maintain a skill.
             </p>
           </div>
           <ul className="writing-related-records-links">
@@ -375,13 +375,13 @@ export default function WritingSkillsPage() {
           >
             <p className="text-concrete-500"># minimal</p>
             <p className="text-concrete-100">
-              skills/write-feature/
+              skills/sus-spec/
               <br />
               &nbsp;&nbsp;SKILL.md
             </p>
             <p className="mt-3 text-concrete-500"># with one reference</p>
             <p className="text-concrete-100">
-              skills/write-feature/
+              skills/sus-spec/
               <br />
               &nbsp;&nbsp;SKILL.md
               <br />
@@ -427,11 +427,11 @@ export default function WritingSkillsPage() {
             copyLabel="Copy front matter"
           >
             <p className="text-concrete-500">---</p>
-            <p className="text-concrete-100">name: write-feature</p>
+            <p className="text-concrete-100">name: sus-spec</p>
             <p className="text-concrete-100">
-              description: Implement a feature from a spec. ALWAYS apply when
-              the task adds behavior. Do not refactor in passing. Skip fixes,
-              migrations, and test-only work.
+              description: Forge decided intent into a verifiable spec. ALWAYS
+              apply when a non-trivial change needs a contract. Skip unresolved
+              decisions and trivial inline work.
             </p>
             <p className="text-concrete-500">---</p>
           </TerminalWindow>
@@ -561,11 +561,9 @@ export default function WritingSkillsPage() {
               </div>
               <Heading className="mt-3">Read the source</Heading>
               <p className="mt-4 max-w-2xl text-concrete-400">
-                Every skill in the catalog uses this shape — the methodology
-                family (write-spec, implement-task, review-output, and the rest
-                of the <code className="text-suspec-yellow">write-*</code> set)
-                and the universal disciplines alike. The docs directory records
-                the evidence behind each structural choice.
+                The catalog has universal methods and canonical artifact authors.
+                Each skill installs alone and carries its own load boundary,
+                rules, and evidence expectations.
               </p>
             </div>
             <ul className="space-y-3 md:min-w-56">

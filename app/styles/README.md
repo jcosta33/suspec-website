@@ -40,8 +40,8 @@ boss styling, top-corner placement, and bottom-corner placement live in separate
 files while panels and cards keep the same `screw-corners` utility contract.
 
 `app/styles/route-heroes-tones-packages.css` is a package-tone manifest:
-skills/agents and CLI/MCP hero variables live in separate files so package
-accent calibration stays reviewable without moving the shared hero cascade.
+skills, CLI, and MCP hero variables live in separate files so package accent
+calibration stays reviewable without moving the shared hero cascade.
 
 `app/styles/cli-surface-mobile.css` and
 `app/styles/cli-command-catalog-mobile.css` are mobile manifests: header/section
@@ -222,7 +222,7 @@ family.
 | Wave | Change | Preserves | Verify with |
 | --- | --- | --- | --- |
 | 1 | Add CSS inventory and palette guardrails plus this map. | PG-CSS-001 through PG-CSS-006. | `npm run audit:css`, `npm run lint`, `npx tsc --noEmit`, `npm run build`, `npm run audit:site`. |
-| 2 | Split `repo-products.css` into manifest, navigation, agent roster, and worker-card files without changing selectors. | Product page layout, package colors, nav behavior. | `npm run audit:css`, `npm run audit:site`; visual spot-check `/skills`, `/agents`, `/cli`, `/mcp`. |
+| 2 | Split `repo-products.css` into manifest, navigation, and worker-card files without changing selectors. | Product page layout, package colors, nav behavior. | `npm run audit:css`, `npm run audit:site`; visual spot-check `/skills`, `/cli`, `/mcp`. |
 | 3 | Fold stable `art-direction-products.css` rules into owning late product-polish files, preserving cascade before merging them earlier. | Product page spacing and mobile fit. | `npm run audit:css`, `npm run audit:site`; screenshot product pages at mobile/tablet/desktop. |
 | 4 | Fold stable `art-direction-home.css` and `art-direction-docs.css` rules into owning late home/docs polish files, preserving cascade before merging them earlier. | Home first viewport, docs search/nav alignment, docs quote/code tone. | `npm run audit:css`, `npm run audit:site`; screenshot `/`, `/docs`, one short doc, one long doc. |
 | 5 | Split the old mobile art-direction layer by route family, then reduce `!important` only after the owning selector order is clear. | Mobile no-overflow and reduced-motion behavior. | `npm run audit:css`, `npm run audit:site`, representative keyboard/a11y checks. |

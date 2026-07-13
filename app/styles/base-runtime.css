@@ -18,8 +18,6 @@
   --signal-change-rgb: 207, 112, 121;
   --package-skills: var(--signal-evidence);
   --package-skills-rgb: var(--signal-evidence-rgb);
-  --package-agents: var(--signal-reference);
-  --package-agents-rgb: var(--signal-reference-rgb);
   --package-cli: var(--color-interface-blue);
   --package-cli-rgb: 127, 166, 217;
   --package-mcp: var(--color-neon-bridge);

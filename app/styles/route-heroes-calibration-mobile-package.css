@@ -1,6 +1,5 @@
 @media (max-width: 40rem) {
   .page-hero:is(
-      .page-hero-package-agents,
       .page-hero-package-skills,
       .page-hero-package-cli,
       .page-hero-package-mcp
@@ -11,7 +10,6 @@
   }
 
   .page-hero:is(
-      .page-hero-package-agents,
       .page-hero-package-skills,
       .page-hero-package-cli,
       .page-hero-package-mcp
@@ -21,7 +19,6 @@
   }
 
   .page-hero:is(
-      .page-hero-package-agents,
       .page-hero-package-skills,
       .page-hero-package-cli,
       .page-hero-package-mcp
@@ -34,7 +31,6 @@
   }
 
   .page-hero:is(
-      .page-hero-package-agents,
       .page-hero-package-skills,
       .page-hero-package-cli,
       .page-hero-package-mcp
@@ -45,7 +41,6 @@
   }
 
   .page-hero:is(
-      .page-hero-package-agents,
       .page-hero-package-skills,
       .page-hero-package-cli,
       .page-hero-package-mcp

@@ -23,11 +23,10 @@ const siteGraph = {
       name: "Suspec",
       url: SITE_URL,
       description:
-        "Suspec is an opinionated methodology for working with coding agents — shipped as a globally installed skill family, backed by a deterministic checker.",
+        "Suspec is a methodology for structuring work with coding agents. Installable skills implement it; the optional CLI provides deterministic checks.",
       sameAs: [
         "https://github.com/jcosta33/suspec",
         "https://github.com/jcosta33/suspec-skills",
-        "https://github.com/jcosta33/suspec-agents",
         "https://github.com/jcosta33/suspec-cli",
         "https://github.com/jcosta33/suspec-mcp",
       ],
@@ -70,7 +69,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://suspecframework.dev"),
   title: "Suspec — spec and review discipline, shipped as skills",
   description:
-    "Suspec is an opinionated methodology for working with coding agents — shipped as a globally installed skill family, backed by a deterministic checker.",
+    "Suspec is a methodology for structuring work with coding agents. Installable skills implement it; the optional CLI provides deterministic checks.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },

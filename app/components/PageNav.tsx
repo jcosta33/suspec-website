@@ -12,12 +12,12 @@ export interface PageNavProps {
   ariaLabel: string;
   /**
    * Positioning classes for an outer <nav> wrapper. When set, the link list is
-   * rendered inside a `div.agent-page-nav`, and `aria-label` lives on the outer
+    * rendered inside a page-nav wrapper, and `aria-label` lives on the outer
    * <nav> (the cli/mcp layout). When omitted, the link list is the <nav> itself
-   * and carries `aria-label` directly (the agents layout).
+    * and carries `aria-label` directly (the package layout).
    */
   wrapperClassName?: string;
-  /** Extra classes appended to the `agent-page-nav` element. */
+  /** Extra classes appended to the page-nav element. */
   className?: string;
 }
 
