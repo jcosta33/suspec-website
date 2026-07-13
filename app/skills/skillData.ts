@@ -48,6 +48,7 @@ export type SkillDetail = {
   boundary: string;
   misuse: string;
   visual: SkillVisual;
+  visualLabels?: readonly [string, string, string];
   example: SkillExample;
 };
 
@@ -67,6 +68,7 @@ export const skillDetails: readonly SkillDetail[] = [
       "It verifies a bounded claim set. It does not perform a broad risk review or issue acceptance.",
     misuse: "Treating a plausible citation or green check as proof without inspecting it.",
     visual: "chat",
+    visualLabels: ["bounded claim set", "inspect the evidence", "supported / unverified"],
     example: {
       title: "claim-check.md",
       meta: "assessment / evidence",
@@ -92,6 +94,7 @@ export const skillDetails: readonly SkillDetail[] = [
       "Its advocacy is not evidence. Claims from the exercise need independent verification before use.",
     misuse: "Using the advocacy case as the final review instead of verifying its claims.",
     visual: "chat",
+    visualLabels: ["target proposal", "failure paths", "rejection case"],
     example: {
       title: "advocacy note",
       meta: "not evidence / one-sided case",
@@ -142,6 +145,7 @@ export const skillDetails: readonly SkillDetail[] = [
       "It traces one question to closure. It does not replace a broad audit or prescribe a redesign.",
     misuse: "Expanding the trace into a broad architecture audit.",
     visual: "flow",
+    visualLabels: ["entry point", "state + branches", "terminal effects"],
     example: {
       title: "path map",
       meta: "entry -> branch -> effect",
@@ -192,6 +196,7 @@ export const skillDetails: readonly SkillDetail[] = [
       "It promotes selected content into a project-owned destination. It does not invent a store or push implicitly.",
     misuse: "Promoting a transient note without repairing references or checking its destination.",
     visual: "flow",
+    visualLabels: ["transient record", "repair + validate", "project home"],
     example: {
       title: "promotion path",
       meta: "transient -> durable",
@@ -267,6 +272,7 @@ export const skillDetails: readonly SkillDetail[] = [
       "It observes and proves. It does not write a target state or prescribe the fix.",
     misuse: "Turning an observation into a prescribed fix.",
     visual: "artifact",
+    visualLabels: ["observed state", "evidence + risk", "unknowns"],
     example: {
       title: "audit.md",
       meta: "type: audit / present state",
@@ -293,6 +299,7 @@ export const skillDetails: readonly SkillDetail[] = [
       "It plans the transformation. It does not replace the governing spec or implement the change.",
     misuse: "Calling a list of implementation tasks a preservation plan.",
     visual: "artifact",
+    visualLabels: ["preservation", "transformation waves", "cutover + rollback"],
     example: {
       title: "change-plan.md",
       meta: "type: change-plan / wave 01",
@@ -318,6 +325,7 @@ export const skillDetails: readonly SkillDetail[] = [
       "It maps reality without judgment or prescriptions. It is not a refactor plan.",
     misuse: "Treating the map as a recommendation or change plan.",
     visual: "artifact",
+    visualLabels: ["modules + callers", "tests + constraints", "unknowns"],
     example: {
       title: "inventory.md",
       meta: "type: inventory / observed structure",
@@ -343,6 +351,7 @@ export const skillDetails: readonly SkillDetail[] = [
       "It informs a decision without making the decision or manufacturing certainty.",
     misuse: "Presenting a source gap as a decision.",
     visual: "artifact",
+    visualLabels: ["question + sources", "findings + limits", "uncertainty"],
     example: {
       title: "research.md",
       meta: "type: research / one question",
@@ -368,6 +377,7 @@ export const skillDetails: readonly SkillDetail[] = [
       "The reviewer assesses evidence; it cannot accept work or grant its own final authority.",
     misuse: "Letting the reviewer grant acceptance or review its own implementation.",
     visual: "artifact",
+    visualLabels: ["requirements", "evidence rows", "human decision"],
     example: {
       title: "review.md",
       meta: "type: review / requirement coverage",
@@ -393,6 +403,7 @@ export const skillDetails: readonly SkillDetail[] = [
       "It captures decided intent. Unresolved choices keep the spec draft and block dependent work.",
     misuse: "Writing unresolved choices as settled requirements.",
     visual: "artifact",
+    visualLabels: ["intent + scope", "AC ids + verification", "ready contract"],
     example: {
       title: "spec.md",
       meta: "type: spec / ready",
@@ -418,6 +429,7 @@ export const skillDetails: readonly SkillDetail[] = [
       "Size alone does not justify a task. A task never replaces the governing spec.",
     misuse: "Splitting work merely because it is large.",
     visual: "artifact",
+    visualLabels: ["source spec", "owned slice", "verify commands"],
     example: {
       title: "task.md",
       meta: "type: task / source: SPEC-auth",

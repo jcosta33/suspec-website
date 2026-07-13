@@ -124,3 +124,22 @@
   font-size: 0.9rem;
   line-height: 1.55;
 }
+
+.skill-chat-result-list {
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 0.45rem;
+}
+
+.skill-chat-result-list p {
+  position: relative;
+  margin: 0;
+  padding-left: 0.8rem;
+}
+
+.skill-chat-result-list p::before {
+  position: absolute;
+  left: 0;
+  content: ">";
+  color: var(--signal-core);
+}

@@ -11,6 +11,25 @@ import {
   listen,
 } from "./lib/static-dist-server.mjs";
 
+const skillRoutes = [
+  "/skills/bulletproof/",
+  "/skills/demolition/",
+  "/skills/disrespec/",
+  "/skills/dissect/",
+  "/skills/fork-me/",
+  "/skills/promote/",
+  "/skills/remember/",
+  "/skills/revolver/",
+  "/skills/sus-audit/",
+  "/skills/sus-change-plan/",
+  "/skills/sus-inventory/",
+  "/skills/sus-research/",
+  "/skills/sus-review/",
+  "/skills/sus-spec/",
+  "/skills/sus-task/",
+  "/skills/triple-check/",
+];
+
 const routes = [
   "/",
   "/what-is-suspec/",
@@ -24,9 +43,7 @@ const routes = [
   "/get-started/",
   "/skills/",
   "/skills/writing/",
-  "/skills/revolver/",
-  "/skills/fork-me/",
-  "/skills/sus-spec/",
+  ...skillRoutes,
   "/cli/",
   "/mcp/",
   "/docs/",
@@ -63,10 +80,14 @@ async function captureRoute(cdp, baseUrl, route, viewport) {
     mobile: viewport.mobile,
   });
   await cdp.send("Emulation.setTouchEmulationEnabled", { enabled: viewport.mobile });
-  await cdp.send("Emulation.setEmulatedMedia", { features: [] });
+  await cdp.send("Emulation.setEmulatedMedia", {
+    features: [{ name: "prefers-reduced-motion", value: "reduce" }],
+  });
   await cdp.send("Page.navigate", { url: `${baseUrl}${route}` });
   await waitForRouteReady(cdp, new URL(route, baseUrl).pathname);
   await wait(route.startsWith("/docs") ? 1800 : 1000);
+  await cdp.eval("window.scrollTo(0, 0)");
+  await wait(120);
 
   const result = await cdp.send("Page.captureScreenshot", {
     format: "jpeg",

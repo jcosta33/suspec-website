@@ -1,10 +1,10 @@
 @media (max-width: 40rem) {
   .skill-detail-page .skill-detail-visual-card {
-    min-height: 15rem;
+    min-height: 0;
   }
 
   .skill-detail-visual {
-    min-height: 12rem;
+    min-height: 10.5rem;
     padding: 0.9rem;
   }
 

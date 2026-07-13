@@ -70,7 +70,8 @@ export async function generateMetadata({
   };
 }
 
-function SkillDiagram({ visual, tone }: Pick<SkillDetail, "visual" | "tone">) {
+function SkillDiagram({ skill }: { skill: SkillDetail }) {
+  const { visual, tone, visualLabels } = skill;
   const roleText = signalRoles[tone].text;
 
   if (visual === "revolver") {
@@ -164,6 +165,7 @@ function SkillDiagram({ visual, tone }: Pick<SkillDetail, "visual" | "tone">) {
   }
 
   if (visual === "chat") {
+    const labels = visualLabels ?? ["bounded target", "facts + boundaries", "next useful action"];
     return (
       <div
         className="skill-detail-visual skill-detail-visual-chat"
@@ -172,12 +174,15 @@ function SkillDiagram({ visual, tone }: Pick<SkillDetail, "visual" | "tone">) {
       >
         <div className="skill-chat-thread">
           <div className="skill-chat-message skill-chat-message-prompt">
-            <span>request</span>
-          <p>Run the method on the supplied target.</p>
+            <span>target</span>
+            <p>{labels[0]}</p>
           </div>
           <div className="skill-chat-message skill-chat-message-result">
             <span className={roleText}>result</span>
-            <p>Facts, boundaries, and the next useful action. No artifact cameo.</p>
+            <div className="skill-chat-result-list">
+              <p>{labels[1]}</p>
+              <p>{labels[2]}</p>
+            </div>
           </div>
         </div>
         <p className="skill-detail-visual-caption">
@@ -189,6 +194,7 @@ function SkillDiagram({ visual, tone }: Pick<SkillDetail, "visual" | "tone">) {
   }
 
   if (visual === "flow" || visual === "memory") {
+    const labels = visualLabels ?? ["verified lesson", "native memory", "next change"];
     return (
       <div
         className={`skill-detail-visual skill-detail-visual-${visual}`}
@@ -199,25 +205,42 @@ function SkillDiagram({ visual, tone }: Pick<SkillDetail, "visual" | "tone">) {
             : "A bounded record moving from source to a durable or decisive result"
         }
       >
-        <div className="skill-flow-node">{visual === "memory" ? "verified lesson" : "bounded target"}</div>
+        <div className="skill-flow-node">{labels[0]}</div>
         <ArrowRight aria-hidden="true" />
-        <div className="skill-flow-node skill-flow-node-active">{visual === "memory" ? "native memory" : "evidence"}</div>
+        <div className="skill-flow-node skill-flow-node-active">{labels[1]}</div>
         <ArrowRight aria-hidden="true" />
-        <div className="skill-flow-node">{visual === "memory" ? "next change" : "decision"}</div>
+        <div className="skill-flow-node">{labels[2]}</div>
       </div>
     );
   }
 
+  const labels = visualLabels ?? ["intent", "scope", "evidence"];
   return (
     <div
       className="skill-detail-visual skill-detail-visual-artifact"
       role="img"
-      aria-label="A structured Markdown artifact with evidence fields"
+      aria-label={`${skill.name} record anatomy: ${labels.join(", ")}`}
     >
-      <div className="skill-artifact-scanline" aria-hidden="true" />
-      <span className={roleText}>type: record</span>
-      <span>intent / scope / evidence</span>
-      <span>one claim per row</span>
+      <div className="skill-artifact-sheet" aria-hidden="true">
+        <div className="skill-artifact-header">
+          <span className={roleText}>{skill.name}</span>
+          <span>record</span>
+        </div>
+        <div className="skill-artifact-rows">
+          {labels.map((label, index) => (
+            <div className="skill-artifact-row" key={label}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{label}</strong>
+              <span>field</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <p className="skill-detail-visual-caption">
+        <span className={roleText}>plain markdown</span>
+        <span>explicit path</span>
+        <span>promote what lasts</span>
+      </p>
     </div>
   );
 }
@@ -319,7 +342,15 @@ export default async function SkillDetailPage({
             </div>
           </div>
           <p className="text-lg leading-relaxed text-concrete-300">{skill.rationale}</p>
-          <div className="grid gap-4 sm:grid-cols-2">
+        </div>
+        <Card
+          screws
+          className={`skill-detail-visual-card skill-detail-visual-card-${skill.visual}`}
+          contentClassName="flex flex-col justify-center gap-4"
+        >
+          <SkillDiagram skill={skill} />
+        </Card>
+        <div className="skill-detail-facts grid gap-4 sm:grid-cols-3 lg:col-span-2">
             <Card screws className="skill-detail-fact-card h-full" contentClassName="space-y-2">
               <p className={`font-mono text-xs font-semibold uppercase tracking-[0.14em] ${signalRoles[skill.tone].text}`}>
                 returns
@@ -332,17 +363,13 @@ export default async function SkillDetailPage({
               </p>
               <p className="text-sm leading-relaxed text-concrete-400">{skill.boundary}</p>
             </Card>
-            <Card screws className="skill-detail-fact-card h-full sm:col-span-2" contentClassName="space-y-2">
+            <Card screws className="skill-detail-fact-card h-full" contentClassName="space-y-2">
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-signal-reference">
                 common misuse
               </p>
               <p className="text-sm leading-relaxed text-concrete-400">{skill.misuse}</p>
             </Card>
-          </div>
         </div>
-        <Card screws className="skill-detail-visual-card" contentClassName="flex flex-col justify-center gap-4">
-          <SkillDiagram visual={skill.visual} tone={skill.tone} />
-        </Card>
       </Section>
 
       <Section

@@ -27,18 +27,64 @@
 
 .skill-detail-visual-artifact {
   align-content: center;
-  justify-items: start;
+  justify-items: stretch;
+  gap: 0.8rem;
   background:
     repeating-linear-gradient(0deg, transparent 0 1.85rem, rgba(216, 138, 36, 0.08) 1.9rem 1.95rem),
     var(--panel);
   padding-inline: clamp(1.2rem, 8vw, 3rem);
 }
 
-.skill-artifact-scanline {
+.skill-artifact-sheet {
   width: 100%;
-  height: 0.1rem;
-  background: var(--signal-core);
-  opacity: 0.7;
+  border: 1px solid color-mix(in srgb, var(--panel-border) 84%, transparent);
+  background: color-mix(in srgb, var(--panel-raised) 78%, transparent);
+}
+
+.skill-artifact-header,
+.skill-artifact-row {
+  display: grid;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+.skill-artifact-header {
+  grid-template-columns: minmax(0, 1fr) auto;
+  border-bottom: 1px solid var(--panel-border);
+  padding: 0.65rem 0.75rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.09em;
+}
+
+.skill-artifact-rows {
+  display: grid;
+}
+
+.skill-artifact-row {
+  grid-template-columns: 1.7rem minmax(0, 1fr) auto;
+  padding: 0.58rem 0.75rem;
+  color: var(--concrete-400);
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+}
+
+.skill-artifact-row + .skill-artifact-row {
+  border-top: 1px solid color-mix(in srgb, var(--panel-border) 70%, transparent);
+}
+
+.skill-artifact-row strong {
+  color: var(--concrete-100);
+  font-weight: 650;
+}
+
+.skill-artifact-row > span:first-child {
+  color: var(--brass);
+}
+
+.skill-artifact-row > span:last-child {
+  color: var(--concrete-500);
 }
 
 .skill-detail-paper {
