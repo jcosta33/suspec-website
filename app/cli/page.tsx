@@ -695,7 +695,7 @@ export default function CliPage() {
               earns a deterministic floor.
             </p>
             <p className="mt-4 font-mono text-sm text-suspec-yellow">
-              npx skills add jcosta33/suspec-skills -g -a codex
+              npx skills add jcosta33/suspec-skills -g
             </p>
           </div>
           <div className="mt-auto flex flex-col gap-3">

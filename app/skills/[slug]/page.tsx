@@ -239,7 +239,7 @@ export default async function SkillDetailPage({
   const skill = getSkill(slug);
   if (!skill) notFound();
 
-  const installCommand = `npx skills add jcosta33/suspec-skills --skill ${skill.slug} -g -a codex`;
+  const installCommand = `npx skills add jcosta33/suspec-skills --skill ${skill.slug} -g`;
   const kindLabel = skill.kind === "artifact" ? "artifact author" : "universal method";
 
   return (
@@ -366,7 +366,7 @@ export default async function SkillDetailPage({
         </div>
         <Panel brushed className="p-2">
           <TerminalWindow title="terminal" copyText={installCommand} copyLabel="Copy install command">
-            <p className="text-concrete-500"># install one skill for Codex</p>
+            <p className="text-concrete-500"># install one skill globally</p>
             <p className="text-concrete-100">
               <span className="text-suspec-yellow">$</span>{" "}{installCommand}
             </p>

@@ -71,7 +71,7 @@ const boundaryRequirements = new Map([
     "/mcp/",
     [/shell-less/i, /two tools/i, /no-verdict envelope/i],
   ],
-  ["/skills/", [/standalone Markdown|plain Markdown/i, /npx skills add jcosta33\/suspec-skills -g -a codex/i]],
+  ["/skills/", [/standalone Markdown|plain Markdown/i, /npx skills add jcosta33\/suspec-skills -g/i]],
 ]);
 
 function normalize(text) {

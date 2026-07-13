@@ -699,7 +699,7 @@ export default function TheLoopPage() {
             <Heading>Ready to run it?</Heading>
             <p className="mt-2 text-concrete-400">
               Install the skills —{" "}
-              <code>npx skills add jcosta33/suspec-skills -g -a codex</code> — and
+              <code>npx skills add jcosta33/suspec-skills -g</code> — and
               write one spec. The same loop handles the next change.
             </p>
             <p className="mt-4 text-sm text-concrete-400">

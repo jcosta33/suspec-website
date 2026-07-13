@@ -28,9 +28,9 @@ const SKILLS_CLI = "https://github.com/vercel-labs/skills";
 const skillsDescription =
   "Installable skills that implement the Suspec methodology: standalone Markdown for intent, evidence, review, decisions, and durable lessons.";
 const skillsTitle = "suspec-skills — installable parts of the Suspec methodology";
-const catalogInstallCommand = "npx skills add jcosta33/suspec-skills -g -a codex";
+const catalogInstallCommand = "npx skills add jcosta33/suspec-skills -g";
 const singleSkillInstallCommand =
-  "npx skills add jcosta33/suspec-skills --skill revolver -g -a codex";
+  "npx skills add jcosta33/suspec-skills --skill revolver -g";
 
 export const metadata: Metadata = {
   title: skillsTitle,
@@ -186,7 +186,7 @@ export default function SkillsPage() {
         </div>
         <Panel brushed className="p-2">
           <TerminalWindow title="terminal" copyText={`${catalogInstallCommand}\n${singleSkillInstallCommand}`}>
-            <p className="text-concrete-500"># install the catalog for Codex</p>
+            <p className="text-concrete-500"># install the catalog globally</p>
             <p className="text-concrete-100">
               <span className="text-suspec-yellow">$</span>{" "}{catalogInstallCommand}
             </p>
@@ -202,9 +202,9 @@ export default function SkillsPage() {
             href={SKILLS_CLI}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open the Vercel skills CLI on GitHub (opens in new tab)"
+            aria-label="Open the skills CLI source on GitHub (opens in new tab)"
           >
-            Vercel skills CLI
+            skills CLI
           </TextLink>{" "}
           installs into supported harnesses. The skills remain plain Markdown;
           the methodology does not require a runtime.

@@ -2,7 +2,7 @@
 
 > Suspec is a methodology for structuring work with coding agents. Installable skills implement it; the optional CLI provides deterministic checks. The method keeps intent, review, and findings visible, then pulls in a spec, task, inventory, change plan, audit, or research record when the work earns one. Plain Markdown, any capable harness, and your repos take nothing.
 
-Install: `npx skills add jcosta33/suspec-skills -g -a codex`. Artifacts live beside the agent's own native artifacts under `~/.agents/artifacts/<workspace>/`; callers pass each path explicitly, and nothing is committed to the adopter's repo by Suspec. Durable lessons become native harness memories; decisions become ADRs. The optional CLI (`suspec check`) reports deterministic facts: coverage, evidence binding, references, and artifact shape. Exit codes are the API: 0 clean, 1 warning, 2 blocking. It never renders a review result; the human owns acceptance, waivers, irreversible actions, and merge decisions.
+Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the agent's own native artifacts under `~/.agents/artifacts/<workspace>/`; callers pass each path explicitly, and nothing is committed to the adopter's repo by Suspec. Durable lessons become native harness memories; decisions become ADRs. The optional CLI (`suspec check`) reports deterministic facts: coverage, evidence binding, references, and artifact shape. Exit codes are the API: 0 clean, 1 warning, 2 blocking. It never renders a review result; the human owns acceptance, waivers, irreversible actions, and merge decisions.
 
 ## Start here
 

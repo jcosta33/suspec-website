@@ -78,7 +78,7 @@ const loopSteps = [
   href: string;
 }>;
 
-const heroInstallCommand = "npx skills add jcosta33/suspec-skills -g -a codex";
+const heroInstallCommand = "npx skills add jcosta33/suspec-skills -g";
 
 const heroCheckCommand = "suspec check review.md --spec spec.md";
 

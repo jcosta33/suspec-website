@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   alternates: canonicalAlternates("/get-started/"),
 };
 
-const skillsInstallCommand = "npx skills add jcosta33/suspec-skills -g -a codex";
+const skillsInstallCommand = "npx skills add jcosta33/suspec-skills -g";
 
 const cliInstallCommands = [
   "HOST=github.com/jcosta33",
