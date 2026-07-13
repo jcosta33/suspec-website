@@ -1,37 +1,7 @@
 
 .docs-article-header::before,
 .docs-article-header::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-
-.docs-article-header::before {
-  inset: 0.7rem;
-  border-radius: calc(var(--radius-panel) - 3px);
-  background:
-    linear-gradient(90deg, rgba(var(--signal-reference-rgb), 0.42), transparent 72%)
-      left top / 4.1rem 1px no-repeat,
-    linear-gradient(180deg, rgba(var(--signal-reference-rgb), 0.42), transparent 72%)
-      left top / 1px 2.75rem no-repeat,
-    linear-gradient(270deg, rgba(var(--signal-core-rgb), 0.34), transparent 72%)
-      right bottom / 4.1rem 1px no-repeat,
-    linear-gradient(0deg, rgba(var(--signal-core-rgb), 0.34), transparent 72%)
-      right bottom / 1px 2.75rem no-repeat;
-  opacity: 0.72;
-}
-
-.docs-article-header::after {
-  inset: 0 auto 0 0;
-  width: 0.38rem;
-  background:
-    linear-gradient(180deg, transparent, rgba(var(--signal-reference-rgb), 0.34), transparent),
-    repeating-linear-gradient(
-      0deg,
-      rgba(var(--signal-reference-rgb), 0.18) 0 1px,
-      transparent 1px 0.55rem
-    );
-  opacity: 0.72;
+  content: none;
 }
 
 .docs-article-header > * {

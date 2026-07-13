@@ -12,7 +12,5 @@
 }
 
 .docs-prose:focus {
-  outline: 2px solid rgba(var(--signal-core-rgb), 0.4);
-  outline-offset: 0.55rem;
-  border-radius: var(--radius-panel);
+  outline: none;
 }

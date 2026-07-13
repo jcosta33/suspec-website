@@ -3,8 +3,8 @@
     grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
     gap: 0.22rem 0.48rem;
-    margin-top: 0.28rem;
-    padding: 0.34rem 0.48rem;
+    margin-top: 0.65rem;
+    padding: 0.55rem 0 0;
     line-height: 1.22;
   }
 
