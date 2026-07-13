@@ -3,6 +3,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
   BookOpen,
+  Cable,
   ClipboardList,
   Download,
   FileText,
@@ -28,7 +29,7 @@ import { canonicalAlternates } from "../seo";
 
 const SITE_URL = "https://suspecframework.dev";
 const getStartedDescription =
-  "Adopt Suspec with one global skills install — nothing lands in your repo. Add the optional CLI for the deterministic checks, then run the loop once on a small change.";
+  "Adopt Suspec with one global skills install — nothing lands in your repo. Add the optional CLI for deterministic checks or the optional MCP adapter for shell-less clients, then run the loop once on a small change.";
 const getStartedTitle = "Get started with Suspec — one install";
 
 export const metadata: Metadata = {
@@ -54,6 +55,17 @@ export const metadata: Metadata = {
 };
 
 const skillsInstallCommand = "npx skills add jcosta33/suspec-skills -g";
+
+const mcpInstallCommands = [
+  "HOST=github.com/jcosta33",
+  "PKG=suspec-mcp",
+  "SRC=$HOST/$PKG.git",
+  "git clone https://$SRC",
+  'cd "$PKG"',
+  "corepack enable",
+  "pnpm install --frozen-lockfile",
+  "pnpm build",
+].join("\n");
 
 const cliInstallCommands = [
   "HOST=github.com/jcosta33",
@@ -172,6 +184,13 @@ const setupPath = [
     signal: "evidence",
   },
   {
+    label: "MCP",
+    text: "Optional: the same check surface for shell-less clients.",
+    icon: Cable,
+    href: "#mcp",
+    signal: "reference",
+  },
+  {
     label: "First change",
     text: "Start small and run the loop once.",
     icon: ClipboardList,
@@ -222,6 +241,11 @@ const setupHowToSteps = [
     href: "#cli",
   },
   {
+    name: "Optionally add MCP",
+    text: "Build suspec-mcp from source for shell-less clients. It requires the Suspec CLI, exposes two tools, and relays facts without issuing a verdict.",
+    href: "#mcp",
+  },
+  {
     name: "Run the loop once",
     text: "Author a spec beside your native artifacts and carry its full path, lint it, implement with pasted output, and have an independent reviewer check the review packet against the spec.",
     href: "#first-change",
@@ -261,6 +285,11 @@ export default function GetStartedPage() {
         tool: [
           { "@type": "HowToTool", name: "suspec-skills" },
           { "@type": "HowToTool", name: "suspec-cli", description: "Optional" },
+          {
+            "@type": "HowToTool",
+            name: "suspec-mcp",
+            description: "Optional; for shell-less MCP clients",
+          },
         ],
         supply: [
           { "@type": "HowToSupply", name: "A coding agent harness that loads skills" },
@@ -306,6 +335,7 @@ export default function GetStartedPage() {
             <div className="setup-route-meta" aria-label="Setup notes">
               <span>plain markdown</span>
               <span>optional cli</span>
+              <span>optional mcp</span>
               <span>any agent</span>
             </div>
           </div>
@@ -325,7 +355,7 @@ export default function GetStartedPage() {
             />
           </div>
           <ol
-            className="setup-path-strip process-strip process-strip-signal-muted grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
+            className="setup-path-strip process-strip process-strip-signal-muted grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6"
             aria-label="Suspec setup steps"
           >
             {setupPath.map((step, index) => {
@@ -565,8 +595,101 @@ export default function GetStartedPage() {
       </Section>
 
       <Section
+        id="mcp"
+        register="04 / MCP option"
+        registerTone="reference"
+        className="flex scroll-mt-28 flex-col gap-6"
+      >
+        <div className="section-kicker section-kicker-reference">
+          <Cable className="h-4 w-4" aria-hidden="true" />
+          <span>optional — shell-less clients</span>
+        </div>
+        <Heading>The optional MCP adapter</Heading>
+        <p className="max-w-2xl text-concrete-400">
+          <code className="text-suspec-yellow">suspec-mcp</code> exposes the
+          same check surface through two MCP tools for clients that cannot run
+          shell commands directly. It still requires the Suspec CLI, returns
+          facts rather than verdicts, and is installed from source for now.
+        </p>
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(20rem,1.18fr)] lg:items-stretch">
+          <Panel brushed className="p-2">
+            <TerminalWindow
+              title="terminal"
+              ariaLabel="Install suspec-mcp from source"
+              copyText={mcpInstallCommands}
+            >
+              <p className="text-concrete-500">
+                # install from source; no published package yet
+              </p>
+              <p className="text-concrete-100">
+                <span className="text-suspec-yellow">$</span>{" "}HOST=github.com/jcosta33
+              </p>
+              <p className="text-concrete-100">
+                <span className="text-suspec-yellow">$</span>{" "}PKG=suspec-mcp
+              </p>
+              <p className="text-concrete-100">
+                <span className="text-suspec-yellow">$</span>{" "}SRC=$HOST/$PKG.git
+              </p>
+              <p className="text-concrete-100">
+                <span className="text-suspec-yellow">$</span>{" "}git clone https://$SRC
+              </p>
+              <p className="text-concrete-100">
+                <span className="text-suspec-yellow">$</span>{" "}cd &quot;$PKG&quot;
+              </p>
+              <p className="text-concrete-100">
+                <span className="text-suspec-yellow">$</span>{" "}corepack enable
+              </p>
+              <p className="text-concrete-100">
+                <span className="text-suspec-yellow">$</span>{" "}pnpm install --frozen-lockfile
+              </p>
+              <p className="text-concrete-100">
+                <span className="text-suspec-yellow">$</span>{" "}pnpm build
+              </p>
+            </TerminalWindow>
+          </Panel>
+          <Card
+            signal="reference"
+            screws
+            className="h-full"
+            contentClassName="flex h-full flex-col gap-5"
+          >
+            <div className="flex items-start gap-4">
+              <KitIcon signal="reference">
+                <Cable className="h-6 w-6" aria-hidden="true" />
+              </KitIcon>
+              <div>
+                <p className="font-mono text-xs font-semibold uppercase tracking-wide text-signal-reference">
+                  shell-less clients
+                </p>
+                <Heading as="h3" size="xl" className="mt-2">
+                  Connect through MCP
+                </Heading>
+              </div>
+            </div>
+            <ul className="space-y-3 text-sm text-concrete-400">
+              <li>
+                <span className="font-semibold text-concrete-100">Requires</span>{" "}
+                the Suspec CLI on PATH, or an explicit <code>SUSPEC_BIN</code>.
+              </li>
+              <li>
+                <span className="font-semibold text-concrete-100">Exposes</span>{" "}
+                <code>suspec_check</code> and <code>suspec_get_checks</code>.
+              </li>
+              <li>
+                <span className="font-semibold text-concrete-100">Returns</span>{" "}
+                check facts under a fixed no-verdict envelope.
+              </li>
+            </ul>
+            <TextLink href="/mcp/" className="mt-auto w-fit gap-2">
+              Read the MCP page <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </TextLink>
+          </Card>
+        </div>
+      </Section>
+
+      <Section
         id="first-change"
-        register="04 / first useful change"
+        register="05 / first useful change"
         registerTone="reference"
         className="copy-section grid scroll-mt-28 gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start"
       >
@@ -620,7 +743,7 @@ export default function GetStartedPage() {
 
       <Section
         id="by-hand"
-        register="05 / by hand"
+        register="06 / by hand"
         registerTone="muted"
         className="flex scroll-mt-28 flex-col gap-6"
       >
@@ -666,7 +789,7 @@ export default function GetStartedPage() {
 
       <Section
         id="committed"
-        register="06 / what gets committed"
+        register="07 / what gets committed"
         registerTone="reference"
         className="grid scroll-mt-28 gap-6 md:grid-cols-2"
       >
