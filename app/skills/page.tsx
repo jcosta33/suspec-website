@@ -26,7 +26,7 @@ const SITE_URL = "https://suspecframework.dev";
 const SKILLS_REPOSITORY = "https://github.com/jcosta33/suspec-skills";
 const SKILLS_CLI = "https://github.com/vercel-labs/skills";
 const skillsDescription =
-  "Installable skills that implement the Suspec methodology: standalone Markdown for intent, evidence, review, decisions, and durable lessons.";
+  "Standalone Markdown skills that implement the Suspec method: intent, evidence, review, decisions, and durable lessons.";
 const skillsTitle = "suspec-skills — installable parts of the Suspec methodology";
 const catalogInstallCommand = "npx skills add jcosta33/suspec-skills -g";
 const singleSkillInstallCommand =
@@ -115,8 +115,8 @@ export default function SkillsPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            Standalone Markdown skills that make the Suspec methodology usable
-            in a coding-agent harness. Install the parts that match the work.
+            Standalone Markdown skills that make the Suspec method usable in a
+            coding-agent harness. Install the part that matches the work.
           </p>
           <HeroTrace
             ariaLabel="Skill catalog path"
@@ -141,7 +141,7 @@ export default function SkillsPage() {
           title="placement rule"
           meta="method -> artifact author"
         >
-          <p>Skills install independently. The methodology stays coherent.</p>
+          <p>Install skills independently. The method still holds together.</p>
           <p className="mt-3 text-pencil">
             Load the skill that matches the work; keep repo commands in
             <span className="font-semibold"> AGENTS.md</span>.
@@ -157,12 +157,12 @@ export default function SkillsPage() {
                 methodology / pieces
               </p>
               <Heading as="h2" size="xl" className="mt-1">
-                The method stays bigger than the install.
+                The method is bigger than the install.
               </Heading>
               <p className="mt-2 text-concrete-400">
-                The skills carry the rules. The methodology is the system they
+                The skills carry the rules. The method is the system they
                 implement: proportional structure, evidence, human decisions,
-                and durable lessons.
+                and durable lessons. The files are the pieces, not the picture.
               </p>
             </div>
           </div>
@@ -207,7 +207,7 @@ export default function SkillsPage() {
             skills CLI
           </TextLink>{" "}
           installs into supported harnesses. The skills remain plain Markdown;
-          the methodology does not require a runtime.
+          the method does not require a runtime.
         </p>
       </Section>
 
@@ -224,8 +224,8 @@ export default function SkillsPage() {
           </div>
           <Heading>Methods that sharpen the work.</Heading>
           <p className="text-concrete-400">
-            Each method has one job. Open a skill to see its rationale, output,
-            boundary, and working example.
+            Each method has one job. Open a skill to see the rationale, output,
+            boundary, and working example. No mysticism required.
           </p>
         </div>
         <SkillCatalog
@@ -248,10 +248,11 @@ export default function SkillsPage() {
             <FileText className="h-4 w-4" aria-hidden="true" />
             <span>owned artifacts</span>
           </div>
-          <Heading>Authors for the records that earn structure.</Heading>
+          <Heading>Skills for records that earn structure.</Heading>
           <p className="text-concrete-400">
             These skills create the current Suspec artifact types. They add
-            structure when the change needs it, not because a process says so.
+            structure when the change needs it, not because a process likes
+            paperwork.
           </p>
         </div>
         <SkillCatalog

@@ -7,7 +7,7 @@ import { canonicalAlternates } from "../seo";
 
 const SITE_URL = "https://suspecframework.dev";
 const docsDescription =
-  "The Suspec manual for workflow steps, artifact formats, checks, examples, ADRs, and glossary.";
+  "The Suspec manual for workflow steps, artifact formats, checks, examples, ADRs, and glossary. Start small; look things up when needed.";
 const docsTitle = "Suspec documentation — manual and reference";
 
 export const metadata: Metadata = {
@@ -49,19 +49,19 @@ const readingPath = [
   {
     label: "Start with the model",
     href: "/docs/01-what-is-suspec/",
-    detail: "What Suspec is, which records exist, and what it does not decide.",
+    detail: "What Suspec is, which records exist, and what it refuses to decide.",
     role: "core",
   },
   {
     label: "Walk one loop",
     href: "/docs/tutorial/README/",
-    detail: "Run one small change through the loop before adapting it.",
+    detail: "Run one small change through the loop before customising it.",
     role: "core",
   },
   {
     label: "Check the records",
     href: "/docs/reference/checks/",
-    detail: "Use checks and artifact formats when evidence needs review.",
+    detail: "Use checks and artifact formats when the receipts need review.",
     role: "reference",
   },
 ] as const satisfies Array<{
@@ -115,7 +115,7 @@ function Section({
 
 export default function DocsIndex() {
   if (!canonAvailable()) {
-    return <p>The docs source was not available at build time.</p>;
+    return <p>The docs source was not available at build time. The manual cannot quote a book it cannot open.</p>;
   }
   const nav = buildNav();
   const find = (title: string) => nav.find((s) => s.title === title);
@@ -177,7 +177,8 @@ export default function DocsIndex() {
           <h1 id="docs-index-title">Suspec docs</h1>
           <p className="docs-index-lede">
             Start with the numbered pages; run the tutorial once; keep the
-            reference nearby for formats, checks, glossary, and ADRs.
+            reference nearby for formats, checks, glossary, and ADRs. No need
+            to read the filing cabinet end to end.
           </p>
         </div>
         <div className="docs-index-manual" aria-label="Documentation metadata">
@@ -208,7 +209,7 @@ export default function DocsIndex() {
           <h2 id="docs-reading-path-title">Read this first</h2>
           <p>
             Read these three before the full reference: model, one loop, and
-            review checks.
+            review checks. Then use the index like a normal person.
           </p>
         </div>
         <ol className="docs-reading-path-list">
@@ -246,7 +247,7 @@ export default function DocsIndex() {
               <Section
                 id="tutorial"
                 sec={balancedGrid.tutorial}
-                intro="A single pass through the loop."
+                intro="A single pass through the loop, with fewer surprises."
                 role="core"
                 className="docs-index-section-tutorial"
               />
@@ -294,7 +295,7 @@ export default function DocsIndex() {
           <Section
             id="reference"
             sec={reference}
-            intro="Detailed rules, formats, checks, and glossary."
+            intro="Detailed rules, formats, checks, and glossary. The reference shelf."
             role="reference"
             className="docs-index-section-wide docs-index-section-reference"
           />

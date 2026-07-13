@@ -95,7 +95,7 @@ function SkillDiagram({ visual, tone }: Pick<SkillDetail, "visual" | "tone">) {
         <div className="skill-detail-visual-caption">
           <span className={roleText}>six stances</span>
           <span>one current target</span>
-          <span>resolve before firing again</span>
+          <span>resolve it before firing again</span>
         </div>
       </div>
     );
@@ -117,7 +117,7 @@ function SkillDiagram({ visual, tone }: Pick<SkillDetail, "visual" | "tone">) {
           <span className="skill-decision-branch">defer</span>
         </div>
         <p className="skill-detail-visual-caption">
-          Facts first. Choice second. Work resumes after selection.
+          Facts first. Choice second. Work resumes after someone picks one.
         </p>
       </div>
     );
@@ -173,11 +173,11 @@ function SkillDiagram({ visual, tone }: Pick<SkillDetail, "visual" | "tone">) {
         <div className="skill-chat-thread">
           <div className="skill-chat-message skill-chat-message-prompt">
             <span>request</span>
-            <p>Run the method on the supplied target.</p>
+          <p>Run the method on the supplied target.</p>
           </div>
           <div className="skill-chat-message skill-chat-message-result">
             <span className={roleText}>result</span>
-            <p>Facts, boundaries, and the next useful action.</p>
+            <p>Facts, boundaries, and the next useful action. No artifact cameo.</p>
           </div>
         </div>
         <p className="skill-detail-visual-caption">
@@ -227,7 +227,7 @@ function skillEffect(skill: SkillDetail) {
   if (skill.slug === "disrespec") return "rewrites supplied Markdown";
   if (skill.slug === "promote") return "moves a selected record";
   if (skill.slug === "remember") return "writes to native memory or a project channel";
-  return "returns a focused result";
+  return "returns a focused result in chat";
 }
 
 function SkillPageJsonLd({ skill }: { skill: SkillDetail }) {
@@ -272,8 +272,8 @@ export default async function SkillDetailPage({
       : "Keep the result in the conversation.";
   const workingShapeCopy =
     skill.kind === "artifact"
-      ? "The example is a shape, not a template. Keep the source evidence close to the claim and add structure only when it changes execution or review."
-      : "The example shows the kind of answer the method returns. It reports in chat; no Suspec artifact is emitted unless a separate artifact-author skill takes over.";
+      ? "The example is a shape, not a template. Keep evidence beside the claim. Add structure only when it changes execution or review."
+      : "The example shows the kind of answer the method returns. It reports in chat; no Suspec artifact appears unless a separate artifact-author skill takes over.";
 
   return (
     <div className="repo-product-page skill-detail-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
@@ -315,7 +315,7 @@ export default async function SkillDetailPage({
               <p className={`font-mono text-xs font-semibold uppercase tracking-[0.14em] ${signalRoles[skill.tone].text}`}>
                 {kindLabel}
               </p>
-              <h2 className="font-heading text-2xl font-semibold text-concrete-100">Why it belongs in the method</h2>
+              <h2 className="font-heading text-2xl font-semibold text-concrete-100">Why this exists</h2>
             </div>
           </div>
           <p className="text-lg leading-relaxed text-concrete-300">{skill.rationale}</p>
@@ -386,10 +386,12 @@ export default async function SkillDetailPage({
               <Terminal className="h-4 w-4" aria-hidden="true" />
               <span>skills add</span>
             </p>
-            <Heading className="mt-3">Load it when the task matches.</Heading>
+            <Heading className="mt-3">Load it when the task fits.</Heading>
           </div>
           <p className="text-concrete-400">
-            Skills are standalone Markdown. Install one or install the catalog; repo-specific commands stay in the repo&apos;s AGENTS.md.
+            Skills are standalone Markdown. Install one or install the catalog;
+            repo-specific commands stay in the repo&apos;s AGENTS.md. Pick a
+            skill, do the work, move on.
           </p>
           <TextLink href="/skills/" className="w-fit gap-2" touchTarget>
             Back to the skills index <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -409,7 +411,7 @@ export default async function SkillDetailPage({
         <Card screws contentClassName="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-brass">source record</p>
-            <p className="mt-2 text-sm leading-relaxed text-concrete-400">Read the complete skill contract in the catalog repository.</p>
+            <p className="mt-2 text-sm leading-relaxed text-concrete-400">Read the actual skill contract in the catalog repository.</p>
           </div>
           <TextLink
             href={skillSourceUrl(skill.slug)}

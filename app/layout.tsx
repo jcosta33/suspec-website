@@ -23,7 +23,7 @@ const siteGraph = {
       name: "Suspec",
       url: SITE_URL,
       description:
-        "Suspec is a methodology for structuring work with coding agents. Installable skills implement it; the optional CLI provides deterministic checks.",
+        "Suspec is a methodology for structuring work with coding agents. Skills implement it; the optional CLI checks the paperwork.",
       sameAs: [
         "https://github.com/jcosta33/suspec",
         "https://github.com/jcosta33/suspec-skills",
@@ -67,9 +67,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://suspecframework.dev"),
-  title: "Suspec — spec and review discipline, shipped as skills",
+  title: "Suspec — agent work with receipts",
   description:
-    "Suspec is a methodology for structuring work with coding agents. Installable skills implement it; the optional CLI provides deterministic checks.",
+    "Suspec is a methodology for structuring work with coding agents. Skills implement it; the optional CLI checks the paperwork.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
         url: "/og-home.png",
         width: 1200,
         height: 630,
-        alt: "Suspec — spec and review discipline, shipped as skills",
+        alt: "Suspec — agent work with receipts",
       },
     ],
   },

@@ -14,7 +14,7 @@ import { canonicalAlternates } from "../seo";
 const SITE_URL = "https://suspecframework.dev";
 const pageTitle = "Suspec website colophon";
 const pageDescription =
-  "How the Suspec website is built, sourced, reviewed, exported, and shipped through the same plain-markdown workflow.";
+  "How the Suspec website is built, sourced, reviewed, exported, and shipped through the same plain-Markdown workflow.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -76,7 +76,7 @@ const trace = [
   {
     label: "OUTPUT",
     title: "Static export",
-    text: "The deployed site is generated at build time and served as static files.",
+    text: "The deployed site is generated at build time and served as static files. No server-side drama.",
     href: "https://github.com/jcosta33/suspec-website",
     cta: "Open source",
     external: true,
@@ -85,7 +85,7 @@ const trace = [
   {
     label: "CONTENT",
     title: "Docs source",
-    text: "Canonical framework docs are pulled from the sibling Suspec repository.",
+    text: "Canonical framework docs are pulled from the sibling Suspec repository. The website does not freelance the canon.",
     href: "/docs/",
     cta: "Read the docs",
     newTab: true,
@@ -149,7 +149,7 @@ export default function ColophonPage() {
           tone="core"
         >
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-concrete-400 sm:text-xl">
-            How this website is built, sourced, and shipped.
+            How this website is built, sourced, and shipped. Receipts included.
           </p>
         </PageHero>
       </Section>
@@ -171,7 +171,7 @@ export default function ColophonPage() {
                 </h2>
                 <p className="mt-2 text-concrete-400">
                   Built with Suspec. Drafted, reviewed, and merged through the
-                  same workflow.
+                  same workflow. The site gets no special treatment.
                 </p>
               </div>
               <dl className="grid gap-3">
@@ -200,8 +200,8 @@ export default function ColophonPage() {
         >
           <p>
             The website is a Next.js export. Specs, review packets, and
-            findings stay beside the maintainer&apos;s own native artifacts;
-            the repo takes the code and the decisions worth keeping.
+            findings stay beside the maintainer&apos;s native artifacts; the repo
+            takes the code and the decisions worth keeping.
           </p>
           <p className="mt-4">
             <Link

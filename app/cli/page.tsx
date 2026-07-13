@@ -33,7 +33,7 @@ const SITE_URL = "https://suspecframework.dev";
 const CLI_REPOSITORY = "https://github.com/jcosta33/suspec-cli";
 const CLI_PAGE_URL = `${SITE_URL}/cli/`;
 const cliDescription =
-  "suspec-cli is Suspec's honesty floor: a path-agnostic deterministic checker over the artifacts it is handed. Three invocations, --json on any, exit codes 0/1/2. Facts, never verdicts.";
+  "suspec-cli is Suspec's honesty floor: a deterministic checker over the artifacts it is handed. Three invocations, --json on any, exit codes 0/1/2. Facts, never verdicts.";
 const cliTitle = "suspec-cli — the honesty floor";
 
 export const metadata: Metadata = {
@@ -81,19 +81,19 @@ const commands = [
   {
     cmd: "check <path> [<path>...]",
     family: "Artifacts",
-    what: "Check explicitly named artifacts. Several at once is a batching convenience; the exit code is the max severity across files.",
+    what: "Check explicitly named artifacts. Several at once is batching; the exit code is the highest severity across files.",
     icon: ShieldCheck,
   },
   {
     cmd: "check <review> --spec <spec> [--task <task>]",
     family: "Review",
-    what: "Reconcile a review packet against the spec it answers to — and the task packet, exactly when the review names one. Companions are explicit flags; nothing is discovered.",
+    what: "Reconcile a review packet against its spec and, when named, its task packet. Companions are explicit flags; nothing is discovered for you.",
     icon: ScanEye,
   },
   {
     cmd: "check --contract",
     family: "Contract",
-    what: "Print the checks contract as JSON — version plus every check's id, name, and severity. Contract 0.19.0 lives in the canon repo, at checks/checks.yaml.",
+    what: "Print the checks contract as JSON: version plus every check's id, name, and severity. Contract 0.19.0 lives in the canon repo at checks/checks.yaml.",
     icon: Braces,
   },
 ];
@@ -152,7 +152,7 @@ const honestyFloor = [
 const boundaries = [
   {
     title: "No resolution",
-    text: "It never finds files for you. Every path is given; nothing is discovered, listed, or inferred.",
+    text: "It never finds files for you. Give it every path; nothing is discovered, listed, or inferred.",
   },
   {
     title: "No gate",
@@ -164,7 +164,7 @@ const boundaries = [
   },
   {
     title: "No execution",
-    text: "It never runs your verify commands, your tests, or any agent. It checks that recorded evidence matches what the spec named — not that the commands pass.",
+    text: "It never runs your Verify with: commands, tests, or agents. It checks that recorded evidence matches what the spec named — not that the commands pass.",
   },
   {
     title: "No writes",
@@ -276,9 +276,9 @@ export default function CliPage() {
           }
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
-            The methodology is the product; this is its honesty floor. A
-            deterministic checker reads exactly the files it is handed, reports
-            facts, and exits. Never a verdict.
+            The methodology is the product; this is its honesty floor. It
+            reads exactly the files it is handed, reports facts, and exits. No
+            verdict.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
             <Badge variant="draft">Optional — no step requires it</Badge>
@@ -354,8 +354,8 @@ export default function CliPage() {
             })}
           </ol>
           <p className="p-5 text-sm leading-relaxed text-concrete-400 sm:p-6">
-            There is no other command. No interactive mode, no dashboard, no
-            scaffolds — the exit code is the API:{" "}
+            There is no other command. No interactive mode, dashboard, or
+            scaffolding. The exit code is the API:{" "}
             <code className="text-suspec-yellow">0</code> clean ·{" "}
             <code className="text-suspec-yellow">1</code> warning ·{" "}
             <code className="text-suspec-yellow">2</code> blocking.
@@ -618,7 +618,7 @@ export default function CliPage() {
             Facts a reviewer cannot fake
           </Heading>
           <p className="mt-4 text-concrete-400">
-            What the checker earns its keep on: the facts a lazy or dishonest
+            What the checker earns its keep on: facts a lazy or dishonest
             reviewer cannot fake, at zero model cost.
           </p>
         </div>
@@ -688,11 +688,10 @@ export default function CliPage() {
           contentClassName="flex h-full flex-col gap-6"
         >
           <div>
-            <Heading>Don&apos;t need the CLI at all?</Heading>
+            <Heading>Do you need the CLI?</Heading>
             <p className="mt-2 text-concrete-400">
-              Correct — no step requires it. Suspec is a methodology that works
-              by hand; install the skills, then add the checker when the work
-              earns a deterministic floor.
+              No step requires it. Suspec works by hand; install the skills,
+              then add the checker when the work earns a deterministic floor.
             </p>
             <p className="mt-4 font-mono text-sm text-suspec-yellow">
               npx skills add jcosta33/suspec-skills -g

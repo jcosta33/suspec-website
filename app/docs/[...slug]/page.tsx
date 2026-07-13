@@ -307,7 +307,7 @@ export default async function DocPage({
 
         <div className="docs-bridge" data-pagefind-ignore>
           <p>
-            <span className="docs-bridge-label">Get started: </span>
+            <span className="docs-bridge-label">Need a starting point? </span>
             <Link href="/get-started/">Install the skills</Link>
           </p>
         </div>

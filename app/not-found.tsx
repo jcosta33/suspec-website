@@ -16,7 +16,7 @@ import { signalRoles, type SignalRole } from "./components/signalStyles";
 
 const title = "Page not found — recovery routes — Suspec";
 const description =
-  "The requested Suspec page was not found. Use the docs index, workflow page, or setup guide to recover a useful route.";
+  "No Suspec page matched that URL. Use the manual, workflow, or setup route instead.";
 
 export const metadata: Metadata = {
   title,
@@ -34,7 +34,7 @@ const recoveryRoutes = [
     href: "/docs/",
     label: "Docs index",
     path: "/docs",
-    text: "Open the manual index.",
+    text: "Try the manual index.",
     icon: BookOpen,
     signal: "reference",
   },
@@ -42,7 +42,7 @@ const recoveryRoutes = [
     href: "/the-loop/",
     label: "The loop",
     path: "/the-loop",
-    text: "See the workflow.",
+    text: "Run the workflow tour.",
     icon: GitBranch,
     signal: "core",
   },
@@ -50,7 +50,7 @@ const recoveryRoutes = [
     href: "/get-started/",
     label: "Get started",
     path: "/get-started",
-    text: "Install the skills.",
+    text: "Install the working parts.",
     icon: ArrowRight,
     signal: "core",
   },
@@ -78,15 +78,15 @@ export default function NotFoundPage() {
           status / 404
         </p>
         <h1 className="mt-3 font-heading text-3xl font-bold leading-tight text-concrete-100 sm:text-5xl">
-          Page not found.
+          No page here.
         </h1>
         <p className="mt-3 max-w-md text-base leading-7 text-concrete-400">
-          The path is not in the current site map. Check the address, then use
-          the manual index or workflow routes.
+          That path is not in the site map. Check the URL, then pick a route
+          that actually exists.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
           <ActionLink href="/">
-            <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to Suspec
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back home
           </ActionLink>
           <ActionLink
             href="/docs/"
@@ -105,7 +105,7 @@ export default function NotFoundPage() {
           meta="no matching exported page"
           className="not-found-artifact w-full !p-4 sm:!p-5"
         >
-          <p>Nothing was served for this URL.</p>
+          <p>The server found nothing to serve. It is taking the loss well.</p>
         </PaperArtifact>
         <nav
           aria-label="Recovery routes"

@@ -28,7 +28,7 @@ import {
 
 const SITE_URL = "https://suspecframework.dev";
 const overviewDescription =
-  "A methodology for structuring work with coding agents. Installable skills implement lean specs, evidence-backed reviews, and durable findings.";
+  "A methodology for structuring work with coding agents. Skills implement lean specs, evidence-backed reviews, and durable findings.";
 const overviewTitle = "What is Suspec? — specs, evidence, review";
 
 export const metadata: Metadata = {
@@ -56,12 +56,12 @@ export const metadata: Metadata = {
 const isList = [
   {
     label: "skills",
-    text: "installable skills — plain Markdown, any capable harness",
+    text: "skills — plain Markdown for any capable harness",
     icon: Layers,
   },
   {
     label: "spec",
-    text: "lean specs sized to the work — down to one inline line, no file at all",
+    text: "lean specs sized to the work — down to one inline line, with no file",
     icon: FileText,
   },
   {
@@ -71,12 +71,12 @@ const isList = [
   },
   {
     label: "review",
-    text: "review packets that reconcile evidence against the spec, requirement by requirement",
+    text: "review packets that reconcile evidence against the spec, one requirement at a time",
     icon: NotebookPen,
   },
   {
     label: "check",
-    text: "a deterministic checker — suspec check — over any of these artifacts",
+    text: "a deterministic checker — suspec check — over the artifacts it receives",
     icon: CheckCircle,
   },
   {
@@ -109,7 +109,7 @@ const adjacent = [
     signal: "muted",
     examples: "Claude Code, Cursor, Copilot, …",
     does: "write the code",
-    relation: "Suspec shapes the work around it: spec, review, findings.",
+    relation: "Suspec shapes the work around it: spec, review, findings. The agent still has to type.",
   },
   {
     product: "Native plan mode",
@@ -125,7 +125,7 @@ const adjacent = [
     signal: "reference",
     examples: "Jira, Linear, GitHub Issues",
     does: "hold the backlog and the conversation",
-    relation: "Tickets stay there. The spec names its source directly.",
+    relation: "Tickets stay there. The spec names the source directly.",
   },
   {
     product: "Docs portals",
@@ -133,7 +133,7 @@ const adjacent = [
     signal: "reference",
     examples: "wikis, Notion, docs sites",
     does: "describe the system after the fact",
-    relation: "A Suspec spec drives a change before it ships.",
+    relation: "A Suspec spec drives a change before it ships. The wiki can wait.",
   },
   {
     product: "Review tooling",
@@ -141,7 +141,7 @@ const adjacent = [
     signal: "evidence",
     examples: "PRs, CI, review bots",
     does: "check the merge",
-    relation: "The review packet tells reviewers where to look; discussion lives on the PR.",
+    relation: "The review packet tells reviewers where to look; discussion still lives on the PR.",
   },
   {
     product: "Refactoring tooling",
@@ -219,7 +219,7 @@ const boundarySteps = [
   {
     label: "02",
     title: "Suspec shapes the work",
-    text: "Skills produce the spec, the task split when one spec fans out, and the review packet — beside the harness's own artifacts, named by explicit path.",
+    text: "Skills produce the spec, task packets when needed, and the review packet — beside the harness's own artifacts, named by explicit path.",
     signal: "core",
     icon: NotebookPen,
   },
@@ -421,11 +421,11 @@ export default function WhatIsSuspecPage() {
             <p className="overview-answer-kicker">plain answer</p>
             <h2>What Suspec does</h2>
             <p>
-              Suspec is a set of skills your agent already knows how to run:
-              they structure the spec that states intent, the task split when
-              one spec fans out, the review packet that reconciles evidence,
-              and the findings worth keeping. Your agent writes the code;
-              Suspec shapes the work around it.
+              Suspec is a set of skills your agent can run: they structure the
+              spec that states intent, task packets when work splits, the
+              review packet that reconciles evidence, and the findings worth
+              keeping. Your agent writes the code; Suspec shapes the work
+              around it.
             </p>
           </div>
           <dl className="overview-answer-list">
@@ -600,8 +600,8 @@ export default function WhatIsSuspecPage() {
             deterministic checker — <code>suspec check</code> — pins the
             load-bearing facts at zero model cost: facts and exit codes
             (0 clean, 1 warning, 2 blocking), no model in the loop, no review
-            result rendered. Every step also keeps a by-hand path; no step
-            requires a tool.
+            result rendered. Every step keeps a by-hand path; no step requires
+            a tool.
           </p>
         </div>
         <div className="reveal grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
@@ -674,7 +674,8 @@ export default function WhatIsSuspecPage() {
           <Heading className="mt-3">Where Suspec sits</Heading>
           <p className="mt-4 text-concrete-400">
             Suspec is the discipline between the request, the agent, and the
-            review. The surrounding tools keep their jobs.
+            review. The surrounding tools keep their jobs. Everyone gets to
+            keep their own tool.
           </p>
         </div>
         <BoundaryMap />

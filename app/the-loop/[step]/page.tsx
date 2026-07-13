@@ -114,7 +114,7 @@ export default async function LoopStepPage({
               <p className={`font-mono text-xs font-semibold uppercase tracking-[0.14em] ${signalRoles[step.signal].text}`}>
                 step {step.number}
               </p>
-              <Heading className="mt-2">What happens here</Heading>
+              <Heading className="mt-2">The work here</Heading>
             </div>
           </div>
           <p className="text-lg leading-relaxed text-concrete-300">{step.body}</p>
@@ -155,9 +155,9 @@ export default async function LoopStepPage({
           </p>
           <Heading>{step.handoff}</Heading>
           <p className="text-sm leading-relaxed text-concrete-400">
-            When this step produces a record, the next step reads it by explicit
-            full path. Lighter work can keep the same boundary inline; the
-            loop does not require a file for the sake of having one.
+            When this step produces a record, the next step reads it by
+            explicit full path. Lighter work can keep the boundary inline; the
+            loop does not need a file for the sake of owning a file.
           </p>
           {next ? (
             <TextLink href={loopStepHref(next.slug)} className="w-fit gap-2">
@@ -178,13 +178,13 @@ export default async function LoopStepPage({
           <Heading>Keep the evidence attached.</Heading>
           <p className="text-sm leading-relaxed text-concrete-400">
             The record names its source, scope, or result clearly enough for a
-            reviewer to pick up. The next step gets the evidence; it does not
-            have to reconstruct the story from a heroic scroll through chat.
+            reviewer to pick up. The next step gets the evidence; it should not
+            have to excavate the story from chat.
           </p>
         </Card>
       </Section>
 
-      <Section register="03 / navigate" registerTone="muted">
+      <Section register="03 / move along" registerTone="muted">
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           <TextLink href="/the-loop/" className="w-fit gap-2">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />

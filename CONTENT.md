@@ -6,6 +6,10 @@ Copy rules:
 
 - Be direct.
 - Keep paragraphs short.
+- Write bluntly, with a deadpan edge and the occasional useful pun.
+- Cut brochure fog, grand headings, filler setup, and repeated explanations.
+- Assume a senior engineer is reading. Explain the boundary or decision, not
+  what a familiar tool is.
 - Link to detail instead of repeating it.
 - Do not make research claims without a source.
 - Keep install instructions in one canonical place when possible.

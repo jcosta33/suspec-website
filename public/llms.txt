@@ -1,19 +1,19 @@
 # Suspec
 
-> Suspec is a methodology for structuring work with coding agents. Installable skills implement it; the optional CLI provides deterministic checks. The method keeps intent, review, and findings visible, then pulls in a spec, task, inventory, change plan, audit, or research record when the work earns one. Plain Markdown, any capable harness, and your repos take nothing.
+> Suspec is a methodology for structuring work with coding agents. Skills implement it; the optional CLI checks the records. Keep intent, review, and findings visible. Pull in a spec, task, inventory, change plan, audit, or research record when the work earns one. Plain Markdown, any capable harness, and your repos take nothing.
 
-Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the agent's own native artifacts under `~/.agents/artifacts/<workspace>/`; callers pass each path explicitly, and nothing is committed to the adopter's repo by Suspec. Durable lessons become native harness memories; decisions become ADRs. The optional CLI (`suspec check`) reports deterministic facts: coverage, evidence binding, references, and artifact shape. Exit codes are the API: 0 clean, 1 warning, 2 blocking. It never renders a review result; the human owns acceptance, waivers, irreversible actions, and merge decisions.
+Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the agent's native artifacts under `~/.agents/artifacts/<workspace>/`; callers pass each path explicitly, and Suspec commits nothing to the adopter's repo. Durable lessons become native harness memories; decisions become ADRs. The optional CLI (`suspec check`) reports deterministic facts: coverage, evidence binding, references, and artifact shape. Exit codes are the API: 0 clean, 1 warning, 2 blocking. It never renders a review result; the human owns acceptance, waivers, irreversible actions, and merge decisions.
 
 ## Start here
 
-- [What is Suspec?](https://suspecframework.dev/docs/01-what-is-suspec/): The methodology, shipped as skills — what it gives you and what it does not replace.
+- [What is Suspec?](https://suspecframework.dev/docs/01-what-is-suspec/): The method, shipped as skills — what it gives you and what it refuses to replace.
 - [The basic workflow](https://suspecframework.dev/docs/02-basic-workflow/): The trivial inline path first, then the full loop — intent, spec, implement, review packet, check, findings.
 - [Where files live](https://suspecframework.dev/docs/03-where-files-live/): Beside your native artifacts, by explicit path — no prescribed location, nothing in the adopter's repo.
 - [Writing specs](https://suspecframework.dev/docs/04-writing-specs/): Requirements with AC ids and Verify with: lines an agent can work from.
 - [Brownfield work and change plans](https://suspecframework.dev/docs/05-brownfield-and-change-plans/): Structural changes to existing code, planned before they sprawl.
 - [Creating tasks](https://suspecframework.dev/docs/06-creating-tasks/): The task split — cut task packets only when one spec splits into parallel slices.
 - [Running agents](https://suspecframework.dev/docs/07-running-agents/): Handing the spec — and the task, when split — by explicit path.
-- [Reviewing agent output](https://suspecframework.dev/docs/08-reviewing-output/): An independent reviewer reconciles evidence per requirement; empty evidence is Unverified, never Pass.
+- [Reviewing agent output](https://suspecframework.dev/docs/08-reviewing-output/): An independent reviewer reconciles evidence per requirement; empty evidence is Unverified, never Pass. “Done” is not evidence.
 - [Saving findings](https://suspecframework.dev/docs/09-saving-findings/): Durable lessons become native harness memories; ephemeral findings die with the packet.
 - [Integrations](https://suspecframework.dev/docs/10-integrations/): The CLI, MCP, issue trackers, PRs, CI, and native agent practice — all optional.
 
@@ -29,17 +29,17 @@ Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the a
 
 ## Product pages
 
-- [Full documentation, concatenated](https://suspecframework.dev/llms-full.txt): Every user-facing doc (the numbered path, the tutorial, and the worked examples) in one markdown file for full-context ingestion.
+- [Full documentation, concatenated](https://suspecframework.dev/llms-full.txt): Every user-facing doc in one Markdown file. Useful when one page is not enough.
 - [Documentation home](https://suspecframework.dev/docs/): The full documentation, including the reference layer and the decision ledger.
 - [What is Suspec?](https://suspecframework.dev/what-is-suspec/): Direct product overview, boundaries, and non-goals.
 - [The loop](https://suspecframework.dev/the-loop/): The trivial path, the full loop, the keys, and the scaffold.
-- [Get started](https://suspecframework.dev/get-started/): Adopting is one install; nothing lands in your repo.
+- [Get started](https://suspecframework.dev/get-started/): One install; nothing lands in your repo.
 
 ## Packages
 
-- [suspec-skills](https://suspecframework.dev/skills/): Installable skills that implement the Suspec methodology, grouped into universal methods and artifact authors.
+- [suspec-skills](https://suspecframework.dev/skills/): Standalone Markdown skills that implement the method, grouped into universal methods and artifact authors.
 - [suspec-skills writing guide](https://suspecframework.dev/skills/writing/): How Suspec skills are written, scoped, and reviewed.
-- [suspec-cli](https://suspecframework.dev/cli/): Optional reinforcement — `suspec check`, the deterministic honesty floor; exit codes 0/1/2.
+- [suspec-cli](https://suspecframework.dev/cli/): Optional reinforcement — `suspec check`, the deterministic honesty floor; exit codes 0/1/2. Facts, not verdicts.
 - [suspec-mcp](https://suspecframework.dev/mcp/): The same check surface for shell-less MCP runners — `suspec_check`, `suspec_get_checks`, and `suspec://checks`.
 
 ## Source

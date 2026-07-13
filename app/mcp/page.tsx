@@ -32,7 +32,7 @@ const SITE_URL = "https://suspecframework.dev";
 const MCP_REPOSITORY = "https://github.com/jcosta33/suspec-mcp";
 const MCP_PAGE_URL = `${SITE_URL}/mcp/`;
 const mcpDescription =
-  "suspec-mcp brings the suspec check surface to shell-less MCP clients: exactly two tools that shell out to suspec check --json and relay the facts under a no-verdict envelope.";
+  "suspec-mcp brings the suspec check surface to shell-less MCP clients: two tools that shell out to suspec check --json and relay the facts under a no-verdict envelope.";
 const mcpTitle = "suspec-mcp — the check surface over MCP";
 
 export const metadata: Metadata = {
@@ -80,14 +80,14 @@ const mcpInstallCommands = [
 const guardrails = [
   {
     title: "Two tools, no more",
-    text: "suspec_check and suspec_get_checks. A client that can run shell commands can use suspec check directly.",
+    text: "suspec_check and suspec_get_checks. A client that can run shell commands can use suspec check directly. This is the short route, not a new product.",
     stamp: "scope",
     icon: ShieldCheck,
     signal: "reference",
   },
   {
     title: "No verdict",
-    text: "ok means the CLI ran and returned parseable output — not that the artifact is clean. Pass, Fail, Unverified, Blocked stay human.",
+    text: "ok means the CLI ran and returned parseable output — not that the artifact is clean. Pass, Fail, Unverified, and Blocked stay human.",
     stamp: "defer",
     icon: MessagesSquare,
     signal: "muted",
@@ -317,9 +317,9 @@ export default function McpPage() {
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             The same <code>suspec check</code> surface for runners without a
-            shell — Claude Desktop, Cursor, anything that speaks MCP. Exactly
-            two tools, a no-verdict envelope, and no capability an agent with
-            a terminal doesn&apos;t already have.
+            shell — Claude Desktop, Cursor, anything that speaks MCP. Two
+            tools, a no-verdict envelope, and no capability a terminal agent
+            does not already have.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
             <Badge variant="ready">Exactly two tools</Badge>
@@ -355,7 +355,8 @@ export default function McpPage() {
             <TextLink href="/cli/">suspec check</TextLink> directly; a
             shell-less client can&apos;t. suspec-mcp is that client&apos;s way
             to run the same checks against the same files, with the same
-            results — over local stdio, adding nothing of its own.
+            results — over local stdio, adding nothing of its own. It is an
+            adapter, not a second opinion.
           </p>
           <p className="text-sm text-concrete-400">
             Source:{" "}
@@ -494,9 +495,9 @@ export default function McpPage() {
           </div>
           <Heading className="mt-3">Boundaries</Heading>
           <p className="mt-4 text-concrete-400">
-            The server treats every client input as hostile and every result
-            as facts-only: two tools, one verb reaching the CLI, no writes,
-            and no review result — ever.
+            The server treats every client input as hostile and every result as
+            facts-only: two tools, one verb reaching the CLI, no writes, and
+            no review result. Ever.
           </p>
         </div>
         <ul className="mcp-guardrail-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -588,8 +589,8 @@ export default function McpPage() {
           <Heading className="mt-3">The no-verdict envelope</Heading>
             <p className="mt-4 text-concrete-400">
               Every result uses the same structure. <code>ok</code> means the
-            CLI ran — whether the artifact is clean lives in the facts, and
-            the server never adds a Pass or Fail of its own.
+              CLI ran. Whether the artifact is clean lives in the facts; the
+              server never adds a Pass or Fail of its own.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <div className="mcp-fact-list tool-list-card tool-list-card-core rounded-panel border bg-panel p-4 sm:col-span-2">
@@ -723,7 +724,7 @@ export default function McpPage() {
             <Heading className="mt-3">Read the adapter code</Heading>
             <p className="mt-2 max-w-2xl text-concrete-400">
               Source, issues, and tests live on GitHub. The CLI reference
-              covers the check surface this server adapts.
+              covers the check surface this adapter borrows.
             </p>
           </div>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">

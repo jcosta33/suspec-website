@@ -428,53 +428,53 @@ const normalizeDisplayTitle = (title: string): string =>
 const MIN_META_DESCRIPTION_LENGTH = 70;
 const MAX_META_DESCRIPTION_LENGTH = 138;
 const DEFAULT_DESCRIPTION_CONTEXT =
-  "Part of the Suspec manual for specs, tasks, reviews, findings, and evidence.";
+  "Part of the Suspec manual for specs, tasks, reviews, findings, and evidence. Read the page; keep the paperwork optional.";
 
 const contextualDescriptionSuffix = (title: string): string => {
   if (/brownfield|change plans/i.test(title)) {
-    return "Covers when to add inventory, change plans, and extra review records.";
+    return "When to add inventory, change plans, and extra review records.";
   }
   if (/running agents/i.test(title)) {
-    return "Covers bounded task packets, agent output, and evidence handoff.";
+    return "Bounded task packets, agent output, and evidence handoff.";
   }
   if (/review/i.test(title)) {
-    return "Covers review packets, evidence rows, and human attention items.";
+    return "Review packets, evidence rows, and human attention items.";
   }
   if (/integrations/i.test(title)) {
-    return "Covers how file-based tools, CLIs, and local workflows can read the records.";
+    return "How file-based tools, CLIs, and local workflows read the records.";
   }
   if (/adopting/i.test(title)) {
-    return "Covers the one-install setup, the optional checker, and repo policy.";
+    return "One install, the optional checker, and repo policy.";
   }
   if (/examples/i.test(title)) {
-    return "Shows complete spec, implement, review, and check chains.";
+    return "Complete spec, implement, review, and check chains.";
   }
   if (/artifact formats/i.test(title)) {
-    return "Covers frontmatter, markdown packet structure, and reviewable records.";
+    return "Frontmatter, Markdown packet structure, and reviewable records.";
   }
   if (/checks/i.test(title)) {
-    return "Covers honesty levels, core checks, packet checks, and writing rules.";
+    return "Honesty levels, core checks, packet checks, and writing rules.";
   }
   if (/distillation/i.test(title)) {
-    return "Covers when to compress working context into a durable artifact.";
+    return "When to compress working context into a durable artifact.";
   }
   if (/drift/i.test(title)) {
-    return "Covers how to spot and record mismatches between intent and evidence.";
+    return "How to spot and record mismatches between intent and evidence.";
   }
   if (/local checks/i.test(title)) {
-    return "Covers project-owned checks and how they fit beside Suspec conventions.";
+    return "Project-owned checks beside Suspec conventions.";
   }
   if (/memory/i.test(title)) {
-    return "Covers durable findings, saved lessons, and close-step handoff.";
+    return "Durable findings, saved lessons, and close-step handoff.";
   }
   if (/principles/i.test(title)) {
-    return "Covers the rules that resolve conflicts in Suspec docs and templates.";
+    return "Rules for resolving conflicts in Suspec docs and templates.";
   }
   if (/step bars/i.test(title)) {
-    return "Covers pass, fail, blocked, and unverified status in loop steps.";
+    return "Pass, Fail, Blocked, and Unverified status in loop steps.";
   }
   if (/what is Suspec/i.test(title)) {
-    return "Covers the records Suspec keeps and what the workflow does not decide.";
+    return "The records Suspec keeps and what the workflow does not decide.";
   }
   return DEFAULT_DESCRIPTION_CONTEXT;
 };

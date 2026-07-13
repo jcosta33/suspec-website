@@ -58,11 +58,11 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "evidence",
     icon: ShieldCheck,
-    description: "Crush unsupported claims with direct evidence.",
+    description: "Test unsupported claims with direct evidence.",
     rationale:
       "Use it when a claim matters enough to test instead of trusting plausible prose or a green check.",
     output:
-      "An in-chat evidence table: Supported, Unsupported, Unverified, or Blocked, with the proof for each row.",
+      "An in-chat evidence table: Supported, Unsupported, Unverified, or Blocked, with proof for each row.",
     boundary:
       "It verifies a bounded claim set. It does not perform a broad risk review or issue acceptance.",
     misuse: "Treating a plausible citation or green check as proof without inspecting it.",
@@ -83,7 +83,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "change",
     icon: Swords,
-    description: "Destroy an idea, design, claim, change, or plan through explicit one-sided advocacy.",
+    description: "Make the strongest case against an idea, design, claim, change, or plan.",
     rationale:
       "Use it when the strongest case against a proposal is more useful than another balanced summary.",
     output:
@@ -108,7 +108,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "muted",
     icon: Zap,
-    description: "Make supplied Markdown ruthless and economical.",
+    description: "Make supplied Markdown shorter, sharper, and harder to misread.",
     rationale:
       "Use it when repetition, soft framing, or ceremony is consuming attention without changing the work.",
     output:
@@ -133,7 +133,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "reference",
     icon: Search,
-    description: "Cut an unfamiliar or dangerous code path open before changing or judging it.",
+    description: "Trace an unfamiliar or dangerous code path before changing or judging it.",
     rationale:
       "Use it when callers, state, effects, failure handling, or configuration remain unproven.",
     output:
@@ -158,7 +158,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "core",
     icon: GitFork,
-    description: "Force every ambiguity into explicit human selection.",
+    description: "Turn every consequential ambiguity into an explicit human choice.",
     rationale:
       "Use it when facts are exhausted but scope, authority, behavior, or tradeoffs still have multiple valid paths.",
     output:
@@ -183,7 +183,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "reference",
     icon: ArrowUpRight,
-    description: "Move a transient artifact into project-owned permanence.",
+    description: "Move a useful transient artifact into a project-owned home.",
     rationale:
       "Use it when a temporary record has durable value and needs a real home in the project.",
     output:
@@ -208,7 +208,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "evidence",
     icon: BookOpen,
-    description: "Preserve verified lessons after work settles.",
+    description: "Keep verified lessons after the work settles.",
     rationale:
       "Use it when a discovery, constraint, edge case, or pattern will matter to later work.",
     output:
@@ -233,11 +233,11 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "core",
     icon: RefreshCw,
-    description: "Hammer code, diffs, artifacts, plans, or systems from every relevant angle.",
+    description: "Attack code, diffs, artifacts, plans, or systems from every relevant angle.",
     rationale:
       "Use it for broad adversarial coverage when each finding must be resolved before the next reviewer sees the target.",
     output:
-      "A full sequential rotation of target-derived stances, fixes, proof, and consequential refutations.",
+      "A full sequential rotation of target-derived stances, fixes, proof, and refutations.",
     boundary:
       "It creates no artifact. It stops on an unresolved blocker or human decision instead of silently moving on.",
     misuse: "Running every stance in parallel or moving on with an unresolved finding.",
@@ -258,7 +258,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "reference",
     icon: ScanSearch,
-    description: "Audit present code and expose its risk with exact evidence.",
+    description: "Record present code and expose its risk with exact evidence.",
     rationale:
       "Use it to record the current state and its risks before anyone prescribes a change.",
     output:
@@ -284,7 +284,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "change",
     icon: Route,
-    description: "Plan structural change without losing behavior.",
+    description: "Plan structural change without losing the behavior that matters.",
     rationale:
       "Use it for migrations, rewrites, schema work, or other changes where preservation must be explicit.",
     output:
@@ -309,7 +309,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "reference",
     icon: MapIcon,
-    description: "Reconstruct an unfamiliar or change-critical code area from evidence.",
+    description: "Map an unfamiliar or change-critical code area from evidence.",
     rationale:
       "Use it before brownfield work when modules, callers, tests, or coupling are not yet proven.",
     output:
@@ -334,7 +334,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "evidence",
     icon: FolderSearch,
-    description: "Research a decision until evidence can carry it.",
+    description: "Research one decision until the evidence can carry it.",
     rationale:
       "Use it for one decision-informing question where sources, uncertainty, and counter-evidence matter.",
     output:
@@ -359,7 +359,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "evidence",
     icon: ClipboardCheck,
-    description: "Put finished work on trial against its governing Suspec spec or task.",
+    description: "Reconcile finished work against its governing Suspec spec or task.",
     rationale:
       "Use it when implementation evidence needs requirement-level reconciliation by an independent reviewer.",
     output:
@@ -384,7 +384,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "core",
     icon: FileText,
-    description: "Forge decided intent into a verifiable Suspec spec.",
+    description: "Turn decided intent into a verifiable Suspec spec.",
     rationale:
       "Use it when a non-trivial change needs a contract before implementation begins.",
     output:
@@ -409,7 +409,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "core",
     icon: ListChecks,
-    description: "Cut a ready Suspec spec into collision-proof task packets.",
+    description: "Cut a ready Suspec spec into task packets that do not collide.",
     rationale:
       "Use it only when a spec has independently dispatchable slices or sequenced transformation waves.",
     output:
@@ -434,7 +434,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "core",
     icon: CheckCircle,
-    description: "Crush a narrow target through exactly three fresh top-tier passes.",
+    description: "Run exactly three fresh, serious passes over a narrow target.",
     rationale:
       "Use it for a focused high-consequence target that merits three independent views and current-state fixes between them.",
     output:

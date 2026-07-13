@@ -24,7 +24,7 @@ function buildLlmsFullText() {
   const header =
     `# Suspec - full documentation\n\n` +
     `> Suspec is a methodology for structuring work with coding agents. ` +
-    `Plain Markdown, any capable harness, no runtime. This file concatenates the user-facing documentation for ` +
+    `Skills implement the method. Plain Markdown, any capable harness, no runtime. This file concatenates the user-facing documentation for ` +
     `full-context ingestion by AI assistants.\n\n` +
     `Site: ${SITE_URL} - Canon: ${CANON_URL}\n\n---\n\n`;
 

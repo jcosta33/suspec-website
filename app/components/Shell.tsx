@@ -47,7 +47,7 @@ const mobileNavGroups = [
 const mobileProofs = [
   { label: "Plain markdown", tone: "reference" },
   { label: "Human review", tone: "evidence" },
-  { label: "No runtime", tone: "muted" },
+  { label: "No runtime required", tone: "muted" },
 ] as const;
 
 const footerGroups = [
@@ -271,7 +271,7 @@ export function Shell({ children }: { children: ReactNode }) {
               <Logo className="text-2xl text-concrete-100" />
             </Link>
             <p className="text-sm text-concrete-400">
-              Built with Suspec. Keep the evidence; make the call yourself.
+              Built with Suspec. The evidence stays. The call stays yours.
             </p>
           </div>
 

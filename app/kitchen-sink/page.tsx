@@ -24,7 +24,7 @@ import { AlertTriangle, CheckCircle, Wrench } from "lucide-react";
 import { canonicalAlternates } from "../seo";
 
 const kitchenSinkDescription =
-  "Internal Suspec website component preview for checking surfaces, state, and artifact treatments.";
+  "Internal Suspec website component preview for checking surfaces, state, and artifact treatments. No public ceremony.";
 
 export const metadata: Metadata = {
   title: "Kitchen sink — Suspec",
@@ -133,7 +133,8 @@ export default function KitchenSinkPage() {
         >
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-concrete-400">
             Internal preview for checking surfaces, state, and artifact
-            treatments before they move into public pages.
+            treatments before they move into public pages. If a component
+            drifts, this is where it gets caught.
           </p>
         </PageHero>
       </Section>
@@ -152,8 +153,8 @@ export default function KitchenSinkPage() {
                 </p>
                 <h2 className="kitchen-specimen-title">Component map.</h2>
                 <p className="kitchen-specimen-copy text-sm leading-relaxed text-concrete-400">
-                  A small map for catching drift in the design system without
-                  turning this page into product theater.
+                  A small map for catching drift in the design system. No
+                  product theatre required.
                 </p>
               </div>
               <div className="kitchen-specimen-strip process-strip process-strip-signal-muted grid gap-px bg-panel-border sm:grid-cols-3">
@@ -198,19 +199,19 @@ export default function KitchenSinkPage() {
           <Panel className="p-5 sm:p-6">
             <h3 className="font-heading text-lg font-bold">Raised panel</h3>
             <p className="mt-2 text-concrete-400">
-              A heavy machined plate with a strong shadow.
+              A heavy machined plate with a strong shadow. It knows what it is.
             </p>
           </Panel>
           <Panel variant="inset" className="p-5 sm:p-6">
             <h3 className="font-heading text-lg font-bold">Inset panel</h3>
             <p className="mt-2 text-concrete-400">
-              A recessed well for screens and readouts.
+              A recessed well for screens and readouts. Keep the noise out.
             </p>
           </Panel>
           <Panel brushed rivets screws className="p-5 sm:p-6">
             <h3 className="font-heading text-lg font-bold">Hardware panel</h3>
             <p className="mt-2 text-concrete-400">
-              Brushed metal, rivets, and screws.
+              Brushed metal, rivets, and screws. The hardware is optional.
             </p>
           </Panel>
           <Panel gilt className="p-5 sm:p-6">
@@ -442,7 +443,7 @@ export default function KitchenSinkPage() {
           <p className="text-concrete-100">
               <span className="text-suspec-yellow">$</span>{" "}suspec check ./spec.md
           </p>
-          <p className="mt-1 text-signal-evidence">✓ all systems nominal</p>
+            <p className="mt-1 text-signal-evidence">✓ facts returned; review remains human</p>
         </TerminalWindow>
       </PreviewSection>
 

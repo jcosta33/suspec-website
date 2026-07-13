@@ -25,7 +25,7 @@ import { loopStepHref, loopSteps } from "./loopSteps";
 
 const SITE_URL = "https://suspecframework.dev";
 const loopDescription =
-  "The Suspec loop: three keys — intent, review, findings — on virtually every change, and the full intent → spec → implement → review → check → findings pass when the change earns a contract. Promotion is the explicit path for moving a selected record into project-owned permanence.";
+  "The Suspec loop: intent, spec, implement, review, check, and findings. Most changes use the three keys — intent, review, findings. Promotion moves a selected record into project-owned permanence when it needs to stay.";
 const loopTitle = "The Suspec loop — spec, implement, review, check";
 
 export const metadata: Metadata = {
@@ -140,12 +140,11 @@ export default function TheLoopPage() {
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Most changes need one line, not a file. When the diff earns a
-            contract: intent → spec → implement → review → check → findings.
+            contract, run intent → spec → implement → review → check → findings.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-concrete-400">
-            Three of the six are the keys — intent, review, findings — present
-            on virtually every change, at whatever weight it earns. The rest
-            is scaffold the work pulls in.
+            Intent, review, and findings are the keys. The rest is scaffold the
+            work pulls in when useful. No filing cabinet for a typo.
           </p>
           <HeroTrace
             ariaLabel="Suspec loop trace"
@@ -168,16 +167,15 @@ export default function TheLoopPage() {
             <Terminal className="h-4 w-4" aria-hidden="true" />
             <span>the trivial path first</span>
           </div>
-          <Heading className="mt-3">Most changes stop here</Heading>
+          <Heading className="mt-3">Most changes stop here.</Heading>
           <p className="mt-4 text-concrete-400">
-            For a trivial fix the whole spec is one line, stated inline — in
-            the conversation, not in a file. Implement, run the verify
-            command, paste the output. Done. No file, no packet, no check run
-            — the keys at their lightest, zero scaffold.
+            For a trivial fix, state the spec in one line in the conversation.
+            Implement, run the Verify with: command, paste the output. Done.
+            No file, packet, or check run required.
           </p>
           <p className="mt-3 text-concrete-400">
-            Proportional rigor means the scaffold below exists for the work
-            that earns it — never as a toll on the work that doesn&apos;t.
+            Proportional rigor means the scaffold exists for work that earns
+            it. A typo does not need a committee.
           </p>
         </div>
         <Panel brushed className="p-2">
@@ -259,8 +257,8 @@ export default function TheLoopPage() {
               the scaffold
             </p>
             <p className="mt-3 text-sm text-concrete-400">
-              What Suspec erects around the keys when the work earns it —
-              never a station to pass through.
+              The scaffold around the keys when the work earns it — never a
+              station to pass through.
             </p>
             <ul className="mt-4 divide-y divide-panel-border/70 text-sm text-concrete-400">
               <li className="py-3 first:pt-0">

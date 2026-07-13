@@ -29,7 +29,7 @@ import { canonicalAlternates } from "../seo";
 
 const SITE_URL = "https://suspecframework.dev";
 const getStartedDescription =
-  "Adopt Suspec with one global skills install — nothing lands in your repo. Add the optional CLI for deterministic checks or the optional MCP adapter for shell-less clients, then run the loop once on a small change.";
+  "Install the skills globally; nothing lands in your repo. Add the optional CLI for deterministic checks or the optional MCP adapter for shell-less clients, then run one small change through the loop.";
 const getStartedTitle = "Get started with Suspec — one install";
 
 export const metadata: Metadata = {
@@ -110,13 +110,13 @@ const loopSteps = [
   {
     name: "Spec",
     role: "intent stated",
-    text: "Author it through the skill: requirements with AC-NNN ids, a Verify with: line each, non-goals. Place it beside your native artifacts and carry the full path forward.",
+    text: "Write requirements with AC-NNN ids, a Verify with: line each, and non-goals. Keep the file beside your native artifacts and carry its full path forward.",
     icon: ScrollText,
   },
   {
     name: "Lint",
     role: "optional check",
-    text: "suspec check <spec-path> — exit 0 clean, 1 warning, 2 blocking.",
+    text: "suspec check <spec-path> — exit 0 clean, 1 warning, 2 blocking. It reports facts; it does not review the work.",
     icon: Terminal,
   },
   {
@@ -128,7 +128,7 @@ const loopSteps = [
   {
     name: "Review",
     role: "independent eyes",
-    text: "A reviewer who didn't write the code builds the packet, then: suspec check <review-path> --spec <spec-path>.",
+    text: "A reviewer who did not write the code builds the packet, then runs suspec check <review-path> --spec <spec-path>.",
     icon: ClipboardList,
   },
   {
@@ -171,7 +171,7 @@ function SpecPlacementNote({ className = "" }: { className?: string }) {
 const setupPath = [
   {
     label: "Install",
-    text: "One global command. The skills carry the whole methodology.",
+    text: "One global command. The skills carry the method.",
     icon: Download,
     href: "#install",
     signal: "core",
@@ -192,14 +192,14 @@ const setupPath = [
   },
   {
     label: "First change",
-    text: "Start small and run the loop once.",
+    text: "Start small. Run the loop once.",
     icon: ClipboardList,
     href: "#first-change",
     signal: "core",
   },
   {
     label: "By hand",
-    text: "Every step keeps a no-CLI path.",
+    text: "Every step has a no-CLI path.",
     icon: PenLine,
     href: "#by-hand",
     signal: "reference",
@@ -232,7 +232,7 @@ const setupHeroTrace = [
 const setupHowToSteps = [
   {
     name: "Install the skills",
-    text: `Run ${skillsInstallCommand}. The skills implement the methodology and install outside the repo you are changing.`,
+    text: `Run ${skillsInstallCommand}. The skills implement the method and install outside the repo you are changing.`,
     href: "#install",
   },
   {
@@ -315,8 +315,8 @@ export default function GetStartedPage() {
           tone="core"
         >
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-concrete-400 sm:text-xl">
-            Adopting is one install. Nothing lands in your repo. The optional
-            CLI adds the deterministic checks.
+            One install. Nothing lands in your repo. The optional CLI adds
+            deterministic checks.
           </p>
           <HeroTrace
             ariaLabel="Suspec setup path trace"
@@ -414,9 +414,9 @@ export default function GetStartedPage() {
           </div>
           <Heading className="mt-3">Install the skills</Heading>
           <p className="mt-4 max-w-2xl leading-relaxed text-concrete-400">
-            The skills implement the methodology: authoring records, reviewing
-            evidence, handling decisions, and saving durable lessons. Updating
-            uses the same command.
+            The skills implement the method: author records, review evidence,
+            handle decisions, and save durable lessons. Updating uses the same
+            command. No ceremony tax.
           </p>
         </div>
         <Card
@@ -453,7 +453,7 @@ export default function GetStartedPage() {
           </div>
           <p className="text-concrete-400">
             The Suspec skills live at the user level and work in any repo.
-            Plain markdown; a capable harness plus the skills is the whole
+            Plain Markdown, a capable harness, and the skills are the whole
             product.
           </p>
           <dl className="setup-choice-facts">
@@ -508,7 +508,7 @@ export default function GetStartedPage() {
           </div>
           <p className="text-concrete-400">
             Your commands, your conventions — committed in the repo they
-            describe, as they already are. The two tiers never overlap.
+            describe, as they already are. The two tiers never overlap. Good.
           </p>
           <dl className="setup-choice-facts">
             <div>
@@ -753,8 +753,8 @@ export default function GetStartedPage() {
         </div>
         <Heading>By hand — no CLI</Heading>
         <p className="max-w-2xl leading-relaxed text-concrete-400">
-          Every step keeps a by-hand path; the CLI accelerates the checking,
-          nothing else.
+          Every step has a by-hand path; the CLI accelerates checking, nothing
+          else.
         </p>
         <Panel brushed screws className="p-6 sm:p-8">
           <ol className="flex max-w-2xl flex-col gap-4 text-concrete-400">
@@ -822,8 +822,8 @@ export default function GetStartedPage() {
                 Skills
               </Heading>
               <p className="mt-2 text-concrete-400">
-                The full catalog: the methodology skills plus the universal
-                disciplines they lean on.
+                The full catalog: methodology skills plus the universal
+                disciplines they lean on. Pick the one that fits.
               </p>
             </div>
           </div>

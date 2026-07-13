@@ -26,7 +26,7 @@ import { canonicalAlternates } from "../../seo";
 
 const SITE_URL = "https://suspecframework.dev";
 const pageDescription =
-  "A short guide to writing installable Suspec skills: load boundary, rules, references, and scope.";
+  "A short guide to writing installable Suspec skills: load boundary, rules, references, and scope. Keep the packet useful.";
 const pageTitle = "Writing Suspec skills — structure and scope";
 
 export const metadata: Metadata = {
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
 const descriptionRules = [
   "Start with the WHAT verb and its object: implement, review, audit, write.",
   "Say ALWAYS apply this skill when — and name the triggers, even implicit ones.",
-  "Block the bypass: the shortcut the agent would take without the skill.",
+  "Block the bypass: name the shortcut the agent would take without the skill.",
   "End with the skip clause: the task types this skill must not load for.",
 ];
 
@@ -81,12 +81,12 @@ const bodyRules = [
   {
     icon: ListOrdered,
     title: "Use numbered rules",
-    text: "Make the checkpoints explicit enough to inspect later. Keep the body as short as the contract allows.",
+    text: "Make checkpoints explicit enough to inspect later. Keep the body as short as the contract allows.",
   },
   {
     icon: Shield,
     title: "Keep it self-contained",
-    text: "Skills install individually. A skill cannot assume any sibling is in context — no cross-skill references.",
+    text: "Skills install individually. A skill cannot assume a sibling is in context — no cross-skill references.",
   },
   {
     icon: CheckCircle,
@@ -199,7 +199,8 @@ export default function WritingSkillsPage() {
         >
           <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-400">
             Write the load boundary, operating rules, and source material. Keep
-            local commands and team policy in the consuming repo.
+            local commands and team policy in the consuming repo. The skill is
+            not the repo handbook.
           </p>
           <HeroTrace
             ariaLabel="Skill file anatomy trace"
@@ -346,7 +347,7 @@ export default function WritingSkillsPage() {
             <DroneIcon className="h-4 w-4" />
             <span>layout</span>
           </div>
-          <Heading className="mt-3">Use a small folder</Heading>
+          <Heading className="mt-3">Use a small folder.</Heading>
           <p className="mt-4 text-concrete-400">
             Keep the entry point in{" "}
             <code className="text-suspec-yellow">SKILL.md</code>. Move support
@@ -407,7 +408,7 @@ export default function WritingSkillsPage() {
           <Heading className="mt-3">Write the trigger first</Heading>
           <p className="mt-4 text-concrete-400">
             Treat the description as the load contract. Name the work it should
-            match.
+            match and the work it should skip.
           </p>
         </div>
         <Card screws className="border-panel-border">
@@ -451,7 +452,8 @@ export default function WritingSkillsPage() {
           </div>
           <Heading className="mt-3">Keep the body actionable</Heading>
           <p className="mt-4 text-concrete-400">
-            The body tells the agent what to do after the skill loads.
+            The body tells the agent what to do after the skill loads. No essay
+            required.
           </p>
         </div>
         <ul className="skill-body-rule-list grid gap-4 sm:grid-cols-3">
@@ -493,7 +495,7 @@ export default function WritingSkillsPage() {
             <FileText className="h-4 w-4" />
             <span>references</span>
           </div>
-          <Heading className="mt-3">Use references sparingly</Heading>
+          <Heading className="mt-3">Use references sparingly.</Heading>
           <p className="mt-4 text-concrete-400">
             Put long templates or examples in{" "}
             <code className="text-suspec-yellow">references/</code>. Keep them
@@ -506,7 +508,7 @@ export default function WritingSkillsPage() {
             <GitBranch className="h-4 w-4" />
             <span>templates</span>
           </div>
-          <Heading className="mt-3">Add a task template only when useful</Heading>
+          <Heading className="mt-3">Add a task template only when useful.</Heading>
           <p className="mt-4 text-concrete-400">
             Use a template for long work that needs state: plans, evidence,
             attempts, decisions, and follow-up.
@@ -528,7 +530,8 @@ export default function WritingSkillsPage() {
           <Heading className="mt-3">Keep repo knowledge out</Heading>
           <p className="mt-4 text-concrete-400">
             A Suspec skill must work in any repo. Put local commands and product
-            knowledge in that repo&apos;s AGENTS.md.
+            knowledge in that repo&apos;s AGENTS.md. Do not smuggle a project into
+            a global skill.
           </p>
         </div>
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -563,7 +566,8 @@ export default function WritingSkillsPage() {
               <p className="mt-4 max-w-2xl text-concrete-400">
                 The catalog has universal methods and canonical artifact authors.
                 Each skill installs alone and carries its own load boundary,
-                rules, and evidence expectations.
+                rules, and evidence expectations. Read the source; it is shorter
+                than guessing.
               </p>
             </div>
             <ul className="space-y-3 md:min-w-56">

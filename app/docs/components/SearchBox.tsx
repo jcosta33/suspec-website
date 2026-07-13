@@ -30,7 +30,7 @@ export function SearchBox() {
     const labelInput = (): boolean => {
       const input = el.querySelector("input");
       if (input && !input.getAttribute("aria-label")) {
-        input.setAttribute("aria-label", "Search documentation");
+        input.setAttribute("aria-label", "Search the manual");
       }
       return Boolean(input);
     };
@@ -98,7 +98,7 @@ export function SearchBox() {
         role={PAGEFIND_ENABLED ? undefined : "status"}
       >
         <span className="docs-search-fallback-icon" />
-        <span>Search docs</span>
+        <span>Search the manual</span>
       </div>
     </div>
   );

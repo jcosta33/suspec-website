@@ -37,10 +37,10 @@ export const loopSteps = [
     name: "Intent",
     icon: Inbox,
     signal: "core",
-    descriptor: "capture the ask",
+    descriptor: "name the work",
     output: "Source named, or an intake note",
     handoff: "Spec",
-    body: "Every change starts here — often as one sentence folded inline. Name where the work came from — a ticket, a thread, your own idea. Capture the ask verbatim as an intake note only when you want the original preserved; otherwise the spec names its source directly (a URL, an issue, or self). How you entered the work never sets the ceremony level. The work does.",
+    body: "Name the work. It may be a ticket, thread, or your own idea. Keep the original wording only when it matters; otherwise the spec names the source directly. How the work arrived does not set the ceremony. The work does.",
     example: {
       title: "~/.claude/projects/acme-site/intake.md",
       lines: [
@@ -61,10 +61,10 @@ export const loopSteps = [
     name: "Spec",
     icon: FileText,
     signal: "core",
-    descriptor: "define requirements",
+    descriptor: "set the bar",
     output: "Requirements with Verify with: lines",
     handoff: "Implement",
-    body: "The form intent graduates into when the work earns structure. The authoring skill turns intent into a lean spec: requirements with AC-NNN ids and Verify with: lines, non-goals, open questions. Place the file beside your harness's own artifacts and carry its full path forward. Lint it: suspec check spec.md.",
+    body: "Use a spec when the work earns one. Give requirements AC-NNN ids, a Verify with: line each, plus non-goals and open questions. Keep the file beside your harness's artifacts and carry its full path. Lint it with suspec check spec.md.",
     example: {
       title: "~/.claude/projects/acme-site/spec.md",
       lines: [
@@ -98,10 +98,10 @@ export const loopSteps = [
     name: "Implement",
     icon: Terminal,
     signal: "core",
-    descriptor: "run the change",
+    descriptor: "do the work",
     output: "Real pasted output per requirement",
     handoff: "Review",
-    body: "The implementer — your agent, or you — works from the spec by explicit path, runs every verify command, and pastes real output into the spec's ## Execution section. 'Tests passed' without output is not evidence.",
+    body: "You or your agent works from the spec by explicit path, runs every Verify with: command, and pastes real output into ## Execution. “Tests passed” without output is just a sentence wearing a lab coat.",
     example: {
       title: "~/.claude/projects/acme-site/spec.md",
       lines: [
@@ -122,10 +122,10 @@ export const loopSteps = [
     name: "Review",
     icon: ScanEye,
     signal: "core",
-    descriptor: "compare evidence",
+    descriptor: "read the receipts",
     output: "Review packet",
     handoff: "Check",
-    body: "An independent reviewer — never the implementer — reconciles the result against the spec: one coverage row per scoped requirement, evidence per row, exceptions routed to human attention. On the trivial path this is the owner reading the pasted output, not a separate step.",
+    body: "A reviewer who did not implement the change reconciles the result against the spec: one coverage row per requirement, evidence per row, exceptions sent to human attention. For a trivial fix, this is the owner reading the pasted output. No extra ceremony required.",
     example: {
       title: "~/.claude/projects/acme-site/review.md",
       lines: [
@@ -154,10 +154,10 @@ export const loopSteps = [
     name: "Check",
     icon: ListChecks,
     signal: "core",
-    descriptor: "report facts",
+    descriptor: "check the shape",
     output: "Facts and exit codes",
     handoff: "Findings",
-    body: "The deterministic floor, pulled in when the work earns it: coverage complete, commands match, every Pass evidenced, references resolve. Exit codes: 0 clean, 1 warning, 2 blocking. The human owns the review result; the check owns the facts. Every step keeps a by-hand path — no step requires a tool.",
+    body: "Use the deterministic floor when the work earns it: coverage complete, commands match, every Pass evidenced, references resolve. Exit codes are 0 clean, 1 warning, 2 blocking. The human owns the review result; the check reports facts. Every step has a by-hand path.",
     example: {
       title: "suspec check",
       lines: [
@@ -179,10 +179,10 @@ export const loopSteps = [
     name: "Findings",
     icon: NotebookPen,
     signal: "core",
-    descriptor: "keep lessons",
+    descriptor: "keep what lasts",
     output: "Memory, ADR, or promoted record",
     handoff: "Next change",
-    body: "Ephemeral findings ride the review packet and die with it. A durable lesson becomes a native harness memory; a decision becomes an ADR; behavior becomes tests; the discussion lives on the PR. When a record needs a permanent project home, promote the selected artifact, repair its references, validate the destination, and choose whether to commit it. Artifacts are transient — code stays king.",
+    body: "Ephemeral findings leave with the review packet. A durable lesson becomes a native harness memory; a decision becomes an ADR; behavior becomes tests; discussion stays on the PR. If a record needs a permanent project home, promote it, repair references, validate the destination, and choose whether to commit it. Code stays king.",
     example: {
       title: "CLAUDE.md (native memory)",
       lines: [

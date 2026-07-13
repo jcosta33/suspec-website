@@ -37,19 +37,19 @@ const softwareApp = {
   softwareVersion: "0.1.0",
   url: "https://suspecframework.dev",
   description:
-    "A methodology for structuring work with coding agents. Installable skills implement specs, reviews, findings, and evidence beside your agent's native artifacts.",
+    "A methodology for structuring work with coding agents. Skills do the paperwork; your agent does the typing.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   publisher: { "@id": "https://suspecframework.dev/#organization" },
 };
 
 export const metadata: Metadata = {
-  title: "Suspec — spec and review skills for coding agents",
+  title: "Suspec — agent work with receipts",
   description:
-    "A methodology for structuring work with coding agents. Installable skills implement specs, reviews, findings, and evidence beside your agent's native artifacts.",
+    "Agent work with a paper trail. Skills implement the method; the optional CLI checks the records.",
   openGraph: {
-    title: "Suspec — spec and review skills for coding agents",
+    title: "Suspec — agent work with receipts",
     description:
-      "A methodology for structuring work with coding agents. Installable skills implement specs, reviews, findings, and evidence beside your agent's native artifacts.",
+      "Agent work with a paper trail. Skills implement the method; the optional CLI checks the records.",
     type: "website",
     url: "/",
     siteName: "Suspec",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
         url: "/og-home.png",
         width: 1200,
         height: 630,
-        alt: "Suspec — spec and review skills for coding agents",
+        alt: "Suspec — agent work with receipts",
       },
     ],
   },
@@ -90,7 +90,7 @@ const heroProofs = [
   },
   {
     label: "Any agent",
-    text: "One global install; your repos take nothing.",
+    text: "Install once globally. Your repos stay clean.",
     signal: "muted",
   },
   {
@@ -175,23 +175,23 @@ const features = [
 const faqs = [
   {
     q: "Is Suspec an agent?",
-    a: "No. Your coding tool writes the code. Suspec is the methodology around that work; installable skills implement it.",
+    a: "No. Your coding tool writes the code. Suspec is the method around that work; skills implement it.",
   },
   {
     q: "Does Suspec decide whether code ships?",
-    a: "No. suspec check reports facts. The human owns the review result — Pass, Fail, Unverified, or Blocked.",
+    a: "No. suspec check reports facts, not verdicts. The human owns the review result: Pass, Fail, Unverified, or Blocked.",
   },
   {
     q: "Do I need the CLI?",
-    a: "No. Suspec works as plain markdown, and every step keeps a by-hand path. suspec check is scaffold — the honesty floor, pulled in when the work earns it.",
+    a: "No. Suspec works as plain Markdown, and every step has a by-hand path. suspec check is scaffold: use it when the work earns it.",
   },
   {
     q: "Where do the artifacts live?",
-    a: "Beside your agent's native artifacts, in a folder named after the repo being worked on. Every step names them by explicit path; they are never committed to your repo.",
+    a: "Beside your agent's native artifacts, in a folder named for the repo. Every step names them by explicit path; they are never committed to your repo.",
   },
   {
     q: "Why the seal?",
-    a: "The six points are the six steps: Intent, Spec, Implement, Review, Check, Findings. The inscribed triangle is the three keys — intent, review, findings: the parts present on virtually every change.",
+    a: "The six points are Intent, Spec, Implement, Review, Check, and Findings. The triangle marks the three keys: intent, review, and findings. They show up on nearly every change.",
   },
 ];
 
@@ -268,11 +268,12 @@ export default function HomePage() {
             title="Show, not tell."
           >
             <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-100">
-            A methodology for structuring work with coding agents; installable skills implement it.
+              A methodology for structuring work with coding agents. Skills do
+              the paperwork; your agent does the typing.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-concrete-400">
-              State the intent, reconcile the evidence, keep the findings.
-              Your agent writes the code.
+              State the work, run the change, reconcile the evidence, keep what
+              survives. No runtime required.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button asChild className="w-full max-w-72 sm:w-auto sm:max-w-none">
@@ -385,8 +386,8 @@ export default function HomePage() {
               Make review visible.
             </h2>
             <p className="mt-4 text-concrete-400">
-              A useful pass leaves a trail: intent, scope, verify commands,
-              evidence, and findings.
+              A useful pass leaves receipts: intent, scope, verify commands,
+              evidence, and findings. “Done” is not a receipt.
             </p>
           </div>
           <ol className="review-signal-rail" aria-label="Review signal path">
@@ -424,13 +425,13 @@ export default function HomePage() {
           <div className="max-w-2xl">
             <Eyebrow>workflow / six steps</Eyebrow>
             <h2 className="mt-4 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
-              The least structure that changes execution.
+              The loop, without the ceremony.
             </h2>
             <p className="mt-4 text-concrete-400">
-              Intent, Spec, Implement, Review, Check, Findings. Three are the
-              keys — intent, review, findings, on virtually every change; the
-              rest is scaffold the work pulls in. Most changes stop at a
-              one-line inline spec.
+              Intent, Spec, Implement, Review, Check, Findings. Intent, review,
+              and findings show up on virtually every change; the rest is
+              scaffold the work pulls in when useful. Most changes stop at one
+              inline line.
             </p>
           </div>
           <LoopDiagram />
@@ -448,12 +449,12 @@ export default function HomePage() {
               spec / example
             </Eyebrow>
             <h2 className="mt-4 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
-              Put evidence next to the claim.
+              Claims are cheap. Paste the output.
             </h2>
             <p className="mt-4 text-concrete-400">
               Specs and reviews are transient working files, handed around by
-              explicit path. Commands, evidence, and results stay in the same
-              place; code stays king.
+              explicit path. Keep commands, evidence, and results together;
+              code stays king.
             </p>
           </div>
           <PaperArtifact
@@ -485,13 +486,13 @@ export default function HomePage() {
           <div className="max-w-2xl">
             <Eyebrow>what you get</Eyebrow>
             <h2 className="mt-4 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
-              What Suspec adds.
+              What gets added.
             </h2>
             <p className="mt-4 text-concrete-400">
-              A few working files beside your agent&apos;s native artifacts — the
-              spec, the task split when one spec fans out, the review packet,
-              the findings — named by explicit path, never committed to your
-              repo.
+              A few working files beside your agent&apos;s native artifacts: the
+              spec, task packets when needed, the review packet, and findings.
+              They have explicit paths. Your repo does not collect them by
+              accident.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -568,7 +569,8 @@ export default function HomePage() {
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-concrete-400">
             Install the skills globally, write one spec, implement one bounded
-            change, review the evidence. Trivial fixes need one inline line.
+            change, and review the evidence. A typo does not need a filing
+            cabinet.
           </p>
           <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Button asChild className="w-full sm:w-auto">
