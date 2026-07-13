@@ -304,7 +304,7 @@ export default async function SkillDetailPage({
       <Section
         register="01 / why it exists"
         registerTone={skill.tone}
-        className="skill-detail-opening grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(20rem,1.1fr)] lg:items-stretch"
+        className="skill-detail-opening grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(20rem,1.1fr)] lg:items-start"
       >
         <div className="skill-detail-copy space-y-5">
           <div className="flex items-center gap-3">
@@ -340,7 +340,7 @@ export default async function SkillDetailPage({
             </Card>
           </div>
         </div>
-        <Card screws className="skill-detail-visual-card h-full" contentClassName="flex h-full flex-col justify-center gap-4">
+        <Card screws className="skill-detail-visual-card" contentClassName="flex flex-col justify-center gap-4">
           <SkillDiagram visual={skill.visual} tone={skill.tone} />
         </Card>
       </Section>
