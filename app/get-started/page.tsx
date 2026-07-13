@@ -687,7 +687,7 @@ export default function GetStartedPage() {
         <Card
           signal="reference"
           screws
-          className="h-full"
+          className="h-full md:col-span-2"
           contentClassName="flex h-full flex-col gap-6"
         >
           <div className="flex items-start gap-4">
