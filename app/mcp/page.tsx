@@ -343,32 +343,36 @@ export default function McpPage() {
         registerTone="reference"
         className="mcp-bridge-overview section-flow scroll-mt-28"
       >
-        <div className="section-intro max-w-3xl">
-          <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
-            <Cable className="h-4 w-4" aria-hidden="true" />
-            <span>local bridge</span>
+        <div className="section-intro">
+          <div className="mcp-bridge-intro-heading">
+            <div className={`section-kicker ${signalRoles.reference.sectionKicker}`}>
+              <Cable className="h-4 w-4" aria-hidden="true" />
+              <span>local bridge</span>
+            </div>
+            <Heading>Shell-less clients, same checks</Heading>
           </div>
-          <Heading>Shell-less clients, same checks</Heading>
-          <p className="text-concrete-400">
-            The honesty floor is a set of deterministic checks a reviewer
-            cannot fake. A terminal agent runs{" "}
-            <TextLink href="/cli/">suspec check</TextLink> directly; a
-            shell-less client can&apos;t. suspec-mcp is that client&apos;s way
-            to run the same checks against the same files, with the same
-            results — over local stdio, adding nothing of its own. It is an
-            adapter, not a second opinion.
-          </p>
-          <p className="text-sm text-concrete-400">
-            Source:{" "}
-            <TextLink
-              href="/docs/reference/cli/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              docs/reference/cli.md
-              <span className="sr-only"> (opens in new tab)</span>
-            </TextLink>
-          </p>
+          <div className="mcp-bridge-intro-copy">
+            <p className="text-concrete-400">
+              The honesty floor is a set of deterministic checks a reviewer
+              cannot fake. A terminal agent runs{" "}
+              <TextLink href="/cli/">suspec check</TextLink>{" "}directly; a
+              shell-less client can&apos;t. suspec-mcp is that client&apos;s way
+              to run the same checks against the same files, with the same
+              results — over local stdio, adding nothing of its own. It is an
+              adapter, not a second opinion.
+            </p>
+            <p className="text-sm text-concrete-400">
+              Source:{" "}
+              <TextLink
+                href="/docs/reference/cli/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                docs/reference/cli.md
+                <span className="sr-only"> (opens in new tab)</span>
+              </TextLink>
+            </p>
+          </div>
         </div>
         <Panel brushed screws className="mcp-adapter-panel p-0">
           <div className="mcp-adapter-header">

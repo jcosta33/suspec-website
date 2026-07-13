@@ -9,17 +9,21 @@
 
   .mcp-bridge-overview .section-intro {
     display: grid;
+    grid-template-columns: minmax(16rem, 0.72fr) minmax(0, 1.28fr);
     gap: clamp(0.9rem, 1.3vw, 1.12rem);
-    max-width: 48rem;
+    max-width: none;
     padding-top: 0;
   }
 
-  .mcp-bridge-overview .section-intro > :where(.section-kicker, h2, p) {
-    margin-top: 0;
+  .mcp-bridge-intro-heading,
+  .mcp-bridge-intro-copy {
+    display: grid;
+    align-content: start;
+    gap: clamp(0.9rem, 1.3vw, 1.12rem);
   }
 
   .mcp-bridge-overview .section-intro h2 {
-    max-width: 22rem;
+    max-width: 24rem;
     text-wrap: normal;
   }
 
