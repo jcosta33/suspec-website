@@ -5,23 +5,9 @@
   display: flex;
   align-items: center;
   gap: 0.62rem;
-  margin: 3.35rem 0 1.15rem;
-  padding: 0.68rem 0.86rem 0.64rem;
-  border: 1px solid rgba(70, 57, 44, 0.62);
-  border-left: 2px solid var(--docs-section-signal);
-  border-radius: 0 var(--radius-panel) var(--radius-panel) 0;
-  background:
-    linear-gradient(90deg, rgba(var(--docs-section-rgb), 0.045) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(36, 29, 21, 0.54), rgba(20, 16, 12, 0.46));
-  background-size:
-    40px 100%,
-    auto;
-  box-shadow:
-    inset 0 1px 0 rgba(240, 226, 204, 0.035),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.42);
+  margin: 3.75rem 0 1.35rem;
+  padding: 0 0 0.72rem;
+  border-bottom: 1px solid rgba(var(--docs-section-rgb), 0.3);
   counter-increment: docs-section;
   text-wrap: balance;
-  transition:
-    border-color 150ms ease,
-    box-shadow 150ms ease;
 }

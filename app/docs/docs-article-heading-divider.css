@@ -1,23 +1,4 @@
 
 .docs-article-html h2::after {
-  content: "";
-  height: 1px;
-  min-width: 2.25rem;
-  flex: 1 1 auto;
-  align-self: center;
-  background:
-    linear-gradient(
-        90deg,
-        rgba(var(--docs-section-rgb), 0.42),
-        rgba(var(--docs-section-rgb), 0.13) 56%,
-        transparent
-      )
-      center / 100% 1px no-repeat,
-    repeating-linear-gradient(
-        90deg,
-        rgba(var(--docs-section-rgb), 0.2) 0 1px,
-        transparent 1px 0.82rem
-      )
-      center / 100% 0.42rem no-repeat;
-  opacity: 0.58;
+  display: none;
 }

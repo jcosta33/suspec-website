@@ -3,8 +3,8 @@
   position: relative;
   min-height: 2.12rem;
   margin: 0;
-  padding: 0.38rem 0.4rem 0.38rem 2.25rem;
-  border-top: 1px solid rgba(var(--signal-reference-rgb), 0.16);
+  padding: 0.58rem 0.25rem 0.58rem 2rem;
+  border-top: 1px solid rgba(var(--signal-reference-rgb), 0.1);
   color: var(--color-concrete-300);
 }
 .docs-article-html > :is(ul, ol) > li:first-child,

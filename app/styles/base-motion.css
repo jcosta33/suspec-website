@@ -8,42 +8,6 @@ main [id],
   scroll-margin-top: 5.5rem;
 }
 
-main section[id]:target {
-  border-radius: var(--radius-panel);
-  outline: 1px solid rgba(var(--signal-core-rgb), 0.22);
-  outline-offset: 0.55rem;
-  box-shadow: 0 0 0 1px rgba(var(--signal-core-rgb), 0.05);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  main section[id]:target {
-    animation: section-target-wake 1.35s ease-out both;
-    animation-range: normal;
-    animation-timeline: auto;
-  }
-}
-
-@keyframes section-target-wake {
-  0% {
-    outline-color: rgba(var(--signal-core-rgb), 0);
-    box-shadow:
-      0 0 0 0 rgba(var(--signal-core-rgb), 0),
-      0 0 0 0 rgba(var(--signal-core-rgb), 0);
-  }
-  28% {
-    outline-color: rgba(var(--signal-core-rgb), 0.42);
-    box-shadow:
-      0 0 0 1px rgba(var(--signal-core-rgb), 0.12),
-      0 0 34px rgba(var(--signal-core-rgb), 0.16);
-  }
-  100% {
-    outline-color: rgba(var(--signal-core-rgb), 0.18);
-    box-shadow:
-      0 0 0 1px rgba(var(--signal-core-rgb), 0.04),
-      0 0 0 rgba(var(--signal-core-rgb), 0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
