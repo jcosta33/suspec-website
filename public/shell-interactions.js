@@ -227,20 +227,6 @@
   }
 
   function updateRouteState() {
-    const current = normalizePath(window.location.pathname);
-    document
-      .querySelectorAll(".site-nav-link, .mobile-menu-link, .site-footer-link-list a")
-      .forEach((link) => {
-      const href = link.getAttribute("href") || "";
-      if (href.startsWith("http") || href.startsWith("mailto:")) return;
-      const linkPath = normalizePath(href);
-      const active =
-        current === linkPath ||
-        (linkPath !== "/" && current.startsWith(linkPath));
-      if (active) link.setAttribute("aria-current", "page");
-      else link.removeAttribute("aria-current");
-      });
-
     const label = folioLabel(window.location.pathname);
     document.querySelectorAll("[data-folio-label]").forEach((node) => {
       node.setAttribute("data-label", label);

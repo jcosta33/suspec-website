@@ -122,7 +122,6 @@ async function auditDesktopNav(cdp, baseUrl) {
   for (const pattern of [
     /Skip to main content/i,
     /Suspec home/i,
-    /^What is Suspec$/i,
     /^Loop$/i,
     /^Skills$/i,
     /^Docs$/i,
@@ -157,11 +156,38 @@ async function auditMobileMenu(cdp, baseUrl) {
   pushIf(failures, opened.expanded !== "true" || opened.hidden !== false, "mobile menu did not open from keyboard");
   pushIf(failures, !opened.inMenu, "mobile menu did not move focus into menu");
   pushIf(failures, sequence.some((item) => !item.inMobileMenu), "Tab escaped open mobile menu");
-  pushIf(failures, !containsName(sequence, /What is Suspec/i), "mobile menu missing work link in tab order");
+  pushIf(failures, !containsName(sequence, /^Loop$/i), "mobile menu missing work link in tab order");
   pushIf(failures, !containsName(sequence, /^Docs$/i), "mobile menu missing docs link in tab order");
   pushIf(failures, closed.expanded !== "false" || closed.hidden !== true, "Escape did not close mobile menu");
   pushIf(failures, !/Toggle navigation menu|mobile-menu-toggle/.test(closed.active), "Escape did not restore focus to toggle");
   return { label: "mobile-menu", failures, opened, closed, summary: summarizeSequence(sequence) };
+}
+
+async function auditActiveNav(cdp, baseUrl) {
+  await loadRoute(cdp, baseUrl, "/the-loop/", desktop);
+  const before = await cdp.eval(`(() =>
+    [...document.querySelectorAll('.site-nav-link[aria-current="page"]')]
+      .map((link) => link.textContent.trim())
+  )()`);
+  const clicked = await cdp.eval(`(() => {
+    const link = [...document.querySelectorAll('.site-nav-link')]
+      .find((item) => item.textContent.trim() === 'Skills');
+    link?.click();
+    return Boolean(link);
+  })()`);
+  if (clicked) {
+    await waitForRouteReady(cdp, "/skills/");
+    await wait(300);
+  }
+  const after = await cdp.eval(`(() =>
+    [...document.querySelectorAll('.site-nav-link[aria-current="page"]')]
+      .map((link) => link.textContent.trim())
+  )()`);
+  const failures = [];
+  pushIf(failures, before.length !== 1 || before[0] !== "Loop", "Loop route has the wrong active nav item");
+  pushIf(failures, !clicked, "Skills nav link missing");
+  pushIf(failures, after.length !== 1 || after[0] !== "Skills", "active nav did not follow client navigation");
+  return { label: "active-nav", failures, before, after };
 }
 
 async function auditDocsSearch(cdp, baseUrl) {
@@ -232,6 +258,7 @@ try {
   const { cdp, close } = await openCdp(chrome);
   const audits = [
     await auditDesktopNav(cdp, baseUrl),
+    await auditActiveNav(cdp, baseUrl),
     await auditMobileMenu(cdp, baseUrl),
     await auditDocsSearch(cdp, baseUrl),
     await auditCopyButtons(cdp, baseUrl),

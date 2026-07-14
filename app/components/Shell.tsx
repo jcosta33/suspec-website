@@ -1,11 +1,11 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
-import { ExternalLink, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { ActiveNavLink } from "./ActiveNavLink";
 import { Logo } from "./Logo";
 import { Section } from "./Section";
 
 const navLinks = [
-  { label: "What is Suspec", href: "/#what-is-suspec" },
   { label: "Loop", href: "/the-loop" },
   { label: "Skills", href: "/skills" },
   { label: "CLI", href: "/cli" },
@@ -20,9 +20,8 @@ const mobileNavGroups = [
     title: "Work",
     tone: "core",
     links: [
-      { label: "What is Suspec", href: "/#what-is-suspec", step: "01" },
-      { label: "Loop", href: "/the-loop", step: "02" },
-      { label: "Get started", href: "/get-started", step: "03" },
+      { label: "Loop", href: "/the-loop", step: "01" },
+      { label: "Get started", href: "/get-started", step: "02" },
     ],
   },
   {
@@ -55,7 +54,6 @@ const footerGroups = [
     title: "Work",
     tone: "core",
     links: [
-      { label: "What is Suspec", href: "/#what-is-suspec" },
       { label: "Loop", href: "/the-loop" },
       { label: "Get started", href: "/get-started" },
     ],
@@ -83,41 +81,6 @@ const footerGroups = [
     ],
   },
 ];
-
-function isExternal(href: string) {
-  return href.startsWith("http");
-}
-
-function NavLink({
-  link,
-  className,
-}: {
-  link: { label: string; href: string; step?: string };
-  className: string;
-}) {
-  const external = isExternal(link.href);
-  return (
-    <Link
-      href={link.href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      aria-label={external ? `${link.label} (opens in new tab)` : undefined}
-      className={`relative inline-flex min-w-11 items-center ${className}`}
-    >
-      <span className="inline-flex items-center gap-1.5">
-        <span className="mobile-menu-link-main">
-          {link.step && (
-            <span className="mobile-menu-link-index" aria-hidden="true">
-              {link.step}
-            </span>
-          )}
-          <span>{link.label}</span>
-        </span>
-        {external && <ExternalLink className="h-3 w-3" aria-hidden="true" />}
-      </span>
-    </Link>
-  );
-}
 
 export function Shell({ children }: { children: ReactNode }) {
   const initialFolioLabel = "Suspec / record";
@@ -153,7 +116,7 @@ export function Shell({ children }: { children: ReactNode }) {
             aria-label="Primary"
           >
             {navLinks.map((link) => (
-              <NavLink
+              <ActiveNavLink
                 key={link.label}
                 link={link}
                 className="site-nav-link min-h-11 rounded-sm px-2 text-sm font-medium text-concrete-400 transition-[color] hover:text-suspec-yellow focus-ring"
@@ -200,7 +163,7 @@ export function Shell({ children }: { children: ReactNode }) {
                 <p className="mobile-menu-group-title">{group.title}</p>
                 <div className="mobile-menu-link-list">
                   {group.links.map((link) => (
-                    <NavLink
+                    <ActiveNavLink
                       key={link.label}
                       link={link}
                       className="mobile-menu-link min-h-11 text-base font-medium transition-[background-color,border-color,color] focus-ring"
@@ -284,7 +247,7 @@ export function Shell({ children }: { children: ReactNode }) {
                 <p className="site-footer-link-title">{group.title}</p>
                 <div className="site-footer-link-list">
                   {group.links.map((link) => (
-                    <NavLink
+                    <ActiveNavLink
                       key={link.label}
                       link={link}
                       className="min-h-11 min-w-11 rounded-sm px-1 text-sm font-medium text-concrete-400 transition-[color] hover:text-suspec-yellow focus-ring"
