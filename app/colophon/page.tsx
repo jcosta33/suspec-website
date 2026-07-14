@@ -155,7 +155,7 @@ export default function ColophonPage() {
       </Section>
 
       <Section
-        register="01 / production ledger"
+        register="01 / production notes"
         registerTone="core"
         className="colophon-section grid content-start gap-5 py-0 sm:gap-6 lg:grid-cols-[1.1fr_0.9fr]"
       >

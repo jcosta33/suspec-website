@@ -408,7 +408,7 @@ export const skillDetails: readonly SkillDetail[] = [
     misuse: "Using it as a broad audit or counting three shallow passes as independent.",
     visual: "passes",
     example: {
-      title: "pass ledger",
+      title: "pass report",
       meta: "fresh pass 01 -> 02 -> 03",
       lines: [
         "PASS 01 / contract boundary / fixed",

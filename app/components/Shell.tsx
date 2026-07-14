@@ -257,7 +257,7 @@ export function Shell({ children }: { children: ReactNode }) {
       <div className="site-footer gilt-trim overflow-hidden border-t border-panel-border bg-footer">
         <Section as="footer" className="site-footer-grid py-14 sm:py-16">
           <div className="site-footer-register" aria-hidden="true">
-            <span>closing ledger</span>
+            <span>Suspec</span>
             <span data-folio-label>{initialFolioLabel}</span>
             <span>reviewable work</span>
           </div>
