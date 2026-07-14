@@ -16,7 +16,7 @@ Copy rules:
 - Present the methodology directly — no transition narration.
 - The only CLI surface the site may show is `suspec check` (three invocations,
   exit codes 0/1/2, `--json`) and `suspec check --contract`.
-- Keys and scaffold, never mandatory/optional (ADR-0144): the keys — intent,
+- Keys and scaffold, never mandatory/optional (ADR-0144): the keys — spec,
   review, findings — are present on virtually every change; the spec, task
   split, inventory, change plan, and checker are scaffold the work pulls in.
   Seal semantics: hexagon = the six-step loop, inscribed triangle = the three

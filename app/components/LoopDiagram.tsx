@@ -85,7 +85,7 @@ export function LoopDiagram({
   });
   const sealPath = sealPoints.map((point) => `${point.x},${point.y}`).join(" ");
   // The inscribed triangle, read out of the hexagon's alternate vertices. It stands
-  // for the three keys — intent · review · findings.
+  // for the three keys — spec · review · findings.
   const keysSeal = [sealPoints[1], sealPoints[3], sealPoints[5]]
     .map((point) => `${point.x},${point.y}`)
     .join(" ");
@@ -107,7 +107,7 @@ export function LoopDiagram({
           <svg
             viewBox="0 0 100 100"
             className="h-full w-full"
-            aria-label="Suspec seal: the six-step loop hexagon with the inscribed triangle of the three keys — intent, review, findings"
+            aria-label="Suspec seal: the six-step loop hexagon with the inscribed triangle of the three keys — spec, review, findings"
             role="img"
           >
             <circle
@@ -205,8 +205,8 @@ export function LoopDiagram({
           </h2>
           <p className="mt-3 max-w-full text-sm leading-relaxed text-concrete-400 sm:max-w-2xl">
             Six steps around the hexagon; the inscribed triangle is the three
-            keys — intent, review, findings: present on virtually every
-            change, at whatever weight it earns. Intent stated, evidence
+            keys — spec, review, findings: present on virtually every change,
+            at whatever weight it earns. Spec set, evidence
             reconciled, lessons kept.
           </p>
         </div>

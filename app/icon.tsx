@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 // Generated at build (works under output:export) — no logo asset needed. The loop mark
-// (the keys triangle — intent · review · findings — inscribed in the six-step loop
+// (the keys triangle — spec · review · findings — inscribed in the six-step loop
 // hexagon) sits on a transparent canvas.
 export const dynamic = "force-static";
 

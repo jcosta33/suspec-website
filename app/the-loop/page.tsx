@@ -21,7 +21,7 @@ import { loopStepHref, loopSteps } from "./loopSteps";
 
 const SITE_URL = "https://suspecframework.dev";
 const loopDescription =
-  "The Suspec loop: intent, spec, implement, review, check, and findings. Most changes use the three keys — intent, review, findings. Promotion moves a selected record into project-owned permanence when it needs to stay.";
+  "The Suspec loop: intent, spec, implement, review, check, and findings. Most changes use the three keys — spec, review, findings. Promotion moves a selected record into project-owned permanence when it needs to stay.";
 const loopTitle = "The Suspec loop — spec, implement, review, check";
 
 export const metadata: Metadata = {
@@ -144,7 +144,7 @@ export default function TheLoopPage() {
       >
         <div className="max-w-3xl space-y-3 lg:col-span-2">
           <p className="font-mono text-xs uppercase tracking-[0.12em] text-signal-reference">
-            loop ledger
+            loop records
           </p>
           <Heading>Records between steps</Heading>
           <p className="text-concrete-400">
@@ -157,10 +157,10 @@ export default function TheLoopPage() {
             <PaperArtifact
               label="note"
               title="the keys"
-              meta="Intent · Review · Findings"
+              meta="Spec · Review · Findings"
             >
               <p>
-                Intent states the work. Review reconciles the evidence.
+                Spec sets the bar. Review reconciles the evidence.
                 Findings keep what survives.
               </p>
             </PaperArtifact>

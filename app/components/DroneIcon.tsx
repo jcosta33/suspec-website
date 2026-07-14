@@ -8,7 +8,7 @@ const points = [
   [6, 21],
   [6, 11],
 ];
-// The three keys (intent · review · findings) — the downward triangle the alternate
+// The three keys (spec · review · findings) — the downward triangle the alternate
 // vertices form, read out of the hexagon; its apex sits where the loop bottoms out.
 const keys = [points[1], points[3], points[5]];
 
