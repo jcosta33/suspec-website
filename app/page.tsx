@@ -356,8 +356,9 @@ export default function HomePage() {
               Specs are not src.
             </h2>
             <p className="mt-4 text-concrete-400">
-              LLMs are not compilers. Fine. A spec still gives the agent a
-              plan, reviewers a target, and findings somewhere to land.
+              LLMs are not compilers. Compilers don&apos;t cost a fortune to run
+              or lie to you. A spec still gives the agent a plan, reviewers a
+              target, and findings somewhere to land.
             </p>
             <p className="mt-3 text-sm text-concrete-400">
               Working records stay beside your harness artifacts. Promote the
