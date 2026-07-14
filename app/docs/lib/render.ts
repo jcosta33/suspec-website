@@ -334,6 +334,35 @@ const rehypeFocusableScrollables: Plugin<[], HastRoot> = () => (tree) => {
   });
 };
 
+const runnableCodeLanguages = new Set(["bash", "console", "sh", "shell"]);
+
+function codeLanguage(pre: HastElement): string {
+  const code = elementChildren(pre).find((child) => child.tagName === "code");
+  const value = code?.properties?.className;
+  const classes = Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === "string")
+    : typeof value === "string"
+      ? value.split(/\s+/)
+      : [];
+  return classes.find((className) => className.startsWith("language-"))?.slice(9) ?? "text";
+}
+
+function exampleFilename(language: string): string {
+  const extensions: Record<string, string> = {
+    javascript: "js",
+    json: "json",
+    jsx: "jsx",
+    markdown: "md",
+    sol: "sol",
+    text: "txt",
+    tsx: "tsx",
+    typescript: "ts",
+    yaml: "yaml",
+    yml: "yml",
+  };
+  return `example.${extensions[language] ?? language}`;
+}
+
 const rehypeWrapCodeBlocks: Plugin<[], HastRoot> = () => (tree) => {
   visit(tree, "element", (node, index, parent) => {
     if (node.tagName !== "pre" || index === undefined || !parent) return;
@@ -345,41 +374,76 @@ const rehypeWrapCodeBlocks: Plugin<[], HastRoot> = () => (tree) => {
     )
       return SKIP;
 
-    const wrapper: HastElement = {
-      type: "element",
-      tagName: "div",
-      properties: { className: ["docs-code-shell"] },
-      children: [
-        {
+    const language = codeLanguage(node);
+    const runnable = runnableCodeLanguages.has(language);
+    const wrapper: HastElement = runnable
+      ? {
           type: "element",
           tagName: "div",
-          properties: {
-            className: ["docs-code-toolbar"],
-            dataPagefindIgnore: "true",
-          },
+          properties: { className: ["docs-code-shell"] },
           children: [
             {
               type: "element",
-              tagName: "span",
-              properties: { className: ["docs-code-label"] },
-              children: [{ type: "text", value: "code" }],
+              tagName: "div",
+              properties: {
+                className: ["docs-code-toolbar"],
+                dataPagefindIgnore: "true",
+              },
+              children: [
+                {
+                  type: "element",
+                  tagName: "span",
+                  properties: { className: ["docs-code-label"] },
+                  children: [{ type: "text", value: "command" }],
+                },
+                {
+                  type: "element",
+                  tagName: "button",
+                  properties: {
+                    type: "button",
+                    className: ["docs-code-copy", "copy-button", "focus-ring"],
+                    ariaLabel: "Copy command",
+                    dataDocsCodeCopy: "true",
+                  },
+                  children: [{ type: "text", value: "Copy" }],
+                },
+              ],
+            },
+            node,
+          ],
+        }
+      : {
+          type: "element",
+          tagName: "article",
+          properties: { className: ["docs-file-artifact", "paper-artifact"] },
+          children: [
+            {
+              type: "element",
+              tagName: "div",
+              properties: { className: ["docs-file-artifact-header"] },
+              children: [
+                {
+                  type: "element",
+                  tagName: "p",
+                  properties: { className: ["docs-file-artifact-title"] },
+                  children: [{ type: "text", value: exampleFilename(language) }],
+                },
+                {
+                  type: "element",
+                  tagName: "span",
+                  properties: { className: ["paper-stamp"] },
+                  children: [{ type: "text", value: "file" }],
+                },
+              ],
             },
             {
               type: "element",
-              tagName: "button",
-              properties: {
-                type: "button",
-                className: ["docs-code-copy", "copy-button", "focus-ring"],
-                ariaLabel: "Copy code sample",
-                dataDocsCodeCopy: "true",
-              },
-              children: [{ type: "text", value: "Copy" }],
+              tagName: "div",
+              properties: { className: ["docs-file-artifact-body"] },
+              children: [node],
             },
           ],
-        },
-        node,
-      ],
-    };
+        };
 
     parent.children[index] = wrapper as ElementContent;
     return SKIP;

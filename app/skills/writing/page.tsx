@@ -13,10 +13,10 @@ import {
 import { Section } from "../../components/Section";
 import { Card } from "../../components/Card";
 import { Panel } from "../../components/Panel";
-import { TerminalWindow } from "../../components/TerminalWindow";
 import { DroneIcon } from "../../components/DroneIcon";
 import { HexBadge } from "../../components/HexBadge";
 import { PageHero } from "../../components/PageHero";
+import { PaperArtifact } from "../../components/PaperArtifact";
 import { HeroTrace } from "../../components/HeroTrace";
 import { Heading } from "../../components/Heading";
 import { JsonLd } from "../../components/JsonLd";
@@ -366,30 +366,11 @@ export default function WritingSkillsPage() {
             </div>
           </dl>
         </div>
-        <Panel brushed className="p-2">
-          <TerminalWindow
-            title="terminal"
-            copyText={skillFolderLayout}
-            copyLabel="Copy layout"
-          >
-            <p className="text-concrete-500"># minimal</p>
-            <p className="text-concrete-100">
-              skills/sus-spec/
-              <br />
-              &nbsp;&nbsp;SKILL.md
-            </p>
-            <p className="mt-3 text-concrete-500"># with one reference</p>
-            <p className="text-concrete-100">
-              skills/sus-spec/
-              <br />
-              &nbsp;&nbsp;SKILL.md
-              <br />
-              &nbsp;&nbsp;references/
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;task-template.md
-            </p>
-          </TerminalWindow>
-        </Panel>
+        <PaperArtifact label="files" title="skill folder" meta="minimal layout">
+          <pre className="m-0 whitespace-pre-wrap font-mono text-sm leading-7 text-ink">
+            {skillFolderLayout}
+          </pre>
+        </PaperArtifact>
       </Section>
 
       <Section
@@ -419,22 +400,11 @@ export default function WritingSkillsPage() {
             ))}
           </ul>
         </Card>
-        <Panel brushed className="p-2">
-          <TerminalWindow
-            title="SKILL.md"
-            copyText={skillFrontMatter}
-            copyLabel="Copy front matter"
-          >
-            <p className="text-concrete-500">---</p>
-            <p className="text-concrete-100">name: sus-spec</p>
-            <p className="text-concrete-100">
-              description: Forge decided intent into a verifiable spec. ALWAYS
-              apply when a non-trivial change needs a contract. Skip unresolved
-              decisions and trivial inline work.
-            </p>
-            <p className="text-concrete-500">---</p>
-          </TerminalWindow>
-        </Panel>
+        <PaperArtifact label="skill" title="SKILL.md" meta="front matter">
+          <pre className="m-0 whitespace-pre-wrap font-mono text-sm leading-7 text-ink">
+            {skillFrontMatter}
+          </pre>
+        </PaperArtifact>
       </Section>
 
       <Section

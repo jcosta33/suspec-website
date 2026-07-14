@@ -6,7 +6,6 @@ import {
 import { Section } from "../components/Section";
 import { Card } from "../components/Card";
 import { Panel } from "../components/Panel";
-import { TerminalWindow } from "../components/TerminalWindow";
 import { GiltBand } from "../components/GiltBand";
 import { PageHero } from "../components/PageHero";
 import { HeroTrace } from "../components/HeroTrace";
@@ -118,23 +117,11 @@ export default function TheLoopPage() {
             output. No file or packet.
           </p>
         </div>
-        <Panel brushed className="p-2">
-          <TerminalWindow
-            title="inline spec — the whole thing"
-            ariaLabel="A one-line inline spec"
-            copyText={trivialPathLines}
-          >
-            <p className="text-concrete-100">
-              Fix: expired refresh tokens must redirect to /login, not 500.
-            </p>
-            <p className="text-concrete-100">
-              Verify with: pnpm test:run auth-refresh-expired-token
-            </p>
-            <p className="mt-3 text-concrete-400">
-              Implement. Run. Paste output.
-            </p>
-          </TerminalWindow>
-        </Panel>
+        <PaperArtifact label="spec" title="inline spec" meta="the whole thing">
+          <pre className="m-0 whitespace-pre-wrap font-mono text-sm leading-7 text-ink">
+            {trivialPathLines}
+          </pre>
+        </PaperArtifact>
       </Section>
 
       <Section

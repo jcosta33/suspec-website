@@ -156,7 +156,7 @@ async function auditMobileMenu(cdp, baseUrl) {
   pushIf(failures, opened.expanded !== "true" || opened.hidden !== false, "mobile menu did not open from keyboard");
   pushIf(failures, !opened.inMenu, "mobile menu did not move focus into menu");
   pushIf(failures, sequence.some((item) => !item.inMobileMenu), "Tab escaped open mobile menu");
-  pushIf(failures, !containsName(sequence, /^Loop$/i), "mobile menu missing work link in tab order");
+  pushIf(failures, !containsName(sequence, /^(?:01\s*)?Loop$/i), "mobile menu missing work link in tab order");
   pushIf(failures, !containsName(sequence, /^Docs$/i), "mobile menu missing docs link in tab order");
   pushIf(failures, closed.expanded !== "false" || closed.hidden !== true, "Escape did not close mobile menu");
   pushIf(failures, !/Toggle navigation menu|mobile-menu-toggle/.test(closed.active), "Escape did not restore focus to toggle");
@@ -214,7 +214,7 @@ async function auditDocsSearch(cdp, baseUrl) {
 async function auditCopyButtons(cdp, baseUrl) {
   await loadRoute(cdp, baseUrl, "/cli/", desktop);
   const cliSequence = await tabSequence(cdp, 90);
-  await loadRoute(cdp, baseUrl, "/docs/reference/cli/", desktop, 1800);
+  await loadRoute(cdp, baseUrl, "/docs/tutorial/01-pull-and-spec/", desktop, 1800);
   const docsCopy = await cdp.eval(`(() => {
     const el = document.querySelector('[data-docs-code-copy]');
     if (!el) return null;
@@ -245,6 +245,26 @@ async function auditCopyButtons(cdp, baseUrl) {
   };
 }
 
+async function auditDocsExamples(cdp, baseUrl) {
+  await loadRoute(cdp, baseUrl, "/docs/tutorial/01-pull-and-spec/", desktop, 1800);
+  const examples = await cdp.eval(`(() => ({
+    files: document.querySelectorAll('.docs-file-artifact').length,
+    fileCopyButtons: document.querySelectorAll('.docs-file-artifact [data-docs-code-copy]').length,
+    commands: document.querySelectorAll('.docs-code-shell').length,
+    commandCopyButtons: document.querySelectorAll('.docs-code-shell [data-docs-code-copy]').length,
+  }))()`);
+  const failures = [];
+  pushIf(failures, examples.files === 0, "docs file examples missing");
+  pushIf(failures, examples.fileCopyButtons !== 0, "docs file example exposes a copy button");
+  pushIf(failures, examples.commands === 0, "docs command example missing");
+  pushIf(
+    failures,
+    examples.commandCopyButtons !== examples.commands,
+    "docs command example is missing its copy button",
+  );
+  return { label: "docs-examples", failures, examples };
+}
+
 assertDistBuilt("audit-keyboard");
 const server = createStaticDistServer();
 const port = await listen(server);
@@ -262,6 +282,7 @@ try {
     await auditMobileMenu(cdp, baseUrl),
     await auditDocsSearch(cdp, baseUrl),
     await auditCopyButtons(cdp, baseUrl),
+    await auditDocsExamples(cdp, baseUrl),
   ];
 
   for (const audit of audits) {

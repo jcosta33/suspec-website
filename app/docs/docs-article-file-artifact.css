@@ -1,0 +1,59 @@
+.docs-prose .docs-file-artifact {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  overflow: hidden;
+}
+
+.docs-file-artifact-header {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.75rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(16, 11, 7, 0.2);
+}
+
+.docs-file-artifact-title {
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-heading), monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.docs-file-artifact-body {
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+}
+
+.docs-prose .docs-file-artifact pre,
+.docs-prose .docs-file-artifact pre:hover,
+.docs-prose .docs-file-artifact pre:focus-within {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--color-ink);
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+}
+
+.docs-prose .docs-file-artifact pre::after {
+  display: none;
+}
+
+.docs-prose .docs-file-artifact code {
+  color: inherit;
+}
+
+@media (max-width: 40rem) {
+  .docs-prose .docs-file-artifact {
+    padding: 1rem;
+  }
+}

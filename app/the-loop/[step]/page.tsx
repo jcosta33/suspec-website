@@ -7,6 +7,7 @@ import { HexBadge } from "../../components/HexBadge";
 import { HeroTrace } from "../../components/HeroTrace";
 import { JsonLd } from "../../components/JsonLd";
 import { PageHero } from "../../components/PageHero";
+import { PaperArtifact } from "../../components/PaperArtifact";
 import { Panel } from "../../components/Panel";
 import { Section } from "../../components/Section";
 import { signalRoles } from "../../components/signalStyles";
@@ -119,23 +120,35 @@ export default async function LoopStepPage({
           </div>
           <p className="text-lg leading-relaxed text-concrete-300">{step.body}</p>
         </div>
-        <Panel brushed className="p-2">
-          <TerminalWindow
-            title={step.example.title}
-            ariaLabel={`${step.name} example — ${step.example.title}`}
-            copyText={exampleText}
+        {step.slug === "check" ? (
+          <Panel brushed className="p-2">
+            <TerminalWindow
+              title={step.example.title}
+              ariaLabel={`${step.name} example — ${step.example.title}`}
+              copyText={exampleText}
+            >
+              {step.example.lines.map((line, index) => (
+                <p
+                  key={`${line.text}-${index}`}
+                  className={line.prompt ? "text-concrete-100" : "text-concrete-400"}
+                >
+                  {line.prompt && <span className="text-suspec-yellow">$ </span>}
+                  {line.text}
+                </p>
+              ))}
+            </TerminalWindow>
+          </Panel>
+        ) : (
+          <PaperArtifact
+            label={step.slug}
+            title={step.example.title.split("/").at(-1)}
+            meta={step.example.title.includes("/") ? step.example.title : `${step.name} example`}
           >
-            {step.example.lines.map((line, index) => (
-              <p
-                key={`${line.text}-${index}`}
-                className={line.prompt ? "text-concrete-100" : "text-concrete-400"}
-              >
-                {line.prompt && <span className="text-suspec-yellow">$ </span>}
-                {line.text}
-              </p>
-            ))}
-          </TerminalWindow>
-        </Panel>
+            <pre className="m-0 whitespace-pre-wrap font-mono text-sm leading-7 text-ink">
+              {exampleText}
+            </pre>
+          </PaperArtifact>
+        )}
       </Section>
 
       <Section

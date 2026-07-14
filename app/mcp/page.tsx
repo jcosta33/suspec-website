@@ -431,30 +431,11 @@ export default function McpPage() {
         registerTone="reference"
         className="grid scroll-mt-28 gap-6 lg:grid-cols-[1.05fr_0.95fr]"
       >
-        <Panel brushed className="p-2">
-          <TerminalWindow
-            title="mcp.json"
-            ariaLabel="suspec-mcp config"
-            copyText={mcpConfigSnippet}
-          >
-            <p className="text-concrete-500">
-              {"// Claude Desktop / Cursor MCP config"}
-            </p>
-            <p>{"{"}</p>
-            <p className="pl-4">&quot;mcpServers&quot;: {"{"}</p>
-            <p className="pl-8">&quot;suspec&quot;: {"{"}</p>
-            <p className="pl-12">
-              &quot;command&quot;: &quot;/absolute/path/to/suspec-mcp/bin/suspec-mcp.js&quot;,
-            </p>
-            <p className="pl-12">
-              &quot;args&quot;: [&quot;--suspec-bin&quot;,
-              &quot;/absolute/path/to/suspec-cli/bin/suspec.js&quot;]
-            </p>
-            <p className="pl-8">{"}"}</p>
-            <p className="pl-4">{"}"}</p>
-            <p>{"}"}</p>
-          </TerminalWindow>
-        </Panel>
+        <PaperArtifact label="config" title="mcp.json" meta="Claude Desktop / Cursor">
+          <pre className="m-0 whitespace-pre-wrap font-mono text-sm leading-7 text-ink">
+            {mcpConfigSnippet}
+          </pre>
+        </PaperArtifact>
 
         <PaperArtifact
           label="note"

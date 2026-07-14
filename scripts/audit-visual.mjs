@@ -30,7 +30,7 @@ const skillRoutes = [
   "/skills/triple-check/",
 ];
 
-const routes = [
+const defaultRoutes = [
   "/",
   "/the-loop/",
   "/the-loop/intent/",
@@ -47,10 +47,17 @@ const routes = [
   "/mcp/",
   "/docs/",
   "/docs/01-what-is-suspec/",
+  "/docs/tutorial/01-pull-and-spec/",
   "/docs/reference/cli/",
   "/colophon/",
   "/kitchen-sink/",
 ];
+
+const requestedRoutes = process.env.AUDIT_ROUTES
+  ?.split(",")
+  .map((route) => route.trim())
+  .filter(Boolean);
+const routes = requestedRoutes?.length ? requestedRoutes : defaultRoutes;
 
 const viewports = [
   { name: "desktop", width: 1280, height: 900, mobile: false, dpr: 1 },
