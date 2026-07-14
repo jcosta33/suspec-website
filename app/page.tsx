@@ -154,7 +154,7 @@ export default function HomePage() {
           >
             <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-100">
               Structure agent work. State intent, verify output, keep what
-              survives. No runtime.
+              survives.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button asChild className="w-full max-w-72 sm:w-auto sm:max-w-none">
