@@ -67,14 +67,10 @@ const mcpConfigSnippet = `{
 }`;
 
 const mcpInstallCommands = [
-  "HOST=github.com/jcosta33",
-  "PKG=suspec-mcp",
-  "SRC=$HOST/$PKG.git",
-  "git clone https://$SRC",
-  'cd "$PKG"',
+  "git clone https://github.com/jcosta33/suspec-mcp",
+  "cd suspec-mcp",
   "corepack enable",
   "pnpm install --frozen-lockfile",
-  "pnpm build",
 ].join("\n");
 
 const guardrails = [
@@ -670,28 +666,16 @@ export default function McpPage() {
               # install from source; no published package yet
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}HOST=github.com/jcosta33
+              <span className="text-suspec-yellow">$</span>{" "}git clone https://github.com/jcosta33/suspec-mcp
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}PKG=suspec-mcp
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}SRC=$HOST/$PKG.git
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}git clone https://$SRC
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}cd &quot;$PKG&quot;
+              <span className="text-suspec-yellow">$</span>{" "}cd suspec-mcp
             </p>
             <p className="text-concrete-100">
               <span className="text-suspec-yellow">$</span>{" "}corepack enable
             </p>
             <p className="text-concrete-100">
               <span className="text-suspec-yellow">$</span>{" "}pnpm install --frozen-lockfile
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}pnpm build
             </p>
           </TerminalWindow>
         </Panel>

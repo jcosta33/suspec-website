@@ -57,25 +57,17 @@ export const metadata: Metadata = {
 const skillsInstallCommand = "npx skills add jcosta33/suspec-skills -g";
 
 const mcpInstallCommands = [
-  "HOST=github.com/jcosta33",
-  "PKG=suspec-mcp",
-  "SRC=$HOST/$PKG.git",
-  "git clone https://$SRC",
-  'cd "$PKG"',
+  "git clone https://github.com/jcosta33/suspec-mcp",
+  "cd suspec-mcp",
   "corepack enable",
   "pnpm install --frozen-lockfile",
-  "pnpm build",
 ].join("\n");
 
 const cliInstallCommands = [
-  "HOST=github.com/jcosta33",
-  "PKG=suspec-cli",
-  "SRC=$HOST/$PKG.git",
-  "git clone https://$SRC",
-  'cd "$PKG"',
+  "git clone https://github.com/jcosta33/suspec-cli",
+  "cd suspec-cli",
   "corepack enable",
   "pnpm install --frozen-lockfile",
-  "pnpm build",
   "pnpm link --global",
   "suspec check ./spec.md",
 ].join("\n");
@@ -549,28 +541,19 @@ export default function GetStartedPage() {
               # install the CLI from source
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}HOST=github.com/jcosta33
+              <span className="text-suspec-yellow">$</span>{" "}git clone https://github.com/jcosta33/suspec-cli
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}PKG=suspec-cli
+              <span className="text-suspec-yellow">$</span>{" "}cd suspec-cli
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}SRC=$HOST/$PKG.git
+              <span className="text-suspec-yellow">$</span>{" "}corepack enable
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}git clone https://$SRC
+              <span className="text-suspec-yellow">$</span>{" "}pnpm install --frozen-lockfile
             </p>
             <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}cd &quot;$PKG&quot;
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}npm install
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}npm run build
-            </p>
-            <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}npm link
+              <span className="text-suspec-yellow">$</span>{" "}pnpm link --global
             </p>
             <p className="mt-2 text-concrete-500">
               # then, on any artifact you name by path
@@ -617,28 +600,16 @@ export default function GetStartedPage() {
                 # install from source; no published package yet
               </p>
               <p className="text-concrete-100">
-                <span className="text-suspec-yellow">$</span>{" "}HOST=github.com/jcosta33
+                <span className="text-suspec-yellow">$</span>{" "}git clone https://github.com/jcosta33/suspec-mcp
               </p>
               <p className="text-concrete-100">
-                <span className="text-suspec-yellow">$</span>{" "}PKG=suspec-mcp
-              </p>
-              <p className="text-concrete-100">
-                <span className="text-suspec-yellow">$</span>{" "}SRC=$HOST/$PKG.git
-              </p>
-              <p className="text-concrete-100">
-                <span className="text-suspec-yellow">$</span>{" "}git clone https://$SRC
-              </p>
-              <p className="text-concrete-100">
-                <span className="text-suspec-yellow">$</span>{" "}cd &quot;$PKG&quot;
+                <span className="text-suspec-yellow">$</span>{" "}cd suspec-mcp
               </p>
               <p className="text-concrete-100">
                 <span className="text-suspec-yellow">$</span>{" "}corepack enable
               </p>
               <p className="text-concrete-100">
                 <span className="text-suspec-yellow">$</span>{" "}pnpm install --frozen-lockfile
-              </p>
-              <p className="text-concrete-100">
-                <span className="text-suspec-yellow">$</span>{" "}pnpm build
               </p>
             </TerminalWindow>
           </Panel>
