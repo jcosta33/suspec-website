@@ -4,10 +4,15 @@ import {
   ArrowRight,
   CheckCircle,
   ExternalLink,
+  FileText,
+  LayoutList,
+  NotebookPen,
+  XCircle,
 } from "lucide-react";
 import { ActionLink } from "./components/ActionLink";
 import { Button } from "./components/Button";
 import { Eyebrow } from "./components/Eyebrow";
+import { HexBadge } from "./components/HexBadge";
 import { HeroHexGrid } from "./components/HeroHexGrid";
 import { JsonLd } from "./components/JsonLd";
 import { LoopDiagram } from "./components/LoopDiagram";
@@ -17,7 +22,7 @@ import { PaperArtifact } from "./components/PaperArtifact";
 import { PilotLamp } from "./components/PilotLamp";
 import { Section } from "./components/Section";
 import { TerminalWindow } from "./components/TerminalWindow";
-import type { SignalRole } from "./components/signalStyles";
+import { signalRoles, type SignalRole } from "./components/signalStyles";
 import { canonicalAlternates } from "./seo";
 
 const softwareApp = {
@@ -29,7 +34,7 @@ const softwareApp = {
   softwareVersion: "0.1.0",
   url: "https://suspecframework.dev",
   description:
-    "A methodology for structuring work with coding agents. Skills do the paperwork; your agent does the typing.",
+    "Agent work with a paper trail. Skills implement the method; the optional CLI checks the records.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   publisher: { "@id": "https://suspecframework.dev/#organization" },
 };
@@ -61,6 +66,30 @@ export const metadata: Metadata = {
 const heroInstallCommand = "npx skills add jcosta33/suspec-skills -g";
 
 const heroCheckCommand = "suspec check review.md --spec spec.md";
+
+const overviewParts = [
+  {
+    label: "spec",
+    text: "the work, the bar, and how to verify it",
+    icon: FileText,
+  },
+  {
+    label: "task",
+    text: "a split packet when one spec becomes parallel work",
+    icon: LayoutList,
+  },
+  {
+    label: "review",
+    text: "evidence checked against the bar",
+    icon: NotebookPen,
+  },
+] as const;
+
+const overviewBoundaries = [
+  { label: "runtime", text: "Your agent still does the typing." },
+  { label: "tracker", text: "Tickets stay where they are." },
+  { label: "verdict", text: "Facts in. Human decision out." },
+] as const;
 
 const heroProofs = [
   {
@@ -203,9 +232,99 @@ export default function HomePage() {
         </Section>
       </section>
 
-      <section className="border-y border-panel-border bg-section-band py-16 sm:py-20">
+      <section
+        id="what-is-suspec"
+        className="border-y border-panel-border bg-section-band py-16 scroll-mt-24 sm:py-20"
+      >
         <Section
-          register="01 / loop"
+          register="01 / overview"
+          registerTone="evidence"
+          className="section-flow"
+        >
+          <div className="max-w-3xl">
+            <Eyebrow>structured plan mode</Eyebrow>
+            <h2 className="mt-4 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
+              Plan mode, with receipts.
+            </h2>
+            <p className="mt-4 max-w-2xl text-concrete-400">
+              Suspec gives agent work a shape: state the work, set the bar,
+              keep the proof. Your planner, tracker, and repo keep their jobs.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 md:items-start">
+            <Panel
+              variant="inset"
+              className="overview-boundary-panel overview-boundary-panel-is p-5 sm:p-6"
+            >
+              <div className={`section-kicker ${signalRoles.evidence.sectionKicker}`}>
+                <CheckCircle className="h-4 w-4" aria-hidden="true" />
+                <span>what it is</span>
+              </div>
+              <h3 className="mt-3 font-heading text-xl font-semibold text-concrete-100">
+                Useful paperwork
+              </h3>
+              <ul className="overview-is-list mt-6 space-y-4">
+                {overviewParts.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <li
+                      key={item.label}
+                      className="overview-is-item flex items-start gap-4 text-concrete-100"
+                    >
+                      <HexBadge color="evidence" className="overview-is-icon">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </HexBadge>
+                      <span className="overview-boundary-copy grid min-w-0 gap-1 pt-3 leading-snug">
+                        <span className="overview-boundary-label block">
+                          {item.label}:
+                        </span>
+                        <span>{item.text}</span>
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </Panel>
+
+            <Panel
+              variant="inset"
+              className="overview-boundary-panel overview-boundary-panel-not p-5 sm:p-6"
+            >
+              <div className={`section-kicker ${signalRoles.change.sectionKicker}`}>
+                <XCircle className="h-4 w-4" aria-hidden="true" />
+                <span>what it is not</span>
+              </div>
+              <h3 className="mt-3 font-heading text-xl font-semibold text-concrete-100">
+                Another platform
+              </h3>
+              <ul className="overview-not-list mt-5 divide-y divide-panel-border/70">
+                {overviewBoundaries.map((item) => (
+                  <li
+                    key={item.label}
+                    className="overview-not-item flex items-start gap-3 py-3 text-concrete-400 first:pt-0 last:pb-0"
+                  >
+                    <XCircle
+                      className="mt-0.5 h-4 w-4 shrink-0 text-signal-change"
+                      aria-hidden="true"
+                    />
+                    <span className="overview-boundary-copy grid min-w-0 gap-1 leading-snug">
+                      <span className="overview-boundary-label block">
+                        {item.label}:
+                      </span>
+                      <span>{item.text}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </Panel>
+          </div>
+        </Section>
+      </section>
+
+      <section className="py-16 sm:py-20">
+        <Section
+          register="02 / loop"
           registerTone="core"
           className="section-flow"
         >
@@ -214,27 +333,35 @@ export default function HomePage() {
             <h2 className="mt-4 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
               The loop, without the ceremony.
             </h2>
+            <p className="mt-4 text-concrete-400">
+              Start with intent. Add structure only when the work earns it.
+            </p>
           </div>
           <LoopDiagram linkSteps compact />
         </Section>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="border-y border-panel-border bg-section-band py-16 sm:py-20">
         <Section
-          register="02 / evidence"
-          registerTone="evidence"
+          id="specs-are-not-src"
+          register="03 / evidence"
+          registerTone="muted"
           className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]"
         >
           <div>
-            <Eyebrow icon={<CheckCircle className="h-4 w-4" aria-hidden="true" />}>
-              spec / example
+            <Eyebrow icon={<FileText className="h-4 w-4" aria-hidden="true" />}>
+              plan, don&apos;t compile
             </Eyebrow>
             <h2 className="mt-4 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
-              Claims are cheap. Paste the output.
+              Specs are not src.
             </h2>
             <p className="mt-4 text-concrete-400">
-              Keep transient records, commands, and evidence together by
-              explicit path. Code stays king.
+              LLMs are not compilers. Fine. A spec still gives the agent a
+              plan, reviewers a target, and findings somewhere to land.
+            </p>
+            <p className="mt-3 text-sm text-concrete-400">
+              Working records stay beside your harness artifacts. Promote the
+              few worth keeping. Code stays king.
             </p>
           </div>
           <PaperArtifact
@@ -257,14 +384,14 @@ export default function HomePage() {
         </Section>
       </section>
 
-      <section className="relative pb-16 pt-6 sm:py-20">
-        <Section register="03 / start" registerTone="core" className="text-center">
+      <section className="relative py-16 sm:py-20">
+        <Section register="04 / start" registerTone="core" className="text-center">
           <Eyebrow className="mx-auto">start / first pass</Eyebrow>
           <h2 className="mt-6 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
-            Start with one spec.
+            Try it on one real change.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-concrete-400">
-            Install the skills. Run one bounded change. Review the evidence.
+            Install the skills. Set the bar. Keep the receipts.
           </p>
           <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
             <Button asChild className="w-full sm:w-auto">

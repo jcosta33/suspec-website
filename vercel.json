@@ -4,6 +4,13 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
+  "redirects": [
+    {
+      "source": "/what-is-suspec",
+      "destination": "/#what-is-suspec",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

@@ -44,7 +44,6 @@ separate Suspec repos:
 | Page              | Source files                                                                             |
 | ----------------- | ---------------------------------------------------------------------------------------- |
 | `/`               | `suspec/README.md`, `suspec/docs/01-what-is-suspec.md`, `suspec/docs/adrs/0144-keys-and-scaffold.md` |
-| `/what-is-suspec` | `suspec/docs/01-what-is-suspec.md`, `suspec/README.md`, `suspec/docs/adrs/0144-keys-and-scaffold.md` |
 | `/the-loop`       | `suspec/docs/02-basic-workflow.md`, `suspec/docs/03-where-files-live.md`, `suspec/docs/adrs/0144-keys-and-scaffold.md` |
 | `/get-started`    | `suspec/docs/ADOPTING.md`, `suspec/docs/tutorial/README.md`                              |
 | `/docs`           | generated from `suspec/docs/**`                                                          |

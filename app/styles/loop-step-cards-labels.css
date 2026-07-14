@@ -15,9 +15,14 @@
 }
 
 .loop-step-card-linked {
-  min-height: 6.75rem;
+  min-height: 8.5rem;
 }
 
 .loop-step-card-linked .loop-step-label {
   font-size: 1rem;
+}
+
+.loop-step-card-linked .loop-step-summary {
+  max-width: 28rem;
+  margin-top: 0.1rem;
 }

@@ -4,14 +4,14 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     align-items: start;
-    gap: clamp(2.1rem, 3.4vw, 3rem);
+    gap: clamp(1.4rem, 2vw, 1.8rem);
   }
 
   .mcp-bridge-overview .section-intro {
     display: grid;
-    grid-template-columns: minmax(16rem, 0.72fr) minmax(0, 1.28fr);
-    gap: clamp(0.9rem, 1.3vw, 1.12rem);
-    max-width: none;
+    grid-template-columns: minmax(0, 48rem);
+    gap: 0.8rem;
+    max-width: 48rem;
     padding-top: 0;
   }
 
@@ -19,12 +19,16 @@
   .mcp-bridge-intro-copy {
     display: grid;
     align-content: start;
-    gap: clamp(0.9rem, 1.3vw, 1.12rem);
+    gap: 0.72rem;
   }
 
   .mcp-bridge-overview .section-intro h2 {
-    max-width: 24rem;
+    max-width: 34rem;
     text-wrap: normal;
+  }
+
+  .mcp-bridge-intro-copy {
+    max-width: 46rem;
   }
 
   .mcp-bridge-overview .mcp-adapter-panel {

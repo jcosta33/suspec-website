@@ -9,7 +9,6 @@ import {
 
 const routes = [
   "/",
-  "/what-is-suspec/",
   "/the-loop/",
   "/the-loop/intent/",
   "/the-loop/spec/",
@@ -69,8 +68,8 @@ const claimPatterns = [
 
 const boundaryRequirements = new Map([
   [
-    "/what-is-suspec/",
-    [/coexists/i, /code (?:stays|is) king/i],
+    "/",
+    [/keep their jobs/i, /code (?:stays|is) king/i],
   ],
   ["/cli/", [/reports facts/i, /no verdicts/i]],
   [

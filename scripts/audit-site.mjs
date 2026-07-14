@@ -9,7 +9,6 @@ import { openCdp, wait, waitForRouteReady } from "./lib/cdp.mjs";
 
 const routes = [
   "/",
-  "/what-is-suspec/",
   "/the-loop/",
   "/the-loop/intent/",
   "/the-loop/spec/",
@@ -58,8 +57,7 @@ const hoverStabilitySelector = [
 ].join(",");
 
 const expectedStructuredTypes = new Map([
-  ["/", ["SoftwareApplication", "FAQPage"]],
-  ["/what-is-suspec/", ["AboutPage"]],
+  ["/", ["SoftwareApplication"]],
   ["/the-loop/", ["WebPage", "ItemList"]],
   ["/the-loop/intent/", ["TechArticle"]],
   ["/the-loop/spec/", ["TechArticle"]],

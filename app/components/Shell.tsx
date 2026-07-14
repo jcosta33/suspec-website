@@ -5,7 +5,7 @@ import { Logo } from "./Logo";
 import { Section } from "./Section";
 
 const navLinks = [
-  { label: "What is Suspec", href: "/what-is-suspec" },
+  { label: "What is Suspec", href: "/#what-is-suspec" },
   { label: "Loop", href: "/the-loop" },
   { label: "Skills", href: "/skills" },
   { label: "CLI", href: "/cli" },
@@ -20,7 +20,7 @@ const mobileNavGroups = [
     title: "Work",
     tone: "core",
     links: [
-      { label: "What is Suspec", href: "/what-is-suspec", step: "01" },
+      { label: "What is Suspec", href: "/#what-is-suspec", step: "01" },
       { label: "Loop", href: "/the-loop", step: "02" },
       { label: "Get started", href: "/get-started", step: "03" },
     ],
@@ -55,7 +55,7 @@ const footerGroups = [
     title: "Work",
     tone: "core",
     links: [
-      { label: "What is Suspec", href: "/what-is-suspec" },
+      { label: "What is Suspec", href: "/#what-is-suspec" },
       { label: "Loop", href: "/the-loop" },
       { label: "Get started", href: "/get-started" },
     ],

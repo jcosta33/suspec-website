@@ -1,7 +1,21 @@
-.mcp-adapter-rail,
 .mcp-guardrail-grid,
 .cli-command-legend {
   gap: clamp(0.64rem, 1vw, 0.86rem);
+}
+
+@media (min-width: 64rem) {
+  .mcp-adapter-rail {
+    gap: 0;
+    background: transparent;
+  }
+
+  .mcp-adapter-step {
+    border-right: 1px solid rgba(var(--package-mcp-rgb), 0.16);
+  }
+
+  .mcp-adapter-step:last-child {
+    border-right: 0;
+  }
 }
 
 @media (min-width: 64rem) {

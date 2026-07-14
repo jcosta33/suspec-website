@@ -31,7 +31,7 @@ Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the a
 
 - [Full documentation, concatenated](https://suspecframework.dev/llms-full.txt): Every user-facing doc in one Markdown file. Useful when one page is not enough.
 - [Documentation home](https://suspecframework.dev/docs/): The full documentation, including the reference layer and the decision ledger.
-- [What is Suspec?](https://suspecframework.dev/what-is-suspec/): Direct product overview, boundaries, and non-goals.
+- [What is Suspec?](https://suspecframework.dev/#what-is-suspec): Product overview, boundaries, and non-goals.
 - [The loop](https://suspecframework.dev/the-loop/): The trivial path, the full loop, the keys, and the scaffold.
 - [Get started](https://suspecframework.dev/get-started/): One install; nothing lands in your repo.
 

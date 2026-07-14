@@ -11,7 +11,6 @@ const ID_RE = /\b(?:id|name)=["']([^"']+)["']/gi;
 
 const mainDocsLinkRoutes = [
   "/",
-  "/what-is-suspec/",
   "/the-loop/",
   "/get-started/",
   "/skills/",

@@ -8,7 +8,6 @@ import {
 
 const routes = [
   "/",
-  "/what-is-suspec/",
   "/the-loop/",
   "/the-loop/intent/",
   "/the-loop/spec/",

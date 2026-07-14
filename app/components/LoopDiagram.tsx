@@ -16,6 +16,7 @@ const steps = [
     label: "Intent",
     icon: Inbox,
     descriptor: "capture the ask",
+    summary: "Name the work before it mutates.",
     description:
       "Every change starts here — often one sentence folded inline. Capture the ask verbatim only when the original is worth preserving.",
   },
@@ -24,6 +25,7 @@ const steps = [
     label: "Spec",
     icon: FileText,
     descriptor: "define requirements",
+    summary: "Set the bar and how to check it.",
     description:
       "The form intent graduates into: verifiable requirements, one per id, each with a Verify with: line. A trivial fix gets one inline line, no file.",
   },
@@ -32,6 +34,7 @@ const steps = [
     label: "Implement",
     icon: Terminal,
     descriptor: "run the change",
+    summary: "Do the work. Keep the receipts.",
     description:
       "Your agent writes the code, runs every verify command, and pastes the real output beside each requirement.",
   },
@@ -40,6 +43,7 @@ const steps = [
     label: "Review",
     icon: ScanEye,
     descriptor: "compare evidence",
+    summary: "Compare the result with the bar.",
     description:
       "An independent reviewer — never the implementer — reconciles the evidence against the spec. Empty evidence is Unverified, never Pass.",
   },
@@ -48,6 +52,7 @@ const steps = [
     label: "Check",
     icon: ListChecks,
     descriptor: "report facts",
+    summary: "Lint the paperwork. No verdicts.",
     description:
       "Pulled in when the work earns it: suspec check reports the facts a lazy review cannot fake. Exit codes are the API; it never renders a verdict.",
   },
@@ -56,6 +61,7 @@ const steps = [
     label: "Findings",
     icon: BookMarked,
     descriptor: "keep lessons",
+    summary: "Keep the lesson. Bin the rest.",
     description:
       "Keep what the pass taught. Durable lessons become native harness memories, decisions become ADRs, behavior becomes tests.",
   },
@@ -215,8 +221,8 @@ export function LoopDiagram({
           const showConnector = index < steps.length - 1 && index % 3 !== 2;
           const cardClassName =
             `loop-step-card loop-step-card-workflow ${
-              compact ? "loop-step-card-linked" : ""
-            } focus-ring hover-shadow-step group relative flex h-full min-h-[13rem] flex-col gap-3 p-4 panel-raised rivet-row transition-[border-color,box-shadow,background-color] duration-150`;
+              compact ? "loop-step-card-linked" : "min-h-[13rem]"
+            } focus-ring hover-shadow-step group relative flex h-full flex-col gap-3 p-4 panel-raised rivet-row transition-[border-color,box-shadow,background-color] duration-150`;
           const content = (
             <>
               <div className="flex items-center justify-between">
@@ -242,11 +248,9 @@ export function LoopDiagram({
                   </span>
                 )}
               </div>
-              {!compact && (
-                <p className="text-sm leading-relaxed text-concrete-400">
-                  {step.description}
-                </p>
-              )}
+              <p className="loop-step-summary text-sm leading-relaxed text-concrete-400">
+                {compact ? step.summary : step.description}
+              </p>
               {showConnector && (
                 <div
                   className="loop-step-connector absolute -right-3 top-1/2 hidden h-1 w-6 -translate-y-1/2 xl:block"
