@@ -71,17 +71,17 @@ const heroCheckCommand = "suspec check review.md --spec spec.md";
 const overviewParts = [
   {
     label: "spec",
-    text: "the work, the bar, and how to verify it",
+    text: "The work, the bar, and how to verify it",
     icon: FileText,
   },
   {
     label: "review",
-    text: "evidence checked against the bar",
+    text: "Evidence checked against the bar",
     icon: NotebookPen,
   },
   {
     label: "findings",
-    text: "the verified lessons worth keeping",
+    text: "The verified lessons worth keeping",
     icon: BookMarked,
   },
 ] as const;
