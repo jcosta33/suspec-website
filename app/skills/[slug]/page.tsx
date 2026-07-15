@@ -385,26 +385,26 @@ export default async function SkillDetailPage({
         >
           <SkillDiagram skill={skill} />
         </Card>
-        <dl className="skill-detail-facts lg:col-span-2">
-          <div className="skill-detail-fact">
-            <dt className={`font-mono text-xs font-semibold uppercase tracking-[0.14em] ${signalRoles[skill.tone].text}`}>
+        <div className="skill-detail-facts grid gap-4 sm:grid-cols-3 lg:col-span-2">
+          <Card screws className="skill-detail-fact-card h-full" contentClassName="space-y-2">
+            <p className={`font-mono text-xs font-semibold uppercase tracking-[0.14em] ${signalRoles[skill.tone].text}`}>
               returns
-            </dt>
-            <dd className="mt-2 text-sm leading-relaxed text-concrete-400">{skill.output}</dd>
-          </div>
-          <div className="skill-detail-fact">
-            <dt className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-signal-reference">
+            </p>
+            <p className="text-sm leading-relaxed text-concrete-400">{skill.output}</p>
+          </Card>
+          <Card screws className="skill-detail-fact-card h-full" contentClassName="space-y-2">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-signal-reference">
               boundary
-            </dt>
-            <dd className="mt-2 text-sm leading-relaxed text-concrete-400">{skill.boundary}</dd>
-          </div>
-          <div className="skill-detail-fact">
-            <dt className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-signal-reference">
+            </p>
+            <p className="text-sm leading-relaxed text-concrete-400">{skill.boundary}</p>
+          </Card>
+          <Card screws className="skill-detail-fact-card h-full" contentClassName="space-y-2">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-signal-reference">
               common misuse
-            </dt>
-            <dd className="mt-2 text-sm leading-relaxed text-concrete-400">{skill.misuse}</dd>
-          </div>
-        </dl>
+            </p>
+            <p className="text-sm leading-relaxed text-concrete-400">{skill.misuse}</p>
+          </Card>
+        </div>
       </Section>
 
       <Section

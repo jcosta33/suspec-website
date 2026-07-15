@@ -3,19 +3,6 @@
     min-height: 0;
   }
 
-  .skill-detail-page .skill-detail-facts {
-    grid-template-columns: 1fr;
-  }
-
-  .skill-detail-page .skill-detail-fact {
-    padding: 1rem 0.25rem 1.1rem;
-  }
-
-  .skill-detail-page .skill-detail-fact + .skill-detail-fact {
-    border-inline-start: 0;
-    border-top: 1px solid var(--skill-detail-border);
-  }
-
   .skill-detail-visual {
     min-height: 10.5rem;
     padding: 0.9rem;
@@ -54,7 +41,7 @@
 
   .skill-decision-branch {
     border-top: 0;
-    border-left: 1px solid var(--panel-border);
+    border-left: 1px solid var(--color-panel-border);
     padding: 0.4rem 0 0.4rem 0.7rem;
     text-align: left;
   }
