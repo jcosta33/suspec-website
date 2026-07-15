@@ -97,9 +97,9 @@ export const skillDetails: readonly SkillDetail[] = [
       meta: "project-native state / three lanes",
       lines: [
         "Goal: ship the auth migration",
-        "Lane 01 -> PR #241 / ready",
-        "Lane 02 -> PR #244 / blocked by #241",
-        "Lane 03 -> PR #247 / review",
+        "Lane 01 -> PR-241 / ready",
+        "Lane 02 -> PR-244 / blocked by PR-241",
+        "Lane 03 -> PR-247 / review",
       ],
     },
   },

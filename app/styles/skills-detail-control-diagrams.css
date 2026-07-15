@@ -1,0 +1,101 @@
+.skill-detail-visual-decision,
+.skill-detail-visual-passes,
+.skill-detail-visual-campaign {
+  align-content: center;
+}
+
+.skill-campaign-ledger {
+  border: 1px solid var(--signal-reference);
+  padding: 0.7rem 1rem;
+  color: var(--signal-reference);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skill-campaign-lanes {
+  display: grid;
+  width: min(100%, 30rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.skill-campaign-lane {
+  display: grid;
+  gap: 0.35rem;
+  border: 1px solid var(--panel-border);
+  border-top-color: var(--signal-reference);
+  background: color-mix(in srgb, var(--signal-reference) 6%, var(--panel));
+  padding: 0.75rem;
+  color: var(--concrete-400);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.skill-campaign-lane strong {
+  color: var(--concrete-100);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.skill-decision-root {
+  border: 1px solid var(--signal-core);
+  padding: 0.7rem 1rem;
+  color: var(--signal-core);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skill-decision-branches {
+  display: grid;
+  width: min(100%, 28rem);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.skill-decision-branch {
+  border-top: 1px solid var(--panel-border);
+  padding-top: 0.65rem;
+  color: var(--concrete-400);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.skill-decision-branch-recommended {
+  border-top-color: var(--signal-core);
+  color: var(--signal-core);
+}
+
+.skill-pass-row {
+  display: grid;
+  width: min(100%, 25rem);
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--panel-border);
+  padding: 0.75rem 0;
+  color: var(--concrete-300);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skill-pass-number,
+.skill-pass-state {
+  color: var(--brass);
+}
+
+@media (max-width: 34rem) {
+  .skill-campaign-lanes {
+    grid-template-columns: 1fr;
+  }
+}

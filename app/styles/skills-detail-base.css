@@ -8,8 +8,20 @@
   min-width: 0;
 }
 
-.skill-detail-page .skill-detail-fact-card {
-  border-color: var(--skill-detail-border);
+.skill-detail-page .skill-detail-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-block: 1px solid var(--skill-detail-border);
+  background: color-mix(in srgb, var(--panel-raised) 54%, transparent);
+}
+
+.skill-detail-page .skill-detail-fact {
+  min-width: 0;
+  padding: 1.25rem 1.5rem 1.35rem;
+}
+
+.skill-detail-page .skill-detail-fact + .skill-detail-fact {
+  border-inline-start: 1px solid var(--skill-detail-border);
 }
 
 .skill-detail-page .skill-detail-visual-card {

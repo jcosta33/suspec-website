@@ -1,11 +1,19 @@
 @media (max-width: 40rem) {
   .skill-detail-page .skill-detail-visual-card {
-    order: 2;
     min-height: 0;
   }
 
   .skill-detail-page .skill-detail-facts {
-    order: 1;
+    grid-template-columns: 1fr;
+  }
+
+  .skill-detail-page .skill-detail-fact {
+    padding: 1rem 0.25rem 1.1rem;
+  }
+
+  .skill-detail-page .skill-detail-fact + .skill-detail-fact {
+    border-inline-start: 0;
+    border-top: 1px solid var(--skill-detail-border);
   }
 
   .skill-detail-visual {
