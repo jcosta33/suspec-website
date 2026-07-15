@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 
 interface ActiveNavLinkProps {
@@ -9,20 +6,8 @@ interface ActiveNavLinkProps {
   className: string;
 }
 
-function normalizePath(value: string) {
-  const pathname = value.split(/[?#]/, 1)[0] || "/";
-  return pathname.endsWith("/") ? pathname : `${pathname}/`;
-}
-
 export function ActiveNavLink({ link, className }: ActiveNavLinkProps) {
-  const pathname = usePathname() || "/";
   const external = link.href.startsWith("http");
-  const currentPath = normalizePath(pathname);
-  const linkPath = normalizePath(link.href);
-  const active =
-    !external &&
-    (currentPath === linkPath ||
-      (linkPath !== "/" && currentPath.startsWith(linkPath)));
 
   return (
     <Link
@@ -30,7 +15,7 @@ export function ActiveNavLink({ link, className }: ActiveNavLinkProps) {
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       aria-label={external ? `${link.label} (opens in new tab)` : undefined}
-      aria-current={active ? "page" : undefined}
+      data-site-nav-link={external ? undefined : "true"}
       className={`relative inline-flex min-w-11 items-center ${className}`}
     >
       <span className="inline-flex items-center gap-1.5">

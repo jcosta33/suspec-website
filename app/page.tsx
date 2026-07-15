@@ -5,7 +5,7 @@ import {
   CheckCircle,
   ExternalLink,
   FileText,
-  LayoutList,
+  BookMarked,
   NotebookPen,
   XCircle,
 } from "lucide-react";
@@ -24,6 +24,7 @@ import { Section } from "./components/Section";
 import { TerminalWindow } from "./components/TerminalWindow";
 import { signalRoles, type SignalRole } from "./components/signalStyles";
 import { canonicalAlternates } from "./seo";
+import { SKILLS_INSTALL_COMMAND } from "./productFacts";
 
 const softwareApp = {
   "@context": "https://schema.org",
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
   alternates: canonicalAlternates("/"),
 };
 
-const heroInstallCommand = "npx skills add jcosta33/suspec-skills -g";
+const heroInstallCommand = SKILLS_INSTALL_COMMAND;
 
 const heroCheckCommand = "suspec check review.md --spec spec.md";
 
@@ -74,14 +75,14 @@ const overviewParts = [
     icon: FileText,
   },
   {
-    label: "task",
-    text: "a split packet when one spec becomes parallel work",
-    icon: LayoutList,
-  },
-  {
     label: "review",
     text: "evidence checked against the bar",
     icon: NotebookPen,
+  },
+  {
+    label: "findings",
+    text: "the verified lessons worth keeping",
+    icon: BookMarked,
   },
 ] as const;
 
@@ -201,7 +202,7 @@ export default function HomePage() {
                     <wbr /> review.md --spec spec.md
                   </p>
                   <p className="mt-2 text-signal-change">
-                    C016 pass-needs-evidence — AC-002 marked Pass, evidence
+                    C016 supported-needs-evidence — AC-002 marked Supported, evidence
                     cell empty
                   </p>
                   <p className="hidden text-signal-evidence md:block">
@@ -221,7 +222,7 @@ export default function HomePage() {
                 className="home-hero-artifact"
               >
                 <p>
-                  AC-001 <span className="paper-stamp ml-2">pass</span>
+                  AC-001 <span className="paper-stamp ml-2">supported</span>
                 </p>
                 <p className="text-pencil">
                   Evidence: `npm test auth-refresh` pasted, exit 0.

@@ -26,6 +26,7 @@ import { JsonLd } from "../components/JsonLd";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 import { CopyButton } from "../components/CopyButton";
 import { canonicalAlternates } from "../seo";
+import { SKILLS_INSTALL_COMMAND } from "../productFacts";
 
 const SITE_URL = "https://suspecframework.dev";
 const getStartedDescription =
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
   alternates: canonicalAlternates("/get-started/"),
 };
 
-const skillsInstallCommand = "npx skills add jcosta33/suspec-skills -g";
+const skillsInstallCommand = SKILLS_INSTALL_COMMAND;
 
 const mcpInstallCommands = [
   "git clone https://github.com/jcosta33/suspec-mcp",
@@ -100,16 +101,16 @@ function KitIcon({
 
 const loopSteps = [
   {
-    name: "Spec",
-    role: "intent stated",
-    text: "Write AC-NNN requirements, verification commands, and non-goals. Carry the full path forward.",
-    icon: ScrollText,
+    name: "Intent",
+    role: "name the work",
+    text: "Start from the request, ticket, or idea. Preserve the wording only when it matters.",
+    icon: PenLine,
   },
   {
-    name: "Lint",
-    role: "optional check",
-    text: "suspec check <spec-path>: 0 clean, 1 warning, 2 blocking.",
-    icon: Terminal,
+    name: "Spec",
+    role: "set the bar",
+    text: "Write AC-NNN requirements, verification commands, and non-goals. Carry the full path forward.",
+    icon: ScrollText,
   },
   {
     name: "Implement",
@@ -124,7 +125,13 @@ const loopSteps = [
     icon: ClipboardList,
   },
   {
-    name: "Keep",
+    name: "Check",
+    role: "optional facts",
+    text: "Check shape, coverage, evidence, and references. Humans still decide.",
+    icon: Terminal,
+  },
+  {
+    name: "Findings",
     role: "what survives",
     text: "Promote lessons to memory, decisions to ADRs, defects to issues.",
     icon: BookOpen,
@@ -162,7 +169,7 @@ function SpecPlacementNote({ className = "" }: { className?: string }) {
 const setupPath = [
   {
     label: "Install",
-    text: "Install the method globally.",
+    text: "Install the skills globally.",
     icon: Download,
     href: "#install",
     signal: "core",
@@ -306,7 +313,7 @@ export default function GetStartedPage() {
           tone="core"
         >
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-concrete-400 sm:text-xl">
-            Install the method. Add deterministic checks only if useful.
+            Install the skills. Add deterministic checks only if useful.
           </p>
           <HeroTrace
             ariaLabel="Suspec setup path trace"
@@ -404,7 +411,7 @@ export default function GetStartedPage() {
           </div>
           <Heading className="mt-3">Install the skills</Heading>
           <p className="mt-4 max-w-2xl leading-relaxed text-concrete-400">
-            One command installs or updates the method. Nothing lands in the
+            One command installs or updates the skills. Nothing lands in the
             repo.
           </p>
         </div>
@@ -746,7 +753,7 @@ export default function GetStartedPage() {
                 Review by checklist
               </span>{" "}
               — one coverage row per requirement; empty evidence is Unverified,
-              never Pass; exceptions routed to a human. Without the CLI the
+               never Supported; exceptions routed to a human. Without the CLI the
               floor is yours to hold.
             </li>
           </ol>

@@ -18,4 +18,47 @@
   .docs-prose td + td {
     border-top: 1px solid rgba(70, 57, 44, 0.72);
   }
+
+  .docs-prose-adrs-index .docs-table-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--color-panel-border);
+    border-radius: var(--radius-panel);
+  }
+
+  .docs-prose-adrs-index table {
+    display: table;
+    min-width: 62rem;
+  }
+
+  .docs-prose-adrs-index thead {
+    position: static;
+    display: table-header-group;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+  }
+
+  .docs-prose-adrs-index tbody {
+    display: table-row-group;
+  }
+
+  .docs-prose-adrs-index tr {
+    display: table-row;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .docs-prose-adrs-index td {
+    display: table-cell;
+    padding: 0.52rem 0.6rem;
+    border-top: 1px solid rgba(70, 57, 44, 0.58);
+    vertical-align: top;
+  }
+
+  .docs-prose-adrs-index td::before {
+    display: none;
+  }
 }

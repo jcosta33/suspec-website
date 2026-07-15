@@ -139,7 +139,7 @@ export const loopSteps = [
         },
         {
           prompt: false,
-          text: "| AC-003| Pass        | 1 nav, 1 footer found     |",
+          text: "| AC-003| Supported   | 1 nav, 1 footer found     |",
         },
         {
           prompt: false,
@@ -164,7 +164,7 @@ export const loopSteps = [
         { prompt: true, text: "suspec check review.md --spec spec.md" },
         {
           prompt: false,
-          text: "C016 pass-needs-evidence: AC-007 is marked Pass with an",
+          text: "C016 supported-needs-evidence: AC-007 is marked Supported with an",
         },
         { prompt: false, text: "empty evidence cell [blocking]" },
         { prompt: false, text: "" },

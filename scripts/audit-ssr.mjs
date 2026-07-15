@@ -5,30 +5,6 @@ import { assertDistBuilt, distDir } from "./lib/static-dist-server.mjs";
 
 const ROOT = process.cwd();
 
-const routes = [
-  "/",
-  "/the-loop/",
-  "/the-loop/intent/",
-  "/the-loop/spec/",
-  "/the-loop/implement/",
-  "/the-loop/review/",
-  "/the-loop/check/",
-  "/the-loop/findings/",
-  "/get-started/",
-  "/skills/",
-  "/skills/writing/",
-  "/skills/revolver/",
-  "/skills/fork-me/",
-  "/skills/sus-spec/",
-  "/cli/",
-  "/mcp/",
-  "/docs/",
-  "/docs/01-what-is-suspec/",
-  "/docs/reference/cli/",
-  "/colophon/",
-  "/kitchen-sink/",
-];
-
 const allowedClientFiles = new Set([
   "app/components/ToggleButton.tsx",
   "app/docs/components/DocsCodeCopy.tsx",
@@ -55,6 +31,17 @@ function walkFiles(entry, predicate) {
     .flatMap((dirent) => walkFiles(path.join(entry, dirent.name), predicate));
 }
 
+function staticRoutes() {
+  return walkFiles("dist", (file) => path.basename(file) === "index.html")
+    .map((file) => {
+      const relative = path.relative(distDir, file).replaceAll(path.sep, "/");
+      return relative === "index.html"
+        ? "/"
+        : `/${relative.replace(/\/index\.html$/, "")}`;
+    })
+    .sort();
+}
+
 function routeHtmlPath(route) {
   if (route === "/") return path.join(distDir, "index.html");
   return path.join(distDir, route, "index.html");
@@ -74,6 +61,7 @@ function normalizeText(source) {
 }
 
 assertDistBuilt("audit-ssr");
+const routes = staticRoutes();
 
 const failures = [];
 const nextConfig = read("next.config.ts");
@@ -107,9 +95,13 @@ const thinText = [];
 for (const route of routes) {
   const htmlPath = routeHtmlPath(route);
   const textPath = routeTextPath(route);
-  if (!fs.existsSync(htmlPath) || !fs.existsSync(textPath)) continue;
+  if (!fs.existsSync(htmlPath)) continue;
   const html = fs.readFileSync(htmlPath, "utf8");
-  const text = normalizeText(fs.readFileSync(textPath, "utf8"));
+  const text = normalizeText(
+    fs.existsSync(textPath)
+      ? fs.readFileSync(textPath, "utf8")
+      : html.replace(/<[^>]+>/g, " "),
+  );
   if (!/<main\b/.test(html)) thinText.push(`${route} missing main in static html`);
   if (!/<h1\b/.test(html)) thinText.push(`${route} missing h1 in static html`);
   if (text.length < 300) thinText.push(`${route} static text too thin (${text.length})`);

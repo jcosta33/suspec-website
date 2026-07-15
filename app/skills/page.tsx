@@ -20,6 +20,10 @@ import { TerminalWindow } from "../components/TerminalWindow";
 import { TextLink } from "../components/TextLink";
 import { PackageJsonLd } from "../components/PackageJsonLd";
 import { canonicalAlternates } from "../seo";
+import {
+  SKILLS_INSTALL_COMMAND,
+  skillInstallCommand,
+} from "../productFacts";
 import { skillDetails, type SkillDetail } from "./skillData";
 
 const SITE_URL = "https://suspecframework.dev";
@@ -28,9 +32,8 @@ const SKILLS_CLI = "https://github.com/vercel-labs/skills";
 const skillsDescription =
   "Standalone Markdown skills that implement the Suspec method: intent, evidence, review, decisions, and durable lessons.";
 const skillsTitle = "suspec-skills — installable parts of the Suspec methodology";
-const catalogInstallCommand = "npx skills add jcosta33/suspec-skills -g";
-const singleSkillInstallCommand =
-  "npx skills add jcosta33/suspec-skills --skill revolver -g";
+const catalogInstallCommand = SKILLS_INSTALL_COMMAND;
+const singleSkillInstallCommand = skillInstallCommand("revolver");
 
 export const metadata: Metadata = {
   title: skillsTitle,
@@ -272,6 +275,9 @@ export default function SkillsPage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
+            <TextLink href="/skills/writing/" className="w-fit" touchTarget>
+              Write a skill
+            </TextLink>
             <TextLink
               href="/docs/"
               target="_blank"

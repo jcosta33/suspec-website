@@ -16,6 +16,7 @@ import { TextLink } from "../components/TextLink";
 import { JsonLd } from "../components/JsonLd";
 import { signalRoles } from "../components/signalStyles";
 import { canonicalAlternates } from "../seo";
+import { SKILLS_INSTALL_COMMAND } from "../productFacts";
 import { loopStepHref, loopSteps } from "./loopSteps";
 
 const SITE_URL = "https://suspecframework.dev";
@@ -211,7 +212,7 @@ export default function TheLoopPage() {
             <Heading>Ready to run it?</Heading>
             <p className="mt-2 text-concrete-400">
               Install the skills —{" "}
-              <code>npx skills add jcosta33/suspec-skills -g</code> — and
+              <code>{SKILLS_INSTALL_COMMAND}</code> — and
               write one spec. The same loop handles the next change.
             </p>
             <p className="mt-4 text-sm text-concrete-400">

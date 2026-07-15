@@ -6,6 +6,22 @@ import path from "node:path";
 
 export const CANON = path.join(process.cwd(), ".suspec-canon", "docs");
 
+export function canonRevision(): string | null {
+  try {
+    const meta = JSON.parse(
+      fs.readFileSync(
+        path.join(process.cwd(), ".suspec-canon-meta.json"),
+        "utf8",
+      ),
+    ) as { revision?: string };
+    return /^[0-9a-f]{40}$/i.test(meta.revision ?? "")
+      ? (meta.revision ?? null)
+      : null;
+  } catch {
+    return null;
+  }
+}
+
 export function canonAvailable(): boolean {
   return fs.existsSync(CANON);
 }
@@ -114,6 +130,12 @@ const labelFor = (slug: string): string => {
 
 export function buildNav(): NavSection[] {
   const docs = listDocs();
+  const project = [
+    "README",
+    "ADOPTING",
+    "artifact-registry",
+    "research/sources",
+  ].filter((slug) => docs.includes(slug));
   const top = docs.filter((s) => /^\d\d-/.test(s));
   const tutorial = docs.filter((s) => s.startsWith("tutorial/"));
   const examples = docs.filter((s) => s.startsWith("examples/"));
@@ -136,6 +158,7 @@ export function buildNav(): NavSection[] {
   });
   return [
     sec("Start here", top),
+    sec("Project", project),
     sec("Tutorial", tutorial),
     sec("Examples", examples),
     sec("Reference", reference),

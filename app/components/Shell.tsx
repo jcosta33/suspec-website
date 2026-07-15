@@ -83,7 +83,7 @@ const footerGroups = [
 ];
 
 export function Shell({ children }: { children: ReactNode }) {
-  const initialFolioLabel = "Suspec / record";
+  const initialFolioLabel = "Suspec / site";
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -206,6 +206,13 @@ export function Shell({ children }: { children: ReactNode }) {
         </span>
         <span className="trace-rail-readout">00%</span>
       </div>
+
+      <p
+        className="sr-only"
+        aria-live="polite"
+        aria-atomic="true"
+        data-route-announcer
+      />
 
       <main id="main-content" tabIndex={-1} className="site-main-frame flex-1">
         <div className="folio-rail folio-rail-left" aria-hidden="true">

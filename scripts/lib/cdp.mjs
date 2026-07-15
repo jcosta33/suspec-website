@@ -34,7 +34,12 @@ export class Cdp {
     ws.on("message", (raw) => {
       const msg = JSON.parse(raw);
       if (msg.method === "Runtime.exceptionThrown") {
-        this.exceptions.push(msg.params.exceptionDetails.text);
+        const details = msg.params.exceptionDetails;
+        this.exceptions.push(
+          details.exception?.description ||
+            details.exception?.value ||
+            details.text,
+        );
       }
       if (msg.id && this.pending.has(msg.id)) {
         const { resolve, reject } = this.pending.get(msg.id);

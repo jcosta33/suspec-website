@@ -41,19 +41,6 @@
     return url.pathname.endsWith("/") ? url.pathname : `${url.pathname}/`;
   }
 
-  function folioLabel(pathname) {
-    const path = normalizePath(pathname);
-    if (path === "/") return "Suspec / home";
-    if (path.startsWith("/what-is-suspec/")) return "Suspec / overview";
-    if (path.startsWith("/the-loop/")) return "Suspec / loop";
-    if (path.startsWith("/get-started/")) return "Suspec / setup";
-    if (path.startsWith("/skills/")) return "Suspec / skills";
-    if (path.startsWith("/cli/")) return "Suspec / cli";
-    if (path.startsWith("/mcp/")) return "Suspec / mcp";
-    if (path.startsWith("/docs/")) return "Suspec / manual";
-    return "Suspec / record";
-  }
-
   function currentMenu() {
     return {
       button: document.querySelector('[aria-controls="mobile-menu"]'),
@@ -175,45 +162,84 @@
       textarea.style.opacity = "0";
       document.body.appendChild(textarea);
       textarea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textarea);
+      try {
+        return document.execCommand("copy");
+      } finally {
+        document.body.removeChild(textarea);
+      }
     }
 
-    function setButtonState(button, copied) {
+    function setButtonState(button, state) {
       const label = button.getAttribute("data-copy-label") || "Copy";
-      const compactLabel = button.getAttribute("data-copy-compact-label") || label;
+      const compactLabel =
+        button.getAttribute("data-copy-compact-label") || label;
       const ariaLabel = button.getAttribute("data-copy-aria-label") || label;
       const compactSuccessLabel =
         button.getAttribute("data-copy-compact-success-label") || "Copied";
+      const copied = state === "copied";
+      const copying = state === "copying";
+      const failed = state === "failed";
       button.setAttribute("data-copied", copied ? "true" : "false");
-      button.setAttribute("aria-label", copied ? "Copied" : ariaLabel);
+      button.setAttribute("data-copying", copying ? "true" : "false");
+      button.setAttribute("data-copy-error", failed ? "true" : "false");
+      button.setAttribute("aria-busy", copying ? "true" : "false");
+      button.setAttribute(
+        "aria-label",
+        copied
+          ? "Copied"
+          : copying
+            ? "Copying"
+            : failed
+              ? "Copy failed. Retry"
+              : ariaLabel,
+      );
       button
         .querySelectorAll(".copy-button-label-current")
         .forEach((currentLabel, index) => {
-          currentLabel.textContent = copied
-            ? index === 0
-              ? "Copied"
-              : compactSuccessLabel
-            : index === 0
-              ? label
-              : compactLabel;
+          currentLabel.textContent = copying
+            ? "..."
+            : failed
+              ? "Retry"
+              : copied
+                ? index === 0
+                  ? "Copied"
+                  : compactSuccessLabel
+                : index === 0
+                  ? label
+                  : compactLabel;
         });
     }
 
     async function copyFromButton(button) {
+      if (button.getAttribute("data-copying") === "true") return;
       const text = button.getAttribute("data-copy-text") || "";
-      try {
-        await navigator.clipboard.writeText(text);
-      } catch {
-        fallbackCopy(text);
+      setButtonState(button, "copying");
+      let copied = false;
+      if (navigator.clipboard?.writeText) {
+        try {
+          await Promise.race([
+            navigator.clipboard.writeText(text),
+            new Promise((_, reject) =>
+              window.setTimeout(
+                () => reject(new Error("clipboard timeout")),
+                800,
+              ),
+            ),
+          ]);
+          copied = true;
+        } catch {
+          copied = fallbackCopy(text);
+        }
+      } else {
+        copied = fallbackCopy(text);
       }
 
-      setButtonState(button, true);
+      setButtonState(button, copied ? "copied" : "failed");
       const previousTimer = resetTimers.get(button);
       if (previousTimer) window.clearTimeout(previousTimer);
       resetTimers.set(
         button,
-        window.setTimeout(() => setButtonState(button, false), 1600),
+        window.setTimeout(() => setButtonState(button, "idle"), 1600),
       );
     }
 
@@ -227,10 +253,37 @@
   }
 
   function updateRouteState() {
-    const label = folioLabel(window.location.pathname);
-    document.querySelectorAll("[data-folio-label]").forEach((node) => {
-      node.setAttribute("data-label", label);
-      if (node.textContent?.trim()) node.textContent = label;
+    const currentPath = normalizePath(window.location.pathname);
+    document.querySelectorAll("[data-site-nav-link]").forEach((link) => {
+      const linkPath = normalizePath(link.getAttribute("href"));
+      const active =
+        currentPath === linkPath ||
+        (linkPath !== "/" && currentPath.startsWith(linkPath));
+      if (active) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
+  }
+
+  function startRouteObserver() {
+    let pathname = window.location.pathname;
+    const observer = new MutationObserver(() => {
+      if (window.location.pathname === pathname) return;
+      pathname = window.location.pathname;
+      updateRouteState();
+      closeMenu(false);
+      window.setTimeout(() => {
+        const target =
+          document.querySelector("#docs-primary-content") ||
+          document.querySelector("#main-content");
+        target?.focus({ preventScroll: true });
+        const title = document.querySelector("h1")?.textContent?.trim();
+        const announcer = document.querySelector("[data-route-announcer]");
+        if (announcer && title) announcer.textContent = `${title} loaded`;
+      }, 80);
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    window.addEventListener("pagehide", () => observer.disconnect(), {
+      once: true,
     });
   }
 
@@ -242,15 +295,20 @@
 
     const update = () => {
       frame = 0;
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
       const active = scrollable > 160;
       const progress = active
-        ? Math.min(100, Math.max(0, Math.round((window.scrollY / scrollable) * 100)))
+        ? Math.min(
+            100,
+            Math.max(0, Math.round((window.scrollY / scrollable) * 100)),
+          )
         : 0;
       rail.setAttribute("data-active", active ? "true" : "false");
       rail.setAttribute("data-started", progress > 2 ? "true" : "false");
       rail.style.setProperty("--trace-progress", `${progress}%`);
-      if (readout) readout.textContent = `${progress.toString().padStart(2, "0")}%`;
+      if (readout)
+        readout.textContent = `${progress.toString().padStart(2, "0")}%`;
     };
 
     const request = () => {
@@ -292,38 +350,119 @@
 
       root.style.setProperty("--background-plane-origin-x", "50%");
       root.style.setProperty("--background-plane-origin-y", "52%");
-      root.style.setProperty("--background-plane-perspective-x", `${50 + x * 8}%`);
-      root.style.setProperty("--background-plane-perspective-y", `${52 + y * 6}%`);
+      root.style.setProperty(
+        "--background-plane-perspective-x",
+        `${50 + x * 8}%`,
+      );
+      root.style.setProperty(
+        "--background-plane-perspective-y",
+        `${52 + y * 6}%`,
+      );
       root.style.setProperty("--background-header-origin-x", "50%");
       root.style.setProperty("--background-header-origin-y", "50%");
-      root.style.setProperty("--background-header-perspective-x", `${50 + x * 18}%`);
-      root.style.setProperty("--background-header-perspective-y", `${48 + y * 13}%`);
+      root.style.setProperty(
+        "--background-header-perspective-x",
+        `${50 + x * 18}%`,
+      );
+      root.style.setProperty(
+        "--background-header-perspective-y",
+        `${48 + y * 13}%`,
+      );
       root.style.setProperty("--background-plane-normal-x", x.toFixed(3));
       root.style.setProperty("--background-plane-normal-y", y.toFixed(3));
-      root.style.setProperty("--background-plane-rotate-x", `${(-y * 8.8).toFixed(3)}deg`);
-      root.style.setProperty("--background-plane-rotate-y", `${(x * 10.8).toFixed(3)}deg`);
-      root.style.setProperty("--background-plane-shift-x", `${(-x * 4.6).toFixed(2)}px`);
-      root.style.setProperty("--background-plane-shift-y", `${(-y * 3.4).toFixed(2)}px`);
-      root.style.setProperty("--background-plane-drift-x", `${(-x * 4.2).toFixed(2)}px`);
-      root.style.setProperty("--background-plane-drift-y", `${(-y * 3.2).toFixed(2)}px`);
-      root.style.setProperty("--background-plane-drift-soft-x", `${(-x * 2.1).toFixed(2)}px`);
-      root.style.setProperty("--background-plane-drift-soft-y", `${(-y * 1.7).toFixed(2)}px`);
-      root.style.setProperty("--background-header-before-rotate-x", `${(-y * 5.8).toFixed(3)}deg`);
-      root.style.setProperty("--background-header-before-rotate-y", `${(x * 6.8).toFixed(3)}deg`);
-      root.style.setProperty("--background-header-after-rotate-x", `${(-y * 4.6).toFixed(3)}deg`);
-      root.style.setProperty("--background-header-after-rotate-y", `${(x * 5.4).toFixed(3)}deg`);
-      root.style.setProperty("--background-header-shift-x", `${(-x * (12.2 + absY * 1.6)).toFixed(2)}px`);
-      root.style.setProperty("--background-header-shift-y", `${(-y * (8.4 + absX * 1.2)).toFixed(2)}px`);
-      root.style.setProperty("--background-header-shift-soft-x", `${(-x * (6.4 + absY)).toFixed(2)}px`);
-      root.style.setProperty("--background-header-shift-soft-y", `${(-y * (4.8 + absX * 0.8)).toFixed(2)}px`);
-      root.style.setProperty("--background-hero-edge-rotate-x", `${(-y * 5.2).toFixed(3)}deg`);
-      root.style.setProperty("--background-hero-edge-rotate-y", `${(x * 6.2).toFixed(3)}deg`);
-      root.style.setProperty("--background-hero-motif-rotate-x", `${(-y * 6.4).toFixed(3)}deg`);
-      root.style.setProperty("--background-hero-motif-rotate-y", `${(x * 7.4).toFixed(3)}deg`);
-      root.style.setProperty("--background-hero-shift-x", `${(-x * (9.4 + absY * 1.8)).toFixed(2)}px`);
-      root.style.setProperty("--background-hero-shift-y", `${(-y * (7.2 + absX * 1.3)).toFixed(2)}px`);
+      root.style.setProperty(
+        "--background-plane-rotate-x",
+        `${(-y * 8.8).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-plane-rotate-y",
+        `${(x * 10.8).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-plane-shift-x",
+        `${(-x * 4.6).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-plane-shift-y",
+        `${(-y * 3.4).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-plane-drift-x",
+        `${(-x * 4.2).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-plane-drift-y",
+        `${(-y * 3.2).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-plane-drift-soft-x",
+        `${(-x * 2.1).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-plane-drift-soft-y",
+        `${(-y * 1.7).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-header-before-rotate-x",
+        `${(-y * 5.8).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-header-before-rotate-y",
+        `${(x * 6.8).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-header-after-rotate-x",
+        `${(-y * 4.6).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-header-after-rotate-y",
+        `${(x * 5.4).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-header-shift-x",
+        `${(-x * (12.2 + absY * 1.6)).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-header-shift-y",
+        `${(-y * (8.4 + absX * 1.2)).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-header-shift-soft-x",
+        `${(-x * (6.4 + absY)).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-header-shift-soft-y",
+        `${(-y * (4.8 + absX * 0.8)).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-hero-edge-rotate-x",
+        `${(-y * 5.2).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-hero-edge-rotate-y",
+        `${(x * 6.2).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-hero-motif-rotate-x",
+        `${(-y * 6.4).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-hero-motif-rotate-y",
+        `${(x * 7.4).toFixed(3)}deg`,
+      );
+      root.style.setProperty(
+        "--background-hero-shift-x",
+        `${(-x * (9.4 + absY * 1.8)).toFixed(2)}px`,
+      );
+      root.style.setProperty(
+        "--background-hero-shift-y",
+        `${(-y * (7.2 + absX * 1.3)).toFixed(2)}px`,
+      );
 
-      if (Math.abs(targetX - currentX) > 0.003 || Math.abs(targetY - currentY) > 0.003) {
+      if (
+        Math.abs(targetX - currentX) > 0.003 ||
+        Math.abs(targetY - currentY) > 0.003
+      ) {
         frame = window.requestAnimationFrame(writeMotion);
       }
     };
@@ -348,32 +487,52 @@
     );
     window.addEventListener("pointerleave", settle);
     window.addEventListener("blur", settle);
-    window.addEventListener("pagehide", () => motionVars.forEach((name) => root.style.removeProperty(name)));
+    window.addEventListener("pagehide", () =>
+      motionVars.forEach((name) => root.style.removeProperty(name)),
+    );
   }
 
-  let started = false;
+  let controlsStarted = false;
+  let effectsStarted = false;
 
-  function start() {
-    if (started) return;
-    if (!document.querySelector(".site-header") || !document.querySelector(".trace-rail")) {
-      window.requestAnimationFrame(start);
+  function startControls() {
+    if (controlsStarted) return;
+    if (!document.querySelector(".site-header")) {
+      window.requestAnimationFrame(startControls);
       return;
     }
-    started = true;
-    updateRouteState();
+    controlsStarted = true;
     startMenu();
     startCopy();
     startHeader();
+    startRouteObserver();
+  }
+
+  function startEffects() {
+    if (effectsStarted) return;
+    if (!document.querySelector(".trace-rail")) {
+      window.requestAnimationFrame(startEffects);
+      return;
+    }
+    effectsStarted = true;
     startTrace();
     startBackgroundMotion();
   }
 
-  const requestStart = () => {
-    window.setTimeout(() => window.requestAnimationFrame(start), 1200);
+  const requestControls = () => window.requestAnimationFrame(startControls);
+  const requestEffects = () => {
+    window.setTimeout(() => window.requestAnimationFrame(startEffects), 1200);
   };
-  if (document.readyState === "complete") {
-    requestStart();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", requestControls, {
+      once: true,
+    });
   } else {
-    window.addEventListener("load", requestStart, { once: true });
+    requestControls();
   }
+  if (document.readyState === "complete") requestEffects();
+  else window.addEventListener("load", requestEffects, { once: true });
+  const requestRouteState = () => window.requestAnimationFrame(updateRouteState);
+  if (document.readyState === "complete") requestRouteState();
+  else window.addEventListener("load", requestRouteState, { once: true });
 })();

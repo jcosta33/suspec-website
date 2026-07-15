@@ -21,6 +21,7 @@ import { signalRoles } from "../../components/signalStyles";
 import { TerminalWindow } from "../../components/TerminalWindow";
 import { TextLink } from "../../components/TextLink";
 import { canonicalAlternates } from "../../seo";
+import { skillInstallCommand } from "../../productFacts";
 import {
   getSkill,
   skillDetails,
@@ -74,12 +75,38 @@ function SkillDiagram({ skill }: { skill: SkillDetail }) {
   const { visual, tone, visualLabels } = skill;
   const roleText = signalRoles[tone].text;
 
+  if (visual === "campaign") {
+    return (
+      <div
+        className="skill-detail-visual skill-detail-visual-campaign"
+        role="img"
+        aria-label="One campaign issue coordinating three reusable worktree lanes and their pull requests"
+      >
+        <div className="skill-campaign-ledger">campaign issue</div>
+        <div className="skill-campaign-lanes" aria-hidden="true">
+          {["lane 01", "lane 02", "lane 03"].map((lane, index) => (
+            <div key={lane} className="skill-campaign-lane">
+              <span>{lane}</span>
+              <strong>branch</strong>
+              <span>PR #{241 + index * 3}</span>
+            </div>
+          ))}
+        </div>
+        <p className="skill-detail-visual-caption">
+          <span className={roleText}>native issue</span>
+          <span>recycle clean lanes</span>
+          <span>review what survives</span>
+        </p>
+      </div>
+    );
+  }
+
   if (visual === "revolver") {
     return (
       <div
         className="skill-detail-visual skill-detail-visual-revolver"
         role="img"
-        aria-label="Technical revolver diagram with six review stances around a cylinder"
+        aria-label="Technical revolver diagram representing an adaptive review stance pool"
       >
         <div className="skill-revolver-drawing" aria-hidden="true">
           <span className="skill-revolver-barrel" />
@@ -87,14 +114,12 @@ function SkillDiagram({ skill }: { skill: SkillDetail }) {
           <span className="skill-revolver-grip" />
           <div className="skill-revolver-cylinder">
             {Array.from({ length: 6 }, (_, index) => (
-              <span key={index}>
-                {String(index + 1).padStart(2, "0")}
-              </span>
+              <span key={index} />
             ))}
           </div>
         </div>
         <div className="skill-detail-visual-caption">
-          <span className={roleText}>six stances</span>
+          <span className={roleText}>adaptive stance pool</span>
           <span>one current target</span>
           <span>resolve it before firing again</span>
         </div>
@@ -129,17 +154,16 @@ function SkillDiagram({ skill }: { skill: SkillDetail }) {
       <div
         className="skill-detail-visual skill-detail-visual-passes"
         role="img"
-        aria-label="Three sequential review passes"
+        aria-label="Three independent reviews running in parallel against one frozen snapshot"
       >
-        {["01 / contract", "02 / failure", "03 / regression"].map((label, index) => (
+        {["01 / independent", "02 / independent", "03 / independent"].map((label) => (
           <div key={label} className="skill-pass-row">
             <span className="skill-pass-number">{label.slice(0, 2)}</span>
             <span>{label.slice(5)}</span>
-            <span className={`skill-pass-state ${index === 2 ? roleText : ""}`}>
-              {index === 0 ? "fix" : index === 1 ? "refute" : "verify"}
-            </span>
+            <span className={`skill-pass-state ${roleText}`}>same snapshot</span>
           </div>
         ))}
+        <p className="skill-detail-visual-caption">reconcile · repair once · verify</p>
       </div>
     );
   }
@@ -247,6 +271,7 @@ function SkillDiagram({ skill }: { skill: SkillDetail }) {
 
 function skillEffect(skill: SkillDetail) {
   if (skill.kind === "artifact") return "creates a Suspec artifact";
+  if (skill.slug === "campaign") return "coordinates native issues and pull requests";
   if (skill.slug === "disrespec") return "rewrites supplied Markdown";
   if (skill.slug === "promote") return "moves a selected record";
   if (skill.slug === "remember") return "writes to native memory or a project channel";
@@ -287,16 +312,30 @@ export default async function SkillDetailPage({
   const skill = getSkill(slug);
   if (!skill) notFound();
 
-  const installCommand = `npx skills add jcosta33/suspec-skills --skill ${skill.slug} -g`;
+  const installCommand = skillInstallCommand(skill.slug);
   const kindLabel = skill.kind === "artifact" ? "artifact author" : "universal method";
   const workingShapeTitle =
-    skill.kind === "artifact"
+    skill.slug === "campaign"
+      ? "Keep state in the project."
+      : skill.kind === "artifact"
       ? "Use the smallest record that carries the work."
       : "Keep the result in the conversation.";
-  const workingShapeCopy =
-    skill.kind === "artifact"
-      ? "The example is a shape, not a template. Keep evidence beside the claim. Add structure only when it changes execution or review."
-      : "The example shows the kind of answer the method returns. It reports in chat; no Suspec artifact appears unless a separate artifact-author skill takes over.";
+  const heroTraceItems =
+    skill.slug === "campaign"
+      ? [
+          { label: "Frame", signal: skill.tone },
+          { label: "Dispatch", signal: "core" as const },
+          { label: "Review", signal: "evidence" as const },
+          { label: "Merge", signal: "reference" as const },
+        ]
+      : [
+          { label: "Load", signal: skill.tone },
+          { label: "Apply", signal: "core" as const },
+          {
+            label: skill.kind === "artifact" ? "Record" : "Return",
+            signal: "reference" as const,
+          },
+        ];
 
   return (
     <div className="repo-product-page skill-detail-page flex flex-col gap-12 py-14 sm:gap-16 sm:py-16">
@@ -315,11 +354,7 @@ export default async function SkillDetailPage({
           </p>
           <HeroTrace
             ariaLabel={`${skill.name} skill path`}
-            items={[
-              { label: "Load", signal: skill.tone },
-              { label: "Apply", signal: "core" },
-              { label: skill.kind === "artifact" ? "Record" : "Return", signal: "reference" },
-            ]}
+            items={heroTraceItems}
           />
         </PageHero>
       </Section>
@@ -395,7 +430,6 @@ export default async function SkillDetailPage({
             </p>
             <Heading className="mt-3">{workingShapeTitle}</Heading>
           </div>
-          <p className="text-concrete-400">{workingShapeCopy}</p>
           <Badge variant={skill.kind === "artifact" ? "ready" : "draft"}>
             {skillEffect(skill)}
           </Badge>
@@ -415,12 +449,21 @@ export default async function SkillDetailPage({
             </p>
             <Heading className="mt-3">Load it when the task fits.</Heading>
           </div>
-          <p className="text-concrete-400">
-            Install one or the catalog. Keep repo commands in AGENTS.md.
-          </p>
-          <TextLink href="/skills/" className="w-fit gap-2" touchTarget>
-            Back to the skills index <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          </TextLink>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <TextLink href="/skills/" className="w-fit gap-2" touchTarget>
+              Skills index <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            </TextLink>
+            <TextLink
+              href={skillSourceUrl(skill.slug)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-fit gap-2"
+              touchTarget
+              aria-label={`Open ${skill.name} source on GitHub (opens in new tab)`}
+            >
+              Open SKILL.md <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </TextLink>
+          </div>
         </div>
         <Panel brushed className="p-2">
           <TerminalWindow title="terminal" copyText={installCommand} copyLabel="Copy install command">
@@ -432,24 +475,6 @@ export default async function SkillDetailPage({
         </Panel>
       </Section>
 
-      <Section register="04 / source" registerTone="muted" className="skill-detail-source">
-        <Card screws contentClassName="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-brass">source record</p>
-            <p className="mt-2 text-sm leading-relaxed text-concrete-400">Full contract in the catalog.</p>
-          </div>
-          <TextLink
-            href={skillSourceUrl(skill.slug)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-fit gap-2"
-            touchTarget
-            aria-label={`Open ${skill.name} source on GitHub (opens in new tab)`}
-          >
-            Open SKILL.md <ExternalLink className="h-4 w-4" aria-hidden="true" />
-          </TextLink>
-        </Card>
-      </Section>
       <SkillPageJsonLd skill={skill} />
     </div>
   );

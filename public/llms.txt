@@ -13,7 +13,7 @@ Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the a
 - [Brownfield work and change plans](https://suspecframework.dev/docs/05-brownfield-and-change-plans/): Structural changes to existing code, planned before they sprawl.
 - [Creating tasks](https://suspecframework.dev/docs/06-creating-tasks/): The task split — cut task packets only when one spec splits into parallel slices.
 - [Running agents](https://suspecframework.dev/docs/07-running-agents/): Handing the spec — and the task, when split — by explicit path.
-- [Reviewing agent output](https://suspecframework.dev/docs/08-reviewing-output/): An independent reviewer reconciles evidence per requirement; empty evidence is Unverified, never Pass. “Done” is not evidence.
+- [Reviewing agent output](https://suspecframework.dev/docs/08-reviewing-output/): An independent reviewer reconciles evidence per requirement; empty evidence is Unverified, never Supported. “Done” is not evidence.
 - [Saving findings](https://suspecframework.dev/docs/09-saving-findings/): Durable lessons become native harness memories; ephemeral findings die with the packet.
 - [Integrations](https://suspecframework.dev/docs/10-integrations/): The CLI, MCP, issue trackers, PRs, CI, and native agent practice — all optional.
 
@@ -37,7 +37,7 @@ Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the a
 
 ## Packages
 
-- [suspec-skills](https://suspecframework.dev/skills/): Standalone Markdown skills that implement the method, grouped into universal methods and artifact authors.
+- [suspec-skills](https://suspecframework.dev/skills/): Standalone Markdown skills that implement the method, including campaign orchestration, adaptive Revolver review, parallel Triple-check, and artifact authors.
 - [suspec-skills writing guide](https://suspecframework.dev/skills/writing/): How Suspec skills are written, scoped, and reviewed.
 - [suspec-cli](https://suspecframework.dev/cli/): Optional reinforcement — `suspec check`, the deterministic honesty floor; exit codes 0/1/2. Facts, not verdicts.
 - [suspec-mcp](https://suspecframework.dev/mcp/): The same check surface for shell-less MCP runners — `suspec_check`, `suspec_get_checks`, and `suspec://checks`.

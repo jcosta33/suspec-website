@@ -45,7 +45,7 @@
   border-color: rgba(var(--catalog-rgb), 0.22);
   background: rgba(8, 6, 4, 0.56);
   color: rgba(240, 226, 204, 0.7);
-  font-size: 0.48rem;
+  font-size: 10px;
 }
 
 .cli-command-row-lamp {

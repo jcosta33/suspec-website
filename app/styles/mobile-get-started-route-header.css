@@ -18,8 +18,8 @@
   }
 
   .get-started-page .setup-route-meta span {
-    min-height: 1.24rem;
-    padding-inline: 0.28rem;
-    font-size: 0.46rem;
+    min-height: 1.4rem;
+    padding-inline: 0.32rem;
+    font-size: 0.625rem;
   }
 }

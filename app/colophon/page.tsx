@@ -59,7 +59,8 @@ const buildTrace = [
 
 const provenanceFacts = [
   { label: "Source", value: "jcosta33/suspec-website" },
-  { label: "Canon", value: "../suspec/docs" },
+  { label: "Canon", value: "suspec@1e314ac" },
+  { label: "Skills", value: "suspec-skills@de47f5b" },
   { label: "Export", value: "dist/" },
   { label: "Search", value: "Pagefind" },
 ];
@@ -85,7 +86,7 @@ const trace = [
   {
     label: "CONTENT",
     title: "Docs source",
-    text: "Canonical framework docs are pulled from the sibling Suspec repository. The website does not freelance the canon.",
+    text: "Framework docs are built from a pinned Suspec commit. Local previews may opt into an exact clean checkout.",
     href: "/docs/",
     cta: "Read the docs",
     newTab: true,

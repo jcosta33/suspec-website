@@ -13,6 +13,7 @@ import {
 
 const skillRoutes = [
   "/skills/bulletproof/",
+  "/skills/campaign/",
   "/skills/demolition/",
   "/skills/disrespec/",
   "/skills/dissect/",

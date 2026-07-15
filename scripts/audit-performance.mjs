@@ -1,13 +1,36 @@
 import * as chromeLauncher from "chrome-launcher";
 import lighthouse from "lighthouse";
+import fs from "node:fs";
+import path from "node:path";
 
 import {
   assertDistBuilt,
   createStaticDistServer,
+  distDir,
   listen,
 } from "./lib/static-dist-server.mjs";
 
-const routes = ["/", "/docs/", "/mcp/"];
+const routes = [
+  "/",
+  "/the-loop/",
+  "/the-loop/intent/",
+  "/get-started/",
+  "/skills/",
+  "/skills/disrespec/",
+  "/skills/writing/",
+  "/cli/",
+  "/mcp/",
+  "/docs/",
+  "/docs/adrs/README/",
+  "/colophon/",
+];
+
+const lighthouseTimeoutMs = Number(
+  process.env.LIGHTHOUSE_ROUTE_TIMEOUT_MS || 120_000,
+);
+const chromeLaunchTimeoutMs = Number(
+  process.env.CHROME_LAUNCH_TIMEOUT_MS || 45_000,
+);
 
 const limits = {
   performance: 85,
@@ -117,32 +140,94 @@ function failuresFor(summary) {
   return failures;
 }
 
-assertDistBuilt("audit-performance");
-const server = createStaticDistServer({ gzip: true });
-const port = await listen(server);
-const baseUrl = `http://127.0.0.1:${port}`;
-const chrome = await chromeLauncher.launch({
-  chromeFlags: ["--headless=new", "--disable-gpu", "--no-sandbox"],
-});
+async function runLighthouse(url, options) {
+  let timeout;
+  try {
+    return await Promise.race([
+      lighthouse(url, options),
+      new Promise((_, reject) => {
+        timeout = setTimeout(
+          () => reject(new Error(`Lighthouse timed out after ${lighthouseTimeoutMs}ms`)),
+          lighthouseTimeoutMs,
+        );
+      }),
+    ]);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
 
+async function launchChrome() {
+  let timeout;
+  try {
+    return await Promise.race([
+      chromeLauncher.launch({
+        chromeFlags: ["--headless=new", "--disable-gpu", "--no-sandbox"],
+        connectionPollInterval: 500,
+        maxConnectionRetries: 60,
+      }),
+      new Promise((_, reject) => {
+        timeout = setTimeout(() => {
+          void chromeLauncher.killAll();
+          reject(new Error(`Chrome launch timed out after ${chromeLaunchTimeoutMs}ms`));
+        }, chromeLaunchTimeoutMs);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+assertDistBuilt("audit-performance");
+const staticHtml = [];
+const collectHtml = (directory) => {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const absolute = path.join(directory, entry.name);
+    if (entry.isDirectory()) collectHtml(absolute);
+    else if (entry.name === "index.html") staticHtml.push(absolute);
+  }
+};
+collectHtml(distDir);
+const oversizedHtml = staticHtml
+  .map((file) => ({ file: path.relative(distDir, file), bytes: fs.statSync(file).size }))
+  .filter((item) => item.bytes > 1_000_000);
+if (oversizedHtml.length) {
+  console.log(`FAIL perf static-html ${JSON.stringify(oversizedHtml)}`);
+  process.exit(1);
+}
+console.log(`PASS perf static-html ${JSON.stringify({ routes: staticHtml.length, maxBytes: Math.max(...staticHtml.map((file) => fs.statSync(file).size)) })}`);
+let server;
+let chrome;
 let exitCode = 0;
 try {
+  chrome = await launchChrome();
+  server = createStaticDistServer({ gzip: true });
+  const port = await listen(server);
+  const baseUrl = `http://127.0.0.1:${port}`;
+
   for (const route of routes) {
-    const result = await lighthouse(`${baseUrl}${route}`, {
-      port: chrome.port,
-      output: "json",
-      onlyCategories: ["performance"],
-      formFactor: "mobile",
-      screenEmulation: {
-        mobile: true,
-        width: 390,
-        height: 844,
-        deviceScaleFactor: 2,
-        disabled: false,
-      },
-      throttlingMethod: "simulate",
-      quiet: true,
-    });
+    let result;
+    try {
+      result = await runLighthouse(`${baseUrl}${route}`, {
+        port: chrome.port,
+        output: "json",
+        onlyCategories: ["performance"],
+        formFactor: "mobile",
+        screenEmulation: {
+          mobile: true,
+          width: 390,
+          height: 844,
+          deviceScaleFactor: 2,
+          disabled: false,
+        },
+        throttlingMethod: "simulate",
+        quiet: true,
+      });
+    } catch (error) {
+      exitCode = 1;
+      console.log(`FAIL perf ${route} ${error.message}`);
+      break;
+    }
     const summary = summarize(result.lhr, route);
     const failures = failuresFor(summary);
     if (failures.length) {
@@ -153,10 +238,13 @@ try {
       console.log(`PASS perf ${route} ${JSON.stringify(summary)}`);
     }
   }
-  console.log(`[audit-performance] routes=${routes.length}`);
+  console.log(`[audit-performance] lighthouseRoutes=${routes.length} staticRoutes=${staticHtml.length}`);
+} catch (error) {
+  exitCode = 1;
+  console.log(`FAIL perf setup ${error.message}`);
 } finally {
-  await chrome.kill();
-  await new Promise((resolve) => server.close(resolve));
+  if (chrome) await chrome.kill();
+  if (server) await new Promise((resolve) => server.close(resolve));
 }
 
 process.exit(exitCode);

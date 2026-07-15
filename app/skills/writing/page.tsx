@@ -23,11 +23,14 @@ import { JsonLd } from "../../components/JsonLd";
 import { TextLink } from "../../components/TextLink";
 import { signalRoles, type SignalRole } from "../../components/signalStyles";
 import { canonicalAlternates } from "../../seo";
+import { SKILLS_REVISION } from "../../productFacts";
 
 const SITE_URL = "https://suspecframework.dev";
 const pageDescription =
   "A short guide to writing installable Suspec skills: load boundary, rules, references, and scope. Keep the packet useful.";
 const pageTitle = "Writing Suspec skills — structure and scope";
+const skillsSourceBase = `https://github.com/jcosta33/suspec-skills/tree/${SKILLS_REVISION}`;
+const skillsBlobBase = `https://github.com/jcosta33/suspec-skills/blob/${SKILLS_REVISION}`;
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -52,10 +55,10 @@ export const metadata: Metadata = {
 };
 
 const descriptionRules = [
-  "Start with the WHAT verb and its object: implement, review, audit, write.",
-  "Say ALWAYS apply this skill when — and name the triggers, even implicit ones.",
-  "Block the bypass: name the shortcut the agent would take without the skill.",
-  "End with the skip clause: the task types this skill must not load for.",
+  "Sentence one: action and target.",
+  "Sentence two: a positive Use when trigger.",
+  "Sentence three: genuine near misses under Do not use.",
+  "Keep procedure, sequencing, evidence rules, and completion mechanics in the body.",
 ];
 
 const skillFolderLayout = [
@@ -73,25 +76,25 @@ const skillFolderLayout = [
 const skillFrontMatter = [
   "---",
   "name: sus-spec",
-  "description: Forge decided intent into a verifiable spec. ALWAYS apply when a non-trivial change needs a contract. Skip unresolved decisions and trivial inline work.",
+  "description: Write, revise, or structurally check a verifiable Suspec spec. Use when intent must become requirements or acceptance criteria, or unresolved behavior blocks implementation. Do not use for direct implementation, small clear work, factual verification, or implementation design.",
   "---",
 ].join("\n");
 
 const bodyRules = [
   {
     icon: ListOrdered,
-    title: "Use numbered rules",
-    text: "Make checkpoints explicit enough to inspect later. Keep the body as short as the contract allows.",
+    title: "Method is mandatory",
+    text: "Put executable behavior under Method. Add other sections only when they carry behavior.",
   },
   {
     icon: Shield,
     title: "Keep it self-contained",
-    text: "Skills install individually. A skill cannot assume a sibling is in context — no cross-skill references.",
+    text: "Skills install individually. Never name, require, invoke, or assume a sibling.",
   },
   {
     icon: CheckCircle,
-    title: "Force visible proof",
-    text: "If a rule matters, require evidence the next reader can inspect.",
+    title: "Compose by meaning",
+    text: "A useful next job may match another skill's trigger, but must still work when that skill is absent.",
   },
 ];
 
@@ -112,9 +115,9 @@ const skillAnatomy = [
     href: "#trigger",
   },
   {
-    label: "Rules",
+    label: "Method",
     tag: "operating",
-    text: "Short checklist, sharp constraints, visible proof.",
+    text: "Hard imperatives. No repeated rationale or catalog jargon.",
     href: "#rules",
   },
   {
@@ -135,7 +138,7 @@ const writingPageNav = [
   { label: "Anatomy", href: "#anatomy", signal: "reference" },
   { label: "Folder", href: "#folder", signal: "reference" },
   { label: "Trigger", href: "#trigger", signal: "core" },
-  { label: "Rules", href: "#rules", signal: "reference" },
+  { label: "Method", href: "#rules", signal: "reference" },
   { label: "References", href: "#references", signal: "reference" },
   { label: "Scope", href: "#scope", signal: "muted" },
   { label: "Source", href: "#source", signal: "muted" },
@@ -169,7 +172,7 @@ const skillWritingJsonLd = {
     },
   ],
   teaches:
-    "How to write a portable SKILL.md file with trigger, rules, references, scope, and source links.",
+    "How to write a portable SKILL.md file with a three-sentence selection contract, standalone method, semantic handoffs, and maintained sources.",
   mainEntity: {
     "@type": "ItemList",
     name: "Writing a skill sections",
@@ -302,7 +305,7 @@ export default function WritingSkillsPage() {
             {skillAnatomy.map((item, index) => (
               <li
                 key={item.label}
-                className="mcp-adapter-step skill-anatomy-step bg-panel-raised/95"
+                className="skill-anatomy-step bg-panel-raised/95"
               >
                 <a
                   href={item.href}
@@ -418,10 +421,10 @@ export default function WritingSkillsPage() {
             <BookOpen className="h-4 w-4" />
             <span>body</span>
           </div>
-          <Heading className="mt-3">Keep the body actionable</Heading>
+          <Heading className="mt-3">Put execution in Method</Heading>
           <p className="mt-4 text-concrete-400">
-            The body tells the agent what to do after the skill loads. No essay
-            required.
+            Hard imperatives only. Add a section when it changes behavior, not
+            because the template had one.
           </p>
         </div>
         <ul className="skill-body-rule-list grid gap-4 sm:grid-cols-3">
@@ -541,7 +544,7 @@ export default function WritingSkillsPage() {
             <ul className="space-y-3 md:min-w-56">
               <li>
                 <TextLink
-                  href="https://github.com/jcosta33/suspec-skills/tree/main/docs"
+                  href={`${skillsSourceBase}/docs`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Open suspec-skills docs on GitHub (opens in new tab)"
@@ -554,7 +557,7 @@ export default function WritingSkillsPage() {
               </li>
               <li>
                 <TextLink
-                  href="https://github.com/jcosta33/suspec-skills/tree/main/skills"
+                  href={`${skillsSourceBase}/skills`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Open catalog skills on GitHub (opens in new tab)"
@@ -567,7 +570,7 @@ export default function WritingSkillsPage() {
               </li>
               <li>
                 <TextLink
-                  href="https://github.com/jcosta33/suspec-skills/blob/main/docs/sources.md"
+                  href={`${skillsBlobBase}/docs/sources.md`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Open the sources bibliography on GitHub (opens in new tab)"

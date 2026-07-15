@@ -8,6 +8,16 @@
   }
 }
 
+.copy-button[data-copying="true"] {
+  cursor: progress;
+  opacity: 0.78;
+}
+
+.copy-button[data-copy-error="true"] {
+  border-color: rgb(var(--signal-change-rgb) / 0.78);
+  color: rgb(var(--signal-change-rgb));
+}
+
 @keyframes copy-confirm-scan {
   0% {
     opacity: 0;

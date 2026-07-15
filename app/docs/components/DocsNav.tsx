@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 import type { NavSection } from "../lib/canon";
 
 const norm = (p: string) => p.replace(/\/+$/, "");
@@ -13,7 +14,30 @@ const norm = (p: string) => p.replace(/\/+$/, "");
 // post-hydration layout shift. On desktop (and with no JS/CSS) the nav is simply always shown.
 export function DocsNav({ nav }: { nav: NavSection[] }) {
   const current = norm(usePathname() || "");
+  const toggleRef = useRef<HTMLInputElement>(null);
+  const navRef = useRef<HTMLElement>(null);
   const isActive = (slug: string) => norm(`/docs/${slug}`) === current;
+
+  useEffect(() => {
+    if (toggleRef.current) toggleRef.current.checked = false;
+    if (navRef.current) navRef.current.scrollTop = 0;
+  }, [current]);
+
+  const revealActivePage = () => {
+    if (!toggleRef.current?.checked) return;
+    window.requestAnimationFrame(() => {
+      const menu = navRef.current;
+      const active = menu?.querySelector<HTMLElement>('[aria-current="page"]');
+      if (!menu || !active) return;
+      const menuRect = menu.getBoundingClientRect();
+      const activeRect = active.getBoundingClientRect();
+      menu.scrollTop +=
+        activeRect.top -
+        menuRect.top -
+        menu.clientHeight / 2 +
+        activeRect.height / 2;
+    });
+  };
 
   const groups = nav.map((sec) => {
     const items = sec.items.map((it) => {
@@ -49,12 +73,19 @@ export function DocsNav({ nav }: { nav: NavSection[] }) {
 
   return (
     <div className="docs-nav-disclosure">
-      <input type="checkbox" id="docs-nav-toggle" className="docs-nav-toggle" aria-label="Toggle documentation menu" />
+      <input
+        ref={toggleRef}
+        type="checkbox"
+        id="docs-nav-toggle"
+        className="docs-nav-toggle"
+        aria-label="Toggle documentation menu"
+        onChange={revealActivePage}
+      />
       <label htmlFor="docs-nav-toggle" className="docs-nav-summary">
         <span className="docs-nav-summary-main">Manual index</span>
         <span className="docs-nav-summary-detail">Browse sections</span>
       </label>
-      <nav className="docs-nav" aria-label="Documentation">
+      <nav ref={navRef} className="docs-nav" aria-label="Documentation">
         {groups}
       </nav>
     </div>

@@ -7,7 +7,7 @@
     "predev": "node scripts/ensure-canon.mjs",
     "prebuild": "node scripts/ensure-canon.mjs",
     "build": "next build",
-    "postbuild": "pagefind --site dist --output-subdir pagefind && node scripts/gen-llms-full.mjs",
+    "postbuild": "pagefind --site dist --output-subdir pagefind",
     "audit:copy": "node scripts/audit-copy.mjs",
     "audit:css": "node scripts/audit-css.mjs && npm run audit:palette",
     "audit:palette": "node scripts/audit-palette.mjs",
@@ -21,7 +21,7 @@
     "audit:ssr": "node scripts/audit-ssr.mjs",
     "audit:perf": "node scripts/audit-performance.mjs",
     "audit:goal": "npm run build && npm run audit:copy && npm run audit:css && npm run audit:links && npm run audit:site && npm run audit:visual && npm run audit:a11y && npm run audit:ssr && npm run audit:perf",
-    "start": "next start",
+    "start": "serve dist",
     "lint": "eslint"
   },
   "dependencies": {

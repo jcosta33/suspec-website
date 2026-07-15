@@ -45,7 +45,7 @@ const steps = [
     descriptor: "compare evidence",
     summary: "Compare the result with the bar.",
     description:
-      "An independent reviewer — never the implementer — reconciles the evidence against the spec. Empty evidence is Unverified, never Pass.",
+      "An independent reviewer — never the implementer — reconciles the evidence against the spec. Empty evidence is Unverified, never Supported.",
   },
   {
     number: "05",
@@ -54,7 +54,7 @@ const steps = [
     descriptor: "report facts",
     summary: "Lint the paperwork. No verdicts.",
     description:
-      "Pulled in when the work earns it: suspec check reports the facts a lazy review cannot fake. Exit codes are the API; it never renders a verdict.",
+      "Pulled in when the work earns it: suspec check validates shape, references, and evidence binding. Exit codes are the API; it never renders a verdict.",
   },
   {
     number: "06",

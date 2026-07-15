@@ -38,9 +38,9 @@
     grid-column: 1 / 2;
     color: var(--signal-reference);
     font-family: var(--font-mono), monospace;
-    font-size: 0.62rem;
+    font-size: 10px;
     font-weight: 760;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     line-height: 1;
   }
 

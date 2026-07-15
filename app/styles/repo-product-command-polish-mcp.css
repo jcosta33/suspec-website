@@ -10,7 +10,7 @@
   }
 
   .mcp-adapter-step {
-    border-right: 1px solid rgba(var(--package-mcp-rgb), 0.16);
+    border-right: 1px solid rgb(var(--signal-reference-rgb) / 0.16);
   }
 
   .mcp-adapter-step:last-child {

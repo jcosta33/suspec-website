@@ -28,6 +28,10 @@ import { PackageJsonLd } from "../components/PackageJsonLd";
 import { CopyButton } from "../components/CopyButton";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 import { canonicalAlternates } from "../seo";
+import {
+  CHECKS_CONTRACT_VERSION,
+  SKILLS_INSTALL_COMMAND,
+} from "../productFacts";
 
 const SITE_URL = "https://suspecframework.dev";
 const CLI_REPOSITORY = "https://github.com/jcosta33/suspec-cli";
@@ -89,7 +93,7 @@ const commands = [
   {
     cmd: "check --contract",
     family: "Contract",
-    what: "Print contract 0.19.0 as JSON: check id, name, and severity.",
+    what: `Print contract ${CHECKS_CONTRACT_VERSION} as JSON: check id, name, and severity.`,
     icon: Braces,
   },
 ];
@@ -110,10 +114,10 @@ const honestyFloor = [
     signal: "evidence",
   },
   {
-    title: "Pass needs evidence",
+    title: "Supported needs evidence",
     label: "C016",
     icon: ScanEye,
-    text: "Pass without evidence blocks.",
+    text: "Supported without evidence blocks.",
     signal: "evidence",
   },
   {
@@ -156,7 +160,7 @@ const boundaries = [
   },
   {
     title: "No verdicts",
-    text: "Reviewers write verdicts. The checker validates their evidence binding.",
+    text: "Humans own the decision. The checker validates evidence binding.",
   },
   {
     title: "No execution",
@@ -337,12 +341,6 @@ export default function CliPage() {
                         aria-hidden="true"
                       />
                     </div>
-                    <p className="cli-command-code mt-3 font-mono text-xs leading-relaxed text-signal-reference">
-                      {family.commands}
-                    </p>
-                    <p className="cli-command-detail mt-2 text-sm leading-relaxed text-concrete-400">
-                      {family.detail}
-                    </p>
                   </a>
                 </li>
               );
@@ -396,7 +394,7 @@ export default function CliPage() {
               <span className="text-suspec-yellow">$</span>{" "}pnpm link --global
             </p>
             <p className="mt-2 text-concrete-500">
-              # sanity check — prints checks contract 0.19.0
+              # sanity check — prints checks contract {CHECKS_CONTRACT_VERSION}
             </p>
             <p className="text-concrete-100">
               <span className="text-suspec-yellow">$</span>{" "}suspec check
@@ -439,7 +437,7 @@ export default function CliPage() {
               ./review.md --spec ./spec.md --task ./task.md
             </p>
             <p className="text-concrete-100">
-              C016 blocking — review.md: Pass on AC-003 with an empty evidence
+              C016 blocking — review.md: Supported on AC-003 with an empty evidence
               cell
             </p>
             <p className="text-concrete-100">
@@ -597,11 +595,12 @@ export default function CliPage() {
             <span>floor.md — why a checker?</span>
           </div>
           <Heading className="mt-3">
-            Facts a reviewer cannot fake
+            Cheap checks before expensive judgment
           </Heading>
           <p className="mt-4 text-concrete-400">
             What the checker earns its keep on: facts a lazy or dishonest
-            reviewer cannot fake, at zero model cost.
+            It checks shape, references, and evidence binding without another
+            model call. It does not prove the evidence is true.
           </p>
         </div>
         <ul className="grid gap-4 sm:grid-cols-3">
@@ -676,7 +675,7 @@ export default function CliPage() {
               then add the checker when the work earns a deterministic floor.
             </p>
             <p className="mt-4 font-mono text-sm text-suspec-yellow">
-              npx skills add jcosta33/suspec-skills -g
+              {SKILLS_INSTALL_COMMAND}
             </p>
           </div>
           <div className="mt-auto flex flex-col gap-3">

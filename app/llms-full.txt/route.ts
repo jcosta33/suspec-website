@@ -6,25 +6,15 @@ const SITE_URL = "https://suspecframework.dev/";
 const CANON_URL = "https://github.com/jcosta33/suspec";
 
 function userFacingDocSlugs() {
-  const docs = listDocs();
-  const directChildren = (prefix: string) =>
-    docs
-      .filter((slug) => slug.startsWith(`${prefix}/`) && slug.split("/").length === 2)
-      .sort();
-
-  return [
-    ...docs.filter((slug) => /^\d\d-/.test(slug)).sort(),
-    ...directChildren("tutorial"),
-    ...directChildren("examples"),
-  ];
+  return listDocs().sort();
 }
 
 function buildLlmsFullText() {
   const slugs = userFacingDocSlugs();
   const header =
     `# Suspec - full documentation\n\n` +
-    `> Suspec is a methodology for structuring work with coding agents. ` +
-    `Skills implement the method. Plain Markdown, any capable harness, no runtime. This file concatenates the user-facing documentation for ` +
+    `> Suspec structures agent work with specs, evidence-backed review, and promotion. ` +
+    `Plain Markdown, any capable harness. This file concatenates the user-facing documentation for ` +
     `full-context ingestion by AI assistants.\n\n` +
     `Site: ${SITE_URL} - Canon: ${CANON_URL}\n\n---\n\n`;
 

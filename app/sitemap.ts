@@ -8,7 +8,6 @@ export const dynamic = "force-static";
 const BASE_URL = "https://suspecframework.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   const marketing = [
     "/",
     "/the-loop/",
@@ -23,25 +22,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   const marketingEntries = marketing.map((p) => ({
     url: `${BASE_URL}${p}`,
-    lastModified: now,
   }));
   const skillEntries = skillDetails.map((skill) => ({
     url: `${BASE_URL}/skills/${skill.slug}/`,
-    lastModified: now,
   }));
   const loopStepEntries = loopSteps.map((step) => ({
     url: `${BASE_URL}${loopStepHref(step.slug)}`,
-    lastModified: now,
   }));
   // One <url> per docs page (trailingSlash: true). listDocs() returns [] when the canon is absent,
   // so the sitemap still builds — just without docs entries. lastModified is the doc's real git
   // author date (falls back to build time when history is unavailable) — a genuine freshness signal.
   const docEntries = [
-    { url: `${BASE_URL}/docs/`, lastModified: now },
-    ...listDocs().map((slug) => ({
-      url: `${BASE_URL}/docs/${slug}/`,
-      lastModified: docDates(slug)?.modified ?? now,
-    })),
+    { url: `${BASE_URL}/docs/` },
+    ...listDocs().map((slug) => {
+      const modified = docDates(slug)?.modified;
+      return {
+        url: `${BASE_URL}/docs/${slug}/`,
+        ...(modified ? { lastModified: modified } : {}),
+      };
+    }),
   ];
   return [...marketingEntries, ...skillEntries, ...loopStepEntries, ...docEntries];
 }

@@ -57,9 +57,11 @@
   }
 
   .mcp-adapter-detail {
+    display: block;
     margin-top: 0.22rem;
     margin-left: calc(1.52rem + 0.5rem);
-    -webkit-line-clamp: 1;
+    overflow: visible;
+    -webkit-line-clamp: unset;
     font-size: 0.69rem;
     line-height: 1.26;
   }

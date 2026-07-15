@@ -154,7 +154,7 @@ export default async function LoopStepPage({
       <Section
         register="02 / handoff"
         registerTone="reference"
-        className="grid gap-6 lg:grid-cols-2 lg:items-start"
+        className="max-w-4xl"
       >
         <Card screws contentClassName="space-y-4" signal="reference">
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-signal-reference">
@@ -162,9 +162,8 @@ export default async function LoopStepPage({
           </p>
           <Heading>{step.handoff}</Heading>
           <p className="text-sm leading-relaxed text-concrete-400">
-            When this step produces a record, the next step reads it by
-            explicit full path. Lighter work can keep the boundary inline; the
-            loop does not need a file for the sake of owning a file.
+            {step.output}. If it lives in a file, pass its full path. Inline
+            work stays inline.
           </p>
           {next ? (
             <TextLink href={loopStepHref(next.slug)} className="w-fit gap-2">
@@ -177,17 +176,6 @@ export default async function LoopStepPage({
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </TextLink>
           )}
-        </Card>
-        <Card screws contentClassName="space-y-4" signal={step.signal}>
-          <p className={`font-mono text-xs font-semibold uppercase tracking-[0.14em] ${signalRoles[step.signal].text}`}>
-            boundary
-          </p>
-          <Heading>Keep the evidence attached.</Heading>
-          <p className="text-sm leading-relaxed text-concrete-400">
-            The record names its source, scope, or result clearly enough for a
-            reviewer to pick up. The next step gets the evidence; it should not
-            have to excavate the story from chat.
-          </p>
         </Card>
       </Section>
 

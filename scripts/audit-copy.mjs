@@ -19,6 +19,7 @@ const routes = [
   "/get-started/",
   "/skills/",
   "/skills/writing/",
+  "/skills/campaign/",
   "/skills/bulletproof/",
   "/skills/disrespec/",
   "/skills/fork-me/",

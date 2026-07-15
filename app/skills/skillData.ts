@@ -15,14 +15,17 @@ import {
   Search,
   ShieldCheck,
   Swords,
+  Workflow,
   Zap,
 } from "lucide-react";
 import type { SignalRole } from "../components/signalStyles";
+import { SKILLS_REVISION } from "../productFacts";
 
 export type SkillKind = "method" | "artifact";
 export type SkillVisual =
   | "artifact"
   | "before-after"
+  | "campaign"
   | "chat"
   | "decision"
   | "flow"
@@ -59,10 +62,10 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "evidence",
     icon: ShieldCheck,
-    description: "Test unsupported claims with direct evidence.",
-    rationale: "Use it when a claim needs proof, not plausible prose or a green check.",
+    description: "Fact-check claims and prove finished implementation.",
+    rationale: "Use it when a claim needs evidence or completed work needs decisive command proof.",
     output: "In-chat evidence table: Supported, Unsupported, Unverified, or Blocked, with proof.",
-    boundary: "Verifies bounded claims; not a risk review or acceptance.",
+    boundary: "Not broad risk discovery, spec conformance, or one-sided advocacy.",
     misuse: "Treating a plausible citation or green check as proof without inspecting it.",
     visual: "chat",
     visualLabels: ["bounded claim set", "inspect the evidence", "supported / unverified"],
@@ -77,15 +80,39 @@ export const skillDetails: readonly SkillDetail[] = [
     },
   },
   {
+    slug: "campaign",
+    name: "campaign",
+    kind: "method",
+    tone: "reference",
+    icon: Workflow,
+    description: "Run broad delivery through reusable worktree lanes and ordinary pull requests.",
+    rationale: "Use it when one goal has multiple dependency-aware, write-disjoint implementation streams.",
+    output: "Project issue, pull requests, review threads, CI, and final state. No Suspec artifact.",
+    boundary: "Owners fix their branches. Humans and project policy approve and merge.",
+    misuse: "Using it for one pull request, sequential work, or private review theater.",
+    visual: "campaign",
+    visualLabels: ["campaign issue", "reusable lanes", "pull requests"],
+    example: {
+      title: "delivery issue",
+      meta: "project-native state / three lanes",
+      lines: [
+        "Goal: ship the auth migration",
+        "Lane 01 -> PR #241 / ready",
+        "Lane 02 -> PR #244 / blocked by #241",
+        "Lane 03 -> PR #247 / review",
+      ],
+    },
+  },
+  {
     slug: "demolition",
     name: "demolition",
     kind: "method",
     tone: "change",
     icon: Swords,
     description: "Make the strongest case against a proposal.",
-    rationale: "Use it when attack beats another balanced summary.",
+    rationale: "Use it only when the user explicitly asks for attack-at-all-costs advocacy.",
     output: "In-chat rejection case: assumptions, failure paths, opportunity costs.",
-    boundary: "Advocacy is not evidence. Verify every claim.",
+    boundary: "Not balanced evaluation, factual verification, or verdict-bearing review.",
     misuse: "Using the advocacy case as the final review instead of verifying its claims.",
     visual: "chat",
     visualLabels: ["target proposal", "failure paths", "rejection case"],
@@ -108,7 +135,7 @@ export const skillDetails: readonly SkillDetail[] = [
     description: "Anti-bloat vacuum cleaner.",
     rationale: "Point it at ceremonial sludge. Keep the facts.",
     output: "Tighter Markdown; every fact, decision, command, warning, and proof remains once.",
-    boundary: "Markdown only. No invented facts or removed constraints.",
+    boundary: "No source code, commit messages, or repository-native pull-request forms.",
     misuse: "Cutting a constraint because it sounds repetitive.",
     visual: "before-after",
     example: {
@@ -217,19 +244,19 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "core",
     icon: RefreshCw,
-    description: "Attack a target from every relevant angle.",
-    rationale: "Use it for broad adversarial coverage, resolving each finding before the next stance.",
-    output: "Sequential stances, fixes, proof, and refutations.",
-    boundary: "Creates no artifact. Stops on blockers or human decisions.",
-    misuse: "Running every stance in parallel or moving on with an unresolved finding.",
+    description: "Exhaust every target-justified angle, repairing between stances.",
+    rationale: "Use it when broad risk needs adaptive, sequential scrutiny rather than a fixed panel.",
+    output: "Material fixes and proof, consequential refutations, and unresolved human decisions.",
+    boundary: "No fixed stance count. Reviewers stay read-only; the orchestrator repairs.",
+    misuse: "Adding filler stances, parallelizing the pool, or carrying a finding forward unresolved.",
     visual: "revolver",
     example: {
       title: "rotation log",
       meta: "stance 01 -> resolve -> stance 02",
       lines: [
-        "01 contract: can the claim be falsified? resolved",
-        "02 boundary: who owns the decision? resolved",
-        "03 failure: what blocks the next pass? open",
+        "pool: contract / boundary / failure / user",
+        "stance: current target only -> resolved",
+        "next rotation: rebuild the pool; no filler",
       ],
     },
   },
@@ -332,7 +359,7 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "artifact",
     tone: "evidence",
     icon: ClipboardCheck,
-    description: "Reconcile finished work against its spec or task.",
+    description: "Review finished work against its governing spec, narrowed by its task when present.",
     rationale: "Use it for independent, requirement-level evidence review.",
     output: "Coverage rows, evidence, findings, and a human-owned decision.",
     boundary: "Assesses evidence. Cannot accept its own work.",
@@ -401,19 +428,20 @@ export const skillDetails: readonly SkillDetail[] = [
     kind: "method",
     tone: "core",
     icon: CheckCircle,
-    description: "Run exactly three fresh passes over a narrow target.",
-    rationale: "Use it when one high-consequence target merits three independent views.",
-    output: "Three sequential passes with fixes and proof between them.",
-    boundary: "Not a trace or broad audit. Unresolved defects block the next pass.",
-    misuse: "Using it as a broad audit or counting three shallow passes as independent.",
+    description: "Run three fresh top-tier reviews in one parallel wave.",
+    rationale: "Use it when a frozen target needs fast, independent scrutiny.",
+    output: "Three attacks, one reconciled finding set, one repair, and final proof.",
+    boundary: "Exactly three reviewers see the same snapshot and no peer prose.",
+    misuse: "Running passes sequentially, sharing reviewer notes, or repeating without an explicit request.",
     visual: "passes",
     example: {
       title: "pass report",
-      meta: "fresh pass 01 -> 02 -> 03",
+      meta: "three fresh reviews / one frozen snapshot",
       lines: [
-        "PASS 01 / contract boundary / fixed",
-        "PASS 02 / failure path / refuted with evidence",
-        "PASS 03 / regression surface / verified",
+        "REVIEW 01 / same snapshot / independent",
+        "REVIEW 02 / same snapshot / independent",
+        "REVIEW 03 / same snapshot / independent",
+        "RECONCILE -> REPAIR ONCE -> VERIFY",
       ],
     },
   },
@@ -426,5 +454,5 @@ export function getSkill(slug: string): SkillDetail | undefined {
 }
 
 export function skillSourceUrl(slug: string): string {
-  return `https://github.com/jcosta33/suspec-skills/blob/main/skills/${slug}/SKILL.md`;
+  return `https://github.com/jcosta33/suspec-skills/blob/${SKILLS_REVISION}/skills/${slug}/SKILL.md`;
 }

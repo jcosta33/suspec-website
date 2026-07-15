@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { Button } from "../components/Button";
 import { Card } from "../components/Card";
@@ -114,7 +115,10 @@ function PreviewSection({
           {index}
         </span>
         <Heading className="shrink-0">{title}</Heading>
-        <span className="h-px min-w-8 flex-1 bg-panel-border" aria-hidden="true" />
+        <span
+          className="h-px min-w-8 flex-1 bg-panel-border"
+          aria-hidden="true"
+        />
       </div>
       {children}
     </Section>
@@ -216,7 +220,9 @@ export default function KitchenSinkPage() {
           </Panel>
           <Panel gilt className="p-5 sm:p-6">
             <h3 className="font-heading text-lg font-bold">Gilt panel</h3>
-            <p className="mt-2 text-concrete-400">Thin gold rule for state changes.</p>
+            <p className="mt-2 text-concrete-400">
+              Thin gold rule for state changes.
+            </p>
           </Panel>
         </div>
       </PreviewSection>
@@ -228,9 +234,15 @@ export default function KitchenSinkPage() {
         registerTone="core"
       >
         <div className="flex flex-wrap gap-4 sm:gap-5">
-          <Button>Primary action</Button>
-          <Button variant="secondary">Secondary action</Button>
-          <Button variant="secondary">Outline action</Button>
+          <Button asChild>
+            <Link href="/get-started/">Primary action</Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link href="/docs/">Secondary action</Link>
+          </Button>
+          <Button asChild variant="ghost">
+            <Link href="/skills/">Ghost action</Link>
+          </Button>
           <Button disabled>Disabled</Button>
         </div>
       </PreviewSection>
@@ -280,7 +292,10 @@ export default function KitchenSinkPage() {
                       {signalRoleMeta[role].family}
                     </p>
                   </div>
-                  <span className="palette-specimen-swatch" aria-hidden="true" />
+                  <span
+                    className="palette-specimen-swatch"
+                    aria-hidden="true"
+                  />
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-concrete-300">
                   {signalRoleMeta[role].use}
@@ -380,10 +395,12 @@ export default function KitchenSinkPage() {
           meta="review packet / example"
           className="max-w-2xl"
         >
-          <p>AC-001 — Pass</p>
+          <p>AC-001 — Supported</p>
           <p className="text-pencil">Evidence: build output pasted, exit 0.</p>
           <p className="mt-3">AC-002 — Unverified</p>
-          <p className="text-pencil">Evidence missing; route to human attention.</p>
+          <p className="text-pencil">
+            Evidence missing; route to human attention.
+          </p>
         </PaperArtifact>
       </PreviewSection>
 
@@ -441,9 +458,11 @@ export default function KitchenSinkPage() {
         >
           <p className="text-concrete-500"># CRT monitor panel</p>
           <p className="text-concrete-100">
-              <span className="text-suspec-yellow">$</span>{" "}suspec check ./spec.md
+            <span className="text-suspec-yellow">$</span> suspec check ./spec.md
           </p>
-            <p className="mt-1 text-signal-evidence">✓ facts returned; review remains human</p>
+          <p className="mt-1 text-signal-evidence">
+            ✓ facts returned; review remains human
+          </p>
         </TerminalWindow>
       </PreviewSection>
 

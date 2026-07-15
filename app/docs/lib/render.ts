@@ -20,13 +20,15 @@ import type {
   ElementContent,
   RootContent,
 } from "hast";
+import { canonRevision } from "./canon";
 
 export type DocHeading = { depth: 2 | 3; id: string; text: string };
 
 const REPO_ROOT = path.join(process.cwd(), ".suspec-canon"); // the suspec repo root mirror
-const GH_BLOB = "https://github.com/jcosta33/suspec/blob/main/";
+const GH_BLOB = `https://github.com/jcosta33/suspec/blob/${canonRevision() ?? "main"}/`;
 const DEAD_EXTERNAL_LINKS = new Set([
   "https://github.com/jcosta33/suspec-works/issues/58",
+  "https://www.iso-architecture.org/ieee-1471/cm/",
 ]);
 const repoHas = (repoRel: string): boolean => {
   const root = path.resolve(REPO_ROOT);
@@ -238,6 +240,12 @@ const rehypeExternalLinks: Plugin<[], HastRoot> = () => (tree) => {
     node.properties = node.properties ?? {};
     node.properties.target = "_blank";
     node.properties.rel = ["noopener", "noreferrer"];
+    node.children.push({
+      type: "element",
+      tagName: "span",
+      properties: { className: ["sr-only"] },
+      children: [{ type: "text", value: " (opens in new tab)" }],
+    });
   });
 };
 
@@ -535,7 +543,7 @@ const contextualDescriptionSuffix = (title: string): string => {
     return "Rules for resolving conflicts in Suspec docs and templates.";
   }
   if (/step bars/i.test(title)) {
-    return "Pass, Fail, Blocked, and Unverified status in loop steps.";
+    return "Supported, Unsupported, Blocked, and Unverified status in loop steps.";
   }
   if (/what is Suspec/i.test(title)) {
     return "The records Suspec keeps and what the workflow does not decide.";

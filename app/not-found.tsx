@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   title,
   description,
   robots: "noindex",
+  alternates: null,
   openGraph: {
     title,
     description,

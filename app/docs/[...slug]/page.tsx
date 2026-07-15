@@ -8,6 +8,7 @@ import {
   humanizeSegment,
   docSequence,
   docDates,
+  canonRevision,
 } from "../lib/canon";
 import {
   renderDoc,
@@ -140,7 +141,9 @@ function articleFor(
 }
 
 export function generateStaticParams(): { slug: string[] }[] {
-  return listDocs().map((slug) => ({ slug: slug.split("/") }));
+  return [...listDocs(), ...Object.keys(DOC_SOURCE_PATH_ALIASES)].map((slug) => ({
+    slug: slug.split("/"),
+  }));
 }
 
 export async function generateMetadata({
@@ -149,7 +152,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const md = readDoc(slug.join("/"));
+  const slugPath = slug.join("/");
+  const sourcePath = DOC_SOURCE_PATH_ALIASES[slugPath] ?? slugPath;
+  const md = readDoc(sourcePath);
   const canonical = `/docs/${slug.join("/")}/`;
   if (!md) {
     return { title: "Suspec docs", alternates: canonicalAlternates(canonical) };
@@ -181,7 +186,8 @@ export default async function DocPage({
 }) {
   const { slug } = await params;
   const slugPath = slug.join("/");
-  const md = readDoc(slugPath);
+  const sourcePath = DOC_SOURCE_PATH_ALIASES[slugPath] ?? slugPath;
+  const md = readDoc(sourcePath);
   if (md === null) notFound();
   const dir = path.posix.dirname(slugPath);
   const articleMarkdown = md
@@ -193,14 +199,13 @@ export default async function DocPage({
     dir === "." ? "" : dir,
     title,
   );
-  const dates = docDates(slugPath);
+  const dates = docDates(sourcePath);
   const docGroup = (() => {
     if (slug.length > 1) {
       return humanizeSegment(slug[0]).replace(/^README$/i, "Manual");
     }
     return /^\d{2}-/.test(slug[0]) ? "Start here" : "Manual";
   })();
-  const sourcePath = DOC_SOURCE_PATH_ALIASES[slugPath] ?? slugPath;
   const sourceLabel = `suspec/docs/${sourcePath}.md`;
   const titleClassName = [
     "docs-article-title",
@@ -236,7 +241,7 @@ export default async function DocPage({
       />
       <article
         id="docs-primary-content"
-        className="docs-prose"
+        className={`docs-prose${slugPath === "adrs/README" ? " docs-prose-adrs-index" : ""}`}
         data-pagefind-body
         tabIndex={-1}
         aria-labelledby="docs-article-title"
@@ -254,7 +259,7 @@ export default async function DocPage({
             <span className="docs-source-path">
               <span className="docs-source-label">Source:</span>{" "}
               <Link
-                href={`https://github.com/jcosta33/suspec/blob/main/docs/${sourcePath}.md`}
+                href={`https://github.com/jcosta33/suspec/blob/${canonRevision() ?? "main"}/docs/${sourcePath}.md`}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Open ${sourceLabel} source on GitHub (opens in new tab)`}

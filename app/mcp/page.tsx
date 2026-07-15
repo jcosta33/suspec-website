@@ -27,6 +27,7 @@ import { JsonLd } from "../components/JsonLd";
 import { PackageJsonLd } from "../components/PackageJsonLd";
 import { signalRoles, type SignalRole } from "../components/signalStyles";
 import { canonicalAlternates } from "../seo";
+import { CHECKS_CONTRACT_VERSION } from "../productFacts";
 
 const SITE_URL = "https://suspecframework.dev";
 const MCP_REPOSITORY = "https://github.com/jcosta33/suspec-mcp";
@@ -239,28 +240,6 @@ const bridgeFlow = [
   },
 ] as const;
 
-const bridgeContracts = [
-  {
-    label: "Host",
-    value: "A shell-less MCP client asks for a check.",
-    signal: "reference",
-  },
-  {
-    label: "Adapter",
-    value: "suspec-mcp shells out to suspec check --json.",
-    signal: "core",
-  },
-  {
-    label: "Facts",
-    value: "Diagnostics, severity, exit code — relayed verbatim, never a verdict.",
-    signal: "muted",
-  },
-] as const satisfies Array<{
-  label: string;
-  value: string;
-  signal: SignalRole;
-}>;
-
 const mcpPageNav = [
   { label: "Bridge", href: "#bridge", signal: "muted" },
   { label: "Config", href: "#mcp-config", signal: "reference" },
@@ -316,10 +295,11 @@ export default function McpPage() {
             local stdio, no verdict.
           </p>
           <div className="hero-badge-row mt-8 flex flex-wrap items-center justify-center gap-2">
-            <Badge variant="ready">Exactly two tools</Badge>
             <Badge variant="draft">local stdio</Badge>
-            <Badge signal="muted">no verdict</Badge>
-            <Badge signal="muted">checks contract 0.19.0</Badge>
+            <Badge signal="muted">facts only</Badge>
+            <Badge signal="muted">
+              checks contract {CHECKS_CONTRACT_VERSION}
+            </Badge>
           </div>
         </PageHero>
       </Section>
@@ -368,17 +348,6 @@ export default function McpPage() {
           <div className="mcp-adapter-header">
             <p>client request</p>
             <span>local stdio</span>
-            <dl className="mcp-adapter-contracts">
-              {bridgeContracts.map((item) => (
-                <div
-                  key={item.label}
-                  className={`mcp-adapter-contract mcp-adapter-contract-${item.signal}`}
-                >
-                  <dt>{item.label}</dt>
-                  <dd>{item.value}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
           <ol
             className="mcp-adapter-rail package-process-strip package-process-strip-mcp process-strip process-strip-signal-reference grid gap-px bg-panel-border sm:grid-cols-2 lg:grid-cols-5"
@@ -429,25 +398,12 @@ export default function McpPage() {
         id="mcp-config"
         register="02 / config"
         registerTone="reference"
-        className="grid scroll-mt-28 gap-6 lg:grid-cols-[1.05fr_0.95fr]"
+        className="max-w-4xl scroll-mt-28"
       >
         <PaperArtifact label="config" title="mcp.json" meta="Claude Desktop / Cursor">
           <pre className="m-0 whitespace-pre-wrap font-mono text-sm leading-7 text-ink">
             {mcpConfigSnippet}
           </pre>
-        </PaperArtifact>
-
-        <PaperArtifact
-          label="note"
-          title="no extra capability"
-          meta="thin adapter / the cli stays the surface"
-        >
-          <p>
-            suspec-mcp adds nothing of its own. It adapts{" "}
-            <span className="font-semibold">suspec check --json</span> for
-            clients that cannot shell out — an agent with a terminal runs the
-            CLI directly and never needs this.
-          </p>
         </PaperArtifact>
       </Section>
 
@@ -508,7 +464,7 @@ export default function McpPage() {
             <Cable className="h-4 w-4" aria-hidden="true" />
             <span>tools</span>
           </div>
-          <Heading className="mt-3">Exactly two tools</Heading>
+          <Heading className="mt-3">Check · contract</Heading>
             <p className="mt-4 text-concrete-400">
               One runs the checks over explicit artifact paths; one prints the
               contract they use. Both shell out to{" "}
@@ -559,7 +515,7 @@ export default function McpPage() {
             <p className="mt-4 text-concrete-400">
               Every result uses the same structure. <code>ok</code> means the
               CLI ran. Whether the artifact is clean lives in the facts; the
-              server never adds a Pass or Fail of its own.
+              server never adds an assessment of its own.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <div className="mcp-fact-list tool-list-card tool-list-card-core rounded-panel border bg-panel p-4 sm:col-span-2">
