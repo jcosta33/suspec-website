@@ -1,5 +1,5 @@
 // Six-node seal field — concentric instrument rings, a turning degree ring, and
-// the six-node loop dial with the keys triangle (spec · review · findings,
+// the six-node loop dial with the keys triangle (intent · review · findings,
 // the inscribed triangle the three alternate nodes form) drawn through it.
 // Kept as HeroHexGrid for the existing import surface.
 const TICKS = Array.from({ length: 72 }, (_, i) => i);

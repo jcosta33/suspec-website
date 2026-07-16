@@ -218,7 +218,7 @@ export default function HomePage() {
               <PaperArtifact
                 label="review"
                 title="review.md"
-                meta="~/.claude/projects/acme-api/ · review packet"
+                meta="~/.agents/artifacts/acme-api/ · review packet"
                 className="home-hero-artifact"
               >
                 <p>
@@ -369,7 +369,7 @@ export default function HomePage() {
           <PaperArtifact
             label="spec"
             title="spec.md"
-            meta="~/.claude/projects/acme-api/ · acceptance criterion"
+            meta="~/.agents/artifacts/acme-api/ · acceptance criterion"
           >
             <p>AC-003 — Expired refresh token redirects to login</p>
             <p className="mt-3 text-pencil">

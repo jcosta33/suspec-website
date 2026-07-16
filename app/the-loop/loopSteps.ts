@@ -38,15 +38,15 @@ export const loopSteps = [
     icon: Inbox,
     signal: "core",
     descriptor: "name the work",
-    output: "Source named, or an intake note",
+    output: "Source named, or a one-line intent note",
     handoff: "Spec",
     body: "Name the work: ticket, thread, or idea. Preserve the original wording only when it matters. Arrival does not set the ceremony; the work does.",
     example: {
-      title: "~/.claude/projects/acme-site/intake.md",
+      title: "~/.agents/artifacts/acme-site/intent.md",
       lines: [
         {
           prompt: false,
-          text: "## Intake — Add dark mode to marketing site",
+          text: "## Intent — Add dark mode to marketing site",
         },
         { prompt: false, text: "" },
         { prompt: false, text: "- Requested by: design" },
@@ -66,7 +66,7 @@ export const loopSteps = [
     handoff: "Implement",
     body: "When needed, write AC-NNN requirements with a Verify with: line each. Add non-goals and open questions. Carry the full path. Check it with suspec check spec.md.",
     example: {
-      title: "~/.claude/projects/acme-site/spec.md",
+      title: "~/.agents/artifacts/acme-site/spec.md",
       lines: [
         {
           prompt: false,
@@ -103,7 +103,7 @@ export const loopSteps = [
     handoff: "Review",
     body: "Work from the spec path. Run every Verify with: command. Paste the output into ## Execution. “Tests passed” is not evidence.",
     example: {
-      title: "~/.claude/projects/acme-site/spec.md",
+      title: "~/.agents/artifacts/acme-site/spec.md",
       lines: [
         { prompt: false, text: "## Execution" },
         { prompt: false, text: "" },
@@ -127,7 +127,7 @@ export const loopSteps = [
     handoff: "Check",
     body: "A reviewer who did not implement reconciles each requirement with evidence. Exceptions go to a human. For trivial fixes, the owner reads the pasted output.",
     example: {
-      title: "~/.claude/projects/acme-site/review.md",
+      title: "~/.agents/artifacts/acme-site/review.md",
       lines: [
         {
           prompt: false,

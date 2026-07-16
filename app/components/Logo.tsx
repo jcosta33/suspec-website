@@ -2,8 +2,8 @@ import { useId } from "react";
 
 // The mark synthesizes the two shapes of the method: the hexagon is the full
 // six-step loop — intent, spec, implement, review, check, findings — and the
-// equilateral triangle its three alternate vertices form is the three keys —
-// spec · review · findings, the parts present on virtually every change.
+// equilateral triangle its three alternate vertices form stands for the three
+// keys — intent · review · findings, the parts present on virtually every change.
 // The triangle is read out of the hexagon, not added; it points DOWN, its
 // apex where the loop bottoms out at reconciliation. The remaining three
 // vertices are the quiet nodes.
