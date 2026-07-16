@@ -151,7 +151,7 @@ export default function HomePage() {
             eyebrow="methodology / shipped as skills"
             motif="loop"
             titleSize="default"
-            title="Show, not tell."
+            title="Vibes don’t merge."
           >
             <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-concrete-100">
               Structure agent work. State intent, verify output, keep what
