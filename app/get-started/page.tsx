@@ -502,7 +502,7 @@ export default function GetStartedPage() {
           </div>
           <p className="text-concrete-400">
             Your commands, your conventions — committed in the repo they
-            describe, as they already are. The two tiers never overlap. Good.
+            describe, as they already are. The two tiers never overlap.
           </p>
           <dl className="setup-choice-facts">
             <div>

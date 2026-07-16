@@ -222,7 +222,7 @@ export default function SkillsPage() {
             <ShieldCheck className="h-4 w-4" aria-hidden="true" />
             <span>standalone methods</span>
           </div>
-          <Heading>Methods that sharpen the work.</Heading>
+          <Heading>Methods that don’t improvise.</Heading>
           <p className="text-concrete-400">
             One job each. Open one for its contract and example.
           </p>

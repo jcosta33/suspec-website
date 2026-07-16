@@ -209,7 +209,7 @@ export default function TheLoopPage() {
           contentClassName="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
         >
           <div>
-            <Heading>Ready to run it?</Heading>
+            <Heading>Run it.</Heading>
             <p className="mt-2 text-concrete-400">
               Install the skills —{" "}
               <code>{SKILLS_INSTALL_COMMAND}</code> — and
