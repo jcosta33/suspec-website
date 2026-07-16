@@ -536,9 +536,7 @@ export default function WritingSkillsPage() {
               <Heading className="mt-3">Read the source</Heading>
               <p className="mt-4 max-w-2xl text-concrete-400">
                 The catalog has universal methods and canonical artifact authors.
-                Each skill installs alone and carries its own load boundary,
-                rules, and evidence expectations. Read the source; it is shorter
-                than guessing.
+                Read the source; it is shorter than guessing.
               </p>
             </div>
             <ul className="space-y-3 md:min-w-56">

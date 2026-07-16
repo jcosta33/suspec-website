@@ -776,8 +776,8 @@ export default function GetStartedPage() {
             Your repo takes the code, the tests, and whatever your
             project&apos;s own governance already commits — ADRs, agent guides,
             the PRs themselves. Specs, task packets, and review packets stay
-            beside your native artifacts, outside the repo, unless the
-            project&apos;s own governance says otherwise.
+            beside your native artifacts, outside the repo, unless that
+            governance says otherwise.
           </p>
         </div>
         <Card

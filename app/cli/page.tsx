@@ -599,8 +599,9 @@ export default function CliPage() {
           </Heading>
           <p className="mt-4 text-concrete-400">
             What the checker earns its keep on: facts a lazy or dishonest
-            It checks shape, references, and evidence binding without another
-            model call. It does not prove the evidence is true.
+            reviewer cannot fake. It checks shape, references, and evidence
+            binding without another model call. It does not prove the evidence
+            is true.
           </p>
         </div>
         <ul className="grid gap-4 sm:grid-cols-3">

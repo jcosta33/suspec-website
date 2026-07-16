@@ -330,7 +330,7 @@ export default function HomePage() {
           className="section-flow"
         >
           <div className="max-w-2xl">
-            <Eyebrow>workflow / six steps</Eyebrow>
+            <Eyebrow>the method / in full</Eyebrow>
             <h2 className="mt-4 font-heading text-2xl font-bold text-concrete-100 sm:text-3xl">
               The loop, without the ceremony.
             </h2>
