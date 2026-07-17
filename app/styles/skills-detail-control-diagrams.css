@@ -26,9 +26,9 @@
   gap: 0.35rem;
   border: 1px solid var(--color-panel-border);
   border-top-color: var(--signal-reference);
-  background: color-mix(in srgb, var(--signal-reference) 6%, var(--panel));
+  background: color-mix(in srgb, var(--signal-reference) 6%, var(--color-panel));
   padding: 0.75rem;
-  color: var(--concrete-400);
+  color: var(--color-concrete-400);
   font-family: var(--font-mono);
   font-size: 0.64rem;
   letter-spacing: 0.06em;
@@ -36,7 +36,7 @@
 }
 
 .skill-campaign-lane strong {
-  color: var(--concrete-100);
+  color: var(--color-concrete-100);
   font-size: 0.72rem;
   font-weight: 600;
 }
@@ -61,7 +61,7 @@
 .skill-decision-branch {
   border-top: 1px solid var(--color-panel-border);
   padding-top: 0.65rem;
-  color: var(--concrete-400);
+  color: var(--color-concrete-400);
   font-family: var(--font-mono);
   font-size: 0.64rem;
   letter-spacing: 0.08em;
@@ -82,7 +82,7 @@
   gap: 0.75rem;
   border-bottom: 1px solid var(--color-panel-border);
   padding: 0.75rem 0;
-  color: var(--concrete-300);
+  color: var(--color-concrete-300);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
@@ -91,7 +91,7 @@
 
 .skill-pass-number,
 .skill-pass-state {
-  color: var(--brass);
+  color: var(--color-brass);
 }
 
 @media (max-width: 34rem) {

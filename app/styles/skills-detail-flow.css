@@ -7,7 +7,7 @@
   min-width: 0;
   border: 1px solid var(--color-panel-border);
   padding: 0.75rem 0.5rem;
-  color: var(--concrete-400);
+  color: var(--color-concrete-400);
   font-family: var(--font-mono);
   font-size: 0.65rem;
   line-height: 1.4;
@@ -22,7 +22,7 @@
 
 .skill-detail-visual-flow > svg,
 .skill-detail-visual-memory > svg {
-  color: var(--brass);
+  color: var(--color-brass);
 }
 
 .skill-detail-visual-artifact {
@@ -31,7 +31,7 @@
   gap: 0.8rem;
   background:
     repeating-linear-gradient(0deg, transparent 0 1.85rem, rgba(216, 138, 36, 0.08) 1.9rem 1.95rem),
-    var(--panel);
+    var(--color-panel);
   padding-inline: clamp(1.2rem, 8vw, 3rem);
 }
 
@@ -65,7 +65,7 @@
 .skill-artifact-row {
   grid-template-columns: 1.7rem minmax(0, 1fr) auto;
   padding: 0.58rem 0.75rem;
-  color: var(--concrete-400);
+  color: var(--color-concrete-400);
   font-size: 0.64rem;
   letter-spacing: 0.06em;
 }
@@ -75,16 +75,16 @@
 }
 
 .skill-artifact-row strong {
-  color: var(--concrete-100);
+  color: var(--color-concrete-100);
   font-weight: 650;
 }
 
 .skill-artifact-row > span:first-child {
-  color: var(--brass);
+  color: var(--color-brass);
 }
 
 .skill-artifact-row > span:last-child {
-  color: var(--concrete-500);
+  color: var(--color-concrete-500);
 }
 
 .skill-detail-paper {
