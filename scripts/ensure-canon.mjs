@@ -7,7 +7,7 @@ import { execFileSync, execSync } from "node:child_process";
 import path from "node:path";
 
 const cwd = process.cwd();
-const pinnedRef = "c851c00521d0fd31d2f7ec356a7d39da29210184";
+const pinnedRef = "1a4a0e275cc50f7442a65d05f95ab13fab300fe0";
 const ref = process.env.SUSPEC_REF || pinnedRef;
 const repo = process.env.SUSPEC_REPO || "https://github.com/jcosta33/suspec";
 const explicitCanon = process.env.SUSPEC_CANON_DIR
