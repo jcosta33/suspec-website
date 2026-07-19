@@ -64,10 +64,8 @@ jobs:
             const reports = [
               './lighthouse-home.json',
               './lighthouse-docs.json',
-              './lighthouse-what-is-suspec.json',
               './lighthouse-the-loop.json',
               './lighthouse-skills.json',
-              './lighthouse-agents.json',
               './lighthouse-cli.json',
               './lighthouse-mcp.json',
               './lighthouse-get-started.json',
