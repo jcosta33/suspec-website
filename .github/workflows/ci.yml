@@ -40,14 +40,13 @@ jobs:
         run: npx linkinator http://127.0.0.1:3000 --skip "^(https://github.com|https://suspecframework.dev)"
 
       - name: Accessibility audit (home + docs + product)
-        run: npx axe http://127.0.0.1:3000 http://127.0.0.1:3000/docs/ http://127.0.0.1:3000/docs/01-what-is-suspec/ http://127.0.0.1:3000/what-is-suspec/ http://127.0.0.1:3000/the-loop/ http://127.0.0.1:3000/skills/ http://127.0.0.1:3000/cli/ http://127.0.0.1:3000/mcp/ http://127.0.0.1:3000/get-started/ --exit
+        run: npx axe http://127.0.0.1:3000 http://127.0.0.1:3000/docs/ http://127.0.0.1:3000/docs/01-what-is-suspec/ http://127.0.0.1:3000/the-loop/ http://127.0.0.1:3000/skills/ http://127.0.0.1:3000/cli/ http://127.0.0.1:3000/mcp/ http://127.0.0.1:3000/get-started/ --exit
 
       - name: Lighthouse audit (home + docs + product)
         run: |
           declare -A routes=(
             ["home"]="http://127.0.0.1:3000"
             ["docs"]="http://127.0.0.1:3000/docs/01-what-is-suspec/"
-            ["what-is-suspec"]="http://127.0.0.1:3000/what-is-suspec/"
             ["the-loop"]="http://127.0.0.1:3000/the-loop/"
             ["skills"]="http://127.0.0.1:3000/skills/"
             ["cli"]="http://127.0.0.1:3000/cli/"
