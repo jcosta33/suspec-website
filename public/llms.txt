@@ -37,7 +37,7 @@ Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the a
 
 ## Packages
 
-- [suspec-skills](https://suspecframework.dev/skills/): Standalone Markdown skills that implement the method, including campaign orchestration, adaptive Revolver review, parallel Triple-check, and artifact authors.
+- [suspec-skills](https://suspecframework.dev/skills/): Standalone Markdown skills that implement the method, including sus-campaign, settle, sus-panel, adaptive Revolver review, parallel Triple-check, and artifact authors.
 - [suspec-skills writing guide](https://suspecframework.dev/skills/writing/): How Suspec skills are written, scoped, and reviewed.
 - [suspec-cli](https://suspecframework.dev/cli/): Optional reinforcement — `suspec check`, the deterministic honesty floor; exit codes 0/1/2. Facts, not verdicts.
 - [suspec-mcp](https://suspecframework.dev/mcp/): The same check surface for shell-less MCP runners — `suspec_check`, `suspec_get_checks`, and `suspec://checks`.

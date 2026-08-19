@@ -15,8 +15,8 @@ or the task's `## Run summary`); do not create process records in this code repo
 
 ## The loop
 
-Intent → Spec → Implement → Review → Check → Findings (+ Task when one spec
-splits into parallel slices, + Inventory / Change Plan for structural work).
+Intent → Spec → Implement → Review → Check → Findings. Add a task, inventory,
+change plan, campaign, or panel only when that artifact earns its keep.
 The deterministic checker is `suspec check <path>`. Skills live in this repo's
 `.agents/skills/` (mirrored at `.claude/skills/`).
 
