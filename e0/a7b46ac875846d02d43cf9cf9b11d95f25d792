@@ -1,0 +1,37 @@
+.agents/skills/bulletproof/SKILL.md
+  s_bc88af7d3b054c::t_c0c86aca6babd2 1-48
+.agents/skills/dissect/SKILL.md
+  s_bc88af7d3b054c::t_fb92eff45e5c27 1-4,6,8,10,12-23,25,27,29,31,33,35-36,38,40-42,44,46-47
+.agents/skills/revolver/SKILL.md
+  s_bc88af7d3b054c::t_f21ceae2bececc 1-45
+.agents/skills/sus-research/SKILL.md
+  s_ab5443e65c7fba::t_58900ea9635387 2-3,6-140
+.agents/skills/sus-task/SKILL.md
+  s_ab5443e65c7fba::t_c67ed2bb0181a2 2-3,6-121
+.agents/skills/triple-check/SKILL.md
+  s_bc88af7d3b054c::t_b23eaa0804f7e1 1-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "e0a7b46ac875846d02d43cf9cf9b11d95f25d792",
+  "prompts": {},
+  "sessions": {
+    "s_ab5443e65c7fba": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f2307a45-7e7b-4756-b1d2-9aaee184f227",
+        "model": "claude-fable-5"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    },
+    "s_bc88af7d3b054c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f9b4a-11a2-7f61-8dfb-76eed0eb2a9c",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
