@@ -34,7 +34,10 @@ const SITE_URL = "https://suspecframework.dev";
 export const dynamicParams = false;
 
 export function generateStaticParams(): { slug: string }[] {
-  return skillDetails.map((skill) => ({ slug: skill.slug }));
+  return [
+    ...skillDetails.map((skill) => ({ slug: skill.slug })),
+    { slug: "campaign" },
+  ];
 }
 
 export async function generateMetadata({
@@ -43,7 +46,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const skill = getSkill(slug);
+  const skill = getSkill(slug === "campaign" ? "sus-campaign" : slug);
   if (!skill) return {};
 
   const title = `${skill.name} — Suspec skill`;
@@ -80,9 +83,9 @@ function SkillDiagram({ skill }: { skill: SkillDetail }) {
       <div
         className="skill-detail-visual skill-detail-visual-campaign"
         role="img"
-        aria-label="One campaign issue coordinating three reusable worktree lanes and their pull requests"
+        aria-label="One campaign artifact pointing at a native ledger and write-disjoint lanes"
       >
-        <div className="skill-campaign-ledger">campaign issue</div>
+        <div className="skill-campaign-ledger">campaign ledger</div>
         <div className="skill-campaign-lanes" aria-hidden="true">
           {["lane 01", "lane 02", "lane 03"].map((lane, index) => (
             <div key={lane} className="skill-campaign-lane">
@@ -93,9 +96,9 @@ function SkillDiagram({ skill }: { skill: SkillDetail }) {
           ))}
         </div>
         <p className="skill-detail-visual-caption">
-          <span className={roleText}>native issue</span>
-          <span>recycle clean lanes</span>
-          <span>review what survives</span>
+          <span className={roleText}>goal contract</span>
+          <span>native ledger</span>
+          <span>write-disjoint lanes</span>
         </p>
       </div>
     );
@@ -271,7 +274,6 @@ function SkillDiagram({ skill }: { skill: SkillDetail }) {
 
 function skillEffect(skill: SkillDetail) {
   if (skill.kind === "artifact") return "creates a Suspec artifact";
-  if (skill.slug === "campaign") return "coordinates native issues and pull requests";
   if (skill.slug === "disrespec") return "rewrites supplied Markdown";
   if (skill.slug === "promote") return "moves a selected record";
   if (skill.slug === "remember") return "writes to native memory or a project channel";
@@ -309,19 +311,19 @@ export default async function SkillDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const skill = getSkill(slug);
+  const skill = getSkill(slug === "campaign" ? "sus-campaign" : slug);
   if (!skill) notFound();
 
   const installCommand = skillInstallCommand(skill.slug);
   const kindLabel = skill.kind === "artifact" ? "artifact author" : "universal method";
   const workingShapeTitle =
-    skill.slug === "campaign"
-      ? "Keep state in the project."
+    skill.slug === "sus-campaign"
+      ? "Keep mutable state in the project ledger."
       : skill.kind === "artifact"
       ? "Use the smallest record that carries the work."
       : "Keep the result in the conversation.";
   const heroTraceItems =
-    skill.slug === "campaign"
+    skill.slug === "sus-campaign"
       ? [
           { label: "Frame", signal: skill.tone },
           { label: "Dispatch", signal: "core" as const },

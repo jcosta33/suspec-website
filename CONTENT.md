@@ -70,7 +70,6 @@ verify command, implement, paste the output.
 
 ## Last reviewed
 
-2026-07-13 — checked against the current canon, suspec-skills, suspec-cli, and
-suspec-mcp. The methodology is the product; skills implement it, the CLI is
-`suspec check`, MCP exposes the same check surface, and artifacts live beside
-native artifacts. Deleted agents and starter-kit surfaces are absent.
+2026-08-19 — canon pin `91fe34f` (checks contract 0.25.0), skills `1534e86`,
+and MCP panel recognition. Campaign and panel are current artifact types.
+Deleted agents and starter-kit surfaces stay absent.

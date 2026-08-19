@@ -18,7 +18,7 @@ const routes = [
   "/get-started/",
   "/skills/",
   "/skills/writing/",
-  "/skills/campaign/",
+  "/skills/sus-campaign/",
   "/skills/revolver/",
   "/skills/fork-me/",
   "/skills/sus-spec/",
