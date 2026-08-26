@@ -281,7 +281,7 @@ export default function GetStartedPage() {
         name: "Adopt Suspec",
         description: getStartedDescription,
         tool: [
-          { "@type": "HowToTool", name: "suspec-skills" },
+          { "@type": "HowToTool", name: "suspec skills" },
           { "@type": "HowToTool", name: "suspec-cli", description: "Optional" },
           {
             "@type": "HowToTool",
@@ -417,10 +417,10 @@ export default function GetStartedPage() {
         </div>
         <Card
           signal="core"
-          href="https://github.com/jcosta33/suspec-skills"
+          href="https://github.com/jcosta33/suspec"
           target="_blank"
           rel="noopener noreferrer"
-          ariaLabel="Browse the suspec-skills catalog on GitHub (opens in new tab)"
+          ariaLabel="Browse the Suspec skill catalog on GitHub (opens in new tab)"
           screws
           className="setup-choice-card h-full"
           contentClassName="flex h-full flex-col gap-5"

@@ -274,7 +274,7 @@ function SkillDiagram({ skill }: { skill: SkillDetail }) {
 
 function skillEffect(skill: SkillDetail) {
   if (skill.kind === "artifact") return "creates a Suspec artifact";
-  if (skill.slug === "disrespec") return "rewrites supplied Markdown";
+  if (skill.slug === "debloat") return "rewrites supplied Markdown";
   if (skill.slug === "promote") return "moves a selected record";
   if (skill.slug === "remember") return "writes to native memory or a project channel";
   return "returns a focused result in chat";

@@ -75,7 +75,7 @@ const footerGroups = [
       { label: "GitHub", href: "https://github.com/jcosta33/suspec" },
       {
         label: "Skill catalog",
-        href: "https://github.com/jcosta33/suspec-skills",
+        href: "https://github.com/jcosta33/skills",
       },
       { label: "Colophon", href: "/colophon" },
     ],

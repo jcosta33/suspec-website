@@ -60,7 +60,7 @@ const buildTrace = [
 const provenanceFacts = [
   { label: "Source", value: "jcosta33/suspec-website" },
   { label: "Canon", value: "suspec@1e314ac" },
-  { label: "Skills", value: "suspec-skills@de47f5b" },
+  { label: "Methods", value: "skills@7939d3f" },
   { label: "Export", value: "dist/" },
   { label: "Search", value: "Pagefind" },
 ];

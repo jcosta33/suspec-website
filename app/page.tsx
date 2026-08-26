@@ -403,7 +403,7 @@ export default function HomePage() {
               </Link>
             </Button>
             <ActionLink
-              href="https://github.com/jcosta33/suspec-skills"
+              href="https://github.com/jcosta33/suspec"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View the skills catalog on GitHub (opens in new tab)"

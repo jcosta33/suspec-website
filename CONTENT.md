@@ -35,7 +35,8 @@ separate Suspec repos:
 - <https://github.com/jcosta33/suspec/blob/main/docs/ADOPTING.md>
 - <https://github.com/jcosta33/suspec/blob/main/docs/10-integrations.md>
 - <https://github.com/jcosta33/suspec/blob/main/docs/reference/cli.md>
-- <https://github.com/jcosta33/suspec-skills> (installable skills that implement the methodology)
+- <https://github.com/jcosta33/suspec/tree/main/skills> (the skills that author Suspec artifacts)
+- <https://github.com/jcosta33/skills> (universal working methods; no Suspec dependency)
 - <https://github.com/jcosta33/suspec-cli> (optional reinforcement: `suspec check`)
 - <https://github.com/jcosta33/suspec-mcp> (the check surface for shell-less runners)
 
@@ -47,8 +48,8 @@ separate Suspec repos:
 | `/the-loop`       | `suspec/docs/02-basic-workflow.md`, `suspec/docs/03-where-files-live.md`, `suspec/docs/adrs/0144-keys-and-scaffold.md` |
 | `/get-started`    | `suspec/docs/ADOPTING.md`, `suspec/docs/tutorial/README.md`                              |
 | `/docs`           | generated from `suspec/docs/**`                                                          |
-| `/skills`         | `suspec-skills/README.md`, `suspec-skills/skills/**/SKILL.md`                            |
-| `/skills/writing` | `suspec-skills/README.md`, `suspec-skills/skills/**/SKILL.md`                            |
+| `/skills`         | `suspec/skills/README.md`, `suspec/skills/**/SKILL.md`, `skills/README.md`, `skills/skills/**/SKILL.md` |
+| `/skills/writing` | `suspec/skills/README.md`, `suspec/skills/**/SKILL.md`                                   |
 | `/cli`            | `suspec/docs/reference/cli.md`, `suspec-cli/README.md`, `suspec/checks/checks.yaml`      |
 | `/mcp`            | `suspec-mcp/README.md`, `suspec/docs/10-integrations.md`                                 |
 | `/llms.txt`       | hand-authored site and docs index in `public/llms.txt`                                   |
@@ -70,6 +71,8 @@ verify command, implement, paste the output.
 
 ## Last reviewed
 
-2026-08-19 — canon pin `91fe34f` (checks contract 0.25.0), skills `1534e86`,
-and MCP panel recognition. Campaign and panel are current artifact types.
-Deleted agents and starter-kit surfaces stay absent.
+2026-08-26 — canon pin `d3f14fb` (checks contract 0.27.0), methods pin `7939d3f`.
+The artifact authors ship with the canon; the universal methods ship from
+jcosta33/skills. Review and panel are no longer artifact types: independent
+review is native and a panel answers in chat. Deleted agents and starter-kit
+surfaces stay absent.

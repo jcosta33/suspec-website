@@ -3,7 +3,6 @@ import {
   ArrowUpRight,
   BookOpen,
   CheckCircle,
-  ClipboardCheck,
   FileText,
   FolderSearch,
   GitFork,
@@ -19,7 +18,12 @@ import {
   Zap,
 } from "lucide-react";
 import type { SignalRole } from "../components/signalStyles";
-import { SKILLS_REVISION } from "../productFacts";
+import {
+  CANON_REPOSITORY,
+  CANON_REVISION,
+  SKILLS_REPOSITORY,
+  SKILLS_REVISION,
+} from "../productFacts";
 
 export type SkillKind = "method" | "artifact";
 export type SkillVisual =
@@ -57,6 +61,28 @@ export type SkillDetail = {
 
 export const skillDetails: readonly SkillDetail[] = [
   {
+    slug: "ask-user",
+    name: "ask-user",
+    kind: "method",
+    tone: "core",
+    icon: GitFork,
+    description: "Turn consequential ambiguity into a human choice.",
+    rationale: "Use it when facts end but several valid paths remain.",
+    output: "Recommendation-first picker with three real options and costs.",
+    boundary: "No guessing. Dependent work waits for selection.",
+    misuse: "Offering cosmetic options or continuing dependent work before selection.",
+    visual: "decision",
+    example: {
+      title: "choice",
+      meta: "human decision / blocked until selected",
+      lines: [
+        "Recommended: keep the existing API and add an adapter.",
+        "Option 2: replace the API and migrate callers.",
+        "Option 3: defer the change until the contract is settled.",
+      ],
+    },
+  },
+  {
     slug: "bulletproof",
     name: "bulletproof",
     kind: "method",
@@ -76,6 +102,28 @@ export const skillDetails: readonly SkillDetail[] = [
         "| ID | Assessment | Evidence |",
         "| AC-001 | Supported | npm test -- auth-refresh |",
         "| AC-002 | Unverified | CI output missing |",
+      ],
+    },
+  },
+  {
+    slug: "debloat",
+    name: "debloat",
+    kind: "method",
+    tone: "muted",
+    icon: Zap,
+    description: "Anti-bloat vacuum cleaner.",
+    rationale: "Point it at ceremonial sludge. Keep the facts.",
+    output: "Tighter Markdown; every fact, decision, command, warning, and proof remains once.",
+    boundary: "No source code, commit messages, or repository-native pull-request forms.",
+    misuse: "Cutting a constraint because it sounds repetitive.",
+    visual: "before-after",
+    example: {
+      title: "copy pass",
+      meta: "one fact / one home",
+      lines: [
+        "Before: A long explanation of why the command is important.",
+        "After: Run the command. Paste its output.",
+        "Kept: command, evidence requirement, action.",
       ],
     },
   },
@@ -103,28 +151,6 @@ export const skillDetails: readonly SkillDetail[] = [
     },
   },
   {
-    slug: "disrespec",
-    name: "disrespec",
-    kind: "method",
-    tone: "muted",
-    icon: Zap,
-    description: "Anti-bloat vacuum cleaner.",
-    rationale: "Point it at ceremonial sludge. Keep the facts.",
-    output: "Tighter Markdown; every fact, decision, command, warning, and proof remains once.",
-    boundary: "No source code, commit messages, or repository-native pull-request forms.",
-    misuse: "Cutting a constraint because it sounds repetitive.",
-    visual: "before-after",
-    example: {
-      title: "copy pass",
-      meta: "one fact / one home",
-      lines: [
-        "Before: A long explanation of why the command is important.",
-        "After: Run the command. Paste its output.",
-        "Kept: command, evidence requirement, action.",
-      ],
-    },
-  },
-  {
     slug: "dissect",
     name: "dissect",
     kind: "method",
@@ -148,24 +174,48 @@ export const skillDetails: readonly SkillDetail[] = [
     },
   },
   {
-    slug: "fork-me",
-    name: "fork-me",
+    slug: "drill",
+    name: "drill",
     kind: "method",
     tone: "core",
-    icon: GitFork,
-    description: "Turn consequential ambiguity into a human choice.",
-    rationale: "Use it when facts end but several valid paths remain.",
-    output: "Recommendation-first picker with three real options and costs.",
-    boundary: "No guessing. Dependent work waits for selection.",
-    misuse: "Offering cosmetic options or continuing dependent work before selection.",
-    visual: "decision",
+    icon: Route,
+    description: "Lock language, obligation, place, and slice before writing.",
+    rationale: "Use it when the levels mix, or implementation starts before the place is settled.",
+    output: "The four locks, the write, and the verify evidence. No Suspec artifact.",
+    boundary: "One seam. Escalate when ordered waves and rollback must outlive the session.",
+    misuse: "Asking a lower question while a higher lock is still open.",
+    visual: "passes",
+    visualLabels: ["language", "obligation + place", "slice"],
     example: {
-      title: "choice",
-      meta: "human decision / blocked until selected",
+      title: "locks",
+      meta: "one seam / native notes",
       lines: [
-        "Recommended: keep the existing API and add an adapter.",
-        "Option 2: replace the API and migrate callers.",
-        "Option 3: defer the change until the contract is settled.",
+        "Language: the token store, not the session cache.",
+        "Obligation: existing sessions survive; verify with the refresh test.",
+        "Place: authRefresh.ts, one boundary. Slice: swap the lookup.",
+      ],
+    },
+  },
+  {
+    slug: "panel",
+    name: "panel",
+    kind: "method",
+    tone: "reference",
+    icon: GitFork,
+    description: "Produce one recommendation from independent analysis of legitimate alternatives.",
+    rationale: "Use it when a consequential choice needs several perspectives before a human decides.",
+    output: "One recommendation, a compact comparison, the strongest dissent, and the unknowns. No Suspec artifact.",
+    boundary: "Chat only. It writes no artifact and does not decide human-owned intent.",
+    misuse: "Running a panel when direct evidence already settles the choice.",
+    visual: "decision",
+    visualLabels: ["one question", "blind analyses", "one recommendation"],
+    example: {
+      title: "panel.md",
+      meta: "type: panel / recommendation",
+      lines: [
+        "Question: store sessions in Redis or Postgres?",
+        "Recommendation: Postgres; one system of record.",
+        "Dissent: Redis if TTL eviction is a hard requirement.",
       ],
     },
   },
@@ -353,29 +403,6 @@ export const skillDetails: readonly SkillDetail[] = [
     },
   },
   {
-    slug: "sus-panel",
-    name: "sus-panel",
-    kind: "artifact",
-    tone: "reference",
-    icon: GitFork,
-    description: "Produce one recommendation from independent analysis of legitimate alternatives.",
-    rationale: "Use it when a consequential choice needs several perspectives before a human decides.",
-    output: "A type: panel artifact with Question, Options, Recommendation, and material dissent.",
-    boundary: "Advises. Does not seize intent or treat votes as evidence.",
-    misuse: "Running a panel when direct evidence already settles the choice.",
-    visual: "decision",
-    visualLabels: ["one question", "blind analyses", "one recommendation"],
-    example: {
-      title: "panel.md",
-      meta: "type: panel / recommendation",
-      lines: [
-        "Question: store sessions in Redis or Postgres?",
-        "Recommendation: Postgres; one system of record.",
-        "Dissent: Redis if TTL eviction is a hard requirement.",
-      ],
-    },
-  },
-  {
     slug: "sus-research",
     name: "sus-research",
     kind: "artifact",
@@ -395,29 +422,6 @@ export const skillDetails: readonly SkillDetail[] = [
         "Question: which adapter keeps the contract stable?",
         "Source: official API reference",
         "Open uncertainty: migration cost in older clients",
-      ],
-    },
-  },
-  {
-    slug: "sus-review",
-    name: "sus-review",
-    kind: "artifact",
-    tone: "evidence",
-    icon: ClipboardCheck,
-    description: "Review finished work against its governing spec, narrowed by its task when present.",
-    rationale: "Use it for independent, requirement-level evidence review.",
-    output: "Coverage rows, evidence, findings, and a human-owned decision.",
-    boundary: "Assesses evidence. Cannot accept its own work.",
-    misuse: "Letting the reviewer grant acceptance or review its own implementation.",
-    visual: "artifact",
-    visualLabels: ["requirements", "evidence rows", "human decision"],
-    example: {
-      title: "review.md",
-      meta: "type: review / requirement coverage",
-      lines: [
-        "| ID | Assessment | Evidence |",
-        "| AC-001 | Supported | E-001 |",
-        "| AC-002 | Unverified | missing receipt |",
       ],
     },
   },
@@ -499,5 +503,8 @@ export function getSkill(slug: string): SkillDetail | undefined {
 }
 
 export function skillSourceUrl(slug: string): string {
-  return `https://github.com/jcosta33/suspec-skills/blob/${SKILLS_REVISION}/skills/${slug}/SKILL.md`;
+  const [repository, revision] = slug.startsWith("sus-")
+    ? [CANON_REPOSITORY, CANON_REVISION]
+    : [SKILLS_REPOSITORY, SKILLS_REVISION];
+  return `${repository}/blob/${revision}/skills/${slug}/SKILL.md`;
 }

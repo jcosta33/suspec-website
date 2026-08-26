@@ -21,18 +21,21 @@ import { TextLink } from "../components/TextLink";
 import { PackageJsonLd } from "../components/PackageJsonLd";
 import { canonicalAlternates } from "../seo";
 import {
+  METHODS_INSTALL_COMMAND,
   SKILLS_INSTALL_COMMAND,
+  SKILLS_REPOSITORY as METHODS_REPOSITORY,
   skillInstallCommand,
 } from "../productFacts";
 import { skillDetails, type SkillDetail } from "./skillData";
 
 const SITE_URL = "https://suspecframework.dev";
-const SKILLS_REPOSITORY = "https://github.com/jcosta33/suspec-skills";
+const SKILLS_REPOSITORY = "https://github.com/jcosta33/suspec";
 const SKILLS_CLI = "https://github.com/vercel-labs/skills";
 const skillsDescription =
   "Standalone Markdown skills that implement the Suspec method: intent, evidence, review, decisions, and durable lessons.";
-const skillsTitle = "suspec-skills — installable parts of the Suspec methodology";
+const skillsTitle = "Skills — installable parts of the Suspec methodology";
 const catalogInstallCommand = SKILLS_INSTALL_COMMAND;
+const methodsInstallCommand = METHODS_INSTALL_COMMAND;
 const singleSkillInstallCommand = skillInstallCommand("revolver");
 
 export const metadata: Metadata = {
@@ -50,7 +53,7 @@ export const metadata: Metadata = {
         url: "/og-skills.png",
         width: 1200,
         height: 630,
-        alt: "suspec-skills — installable parts of the Suspec methodology",
+        alt: "Skills — installable parts of the Suspec methodology",
       },
     ],
   },
@@ -110,7 +113,7 @@ export default function SkillsPage() {
           motif="catalog"
           tone="reference"
           toneLabel="skills"
-          titleLabel="suspec-skills"
+          titleLabel="skills"
           title={
             <>
               suspec<span className="product-name-suffix">-skills</span>
@@ -186,10 +189,17 @@ export default function SkillsPage() {
           <span>skills add -g</span>
         </div>
         <Panel brushed className="p-2">
-          <TerminalWindow title="terminal" copyText={`${catalogInstallCommand}\n${singleSkillInstallCommand}`}>
-            <p className="text-concrete-500"># install the catalog globally</p>
+          <TerminalWindow
+            title="terminal"
+            copyText={`${catalogInstallCommand}\n${methodsInstallCommand}\n${singleSkillInstallCommand}`}
+          >
+            <p className="text-concrete-500"># install the artifact authors globally</p>
             <p className="text-concrete-100">
               <span className="text-suspec-yellow">$</span>{" "}{catalogInstallCommand}
+            </p>
+            <p className="mt-3 text-concrete-500"># install the universal methods globally</p>
+            <p className="text-concrete-100">
+              <span className="text-suspec-yellow">$</span>{" "}{methodsInstallCommand}
             </p>
             <p className="mt-3 text-concrete-500"># or install one skill</p>
             <p className="text-concrete-100">
@@ -294,9 +304,19 @@ export default function SkillsPage() {
               rel="noopener noreferrer"
               className="w-fit gap-2"
               touchTarget
-              aria-label="Open suspec-skills on GitHub (opens in new tab)"
+              aria-label="Open the Suspec repository on GitHub (opens in new tab)"
             >
-              Open repository <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              Artifact authors <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </TextLink>
+            <TextLink
+              href={METHODS_REPOSITORY}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-fit gap-2"
+              touchTarget
+              aria-label="Open the universal method catalog on GitHub (opens in new tab)"
+            >
+              Universal methods <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </TextLink>
           </div>
         </Card>
@@ -304,7 +324,7 @@ export default function SkillsPage() {
 
       <JsonLd data={skillsPageJsonLd} />
       <PackageJsonLd
-        name="suspec-skills"
+        name="suspec skills"
         description={skillsDescription}
         path="/skills/"
         repository={SKILLS_REPOSITORY}

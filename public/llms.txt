@@ -2,7 +2,7 @@
 
 > Suspec is a methodology for structuring work with coding agents. Skills implement it; the optional CLI checks the records. Keep intent, review, and findings visible. Pull in a spec, task, inventory, change plan, audit, or research record when the work earns one. Plain Markdown, any capable harness, and your repos take nothing.
 
-Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the agent's native artifacts under `~/.agents/artifacts/<workspace>/`; callers pass each path explicitly, and Suspec commits nothing to the adopter's repo. Durable lessons become native harness memories; decisions become ADRs. The optional CLI (`suspec check`) reports deterministic facts: coverage, evidence binding, references, and artifact shape. Exit codes are the API: 0 clean, 1 warning, 2 blocking. It never renders a review result; the human owns acceptance, waivers, irreversible actions, and merge decisions.
+Install: `npx skills add jcosta33/suspec -g` for the artifact authors, and `npx skills add jcosta33/skills -g` for the universal working methods. Artifacts live beside the agent's native artifacts under `~/.agents/artifacts/<workspace>/`; callers pass each path explicitly, and Suspec commits nothing to the adopter's repo. Durable lessons become native harness memories; decisions become ADRs. The optional CLI (`suspec check`) reports deterministic facts: coverage, evidence binding, references, and artifact shape. Exit codes are the API: 0 clean, 1 warning, 2 blocking. It never renders a review result; the human owns acceptance, waivers, irreversible actions, and merge decisions.
 
 ## Start here
 
@@ -37,13 +37,14 @@ Install: `npx skills add jcosta33/suspec-skills -g`. Artifacts live beside the a
 
 ## Packages
 
-- [suspec-skills](https://suspecframework.dev/skills/): Standalone Markdown skills that implement the method, including sus-campaign, settle, sus-panel, adaptive Revolver review, parallel Triple-check, and artifact authors.
-- [suspec-skills writing guide](https://suspecframework.dev/skills/writing/): How Suspec skills are written, scoped, and reviewed.
+- [Skills](https://suspecframework.dev/skills/): Standalone Markdown skills that implement the method, including sus-campaign, settle, panel, drill, adaptive Revolver review, parallel Triple-check, and artifact authors.
+- [Skill writing guide](https://suspecframework.dev/skills/writing/): How Suspec skills are written, scoped, and reviewed.
 - [suspec-cli](https://suspecframework.dev/cli/): Optional reinforcement — `suspec check`, the deterministic honesty floor; exit codes 0/1/2. Facts, not verdicts.
 - [suspec-mcp](https://suspecframework.dev/mcp/): The same check surface for shell-less MCP runners — `suspec_check`, `suspec_get_checks`, and `suspec://checks`.
 
 ## Source
 
 - [Canon on GitHub](https://github.com/jcosta33/suspec): The source repository for the docs, ADRs, and the checks contract.
-- [Skill catalog](https://github.com/jcosta33/suspec-skills): The source for installable skills and their contracts.
+- [Artifact authors](https://github.com/jcosta33/suspec/tree/main/skills): The source for the skills that write Suspec artifacts.
+- [Universal methods](https://github.com/jcosta33/skills): The source for the working methods that write no document.
 - [Website source](https://github.com/jcosta33/suspec-website): The public website repository.

@@ -23,14 +23,14 @@ import { JsonLd } from "../../components/JsonLd";
 import { TextLink } from "../../components/TextLink";
 import { signalRoles, type SignalRole } from "../../components/signalStyles";
 import { canonicalAlternates } from "../../seo";
-import { SKILLS_REVISION } from "../../productFacts";
+import { CANON_REVISION } from "../../productFacts";
 
 const SITE_URL = "https://suspecframework.dev";
 const pageDescription =
   "A short guide to writing installable Suspec skills: load boundary, rules, references, and scope. Keep the packet useful.";
 const pageTitle = "Writing Suspec skills — structure and scope";
-const skillsSourceBase = `https://github.com/jcosta33/suspec-skills/tree/${SKILLS_REVISION}`;
-const skillsBlobBase = `https://github.com/jcosta33/suspec-skills/blob/${SKILLS_REVISION}`;
+const skillsSourceBase = `https://github.com/jcosta33/suspec/tree/${CANON_REVISION}`;
+const skillsBlobBase = `https://github.com/jcosta33/suspec/blob/${CANON_REVISION}`;
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -260,7 +260,7 @@ export default function WritingSkillsPage() {
           <ul className="writing-related-records-links">
             <li>
               <TextLink href="/skills/" touchTarget>
-                suspec-skills index
+                Suspec skill index
               </TextLink>
             </li>
             <li>
@@ -545,11 +545,11 @@ export default function WritingSkillsPage() {
                   href={`${skillsSourceBase}/docs`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Open suspec-skills docs on GitHub (opens in new tab)"
+                  aria-label="Open the Suspec skill catalog on GitHub (opens in new tab)"
                   className="gap-2"
                   touchTarget
                 >
-                  suspec-skills docs{" "}
+                  Suspec skill catalog{" "}
                   <ExternalLink className="h-4 w-4" aria-hidden="true" />
                 </TextLink>
               </li>

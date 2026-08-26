@@ -21,7 +21,7 @@ const defaultRoutes = [
   "/skills/writing/",
   "/skills/sus-campaign/",
   "/skills/revolver/",
-  "/skills/fork-me/",
+  "/skills/ask-user/",
   "/skills/sus-spec/",
   "/cli/",
   "/mcp/",

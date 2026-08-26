@@ -26,7 +26,7 @@ const siteGraph = {
         "Suspec is a methodology for structuring work with coding agents. Skills implement it; the optional CLI checks the paperwork.",
       sameAs: [
         "https://github.com/jcosta33/suspec",
-        "https://github.com/jcosta33/suspec-skills",
+        "https://github.com/jcosta33/skills",
         "https://github.com/jcosta33/suspec-cli",
         "https://github.com/jcosta33/suspec-mcp",
       ],

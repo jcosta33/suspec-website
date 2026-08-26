@@ -16,7 +16,7 @@ const routes = [
   "/the-loop/intent/",
   "/get-started/",
   "/skills/",
-  "/skills/disrespec/",
+  "/skills/debloat/",
   "/skills/writing/",
   "/cli/",
   "/mcp/",
